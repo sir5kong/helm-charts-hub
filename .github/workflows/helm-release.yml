@@ -15,7 +15,12 @@ jobs:
         with:
           repository: bitnami/charts
           # path: my-tools
-          fetch-depth: 0
+          fetch-depth: 5000
+      -
+        name: View Files
+        run: |
+          pwd
+          ls -alh
       - 
         name: Configure Git
         run: |
