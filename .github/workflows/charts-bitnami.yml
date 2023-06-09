@@ -15,7 +15,7 @@ jobs:
         with:
           repository: bitnami/charts
           # path: my-tools
-          fetch-depth: 25000
+          fetch-depth: 5000
       -
         name: View Files
         run: |
