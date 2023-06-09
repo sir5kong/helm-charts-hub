@@ -10,12 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - 
-        name: Checkout bitnami/charts
+        name: Checkout grafana/helm-charts
         uses: actions/checkout@v3
         with:
-          repository: bitnami/charts
+          repository: grafana/helm-charts
           # path: my-tools
-          fetch-depth: 5000
+          fetch-depth: 0
       -
         name: View Files
         run: |
@@ -31,5 +31,5 @@ jobs:
         uses: helm/chart-releaser-action@v1.5.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          charts_dir: bitnami
+          charts_dir: charts
           # CR_RELEASE_NAME_TEMPLATE: "{{ .Name }}-chart-{{ .Version }}"
