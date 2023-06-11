@@ -1,23 +1,16 @@
-name: Get Charts
+name: Sync Charts Index
 
 on:
   # schedule:
   #   - cron: '*/5 * * * *' # every 5 minutes
   # workflow_dispatch: # on button click
+  
   push:
     branches:
       - main
 
 jobs:
-  #grafana-mirror:
-  #  uses: ./.github/workflows/index-mirror.yml
-  #  with:
-  #    source-url: 'https://grafana.github.io/helm-charts/index.yaml'
-  #    dest-namespace: grafana
-  #    # oss-key-id: ${{ secrets.OSS_KEY_ID }}
-  #    # oss-key-secret: ${{ secrets.OSS_KEY_SECRET }}
-  #  secrets: inherit
-  getCharts:
+  syncCharts:
     runs-on: ubuntu-latest
     steps:
       -
@@ -36,4 +29,4 @@ jobs:
           OSS_BUCKET: "${{ vars.OSS_BUCKET }}"
           CHART_INDEX_URL: "${{ vars.CHART_INDEX_URL }}"
           MIRROR_HOST: "${{ vars.MIRROR_HOST }}"
-        run: '.github/get-charts.sh'
+        run: '.github/sync-charts.sh'

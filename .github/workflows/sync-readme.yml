@@ -1,4 +1,4 @@
-name: Sync Charts
+name: Sync README.md
 
 on:
   schedule:
@@ -10,7 +10,7 @@ on:
   #    - main
 
 jobs:
-  sync:
+  syncReadme:
     runs-on: ubuntu-latest
     steps:
     - 
@@ -21,7 +21,7 @@ jobs:
     - 
       name: Local changes
       shell: bash
-      run: '.github/get-readme.sh'
+      run: '.github/sync-readme.sh'
     - 
       name: Commit files
       shell: bash
