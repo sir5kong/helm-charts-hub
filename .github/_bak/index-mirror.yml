@@ -51,6 +51,10 @@ jobs:
           chmod a+rx $ALIOSS
           echo "$ALIOSS config -e $OSS_EP -i $OSS_KEY_ID -k OSS_KEY_SECRET"
           $ALIOSS config -e $OSS_EP -i $OSS_KEY_ID -k $OSS_KEY_SECRET
+          if echo "$index_url" | grep -E '/index\.yaml$' ; then
+            export index_url=$(echo "$index_url" | sed -E 's%/?(index\.yaml)?$%/index.yaml%')
+          fi
+          echo "index_url: $index_url"
           curl -o /tmp/index.yaml -L "$index_url"
           head -n50 /tmp/index.yaml
           if head -n50 /tmp/index.yaml | grep -E '^apiVersion:' ; then

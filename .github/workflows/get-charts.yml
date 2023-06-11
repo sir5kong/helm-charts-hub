@@ -1,0 +1,39 @@
+name: OSS Upload
+
+on:
+  # schedule:
+  #   - cron: '*/5 * * * *' # every 5 minutes
+  # workflow_dispatch: # on button click
+  push:
+    branches:
+      - main
+
+jobs:
+  #grafana-mirror:
+  #  uses: ./.github/workflows/index-mirror.yml
+  #  with:
+  #    source-url: 'https://grafana.github.io/helm-charts/index.yaml'
+  #    dest-namespace: grafana
+  #    # oss-key-id: ${{ secrets.OSS_KEY_ID }}
+  #    # oss-key-secret: ${{ secrets.OSS_KEY_SECRET }}
+  #  secrets: inherit
+  getCharts:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      - 
+        name: Upload to OSS
+        if: ${{ vars.OSS_MIRROR_ENABLED == 'true' }}
+        shell: bash
+        env:
+          DL_URL_OSS: "https://gosspublic.alicdn.com/ossutil/1.7.1/ossutil64"
+          chart_base_url: 'https://helm-charts.itboon.top'
+          OSS_KEY_ID: "${{ secrets.OSS_KEY_ID }}"
+          OSS_KEY_SECRET: "${{ secrets.OSS_KEY_SECRET }}"
+          OSS_EP: "${{ vars.OSS_EP }}"
+          OSS_BUCKET: "${{ vars.OSS_BUCKET }}"
+          CHART_INDEX_URL: "${{ vars.CHART_INDEX_URL }}"
+          MIRROR_HOST: "${{ vars.MIRROR_HOST }}"
+        run: '.github/get-charts.sh'
