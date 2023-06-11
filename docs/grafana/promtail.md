@@ -107,7 +107,7 @@ The new release which will pick up again from the existing `positions.yaml`.
 | httpPathPrefix | string | `""` | Base path to server all API routes fro |
 | image.pullPolicy | string | `"IfNotPresent"` | Docker image pull policy |
 | image.registry | string | `"docker.io"` | The Docker registry |
-| image.repository | string | `"grafana/promtail"` | Docker image repository |
+| image.repository | string | `"grafana-mirror/promtail"` | Docker image repository |
 | image.tag | string | `nil` | Overrides the image tag whose default is the chart's appVersion |
 | imagePullSecrets | list | `[]` | Image pull secrets for Docker images |
 | initContainer | list | `[]` |  |

@@ -61,7 +61,7 @@ A major chart version change (like v1.2.3 -> v2.0.0) indicates that there is an 
 | image.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.pullSecrets | list | `[]` | Image pull secrets |
 | image.registry | string | `"docker.io"` | Image registry |
-| image.repository | string | `"grafana/agent-operator"` | Image repo |
+| image.repository | string | `"grafana-mirror/agent-operator"` | Image repo |
 | image.tag | string | `"v0.32.1"` | Image tag |
 | kubeletService | object | `{"namespace":"default","serviceName":"kubelet"}` | If both are set, Agent Operator will create and maintain a service for scraping kubelets https://grafana.com/docs/agent/latest/operator/getting-started/#monitor-kubelets |
 | nameOverride | string | `""` | Overrides the chart's name |

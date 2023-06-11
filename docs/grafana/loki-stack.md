@@ -18,25 +18,25 @@ _See [helm repo](https://helm.sh/docs/helm/helm_repo/) for command documentation
 ### Deploy with default config
 
 ```bash
-helm upgrade --install loki grafana/loki-stack
+helm upgrade --install loki grafana-mirror/loki-stack
 ```
 
 ### Deploy in a custom namespace
 
 ```bash
-helm upgrade --install loki --namespace=loki-stack grafana/loki-stack
+helm upgrade --install loki --namespace=loki-stack grafana-mirror/loki-stack
 ```
 
 ### Deploy with custom config
 
 ```bash
-helm upgrade --install loki grafana/loki-stack --set "key1=val1,key2=val2,..."
+helm upgrade --install loki grafana-mirror/loki-stack --set "key1=val1,key2=val2,..."
 ```
 
 ## Deploy Loki and Fluent Bit to your cluster
 
 ```bash
-helm upgrade --install loki grafana/loki-stack \
+helm upgrade --install loki grafana-mirror/loki-stack \
     --set fluent-bit.enabled=true,promtail.enabled=false
 ```
 

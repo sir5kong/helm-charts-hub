@@ -28,7 +28,7 @@ helm repo add grafana-mirror https://helm-charts.itboon.top/grafana
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release grafana/tempo-distributed
+helm install my-release grafana-mirror/tempo-distributed
 ```
 
 ## Uninstalling the Chart

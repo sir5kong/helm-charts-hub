@@ -21,7 +21,7 @@ helm repo add grafana-mirror https://helm-charts.itboon.top/grafana
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release grafana/tempo-vulture
+helm install my-release grafana-mirror/tempo-vulture
 ```
 
 ## Uninstalling the Chart
@@ -55,7 +55,7 @@ tempoAddress:
 | extraEnvFrom | list | `[]` | Environment variables from secrets or configmaps to add to the vulture pods |
 | fullnameOverride | string | `""` | Overrides the chart's computed fullname |
 | image.pullPolicy | string | `"IfNotPresent"` | Docker image pull policy |
-| image.repository | string | `"docker.io/grafana/tempo-vulture"` | Docker image repository |
+| image.repository | string | `"docker.io/grafana-mirror/tempo-vulture"` | Docker image repository |
 | image.tag | string | `""` | Overrides the image tag whose default is the chart's appVersion |
 | imagePullSecrets | list | `[]` | Image pull secrets for Docker images |
 | nameOverride | string | `""` | Overrides the chart's name |

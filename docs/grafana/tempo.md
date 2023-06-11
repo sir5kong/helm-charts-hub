@@ -6,7 +6,7 @@ Grafana Tempo Single Binary Mode
 
 ## Source Code
 
-* <https://github.com/grafana/tempo>
+* <https://github.com/grafana-mirror/tempo>
 
 ## Values
 
@@ -62,7 +62,7 @@ Grafana Tempo Single Binary Mode
 | tempo.receivers.otlp.protocols.grpc.endpoint | string | `"0.0.0.0:4317"` |  |
 | tempo.receivers.otlp.protocols.http.endpoint | string | `"0.0.0.0:4318"` |  |
 | tempo.reportingEnabled | bool | `true` | If true, Tempo will report anonymous usage data about the shape of a deployment to Grafana Labs |
-| tempo.repository | string | `"grafana/tempo"` |  |
+| tempo.repository | string | `"grafana-mirror/tempo"` |  |
 | tempo.resources | object | `{}` |  |
 | tempo.retention | string | `"24h"` |  |
 | tempo.securityContext | object | `{}` |  |
@@ -85,7 +85,7 @@ Grafana Tempo Single Binary Mode
 | tempoQuery.ingress.pathType | string | `"Prefix"` |  |
 | tempoQuery.ingress.tls | list | `[]` |  |
 | tempoQuery.pullPolicy | string | `"IfNotPresent"` |  |
-| tempoQuery.repository | string | `"grafana/tempo-query"` |  |
+| tempoQuery.repository | string | `"grafana-mirror/tempo-query"` |  |
 | tempoQuery.resources | object | `{}` |  |
 | tempoQuery.securityContext | object | `{}` |  |
 | tempoQuery.service.port | int | `16686` |  |
@@ -105,7 +105,7 @@ helm repo add grafana-mirror https://helm-charts.itboon.top/grafana
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release grafana/tempo
+helm install my-release grafana-mirror/tempo
 ```
 
 ## Uninstalling the Chart
@@ -125,7 +125,7 @@ A major chart version change indicates that there is an incompatible breaking ch
 ### From Chart versions < 1.2.0
 
 Please be aware that we've updated the minor version to Tempo 2.1, which includes breaking changes.
-We recommend reviewing the [release notes](https://github.com/grafana/tempo/releases/tag/v2.1.0/) before upgrading.
+We recommend reviewing the [release notes](https://github.com/grafana-mirror/tempo/releases/tag/v2.1.0/) before upgrading.
 
 ### From Chart versions < 1.0.0
 

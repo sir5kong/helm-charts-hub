@@ -16,7 +16,7 @@ Grafana's Synthetic Monitoring application. The agent provides probe functionali
 
 ## Source Code
 
-* <https://github.com/grafana/synthetic-monitoring-agent>
+* <https://github.com/grafana-mirror/synthetic-monitoring-agent>
 
 ## Requirements
 
@@ -41,7 +41,7 @@ Kubernetes: `^1.16.0-0`
 | fullnameOverride | string | `""` | Override the fullname of the chart. |
 | image.pullPolicy | string | `"IfNotPresent"` | Image pull policy. |
 | image.registry | string | `"docker.io"` | Base registry to pull the container image from. |
-| image.repository | string | `"grafana/synthetic-monitoring-agent"` | Base repository for container image. |
+| image.repository | string | `"grafana-mirror/synthetic-monitoring-agent"` | Base repository for container image. |
 | image.tag | string | `""` | Image tag; overrides the image tag whose default is the chart `appVersion`. |
 | imagePullSecrets | list | `[]` | Docker registry secret names as an array. |
 | livenessProbe | object | `{"httpGet":{"path":"/","port":"http"}}` | Liveness probe for the agent |

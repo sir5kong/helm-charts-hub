@@ -1,6 +1,6 @@
 # Grafana rollout-operator Helm Chart
 
-Helm chart for deploying [Grafana rollout-operator](https://github.com/grafana/rollout-operator) to Kubernetes.
+Helm chart for deploying [Grafana rollout-operator](https://github.com/grafana-mirror/rollout-operator) to Kubernetes.
 
 # rollout-operator
 
@@ -29,7 +29,7 @@ helm repo update
 ### Installation of Grafana Rollout Operator
 
 ```bash
-helm install  -n <namespace> <release> grafana/rollout-operator
+helm install  -n <namespace> <release> grafana-mirror/rollout-operator
 ```
 
 The Grafana rollout-operator should be installed in the same namespace as the statefulsets it is operating upon.
@@ -42,7 +42,7 @@ It is not a highly available application and runs as a single pod.
 | affinity | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"grafana/rollout-operator"` |  |
+| image.repository | string | `"grafana-mirror/rollout-operator"` |  |
 | image.tag | string | `""` | Overrides the image tag whose default is the chart appVersion. |
 | imagePullSecrets | list | `[]` |  |
 | minReadySeconds | int | `10` |  |
