@@ -64,7 +64,7 @@ main() {
 main_test() {
   local github_repo='grafana/helm-charts'
   local chart_namespace="grafana"
-  local charts_dir="grafana"
+  local charts_dir="charts"
   get_readme_github "$github_repo" "$chart_namespace" "$charts_dir"
 }
 
