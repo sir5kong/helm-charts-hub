@@ -20,7 +20,8 @@ setup_yq() {
 
 get_chart_index_github() {
   local index_url="$1"
-  local namespace="$2"
+  local github_repo="$2"
+  local namespace="$3"
   if [[ $(basename $index_url) != "index.yaml" ]]; then
     export index_url=$(echo "$index_url" | sed -E 's%/?(index\.yaml)?$%/index.yaml%')
   fi
@@ -28,8 +29,7 @@ get_chart_index_github() {
   curl -o /tmp/index.yaml -L "$index_url"
   head -n10 /tmp/index.yaml
   if head -n50 /tmp/index.yaml | grep -E '^apiVersion:' ; then
-    local github_org=$(echo "$index_url" | grep -Eo '//[^/.]+' | grep -Eo '[^/.]+')
-    echo '[sed] s%https://github.com/\('$github_org'/helm-charts/releases\)%'$CHART_BASE_URL'/github/\1%'
+    echo '[sed] s%https://github.com/\('$github_repo'/releases\)%'$CHART_BASE_URL'/github/\1%'
     sed -i 's%https://github.com/\('$github_org'/helm-charts/releases\)%'$CHART_BASE_URL'/github/\1%' /tmp/index.yaml
     $ALIOSS cp -f /tmp/index.yaml \
       "oss://${OSS_BUCKET}/${namespace}/index.yaml" \
@@ -44,9 +44,10 @@ main() {
   local yml="$CHARTS_CONFIG"
   local num=$(yq e '.repos | length' $yml)
   for ((i=0; i<$num; i++)); do
-    local this_url=$(yq e .repos[${i}].url $yml)
-    local this_namespace=$(yq e .repos[${i}].namespace $yml)
-    get_chart_index_github "$this_url" "$this_namespace"
+    local gtihub_url=$(yq e .repos[${i}].url $yml)
+    local gtihub_repo=$(yq e .repos[${i}].repo $yml)
+    local chart_namespace=$(yq e .repos[${i}].namespace $yml)
+    get_chart_index_github "$github_url" "$github_repo" "$chart_namespace"
   done
 }
 
