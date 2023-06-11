@@ -10,6 +10,8 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
+使用镜像地址添加仓库: `helm repo add bitnami-mirror https://helm-charts.itboon.top/bitnami`
+
 ```console
 helm install my-release bitnami-mirror/jasperreports
 ```

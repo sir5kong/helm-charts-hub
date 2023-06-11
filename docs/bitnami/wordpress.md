@@ -8,6 +8,8 @@ WordPress is the world's most popular blogging and content management platform. 
 
 ## TL;DR
 
+使用镜像地址添加仓库: `helm repo add bitnami-mirror https://helm-charts.itboon.top/bitnami`
+
 ```console
 helm install my-release bitnami-mirror/wordpress
 ```

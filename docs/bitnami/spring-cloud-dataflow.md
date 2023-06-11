@@ -8,6 +8,8 @@ Spring Cloud Data Flow is a microservices-based toolkit for building streaming a
 
 ## TL;DR
 
+使用镜像地址添加仓库: `helm repo add bitnami-mirror https://helm-charts.itboon.top/bitnami`
+
 ```console
 helm install my-release bitnami-mirror/spring-cloud-dataflow
 ```
