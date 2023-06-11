@@ -15,7 +15,7 @@ get_readme_github() {
   mkdir -p /tmp/tmpchart
   cd /tmp/tmpchart
   git clone -b main --depth=1 "$git_repo_url"
-  mkdir -p "${work_dir}/docs/${namespace}"
+  mkdir -p "${work_dir}/docs/${chart_namespace}"
   local charts_dir="charts"
   if [[ -z "$charts_dir" ]]; then charts_dir="charts"; fi
   ls "$charts_dir/" | while read chart ; do
