@@ -22,6 +22,8 @@ jobs:
     - 
       name: Local changes
       shell: bash
+      env:
+        CHART_BASE_URL: 'https://helm-charts.itboon.top'
       run: '.github/sync-readme.sh'
     - 
       name: Commit files
