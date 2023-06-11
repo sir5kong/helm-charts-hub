@@ -17,6 +17,7 @@ get_readme_github() {
   git clone -b main --depth=1 "$git_repo_url" "$chart_tmp_root"
   if [[ -z "$charts_dir" ]]; then charts_dir="charts"; fi
   local charts_tmp_dir="$chart_tmp_root/$charts_dir"
+  local chart=""
   ls "$charts_tmp_dir" | while read chart ; do
     echo "[env] chart: $chart"
     source_readme="$charts_tmp_dir/$chart/README.md"
@@ -25,7 +26,7 @@ get_readme_github() {
     if [[ -z "$repo_name" ]]; then repo_name="$chart_namespace"; fi
     chart_repo_raw="$repo_name/$chart"
     chart_repo_mirror="${repo_name}-mirror/$chart"
-    echo "[env] chart_repo_raw: $chart_repo_raw"
+    echo "[env] chart_repo_mirror: $chart_repo_mirror"
     sed -i -E 's%(helm repo add \S+) \S+%\1-mirror '$CHART_BASE_URL/$chart_namespace'%' "$source_readme"
     sed -i -E 's%(helm .+?) '$chart_repo_raw'%\1 '$chart_repo_mirror'%' "$source_readme"
     sed -i -E 's%(\s*)'$chart_repo_raw'%\1'$chart_repo_mirror'%' "$source_readme"
@@ -36,13 +37,6 @@ get_readme_github() {
 }
 
 get_readme_bitnami() {
-  local github_repo="https://github.com/bitnami/charts.git"
-  local chart_namespace="bitnami"
-  local charts_dir="bitnami"
-  get_readme_github "$github_repo" "$chart_namespace" "$charts_dir"
-}
-
-get_readme_grafana() {
   local github_repo="https://github.com/bitnami/charts.git"
   local chart_namespace="bitnami"
   local charts_dir="bitnami"
