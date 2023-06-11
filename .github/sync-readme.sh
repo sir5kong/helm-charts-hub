@@ -20,7 +20,7 @@ get_readme_by_github_repo() {
   sed -i -E 's%^(\s*)'$chart_repo_raw'%\1'$chart_repo_mirror'%' "$source_readme"
   if [[ "$chart_namespace" == "bitnami" ]]; then
     sed -i -E 's%oci://[^/]+/bitnamicharts/\S*%'$chart_repo_mirror'%' "$source_readme"
-    set -i -E '1a\\n使用镜像地址添加仓库: `helm repo add bitnami-mirror '$chart_url_mirror'`' "$source_readme"
+    sed -i -E '/^## TL;DR/a\\n使用镜像地址添加仓库: `helm repo add bitnami-mirror '$chart_url_mirror'`' "$source_readme"
   fi
   cp -f "$source_readme" "docs/${chart_namespace}/${chart}.md"
 }
