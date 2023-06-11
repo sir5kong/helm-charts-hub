@@ -44,8 +44,8 @@ main() {
   local yml="$CHARTS_CONFIG"
   local num=$(yq e '.repos | length' $yml)
   for ((i=0; i<$num; i++)); do
-    local gtihub_url=$(yq e .repos[${i}].url $yml)
-    local gtihub_repo=$(yq e .repos[${i}].repo $yml)
+    local github_url=$(yq e .repos[${i}].url $yml)
+    local github_repo=$(yq e .repos[${i}].repo $yml)
     local chart_namespace=$(yq e .repos[${i}].namespace $yml)
     get_chart_index_github "$github_url" "$github_repo" "$chart_namespace"
   done
