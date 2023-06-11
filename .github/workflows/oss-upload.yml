@@ -37,7 +37,7 @@ jobs:
           $ALIOSS config -e $OSS_EP -i $OSS_KEY_ID -k $OSS_KEY_SECRET
           git branch -a
           index_url="https://grafana.github.io/helm-charts/index.yaml"
-          curl "$index_ur"-L -o /tmp/index.yaml
+          curl -o /tmp/index.yaml -L "$index_url"
           head -n50 /tmp/index.yaml
           namespace='grafana'
           chart_base_url='https://helm-charts.itboon.top'
