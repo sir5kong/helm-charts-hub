@@ -26,9 +26,9 @@ get_readme_github() {
     chart_repo_raw="$repo_name/$chart"
     chart_repo_mirror="${repo_name}-mirror/$chart"
     echo "[env] chart_repo_raw: $chart_repo_raw"
-    sed -i -E 's%(helm repo add [a-zA-Z0-9_-]+) [^ ]+%\1-mirror '$CHART_BASE_URL/$chart_namespace'%' "$source_readme"
+    sed -i -E 's%(helm repo add \S+) \S+%\1-mirror '$CHART_BASE_URL/$chart_namespace'%' "$source_readme"
     sed -i -E 's%(helm .+?) '$chart_repo_raw'%\1 '$chart_repo_mirror'' "$source_readme"
-    sed -i -E '(\s*)'$chart_repo_raw'%\1'$chart_repo_mirror'' "$source_readme"
+    sed -i -E 's%(\s*)'$chart_repo_raw'%\1'$chart_repo_mirror'' "$source_readme"
     cp -f "$source_readme" "docs/${chart_namespace}/${chart}.md"
   done
   ls -alh "docs/"
