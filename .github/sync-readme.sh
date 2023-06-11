@@ -10,20 +10,18 @@ get_readme_github() {
   if echo "$github_repo" | grep -Ev '^(ssh|http)'; then
     local git_repo_url="https://github.com/${github_repo}"
   fi
-  export work_dir="$(pwd)"
-  rm -rf /tmp/tmpchart
-  mkdir -p /tmp/tmpchart
-  cd /tmp/tmpchart
-  git clone -b main --depth=1 "$git_repo_url"
-  mkdir -p "${work_dir}/docs/${chart_namespace}"
-  local charts_dir="charts"
+  local chart_tmp_root="/tmp/tmpchart/$chart_namespace"
+  rm -rf $chart_tmp_dir
+  mkdir -p $chart_tmp_dir
+  git clone -b main --depth=1 "$git_repo_url" "$chart_tmp_root"
+  mkdir -p "docs/${chart_namespace}"
   if [[ -z "$charts_dir" ]]; then charts_dir="charts"; fi
-  ls "$charts_dir/" | while read chart ; do
-    ls -alh "$charts_dir/$chart/README.md"
-    cp -f "$charts_dir/$chart/README.md" "${work_dir}/docs/${chart_namespace}/"
+  local charts_tmp_dir="$chart_tmp_root/$charts_dir"
+  ls "$charts_tmp_dir" | while read chart ; do
+    ls -alh "$charts_tmp_dir/$chart/README.md"
+    cp -f "$charts_tmp_dir/$chart/README.md" "docs/${chart_namespace}/"
   done
-  ls -alh "${work_dir}/docs/${chart_namespace}/"
-  cd "${work_dir}"
+  ls -alh "docs/${chart_namespace}/"
 }
 
 get_readme_bitnami() {
