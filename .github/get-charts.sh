@@ -37,6 +37,7 @@ get_chart_index() {
 
 main() {
   setup_alioss
+  setup_yq
   local yml="$CHARTS_CONFIG"
   local num=$($YQ e '.repos | length' $yml)
   for ((i=0; i<$num; i++)); do
@@ -44,6 +45,9 @@ main() {
     local this_namespace=$($YQ e .repos[${i}].namespace $yml)
     get_chart_index "$this_url" "$this_namespace"
   done
+  set -ex 
+  which yq
+  ls -alh $(which yq)
 }
 
 main
