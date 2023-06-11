@@ -23,7 +23,7 @@ get_readme_github() {
     echo "[env] chart: $chart"
     source_readme="$charts_tmp_dir/$chart/README.md"
     ls -alh "$source_readme"
-    repo_name="$(grep -Eo 'helm repo add [a-zA-Z0-9_-]+' "$source_readme" | cut -d " " -f 4)"
+    repo_name="$(grep -Eo 'helm repo add [a-zA-Z0-9_-]+' "$source_readme" | head -n1 | awk '{printf $4}')"
     if echo "$repo_name" | grep -Ev '^[a-zA-Z0-9_-]+$' ; then
       repo_name="$chart_namespace"
     fi
