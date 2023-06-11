@@ -11,8 +11,8 @@ get_readme_github() {
     local git_repo_url="https://github.com/${github_repo}"
   fi
   local chart_tmp_root="/tmp/tmpchart/$chart_namespace"
-  rm -rf $chart_tmp_dir
-  mkdir -p $chart_tmp_dir
+  rm -rf "$chart_tmp_root"
+  mkdir -p "$chart_tmp_root"
   git clone -b main --depth=1 "$git_repo_url" "$chart_tmp_root"
   mkdir -p "docs/${chart_namespace}"
   if [[ -z "$charts_dir" ]]; then charts_dir="charts"; fi
@@ -21,6 +21,7 @@ get_readme_github() {
     ls -alh "$charts_tmp_dir/$chart/README.md"
     cp -f "$charts_tmp_dir/$chart/README.md" "docs/${chart_namespace}/"
   done
+  ls -alh "docs/"
   ls -alh "docs/${chart_namespace}/"
 }
 

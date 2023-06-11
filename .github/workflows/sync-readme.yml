@@ -1,9 +1,10 @@
 name: Sync README.md
 
 on:
+  workflow_dispatch: ## on button click
+
   # schedule:
   #   - cron: '0 */8 * * *'  ## every 8 hours
-  # workflow_dispatch: ## on button click
 
   push:
     branches:
