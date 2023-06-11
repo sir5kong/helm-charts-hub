@@ -13,7 +13,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 使用加速地址添加仓库:
 ```shell
-`helm
+helm
 
 ```console
 helm install my-release bitnami-mirror/kibana --set elasticsearch.hosts[0]=<Hostname of your ES instance> --set elasticsearch.port=<port of your ES instance>

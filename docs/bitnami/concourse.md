@@ -11,7 +11,7 @@ Concourse is an automation system written in Go. It is most commonly used for CI
 
 使用加速地址添加仓库:
 ```shell
-`helm
+helm
 
 ```console
 helm install my-release bitnami-mirror/concourse

@@ -9,7 +9,7 @@ Looking to use our applications in production? Try [VMware Application Catalog](
 
 使用加速地址添加仓库:
 ```shell
-`helm
+helm
 
 ```yaml
 dependencies:

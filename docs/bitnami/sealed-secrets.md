@@ -11,7 +11,7 @@ Sealed Secrets are "one-way" encrypted K8s Secrets that can be created by anyone
 
 使用加速地址添加仓库:
 ```shell
-`helm
+helm
 
 ```console
 helm install my-release bitnami-mirror/sealed-secrets

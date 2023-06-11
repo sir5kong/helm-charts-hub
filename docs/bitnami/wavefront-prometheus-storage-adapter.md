@@ -11,7 +11,7 @@ Wavefront Storage Adapter is a Prometheus integration to transfer metrics from P
 
 使用加速地址添加仓库:
 ```shell
-`helm
+helm
 
 ```console
 helm install my-release bitnami-mirror/wavefront-prometheus-storage-adapter

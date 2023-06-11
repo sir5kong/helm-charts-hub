@@ -11,7 +11,7 @@ Wavefront HPA Adapter for Kubernetes is a Kubernetes Horizontal Pod Autoscaler a
 
 使用加速地址添加仓库:
 ```shell
-`helm
+helm
 
 ```console
 helm install my-release bitnami-mirror/wavefront-hpa-adapter

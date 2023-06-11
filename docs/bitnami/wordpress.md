@@ -11,7 +11,7 @@ WordPress is the world's most popular blogging and content management platform. 
 
 使用加速地址添加仓库:
 ```shell
-`helm
+helm
 
 ```console
 helm install my-release bitnami-mirror/wordpress

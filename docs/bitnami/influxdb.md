@@ -13,7 +13,7 @@ InfluxDB(TM) is a trademark owned by InfluxData, which is not affiliated with, a
 
 使用加速地址添加仓库:
 ```shell
-`helm
+helm
 
 ```console
 helm install my-release bitnami-mirror/influxdb

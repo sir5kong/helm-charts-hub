@@ -13,7 +13,7 @@ Disclaimer: The respective trademarks mentioned in the offering are owned by the
 
 使用加速地址添加仓库:
 ```shell
-`helm
+helm
 
 ```console
 helm install my-release bitnami-mirror/moodle

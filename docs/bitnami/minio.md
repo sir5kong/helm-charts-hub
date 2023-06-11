@@ -13,7 +13,7 @@ Disclaimer: All software products, projects and company names are trademark(TM) 
 
 使用加速地址添加仓库:
 ```shell
-`helm
+helm
 
 ```console
 helm install my-release bitnami-mirror/minio
