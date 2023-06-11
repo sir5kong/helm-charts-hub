@@ -26,10 +26,10 @@ get_chart_index_github() {
   fi
   echo "index_url: $index_url"
   curl -o /tmp/index.yaml -L "$index_url"
-  head -n50 /tmp/index.yaml
+  head -n10 /tmp/index.yaml
   if head -n50 /tmp/index.yaml | grep -E '^apiVersion:' ; then
     local github_org=$(echo "$index_url" | grep -Eo '//[^/.]+' | grep -Eo '[^/.]+')
-    echo '[sed] 's%https://github.com/\('$github_org'/helm-charts/releases\)%'$CHART_BASE_URL'/github/\1%''
+    echo '[sed] s%https://github.com/\('$github_org'/helm-charts/releases\)%'$CHART_BASE_URL'/github/\1%'
     sed -i 's%https://github.com/\('$github_org'/helm-charts/releases\)%'$CHART_BASE_URL'/github/\1%' /tmp/index.yaml
     $ALIOSS cp -f /tmp/index.yaml \
       "oss://${OSS_BUCKET}/${namespace}/index.yaml" \
