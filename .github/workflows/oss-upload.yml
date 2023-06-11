@@ -1,9 +1,12 @@
 name: OSS Upload
 
 on:
-  schedule:
-    - cron: '*/5 * * * *' # every 5 minutes
-  workflow_dispatch: # on button click
+  # schedule:
+  #   - cron: '*/5 * * * *' # every 5 minutes
+  # workflow_dispatch: # on button click
+  push:
+    branches:
+      - main
 
 jobs:
   oss:
