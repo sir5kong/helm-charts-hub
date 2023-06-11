@@ -43,6 +43,7 @@ jobs:
           mkdir -p $(dirname $ALIOSS)
           curl -o $ALIOSS -L $DL_URL_OSS
           chmod a+rx $ALIOSS
+          echo "$ALIOSS config -e $OSS_EP -i $OSS_KEY_ID -k OSS_KEY_SECRET"
           $ALIOSS config -e $OSS_EP -i $OSS_KEY_ID -k $OSS_KEY_SECRET
           curl -o /tmp/index.yaml -L "$index_url"
           head -n50 /tmp/index.yaml
