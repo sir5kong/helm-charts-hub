@@ -34,6 +34,7 @@ get_chart_index_github() {
     $ALIOSS cp -f /tmp/index.yaml \
       "oss://${OSS_BUCKET}/${namespace}/index.yaml" \
       --meta "content-type:text/plain; charset=utf-8"
+    grep "$CHART_BASE_URL" /tmp/index.yaml | head -n5
   fi
 }
 
