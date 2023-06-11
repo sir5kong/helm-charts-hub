@@ -2,7 +2,7 @@
 
 export ALIOSS="${HOME}/bin/ossutil"
 export YQ="${HOME}/bin/yq"
-# export CHARTS_CONFIG=".github/config/charts.yml"
+export CHARTS_CONFIG=".github/config/charts.yml"
 
 setup_alioss() {
   mkdir -p $(dirname $ALIOSS)
@@ -45,9 +45,6 @@ main() {
     local this_namespace=$($YQ e .repos[${i}].namespace $yml)
     get_chart_index "$this_url" "$this_namespace"
   done
-  set -ex 
-  which yq
-  ls -alh $(which yq)
 }
 
 main
