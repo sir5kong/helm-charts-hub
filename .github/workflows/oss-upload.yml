@@ -1,14 +1,9 @@
 name: OSS Upload
 
 on:
-  workflow_run:
-    workflows: ["Release Charts"]
-    types: [completed]
-    branches:
-      - main
-  #push:
-  #  branches:
-  #    - gh-pages
+  schedule:
+    - cron: '*/5 * * * *' # every 5 minutes
+  workflow_dispatch: # on button click
 
 jobs:
   oss:
