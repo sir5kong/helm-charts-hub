@@ -21,7 +21,7 @@ setup_yq() {
 get_chart_index() {
   local index_url="$1"
   local namespace="$2"
-  if echo "$index_url" | grep -E '/index\.yam.github/config/mirror.ymll$' ; then
+  if [[ $(basename $index_url) != "index.yaml" ]]; then
     export index_url=$(echo "$index_url" | sed -E 's%/?(index\.yaml)?$%/index.yaml%')
   fi
   echo "index_url: $index_url"
@@ -37,12 +37,12 @@ get_chart_index() {
 
 main() {
   setup_alioss
-  setup_yq
+  # setup_yq
   local yml="$CHARTS_CONFIG"
-  local num=$($YQ e '.repos | length' $yml)
+  local num=$(yq e '.repos | length' $yml)
   for ((i=0; i<$num; i++)); do
-    local this_url=$($YQ e .repos[${i}].url $yml)
-    local this_namespace=$($YQ e .repos[${i}].namespace $yml)
+    local this_url=$(yq e .repos[${i}].url $yml)
+    local this_namespace=$(yq e .repos[${i}].namespace $yml)
     get_chart_index "$this_url" "$this_namespace"
   done
 }

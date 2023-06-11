@@ -1,4 +1,4 @@
-name: OSS Upload
+name: Get Charts
 
 on:
   # schedule:
@@ -24,7 +24,7 @@ jobs:
         name: Checkout
         uses: actions/checkout@v3
       - 
-        name: Upload to OSS
+        name: Get Charts
         if: ${{ vars.OSS_MIRROR_ENABLED == 'true' }}
         shell: bash
         env:
