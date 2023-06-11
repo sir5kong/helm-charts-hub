@@ -29,7 +29,8 @@ get_chart_index_github() {
   head -n50 /tmp/index.yaml
   if head -n50 /tmp/index.yaml | grep -E '^apiVersion:' ; then
     local github_org=$(echo "$index_url" | grep -Eo '//[^/.]+' | grep -Eo '[^/.]+')
-    sed -i 's%https://github.com/\('$github_org'/helm-charts/releases\)%'$chart_base_url'/github/\1%' /tmp/index.yaml
+    echo '[sed] 's%https://github.com/\('$github_org'/helm-charts/releases\)%'$CHART_BASE_URL'/github/\1%''
+    sed -i 's%https://github.com/\('$github_org'/helm-charts/releases\)%'$CHART_BASE_URL'/github/\1%' /tmp/index.yaml
     $ALIOSS cp -f /tmp/index.yaml \
       "oss://${OSS_BUCKET}/${namespace}/index.yaml" \
       --meta "content-type:text/plain; charset=utf-8"

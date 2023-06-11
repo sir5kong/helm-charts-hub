@@ -29,7 +29,7 @@ jobs:
         shell: bash
         env:
           DL_URL_OSS: "https://gosspublic.alicdn.com/ossutil/1.7.1/ossutil64"
-          chart_base_url: 'https://helm-charts.itboon.top'
+          CHART_BASE_URL: 'https://helm-charts.itboon.top'
           OSS_KEY_ID: "${{ secrets.OSS_KEY_ID }}"
           OSS_KEY_SECRET: "${{ secrets.OSS_KEY_SECRET }}"
           OSS_EP: "${{ vars.OSS_EP }}"
