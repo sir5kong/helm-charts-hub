@@ -51,11 +51,11 @@ The command removes all the Kubernetes components associated with the chart and 
 
 ## Differences between the Bitnami Grafana chart and the Bitnami Grafana Operator chart
 
-The Bitnami catalog offers both the `bitnami/grafana` and `bitnami/grafana-operator` charts. Each solution covers different needs and use cases.
+The Bitnami catalog offers both the `bitnami/grafana` and `bitnami-mirror/grafana-operator` charts. Each solution covers different needs and use cases.
 
 - The `bitnami/grafana` chart deploys a single Grafana installation (with Grafana Image Renderer) using a Kubernetes Deployment object (together with Services, PVCs, ConfigMaps, etc.). Its lifecycle is managed using Helm and, at the Grafana container level, the following operations are automated: persistence management, configuration based on environment variables and plugin initialization. The chart also allows deploying dashboards and data sources using ConfigMaps. The Deployments do not require any ServiceAccounts with special RBAC privileges so this solution would fit better in more restricted Kubernetes installations.
 
-- The `bitnami/grafana-operator` chart deploys a Grafana Operator installation using a Kubernetes Deployment. The operator will extend the Kubernetes API with the following objects: `Grafana`, `GrafanaDashboard` and `GrafanaDataSource`. From that moment, the user will be able to deploy objects of these kinds and the previously deployed Operator will take care of deploying all the required Deployments, ConfigMaps and Services for running a Grafana instance. Its lifecycle is managed using _kubectl_ on the Grafana, GrafanaDashboard and GrafanaDataSource objects.
+- The `bitnami-mirror/grafana-operator` chart deploys a Grafana Operator installation using a Kubernetes Deployment. The operator will extend the Kubernetes API with the following objects: `Grafana`, `GrafanaDashboard` and `GrafanaDataSource`. From that moment, the user will be able to deploy objects of these kinds and the previously deployed Operator will take care of deploying all the required Deployments, ConfigMaps and Services for running a Grafana instance. Its lifecycle is managed using _kubectl_ on the Grafana, GrafanaDashboard and GrafanaDataSource objects.
 
 > Note: As the operator automatically deploys Grafana installations, the Grafana Operator pods will require a ServiceAccount with privileges to create and destroy multiple Kubernetes objects. This may be problematic for Kubernetes clusters with strict role-based access policies.
 
@@ -106,7 +106,7 @@ For more information, refer to the [documentation on the differences between the
 | `operator.terminationGracePeriodSeconds`                     | In seconds, time the given to the %%MAIN_CONTAINER_NAME%% pod needs to terminate gracefully                                               | `""`                       |
 | `operator.updateStrategy.type`                               | Set up update strategy for Grafana Operator installation.                                                                                 | `Recreate`                 |
 | `operator.image.registry`                                    | Grafana Operator image registry                                                                                                           | `docker.io`                |
-| `operator.image.repository`                                  | Grafana Operator image name                                                                                                               | `bitnami/grafana-operator` |
+| `operator.image.repository`                                  | Grafana Operator image name                                                                                                               | `bitnami-mirror/grafana-operator` |
 | `operator.image.tag`                                         | Grafana Operator image tag                                                                                                                | `4.10.1-debian-11-r0`      |
 | `operator.image.digest`                                      | Grafana Operator image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                          | `""`                       |
 | `operator.image.pullPolicy`                                  | Grafana Operator image pull policy                                                                                                        | `IfNotPresent`             |

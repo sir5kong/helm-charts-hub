@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/thanos
 
 ## Introduction
 
-This chart bootstraps a [Thanos](https://github.com/bitnami/containers/tree/main/bitnami/thanos) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Thanos](https://github.com/bitnami/containers/tree/main/bitnami-mirror/thanos) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -106,7 +106,7 @@ Check the section [Integrate Thanos with Prometheus and Alertmanager](#integrate
 | Name                                          | Description                                                                                                         | Value               |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------- |
 | `image.registry`                              | Thanos image registry                                                                                               | `docker.io`         |
-| `image.repository`                            | Thanos image repository                                                                                             | `bitnami/thanos`    |
+| `image.repository`                            | Thanos image repository                                                                                             | `bitnami-mirror/thanos`    |
 | `image.tag`                                   | Thanos image tag (immutable tags are recommended)                                                                   | `0.31.0-scratch-r5` |
 | `image.digest`                                | Thanos image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag              | `""`                |
 | `image.pullPolicy`                            | Thanos image pull policy                                                                                            | `IfNotPresent`      |

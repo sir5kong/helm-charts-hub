@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/consul
 
 ## Introduction
 
-This chart bootstraps a [HashiCorp Consul](https://github.com/bitnami/containers/tree/main/bitnami/consul) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [HashiCorp Consul](https://github.com/bitnami/containers/tree/main/bitnami-mirror/consul) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -82,7 +82,7 @@ helm delete --purge my-release
 | Name                            | Description                                                                                                      | Value                 |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`                | HashiCorp Consul image registry                                                                                  | `docker.io`           |
-| `image.repository`              | HashiCorp Consul image repository                                                                                | `bitnami/consul`      |
+| `image.repository`              | HashiCorp Consul image repository                                                                                | `bitnami-mirror/consul`      |
 | `image.tag`                     | HashiCorp Consul image tag (immutable tags are recommended)                                                      | `1.15.3-debian-11-r0` |
 | `image.digest`                  | HashiCorp Consul image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`              | HashiCorp Consul image pull policy                                                                               | `IfNotPresent`        |
@@ -231,7 +231,7 @@ helm delete --purge my-release
 | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------- |
 | `metrics.enabled`                               | Start a side-car prometheus exporter                                                                                                 | `false`                   |
 | `metrics.image.registry`                        | HashiCorp Consul Prometheus Exporter image registry                                                                                  | `docker.io`               |
-| `metrics.image.repository`                      | HashiCorp Consul Prometheus Exporter image repository                                                                                | `bitnami/consul-exporter` |
+| `metrics.image.repository`                      | HashiCorp Consul Prometheus Exporter image repository                                                                                | `bitnami-mirror/consul-exporter` |
 | `metrics.image.tag`                             | HashiCorp Consul Prometheus Exporter image tag (immutable tags are recommended)                                                      | `0.9.0-debian-11-r60`     |
 | `metrics.image.digest`                          | HashiCorp Consul Prometheus Exporter image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                      |
 | `metrics.image.pullPolicy`                      | HashiCorp Consul Prometheus Exporter image pull policy                                                                               | `IfNotPresent`            |
@@ -346,12 +346,12 @@ You must manually create a secret containing your PEM-encoded certificate author
 
 > Take into account that you will need to create a config map with the proper configuration.
 
-If the secret is specified, the chart will locate those files at `/opt/bitnami/consul/certs/`, so you will want to use the below snippet to configure HashiCorp Consul TLS encryption in your config map:
+If the secret is specified, the chart will locate those files at `/opt/bitnami-mirror/consul/certs/`, so you will want to use the below snippet to configure HashiCorp Consul TLS encryption in your config map:
 
 ```json
-  "ca_file": "/opt/bitnami/consul/certs/ca.pem",
-  "cert_file": "/opt/bitnami/consul/certs/consul.pem",
-  "key_file": "/opt/bitnami/consul/certs/consul-key.pem",
+  "ca_file": "/opt/bitnami-mirror/consul/certs/ca.pem",
+  "cert_file": "/opt/bitnami-mirror/consul/certs/consul.pem",
+  "key_file": "/opt/bitnami-mirror/consul/certs/consul-key.pem",
   "verify_incoming": true,
   "verify_outgoing": true,
   "verify_server_hostname": true,
@@ -409,7 +409,7 @@ initContainers:
 
 ## Persistence
 
-The [Bitnami HashiCorp Consul](https://github.com/bitnami/containers/tree/main/bitnami/consul) image stores the HashiCorp Consul data at the `/bitnami` path of the container.
+The [Bitnami HashiCorp Consul](https://github.com/bitnami/containers/tree/main/bitnami-mirror/consul) image stores the HashiCorp Consul data at the `/bitnami` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.

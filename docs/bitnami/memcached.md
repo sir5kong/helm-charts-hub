@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/memcached
 
 ## Introduction
 
-This chart bootstraps a [Memcached](https://github.com/bitnami/containers/tree/main/bitnami/memcached) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Memcached](https://github.com/bitnami/containers/tree/main/bitnami-mirror/memcached) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -77,7 +77,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                          | Description                                                                                               | Value                 |
 | ----------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`              | Memcached image registry                                                                                  | `docker.io`           |
-| `image.repository`            | Memcached image repository                                                                                | `bitnami/memcached`   |
+| `image.repository`            | Memcached image repository                                                                                | `bitnami-mirror/memcached`   |
 | `image.tag`                   | Memcached image tag (immutable tags are recommended)                                                      | `1.6.20-debian-11-r3` |
 | `image.digest`                | Memcached image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`            | Memcached image pull policy                                                                               | `IfNotPresent`        |
@@ -214,7 +214,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `volumePermissions.containerSecurityContext.runAsUser` | User ID for the init container                                                                                                    | `0`                          |
 | `metrics.enabled`                                      | Start a side-car prometheus exporter                                                                                              | `false`                      |
 | `metrics.image.registry`                               | Memcached exporter image registry                                                                                                 | `docker.io`                  |
-| `metrics.image.repository`                             | Memcached exporter image repository                                                                                               | `bitnami/memcached-exporter` |
+| `metrics.image.repository`                             | Memcached exporter image repository                                                                                               | `bitnami-mirror/memcached-exporter` |
 | `metrics.image.tag`                                    | Memcached exporter image tag (immutable tags are recommended)                                                                     | `0.11.3-debian-11-r12`       |
 | `metrics.image.digest`                                 | Memcached exporter image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                | `""`                         |
 | `metrics.image.pullPolicy`                             | Image pull policy                                                                                                                 | `IfNotPresent`               |
@@ -262,7 +262,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `metrics.serviceMonitor.honorLabels`                   | Specify honorLabels parameter to add the scrape endpoint                                                                          | `false`                      |
 | `metrics.serviceMonitor.jobLabel`                      | The name of the label on the target service to use as the job name in prometheus.                                                 | `""`                         |
 
-The above parameters map to the environment variables defined in the [bitnami/memcached](https://github.com/bitnami/containers/tree/main/bitnami/memcached) container image. For more information please refer to the [bitnami/memcached](https://github.com/bitnami/containers/tree/main/bitnami/memcached) container image documentation.
+The above parameters map to the environment variables defined in the [bitnami-mirror/memcached](https://github.com/bitnami/containers/tree/main/bitnami/memcached) container image. For more information please refer to the [bitnami/memcached](https://github.com/bitnami/containers/tree/main/bitnami/memcached) container image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -304,7 +304,7 @@ As an alternative, you can use the preset configurations for pod affinity, pod a
 
 ## Persistence
 
-When using `architecture: "high-availability"` the [Bitnami Memcached](https://github.com/bitnami/containers/tree/main/bitnami/memcached) image stores the cache-state at the `/cache-state` path of the container if enabled.
+When using `architecture: "high-availability"` the [Bitnami Memcached](https://github.com/bitnami/containers/tree/main/bitnami-mirror/memcached) image stores the cache-state at the `/cache-state` path of the container if enabled.
 
 Persistent Volume Claims (PVCs) are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 
@@ -354,7 +354,7 @@ helm upgrade memcached oci://registry-1.docker.io/bitnamicharts/memcached
 
 ### To 3.0.0
 
-This release uses the new bash based `bitnami/memcached` container which uses bash scripts for the start up logic of the container and is smaller in size.
+This release uses the new bash based `bitnami-mirror/memcached` container which uses bash scripts for the start up logic of the container and is smaller in size.
 
 ### To 1.0.0
 

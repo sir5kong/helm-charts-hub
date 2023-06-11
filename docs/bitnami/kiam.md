@@ -20,7 +20,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/kiam
 
 Bitnami charts for Helm are carefully engineered, actively maintained and are the quickest and easiest way to deploy containers on a Kubernetes cluster that are ready to handle production workloads.
 
-This chart bootstraps a [kiam](https://github.com/bitnami/containers/tree/main/bitnami/kiam) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [kiam](https://github.com/bitnami/containers/tree/main/bitnami-mirror/kiam) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -80,7 +80,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                | Description                                                                                          | Value                  |
 | ------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------- |
 | `image.registry`    | kiam image registry                                                                                  | `docker.io`            |
-| `image.repository`  | kiam image name                                                                                      | `bitnami/kiam`         |
+| `image.repository`  | kiam image name                                                                                      | `bitnami-mirror/kiam`         |
 | `image.tag`         | kiam image tag                                                                                       | `4.2.0-debian-11-r118` |
 | `image.digest`      | kiam image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                   |
 | `image.pullPolicy`  | kiam image pull policy                                                                               | `IfNotPresent`         |

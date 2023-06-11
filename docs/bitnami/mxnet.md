@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/mxnet
 
 ## Introduction
 
-This chart bootstraps an [Apache MXNet (Incubating)](https://github.com/bitnami/containers/tree/main/bitnami/mxnet) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps an [Apache MXNet (Incubating)](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mxnet) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -80,7 +80,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                  | Description                                                                                                               | Value                  |
 | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | `image.registry`                      | Apache MXNet (Incubating) image registry                                                                                  | `docker.io`            |
-| `image.repository`                    | Apache MXNet (Incubating) image repository                                                                                | `bitnami/mxnet`        |
+| `image.repository`                    | Apache MXNet (Incubating) image repository                                                                                | `bitnami-mirror/mxnet`        |
 | `image.tag`                           | Apache MXNet (Incubating) image tag (immutable tags are recommended)                                                      | `1.9.1-debian-11-r121` |
 | `image.digest`                        | Apache MXNet (Incubating) image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                   |
 | `image.pullPolicy`                    | Apache MXNet (Incubating) image pull policy                                                                               | `IfNotPresent`         |
@@ -97,7 +97,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `persistence.enabled`                 | Use a PVC to persist data                                                                                                 | `false`                |
 | `persistence.storageClass`            | discourse & sidekiq data Persistent Volume Storage Class                                                                  | `""`                   |
 | `persistence.existingClaim`           | Use a existing PVC which must be created manually before bound                                                            | `""`                   |
-| `persistence.mountPath`               | Path to mount the volume at                                                                                               | `/bitnami/mxnet`       |
+| `persistence.mountPath`               | Path to mount the volume at                                                                                               | `/bitnami-mirror/mxnet`       |
 | `persistence.accessModes`             | Persistent Volume Access Mode                                                                                             | `["ReadWriteOnce"]`    |
 | `persistence.size`                    | Size of data volume                                                                                                       | `8Gi`                  |
 | `persistence.annotations`             | Persistent Volume annotations                                                                                             | `{}`                   |
@@ -517,7 +517,7 @@ initContainers:
 
 ## Persistence
 
-The [Bitnami Apache MXNet (Incubating)](https://github.com/bitnami/containers/tree/main/bitnami/mxnet) image can persist data. If enabled, the persisted path is `/bitnami/mxnet` by default.
+The [Bitnami Apache MXNet (Incubating)](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mxnet) image can persist data. If enabled, the persisted path is `/bitnami/mxnet` by default.
 
 The chart mounts a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) at this location. The volume is created using dynamic volume provisioning.
 

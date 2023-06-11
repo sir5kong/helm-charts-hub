@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/minio
 
 ## Introduction
 
-This chart bootstraps a [MinIO&reg;](https://github.com/bitnami/containers/tree/main/bitnami/minio) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [MinIO&reg;](https://github.com/bitnami/containers/tree/main/bitnami-mirror/minio) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -75,14 +75,14 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                       | Description                                                                                                                                                                                               | Value                    |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
 | `image.registry`           | MinIO&reg; image registry                                                                                                                                                                                 | `docker.io`              |
-| `image.repository`         | MinIO&reg; image repository                                                                                                                                                                               | `bitnami/minio`          |
+| `image.repository`         | MinIO&reg; image repository                                                                                                                                                                               | `bitnami-mirror/minio`          |
 | `image.tag`                | MinIO&reg; image tag (immutable tags are recommended)                                                                                                                                                     | `2023.5.18-debian-11-r2` |
 | `image.digest`             | MinIO&reg; image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                                                                | `""`                     |
 | `image.pullPolicy`         | Image pull policy                                                                                                                                                                                         | `IfNotPresent`           |
 | `image.pullSecrets`        | Specify docker-registry secret names as an array                                                                                                                                                          | `[]`                     |
 | `image.debug`              | Specify if debug logs should be enabled                                                                                                                                                                   | `false`                  |
 | `clientImage.registry`     | MinIO&reg; Client image registry                                                                                                                                                                          | `docker.io`              |
-| `clientImage.repository`   | MinIO&reg; Client image repository                                                                                                                                                                        | `bitnami/minio-client`   |
+| `clientImage.repository`   | MinIO&reg; Client image repository                                                                                                                                                                        | `bitnami-mirror/minio-client`   |
 | `clientImage.tag`          | MinIO&reg; Client image tag (immutable tags are recommended)                                                                                                                                              | `2023.5.18-debian-11-r2` |
 | `clientImage.digest`       | MinIO&reg; Client image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                                                         | `""`                     |
 | `mode`                     | MinIO&reg; server mode (`standalone` or `distributed`)                                                                                                                                                    | `standalone`             |
@@ -367,7 +367,7 @@ MinIO&reg; exports Prometheus metrics at `/minio/v2/metrics/cluster`. To allow P
 
 ## Persistence
 
-The [Bitnami Object Storage based on MinIO(&reg;)](https://github.com/bitnami/containers/tree/main/bitnami/minio) image stores data at the `/data` path of the container.
+The [Bitnami Object Storage based on MinIO(&reg;)](https://github.com/bitnami/containers/tree/main/bitnami-mirror/minio) image stores data at the `/data` path of the container.
 
 The chart mounts a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) at this location. The volume is created using dynamic volume provisioning.
 

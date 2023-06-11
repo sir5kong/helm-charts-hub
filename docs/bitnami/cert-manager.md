@@ -80,7 +80,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------- |
 | `controller.replicaCount`                                | Number of Controller replicas                                                                              | `1`                    |
 | `controller.image.registry`                              | Controller image registry                                                                                  | `docker.io`            |
-| `controller.image.repository`                            | Controller image repository                                                                                | `bitnami/cert-manager` |
+| `controller.image.repository`                            | Controller image repository                                                                                | `bitnami-mirror/cert-manager` |
 | `controller.image.tag`                                   | Controller image tag (immutable tags are recommended)                                                      | `1.12.1-debian-11-r0`  |
 | `controller.image.digest`                                | Controller image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                   |
 | `controller.image.pullPolicy`                            | Controller image pull policy                                                                               | `IfNotPresent`         |
@@ -142,7 +142,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------ |
 | `webhook.replicaCount`                                | Number of Webhook replicas                                                                              | `1`                            |
 | `webhook.image.registry`                              | Webhook image registry                                                                                  | `docker.io`                    |
-| `webhook.image.repository`                            | Webhook image repository                                                                                | `bitnami/cert-manager-webhook` |
+| `webhook.image.repository`                            | Webhook image repository                                                                                | `bitnami-mirror/cert-manager-webhook` |
 | `webhook.image.tag`                                   | Webhook image tag (immutable tags are recommended)                                                      | `1.11.2-debian-11-r8`          |
 | `webhook.image.digest`                                | Webhook image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                           |
 | `webhook.image.pullPolicy`                            | Webhook image pull policy                                                                               | `IfNotPresent`                 |

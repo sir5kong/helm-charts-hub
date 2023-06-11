@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/mongodb-sharded
 
 ## Introduction
 
-This chart bootstraps a [MongoDB(&reg;) Sharded](https://github.com/bitnami/containers/tree/main/bitnami/mongodb-sharded) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [MongoDB(&reg;) Sharded](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mongodb-sharded) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Classified as a NoSQL database, MongoDB&reg; eschews the traditional table-based relational database structure in favor of JSON-like documents with dynamic schemas, making the integration of data in certain types of applications easier and faster.
 
@@ -84,7 +84,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                                 | Description                                                                                                                                               | Value                     |
 | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
 | `image.registry`                                     | MongoDB(&reg;) Sharded image registry                                                                                                                     | `docker.io`               |
-| `image.repository`                                   | MongoDB(&reg;) Sharded Image name                                                                                                                         | `bitnami/mongodb-sharded` |
+| `image.repository`                                   | MongoDB(&reg;) Sharded Image name                                                                                                                         | `bitnami-mirror/mongodb-sharded` |
 | `image.tag`                                          | MongoDB(&reg;) Sharded image tag (immutable tags are recommended)                                                                                         | `6.0.6-debian-11-r3`      |
 | `image.digest`                                       | MongoDB(&reg;) Sharded image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                    | `""`                      |
 | `image.pullPolicy`                                   | MongoDB(&reg;) Sharded image pull policy                                                                                                                  | `IfNotPresent`            |
@@ -538,7 +538,7 @@ Bitnami will release a new chart updating its containers if a new version of the
 
 ### Change MongoDB&reg; version
 
-To modify the MongoDB&reg; version used in this chart you can specify a [valid image tag](https://hub.docker.com/r/bitnami/mongodb-sharded/tags/) using the `image.tag` parameter. For example, `image.tag=X.Y.Z`. This approach is also applicable to other images like exporters.
+To modify the MongoDB&reg; version used in this chart you can specify a [valid image tag](https://hub.docker.com/r/bitnami-mirror/mongodb-sharded/tags/) using the `image.tag` parameter. For example, `image.tag=X.Y.Z`. This approach is also applicable to other images like exporters.
 
 ### Sharding
 
@@ -549,7 +549,7 @@ This chart deploys a sharded cluster by default. Some characteristics of this ch
 
 ### Initialize a fresh instance
 
-The [Bitnami MongoDB&reg;](https://github.com/bitnami/containers/tree/main/bitnami/mongodb-sharded) image allows you to use your custom scripts to initialize a fresh instance. You can create a custom config map and give it via `initScriptsCM`(check options for more details).
+The [Bitnami MongoDB&reg;](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mongodb-sharded) image allows you to use your custom scripts to initialize a fresh instance. You can create a custom config map and give it via `initScriptsCM`(check options for more details).
 
 The allowed extensions are `.sh`, and `.js`.
 
@@ -597,7 +597,7 @@ It is possible to not deploy any shards or a config server. For example, it is p
 
 ## Persistence
 
-The [Bitnami MongoDB&reg;](https://github.com/bitnami/containers/tree/main/bitnami/mongodb-sharded) image stores the MongoDB&reg; data and configurations at the `/bitnami/mongodb` path of the container.
+The [Bitnami MongoDB&reg;](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mongodb-sharded) image stores the MongoDB&reg; data and configurations at the `/bitnami/mongodb` path of the container.
 
 The chart mounts a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) at this location. The volume is created using dynamic volume provisioning.
 

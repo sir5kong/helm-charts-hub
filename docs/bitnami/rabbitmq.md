@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/rabbitmq
 
 ## Introduction
 
-This chart bootstraps a [RabbitMQ](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [RabbitMQ](https://github.com/bitnami/containers/tree/main/bitnami-mirror/rabbitmq) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -63,7 +63,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                | Description                                                                                              | Value                 |
 | ------------------- | -------------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`    | RabbitMQ image registry                                                                                  | `docker.io`           |
-| `image.repository`  | RabbitMQ image repository                                                                                | `bitnami/rabbitmq`    |
+| `image.repository`  | RabbitMQ image repository                                                                                | `bitnami-mirror/rabbitmq`    |
 | `image.tag`         | RabbitMQ image tag (immutable tags are recommended)                                                      | `3.12.0-debian-11-r0` |
 | `image.digest`      | RabbitMQ image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`  | RabbitMQ image pull policy                                                                               | `IfNotPresent`        |
@@ -173,7 +173,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `ldap.tls.startTls`                          | Use STARTTLS instead of LDAPS.                                                                                                                                          | `false`                                           |
 | `ldap.tls.skipVerify`                        | Skip any SSL verification (hostanames or certificates)                                                                                                                  | `false`                                           |
 | `ldap.tls.verify`                            | Verify connection. Valid values are 'verify_peer' or 'verify_none'                                                                                                      | `verify_peer`                                     |
-| `ldap.tls.certificatesMountPath`             | Where LDAP certifcates are mounted.                                                                                                                                     | `/opt/bitnami/rabbitmq/ldap/certs`                |
+| `ldap.tls.certificatesMountPath`             | Where LDAP certifcates are mounted.                                                                                                                                     | `/opt/bitnami-mirror/rabbitmq/ldap/certs`                |
 | `ldap.tls.certificatesSecret`                | Secret with LDAP certificates.                                                                                                                                          | `""`                                              |
 | `ldap.tls.CAFilename`                        | CA certificate filename. Should match with the CA entry key in the ldap.tls.certificatesSecret.                                                                         | `""`                                              |
 | `ldap.tls.certFilename`                      | Client certificate filename to authenticate against the LDAP server. Should match with certificate the entry key in the ldap.tls.certificatesSecret.                    | `""`                                              |
@@ -258,7 +258,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `persistence.selector`      | Selector to match an existing Persistent Volume  | `{}`                       |
 | `persistence.accessModes`   | PVC Access Modes for RabbitMQ data volume        | `["ReadWriteOnce"]`        |
 | `persistence.existingClaim` | Provide an existing PersistentVolumeClaims       | `""`                       |
-| `persistence.mountPath`     | The path the volume will be mounted at           | `/bitnami/rabbitmq/mnesia` |
+| `persistence.mountPath`     | The path the volume will be mounted at           | `/bitnami-mirror/rabbitmq/mnesia` |
 | `persistence.subPath`       | The subdirectory of the volume to mount to       | `""`                       |
 | `persistence.size`          | PVC Storage Request for RabbitMQ data volume     | `8Gi`                      |
 | `persistence.annotations`   | Persistence annotations. Evaluated as a template | `{}`                       |
@@ -363,7 +363,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `volumePermissions.resources.requests`                 | Init container volume-permissions resource requests                                                                               | `{}`                    |
 | `volumePermissions.containerSecurityContext.runAsUser` | User ID for the init container                                                                                                    | `0`                     |
 
-The above parameters map to the env variables defined in [bitnami/rabbitmq](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq). For more information please refer to the [bitnami/rabbitmq](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/rabbitmq](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq). For more information please refer to the [bitnami/rabbitmq](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -540,7 +540,7 @@ More information: [Clustering Guide: Restarting](https://www.rabbitmq.com/cluste
 
 ## Persistence
 
-The [Bitnami RabbitMQ](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq) image stores the RabbitMQ data and configurations at the `/opt/bitnami/rabbitmq/var/lib/rabbitmq/` path of the container.
+The [Bitnami RabbitMQ](https://github.com/bitnami/containers/tree/main/bitnami-mirror/rabbitmq) image stores the RabbitMQ data and configurations at the `/opt/bitnami/rabbitmq/var/lib/rabbitmq/` path of the container.
 
 The chart mounts a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) at this location. By default, the volume is created using dynamic volume provisioning. An existing PersistentVolumeClaim can also be defined.
 
@@ -683,7 +683,7 @@ Consequences:
 
 ### To 6.0.0
 
-This new version updates the RabbitMQ image to a [new version based on bash instead of node.js](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq#3715-r18-3715-ol-7-r19). However, since this Chart overwrites the container's command, the changes to the container shouldn't affect the Chart. To upgrade, it may be needed to enable the `fastBoot` option, as it is already the case from upgrading from 5.X to 5.Y.
+This new version updates the RabbitMQ image to a [new version based on bash instead of node.js](https://github.com/bitnami/containers/tree/main/bitnami-mirror/rabbitmq#3715-r18-3715-ol-7-r19). However, since this Chart overwrites the container's command, the changes to the container shouldn't affect the Chart. To upgrade, it may be needed to enable the `fastBoot` option, as it is already the case from upgrading from 5.X to 5.Y.
 
 ### To 5.0.0
 

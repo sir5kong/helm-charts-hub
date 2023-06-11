@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/redmine
 
 ## Introduction
 
-This chart bootstraps a [Redmine](https://github.com/bitnami/containers/tree/main/bitnami/redmine) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Redmine](https://github.com/bitnami/containers/tree/main/bitnami-mirror/redmine) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 It also packages the [Bitnami MariaDB chart](https://github.com/bitnami/charts/tree/main/bitnami/mariadb) and the [PostgreSQL chart](https://github.com/bitnami/charts/tree/main/bitnami/postgresql) which are required for bootstrapping a MariaDB/PostgreSQL deployment for the database requirements of the Redmine application.
 
@@ -89,7 +89,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/redmine --set d
 | Name                    | Description                                                                                             | Value                 |
 | ----------------------- | ------------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`        | Redmine image registry                                                                                  | `docker.io`           |
-| `image.repository`      | Redmine image repository                                                                                | `bitnami/redmine`     |
+| `image.repository`      | Redmine image repository                                                                                | `bitnami-mirror/redmine`     |
 | `image.tag`             | Redmine image tag (immutable tags are recommended)                                                      | `5.0.5-debian-11-r23` |
 | `image.digest`          | Redmine image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`      | Redmine image pull policy                                                                               | `IfNotPresent`        |
@@ -359,7 +359,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/redmine --set d
 | `networkPolicy.egressRules.denyConnectionsToExternal`         | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                              | `false` |
 | `networkPolicy.egressRules.customRules`                       | Custom network policy rule                                                                                                  | `{}`    |
 
-The above parameters map to the env variables defined in [bitnami/redmine](https://github.com/bitnami/containers/tree/main/bitnami/redmine). For more information please refer to the [bitnami/redmine](https://github.com/bitnami/containers/tree/main/bitnami/redmine) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/redmine](https://github.com/bitnami/containers/tree/main/bitnami/redmine). For more information please refer to the [bitnami/redmine](https://github.com/bitnami/containers/tree/main/bitnami/redmine) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -404,7 +404,7 @@ Redmine writes uploaded files to a persistent volume. By default that volume can
 
 ### Deploying to a sub-URI
 
-(adapted from <https://github.com/bitnami/containers/tree/main/bitnami/redmine>)
+(adapted from <https://github.com/bitnami/containers/tree/main/bitnami-mirror/redmine>)
 
 On certain occasions, you may need that Redmine is available under a specific sub-URI path rather than the root. A common scenario to this problem may arise if you plan to set up your Redmine container behind a reverse proxy. To deploy your Redmine container using a certain sub-URI you just need to follow these steps:
 
@@ -427,8 +427,8 @@ data:
     SUB_URI_PATH='/redmine'
 
     #Config files where to apply changes
-    config1=/opt/bitnami/redmine/config.ru
-    config2=/opt/bitnami/redmine/config/environment.rb
+    config1=/opt/bitnami-mirror/redmine/config.ru
+    config2=/opt/bitnami-mirror/redmine/config/environment.rb
 
     sed -i '$ d' ${config1}
     echo 'map ActionController::Base.config.try(:relative_url_root) || "/" do' >> ${config1}
@@ -475,7 +475,7 @@ readinessProbe:
 
 ## Persistence
 
-The [Bitnami Redmine](https://github.com/bitnami/containers/tree/main/bitnami/redmine) image stores the Redmine data and configurations at the `/bitnami/redmine` path of the container.
+The [Bitnami Redmine](https://github.com/bitnami/containers/tree/main/bitnami-mirror/redmine) image stores the Redmine data and configurations at the `/bitnami/redmine` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube. The volume is created using dynamic volume provisioning. Clusters configured with NFS mounts require manually managed volumes and claims.
 

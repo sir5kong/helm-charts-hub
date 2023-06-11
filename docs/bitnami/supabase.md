@@ -226,7 +226,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `meta.existingConfigmap`                               | The name of an existing ConfigMap with the default configuration                                                                                                  | `""`                             |
 | `meta.extraConfigExistingConfigmap`                    | The name of an existing ConfigMap with extra configuration                                                                                                        | `""`                             |
 | `meta.image.registry`                                  | Supabase Postgres Meta image registry                                                                                                                             | `docker.io`                      |
-| `meta.image.repository`                                | Supabase Postgres Meta image repository                                                                                                                           | `bitnami/supabase-postgres-meta` |
+| `meta.image.repository`                                | Supabase Postgres Meta image repository                                                                                                                           | `bitnami-mirror/supabase-postgres-meta` |
 | `meta.image.tag`                                       | Supabase Postgres Meta image tag (immutable tags are recommended)                                                                                                 | `0.65.0-debian-11-r0`            |
 | `meta.image.digest`                                    | Supabase Postgres Meta image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended) | `""`                             |
 | `meta.image.pullPolicy`                                | Supabase Postgres Meta image pull policy                                                                                                                          | `IfNotPresent`                   |
@@ -318,7 +318,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `realtime.existingConfigmap`                               | The name of an existing ConfigMap with the default configuration                                                                                    | `""`                        |
 | `realtime.extraConfigExistingConfigmap`                    | The name of an existing ConfigMap with extra configuration                                                                                          | `""`                        |
 | `realtime.image.registry`                                  | Realtime image registry                                                                                                                             | `docker.io`                 |
-| `realtime.image.repository`                                | Realtime image repository                                                                                                                           | `bitnami/supabase-realtime` |
+| `realtime.image.repository`                                | Realtime image repository                                                                                                                           | `bitnami-mirror/supabase-realtime` |
 | `realtime.image.tag`                                       | Realtime image tag (immutable tags are recommended)                                                                                                 | `2.13.1-debian-11-r0`       |
 | `realtime.image.digest`                                    | Realtime image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended) | `""`                        |
 | `realtime.image.pullPolicy`                                | Realtime image pull policy                                                                                                                          | `IfNotPresent`              |
@@ -496,7 +496,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `storage.existingConfigmap`                               | The name of an existing ConfigMap with the default configuration                                                                                   | `""`                       |
 | `storage.extraConfigExistingConfigmap`                    | The name of an existing ConfigMap with extra configuration                                                                                         | `""`                       |
 | `storage.image.registry`                                  | Storage image registry                                                                                                                             | `docker.io`                |
-| `storage.image.repository`                                | Storage image repository                                                                                                                           | `bitnami/supabase-storage` |
+| `storage.image.repository`                                | Storage image repository                                                                                                                           | `bitnami-mirror/supabase-storage` |
 | `storage.image.tag`                                       | Storage image tag (immutable tags are recommended)                                                                                                 | `0.38.0-debian-11-r0`      |
 | `storage.image.digest`                                    | Storage image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended) | `""`                       |
 | `storage.image.pullPolicy`                                | Storage image pull policy                                                                                                                          | `IfNotPresent`             |
@@ -579,7 +579,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                | Description                                                                                             | Value                       |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------- |
 | `storage.persistence.enabled`       | Enable persistence using Persistent Volume Claims                                                       | `true`                      |
-| `storage.persistence.mountPath`     | Path to mount the volume at.                                                                            | `/bitnami/supabase-storage` |
+| `storage.persistence.mountPath`     | Path to mount the volume at.                                                                            | `/bitnami-mirror/supabase-storage` |
 | `storage.persistence.subPath`       | The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services | `""`                        |
 | `storage.persistence.storageClass`  | Storage class of backing PVC                                                                            | `""`                        |
 | `storage.persistence.annotations`   | Persistent Volume Claim annotations                                                                     | `{}`                        |
@@ -601,7 +601,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `studio.existingConfigmap`                               | The name of an existing ConfigMap with the default configuration                                                                                  | `""`                      |
 | `studio.extraConfigExistingConfigmap`                    | The name of an existing ConfigMap with extra configuration                                                                                        | `""`                      |
 | `studio.image.registry`                                  | Studio image registry                                                                                                                             | `docker.io`               |
-| `studio.image.repository`                                | Studio image repository                                                                                                                           | `bitnami/supabase-studio` |
+| `studio.image.repository`                                | Studio image repository                                                                                                                           | `bitnami-mirror/supabase-studio` |
 | `studio.image.tag`                                       | Studio image tag (immutable tags are recommended)                                                                                                 | `0.23.4-debian-11-r5`     |
 | `studio.image.digest`                                    | Studio image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended) | `""`                      |
 | `studio.image.pullPolicy`                                | Studio image pull policy                                                                                                                          | `IfNotPresent`            |
@@ -706,7 +706,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `volumePermissions.resources.requests`                 | The requested resources for the init container                                                  | `{}`                        |
 | `volumePermissions.containerSecurityContext.runAsUser` | Set init container's Security Context runAsUser                                                 | `0`                         |
 | `psqlImage.registry`                                   | PostgreSQL client image registry                                                                | `docker.io`                 |
-| `psqlImage.repository`                                 | PostgreSQL client image repository                                                              | `bitnami/supabase-postgres` |
+| `psqlImage.repository`                                 | PostgreSQL client image repository                                                              | `bitnami-mirror/supabase-postgres` |
 | `psqlImage.digest`                                     | PostgreSQL client image digest (overrides image tag)                                            | `""`                        |
 | `psqlImage.tag`                                        | PostgreSQL client image tag (immutable tags are recommended)                                    | `15.1.0-debian-11-r41`      |
 | `psqlImage.pullPolicy`                                 | PostgreSQL client image pull policy                                                             | `IfNotPresent`              |
@@ -751,7 +751,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `postgresql.architecture`                     | PostgreSQL architecture (`standalone` or `replication`)                                                    | `standalone`                                                                                                                 |
 | `postgresql.service.ports.postgresql`         | PostgreSQL service port                                                                                    | `5432`                                                                                                                       |
 | `postgresql.image.registry`                   | PostgreSQL image registry                                                                                  | `docker.io`                                                                                                                  |
-| `postgresql.image.repository`                 | PostgreSQL image repository                                                                                | `bitnami/supabase-postgres`                                                                                                  |
+| `postgresql.image.repository`                 | PostgreSQL image repository                                                                                | `bitnami-mirror/supabase-postgres`                                                                                                  |
 | `postgresql.image.tag`                        | PostgreSQL image tag (immutable tags are recommended)                                                      | `15.1.0-debian-11-r41`                                                                                                       |
 | `postgresql.image.digest`                     | PostgreSQL image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                                                                                                                         |
 | `postgresql.image.pullPolicy`                 | PostgreSQL image pull policy                                                                               | `IfNotPresent`                                                                                                               |
@@ -770,7 +770,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `externalDatabase.existingSecret`             | Name of an existing secret resource containing the database credentials                                    | `""`                                                                                                                         |
 | `externalDatabase.existingSecretPasswordKey`  | Name of an existing secret key containing the database credentials                                         | `db-password`                                                                                                                |
 
-The above parameters map to the env variables defined in [bitnami/supabase-studio](https://github.com/bitnami/containers/tree/main/bitnami/supabase-studio). For more information please refer to the [bitnami/supabase-studio](https://github.com/bitnami/containers/tree/main/bitnami/supabase-studio) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/supabase-studio](https://github.com/bitnami/containers/tree/main/bitnami/supabase-studio). For more information please refer to the [bitnami/supabase-studio](https://github.com/bitnami/containers/tree/main/bitnami/supabase-studio) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -825,7 +825,7 @@ The chart also facilitates the creation of TLS secrets for use with the Ingress 
 
 ## Persistence
 
-The chart mounts a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) volume at `/bitnami/supabase-storage`. The volume is created using dynamic volume provisioning, by default. An existing PersistentVolumeClaim can also be defined.
+The chart mounts a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) volume at `/bitnami-mirror/supabase-storage`. The volume is created using dynamic volume provisioning, by default. An existing PersistentVolumeClaim can also be defined.
 
 If you encounter errors when working with persistent volumes, refer to our [troubleshooting guide for persistent volumes](https://docs.bitnami.com/kubernetes/faq/troubleshooting/troubleshooting-persistence-volumes/).
 

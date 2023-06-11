@@ -76,7 +76,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                | Description                                                                                             | Value                |
 | ------------------- | ------------------------------------------------------------------------------------------------------- | -------------------- |
 | `image.registry`    | Argo CD image registry                                                                                  | `docker.io`          |
-| `image.repository`  | Argo CD image repository                                                                                | `bitnami/argo-cd`    |
+| `image.repository`  | Argo CD image repository                                                                                | `bitnami-mirror/argo-cd`    |
 | `image.tag`         | Argo CD image tag (immutable tags are recommended)                                                      | `2.7.4-debian-11-r0` |
 | `image.digest`      | Argo CD image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                 |
 | `image.pullPolicy`  | Argo CD image pull policy                                                                               | `IfNotPresent`       |
@@ -865,7 +865,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `redisWait.extraArgs`                     | Additional arguments for the redis-cli call, such as TLS                                              | `""`                   |
 | `redisWait.securityContext`               | Security context for init container                                                                   | `{}`                   |
 
-The above parameters map to the env variables defined in [bitnami/argo-cd](https://github.com/bitnami/containers/tree/main/bitnami/argo-cd). For more information please refer to the [bitnami/argo-cd](https://github.com/bitnami/containers/tree/main/bitnami/argo-cd) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/argo-cd](https://github.com/bitnami/containers/tree/main/bitnami/argo-cd). For more information please refer to the [bitnami/argo-cd](https://github.com/bitnami/containers/tree/main/bitnami/argo-cd) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 

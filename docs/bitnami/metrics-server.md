@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/metrics-server
 
 ## Introduction
 
-This chart bootstraps a [Metrics Server](https://github.com/bitnami/containers/tree/main/bitnami/metrics-server) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Metrics Server](https://github.com/bitnami/containers/tree/main/bitnami-mirror/metrics-server) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -76,7 +76,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                              | Description                                                                                                                                                              | Value                    |
 | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ |
 | `image.registry`                                  | Metrics Server image registry                                                                                                                                            | `docker.io`              |
-| `image.repository`                                | Metrics Server image repository                                                                                                                                          | `bitnami/metrics-server` |
+| `image.repository`                                | Metrics Server image repository                                                                                                                                          | `bitnami-mirror/metrics-server` |
 | `image.tag`                                       | Metrics Server image tag (immutable tags are recommended)                                                                                                                | `0.6.3-debian-11-r21`    |
 | `image.digest`                                    | Metrics Server image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                           | `""`                     |
 | `image.pullPolicy`                                | Metrics Server image pull policy                                                                                                                                         | `IfNotPresent`           |

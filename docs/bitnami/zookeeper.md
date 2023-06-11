@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/zookeeper
 
 ## Introduction
 
-This chart bootstraps a [ZooKeeper](https://github.com/bitnami/containers/tree/main/bitnami/zookeeper) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [ZooKeeper](https://github.com/bitnami/containers/tree/main/bitnami-mirror/zookeeper) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -79,7 +79,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                          | Description                                                                                                                | Value                   |
 | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
 | `image.registry`              | ZooKeeper image registry                                                                                                   | `docker.io`             |
-| `image.repository`            | ZooKeeper image repository                                                                                                 | `bitnami/zookeeper`     |
+| `image.repository`            | ZooKeeper image repository                                                                                                 | `bitnami-mirror/zookeeper`     |
 | `image.tag`                   | ZooKeeper image tag (immutable tags are recommended)                                                                       | `3.8.1-debian-11-r36`   |
 | `image.digest`                | ZooKeeper image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                  | `""`                    |
 | `image.pullPolicy`            | ZooKeeper image pull policy                                                                                                | `IfNotPresent`          |
@@ -289,8 +289,8 @@ The command removes all the Kubernetes components associated with the chart and 
 | `tls.client.existingSecret`               | Name of the existing secret containing the TLS certificates for ZooKeeper client communications    | `""`                                                                  |
 | `tls.client.existingSecretKeystoreKey`    | The secret key from the tls.client.existingSecret containing the Keystore.                         | `""`                                                                  |
 | `tls.client.existingSecretTruststoreKey`  | The secret key from the tls.client.existingSecret containing the Truststore.                       | `""`                                                                  |
-| `tls.client.keystorePath`                 | Location of the KeyStore file used for Client connections                                          | `/opt/bitnami/zookeeper/config/certs/client/zookeeper.keystore.jks`   |
-| `tls.client.truststorePath`               | Location of the TrustStore file used for Client connections                                        | `/opt/bitnami/zookeeper/config/certs/client/zookeeper.truststore.jks` |
+| `tls.client.keystorePath`                 | Location of the KeyStore file used for Client connections                                          | `/opt/bitnami-mirror/zookeeper/config/certs/client/zookeeper.keystore.jks`   |
+| `tls.client.truststorePath`               | Location of the TrustStore file used for Client connections                                        | `/opt/bitnami-mirror/zookeeper/config/certs/client/zookeeper.truststore.jks` |
 | `tls.client.passwordsSecretName`          | Existing secret containing Keystore and truststore passwords                                       | `""`                                                                  |
 | `tls.client.passwordsSecretKeystoreKey`   | The secret key from the tls.client.passwordsSecretName containing the password for the Keystore.   | `""`                                                                  |
 | `tls.client.passwordsSecretTruststoreKey` | The secret key from the tls.client.passwordsSecretName containing the password for the Truststore. | `""`                                                                  |
@@ -302,8 +302,8 @@ The command removes all the Kubernetes components associated with the chart and 
 | `tls.quorum.existingSecret`               | Name of the existing secret containing the TLS certificates for ZooKeeper quorum protocol          | `""`                                                                  |
 | `tls.quorum.existingSecretKeystoreKey`    | The secret key from the tls.quorum.existingSecret containing the Keystore.                         | `""`                                                                  |
 | `tls.quorum.existingSecretTruststoreKey`  | The secret key from the tls.quorum.existingSecret containing the Truststore.                       | `""`                                                                  |
-| `tls.quorum.keystorePath`                 | Location of the KeyStore file used for Quorum protocol                                             | `/opt/bitnami/zookeeper/config/certs/quorum/zookeeper.keystore.jks`   |
-| `tls.quorum.truststorePath`               | Location of the TrustStore file used for Quorum protocol                                           | `/opt/bitnami/zookeeper/config/certs/quorum/zookeeper.truststore.jks` |
+| `tls.quorum.keystorePath`                 | Location of the KeyStore file used for Quorum protocol                                             | `/opt/bitnami-mirror/zookeeper/config/certs/quorum/zookeeper.keystore.jks`   |
+| `tls.quorum.truststorePath`               | Location of the TrustStore file used for Quorum protocol                                           | `/opt/bitnami-mirror/zookeeper/config/certs/quorum/zookeeper.truststore.jks` |
 | `tls.quorum.passwordsSecretName`          | Existing secret containing Keystore and truststore passwords                                       | `""`                                                                  |
 | `tls.quorum.passwordsSecretKeystoreKey`   | The secret key from the tls.quorum.passwordsSecretName containing the password for the Keystore.   | `""`                                                                  |
 | `tls.quorum.passwordsSecretTruststoreKey` | The secret key from the tls.quorum.passwordsSecretName containing the password for the Truststore. | `""`                                                                  |
@@ -388,7 +388,7 @@ the available appender is
 
 ## Persistence
 
-The [Bitnami ZooKeeper](https://github.com/bitnami/containers/tree/main/bitnami/zookeeper) image stores the ZooKeeper data and configurations at the `/bitnami/zookeeper` path of the container.
+The [Bitnami ZooKeeper](https://github.com/bitnami/containers/tree/main/bitnami-mirror/zookeeper) image stores the ZooKeeper data and configurations at the `/bitnami/zookeeper` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube. See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
 

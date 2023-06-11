@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/ghost
 
 ## Introduction
 
-This chart bootstraps a [Ghost](https://github.com/bitnami/containers/tree/main/bitnami/ghost) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Ghost](https://github.com/bitnami/containers/tree/main/bitnami-mirror/ghost) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 It also packages the [Bitnami MySQL chart](https://github.com/bitnami/charts/tree/main/bitnami/mysql) which is required for bootstrapping a MySQL deployment for the database requirements of the Ghost application.
 
@@ -78,7 +78,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                | Description                                                                                           | Value                 |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`    | Ghost image registry                                                                                  | `docker.io`           |
-| `image.repository`  | Ghost image repository                                                                                | `bitnami/ghost`       |
+| `image.repository`  | Ghost image repository                                                                                | `bitnami-mirror/ghost`       |
 | `image.tag`         | Ghost image tag (immutable tags are recommended)                                                      | `5.51.0-debian-11-r0` |
 | `image.digest`      | Ghost image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`  | Ghost image pull policy                                                                               | `IfNotPresent`        |
@@ -266,7 +266,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `serviceAccount.automountServiceAccountToken`                 | Automount service account token for the server service account                                                            | `true`  |
 | `serviceAccount.annotations`                                  | Annotations for service account. Evaluated as a template. Only used if `create` is `true`.                                | `{}`    |
 
-The above parameters map to the env variables defined in [bitnami/ghost](https://github.com/bitnami/containers/tree/main/bitnami/ghost). For more information please refer to the [bitnami/ghost](https://github.com/bitnami/containers/tree/main/bitnami/ghost) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/ghost](https://github.com/bitnami/containers/tree/main/bitnami/ghost). For more information please refer to the [bitnami/ghost](https://github.com/bitnami/containers/tree/main/bitnami/ghost) image documentation.
 
 > **Note**:
 >
@@ -365,7 +365,7 @@ As an alternative, you can use the preset configurations for pod affinity, pod a
 
 ## Persistence
 
-The [Bitnami Ghost](https://github.com/bitnami/containers/tree/main/bitnami/ghost) image stores the Ghost data and configurations at the `/bitnami/ghost` and `/bitnami/apache` paths of the container.
+The [Bitnami Ghost](https://github.com/bitnami/containers/tree/main/bitnami-mirror/ghost) image stores the Ghost data and configurations at the `/bitnami/ghost` and `/bitnami/apache` paths of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
@@ -399,7 +399,7 @@ Affected values:
 
 ### To 14.0.0
 
-Due to recent changes in the container image (see [Notable changes](https://github.com/bitnami/containers/tree/main/bitnami/ghost#notable-changes)), the major version of the chart has been bumped preemptively.
+Due to recent changes in the container image (see [Notable changes](https://github.com/bitnami/containers/tree/main/bitnami-mirror/ghost#notable-changes)), the major version of the chart has been bumped preemptively.
 
 Compatibility is not guaranteed due to the amount of involved changes, however no breaking changes are expected.
 

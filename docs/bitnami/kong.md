@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/kong
 
 ## Introduction
 
-This chart bootstraps a [kong](https://github.com/bitnami/containers/tree/main/bitnami/kong) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager. It also includes the [kong-ingress-controller](https://github.com/bitnami/containers/tree/main/bitnami/kong-ingress-controller) container for managing Ingress resources using Kong.
+This chart bootstraps a [kong](https://github.com/bitnami/containers/tree/main/bitnami-mirror/kong) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager. It also includes the [kong-ingress-controller](https://github.com/bitnami/containers/tree/main/bitnami/kong-ingress-controller) container for managing Ingress resources using Kong.
 
 Extra functionalities beyond the Kong core are extended through plugins. Kong is built on top of reliable technologies like NGINX and provides an easy-to-use RESTful API to operate and configure the system.
 
@@ -78,7 +78,7 @@ helm delete my-release
 | Name                | Description                                                                                          | Value                |
 | ------------------- | ---------------------------------------------------------------------------------------------------- | -------------------- |
 | `image.registry`    | kong image registry                                                                                  | `docker.io`          |
-| `image.repository`  | kong image repository                                                                                | `bitnami/kong`       |
+| `image.repository`  | kong image repository                                                                                | `bitnami-mirror/kong`       |
 | `image.tag`         | kong image tag (immutable tags are recommended)                                                      | `3.3.0-debian-11-r1` |
 | `image.digest`      | kong image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                 |
 | `image.pullPolicy`  | kong image pull policy                                                                               | `IfNotPresent`       |
@@ -212,7 +212,7 @@ helm delete my-release
 | --------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
 | `ingressController.enabled`                                     | Enable/disable the Kong Ingress Controller                                                                                                    | `true`                            |
 | `ingressController.image.registry`                              | Kong Ingress Controller image registry                                                                                                        | `docker.io`                       |
-| `ingressController.image.repository`                            | Kong Ingress Controller image name                                                                                                            | `bitnami/kong-ingress-controller` |
+| `ingressController.image.repository`                            | Kong Ingress Controller image name                                                                                                            | `bitnami-mirror/kong-ingress-controller` |
 | `ingressController.image.tag`                                   | Kong Ingress Controller image tag                                                                                                             | `2.9.3-debian-11-r10`             |
 | `ingressController.image.digest`                                | Kong Ingress Controller image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                       | `""`                              |
 | `ingressController.image.pullPolicy`                            | Kong Ingress Controller image pull policy                                                                                                     | `IfNotPresent`                    |

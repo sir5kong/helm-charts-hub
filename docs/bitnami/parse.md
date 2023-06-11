@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/parse
 
 ## Introduction
 
-This chart bootstraps a [Parse](https://github.com/bitnami/containers/tree/main/bitnami/parse) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Parse](https://github.com/bitnami/containers/tree/main/bitnami-mirror/parse) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -79,7 +79,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                                     | Description                                                                                                              | Value                |
 | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------- |
 | `server.image.registry`                                  | Parse image registry                                                                                                     | `docker.io`          |
-| `server.image.repository`                                | Parse image repository                                                                                                   | `bitnami/parse`      |
+| `server.image.repository`                                | Parse image repository                                                                                                   | `bitnami-mirror/parse`      |
 | `server.image.tag`                                       | Parse image tag (immutable tags are recommended)                                                                         | `6.2.0-debian-11-r0` |
 | `server.image.digest`                                    | Parse image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                    | `""`                 |
 | `server.image.pullPolicy`                                | Image pull policy                                                                                                        | `IfNotPresent`       |
@@ -164,7 +164,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------- |
 | `dashboard.enabled`                                         | Enable parse dashboard                                                                                                   | `true`                    |
 | `dashboard.image.registry`                                  | Dashboard image registry                                                                                                 | `docker.io`               |
-| `dashboard.image.repository`                                | Dashboard image repository                                                                                               | `bitnami/parse-dashboard` |
+| `dashboard.image.repository`                                | Dashboard image repository                                                                                               | `bitnami-mirror/parse-dashboard` |
 | `dashboard.image.tag`                                       | Dashboard image tag (immutable tags are recommended)                                                                     | `5.1.0-debian-11-r6`      |
 | `dashboard.image.digest`                                    | Dashboard image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                | `""`                      |
 | `dashboard.image.pullPolicy`                                | image pull policy                                                                                                        | `IfNotPresent`            |
@@ -354,7 +354,7 @@ Bitnami will release a new chart updating its containers if a new version of the
 
 ### Deploy your Cloud functions with Parse Cloud Code
 
-The [Bitnami Parse](https://github.com/bitnami/containers/tree/main/bitnami/parse) image allows you to deploy your Cloud functions with Parse Cloud Code (a feature which allows running a piece of code in your Parse Server instead of the user's mobile devices). In order to add your custom scripts, they must be located inside the chart folder `files/cloud` so they can be consumed as a ConfigMap.
+The [Bitnami Parse](https://github.com/bitnami/containers/tree/main/bitnami-mirror/parse) image allows you to deploy your Cloud functions with Parse Cloud Code (a feature which allows running a piece of code in your Parse Server instead of the user's mobile devices). In order to add your custom scripts, they must be located inside the chart folder `files/cloud` so they can be consumed as a ConfigMap.
 
 Alternatively, you can specify custom scripts using the `cloudCodeScripts` parameter as dict.
 
@@ -362,7 +362,7 @@ In addition to these options, you can also set an external ConfigMap with all th
 
 ## Persistence
 
-The [Bitnami Parse](https://github.com/bitnami/containers/tree/main/bitnami/parse) image stores the Parse data and configurations at the `/bitnami/parse` path of the container.
+The [Bitnami Parse](https://github.com/bitnami/containers/tree/main/bitnami-mirror/parse) image stores the Parse data and configurations at the `/bitnami/parse` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
@@ -456,7 +456,7 @@ Please visit the release notes from the upstream project at <https://github.com/
 
 ### To 15.0.0
 
-The [Bitnami Parse](https://github.com/bitnami/containers/tree/main/bitnami/parse) and [Bitnami Parse Dashboard](https://github.com/bitnami/containers/tree/main/bitnami/parse-dashboard) images were refactored and now the source code is published in GitHub in the `rootfs` folder of the container images.
+The [Bitnami Parse](https://github.com/bitnami/containers/tree/main/bitnami-mirror/parse) and [Bitnami Parse Dashboard](https://github.com/bitnami/containers/tree/main/bitnami/parse-dashboard) images were refactored and now the source code is published in GitHub in the `rootfs` folder of the container images.
 
 Compatibility is not guaranteed due to the amount of involved changes, however no breaking changes are expected.
 

@@ -88,7 +88,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                                | Description                                                                                                | Value                 |
 | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`                                    | ClickHouse image registry                                                                                  | `docker.io`           |
-| `image.repository`                                  | ClickHouse image repository                                                                                | `bitnami/clickhouse`  |
+| `image.repository`                                  | ClickHouse image repository                                                                                | `bitnami-mirror/clickhouse`  |
 | `image.tag`                                         | ClickHouse image tag (immutable tags are recommended)                                                      | `23.5.2-debian-11-r0` |
 | `image.digest`                                      | ClickHouse image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`                                  | ClickHouse image pull policy                                                                               | `IfNotPresent`        |
@@ -339,7 +339,7 @@ The command removes all the Kubernetes components associated with the chart and 
 
 See <https://github.com/bitnami-labs/readme-generator-for-helm> to create the table.
 
-The above parameters map to the env variables defined in [bitnami/clickhouse](https://github.com/bitnami/containers/tree/main/bitnami/clickhouse). For more information please refer to the [bitnami/clickhouse](https://github.com/bitnami/containers/tree/main/bitnami/clickhouse) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/clickhouse](https://github.com/bitnami/containers/tree/main/bitnami/clickhouse). For more information please refer to the [bitnami/clickhouse](https://github.com/bitnami/containers/tree/main/bitnami/clickhouse) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -393,7 +393,7 @@ The chart also facilitates the creation of TLS secrets for use with the Ingress 
 
 ## Persistence
 
-The [Bitnami ClickHouse](https://github.com/bitnami/containers/tree/main/bitnami/clickhouse) image stores the ClickHouse data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
+The [Bitnami ClickHouse](https://github.com/bitnami/containers/tree/main/bitnami-mirror/clickhouse) image stores the ClickHouse data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 
 ### Additional environment variables
 

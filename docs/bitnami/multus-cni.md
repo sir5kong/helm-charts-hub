@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/multus-cni
 
 ## Introduction
 
-This chart bootstraps a [Multus CNI](https://github.com/bitnami/containers/tree/main/bitnami/multus-cni) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Multus CNI](https://github.com/bitnami/containers/tree/main/bitnami-mirror/multus-cni) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment and management of Helm Charts in clusters.
 
@@ -79,7 +79,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                    | Description                                                                                                           | Value                      |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | -------------------------- |
 | `image.registry`                        | Multus CNI image registry                                                                                             | `docker.io`                |
-| `image.repository`                      | Multus CNI Image name                                                                                                 | `bitnami/multus-cni`       |
+| `image.repository`                      | Multus CNI Image name                                                                                                 | `bitnami-mirror/multus-cni`       |
 | `image.tag`                             | Multus CNI Image tag                                                                                                  | `4.0.2-debian-11-r0`       |
 | `image.digest`                          | Multus CNI image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag            | `""`                       |
 | `image.pullPolicy`                      | Multus CNI image pull policy                                                                                          | `IfNotPresent`             |
@@ -88,7 +88,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `CNIVersion`                            | CNI version                                                                                                           | `0.3.0`                    |
 | `hostCNIBinDir`                         | CNI binary dir in the host machine to mount                                                                           | `/opt/cni/bin`             |
 | `hostCNINetDir`                         | CNI net.d dir in the host machine to mount                                                                            | `/etc/cni/net.d`           |
-| `CNIMountPath`                          | Path inside the container to mount the CNI dirs                                                                       | `/bitnami/multus-cni/host` |
+| `CNIMountPath`                          | Path inside the container to mount the CNI dirs                                                                       | `/bitnami-mirror/multus-cni/host` |
 | `command`                               | Override default container command (useful when using custom images)                                                  | `[]`                       |
 | `args`                                  | Override default container args (useful when using custom images)                                                     | `[]`                       |
 | `updateStrategy.type`                   | Update strategy - only really applicable for deployments with RWO PVs attached                                        | `RollingUpdate`            |

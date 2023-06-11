@@ -82,7 +82,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                  | Description                                                                                                  | Value                   |
 | ------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ----------------------- |
 | `loki.image.registry`                 | Grafana Loki image registry                                                                                  | `docker.io`             |
-| `loki.image.repository`               | Grafana Loki image repository                                                                                | `bitnami/grafana-loki`  |
+| `loki.image.repository`               | Grafana Loki image repository                                                                                | `bitnami-mirror/grafana-loki`  |
 | `loki.image.tag`                      | Grafana Loki image tag (immutable tags are recommended)                                                      | `2.8.2-debian-11-r6`    |
 | `loki.image.digest`                   | Grafana Loki image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                    |
 | `loki.image.pullPolicy`               | Grafana Loki image pull policy                                                                               | `IfNotPresent`          |
@@ -90,7 +90,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `loki.configuration`                  | Loki components configuration                                                                                | `""`                    |
 | `loki.overrideConfiguration`          | Loki components configuration override. Values defined here takes precedence over loki.configuration         | `{}`                    |
 | `loki.existingConfigmap`              | Name of a ConfigMap with the Loki configuration                                                              | `""`                    |
-| `loki.dataDir`                        | path to the Loki data directory                                                                              | `/bitnami/grafana-loki` |
+| `loki.dataDir`                        | path to the Loki data directory                                                                              | `/bitnami-mirror/grafana-loki` |
 | `loki.containerPorts.http`            | Loki components web container port                                                                           | `3100`                  |
 | `loki.containerPorts.grpc`            | Loki components GRPC container port                                                                          | `9095`                  |
 | `loki.containerPorts.gossipRing`      | Loki components Gossip Ring container port                                                                   | `7946`                  |
@@ -1167,7 +1167,7 @@ The command removes all the Kubernetes components associated with the chart and 
 
 See <https://github.com/bitnami-labs/readme-generator-for-helm> to create the table.
 
-The above parameters map to the env variables defined in [bitnami/grafana-loki](https://github.com/bitnami/containers/tree/main/bitnami/grafana-loki). For more information please refer to the [bitnami/grafana-loki](https://github.com/bitnami/containers/tree/main/bitnami/grafana-loki) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/grafana-loki](https://github.com/bitnami/containers/tree/main/bitnami/grafana-loki). For more information please refer to the [bitnami/grafana-loki](https://github.com/bitnami/containers/tree/main/bitnami/grafana-loki) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -1207,7 +1207,7 @@ This chart does not function fully when using local filesystem as a persistence 
 
 ### Data
 
-The [Bitnami grafana-loki](https://github.com/bitnami/containers/tree/main/bitnami/grafana-loki) image stores the grafana-loki `ingester` data at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments.
+The [Bitnami grafana-loki](https://github.com/bitnami/containers/tree/main/bitnami-mirror/grafana-loki) image stores the grafana-loki `ingester` data at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments.
 
 ### Additional environment variables
 

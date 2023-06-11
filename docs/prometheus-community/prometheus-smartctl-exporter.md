@@ -13,7 +13,7 @@ For more information on the exporter, please see the project's [repository](http
 ## Get Repository Info
 <!-- textlint-disable terminology -->
 ```console
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -22,7 +22,7 @@ _See [helm repo](https://helm.sh/docs/helm/helm_repo/) for command documentation
 ## Install Chart
 
 ```console
-helm install [RELEASE_NAME] prometheus-community/prometheus-smartctl-exporter
+helm install [RELEASE_NAME] prometheus-community-mirror/prometheus-smartctl-exporter
 ```
 
 _See [configuration](#configuration) below._
@@ -42,7 +42,7 @@ _See [helm uninstall](https://helm.sh/docs/helm/helm_uninstall/) for command doc
 ## Upgrading Chart
 
 ```shell
-helm upgrade [RELEASE_NAME] prometheus-community/prometheus-smartctl-exporter --install
+helm upgrade [RELEASE_NAME] prometheus-community-mirror/prometheus-smartctl-exporter --install
 ```
 
 _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documentation._
@@ -52,5 +52,5 @@ _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documen
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values.yaml](./values.yaml), or run these configuration commands:
 
 ```console
-helm show values prometheus-community/prometheus-smartctl-exporter
+helm show values prometheus-community-mirror/prometheus-smartctl-exporter
 ```

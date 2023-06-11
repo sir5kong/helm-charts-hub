@@ -13,7 +13,7 @@ This chart creates a [Consul Exporter](https://github.com/prometheus/consul_expo
 
 <!-- textlint-disable terminology -->
 ```console
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -23,7 +23,7 @@ _See [helm repo](https://helm.sh/docs/helm/helm_repo/) for command documentation
 ## Install Chart
 
 ```console
-helm install [RELEASE_NAME] prometheus-community/prometheus-consul-exporter
+helm install [RELEASE_NAME] prometheus-community-mirror/prometheus-consul-exporter
 ```
 
 _See [configuration](#configuration) below._
@@ -57,7 +57,7 @@ Helm `apiVersion` has been increased to `v2` in version 1.0.0. As a result, Helm
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values.yaml](./values.yaml), or run these configuration commands:
 
 ```console
-helm show values prometheus-community/prometheus-consul-exporter
+helm show values prometheus-community-mirror/prometheus-consul-exporter
 ```
 
 ### Consul Server Info

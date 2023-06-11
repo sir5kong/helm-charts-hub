@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/mediawiki
 
 ## Introduction
 
-This chart bootstraps a [MediaWiki](https://github.com/bitnami/containers/tree/main/bitnami/mediawiki) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [MediaWiki](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mediawiki) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 It also packages the [Bitnami MariaDB chart](https://github.com/bitnami/charts/tree/main/bitnami/mariadb) which is required for bootstrapping a MariaDB deployment for the database requirements of the MediaWiki application.
 
@@ -78,7 +78,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                 | Description                                                                                                                                        | Value                  |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | `image.registry`     | MediaWiki image registry                                                                                                                           | `docker.io`            |
-| `image.repository`   | MediaWiki image repository                                                                                                                         | `bitnami/mediawiki`    |
+| `image.repository`   | MediaWiki image repository                                                                                                                         | `bitnami-mirror/mediawiki`    |
 | `image.tag`          | MediaWiki image tag (immutable tags are recommended)                                                                                               | `1.39.3-debian-11-r16` |
 | `image.digest`       | MediaWiki image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                          | `""`                   |
 | `image.pullPolicy`   | Image pull policy                                                                                                                                  | `IfNotPresent`         |
@@ -268,7 +268,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `networkPolicy.egressRules.denyConnectionsToExternal`         | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                                | `false` |
 | `networkPolicy.egressRules.customRules`                       | Custom network policy rule                                                                                                    | `{}`    |
 
-The above parameters map to the env variables defined in [bitnami/mediawiki](https://github.com/bitnami/containers/tree/main/bitnami/mediawiki). For more information please refer to the [bitnami/mediawiki](https://github.com/bitnami/containers/tree/main/bitnami/mediawiki) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/mediawiki](https://github.com/bitnami/containers/tree/main/bitnami/mediawiki). For more information please refer to the [bitnami/mediawiki](https://github.com/bitnami/containers/tree/main/bitnami/mediawiki) image documentation.
 
 > **Note**:
 >
@@ -304,7 +304,7 @@ Bitnami will release a new chart updating its containers if a new version of the
 
 ## Persistence
 
-The [Bitnami MediaWiki](https://github.com/bitnami/containers/tree/main/bitnami/mediawiki) image stores the MediaWiki data and configurations at the `/bitnami/mediawiki` path of the container.
+The [Bitnami MediaWiki](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mediawiki) image stores the MediaWiki data and configurations at the `/bitnami/mediawiki` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
@@ -484,7 +484,7 @@ mariadb 12:13:25.01 INFO  ==> Running mysql_upgrade
 
 ### To 10.0.0
 
-The [Bitnami MediaWiki](https://github.com/bitnami/containers/tree/main/bitnami/mediawiki) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the Apache daemon was started as the `daemon` user. From now on, both the container and the Apache daemon run as user `1001`. You can revert this behavior by setting the parameters `containerSecurityContext.runAsUser` to `root`.
+The [Bitnami MediaWiki](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mediawiki) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the Apache daemon was started as the `daemon` user. From now on, both the container and the Apache daemon run as user `1001`. You can revert this behavior by setting the parameters `containerSecurityContext.runAsUser` to `root`.
 
 Consequences:
 

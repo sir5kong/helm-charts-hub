@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/prestashop
 
 ## Introduction
 
-This chart bootstraps a [PrestaShop](https://github.com/bitnami/containers/tree/main/bitnami/prestashop) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [PrestaShop](https://github.com/bitnami/containers/tree/main/bitnami-mirror/prestashop) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 It also packages the [Bitnami MariaDB chart](https://github.com/bitnami/charts/tree/main/bitnami/mariadb) which is required for bootstrapping a MariaDB deployment for the database requirements of the PrestaShop application.
 
@@ -78,7 +78,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                    | Description                                                                                                | Value                |
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------- |
 | `image.registry`                        | PrestaShop image registry                                                                                  | `docker.io`          |
-| `image.repository`                      | PrestaShop image repository                                                                                | `bitnami/prestashop` |
+| `image.repository`                      | PrestaShop image repository                                                                                | `bitnami-mirror/prestashop` |
 | `image.tag`                             | PrestaShop image tag (immutable tags are recommended)                                                      | `8.0.4-debian-11-r9` |
 | `image.digest`                          | PrestaShop image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                 |
 | `image.pullPolicy`                      | PrestaShop image pull policy                                                                               | `IfNotPresent`       |
@@ -295,7 +295,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `networkPolicy.egressRules.denyConnectionsToExternal`         | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                                 | `false` |
 | `networkPolicy.egressRules.customRules`                       | Custom network policy rule                                                                                                     | `{}`    |
 
-The above parameters map to the env variables defined in [bitnami/prestashop](https://github.com/bitnami/containers/tree/main/bitnami/prestashop). For more information please refer to the [bitnami/prestashop](https://github.com/bitnami/containers/tree/main/bitnami/prestashop) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/prestashop](https://github.com/bitnami/containers/tree/main/bitnami/prestashop). For more information please refer to the [bitnami/prestashop](https://github.com/bitnami/containers/tree/main/bitnami/prestashop) image documentation.
 
 > **Note**:
 >
@@ -365,7 +365,7 @@ As an alternative, you can use of the preset configurations for pod affinity, po
 
 ## Persistence
 
-The [Bitnami PrestaShop](https://github.com/bitnami/containers/tree/main/bitnami/prestashop) image stores the PrestaShop data and configurations at the `/bitnami/prestashop` path of the container.
+The [Bitnami PrestaShop](https://github.com/bitnami/containers/tree/main/bitnami-mirror/prestashop) image stores the PrestaShop data and configurations at the `/bitnami/prestashop` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
@@ -507,7 +507,7 @@ mariadb 12:13:25.01 INFO  ==> Running mysql_upgrade
 
 ### To 10.0.0
 
-The [Bitnami PrestaShop](https://github.com/bitnami/containers/tree/main/bitnami/prestashop) image was updated to support and enable the "non-root" user approach
+The [Bitnami PrestaShop](https://github.com/bitnami/containers/tree/main/bitnami-mirror/prestashop) image was updated to support and enable the "non-root" user approach
 
 If you want to continue to run the container image as the `root` user, you need to set `podSecurityContext.enabled=false` and `containerSecurity.context.enabled=false`.
 

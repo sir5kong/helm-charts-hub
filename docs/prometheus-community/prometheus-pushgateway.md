@@ -7,7 +7,7 @@ An optional prometheus `ServiceMonitor` can be enabled, should you wish to use t
 ## Get Repository Info
 
 ```console
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -16,7 +16,7 @@ _See [`helm repo`](https://helm.sh/docs/helm/helm_repo/) for command documentati
 ## Install Chart
 
 ```console
-helm install [RELEASE_NAME] prometheus-community/prometheus-pushgateway
+helm install [RELEASE_NAME] prometheus-community-mirror/prometheus-pushgateway
 ```
 
 _See [configuration](#configuration) below._
@@ -76,7 +76,7 @@ kubectl delete sts -l app=prometheus-pushgateway
 After that do the actual upgrade:
 
 ```console
-helm upgrade -i prometheus-pushgateway prometheus-community/prometheus-pushgateway
+helm upgrade -i prometheus-pushgateway prometheus-community-mirror/prometheus-pushgateway
 ```
 
 ## Configuration
@@ -84,5 +84,5 @@ helm upgrade -i prometheus-pushgateway prometheus-community/prometheus-pushgatew
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values.yaml](./values.yaml), or run these configuration commands:
 
 ```console
-helm show values prometheus-community/prometheus-pushgateway
+helm show values prometheus-community-mirror/prometheus-pushgateway
 ```

@@ -18,7 +18,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/aspnet-core
 
 Bitnami charts for Helm are carefully engineered, actively maintained and are the quickest and easiest way to deploy containers on a Kubernetes cluster that are ready to handle production workloads.
 
-This chart bootstraps an [ASP.NET Core](https://github.com/bitnami/containers/tree/main/bitnami/aspnet-core) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps an [ASP.NET Core](https://github.com/bitnami/containers/tree/main/bitnami-mirror/aspnet-core) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -77,7 +77,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                 | Description                                                                                                  | Value                 |
 | -------------------- | ------------------------------------------------------------------------------------------------------------ | --------------------- |
 | `image.registry`     | ASP.NET Core image registry                                                                                  | `docker.io`           |
-| `image.repository`   | ASP.NET Core image repository                                                                                | `bitnami/aspnet-core` |
+| `image.repository`   | ASP.NET Core image repository                                                                                | `bitnami-mirror/aspnet-core` |
 | `image.tag`          | ASP.NET Core image tag (immutable tags are recommended)                                                      | `7.0.5-debian-11-r14` |
 | `image.digest`       | ASP.NET Core image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`   | ASP.NET Core image pull policy                                                                               | `IfNotPresent`        |

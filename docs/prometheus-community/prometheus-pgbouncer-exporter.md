@@ -12,7 +12,7 @@ This chart bootstraps a prometheus [pgbouncer exporter](https://github.com/prome
 ## Add Helm Chart Repository
 
 ```console
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -21,7 +21,7 @@ _See [`helm repo`](https://helm.sh/docs/helm/helm_repo/) for command documentati
 ## Install Chart
 
 ```console
-helm install [RELEASE_NAME] prometheus-community/prometheus-pgbouncer-exporter
+helm install [RELEASE_NAME] prometheus-community-mirror/prometheus-pgbouncer-exporter
 ```
 
 _See [configuration](#configuring) below._
@@ -43,5 +43,5 @@ _See [helm uninstall](https://helm.sh/docs/helm/helm_uninstall/) for command doc
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values.yaml](./values.yaml), or run these configuration commands:
 
 ```console
-helm show values prometheus-community/prometheus-pgbouncer-exporter
+helm show values prometheus-community-mirror/prometheus-pgbouncer-exporter
 ```

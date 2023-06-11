@@ -166,7 +166,7 @@ This solution allows to easily deploy multiple RabbitMQ instances compared to th
 | `credentialUpdaterImage.digest`                                   | RabbitMQ Default User Credential Updater image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                                     |
 | `credentialUpdaterImage.pullSecrets`                              | RabbitMQ Default User Credential Updater image pull secrets                                                                              | `[]`                                     |
 | `clusterOperator.image.registry`                                  | RabbitMQ Cluster Operator image registry                                                                                                 | `docker.io`                              |
-| `clusterOperator.image.repository`                                | RabbitMQ Cluster Operator image repository                                                                                               | `bitnami/rabbitmq-cluster-operator`      |
+| `clusterOperator.image.repository`                                | RabbitMQ Cluster Operator image repository                                                                                               | `bitnami-mirror/rabbitmq-cluster-operator`      |
 | `clusterOperator.image.tag`                                       | RabbitMQ Cluster Operator image tag (immutable tags are recommended)                                                                     | `2.3.0-scratch-r0`                       |
 | `clusterOperator.image.digest`                                    | RabbitMQ Cluster Operator image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                | `""`                                     |
 | `clusterOperator.image.pullPolicy`                                | RabbitMQ Cluster Operator image pull policy                                                                                              | `IfNotPresent`                           |
@@ -383,7 +383,7 @@ This solution allows to easily deploy multiple RabbitMQ instances compared to th
 | ---------------- | ----------------------------------------------------------------- | ------- |
 | `useCertManager` | Deploy cert-manager objects (Issuer and Certificate) for webhooks | `false` |
 
-The above parameters map to the env variables defined in [bitnami/rabbitmq-cluster-operator](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq-cluster-operator). For more information please refer to the [bitnami/rabbitmq-cluster-operator](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq-cluster-operator) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/rabbitmq-cluster-operator](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq-cluster-operator). For more information please refer to the [bitnami/rabbitmq-cluster-operator](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq-cluster-operator) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -470,7 +470,7 @@ In order to upgrade the CRD objects, perform the following steps:
 - Execute the following commands (replace the VERSION placeholder):
 
 ```console
-helm fetch bitnami/rabbitmq-cluster-operator --version VERSION
+helm fetch bitnami-mirror/rabbitmq-cluster-operator --version VERSION
 tar xf rabbitmq-cluster-operator-VERSION.tar.gz
 kubectl apply -f rabbitmq-cluster-operator/crds
 ```

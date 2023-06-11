@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/odoo
 
 ## Introduction
 
-This chart bootstraps a [Odoo](https://github.com/bitnami/containers/tree/main/bitnami/odoo) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Odoo](https://github.com/bitnami/containers/tree/main/bitnami-mirror/odoo) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Odoo Apps can be used as stand-alone applications, but they also integrate seamlessly so you get a full-featured Open Source ERP when you install several Apps.
 
@@ -77,7 +77,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `diagnosticMode.command` | Command to override all containers in the the statefulset                                            | `["sleep"]`                  |
 | `diagnosticMode.args`    | Args to override all containers in the the statefulset                                               | `["infinity"]`               |
 | `image.registry`         | Odoo image registry                                                                                  | `docker.io`                  |
-| `image.repository`       | Odoo image repository                                                                                | `bitnami/odoo`               |
+| `image.repository`       | Odoo image repository                                                                                | `bitnami-mirror/odoo`               |
 | `image.tag`              | Odoo image tag (immutable tags are recommended)                                                      | `16.0.20230515-debian-11-r3` |
 | `image.digest`           | Odoo image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                         |
 | `image.pullPolicy`       | Odoo image pull policy                                                                               | `IfNotPresent`               |
@@ -278,7 +278,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `networkPolicy.egressRules.denyConnectionsToExternal`         | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                           | `false` |
 | `networkPolicy.egressRules.customRules`                       | Custom network policy rule                                                                                               | `{}`    |
 
-The above parameters map to the env variables defined in [bitnami/odoo](https://github.com/bitnami/containers/tree/main/bitnami/odoo). For more information please refer to the [bitnami/odoo](https://github.com/bitnami/containers/tree/main/bitnami/odoo) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/odoo](https://github.com/bitnami/containers/tree/main/bitnami/odoo). For more information please refer to the [bitnami/odoo](https://github.com/bitnami/containers/tree/main/bitnami/odoo) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -350,7 +350,7 @@ As an alternative, you can use of the preset configurations for pod affinity, po
 
 ## Persistence
 
-The [Bitnami Odoo](https://github.com/bitnami/containers/tree/main/bitnami/odoo) image stores the Odoo data and configurations at the `/bitnami/odoo` path of the container.
+The [Bitnami Odoo](https://github.com/bitnami/containers/tree/main/bitnami-mirror/odoo) image stores the Odoo data and configurations at the `/bitnami/odoo` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.

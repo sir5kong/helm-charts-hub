@@ -82,7 +82,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                        | Description                                                                                                              | Value                |
 | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------- |
 | `hub.image.registry`                        | Hub image registry                                                                                                       | `docker.io`          |
-| `hub.image.repository`                      | Hub image repository                                                                                                     | `bitnami/jupyterhub` |
+| `hub.image.repository`                      | Hub image repository                                                                                                     | `bitnami-mirror/jupyterhub` |
 | `hub.image.tag`                             | Hub image tag (immutable tags are recommended)                                                                           | `4.0.0-debian-11-r8` |
 | `hub.image.digest`                          | Hub image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                      | `""`                 |
 | `hub.image.pullPolicy`                      | Hub image pull policy                                                                                                    | `IfNotPresent`       |
@@ -400,7 +400,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `singleuser.image.digest`                       | Single User image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                                 |
 | `singleuser.image.pullPolicy`                   | Single User image pull policy                                                                               | `IfNotPresent`                       |
 | `singleuser.image.pullSecrets`                  | Single User image pull secrets                                                                              | `[]`                                 |
-| `singleuser.notebookDir`                        | Notebook directory (it will be the same as the PVC volume mount)                                            | `/opt/bitnami/jupyterhub-singleuser` |
+| `singleuser.notebookDir`                        | Notebook directory (it will be the same as the PVC volume mount)                                            | `/opt/bitnami-mirror/jupyterhub-singleuser` |
 | `singleuser.allowPrivilegeEscalation`           | Controls whether a process can gain more privileges than its parent process                                 | `false`                              |
 | `singleuser.command`                            | Override Single User default command                                                                        | `[]`                                 |
 | `singleuser.extraEnvVars`                       | Extra environment variables that should be set for the user pods                                            | `[]`                                 |

@@ -110,7 +110,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                    | Description                                                                                             | Value                |
 | --------------------------------------- | ------------------------------------------------------------------------------------------------------- | -------------------- |
 | `image.registry`                        | HAProxy image registry                                                                                  | `docker.io`          |
-| `image.repository`                      | HAProxy image repository                                                                                | `bitnami/haproxy`    |
+| `image.repository`                      | HAProxy image repository                                                                                | `bitnami-mirror/haproxy`    |
 | `image.tag`                             | HAProxy image tag (immutable tags are recommended)                                                      | `2.8.0-debian-11-r0` |
 | `image.digest`                          | HAProxy image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                 |
 | `image.pullPolicy`                      | HAProxy image pull policy                                                                               | `IfNotPresent`       |

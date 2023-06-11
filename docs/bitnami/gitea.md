@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/gitea
 
 ## Introduction
 
-This chart bootstraps a [Gitea](https://github.com/bitnami/containers/tree/main/bitnami/gitea) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Gitea](https://github.com/bitnami/containers/tree/main/bitnami-mirror/gitea) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 It also packages the [Bitnami PostgreSQL chart](https://github.com/bitnami/charts/tree/main/bitnami/postgresql) which is required for bootstrapping a PostgreSQL deployment as a database for the Gitea application.
 
@@ -78,7 +78,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                    | Description                                                                                                           | Value                 |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`                        | Gitea image registry                                                                                                  | `docker.io`           |
-| `image.repository`                      | Gitea Image name                                                                                                      | `bitnami/gitea`       |
+| `image.repository`                      | Gitea Image name                                                                                                      | `bitnami-mirror/gitea`       |
 | `image.tag`                             | Gitea Image tag                                                                                                       | `1.19.3-debian-11-r6` |
 | `image.digest`                          | Gitea image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                 | `""`                  |
 | `image.pullPolicy`                      | Gitea image pull policy                                                                                               | `IfNotPresent`        |
@@ -293,7 +293,7 @@ As an alternative, you can use of the preset configurations for pod affinity, po
 
 ## Persistence
 
-The [Bitnami Gitea](https://github.com/bitnami/containers/tree/main/bitnami/gitea) image stores the Gitea data and configurations at the `/bitnami/gitea` path of the container.
+The [Bitnami Gitea](https://github.com/bitnami/containers/tree/main/bitnami-mirror/gitea) image stores the Gitea data and configurations at the `/bitnami/gitea` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.

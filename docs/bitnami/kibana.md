@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/kibana --set el
 
 ## Introduction
 
-This chart bootstraps a [Kibana](https://github.com/bitnami/containers/tree/main/bitnami/kibana) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Kibana](https://github.com/bitnami/containers/tree/main/bitnami-mirror/kibana) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -81,7 +81,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                          | Description                                                                                                                                               | Value                    |
 | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
 | `image.registry`                              | Kibana image registry                                                                                                                                     | `docker.io`              |
-| `image.repository`                            | Kibana image repository                                                                                                                                   | `bitnami/kibana`         |
+| `image.repository`                            | Kibana image repository                                                                                                                                   | `bitnami-mirror/kibana`         |
 | `image.tag`                                   | Kibana image tag (immutable tags are recommended)                                                                                                         | `8.8.1-debian-11-r0`     |
 | `image.digest`                                | Kibana image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                    | `""`                     |
 | `image.pullPolicy`                            | Kibana image pull policy                                                                                                                                  | `IfNotPresent`           |
@@ -359,7 +359,7 @@ As an alternative, you can use one of the preset configurations for pod affinity
 
 ## Persistence
 
-The [Bitnami Kibana](https://github.com/bitnami/containers/tree/main/bitnami/kibana) image can persist data. If enabled, the persisted path is `/bitnami/kibana` by default.
+The [Bitnami Kibana](https://github.com/bitnami/containers/tree/main/bitnami-mirror/kibana) image can persist data. If enabled, the persisted path is `/bitnami/kibana` by default.
 
 The chart mounts a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) at this location. The volume is created using dynamic volume provisioning.
 

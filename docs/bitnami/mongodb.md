@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/mongodb
 
 ## Introduction
 
-This chart bootstraps a [MongoDB(&reg;)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [MongoDB(&reg;)](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mongodb) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -93,7 +93,7 @@ Refer to the [chart documentation for more information on each of these architec
 | Name                             | Description                                                                                                                                                 | Value                  |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | `image.registry`                 | MongoDB(&reg;) image registry                                                                                                                               | `docker.io`            |
-| `image.repository`               | MongoDB(&reg;) image registry                                                                                                                               | `bitnami/mongodb`      |
+| `image.repository`               | MongoDB(&reg;) image registry                                                                                                                               | `bitnami-mirror/mongodb`      |
 | `image.tag`                      | MongoDB(&reg;) image tag (immutable tags are recommended)                                                                                                   | `6.0.6-debian-11-r3`   |
 | `image.digest`                   | MongoDB(&reg;) image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                              | `""`                   |
 | `image.pullPolicy`               | MongoDB(&reg;) image pull policy                                                                                                                            | `IfNotPresent`         |
@@ -298,7 +298,7 @@ Refer to the [chart documentation for more information on each of these architec
 | `persistence.accessModes`                     | PV Access Mode                                                                                                                        | `["ReadWriteOnce"]` |
 | `persistence.size`                            | PVC Storage Request for MongoDB(&reg;) data volume                                                                                    | `8Gi`               |
 | `persistence.annotations`                     | PVC annotations                                                                                                                       | `{}`                |
-| `persistence.mountPath`                       | Path to mount the volume at                                                                                                           | `/bitnami/mongodb`  |
+| `persistence.mountPath`                       | Path to mount the volume at                                                                                                           | `/bitnami-mirror/mongodb`  |
 | `persistence.subPath`                         | Subdirectory of the volume to mount at                                                                                                | `""`                |
 | `persistence.volumeClaimTemplates.selector`   | A label query over volumes to consider for binding (e.g. when using local volumes)                                                    | `{}`                |
 | `persistence.volumeClaimTemplates.requests`   | Custom PVC requests attributes                                                                                                        | `{}`                |
@@ -489,7 +489,7 @@ Refer to the [chart documentation for more information on each of these architec
 | `hidden.persistence.accessModes`                     | PV Access Mode                                                                                       | `["ReadWriteOnce"]` |
 | `hidden.persistence.size`                            | PVC Storage Request for hidden node data volume                                                      | `8Gi`               |
 | `hidden.persistence.annotations`                     | PVC annotations                                                                                      | `{}`                |
-| `hidden.persistence.mountPath`                       | The path the volume will be mounted at, useful when using different MongoDB(&reg;) images.           | `/bitnami/mongodb`  |
+| `hidden.persistence.mountPath`                       | The path the volume will be mounted at, useful when using different MongoDB(&reg;) images.           | `/bitnami-mirror/mongodb`  |
 | `hidden.persistence.subPath`                         | The subdirectory of the volume to mount to, useful in dev environments                               | `""`                |
 | `hidden.persistence.volumeClaimTemplates.selector`   | A label query over volumes to consider for binding (e.g. when using local volumes)                   | `{}`                |
 | `hidden.persistence.volumeClaimTemplates.requests`   | Custom PVC requests attributes                                                                       | `{}`                |
@@ -506,7 +506,7 @@ Refer to the [chart documentation for more information on each of these architec
 | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
 | `metrics.enabled`                            | Enable using a sidecar Prometheus exporter                                                                                    | `false`                    |
 | `metrics.image.registry`                     | MongoDB(&reg;) Prometheus exporter image registry                                                                             | `docker.io`                |
-| `metrics.image.repository`                   | MongoDB(&reg;) Prometheus exporter image repository                                                                           | `bitnami/mongodb-exporter` |
+| `metrics.image.repository`                   | MongoDB(&reg;) Prometheus exporter image repository                                                                           | `bitnami-mirror/mongodb-exporter` |
 | `metrics.image.tag`                          | MongoDB(&reg;) Prometheus exporter image tag (immutable tags are recommended)                                                 | `0.37.0-debian-11-r30`     |
 | `metrics.image.digest`                       | MongoDB(&reg;) image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                | `""`                       |
 | `metrics.image.pullPolicy`                   | MongoDB(&reg;) Prometheus exporter image pull policy                                                                          | `IfNotPresent`             |
@@ -601,7 +601,7 @@ Bitnami will release a new chart updating its containers if a new version of the
 
 ### Customize a new MongoDB instance
 
-The [Bitnami MongoDB(&reg;) image](https://github.com/bitnami/containers/tree/main/bitnami/mongodb) supports the use of custom scripts to initialize a fresh instance. In order to execute the scripts, two options are available:
+The [Bitnami MongoDB(&reg;) image](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mongodb) supports the use of custom scripts to initialize a fresh instance. In order to execute the scripts, two options are available:
 
 - Specify them using the `initdbScripts` parameter as dict.
 - Define an external Kubernetes ConfigMap with all the initialization scripts by setting the `initdbScriptsConfigMap` parameter. Note that this will override the previous option.
@@ -650,7 +650,7 @@ Refer to the chart documentation for more information on, and examples of, confi
 
 ## Persistence
 
-The [Bitnami MongoDB(&reg;)](https://github.com/bitnami/containers/tree/main/bitnami/mongodb) image stores the MongoDB(&reg;) data and configurations at the `/bitnami/mongodb` path of the container.
+The [Bitnami MongoDB(&reg;)](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mongodb) image stores the MongoDB(&reg;) data and configurations at the `/bitnami/mongodb` path of the container.
 
 The chart mounts a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) at this location. The volume is created using dynamic volume provisioning.
 
@@ -756,7 +756,7 @@ ingress:
 ### To 6.0.0
 
 From this version, `mongodbEnableIPv6` is set to `false` by default in order to work properly in most k8s clusters, if you want to use IPv6 support, you need to set this variable to `true` by adding `--set mongodbEnableIPv6=true` to your `helm` command.
-You can find more information in the [`bitnami/mongodb` image README](https://github.com/bitnami/containers/tree/main/bitnami/mongodb#readme).
+You can find more information in the [`bitnami-mirror/mongodb` image README](https://github.com/bitnami/containers/tree/main/bitnami/mongodb#readme).
 
 ### To 5.0.0
 

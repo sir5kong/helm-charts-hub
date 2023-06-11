@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/jasperreports
 
 ## Introduction
 
-This chart bootstraps a [JasperReports](https://github.com/bitnami/containers/tree/main/bitnami/jasperreports) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [JasperReports](https://github.com/bitnami/containers/tree/main/bitnami-mirror/jasperreports) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 It also packages the [Bitnami MariaDB chart](https://github.com/bitnami/charts/tree/main/bitnami/mariadb) which bootstraps a MariaDB deployment required by the JasperReports application.
 
@@ -78,7 +78,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                          | Description                                                                                                   | Value                   |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------- |
 | `image.registry`              | JasperReports image registry                                                                                  | `docker.io`             |
-| `image.repository`            | JasperReports image repository                                                                                | `bitnami/jasperreports` |
+| `image.repository`            | JasperReports image repository                                                                                | `bitnami-mirror/jasperreports` |
 | `image.tag`                   | JasperReports image tag (immutable tags are recommended)                                                      | `8.2.0-debian-11-r6`    |
 | `image.digest`                | JasperReports image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                    |
 | `image.pullPolicy`            | JasperReports image pull policy                                                                               | `IfNotPresent`          |
@@ -234,7 +234,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `networkPolicy.egressRules.denyConnectionsToExternal`         | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                                    | `false` |
 | `networkPolicy.egressRules.customRules`                       | Custom network policy rule                                                                                                        | `{}`    |
 
-The above parameters map to the env variables defined in [bitnami/jasperreports](https://github.com/bitnami/containers/tree/main/bitnami/jasperreports). For more information please refer to the [bitnami/jasperreports](https://github.com/bitnami/containers/tree/main/bitnami/jasperreports) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/jasperreports](https://github.com/bitnami/containers/tree/main/bitnami/jasperreports). For more information please refer to the [bitnami/jasperreports](https://github.com/bitnami/containers/tree/main/bitnami/jasperreports) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -266,7 +266,7 @@ Bitnami will release a new chart updating its containers if a new version of the
 
 ## Persistence
 
-The [Bitnami JasperReports](https://github.com/bitnami/containers/tree/main/bitnami/jasperreports) image stores the JasperReports data and configurations at the `/bitnami/jasperreports` path of the container.
+The [Bitnami JasperReports](https://github.com/bitnami/containers/tree/main/bitnami-mirror/jasperreports) image stores the JasperReports data and configurations at the `/bitnami/jasperreports` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
@@ -343,7 +343,7 @@ Additionally updates the MariaDB subchart to it newest major, 10.0.0, which cont
 
 ### To 11.0.0
 
-The [Bitnami JasperReports](https://github.com/bitnami/containers/tree/main/bitnami/jasperreports) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the Tomcat daemon was started as the `tomcat` user. From now on, both the container and the Tomcat daemon run as user `1001`. You can revert this behavior by setting the parameters `containerSecurityContext.runAsUser` to `root`.
+The [Bitnami JasperReports](https://github.com/bitnami/containers/tree/main/bitnami-mirror/jasperreports) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the Tomcat daemon was started as the `tomcat` user. From now on, both the container and the Tomcat daemon run as user `1001`. You can revert this behavior by setting the parameters `containerSecurityContext.runAsUser` to `root`.
 
 Consequences:
 

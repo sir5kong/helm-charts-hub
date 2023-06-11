@@ -14,7 +14,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/wordpress
 
 ## Introduction
 
-This chart bootstraps a [WordPress](https://github.com/bitnami/containers/tree/main/bitnami/wordpress) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [WordPress](https://github.com/bitnami/containers/tree/main/bitnami-mirror/wordpress) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 It also packages the [Bitnami MariaDB chart](https://github.com/bitnami/charts/tree/main/bitnami/mariadb) which is required for bootstrapping a MariaDB deployment for the database requirements of the WordPress application, and the [Bitnami Memcached chart](https://github.com/bitnami/charts/tree/main/bitnami/memcached) that can be used to cache database queries.
 
@@ -79,7 +79,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                | Description                                                                                               | Value                 |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`    | WordPress image registry                                                                                  | `docker.io`           |
-| `image.repository`  | WordPress image repository                                                                                | `bitnami/wordpress`   |
+| `image.repository`  | WordPress image repository                                                                                | `bitnami-mirror/wordpress`   |
 | `image.tag`         | WordPress image tag (immutable tags are recommended)                                                      | `6.2.2-debian-11-r11` |
 | `image.digest`      | WordPress image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`  | WordPress image pull policy                                                                               | `IfNotPresent`        |
@@ -452,7 +452,7 @@ The chart also facilitates the creation of TLS secrets for use with the Ingress 
 
 ### `.htaccess` files
 
-For performance and security reasons, it is a good practice to configure Apache with the `AllowOverride None` directive. Instead of using `.htaccess` files, Apache will load the same directives at boot time. These directives are located in `/opt/bitnami/wordpress/wordpress-htaccess.conf`.
+For performance and security reasons, it is a good practice to configure Apache with the `AllowOverride None` directive. Instead of using `.htaccess` files, Apache will load the same directives at boot time. These directives are located in `/opt/bitnami-mirror/wordpress/wordpress-htaccess.conf`.
 
 By default, the container image includes all the default `.htaccess` files in WordPress (together with the default plugins). To enable this feature, install the chart with the value `allowOverrideNone=yes`.
 
@@ -460,7 +460,7 @@ By default, the container image includes all the default `.htaccess` files in Wo
 
 ## Persistence
 
-The [Bitnami WordPress](https://github.com/bitnami/containers/tree/main/bitnami/wordpress) image stores the WordPress data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments.
+The [Bitnami WordPress](https://github.com/bitnami/containers/tree/main/bitnami-mirror/wordpress) image stores the WordPress data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments.
 
 If you encounter errors when working with persistent volumes, refer to our [troubleshooting guide for persistent volumes](https://docs.bitnami.com/kubernetes/faq/troubleshooting/troubleshooting-persistence-volumes/).
 
@@ -499,7 +499,7 @@ Removed support for limiting auto-updates to WordPress core via the `wordpressAu
 
 ### 11.0.0
 
-The [Bitnami WordPress](https://github.com/bitnami/containers/tree/main/bitnami/wordpress) image was refactored and now the source code is published in GitHub in the `rootfs` folder of the container image.
+The [Bitnami WordPress](https://github.com/bitnami/containers/tree/main/bitnami-mirror/wordpress) image was refactored and now the source code is published in GitHub in the `rootfs` folder of the container image.
 
 In addition, several new features have been implemented:
 
@@ -537,7 +537,7 @@ Site backups can be easily performed using tools such as [VaultPress](https://va
 
 ### To 11.0.0
 
-The [Bitnami WordPress](https://github.com/bitnami/containers/tree/main/bitnami/wordpress) image was refactored and now the source code is published in GitHub in the `rootfs` folder of the container image.
+The [Bitnami WordPress](https://github.com/bitnami/containers/tree/main/bitnami-mirror/wordpress) image was refactored and now the source code is published in GitHub in the `rootfs` folder of the container image.
 
 Compatibility is not guaranteed due to the amount of involved changes, however no breaking changes are expected.
 
@@ -589,7 +589,7 @@ mariadb 12:13:25.01 INFO  ==> Running mysql_upgrade
 
 ### To 9.0.0
 
-The [Bitnami WordPress](https://github.com/bitnami/containers/tree/main/bitnami/wordpress) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the Apache daemon was started as the `daemon` user. From now on, both the container and the Apache daemon run as user `1001`. You can revert this behavior by setting the parameters `securityContext.runAsUser`, and `securityContext.fsGroup` to `0`.
+The [Bitnami WordPress](https://github.com/bitnami/containers/tree/main/bitnami-mirror/wordpress) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the Apache daemon was started as the `daemon` user. From now on, both the container and the Apache daemon run as user `1001`. You can revert this behavior by setting the parameters `securityContext.runAsUser`, and `securityContext.fsGroup` to `0`.
 Chart labels and Ingress configuration were also adapted to follow the Helm charts best practices.
 
 Consequences:

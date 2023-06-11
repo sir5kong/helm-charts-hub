@@ -80,7 +80,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                    | Description                                                                                                 | Value                  |
 | --------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ---------------------- |
 | `image.registry`                        | EJBCA image registry                                                                                        | `docker.io`            |
-| `image.repository`                      | EJBCA image name                                                                                            | `bitnami/ejbca`        |
+| `image.repository`                      | EJBCA image name                                                                                            | `bitnami-mirror/ejbca`        |
 | `image.tag`                             | EJBCA image tag                                                                                             | `7.11.0-debian-11-r38` |
 | `image.digest`                          | EJBCA image image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                   |
 | `image.pullPolicy`                      | EJBCA image pull policy                                                                                     | `IfNotPresent`         |
@@ -234,7 +234,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `networkPolicy.egressRules.denyConnectionsToExternal`         | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                            | `false` |
 | `networkPolicy.egressRules.customRules`                       | Custom network policy rule                                                                                                | `{}`    |
 
-The above parameters map to the env variables defined in [bitnami/ejbca](https://github.com/bitnami/containers/tree/main/bitnami/ejbca). For more information please refer to the [bitnami/ejbca](https://github.com/bitnami/containers/tree/main/bitnami/ejbca) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/ejbca](https://github.com/bitnami/containers/tree/main/bitnami/ejbca). For more information please refer to the [bitnami/ejbca](https://github.com/bitnami/containers/tree/main/bitnami/ejbca) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 

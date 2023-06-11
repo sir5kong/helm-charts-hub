@@ -82,13 +82,13 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                   | Description                                                                                                   | Value                         |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------- |
 | `tempo.image.registry`                 | Grafana Tempo image registry                                                                                  | `docker.io`                   |
-| `tempo.image.repository`               | Grafana Tempo image repository                                                                                | `bitnami/grafana-tempo`       |
+| `tempo.image.repository`               | Grafana Tempo image repository                                                                                | `bitnami-mirror/grafana-tempo`       |
 | `tempo.image.tag`                      | Grafana Tempo image tag (immutable tags are recommended)                                                      | `2.1.1-debian-11-r9`          |
 | `tempo.image.digest`                   | Grafana Tempo image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                          |
 | `tempo.image.pullPolicy`               | Grafana Tempo image pull policy                                                                               | `IfNotPresent`                |
 | `tempo.image.pullSecrets`              | Grafana Tempo image pull secrets                                                                              | `[]`                          |
 | `tempo.memBallastSizeMbs`              | Tempo components memory ballast size in MB                                                                    | `1024`                        |
-| `tempo.dataDir`                        | Tempo components data directory                                                                               | `/bitnami/grafana-tempo/data` |
+| `tempo.dataDir`                        | Tempo components data directory                                                                               | `/bitnami-mirror/grafana-tempo/data` |
 | `tempo.traces.jaeger.grpc`             | Enable Tempo to ingest Jaeger GRPC traces                                                                     | `true`                        |
 | `tempo.traces.jaeger.thriftBinary`     | Enable Tempo to ingest Jaeger Thrift Binary traces                                                            | `false`                       |
 | `tempo.traces.jaeger.thriftCompact`    | Enable Tempo to ingest Jaeger Thrift Compact traces                                                           | `false`                       |
@@ -569,7 +569,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `queryFrontend.sidecars`                                    | Add additional sidecar containers to the queryFrontend pod(s)                                                       | `[]`                          |
 | `queryFrontend.initContainers`                              | Add additional init containers to the queryFrontend pod(s)                                                          | `[]`                          |
 | `queryFrontend.query.image.registry`                        | Grafana Tempo Query image registry                                                                                  | `docker.io`                   |
-| `queryFrontend.query.image.repository`                      | Grafana Tempo Query image repository                                                                                | `bitnami/grafana-tempo-query` |
+| `queryFrontend.query.image.repository`                      | Grafana Tempo Query image repository                                                                                | `bitnami-mirror/grafana-tempo-query` |
 | `queryFrontend.query.image.tag`                             | Grafana Tempo Query image tag (immutable tags are recommended)                                                      | `2.1.1-debian-11-r8`          |
 | `queryFrontend.query.image.digest`                          | Grafana Tempo Query image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                          |
 | `queryFrontend.query.image.pullPolicy`                      | Grafana Tempo Query image pull policy                                                                               | `IfNotPresent`                |
@@ -637,7 +637,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | `vulture.enabled`                               | Enable vulture deployment                                                                                       | `true`                          |
 | `vulture.image.registry`                        | Grafana Vulture image registry                                                                                  | `docker.io`                     |
-| `vulture.image.repository`                      | Grafana Vulture image repository                                                                                | `bitnami/grafana-tempo-vulture` |
+| `vulture.image.repository`                      | Grafana Vulture image repository                                                                                | `bitnami-mirror/grafana-tempo-vulture` |
 | `vulture.image.tag`                             | Grafana Vulture image tag (immutable tags are recommended)                                                      | `2.1.1-debian-11-r6`            |
 | `vulture.image.digest`                          | Grafana Vulture image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                            |
 | `vulture.image.pullPolicy`                      | Grafana Vulture image pull policy                                                                               | `IfNotPresent`                  |
@@ -804,7 +804,7 @@ The tempo configuration file `tempo.yaml` is shared across the different compone
 
 ## Persistence
 
-The [Bitnami grafana-tempo](https://github.com/bitnami/containers/tree/main/bitnami/grafana-tempo) image stores the grafana-tempo `ingester` data at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments.
+The [Bitnami grafana-tempo](https://github.com/bitnami/containers/tree/main/bitnami-mirror/grafana-tempo) image stores the grafana-tempo `ingester` data at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments.
 
 ### Additional environment variables
 

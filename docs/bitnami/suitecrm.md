@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/suitecrm
 
 ## Introduction
 
-This chart bootstraps a [SuiteCRM](https://github.com/bitnami/containers/tree/main/bitnami/suitecrm) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [SuiteCRM](https://github.com/bitnami/containers/tree/main/bitnami-mirror/suitecrm) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 SuiteCRM is a software fork of the popular customer relationship management (CRM) system SugarCRM.
 
@@ -79,7 +79,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                    | Description                                                                                              | Value                 |
 | --------------------------------------- | -------------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`                        | SuiteCRM image registry                                                                                  | `docker.io`           |
-| `image.repository`                      | SuiteCRM image repository                                                                                | `bitnami/suitecrm`    |
+| `image.repository`                      | SuiteCRM image repository                                                                                | `bitnami-mirror/suitecrm`    |
 | `image.tag`                             | SuiteCRM image tag (immutable tags are recommended)                                                      | `7.13.3-debian-11-r4` |
 | `image.digest`                          | SuiteCRM image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`                      | SuiteCRM image pull policy                                                                               | `IfNotPresent`        |
@@ -305,7 +305,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `networkPolicy.egressRules.denyConnectionsToExternal`         | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                               | `false` |
 | `networkPolicy.egressRules.customRules`                       | Custom network policy rule                                                                                                   | `{}`    |
 
-The above parameters map to the env variables defined in [bitnami/suitecrm](https://github.com/bitnami/containers/tree/main/bitnami/suitecrm). For more information please refer to the [bitnami/suitecrm](https://github.com/bitnami/containers/tree/main/bitnami/suitecrm) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/suitecrm](https://github.com/bitnami/containers/tree/main/bitnami/suitecrm). For more information please refer to the [bitnami/suitecrm](https://github.com/bitnami/containers/tree/main/bitnami/suitecrm) image documentation.
 
 > **Note**:
 >
@@ -375,7 +375,7 @@ As an alternative, you can use of the preset configurations for pod affinity, po
 
 ## Persistence
 
-The [Bitnami SuiteCRM](https://github.com/bitnami/containers/tree/main/bitnami/suitecrm) image stores the SuiteCRM data and configurations at the `/bitnami/suitecrm` path of the container.
+The [Bitnami SuiteCRM](https://github.com/bitnami/containers/tree/main/bitnami-mirror/suitecrm) image stores the SuiteCRM data and configurations at the `/bitnami/suitecrm` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
@@ -474,7 +474,7 @@ In this major the MariaDB dependency version was also bumped to a new major vers
 
 #### 3. Migration of the SuiteCRM image to non-root
 
-The [Bitnami SuiteCRM](https://github.com/bitnami/containers/tree/main/bitnami/suitecrm) image was updated to support and enable the "non-root" user approach
+The [Bitnami SuiteCRM](https://github.com/bitnami/containers/tree/main/bitnami-mirror/suitecrm) image was updated to support and enable the "non-root" user approach
 
 If you want to continue to run the container image as the `root` user, you need to set `podSecurityContext.enabled=false` and `containerSecurity.context.enabled=false`.
 

@@ -11,7 +11,7 @@ This chart bootstraps a [RabbitMQ Exporter](https://github.com/kbudde/rabbitmq_e
 ## Get Repository Info
 
 ```console
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -21,10 +21,10 @@ _See [`helm repo`]](https://helm.sh/docs/helm/helm_repo/) for command documentat
 
 ```console
 # Helm 3
-$ helm install [RELEASE_NAME] prometheus-community/prometheus-rabbitmq-exporter
+$ helm install [RELEASE_NAME] prometheus-community-mirror/prometheus-rabbitmq-exporter
 
 # Helm 2
-$ helm install --name [RELEASE_NAME] prometheus-community/prometheus-rabbitmq-exporter
+$ helm install --name [RELEASE_NAME] prometheus-community-mirror/prometheus-rabbitmq-exporter
 ```
 
 _See [configuration](#configuration) below._
@@ -60,10 +60,10 @@ See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_h
 
 ```console
 # Helm 2
-$ helm inspect values prometheus-community/prometheus-rabbitmq-exporter
+$ helm inspect values prometheus-community-mirror/prometheus-rabbitmq-exporter
 
 # Helm 3
-$ helm show values prometheus-community/prometheus-rabbitmq-exporter
+$ helm show values prometheus-community-mirror/prometheus-rabbitmq-exporter
 ```
 
 ### RabbitMQ Connection

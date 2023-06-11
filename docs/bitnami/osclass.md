@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/osclass
 
 ## Introduction
 
-This chart bootstraps an [Osclass](https://github.com/bitnami/containers/tree/main/bitnami/osclass) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps an [Osclass](https://github.com/bitnami/containers/tree/main/bitnami-mirror/osclass) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 It also packages the [Bitnami MariaDB chart](https://github.com/bitnami/charts/tree/main/bitnami/mariadb) which is required for bootstrapping a MariaDB deployment for the database requirements of the Osclass application.
 
@@ -77,7 +77,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                | Description                                                                                             | Value                |
 | ------------------- | ------------------------------------------------------------------------------------------------------- | -------------------- |
 | `image.registry`    | Osclass image registry                                                                                  | `docker.io`          |
-| `image.repository`  | Osclass image repository                                                                                | `bitnami/osclass`    |
+| `image.repository`  | Osclass image repository                                                                                | `bitnami-mirror/osclass`    |
 | `image.tag`         | Osclass image tag (immutable tags are recommended)                                                      | `8.1.2-debian-11-r7` |
 | `image.digest`      | Osclass image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                 |
 | `image.pullPolicy`  | Osclass image pull policy                                                                               | `IfNotPresent`       |
@@ -313,7 +313,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `networkPolicy.egressRules.denyConnectionsToExternal`         | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                              | `false` |
 | `networkPolicy.egressRules.customRules`                       | Custom network policy rule                                                                                                  | `{}`    |
 
-The above parameters map to the env variables defined in [bitnami/osclass](https://github.com/bitnami/containers/tree/main/bitnami/osclass). For more information please refer to the [bitnami/osclass](https://github.com/bitnami/containers/tree/main/bitnami/osclass) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/osclass](https://github.com/bitnami/containers/tree/main/bitnami/osclass). For more information please refer to the [bitnami/osclass](https://github.com/bitnami/containers/tree/main/bitnami/osclass) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -345,7 +345,7 @@ Bitnami will release a new chart updating its containers if a new version of the
 
 ## Persistence
 
-The [Bitnami Osclass](https://github.com/bitnami/containers/tree/main/bitnami/osclass) image stores the Osclass data and configurations at the `/bitnami/osclass` path of the container.
+The [Bitnami Osclass](https://github.com/bitnami/containers/tree/main/bitnami-mirror/osclass) image stores the Osclass data and configurations at the `/bitnami/osclass` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube. See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
 
@@ -431,7 +431,7 @@ Additionally updates the MariaDB subchart to it newest major, 10.0.0, which cont
 
 ### To 10.0.0
 
-The [Bitnami Osclass](https://github.com/bitnami/containers/tree/main/bitnami/osclass) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the Apache daemon was started as the `daemon` user. From now on, both the container and the Apache daemon run as user `1001`. You can revert this behavior by setting the parameters `containerSecurityContext.runAsUser` to `root`.
+The [Bitnami Osclass](https://github.com/bitnami/containers/tree/main/bitnami-mirror/osclass) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the Apache daemon was started as the `daemon` user. From now on, both the container and the Apache daemon run as user `1001`. You can revert this behavior by setting the parameters `containerSecurityContext.runAsUser` to `root`.
 
 Consequences:
 

@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/magento
 
 ## Introduction
 
-This chart bootstraps a [Magento](https://github.com/bitnami/containers/tree/main/bitnami/magento) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Magento](https://github.com/bitnami/containers/tree/main/bitnami-mirror/magento) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 It also packages the [Bitnami MariaDB chart](https://github.com/bitnami/charts/tree/main/bitnami/mariadb) which is required for bootstrapping a MariaDB deployment as a database for the Magento application.
 
@@ -81,7 +81,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                    | Description                                                                                                          | Value                 |
 | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`                        | Magento image registry                                                                                               | `docker.io`           |
-| `image.repository`                      | Magento image repository                                                                                             | `bitnami/magento`     |
+| `image.repository`                      | Magento image repository                                                                                             | `bitnami-mirror/magento`     |
 | `image.tag`                             | Magento image tag (immutable tags are recommended)                                                                   | `2.4.6-debian-11-r20` |
 | `image.digest`                          | Magento image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag              | `""`                  |
 | `image.pullPolicy`                      | Magento image pull policy                                                                                            | `IfNotPresent`        |
@@ -336,7 +336,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `autoscaling.targetCPU`    | Target CPU utilization percentage    | `""`    |
 | `autoscaling.targetMemory` | Target Memory utilization percentage | `""`    |
 
-The above parameters map to the env variables defined in [bitnami/magento](https://github.com/bitnami/containers/tree/main/bitnami/magento). For more information please refer to the [bitnami/magento](https://github.com/bitnami/containers/tree/main/bitnami/magento) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/magento](https://github.com/bitnami/containers/tree/main/bitnami/magento). For more information please refer to the [bitnami/magento](https://github.com/bitnami/containers/tree/main/bitnami/magento) image documentation.
 
 > **Note**:
 >
@@ -448,7 +448,7 @@ If you are going to manage TLS secrets outside of Helm, please know that you can
 
 ## Persistence
 
-The [Bitnami Magento](https://github.com/bitnami/containers/tree/main/bitnami/magento) image stores the Magento data and configurations at the `/bitnami/magento` and `/bitnami/apache` paths of the container.
+The [Bitnami Magento](https://github.com/bitnami/containers/tree/main/bitnami-mirror/magento) image stores the Magento data and configurations at the `/bitnami/magento` and `/bitnami/apache` paths of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. There is a [known issue](https://github.com/kubernetes/kubernetes/issues/39178) in Kubernetes Clusters with EBS in different availability zones. Ensure your cluster is configured properly to create Volumes in the same availability zone where the nodes are running. Kuberentes 1.12 solved this issue with the [Volume Binding Mode](https://kubernetes.io/docs/concepts/storage/storage-classes/#volume-binding-mode).
 
@@ -518,7 +518,7 @@ externalDatabase.port=3306
 
 Note also if you disable MariaDB per above you MUST supply values for the `externalDatabase` connection.
 
-In case the database already contains data from a previous Magento installation, you need to set the `magentoSkipInstall` parameter to _true_. Otherwise, the container would execute the installation wizard and could modify the existing data in the database. This parameter force the container to not execute the Magento installation wizard. This is necessary in case you use a database that already has Magento data [+info](https://github.com/bitnami/containers/tree/main/bitnami/magento#connect-magento-docker-container-to-an-existing-database).
+In case the database already contains data from a previous Magento installation, you need to set the `magentoSkipInstall` parameter to _true_. Otherwise, the container would execute the installation wizard and could modify the existing data in the database. This parameter force the container to not execute the Magento installation wizard. This is necessary in case you use a database that already has Magento data [+info](https://github.com/bitnami/containers/tree/main/bitnami-mirror/magento#connect-magento-docker-container-to-an-existing-database).
 
 ### Deploying extra resources
 
@@ -614,7 +614,7 @@ This upgrade adapts the chart to the latest Bitnami good practices. Check the Pa
 
 #### 2. Migration of the Magento image to non-root
 
-The [Bitnami Magento](https://github.com/bitnami/containers/tree/main/bitnami/magento) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the Apache daemon was started as the `daemon` user. From now on, both the container and the Apache daemon run as user `1001`. Consequences:
+The [Bitnami Magento](https://github.com/bitnami/containers/tree/main/bitnami-mirror/magento) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the Apache daemon was started as the `daemon` user. From now on, both the container and the Apache daemon run as user `1001`. Consequences:
 
 - The HTTP/HTTPS ports exposed by the container are now `8080/8443` instead of `80/443`.
 - Backwards compatibility is not guaranteed. Uninstall & install the chart again to obtain the latest version.

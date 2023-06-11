@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/node-exporter
 
 ## Introduction
 
-This chart bootstraps [Node Exporter](https://github.com/bitnami/containers/tree/main/bitnami/node-exporter) on [Kubernetes](https://kubernetes.io) using the [Helm](https://helm.sh) package manager.
+This chart bootstraps [Node Exporter](https://github.com/bitnami/containers/tree/main/bitnami-mirror/node-exporter) on [Kubernetes](https://kubernetes.io) using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -83,7 +83,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `serviceAccount.automountServiceAccountToken` | Automount service account token for the server service account                                                                                                     | `true`                  |
 | `serviceAccount.annotations`                  | Annotations for service account. Evaluated as a template. Only used if `create` is `true`.                                                                         | `{}`                    |
 | `image.registry`                              | Node Exporter image registry                                                                                                                                       | `docker.io`             |
-| `image.repository`                            | Node Exporter image repository                                                                                                                                     | `bitnami/node-exporter` |
+| `image.repository`                            | Node Exporter image repository                                                                                                                                     | `bitnami-mirror/node-exporter` |
 | `image.tag`                                   | Node Exporter image tag (immutable tags are recommended)                                                                                                           | `1.6.0-debian-11-r0`    |
 | `image.digest`                                | Node Exporter image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                      | `""`                    |
 | `image.pullPolicy`                            | Node Exporter image pull policy                                                                                                                                    | `IfNotPresent`          |

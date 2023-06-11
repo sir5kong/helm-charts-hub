@@ -2,12 +2,12 @@
 
 A proxy that enforces a given label in a given PromQL query.
 
-**Homepage:** <https://github.com/prometheus-community/prom-label-proxy>
+**Homepage:** <https://github.com/prometheus-community-mirror/prom-label-proxy>
 
 ## Get Repository Info
 
 ```console
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -16,7 +16,7 @@ _See [`helm repo`](https://helm.sh/docs/helm/helm_repo/) for command documentati
 ## Install Chart
 
 ```console
-helm install [RELEASE_NAME] prometheus-community/prom-label-proxy
+helm install [RELEASE_NAME] prometheus-community-mirror/prom-label-proxy
 ```
 
 _See [configuration](#configuration) below._
@@ -46,5 +46,5 @@ _See [`helm upgrade`](https://helm.sh/docs/helm/helm_upgrade/) for command docum
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values.yaml](./values.yaml), or run these configuration commands:
 
 ```console
-helm show values prometheus-community/prom-label-proxy
+helm show values prometheus-community-mirror/prom-label-proxy
 ```

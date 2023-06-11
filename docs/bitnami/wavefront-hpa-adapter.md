@@ -71,7 +71,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                              | Description                                                                                             | Value                                |
 | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------ |
 | `image.registry`                                  | Adapter image registry                                                                                  | `docker.io`                          |
-| `image.repository`                                | Adapter image repository                                                                                | `bitnami/wavefront-hpa-adapter`      |
+| `image.repository`                                | Adapter image repository                                                                                | `bitnami-mirror/wavefront-hpa-adapter`      |
 | `image.tag`                                       | Adapter image tag (immutable tags are recommended)                                                      | `0.9.10-scratch-r6`                  |
 | `image.digest`                                    | Adapter image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                                 |
 | `image.pullPolicy`                                | Adapter image pull policy                                                                               | `IfNotPresent`                       |

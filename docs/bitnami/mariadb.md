@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/mariadb
 
 ## Introduction
 
-This chart bootstraps a [MariaDB](https://github.com/bitnami/containers/tree/main/bitnami/mariadb) replication cluster deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [MariaDB](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mariadb) replication cluster deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 MariaDB is developed as open source software and as a relational database it provides an SQL interface for accessing data. The latest versions of MariaDB also include GIS and JSON features.
 
@@ -83,7 +83,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                       | Description                                                                                                                                                                                                                                                                   | Value                  |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | `image.registry`           | MariaDB image registry                                                                                                                                                                                                                                                        | `docker.io`            |
-| `image.repository`         | MariaDB image repository                                                                                                                                                                                                                                                      | `bitnami/mariadb`      |
+| `image.repository`         | MariaDB image repository                                                                                                                                                                                                                                                      | `bitnami-mirror/mariadb`      |
 | `image.tag`                | MariaDB image tag (immutable tags are recommended)                                                                                                                                                                                                                            | `10.11.4-debian-11-r0` |
 | `image.digest`             | MariaDB image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                                                                                                                                       | `""`                   |
 | `image.pullPolicy`         | MariaDB image pull policy                                                                                                                                                                                                                                                     | `IfNotPresent`         |
@@ -378,7 +378,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `networkPolicy.egressRules.denyConnectionsToExternal`                  | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                                         | `false` |
 | `networkPolicy.egressRules.customRules`                                | Custom network policy rule                                                                                                             | `{}`    |
 
-The above parameters map to the env variables defined in [bitnami/mariadb](https://github.com/bitnami/containers/tree/main/bitnami/mariadb). For more information please refer to the [bitnami/mariadb](https://github.com/bitnami/containers/tree/main/bitnami/mariadb) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/mariadb](https://github.com/bitnami/containers/tree/main/bitnami/mariadb). For more information please refer to the [bitnami/mariadb](https://github.com/bitnami/containers/tree/main/bitnami/mariadb) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -410,11 +410,11 @@ Bitnami will release a new chart updating its containers if a new version of the
 
 ### Change MariaDB version
 
-To modify the MariaDB version used in this chart you can specify a [valid image tag](https://hub.docker.com/r/bitnami/mariadb/tags/) using the `image.tag` parameter. For example, `image.tag=X.Y.Z`. This approach is also applicable to other images like exporters.
+To modify the MariaDB version used in this chart you can specify a [valid image tag](https://hub.docker.com/r/bitnami-mirror/mariadb/tags/) using the `image.tag` parameter. For example, `image.tag=X.Y.Z`. This approach is also applicable to other images like exporters.
 
 ### Initialize a fresh instance
 
-The [Bitnami MariaDB](https://github.com/bitnami/containers/tree/main/bitnami/mariadb) image allows you to use your custom scripts to initialize a fresh instance. Custom scripts may be specified using the `initdbScripts` parameter. Alternatively, an external ConfigMap may be created with all the initialization scripts and the ConfigMap passed to the chart via the `initdbScriptsConfigMap` parameter. Note that this will override the `initdbScripts` parameter.
+The [Bitnami MariaDB](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mariadb) image allows you to use your custom scripts to initialize a fresh instance. Custom scripts may be specified using the `initdbScripts` parameter. Alternatively, an external ConfigMap may be created with all the initialization scripts and the ConfigMap passed to the chart via the `initdbScriptsConfigMap` parameter. Note that this will override the `initdbScripts` parameter.
 
 The allowed extensions are `.sh`, `.sql` and `.sql.gz`.
 
@@ -432,7 +432,7 @@ Similarly, additional containers can be added to MariaDB pods using the `initCon
 
 ## Persistence
 
-The [Bitnami MariaDB](https://github.com/bitnami/containers/tree/main/bitnami/mariadb) image stores the MariaDB data and configurations at the `/bitnami/mariadb` path of the container.
+The [Bitnami MariaDB](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mariadb) image stores the MariaDB data and configurations at the `/bitnami/mariadb` path of the container.
 
 The chart mounts a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) volume at this location. The volume is created using dynamic volume provisioning, by default. An existing PersistentVolumeClaim can also be defined.
 

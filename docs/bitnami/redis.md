@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/redis
 
 ## Introduction
 
-This chart bootstraps a [Redis&reg;](https://github.com/bitnami/containers/tree/main/bitnami/redis) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Redis&reg;](https://github.com/bitnami/containers/tree/main/bitnami-mirror/redis) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -24,8 +24,8 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 
 You can choose any of the two Redis&reg; Helm charts for deploying a Redis&reg; cluster.
 
-1. [Redis&reg; Helm Chart](https://github.com/bitnami/charts/tree/main/bitnami/redis) will deploy a master-replica cluster, with the [option](https://github.com/bitnami/charts/tree/main/bitnami/redis#redis-sentinel-configuration-parameters) of enabling using Redis&reg; Sentinel.
-2. [Redis&reg; Cluster Helm Chart](https://github.com/bitnami/charts/tree/main/bitnami/redis-cluster) will deploy a Redis&reg; Cluster topology with sharding.
+1. [Redis&reg; Helm Chart](https://github.com/bitnami/charts/tree/main/bitnami-mirror/redis) will deploy a master-replica cluster, with the [option](https://github.com/bitnami/charts/tree/main/bitnami/redis#redis-sentinel-configuration-parameters) of enabling using Redis&reg; Sentinel.
+2. [Redis&reg; Cluster Helm Chart](https://github.com/bitnami/charts/tree/main/bitnami-mirror/redis-cluster) will deploy a Redis&reg; Cluster topology with sharding.
 
 The main features of each chart are the following:
 
@@ -98,7 +98,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                | Description                                                                                                | Value                  |
 | ------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------- |
 | `image.registry`    | Redis&reg; image registry                                                                                  | `docker.io`            |
-| `image.repository`  | Redis&reg; image repository                                                                                | `bitnami/redis`        |
+| `image.repository`  | Redis&reg; image repository                                                                                | `bitnami-mirror/redis`        |
 | `image.tag`         | Redis&reg; image tag (immutable tags are recommended)                                                      | `7.0.11-debian-11-r12` |
 | `image.digest`      | Redis&reg; image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                   |
 | `image.pullPolicy`  | Redis&reg; image pull policy                                                                               | `IfNotPresent`         |
@@ -332,7 +332,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
 | `sentinel.enabled`                            | Use Redis&reg; Sentinel on Redis&reg; pods.                                                                                                 | `false`                  |
 | `sentinel.image.registry`                     | Redis&reg; Sentinel image registry                                                                                                          | `docker.io`              |
-| `sentinel.image.repository`                   | Redis&reg; Sentinel image repository                                                                                                        | `bitnami/redis-sentinel` |
+| `sentinel.image.repository`                   | Redis&reg; Sentinel image repository                                                                                                        | `bitnami-mirror/redis-sentinel` |
 | `sentinel.image.tag`                          | Redis&reg; Sentinel image tag (immutable tags are recommended)                                                                              | `7.0.11-debian-11-r10`   |
 | `sentinel.image.digest`                       | Redis&reg; Sentinel image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                         | `""`                     |
 | `sentinel.image.pullPolicy`                   | Redis&reg; Sentinel image pull policy                                                                                                       | `IfNotPresent`           |
@@ -450,7 +450,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------ |
 | `metrics.enabled`                            | Start a sidecar prometheus exporter to expose Redis&reg; metrics                                                    | `false`                  |
 | `metrics.image.registry`                     | Redis&reg; Exporter image registry                                                                                  | `docker.io`              |
-| `metrics.image.repository`                   | Redis&reg; Exporter image repository                                                                                | `bitnami/redis-exporter` |
+| `metrics.image.repository`                   | Redis&reg; Exporter image repository                                                                                | `bitnami-mirror/redis-exporter` |
 | `metrics.image.tag`                          | Redis&reg; Exporter image tag (immutable tags are recommended)                                                      | `1.50.0-debian-11-r13`   |
 | `metrics.image.digest`                       | Redis&reg; Exporter image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                     |
 | `metrics.image.pullPolicy`                   | Redis&reg; Exporter image pull policy                                                                               | `IfNotPresent`           |
@@ -864,7 +864,7 @@ If using a master/slave topology, or with `usePassword: false`, no action is req
 
 ### To 9.0.0
 
-The metrics exporter has been changed from a separate deployment to a sidecar container, due to the latest changes in the Redis&reg; exporter code. Check the [official page](https://github.com/oliver006/redis_exporter/) for more information. The metrics container image was changed from oliver006/redis_exporter to bitnami/redis-exporter (Bitnami's maintained package of oliver006/redis_exporter).
+The metrics exporter has been changed from a separate deployment to a sidecar container, due to the latest changes in the Redis&reg; exporter code. Check the [official page](https://github.com/oliver006/redis_exporter/) for more information. The metrics container image was changed from oliver006/redis_exporter to bitnami-mirror/redis-exporter (Bitnami's maintained package of oliver006/redis_exporter).
 
 ### To 8.0.18
 

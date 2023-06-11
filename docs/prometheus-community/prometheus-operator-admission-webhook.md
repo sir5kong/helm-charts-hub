@@ -16,7 +16,7 @@ For more info, please, see the [Prometheus Operator](https://prometheus-operator
 ## Get Repository Info
 <!-- textlint-disable terminology -->
 ```console
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -25,7 +25,7 @@ _See [helm repo](https://helm.sh/docs/helm/helm_repo/) for command documentation
 ## Install Chart
 
 ```console
-helm install [RELEASE_NAME] prometheus-community/prometheus-operator-admission-webhook
+helm install [RELEASE_NAME] prometheus-community-mirror/prometheus-operator-admission-webhook
 ```
 
 _See [configuration](#configuration) below._
@@ -45,7 +45,7 @@ _See [helm uninstall](https://helm.sh/docs/helm/helm_uninstall/) for command doc
 ## Upgrading Chart
 
 ```console
-helm upgrade [RELEASE_NAME] prometheus-community/prometheus-operator-admission-webhook --install
+helm upgrade [RELEASE_NAME] prometheus-community-mirror/prometheus-operator-admission-webhook --install
 ```
 
 _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documentation._
@@ -55,7 +55,7 @@ _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documen
 Application version has been bumped to release [0.65.1](https://github.com/prometheus-operator/prometheus-operator/releases).
 
 ```bash
-helm upgrade [RELEASE_NAME] prometheus-community/prometheus-operator-admission-webhook --version 0.4.0
+helm upgrade [RELEASE_NAME] prometheus-community-mirror/prometheus-operator-admission-webhook --version 0.4.0
 ```
 
 ### To 0.3
@@ -69,7 +69,7 @@ An icon has been added to the chart in Chart.yaml.
 Unused value `networkPolicy.allowMonitoringNamespace` has been removed from the values file.
 
 ```bash
-helm upgrade [RELEASE_NAME] prometheus-community/prometheus-operator-admission-webhook --version 0.3.0
+helm upgrade [RELEASE_NAME] prometheus-community-mirror/prometheus-operator-admission-webhook --version 0.3.0
 ```
 
 ## Configuration
@@ -79,5 +79,5 @@ See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_h
 To see all configurable options with detailed comments, visit the chart's [values.yaml](./values.yaml), or run these configuration commands:
 
 ```console
-helm show values prometheus-community/prometheus-operator-admission-webhook
+helm show values prometheus-community-mirror/prometheus-operator-admission-webhook
 ```

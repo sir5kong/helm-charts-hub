@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/influxdb
 
 ## Introduction
 
-This chart bootstraps a [influxdb](https://github.com/bitnami/containers/tree/main/bitnami/influxdb) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [influxdb](https://github.com/bitnami/containers/tree/main/bitnami-mirror/influxdb) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -79,7 +79,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                             | Description                                                                                                                                                                                                                                                          | Value                |
 | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
 | `image.registry`                                 | InfluxDB&trade; image registry                                                                                                                                                                                                                                       | `docker.io`          |
-| `image.repository`                               | InfluxDB&trade; image repository                                                                                                                                                                                                                                     | `bitnami/influxdb`   |
+| `image.repository`                               | InfluxDB&trade; image repository                                                                                                                                                                                                                                     | `bitnami-mirror/influxdb`   |
 | `image.tag`                                      | InfluxDB&trade; image tag (immutable tags are recommended)                                                                                                                                                                                                           | `2.7.1-debian-11-r8` |
 | `image.digest`                                   | InfluxDB&trade; image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                                                                                                                      | `""`                 |
 | `image.pullPolicy`                               | InfluxDB&trade; image pull policy                                                                                                                                                                                                                                    | `IfNotPresent`       |
@@ -410,7 +410,7 @@ extraEnvVars:
 
 ### Initialize a fresh instance
 
-The [Bitnami InfluxDB&trade;](https://github.com/bitnami/containers/tree/main/bitnami/influxdb) image allows you to use your custom scripts to initialize a fresh instance. In order to execute the scripts, they must be located inside the chart folder `files/docker-entrypoint-initdb.d` so they can be consumed as a ConfigMap.
+The [Bitnami InfluxDB&trade;](https://github.com/bitnami/containers/tree/main/bitnami-mirror/influxdb) image allows you to use your custom scripts to initialize a fresh instance. In order to execute the scripts, they must be located inside the chart folder `files/docker-entrypoint-initdb.d` so they can be consumed as a ConfigMap.
 
 Alternatively, you can specify custom scripts using the `influxdb.initdbScripts` parameter.
 

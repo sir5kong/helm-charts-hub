@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/tomcat
 
 ## Introduction
 
-This chart bootstraps a [Tomcat](https://github.com/bitnami/containers/tree/main/bitnami/tomcat) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Tomcat](https://github.com/bitnami/containers/tree/main/bitnami-mirror/tomcat) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Tomcat implements several Java EE specifications including Java Servlet, JavaServer Pages, Java EL, and WebSocket, and provides a "pure Java" HTTP web server environment for Java code to run in.
 
@@ -78,7 +78,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                          | Description                                                                                            | Value                 |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------ | --------------------- |
 | `image.registry`              | Tomcat image registry                                                                                  | `docker.io`           |
-| `image.repository`            | Tomcat image repository                                                                                | `bitnami/tomcat`      |
+| `image.repository`            | Tomcat image repository                                                                                | `bitnami-mirror/tomcat`      |
 | `image.tag`                   | Tomcat image tag (immutable tags are recommended)                                                      | `10.1.9-debian-11-r4` |
 | `image.digest`                | Tomcat image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`            | Tomcat image pull policy                                                                               | `IfNotPresent`        |
@@ -242,7 +242,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `metrics.prometheusRule.namespace`                  | namespace where prometheusRules resource should be created                                                   | `""`                                                                                                                                                                                                                |
 | `metrics.prometheusRule.rules`                      | Create specified [Rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)         | `[]`                                                                                                                                                                                                                |
 
-The above parameters map to the env variables defined in [bitnami/tomcat](https://github.com/bitnami/containers/tree/main/bitnami/tomcat). For more information please refer to the [bitnami/tomcat](https://github.com/bitnami/containers/tree/main/bitnami/tomcat) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/tomcat](https://github.com/bitnami/containers/tree/main/bitnami/tomcat). For more information please refer to the [bitnami/tomcat](https://github.com/bitnami/containers/tree/main/bitnami/tomcat) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -301,7 +301,7 @@ As an alternative, use one of the preset configurations for pod affinity, pod an
 
 ## Persistence
 
-The [Bitnami Tomcat](https://github.com/bitnami/containers/tree/main/bitnami/tomcat) image stores the Tomcat data and configurations at the `/bitnami/tomcat` path of the container.
+The [Bitnami Tomcat](https://github.com/bitnami/containers/tree/main/bitnami-mirror/tomcat) image stores the Tomcat data and configurations at the `/bitnami/tomcat` path of the container.
 
 Persistent Volume Claims (PVCs) are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 

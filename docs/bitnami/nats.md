@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/nats
 
 ## Introduction
 
-This chart bootstraps a [NATS](https://github.com/bitnami/containers/tree/main/bitnami/nats) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [NATS](https://github.com/bitnami/containers/tree/main/bitnami-mirror/nats) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -76,7 +76,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                     | Description                                                                                           | Value                 |
 | ------------------------ | ----------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`         | NATS image registry                                                                                   | `docker.io`           |
-| `image.repository`       | NATS image repository                                                                                 | `bitnami/nats`        |
+| `image.repository`       | NATS image repository                                                                                 | `bitnami-mirror/nats`        |
 | `image.tag`              | NATS image tag (immutable tags are recommended)                                                       | `2.9.17-debian-11-r1` |
 | `image.digest`           | NATS image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag  | `""`                  |
 | `image.pullPolicy`       | NATS image pull policy                                                                                | `IfNotPresent`        |
@@ -214,7 +214,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------- | ----------------------- |
 | `metrics.enabled`                          | Enable Prometheus metrics via exporter side-car                                                               | `false`                 |
 | `metrics.image.registry`                   | Prometheus metrics exporter image registry                                                                    | `docker.io`             |
-| `metrics.image.repository`                 | Prometheus metrics exporter image repository                                                                  | `bitnami/nats-exporter` |
+| `metrics.image.repository`                 | Prometheus metrics exporter image repository                                                                  | `bitnami-mirror/nats-exporter` |
 | `metrics.image.tag`                        | Prometheus metrics exporter image tag (immutable tags are recommended)                                        | `0.11.0-debian-11-r8`   |
 | `metrics.image.digest`                     | NATS Exporter image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                    |
 | `metrics.image.pullPolicy`                 | Prometheus metrics image pull policy                                                                          | `IfNotPresent`          |
@@ -329,7 +329,7 @@ helm install nats-v1 --set natsFilename=gnatsd --set image.tag=1.4.1 oci://regis
 
 ### To 7.0.0
 
-This new version updates the NATS image to a [new version that has support to configure NATS based on bash logic](https://github.com/bitnami/containers/tree/main/bitnami/nats#264-r13), although this chart overwrites the configuration file so that shouldn't affect the functionality. It also adds several standardizations that were missing in the chart:
+This new version updates the NATS image to a [new version that has support to configure NATS based on bash logic](https://github.com/bitnami/containers/tree/main/bitnami-mirror/nats#264-r13), although this chart overwrites the configuration file so that shouldn't affect the functionality. It also adds several standardizations that were missing in the chart:
 
 - Add missing parameters such as `existingSecret`, `containerPorts.*`, `startupProbe.*` or `lifecycleHooks`.
 - Add missing parameters to extend the services such as `service.extraPorts` or `service.sessionAffinity`.

@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/jaeger
 
 ## Introduction
 
-This chart bootstraps a [jaeger](https://github.com/bitnami/containers/tree/main/bitnami/jaeger) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [jaeger](https://github.com/bitnami/containers/tree/main/bitnami-mirror/jaeger) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -77,7 +77,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                | Description                                                                                            | Value                 |
 | ------------------- | ------------------------------------------------------------------------------------------------------ | --------------------- |
 | `image.registry`    | Jaeger image registry                                                                                  | `docker.io`           |
-| `image.repository`  | Jaeger image repository                                                                                | `bitnami/jaeger`      |
+| `image.repository`  | Jaeger image repository                                                                                | `bitnami-mirror/jaeger`      |
 | `image.tag`         | Jaeger image tag (immutable tags are recommended)                                                      | `1.46.0-debian-11-r0` |
 | `image.digest`      | Jaeger image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`  | image pull policy                                                                                      | `IfNotPresent`        |
@@ -391,7 +391,7 @@ Bitnami will release a new chart updating its containers if a new version of the
 
 ### Persistence
 
-The [Bitnami jaeger](https://github.com/bitnami/containers/tree/main/bitnami/jaeger) image stores the trace onto an external database. Persistent Volume Claims are used to keep the data across deployments.
+The [Bitnami jaeger](https://github.com/bitnami/containers/tree/main/bitnami-mirror/jaeger) image stores the trace onto an external database. Persistent Volume Claims are used to keep the data across deployments.
 
 ### Additional environment variables
 

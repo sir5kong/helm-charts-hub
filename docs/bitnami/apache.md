@@ -18,7 +18,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/apache
 
 Bitnami charts for Helm are carefully engineered, actively maintained and are the quickest and easiest way to deploy containers on a Kubernetes cluster that are ready to handle production workloads.
 
-This chart bootstraps a [Apache](https://github.com/bitnami/containers/tree/main/bitnami/apache) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Apache](https://github.com/bitnami/containers/tree/main/bitnami-mirror/apache) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 The Apache HTTP Server ("httpd") was launched in 1995 and it has been the most popular web server on the Internet since April 1996. It has celebrated its 20th birthday as a project in February 2015.
 
@@ -77,7 +77,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                    | Description                                                                                                              | Value                  |
 | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------- |
 | `image.registry`                        | Apache image registry                                                                                                    | `docker.io`            |
-| `image.repository`                      | Apache image repository                                                                                                  | `bitnami/apache`       |
+| `image.repository`                      | Apache image repository                                                                                                  | `bitnami-mirror/apache`       |
 | `image.tag`                             | Apache image tag (immutable tags are recommended)                                                                        | `2.4.57-debian-11-r24` |
 | `image.digest`                          | Apache image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                   | `""`                   |
 | `image.pullPolicy`                      | Apache image pull policy                                                                                                 | `IfNotPresent`         |
@@ -217,7 +217,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
 | `metrics.enabled`                          | Start a sidecar prometheus exporter to expose Apache metrics                                                                              | `false`                   |
 | `metrics.image.registry`                   | Apache Exporter image registry                                                                                                            | `docker.io`               |
-| `metrics.image.repository`                 | Apache Exporter image repository                                                                                                          | `bitnami/apache-exporter` |
+| `metrics.image.repository`                 | Apache Exporter image repository                                                                                                          | `bitnami-mirror/apache-exporter` |
 | `metrics.image.tag`                        | Apache Exporter image tag (immutable tags are recommended)                                                                                | `0.13.4-debian-11-r1`     |
 | `metrics.image.digest`                     | Apache Exporter image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                           | `""`                      |
 | `metrics.image.pullPolicy`                 | Apache Exporter image pull policy                                                                                                         | `IfNotPresent`            |

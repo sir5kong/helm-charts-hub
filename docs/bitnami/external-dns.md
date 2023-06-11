@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/external-dns
 
 ## Introduction
 
-This chart bootstraps a [ExternalDNS](https://github.com/bitnami/containers/tree/main/bitnami/external-dns) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [ExternalDNS](https://github.com/bitnami/containers/tree/main/bitnami-mirror/external-dns) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -75,7 +75,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                            | Description                                                                                                                                                                  | Value                     |
 | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
 | `image.registry`                                | ExternalDNS image registry                                                                                                                                                   | `docker.io`               |
-| `image.repository`                              | ExternalDNS image repository                                                                                                                                                 | `bitnami/external-dns`    |
+| `image.repository`                              | ExternalDNS image repository                                                                                                                                                 | `bitnami-mirror/external-dns`    |
 | `image.tag`                                     | ExternalDNS Image tag (immutable tags are recommended)                                                                                                                       | `0.13.4-debian-11-r19`    |
 | `image.digest`                                  | ExternalDNS image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                                  | `""`                      |
 | `image.pullPolicy`                              | ExternalDNS image pull policy                                                                                                                                                | `IfNotPresent`            |
@@ -472,7 +472,7 @@ helm upgrade my-release oci://registry-1.docker.io/bitnamicharts/external-dns
 
 Other mayor changes included in this major version are:
 
-- Default image changes from `registry.opensource.zalan.do/teapot/external-dns` to `bitnami/external-dns`.
+- Default image changes from `registry.opensource.zalan.do/teapot/external-dns` to `bitnami-mirror/external-dns`.
 - The parameters below are renamed:
   - `aws.secretKey` -> `aws.credentials.secretKey`
   - `aws.accessKey` -> `aws.credentials.accessKey`

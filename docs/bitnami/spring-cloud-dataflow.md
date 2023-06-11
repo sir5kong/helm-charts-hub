@@ -14,7 +14,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/spring-cloud-da
 
 ## Introduction
 
-This chart bootstraps a [Spring Cloud Data Flow](https://github.com/bitnami/containers/tree/main/bitnami/spring-cloud-dataflow) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Spring Cloud Data Flow](https://github.com/bitnami/containers/tree/main/bitnami-mirror/spring-cloud-dataflow) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -71,7 +71,7 @@ helm uninstall my-release
 | Name                                                | Description                                                                                                                                | Value                                                |
 | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- |
 | `server.image.registry`                             | Spring Cloud Dataflow image registry                                                                                                       | `docker.io`                                          |
-| `server.image.repository`                           | Spring Cloud Dataflow image repository                                                                                                     | `bitnami/spring-cloud-dataflow`                      |
+| `server.image.repository`                           | Spring Cloud Dataflow image repository                                                                                                     | `bitnami-mirror/spring-cloud-dataflow`                      |
 | `server.image.tag`                                  | Spring Cloud Dataflow image tag (immutable tags are recommended)                                                                           | `2.10.3-debian-11-r4`                                |
 | `server.image.digest`                               | Spring Cloud Dataflow image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                      | `""`                                                 |
 | `server.image.pullPolicy`                           | Spring Cloud Dataflow image pull policy                                                                                                    | `IfNotPresent`                                       |
@@ -79,7 +79,7 @@ helm uninstall my-release
 | `server.image.debug`                                | Enable image debug mode                                                                                                                    | `false`                                              |
 | `server.hostAliases`                                | Deployment pod host aliases                                                                                                                | `[]`                                                 |
 | `server.composedTaskRunner.image.registry`          | Spring Cloud Dataflow Composed Task Runner image registry                                                                                  | `docker.io`                                          |
-| `server.composedTaskRunner.image.repository`        | Spring Cloud Dataflow Composed Task Runner image repository                                                                                | `bitnami/spring-cloud-dataflow-composed-task-runner` |
+| `server.composedTaskRunner.image.repository`        | Spring Cloud Dataflow Composed Task Runner image repository                                                                                | `bitnami-mirror/spring-cloud-dataflow-composed-task-runner` |
 | `server.composedTaskRunner.image.tag`               | Spring Cloud Dataflow Composed Task Runner image tag (immutable tags are recommended)                                                      | `2.10.3-debian-11-r1`                                |
 | `server.composedTaskRunner.image.digest`            | Spring Cloud Dataflow Composed Task Runner image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                                                 |
 | `server.configuration.streamingEnabled`             | Enables or disables streaming data processing                                                                                              | `true`                                               |
@@ -463,7 +463,7 @@ Alternatively, a YAML file that specifies the values for the parameters can be p
 helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/spring-cloud-dataflow
 ```
 
-> **Tip**: You can use the default [values.yaml](https://github.com/bitnami/charts/blob/main/bitnami/spring-cloud-dataflow/values.yaml)
+> **Tip**: You can use the default [values.yaml](https://github.com/bitnami/charts/blob/main/bitnami-mirror/spring-cloud-dataflow/values.yaml)
 
 ## Configuration and installation details
 

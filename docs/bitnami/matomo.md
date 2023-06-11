@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/matomo
 
 ## Introduction
 
-This chart bootstraps a [Matomo](https://github.com/bitnami/containers/tree/main/bitnami/matomo) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Matomo](https://github.com/bitnami/containers/tree/main/bitnami-mirror/matomo) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 It also packages the [Bitnami MariaDB chart](https://github.com/bitnami/charts/tree/main/bitnami/mariadb) which is required for bootstrapping a MariaDB deployment as a database for the Matomo application.
 
@@ -78,7 +78,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                    | Description                                                                                                           | Value                  |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | `image.registry`                        | Matomo image registry                                                                                                 | `docker.io`            |
-| `image.repository`                      | Matomo Image name                                                                                                     | `bitnami/matomo`       |
+| `image.repository`                      | Matomo Image name                                                                                                     | `bitnami-mirror/matomo`       |
 | `image.tag`                             | Matomo Image tag                                                                                                      | `4.14.2-debian-11-r16` |
 | `image.digest`                          | Matomo image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                | `""`                   |
 | `image.pullPolicy`                      | Matomo image pull policy                                                                                              | `IfNotPresent`         |
@@ -347,7 +347,7 @@ As an alternative, you can use of the preset configurations for pod affinity, po
 
 ## Persistence
 
-The [Bitnami Matomo](https://github.com/bitnami/containers/tree/main/bitnami/matomo) image stores the Matomo data and configurations at the `/bitnami/matomo` path of the container.
+The [Bitnami Matomo](https://github.com/bitnami/containers/tree/main/bitnami-mirror/matomo) image stores the Matomo data and configurations at the `/bitnami/matomo` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.

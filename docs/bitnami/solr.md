@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/solr
 
 ## Introduction
 
-This chart bootstraps a [Solr](https://github.com/bitnami/containers/tree/main/bitnami/solr) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Solr](https://github.com/bitnami/containers/tree/main/bitnami-mirror/solr) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -79,7 +79,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                             | Description                                                                                          | Value                   |
 | -------------------------------- | ---------------------------------------------------------------------------------------------------- | ----------------------- |
 | `image.registry`                 | Solr image registry                                                                                  | `docker.io`             |
-| `image.repository`               | Solr image repository                                                                                | `bitnami/solr`          |
+| `image.repository`               | Solr image repository                                                                                | `bitnami-mirror/solr`          |
 | `image.tag`                      | Solr image tag (immutable tags are recommended)                                                      | `9.2.1-debian-11-r7`    |
 | `image.digest`                   | Solr image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                    |
 | `image.pullPolicy`               | image pull policy                                                                                    | `IfNotPresent`          |
@@ -206,7 +206,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `persistence.accessModes`   | Persistent Volume Access Modes                                         | `["ReadWriteOnce"]` |
 | `persistence.size`          | Size of data volume                                                    | `8Gi`               |
 | `persistence.annotations`   | Persistence annotations for Solr                                       | `{}`                |
-| `persistence.mountPath`     | Persistence mount path for Solr                                        | `/bitnami/solr`     |
+| `persistence.mountPath`     | Persistence mount path for Solr                                        | `/bitnami-mirror/solr`     |
 | `persistence.subPath`       | Path within the volume from which the container's                      | `""`                |
 | `persistence.subPathExpr`   | Expanded path within the volume from which                             | `""`                |
 | `persistence.selector`      | Selector to match an existing Persistent Volume for WordPress data PVC | `{}`                |
@@ -253,7 +253,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                            | Description                                                                                                                    | Value                                                                 |
 | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------- |
 | `metrics.enabled`                               | Deploy a Solr Prometheus exporter deployment to expose metrics                                                                 | `false`                                                               |
-| `metrics.configFile`                            | Config file with metrics to export by the Solr prometheus metrics. To change it mount a different file using `extraConfigMaps` | `/opt/bitnami/solr/prometheus-exporter/conf/solr-exporter-config.xml` |
+| `metrics.configFile`                            | Config file with metrics to export by the Solr prometheus metrics. To change it mount a different file using `extraConfigMaps` | `/opt/bitnami-mirror/solr/prometheus-exporter/conf/solr-exporter-config.xml` |
 | `metrics.threads`                               | Number of Solr exporter threads                                                                                                | `7`                                                                   |
 | `metrics.command`                               | Override Solr entrypoint string.                                                                                               | `[]`                                                                  |
 | `metrics.args`                                  | Arguments for the provided command if needed                                                                                   | `[]`                                                                  |
@@ -399,7 +399,7 @@ As an alternative, you can use the preset configurations for pod affinity, pod a
 
 ## Persistence
 
-The [Bitnami Solr](https://github.com/bitnami/containers/tree/main/bitnami/solr) image can persist data. If enabled, the persisted path is `/bitnami/solr` by default.
+The [Bitnami Solr](https://github.com/bitnami/containers/tree/main/bitnami-mirror/solr) image can persist data. If enabled, the persisted path is `/bitnami/solr` by default.
 
 The chart mounts a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) at this location. The volume is created using dynamic volume provisioning.
 
@@ -453,7 +453,7 @@ In this version, the `image` block is defined once and is used in the different 
 ```yaml
 image:
   registry: docker.io
-  repository: bitnami/solr
+  repository: bitnami-mirror/solr
   tag: 8.9.0
 ```
 
@@ -462,13 +462,13 @@ VS
 ```yaml
 image:
   registry: docker.io
-  repository: bitnami/solr
+  repository: bitnami-mirror/solr
   tag: 8.9.0
 ...
 metrics:
   image:
     registry: docker.io
-    repository: bitnami/solr
+    repository: bitnami-mirror/solr
     tag: 8.9.0
 ```
 

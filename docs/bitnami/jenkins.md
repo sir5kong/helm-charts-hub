@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/jenkins
 
 ## Introduction
 
-This chart bootstraps a [Jenkins](https://github.com/bitnami/containers/tree/main/bitnami/jenkins) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Jenkins](https://github.com/bitnami/containers/tree/main/bitnami-mirror/jenkins) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -79,7 +79,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                | Description                                                                                             | Value                  |
 | ------------------- | ------------------------------------------------------------------------------------------------------- | ---------------------- |
 | `image.registry`    | Jenkins image registry                                                                                  | `docker.io`            |
-| `image.repository`  | Jenkins image repository                                                                                | `bitnami/jenkins`      |
+| `image.repository`  | Jenkins image repository                                                                                | `bitnami-mirror/jenkins`      |
 | `image.tag`         | Jenkins image tag (immutable tags are recommended)                                                      | `2.387.3-debian-11-r6` |
 | `image.digest`      | Jenkins image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                   |
 | `image.pullPolicy`  | Jenkins image pull policy                                                                               | `IfNotPresent`         |
@@ -93,7 +93,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `jenkinsUser`            | Jenkins username                                                                                                                                    | `user`                  |
 | `jenkinsPassword`        | Jenkins user password                                                                                                                               | `""`                    |
 | `jenkinsHost`            | Jenkins host to create application URLs                                                                                                             | `""`                    |
-| `jenkinsHome`            | Jenkins home directory                                                                                                                              | `/bitnami/jenkins/home` |
+| `jenkinsHome`            | Jenkins home directory                                                                                                                              | `/bitnami-mirror/jenkins/home` |
 | `javaOpts`               | Custom JVM parameters                                                                                                                               | `[]`                    |
 | `disableInitialization`  | Skip performing the initial bootstrapping for Jenkins                                                                                               | `no`                    |
 | `command`                | Override default container command (useful when using custom images)                                                                                | `[]`                    |
@@ -105,7 +105,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `extraPlugins`           | List of plugins to install in addition to those listed in `plugins`                                                                                 | `[]`                    |
 | `latestPlugins`          | Set to true to download the latest version of all dependencies, even if the version(s) of the requested plugin(s) are not the latest.               | `true`                  |
 | `latestSpecifiedPlugins` | Set to true download the latest dependencies of any plugin that is requested to have the latest version.                                            | `false`                 |
-| `skipImagePlugins`       | Set this value to true to skip installing plugins stored under /opt/bitnami/jenkins/plugins                                                         | `false`                 |
+| `skipImagePlugins`       | Set this value to true to skip installing plugins stored under /opt/bitnami-mirror/jenkins/plugins                                                         | `false`                 |
 | `overridePlugins`        | Setting this value to true will remove all plugins from the jenkinsHome directory and install new plugins from scratch.                             | `false`                 |
 | `overridePaths`          | Comma-separated list of relative paths to be removed from Jenkins home volume and/or mounted if present in the mounted content dir                  | `""`                    |
 | `initScripts`            | Dictionary of scripts to be mounted at `/docker-entrypoint-initdb.d`. Evaluated as a template. Allows .sh and .groovy formats.                      | `{}`                    |
@@ -157,7 +157,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `configAsCode.autoReload.containerSecurityContext.readOnlyRootFilesystem` | Set %%MAIN_CONTAINER_NAME%% containers' Security Context runAsNonRoot                                   | `false`                  |
 | `agent.enabled`                                                           | Set to true to enable the configuration of Jenkins kubernetes agents                                    | `false`                  |
 | `agent.image.registry`                                                    | Jenkins image registry                                                                                  | `docker.io`              |
-| `agent.image.repository`                                                  | Jenkins image repository                                                                                | `bitnami/jenkins-agent`  |
+| `agent.image.repository`                                                  | Jenkins image repository                                                                                | `bitnami-mirror/jenkins-agent`  |
 | `agent.image.tag`                                                         | Jenkins image tag (immutable tags are recommended)                                                      | `0.3107.0-debian-11-r27` |
 | `agent.image.digest`                                                      | Jenkins image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                     |
 | `agent.image.pullPolicy`                                                  | Jenkins image pull policy                                                                               | `IfNotPresent`           |
@@ -313,7 +313,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `serviceAccount.annotations`                  | Additional Service Account annotations (evaluated as a template) | `{}`   |
 | `serviceAccount.automountServiceAccountToken` | Automount service account token for the server service account   | `true` |
 
-The above parameters map to the env variables defined in [bitnami/jenkins](https://github.com/bitnami/containers/tree/main/bitnami/jenkins). For more information please refer to the [bitnami/jenkins](https://github.com/bitnami/containers/tree/main/bitnami/jenkins) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/jenkins](https://github.com/bitnami/containers/tree/main/bitnami/jenkins). For more information please refer to the [bitnami/jenkins](https://github.com/bitnami/containers/tree/main/bitnami/jenkins) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -384,7 +384,7 @@ As an alternative, you can use the preset configurations for pod affinity, pod a
 
 ## Persistence
 
-The [Bitnami Jenkins](https://github.com/bitnami/containers/tree/main/bitnami/jenkins) image stores the Jenkins data and configurations at the `/bitnami/jenkins` path of the container. Persistent Volume Claims (PVCs) are used to keep the data across deployments.
+The [Bitnami Jenkins](https://github.com/bitnami/containers/tree/main/bitnami-mirror/jenkins) image stores the Jenkins data and configurations at the `/bitnami/jenkins` path of the container. Persistent Volume Claims (PVCs) are used to keep the data across deployments.
 
 If you encounter errors when working with persistent volumes, refer to our [troubleshooting guide for persistent volumes](https://docs.bitnami.com/kubernetes/faq/troubleshooting/troubleshooting-persistence-volumes/).
 s
@@ -415,7 +415,7 @@ Affected values:
 
 ### To 8.0.0
 
-Due to recent changes in the container image (see [Notable changes](https://github.com/bitnami/containers/tree/main/bitnami/jenkins#notable-changes)), the major version of the chart has been bumped preemptively.
+Due to recent changes in the container image (see [Notable changes](https://github.com/bitnami/containers/tree/main/bitnami-mirror/jenkins#notable-changes)), the major version of the chart has been bumped preemptively.
 
 Upgrading from version `7.x.x` should be possible following the workaround below (the following example assumes that the release name is `jenkins`):
 
@@ -430,8 +430,8 @@ kubectl delete deployments.apps jenkins
 - Upgrade your release and delete data that should not be persisted anymore:
 
 ```console
-helm upgrade jenkins oci://registry-1.docker.io/bitnamicharts/jenkins --set jenkinsPassword=$JENKINS_PASSWORD --set jenkinsHome=/bitnami/jenkins/jenkins_home
-kubectl exec -it $(kubectl get pod -l app.kubernetes.io/instance=jenkins,app.kubernetes.io/name=jenkins -o jsonpath="{.items[0].metadata.name}") -- find /bitnami/jenkins -mindepth 1 -maxdepth 1 -not -name jenkins_home -exec rm -rf {} \;
+helm upgrade jenkins oci://registry-1.docker.io/bitnamicharts/jenkins --set jenkinsPassword=$JENKINS_PASSWORD --set jenkinsHome=/bitnami-mirror/jenkins/jenkins_home
+kubectl exec -it $(kubectl get pod -l app.kubernetes.io/instance=jenkins,app.kubernetes.io/name=jenkins -o jsonpath="{.items[0].metadata.name}") -- find /bitnami-mirror/jenkins -mindepth 1 -maxdepth 1 -not -name jenkins_home -exec rm -rf {} \;
 ```
 
 ### To 7.0.0
@@ -460,7 +460,7 @@ This version also introduces `bitnami/common`, a [library chart](https://helm.sh
 
 ### To 5.0.0
 
-The [Bitnami Jenkins](https://github.com/bitnami/containers/tree/main/bitnami/jenkins) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the Jenkins service was started as the `jenkins` user. From now on, both the container and the Jenkins service run as user `jenkins` (`uid=1001`). You can revert this behavior by setting the parameters `securityContext.runAsUser`, and `securityContext.fsGroup` to `root`.
+The [Bitnami Jenkins](https://github.com/bitnami/containers/tree/main/bitnami-mirror/jenkins) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the Jenkins service was started as the `jenkins` user. From now on, both the container and the Jenkins service run as user `jenkins` (`uid=1001`). You can revert this behavior by setting the parameters `securityContext.runAsUser`, and `securityContext.fsGroup` to `root`.
 Ingress configuration was also adapted to follow the Helm charts best practices.
 
 Consequences:

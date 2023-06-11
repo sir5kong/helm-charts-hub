@@ -16,9 +16,9 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/postgresql
 
 ## Introduction
 
-This chart bootstraps a [PostgreSQL](https://github.com/bitnami/containers/tree/main/bitnami/postgresql) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [PostgreSQL](https://github.com/bitnami/containers/tree/main/bitnami-mirror/postgresql) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
-For HA, please see [this repo](https://github.com/bitnami/charts/tree/main/bitnami/postgresql-ha)
+For HA, please see [this repo](https://github.com/bitnami/charts/tree/main/bitnami-mirror/postgresql-ha)
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -97,7 +97,7 @@ kubectl delete pvc -l release=my-release
 | Name                                     | Description                                                                                                                                                                                                                                                                                                                                   | Value                      |
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
 | `image.registry`                         | PostgreSQL image registry                                                                                                                                                                                                                                                                                                                     | `docker.io`                |
-| `image.repository`                       | PostgreSQL image repository                                                                                                                                                                                                                                                                                                                   | `bitnami/postgresql`       |
+| `image.repository`                       | PostgreSQL image repository                                                                                                                                                                                                                                                                                                                   | `bitnami-mirror/postgresql`       |
 | `image.tag`                              | PostgreSQL image tag (immutable tags are recommended)                                                                                                                                                                                                                                                                                         | `15.3.0-debian-11-r7`      |
 | `image.digest`                           | PostgreSQL image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                                                                                                                                                                                                    | `""`                       |
 | `image.pullPolicy`                       | PostgreSQL image pull policy                                                                                                                                                                                                                                                                                                                  | `IfNotPresent`             |
@@ -141,7 +141,7 @@ kubectl delete pvc -l release=my-release
 | `ldap.scheme`                            | Set to `ldaps` to use LDAPS                                                                                                                                                                                                                                                                                                                   | `""`                       |
 | `ldap.tls.enabled`                       | Se to true to enable TLS encryption                                                                                                                                                                                                                                                                                                           | `false`                    |
 | `ldap.uri`                               | LDAP URL beginning in the form `ldap[s]://host[:port]/basedn`. If provided, all the other LDAP parameters will be ignored.                                                                                                                                                                                                                    | `""`                       |
-| `postgresqlDataDir`                      | PostgreSQL data dir folder                                                                                                                                                                                                                                                                                                                    | `/bitnami/postgresql/data` |
+| `postgresqlDataDir`                      | PostgreSQL data dir folder                                                                                                                                                                                                                                                                                                                    | `/bitnami-mirror/postgresql/data` |
 | `postgresqlSharedPreloadLibraries`       | Shared preload libraries (comma-separated list)                                                                                                                                                                                                                                                                                               | `pgaudit`                  |
 | `shmVolume.enabled`                      | Enable emptyDir volume for /dev/shm for PostgreSQL pod(s)                                                                                                                                                                                                                                                                                     | `true`                     |
 | `shmVolume.sizeLimit`                    | Set this to enable a size limit on the shm tmpfs                                                                                                                                                                                                                                                                                              | `""`                       |
@@ -248,7 +248,7 @@ kubectl delete pvc -l release=my-release
 | `primary.service.headless.annotations`       | Additional custom annotations for headless PostgreSQL primary service                                                    | `{}`                  |
 | `primary.persistence.enabled`                | Enable PostgreSQL Primary data persistence using PVC                                                                     | `true`                |
 | `primary.persistence.existingClaim`          | Name of an existing PVC to use                                                                                           | `""`                  |
-| `primary.persistence.mountPath`              | The path the volume will be mounted at                                                                                   | `/bitnami/postgresql` |
+| `primary.persistence.mountPath`              | The path the volume will be mounted at                                                                                   | `/bitnami-mirror/postgresql` |
 | `primary.persistence.subPath`                | The subdirectory of the volume to mount to                                                                               | `""`                  |
 | `primary.persistence.storageClass`           | PVC Storage Class for PostgreSQL Primary data volume                                                                     | `""`                  |
 | `primary.persistence.accessModes`            | PVC Access Mode for PostgreSQL volume                                                                                    | `["ReadWriteOnce"]`   |
@@ -339,7 +339,7 @@ kubectl delete pvc -l release=my-release
 | `readReplicas.service.headless.annotations`       | Additional custom annotations for headless PostgreSQL read only service                                                  | `{}`                  |
 | `readReplicas.persistence.enabled`                | Enable PostgreSQL read only data persistence using PVC                                                                   | `true`                |
 | `readReplicas.persistence.existingClaim`          | Name of an existing PVC to use                                                                                           | `""`                  |
-| `readReplicas.persistence.mountPath`              | The path the volume will be mounted at                                                                                   | `/bitnami/postgresql` |
+| `readReplicas.persistence.mountPath`              | The path the volume will be mounted at                                                                                   | `/bitnami-mirror/postgresql` |
 | `readReplicas.persistence.subPath`                | The subdirectory of the volume to mount to                                                                               | `""`                  |
 | `readReplicas.persistence.storageClass`           | PVC Storage Class for PostgreSQL read only data volume                                                                   | `""`                  |
 | `readReplicas.persistence.accessModes`            | PVC Access Mode for PostgreSQL volume                                                                                    | `["ReadWriteOnce"]`   |
@@ -502,7 +502,7 @@ In addition to these options, you can also set an external ConfigMap with all th
 
 ### Initialize a fresh instance
 
-The [Bitnami PostgreSQL](https://github.com/bitnami/containers/tree/main/bitnami/postgresql) image allows you to use your custom scripts to initialize a fresh instance. In order to execute the scripts, you can specify custom scripts using the `primary.initdb.scripts` parameter as a string.
+The [Bitnami PostgreSQL](https://github.com/bitnami/containers/tree/main/bitnami-mirror/postgresql) image allows you to use your custom scripts to initialize a fresh instance. In order to execute the scripts, you can specify custom scripts using the `primary.initdb.scripts` parameter as a string.
 
 In addition, you can also set an external ConfigMap with all the initialization scripts. This is done by setting the `primary.initdb.scriptsConfigMap` parameter. Note that this will override the two previous options. If your initialization scripts contain sensitive information such as credentials or passwords, you can use the `primary.initdb.scriptsSecret` parameter.
 
@@ -616,12 +616,12 @@ This way, the credentials will be available in all of the subcharts.
 
 ## Persistence
 
-The [Bitnami PostgreSQL](https://github.com/bitnami/containers/tree/main/bitnami/postgresql) image stores the PostgreSQL data and configurations at the `/bitnami/postgresql` path of the container.
+The [Bitnami PostgreSQL](https://github.com/bitnami/containers/tree/main/bitnami-mirror/postgresql) image stores the PostgreSQL data and configurations at the `/bitnami/postgresql` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
 
-If you already have data in it, you will fail to sync to standby nodes for all commits, details can refer to the [code present in the container repository](https://github.com/bitnami/containers/tree/main/bitnami/postgresql). If you need to use those data, please covert them to sql and import after `helm install` finished.
+If you already have data in it, you will fail to sync to standby nodes for all commits, details can refer to the [code present in the container repository](https://github.com/bitnami/containers/tree/main/bitnami-mirror/postgresql). If you need to use those data, please covert them to sql and import after `helm install` finished.
 
 ## NetworkPolicy
 

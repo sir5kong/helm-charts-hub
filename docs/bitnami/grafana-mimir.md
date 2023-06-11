@@ -83,12 +83,12 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                   | Description                                                                                                                                              | Value                    |
 | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
 | `mimir.image.registry`                 | Grafana Mimir image registry                                                                                                                             | `docker.io`              |
-| `mimir.image.repository`               | Grafana Mimir image repository                                                                                                                           | `bitnami/grafana-mimir`  |
+| `mimir.image.repository`               | Grafana Mimir image repository                                                                                                                           | `bitnami-mirror/grafana-mimir`  |
 | `mimir.image.tag`                      | Grafana Mimir image tag (immutable tags are recommended)                                                                                                 | `2.8.0-debian-11-r6`     |
 | `mimir.image.digest`                   | Grafana Mimir image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended) | `""`                     |
 | `mimir.image.pullPolicy`               | Grafana Mimir image pull policy                                                                                                                          | `IfNotPresent`           |
 | `mimir.image.pullSecrets`              | Grafana Mimir image pull secrets                                                                                                                         | `[]`                     |
-| `mimir.dataDir`                        | path to the Mimir data directory                                                                                                                         | `/bitnami/grafana-mimir` |
+| `mimir.dataDir`                        | path to the Mimir data directory                                                                                                                         | `/bitnami-mirror/grafana-mimir` |
 | `mimir.configuration`                  | Mimir components configuration                                                                                                                           | `""`                     |
 | `mimir.overrideConfiguration`          | Mimir components configuration override. Values defined here takes precedence over mimir.configuration                                                   | `{}`                     |
 | `mimir.existingConfigmap`              | Name of a ConfigMap with the Mimir configuration                                                                                                         | `""`                     |
@@ -1261,7 +1261,7 @@ The mimir configuration file `mimir.yaml` is shared across the different compone
 
 ### Data
 
-The [Bitnami grafana-mimir](https://github.com/bitnami/containers/tree/main/bitnami/grafana-mimir) image stores the data at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments.
+The [Bitnami grafana-mimir](https://github.com/bitnami/containers/tree/main/bitnami-mirror/grafana-mimir) image stores the data at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments.
 
 ### Additional environment variables
 

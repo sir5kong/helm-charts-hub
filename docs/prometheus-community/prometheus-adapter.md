@@ -9,7 +9,7 @@ Kubernetes 1.14+
 ## Get Helm Repositories Info
 
 ```console
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -18,7 +18,7 @@ _See [`helm repo`](https://helm.sh/docs/helm/helm_repo/) for command documentati
 ## Install Helm Chart
 
 ```console
-helm install [RELEASE_NAME] prometheus-community/prometheus-adapter
+helm install [RELEASE_NAME] prometheus-community-mirror/prometheus-adapter
 ```
 
 _See [configuration](#configuration) below._
@@ -60,7 +60,7 @@ Due to a change in deployment labels, the upgrade requires `helm upgrade --force
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values.yaml](./values.yaml), or run these configuration commands:
 
 ```console
-helm show values prometheus-community/prometheus-adapter
+helm show values prometheus-community-mirror/prometheus-adapter
 ```
 
 ### Prometheus Service Endpoint

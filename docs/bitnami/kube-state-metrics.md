@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/kube-state-metr
 
 ## Introduction
 
-This chart bootstraps [kube-state-metrics](https://github.com/bitnami/containers/tree/main/bitnami/kube-state-metrics) on [Kubernetes](https://kubernetes.io) using the [Helm](https://helm.sh) package manager.
+This chart bootstraps [kube-state-metrics](https://github.com/bitnami/containers/tree/main/bitnami-mirror/kube-state-metrics) on [Kubernetes](https://kubernetes.io) using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -82,7 +82,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `serviceAccount.automountServiceAccountToken`   | Automount service account token for the server service account                                                                                                     | `true`                       |
 | `serviceAccount.annotations`                    | Annotations for service account. Evaluated as a template. Only used if `create` is `true`.                                                                         | `{}`                         |
 | `image.registry`                                | kube-state-metrics image registry                                                                                                                                  | `docker.io`                  |
-| `image.repository`                              | kube-state-metrics image repository                                                                                                                                | `bitnami/kube-state-metrics` |
+| `image.repository`                              | kube-state-metrics image repository                                                                                                                                | `bitnami-mirror/kube-state-metrics` |
 | `image.tag`                                     | kube-state-metrics image tag (immutable tags are recommended)                                                                                                      | `2.9.2-debian-11-r0`         |
 | `image.digest`                                  | kube-state-metrics image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                 | `""`                         |
 | `image.pullPolicy`                              | kube-state-metrics image pull policy                                                                                                                               | `IfNotPresent`               |

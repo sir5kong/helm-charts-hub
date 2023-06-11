@@ -23,7 +23,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 ### Choose between Redis&reg; Helm Chart and Redis&reg; Cluster Helm Chart
 
 You can choose any of the two Redis&reg; Helm charts for deploying a Redis&reg; cluster.
-While [Redis&reg; Helm Chart](https://github.com/bitnami/charts/tree/main/bitnami/redis) will deploy a master-slave cluster using Redis&reg; Sentinel, the [Redis&reg; Cluster Helm Chart](https://github.com/bitnami/charts/tree/main/bitnami/redis-cluster) will deploy a Redis&reg; Cluster with sharding.
+While [Redis&reg; Helm Chart](https://github.com/bitnami/charts/tree/main/bitnami/redis) will deploy a master-slave cluster using Redis&reg; Sentinel, the [Redis&reg; Cluster Helm Chart](https://github.com/bitnami/charts/tree/main/bitnami-mirror/redis-cluster) will deploy a Redis&reg; Cluster with sharding.
 The main features of each chart are the following:
 
 | Redis&reg;                                     | Redis&reg; Cluster                                             |
@@ -91,7 +91,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `diagnosticMode.command`                                | Command to override all containers in the deployment                                                                                                | `["sleep"]`             |
 | `diagnosticMode.args`                                   | Args to override all containers in the deployment                                                                                                   | `["infinity"]`          |
 | `image.registry`                                        | Redis&reg; cluster image registry                                                                                                                   | `docker.io`             |
-| `image.repository`                                      | Redis&reg; cluster image repository                                                                                                                 | `bitnami/redis-cluster` |
+| `image.repository`                                      | Redis&reg; cluster image repository                                                                                                                 | `bitnami-mirror/redis-cluster` |
 | `image.tag`                                             | Redis&reg; cluster image tag (immutable tags are recommended)                                                                                       | `7.0.11-debian-11-r12`  |
 | `image.digest`                                          | Redis&reg; cluster image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                  | `""`                    |
 | `image.pullPolicy`                                      | Redis&reg; cluster image pull policy                                                                                                                | `IfNotPresent`          |

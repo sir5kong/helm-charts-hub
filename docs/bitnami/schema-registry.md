@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/schema-registry
 
 ## Introduction
 
-This chart bootstraps a [Schema Registry](https://github.com/bitnami/containers/tree/main/bitnami/schema-registry) statefulset on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Schema Registry](https://github.com/bitnami/containers/tree/main/bitnami-mirror/schema-registry) statefulset on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment and management of Helm Charts in clusters.
 
@@ -80,7 +80,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                            | Description                                                                                                     | Value                     |
 | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------- |
 | `image.registry`                                | Schema Registry image registry                                                                                  | `docker.io`               |
-| `image.repository`                              | Schema Registry image repository                                                                                | `bitnami/schema-registry` |
+| `image.repository`                              | Schema Registry image repository                                                                                | `bitnami-mirror/schema-registry` |
 | `image.tag`                                     | Schema Registry image tag (immutable tags are recommended)                                                      | `7.4.0-debian-11-r0`      |
 | `image.digest`                                  | Schema Registry image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                      |
 | `image.pullPolicy`                              | Schema Registry image pull policy                                                                               | `IfNotPresent`            |

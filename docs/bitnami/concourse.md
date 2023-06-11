@@ -79,7 +79,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                            | Description                                                                                                                            | Value                 |
 | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`                | image registry                                                                                                                         | `docker.io`           |
-| `image.repository`              | image repository                                                                                                                       | `bitnami/concourse`   |
+| `image.repository`              | image repository                                                                                                                       | `bitnami-mirror/concourse`   |
 | `image.tag`                     | image tag (immutable tags are recommended)                                                                                             | `7.9.1-debian-11-r34` |
 | `image.digest`                  | image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                        | `""`                  |
 | `image.pullPolicy`              | image pull policy                                                                                                                      | `IfNotPresent`        |
@@ -389,7 +389,7 @@ The command removes all the Kubernetes components associated with the chart and 
 
 See <https://github.com/bitnami-labs/readme-generator-for-helm> to create the table.
 
-The above parameters map to the env variables defined in [bitnami/concourse](https://github.com/bitnami/containers/tree/main/bitnami/concourse). For more information please refer to the [bitnami/concourse](https://github.com/bitnami/containers/tree/main/bitnami/concourse) image documentation.
+The above parameters map to the env variables defined in [bitnami-mirror/concourse](https://github.com/bitnami/containers/tree/main/bitnami/concourse). For more information please refer to the [bitnami/concourse](https://github.com/bitnami/containers/tree/main/bitnami/concourse) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -437,7 +437,7 @@ The chart also facilitates the creation of TLS secrets for use with the Ingress 
 
 ## Persistence
 
-The [Bitnami Concourse](https://github.com/bitnami/containers/tree/main/bitnami/concourse) image stores the concourse data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments.
+The [Bitnami Concourse](https://github.com/bitnami/containers/tree/main/bitnami-mirror/concourse) image stores the concourse data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments.
 
 ### Configure extra environment variables
 

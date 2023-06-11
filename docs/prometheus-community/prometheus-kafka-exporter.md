@@ -14,7 +14,7 @@ Helm v2 is no longer supported from chart version 2.0.0.
 ## Get Repository Info
 
 ```console
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -24,7 +24,7 @@ _See [`helm repo`](https://helm.sh/docs/helm/helm_repo/) for command documentati
 
 ```console
 helm dependency build
-helm install [RELEASE_NAME] prometheus-community/prometheus-kafka-exporter
+helm install [RELEASE_NAME] prometheus-community-mirror/prometheus-kafka-exporter
 ```
 
 _See [configuration](#configuration) below._
@@ -54,5 +54,5 @@ _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documen
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values.yaml](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-kafka-exporter/values.yaml), or run these configuration commands:
 
 ```console
-helm show values prometheus-community/prometheus-kafka-exporter
+helm show values prometheus-community-mirror/prometheus-kafka-exporter
 ```

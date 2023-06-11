@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/fluentd
 
 ## Introduction
 
-This chart bootstraps a [Fluentd](https://github.com/bitnami/containers/tree/main/bitnami/fluentd) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Fluentd](https://github.com/bitnami/containers/tree/main/bitnami-mirror/fluentd) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -80,7 +80,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                                           | Description                                                                                                                                                        | Value                                                      |
 | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
 | `image.registry`                                               | Fluentd image registry                                                                                                                                             | `docker.io`                                                |
-| `image.repository`                                             | Fluentd image repository                                                                                                                                           | `bitnami/fluentd`                                          |
+| `image.repository`                                             | Fluentd image repository                                                                                                                                           | `bitnami-mirror/fluentd`                                          |
 | `image.tag`                                                    | Fluentd image tag (immutable tags are recommended)                                                                                                                 | `1.16.1-debian-11-r12`                                     |
 | `image.pullPolicy`                                             | Fluentd image pull policy                                                                                                                                          | `IfNotPresent`                                             |
 | `image.pullSecrets`                                            | Fluentd image pull secrets                                                                                                                                         | `[]`                                                       |
@@ -104,7 +104,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `forwarder.hostNetwork`                                        | Enable use of host network                                                                                                                                         | `false`                                                    |
 | `forwarder.dnsPolicy`                                          | Pod-specific DNS policy                                                                                                                                            | `""`                                                       |
 | `forwarder.terminationGracePeriodSeconds`                      | Duration in seconds the pod needs to terminate gracefully                                                                                                          | `30`                                                       |
-| `forwarder.configFile`                                         | Name of the config file that will be used by Fluentd at launch under the `/opt/bitnami/fluentd/conf` directory                                                     | `fluentd.conf`                                             |
+| `forwarder.configFile`                                         | Name of the config file that will be used by Fluentd at launch under the `/opt/bitnami-mirror/fluentd/conf` directory                                                     | `fluentd.conf`                                             |
 | `forwarder.configMap`                                          | Name of the config map that contains the Fluentd configuration files                                                                                               | `""`                                                       |
 | `forwarder.configMapFiles`                                     | Files to be added to be config map. Ignored if `forwarder.configMap` is set                                                                                        | `{}`                                                       |
 | `forwarder.extraArgs`                                          | Extra arguments for the Fluentd command line                                                                                                                       | `""`                                                       |
@@ -171,7 +171,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `forwarder.rbac.create`                                        | Specify whether RBAC resources should be created and used, allowing the get, watch and list of pods/namespaces                                                     | `true`                                                     |
 | `forwarder.rbac.pspEnabled`                                    | Whether to create a PodSecurityPolicy and bound it with RBAC. WARNING: PodSecurityPolicy is deprecated in Kubernetes v1.21 or later, unavailable in v1.25 or later | `false`                                                    |
 | `forwarder.persistence.enabled`                                | Enable persistence volume for the forwarder                                                                                                                        | `false`                                                    |
-| `forwarder.persistence.hostPath.path`                          | Directory from the host node's filesystem to mount as hostPath volume for persistence.                                                                             | `/opt/bitnami/fluentd/logs/buffers`                        |
+| `forwarder.persistence.hostPath.path`                          | Directory from the host node's filesystem to mount as hostPath volume for persistence.                                                                             | `/opt/bitnami-mirror/fluentd/logs/buffers`                        |
 | `forwarder.command`                                            | Override default container command (useful when using custom images)                                                                                               | `[]`                                                       |
 | `forwarder.args`                                               | Override default container args (useful when using custom images)                                                                                                  | `[]`                                                       |
 | `forwarder.lifecycleHooks`                                     | Additional lifecycles to add to the pods                                                                                                                           | `{}`                                                       |
@@ -198,7 +198,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `aggregator.containerSecurityContext.readOnlyRootFilesystem`   | Require the use of a read only root file system                                                                                                                    | `false`                                                    |
 | `aggregator.containerSecurityContext.capabilities.drop`        | Drop capabilities for the securityContext                                                                                                                          | `[]`                                                       |
 | `aggregator.terminationGracePeriodSeconds`                     | Duration in seconds the pod needs to terminate gracefully                                                                                                          | `30`                                                       |
-| `aggregator.configFile`                                        | Name of the config file that will be used by Fluentd at launch under the `/opt/bitnami/fluentd/conf` directory                                                     | `fluentd.conf`                                             |
+| `aggregator.configFile`                                        | Name of the config file that will be used by Fluentd at launch under the `/opt/bitnami-mirror/fluentd/conf` directory                                                     | `fluentd.conf`                                             |
 | `aggregator.configMap`                                         | Name of the config map that contains the Fluentd configuration files                                                                                               | `""`                                                       |
 | `aggregator.configMapFiles`                                    | Files to be added to be config map. Ignored if `aggregator.configMap` is set                                                                                       | `{}`                                                       |
 | `aggregator.port`                                              | Port the Aggregator container will listen for logs. Leave it blank to ignore.                                                                                      | `24224`                                                    |
@@ -420,7 +420,7 @@ data:
 
       <buffer>
         @type file
-        path /opt/bitnami/fluentd/logs/buffers/logs.buffer
+        path /opt/bitnami-mirror/fluentd/logs/buffers/logs.buffer
         flush_thread_count 2
         flush_interval 5s
       </buffer>

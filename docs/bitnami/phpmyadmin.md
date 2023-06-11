@@ -16,7 +16,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/phpmyadmin
 
 ## Introduction
 
-This chart bootstraps a [phpMyAdmin](https://github.com/bitnami/containers/tree/main/bitnami/phpmyadmin) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [phpMyAdmin](https://github.com/bitnami/containers/tree/main/bitnami-mirror/phpmyadmin) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 As a portable web application written primarily in PHP, phpMyAdmin has become one of the most popular MySQL administration tools, especially for web hosting services.
 
@@ -75,7 +75,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                 | Description                                                                                                | Value                 |
 | -------------------- | ---------------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`     | phpMyAdmin image registry                                                                                  | `docker.io`           |
-| `image.repository`   | phpMyAdmin image repository                                                                                | `bitnami/phpmyadmin`  |
+| `image.repository`   | phpMyAdmin image repository                                                                                | `bitnami-mirror/phpmyadmin`  |
 | `image.tag`          | phpMyAdmin image tag (immutable tags are recommended)                                                      | `5.2.1-debian-11-r31` |
 | `image.digest`       | phpMyAdmin image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`   | Image pull policy                                                                                          | `IfNotPresent`        |
@@ -258,7 +258,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `networkPolicy.egressRules.denyConnectionsToExternal`         | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                                 | `false` |
 | `networkPolicy.egressRules.customRules`                       | Custom network policy rule                                                                                                     | `{}`    |
 
-For more information please refer to the [bitnami/phpmyadmin](https://github.com/bitnami/containers/tree/main/bitnami/phpmyadmin) image documentation.
+For more information please refer to the [bitnami-mirror/phpmyadmin](https://github.com/bitnami/containers/tree/main/bitnami/phpmyadmin) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -502,7 +502,7 @@ mariadb 12:13:25.01 INFO  ==> Running mysql_upgrade
 
 ### To 6.0.0
 
-The [Bitnami phpMyAdmin](https://github.com/bitnami/containers/tree/main/bitnami/phpmyadmin) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the Apache daemon was started as the `daemon` user. From now on, both the container and the Apache daemon run as user `1001`. You can revert this behavior by setting the parameters `containerSecurityContext.runAsUser` to `root`.
+The [Bitnami phpMyAdmin](https://github.com/bitnami/containers/tree/main/bitnami-mirror/phpmyadmin) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the Apache daemon was started as the `daemon` user. From now on, both the container and the Apache daemon run as user `1001`. You can revert this behavior by setting the parameters `containerSecurityContext.runAsUser` to `root`.
 Chart labels and Ingress configuration were also adapted to follow the Helm charts best practices.
 
 Consequences:

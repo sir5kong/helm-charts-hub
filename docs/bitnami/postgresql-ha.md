@@ -585,7 +585,7 @@ Alternatively, a YAML file that specifies the values for the above parameters ca
 ```console
 helm install my-release \
     -f values.yaml \
-    bitnami/postgresql-ha
+    bitnami-mirror/postgresql-ha
 ```
 
 ## Configuration and installation details
