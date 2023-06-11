@@ -8,10 +8,11 @@ Kubeapps is a web-based UI for launching and managing applications on Kubernetes
 
 ## TL;DR
 
-
 使用加速地址添加仓库:
-```shell
-helm
+``` shell
+helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+```
+
 
 ```console
 helm install my-release bitnami-mirror/kubeapps --namespace kubeapps --create-namespace

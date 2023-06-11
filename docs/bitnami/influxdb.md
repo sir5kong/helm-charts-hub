@@ -10,10 +10,11 @@ InfluxDB(TM) is a trademark owned by InfluxData, which is not affiliated with, a
 
 ## TL;DR
 
-
 使用加速地址添加仓库:
-```shell
-helm
+``` shell
+helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+```
+
 
 ```console
 helm install my-release bitnami-mirror/influxdb
