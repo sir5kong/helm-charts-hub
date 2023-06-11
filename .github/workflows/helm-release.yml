@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - 
-        name: Checkout grafana/helm-charts
+        name: Checkout grafana-charts
         uses: actions/checkout@v3
         with:
-          repository: grafana/helm-charts
+          repository: itboon/grafana-charts
           # path: my-tools
           fetch-depth: 0
       -
