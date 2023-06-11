@@ -15,7 +15,7 @@ Promtail is an agent which ships the contents of local logs to a Loki instance
 Add the following repo to use the chart:
 
 ```console
-helm repo add grafana https://grafana.github.io/helm-charts
+helm repo add grafana-mirror https://helm-charts.itboon.top/grafana
 ```
 
 ## Upgrading

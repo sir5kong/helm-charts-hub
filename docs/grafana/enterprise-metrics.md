@@ -26,7 +26,7 @@ To install the chart with licensed features enabled, using a local Grafana Enter
 
 ```console
 $ # Add the repository
-$ helm repo add grafana https://grafana.github.io/helm-charts
+$ helm repo add grafana-mirror https://helm-charts.itboon.top/grafana
 $ helm repo update
 $ # Perform install
 $ helm install <cluster name> grafana/enterprise-metrics --set-file 'license.contents=./license.jwt'

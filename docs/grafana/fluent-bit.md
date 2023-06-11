@@ -7,7 +7,7 @@ This chart install the Fluent Bit application to ship logs to Loki. It defines d
 ## Get Repo Info
 
 ```console
-helm repo add grafana https://grafana.github.io/helm-charts
+helm repo add grafana-mirror https://helm-charts.itboon.top/grafana
 helm repo update
 ```
 
@@ -19,7 +19,7 @@ _See [helm repo](https://helm.sh/docs/helm/helm_repo/) for command documentation
 To install the chart with the release name `my-release` using our helm repository:
 
 ```bash
-helm repo add grafana https://grafana.github.io/helm-charts
+helm repo add grafana-mirror https://helm-charts.itboon.top/grafana
 helm upgrade --install my-release grafana/fluent-bit \
     --set loki.serviceName=loki.default.svc.cluster.local
 ```

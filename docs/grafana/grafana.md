@@ -5,7 +5,7 @@
 ## Get Repo Info
 
 ```console
-helm repo add grafana https://grafana.github.io/helm-charts
+helm repo add grafana-mirror https://helm-charts.itboon.top/grafana
 helm repo update
 ```
 
