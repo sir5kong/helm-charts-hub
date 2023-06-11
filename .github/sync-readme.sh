@@ -2,6 +2,18 @@
 
 export CHARTS_CONFIG=".github/config/charts.yml"
 
+write_bitnami_notice_file() {
+local tmpfile="$1"
+cat > "$tmpfile" <<EOF
+
+使用加速地址添加仓库:
+\`\`\` shell
+helm repo add bitnami-mirror "$chart_url_mirror"
+\`\`\`
+
+EOF
+}
+
 get_readme_by_github_repo() {
   local chart="$1"
   echo "[env] chart: $chart"
@@ -20,8 +32,8 @@ get_readme_by_github_repo() {
   sed -i -E 's%^(\s*)'$chart_repo_raw'%\1'$chart_repo_mirror'%' "$source_readme"
   if [[ "$chart_namespace" == "bitnami" ]]; then
     sed -i -E 's%oci://[^/]+/bitnamicharts/\S*%'$chart_repo_mirror'%' "$source_readme"
-    local helm_repo_notice='\n使用加速地址添加仓库:\n```shell\nhelm repo add bitnami-mirror '$chart_url_mirror'```\n'
-    sed -i -E '/^## TL;DR/a\\n'$helm_repo_notice'' "$source_readme"
+    write_bitnami_notice_file "/tmp/helm-cmd.tmp"
+    sed -i -E '/^## TL;DR/r /tmp/helm-cmd.tmp' "$source_readme"
   fi
   cp -f "$source_readme" "docs/${chart_namespace}/${chart}.md"
 }
