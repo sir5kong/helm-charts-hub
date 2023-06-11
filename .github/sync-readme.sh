@@ -19,6 +19,7 @@ get_readme_github() {
   local charts_tmp_dir="$chart_tmp_root/$charts_dir"
   local chart=""
   ls "$charts_tmp_dir" | while read chart ; do
+    set -x
     echo "[env] chart: $chart"
     source_readme="$charts_tmp_dir/$chart/README.md"
     ls -alh "$source_readme"
