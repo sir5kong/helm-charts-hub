@@ -16,6 +16,7 @@ jobs:
       dest-namespace: grafana
       oss-key-id: ${{ secrets.OSS_KEY_ID }}
       oss-key-secret: ${{ secrets.OSS_KEY_SECRET }}
+    secrets: inherit
   prometheus-mirror:
     uses: ./.github/workflows/index-mirror.yml
     with:
@@ -23,3 +24,4 @@ jobs:
       dest-namespace: prometheus-community
       oss-key-id: ${{ secrets.OSS_KEY_ID }}
       oss-key-secret: ${{ secrets.OSS_KEY_SECRET }}
+    secrets: inherit
