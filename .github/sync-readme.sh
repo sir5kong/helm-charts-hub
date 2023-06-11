@@ -20,7 +20,6 @@ get_readme_github() {
   ls "$charts_tmp_dir" | while read chart ; do
     source_readme="$charts_tmp_dir/$chart/README.md"
     ls -alh "$source_readme"
-    cp -f "$source_readme" "docs/${chart_namespace}/${chart}.md"
     repo_name="$(grep -Eo 'helm repo add \S+' "$source_readme" | cut -d " " -f 4)"
     chart_repo_raw="$repo_name/$chart"
     chart_repo_mirror="${repo_name}-mirror/$chart"
@@ -28,6 +27,7 @@ get_readme_github() {
     sed -i -E 's%(helm repo add \S+) \S+%\1-mirror '$CHART_BASE_URL'%' "$source_readme"
     sed -i -E 's%(helm .+?) '$chart_repo_raw'%\1 '$chart_repo_mirror'' "$source_readme"
     sed -i -E '(\s*)'$chart_repo_raw'%\1'$chart_repo_mirror'' "$source_readme"
+    cp -f "$source_readme" "docs/${chart_namespace}/${chart}.md"
   done
   ls -alh "docs/"
   ls -alh "docs/${chart_namespace}/"
