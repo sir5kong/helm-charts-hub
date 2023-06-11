@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/cassandra
+helm install my-release bitnami-mirror/cassandra
 ```
 
 ## Introduction
 
-This chart bootstraps an [Apache Cassandra](https://github.com/bitnami/containers/tree/main/bitnami-mirror/cassandra) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps an [Apache Cassandra](https://github.com/bitnami/containers/tree/main/bitnami/cassandra) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -31,7 +31,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/cassandra
+helm install my-release bitnami-mirror/cassandra
 ```
 
 These commands deploy one node with Apache Cassandra on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -78,7 +78,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                          | Description                                                                                                            | Value                |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------- | -------------------- |
 | `image.registry`              | Cassandra image registry                                                                                               | `docker.io`          |
-| `image.repository`            | Cassandra image repository                                                                                             | `bitnami-mirror/cassandra`  |
+| `image.repository`            | Cassandra image repository                                                                                             | `bitnami/cassandra`  |
 | `image.tag`                   | Cassandra image tag (immutable tags are recommended)                                                                   | `4.1.2-debian-11-r1` |
 | `image.digest`                | Cassandra image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag              | `""`                 |
 | `image.pullPolicy`            | image pull policy                                                                                                      | `IfNotPresent`       |
@@ -220,8 +220,8 @@ The command removes all the Kubernetes components associated with the chart and 
 | `persistence.accessModes`        | Persistent Volume Access Mode                                                                                                                        | `["ReadWriteOnce"]`  |
 | `persistence.size`               | PVC Storage Request for Cassandra data volume                                                                                                        | `8Gi`                |
 | `persistence.commitLogsize`      | PVC Storage Request for Cassandra commit log volume. Unset by default                                                                                | `2Gi`                |
-| `persistence.mountPath`          | The path the data volume will be mounted at                                                                                                          | `/bitnami-mirror/cassandra` |
-| `persistence.commitLogMountPath` | The path the commit log volume will be mounted at. Unset by default. Set it to '/bitnami-mirror/cassandra/commitlog' to enable a separate commit log volume | `""`                 |
+| `persistence.mountPath`          | The path the data volume will be mounted at                                                                                                          | `/bitnami/cassandra` |
+| `persistence.commitLogMountPath` | The path the commit log volume will be mounted at. Unset by default. Set it to '/bitnami/cassandra/commitlog' to enable a separate commit log volume | `""`                 |
 
 ### Volume Permissions parameters
 
@@ -244,7 +244,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ---------------------------- |
 | `metrics.enabled`                            | Start a side-car prometheus exporter                                                                               | `false`                      |
 | `metrics.image.registry`                     | Cassandra exporter image registry                                                                                  | `docker.io`                  |
-| `metrics.image.repository`                   | Cassandra exporter image name                                                                                      | `bitnami-mirror/cassandra-exporter` |
+| `metrics.image.repository`                   | Cassandra exporter image name                                                                                      | `bitnami/cassandra-exporter` |
 | `metrics.image.tag`                          | Cassandra exporter image tag                                                                                       | `2.3.8-debian-11-r124`       |
 | `metrics.image.digest`                       | Cassandra exporter image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                         |
 | `metrics.image.pullPolicy`                   | image pull policy                                                                                                  | `IfNotPresent`               |
@@ -290,20 +290,20 @@ The command removes all the Kubernetes components associated with the chart and 
 | `tls.certificatesSecret`      | Secret with the TLS certificates.                                                             | `""`    |
 | `tls.tlsEncryptionSecretName` | Secret with the encryption of the TLS certificates                                            | `""`    |
 
-The above parameters map to the env variables defined in [bitnami-mirror/cassandra](https://github.com/bitnami/containers/tree/main/bitnami/cassandra). For more information please refer to the [bitnami/cassandra](https://github.com/bitnami/containers/tree/main/bitnami/cassandra) image documentation.
+The above parameters map to the env variables defined in [bitnami/cassandra](https://github.com/bitnami/containers/tree/main/bitnami/cassandra). For more information please refer to the [bitnami/cassandra](https://github.com/bitnami/containers/tree/main/bitnami/cassandra) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
 helm install my-release \
     --set dbUser.user=admin,dbUser.password=password \
-    oci://registry-1.docker.io/bitnamicharts/cassandra
+    bitnami-mirror/cassandra
 ```
 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/cassandra
+helm install my-release -f values.yaml bitnami-mirror/cassandra
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -337,7 +337,7 @@ Refer to the chart documentation for more [information on customizing an Apache 
 
 ### Initialize the database
 
-The [Bitnami Apache Cassandra image](https://github.com/bitnami/containers/tree/main/bitnami-mirror/cassandra) image supports the use of custom scripts to initialize a fresh instance. This may be done by creating a Kubernetes ConfigMap that includes the necessary *sh* or *cql* scripts and passing this ConfigMap to the chart via the *initDBConfigMap* parameter.
+The [Bitnami Apache Cassandra image](https://github.com/bitnami/containers/tree/main/bitnami/cassandra) image supports the use of custom scripts to initialize a fresh instance. This may be done by creating a Kubernetes ConfigMap that includes the necessary *sh* or *cql* scripts and passing this ConfigMap to the chart via the *initDBConfigMap* parameter.
 
 Refer to the chart documentation for more [information on customizing an Apache Cassandra deployment](https://docs.bitnami.com/kubernetes/infrastructure/cassandra/configuration/customize-new-instance/).
 
@@ -349,7 +349,7 @@ As an alternative, you can use the preset configurations for pod affinity, pod a
 
 ## Persistence
 
-The [Bitnami Apache Cassandra](https://github.com/bitnami/containers/tree/main/bitnami-mirror/cassandra) image stores the Apache Cassandra data at the `/bitnami/cassandra` path of the container.
+The [Bitnami Apache Cassandra](https://github.com/bitnami/containers/tree/main/bitnami/cassandra) image stores the Apache Cassandra data at the `/bitnami/cassandra` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
@@ -376,7 +376,7 @@ Find more information about how to deal with common errors related to Bitnami's 
 It's necessary to set the `dbUser.password` parameter when upgrading for readiness/liveness probes to work properly. When you install this chart for the first time, some notes will be displayed providing the credentials you must use. Please note down the password and run the command below to upgrade your chart:
 
 ```console
-helm upgrade my-release oci://registry-1.docker.io/bitnamicharts/cassandra --set dbUser.password=[PASSWORD]
+helm upgrade my-release bitnami-mirror/cassandra --set dbUser.password=[PASSWORD]
 ```
 
 | Note: you need to substitute the placeholder *[PASSWORD]* with the value obtained in the installation notes.

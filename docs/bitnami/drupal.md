@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/drupal
+helm install my-release bitnami-mirror/drupal
 ```
 
 ## Introduction
 
-This chart bootstraps a [Drupal](https://github.com/bitnami/containers/tree/main/bitnami-mirror/drupal) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Drupal](https://github.com/bitnami/containers/tree/main/bitnami/drupal) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 It also packages the [Bitnami MariaDB chart](https://github.com/bitnami/charts/tree/main/bitnami/mariadb) which is required for bootstrapping a MariaDB deployment as a database for the Drupal application.
 
@@ -34,7 +34,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/drupal
+helm install my-release bitnami-mirror/drupal
 ```
 
 The command deploys Drupal on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -78,7 +78,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                          | Description                                                                                                            | Value                 |
 | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`                              | Drupal image registry                                                                                                  | `docker.io`           |
-| `image.repository`                            | Drupal Image name                                                                                                      | `bitnami-mirror/drupal`      |
+| `image.repository`                            | Drupal Image name                                                                                                      | `bitnami/drupal`      |
 | `image.tag`                                   | Drupal Image tag                                                                                                       | `10.0.9-debian-11-r7` |
 | `image.digest`                                | Drupal image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                 | `""`                  |
 | `image.pullPolicy`                            | Drupal image pull policy                                                                                               | `IfNotPresent`        |
@@ -310,14 +310,14 @@ The command removes all the Kubernetes components associated with the chart and 
 | `networkPolicy.egressRules.denyConnectionsToExternal`         | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                             | `false` |
 | `networkPolicy.egressRules.customRules`                       | Custom network policy rule                                                                                                 | `{}`    |
 
-The above parameters map to the env variables defined in [bitnami-mirror/drupal](https://github.com/bitnami/containers/tree/main/bitnami/drupal). For more information please refer to the [bitnami/drupal](https://github.com/bitnami/containers/tree/main/bitnami/drupal) image documentation.
+The above parameters map to the env variables defined in [bitnami/drupal](https://github.com/bitnami/containers/tree/main/bitnami/drupal). For more information please refer to the [bitnami/drupal](https://github.com/bitnami/containers/tree/main/bitnami/drupal) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
 helm install my-release \
   --set drupalUsername=admin,drupalPassword=password,mariadb.auth.rootPassword=secretpassword \
-    oci://registry-1.docker.io/bitnamicharts/drupal
+    bitnami-mirror/drupal
 ```
 
 The above command sets the Drupal administrator account username and password to `admin` and `password` respectively. Additionally, it sets the MariaDB `root` user password to `secretpassword`.
@@ -327,7 +327,7 @@ The above command sets the Drupal administrator account username and password to
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/drupal
+helm install my-release -f values.yaml bitnami-mirror/drupal
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -366,7 +366,7 @@ As an alternative, you can use of the preset configurations for pod affinity, po
 
 ## Persistence
 
-The [Bitnami Drupal](https://github.com/bitnami/containers/tree/main/bitnami-mirror/drupal) image stores the Drupal data and configurations at the `/bitnami/drupal` path of the container.
+The [Bitnami Drupal](https://github.com/bitnami/containers/tree/main/bitnami/drupal) image stores the Drupal data and configurations at the `/bitnami/drupal` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
@@ -378,7 +378,7 @@ See the [Parameters](#parameters) section to configure the PVC or to disable per
 3. Install the chart
 
 ```console
-helm install my-release --set persistence.existingClaim=PVC_NAME oci://registry-1.docker.io/bitnamicharts/drupal
+helm install my-release --set persistence.existingClaim=PVC_NAME bitnami-mirror/drupal
 ```
 
 ### Host path
@@ -394,7 +394,7 @@ helm install my-release --set persistence.existingClaim=PVC_NAME oci://registry-
 2. Install the chart
 
     ```console
-    helm install my-release --set persistence.hostPath=/PATH/TO/HOST/MOUNT oci://registry-1.docker.io/bitnamicharts/drupal
+    helm install my-release --set persistence.hostPath=/PATH/TO/HOST/MOUNT bitnami-mirror/drupal
     ```
 
     This will mount the `drupal-data` volume into the `hostPath` directory. The site data will be persisted if the mount path contains valid data, else the site data will be initialized at first launch.
@@ -472,13 +472,13 @@ export MARIADB_PVC=$(kubectl get pvc -l app=mariadb,component=master,release=dru
 Upgrade your release (maintaining the version) disabling MariaDB and scaling Drupal replicas to 0:
 
 ```console
-helm upgrade drupal oci://registry-1.docker.io/bitnamicharts/drupal --set drupalPassword=$DRUPAL_PASSWORD --set replicaCount=0 --set mariadb.enabled=false --version 8.2.1
+helm upgrade drupal bitnami-mirror/drupal --set drupalPassword=$DRUPAL_PASSWORD --set replicaCount=0 --set mariadb.enabled=false --version 8.2.1
 ```
 
 Finally, upgrade you release to 9.0.0 reusing the existing PVC, and enabling back MariaDB:
 
 ```console
-helm upgrade drupal oci://registry-1.docker.io/bitnamicharts/drupal --set mariadb.primary.persistence.existingClaim=$MARIADB_PVC --set mariadb.auth.rootPassword=$MARIADB_ROOT_PASSWORD --set mariadb.auth.password=$MARIADB_PASSWORD --set drupalPassword=$DRUPAL_PASSWORD
+helm upgrade drupal bitnami-mirror/drupal --set mariadb.primary.persistence.existingClaim=$MARIADB_PVC --set mariadb.auth.rootPassword=$MARIADB_ROOT_PASSWORD --set mariadb.auth.password=$MARIADB_PASSWORD --set drupalPassword=$DRUPAL_PASSWORD
 ```
 
 You should see the lines below in MariaDB container logs:
@@ -493,7 +493,7 @@ mariadb 12:13:25.01 INFO  ==> Running mysql_upgrade
 
 ### To 8.0.0
 
-The [Bitnami Drupal](https://github.com/bitnami/containers/tree/main/bitnami-mirror/drupal) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the Apache daemon was started as the `daemon` user. From now on, both the container and the Apache daemon run as user `1001`. You can revert this behavior by setting the parameters `containerSecurityContext.runAsUser` to `root`.
+The [Bitnami Drupal](https://github.com/bitnami/containers/tree/main/bitnami/drupal) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the Apache daemon was started as the `daemon` user. From now on, both the container and the Apache daemon run as user `1001`. You can revert this behavior by setting the parameters `containerSecurityContext.runAsUser` to `root`.
 
 Consequences:
 

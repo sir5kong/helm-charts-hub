@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/prestashop
+helm install my-release bitnami-mirror/prestashop
 ```
 
 ## Introduction
 
-This chart bootstraps a [PrestaShop](https://github.com/bitnami/containers/tree/main/bitnami-mirror/prestashop) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [PrestaShop](https://github.com/bitnami/containers/tree/main/bitnami/prestashop) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 It also packages the [Bitnami MariaDB chart](https://github.com/bitnami/charts/tree/main/bitnami/mariadb) which is required for bootstrapping a MariaDB deployment for the database requirements of the PrestaShop application.
 
@@ -34,7 +34,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/prestashop
+helm install my-release bitnami-mirror/prestashop
 ```
 
 The command deploys PrestaShop on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -78,7 +78,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                    | Description                                                                                                | Value                |
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------- |
 | `image.registry`                        | PrestaShop image registry                                                                                  | `docker.io`          |
-| `image.repository`                      | PrestaShop image repository                                                                                | `bitnami-mirror/prestashop` |
+| `image.repository`                      | PrestaShop image repository                                                                                | `bitnami/prestashop` |
 | `image.tag`                             | PrestaShop image tag (immutable tags are recommended)                                                      | `8.0.4-debian-11-r9` |
 | `image.digest`                          | PrestaShop image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                 |
 | `image.pullPolicy`                      | PrestaShop image pull policy                                                                               | `IfNotPresent`       |
@@ -295,7 +295,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `networkPolicy.egressRules.denyConnectionsToExternal`         | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                                 | `false` |
 | `networkPolicy.egressRules.customRules`                       | Custom network policy rule                                                                                                     | `{}`    |
 
-The above parameters map to the env variables defined in [bitnami-mirror/prestashop](https://github.com/bitnami/containers/tree/main/bitnami/prestashop). For more information please refer to the [bitnami/prestashop](https://github.com/bitnami/containers/tree/main/bitnami/prestashop) image documentation.
+The above parameters map to the env variables defined in [bitnami/prestashop](https://github.com/bitnami/containers/tree/main/bitnami/prestashop). For more information please refer to the [bitnami/prestashop](https://github.com/bitnami/containers/tree/main/bitnami/prestashop) image documentation.
 
 > **Note**:
 >
@@ -316,7 +316,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set prestashopUsername=admin,prestashopPassword=password,mariadb.auth.rootPassword=secretpassword \
-    oci://registry-1.docker.io/bitnamicharts/prestashop
+    bitnami-mirror/prestashop
 ```
 
 The above command sets the PrestaShop administrator account username and password to `admin` and `password` respectively. Additionally, it sets the MariaDB `root` user password to `secretpassword`.
@@ -326,7 +326,7 @@ The above command sets the PrestaShop administrator account username and passwor
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/prestashop
+helm install my-release -f values.yaml bitnami-mirror/prestashop
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -365,7 +365,7 @@ As an alternative, you can use of the preset configurations for pod affinity, po
 
 ## Persistence
 
-The [Bitnami PrestaShop](https://github.com/bitnami/containers/tree/main/bitnami-mirror/prestashop) image stores the PrestaShop data and configurations at the `/bitnami/prestashop` path of the container.
+The [Bitnami PrestaShop](https://github.com/bitnami/containers/tree/main/bitnami/prestashop) image stores the PrestaShop data and configurations at the `/bitnami/prestashop` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
@@ -377,7 +377,7 @@ See the [Parameters](#parameters) section to configure the PVC or to disable per
 3. Install the chart
 
 ```console
-helm install my-release --set persistence.existingClaim=PVC_NAME oci://registry-1.docker.io/bitnamicharts/prestashop
+helm install my-release --set persistence.existingClaim=PVC_NAME bitnami-mirror/prestashop
 ```
 
 ### Host path
@@ -393,7 +393,7 @@ helm install my-release --set persistence.existingClaim=PVC_NAME oci://registry-
 2. Install the chart
 
    ```console
-   helm install my-release --set persistence.hostPath=/PATH/TO/HOST/MOUNT oci://registry-1.docker.io/bitnamicharts/prestashop
+   helm install my-release --set persistence.hostPath=/PATH/TO/HOST/MOUNT bitnami-mirror/prestashop
    ```
 
    This will mount the `prestashop-data` volume into the `hostPath` directory. The site data will be persisted if the mount path contains valid data, else the site data will be initialized at first launch.
@@ -486,13 +486,13 @@ export MARIADB_PVC=$(kubectl get pvc -l app.kubernetes.io/instance=prestashop,ap
 Upgrade your release (maintaining the version) disabling MariaDB and scaling Prestashop replicas to 0:
 
 ```console
-helm upgrade prestashop oci://registry-1.docker.io/bitnamicharts/prestashop --set prestashopPassword=$PRESTASHOP_PASSWORD --set replicaCount=0 --set mariadb.enabled=false --version 10.0.0
+helm upgrade prestashop bitnami-mirror/prestashop --set prestashopPassword=$PRESTASHOP_PASSWORD --set replicaCount=0 --set mariadb.enabled=false --version 10.0.0
 ```
 
 Finally, upgrade you release to 11.0.0 reusing the existing PVC, and enabling back MariaDB:
 
 ```console
-helm upgrade prestashop oci://registry-1.docker.io/bitnamicharts/prestashop --set mariadb.primary.persistence.existingClaim=$MARIADB_PVC --set mariadb.auth.rootPassword=$MARIADB_ROOT_PASSWORD --set mariadb.auth.password=$MARIADB_PASSWORD --set prestashopPassword=$PRESTASHOP_PASSWORD
+helm upgrade prestashop bitnami-mirror/prestashop --set mariadb.primary.persistence.existingClaim=$MARIADB_PVC --set mariadb.auth.rootPassword=$MARIADB_ROOT_PASSWORD --set mariadb.auth.password=$MARIADB_PASSWORD --set prestashopPassword=$PRESTASHOP_PASSWORD
 ```
 
 You should see the lines below in MariaDB container logs:
@@ -507,7 +507,7 @@ mariadb 12:13:25.01 INFO  ==> Running mysql_upgrade
 
 ### To 10.0.0
 
-The [Bitnami PrestaShop](https://github.com/bitnami/containers/tree/main/bitnami-mirror/prestashop) image was updated to support and enable the "non-root" user approach
+The [Bitnami PrestaShop](https://github.com/bitnami/containers/tree/main/bitnami/prestashop) image was updated to support and enable the "non-root" user approach
 
 If you want to continue to run the container image as the `root` user, you need to set `podSecurityContext.enabled=false` and `containerSecurity.context.enabled=false`.
 

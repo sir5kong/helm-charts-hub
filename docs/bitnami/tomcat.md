@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/tomcat
+helm install my-release bitnami-mirror/tomcat
 ```
 
 ## Introduction
 
-This chart bootstraps a [Tomcat](https://github.com/bitnami/containers/tree/main/bitnami-mirror/tomcat) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Tomcat](https://github.com/bitnami/containers/tree/main/bitnami/tomcat) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Tomcat implements several Java EE specifications including Java Servlet, JavaServer Pages, Java EL, and WebSocket, and provides a "pure Java" HTTP web server environment for Java code to run in.
 
@@ -34,7 +34,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/tomcat
+helm install my-release bitnami-mirror/tomcat
 ```
 
 These commands deploy Tomcat on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -78,7 +78,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                          | Description                                                                                            | Value                 |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------ | --------------------- |
 | `image.registry`              | Tomcat image registry                                                                                  | `docker.io`           |
-| `image.repository`            | Tomcat image repository                                                                                | `bitnami-mirror/tomcat`      |
+| `image.repository`            | Tomcat image repository                                                                                | `bitnami/tomcat`      |
 | `image.tag`                   | Tomcat image tag (immutable tags are recommended)                                                      | `10.1.9-debian-11-r4` |
 | `image.digest`                | Tomcat image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`            | Tomcat image pull policy                                                                               | `IfNotPresent`        |
@@ -242,13 +242,13 @@ The command removes all the Kubernetes components associated with the chart and 
 | `metrics.prometheusRule.namespace`                  | namespace where prometheusRules resource should be created                                                   | `""`                                                                                                                                                                                                                |
 | `metrics.prometheusRule.rules`                      | Create specified [Rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)         | `[]`                                                                                                                                                                                                                |
 
-The above parameters map to the env variables defined in [bitnami-mirror/tomcat](https://github.com/bitnami/containers/tree/main/bitnami/tomcat). For more information please refer to the [bitnami/tomcat](https://github.com/bitnami/containers/tree/main/bitnami/tomcat) image documentation.
+The above parameters map to the env variables defined in [bitnami/tomcat](https://github.com/bitnami/containers/tree/main/bitnami/tomcat). For more information please refer to the [bitnami/tomcat](https://github.com/bitnami/containers/tree/main/bitnami/tomcat) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
 helm install my-release \
-  --set tomcatUsername=manager,tomcatPassword=password oci://registry-1.docker.io/bitnamicharts/tomcat
+  --set tomcatUsername=manager,tomcatPassword=password bitnami-mirror/tomcat
 ```
 
 The above command sets the Tomcat management username and password to `manager` and `password` respectively.
@@ -258,7 +258,7 @@ The above command sets the Tomcat management username and password to `manager` 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/tomcat
+helm install my-release -f values.yaml bitnami-mirror/tomcat
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -301,7 +301,7 @@ As an alternative, use one of the preset configurations for pod affinity, pod an
 
 ## Persistence
 
-The [Bitnami Tomcat](https://github.com/bitnami/containers/tree/main/bitnami-mirror/tomcat) image stores the Tomcat data and configurations at the `/bitnami/tomcat` path of the container.
+The [Bitnami Tomcat](https://github.com/bitnami/containers/tree/main/bitnami/tomcat) image stores the Tomcat data and configurations at the `/bitnami/tomcat` path of the container.
 
 Persistent Volume Claims (PVCs) are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 
@@ -344,7 +344,7 @@ Consequences:
 ```console
 export TOMCAT_PASSWORD=$(kubectl get secret --namespace default tomcat -o jsonpath="{.data.tomcat-password}" | base64 -d)
 kubectl delete deployments.apps tomcat
-helm upgrade tomcat oci://registry-1.docker.io/bitnamicharts/tomcat --set tomcatPassword=$TOMCAT_PASSWORD
+helm upgrade tomcat bitnami-mirror/tomcat --set tomcatPassword=$TOMCAT_PASSWORD
 ```
 
 ### To 7.0.0
@@ -362,13 +362,13 @@ This release updates the Bitnami Tomcat container to `9.0.26-debian-9-r0`, which
 Tomcat container was moved to a non-root approach. There shouldn't be any issue when upgrading since the corresponding `securityContext` is enabled by default. Both the container image and the chart can be upgraded by running the command below:
 
 ```console
-helm upgrade my-release oci://registry-1.docker.io/bitnamicharts/tomcat
+helm upgrade my-release bitnami-mirror/tomcat
 ```
 
 If you use a previous container image (previous to **8.5.35-r26**) disable the `securityContext` by running the command below:
 
 ```console
-helm upgrade my-release oci://registry-1.docker.io/bitnamicharts/tomcat --set securityContext.enabled=false,image.tag=XXX
+helm upgrade my-release bitnami-mirror/tomcat --set securityContext.enabled=false,image.tag=XXX
 ```
 
 ### To 1.0.0

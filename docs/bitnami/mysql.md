@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/mysql
+helm install my-release bitnami-mirror/mysql
 ```
 
 ## Introduction
 
-This chart bootstraps a [MySQL](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mysql) replication cluster deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [MySQL](https://github.com/bitnami/containers/tree/main/bitnami/mysql) replication cluster deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -31,7 +31,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/mysql
+helm install my-release bitnami-mirror/mysql
 ```
 
 These commands deploy MySQL on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -80,7 +80,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                       | Description                                                                                                                                                                         | Value                  |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | `image.registry`           | MySQL image registry                                                                                                                                                                | `docker.io`            |
-| `image.repository`         | MySQL image repository                                                                                                                                                              | `bitnami-mirror/mysql`        |
+| `image.repository`         | MySQL image repository                                                                                                                                                              | `bitnami/mysql`        |
 | `image.tag`                | MySQL image tag (immutable tags are recommended)                                                                                                                                    | `8.0.33-debian-11-r17` |
 | `image.digest`             | MySQL image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                                               | `""`                   |
 | `image.pullPolicy`         | MySQL image pull policy                                                                                                                                                             | `IfNotPresent`         |
@@ -317,7 +317,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------- |
 | `metrics.enabled`                               | Start a side-car prometheus exporter                                                                                           | `false`                   |
 | `metrics.image.registry`                        | Exporter image registry                                                                                                        | `docker.io`               |
-| `metrics.image.repository`                      | Exporter image repository                                                                                                      | `bitnami-mirror/mysqld-exporter` |
+| `metrics.image.repository`                      | Exporter image repository                                                                                                      | `bitnami/mysqld-exporter` |
 | `metrics.image.tag`                             | Exporter image tag (immutable tags are recommended)                                                                            | `0.14.0-debian-11-r125`   |
 | `metrics.image.digest`                          | Exporter image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                       | `""`                      |
 | `metrics.image.pullPolicy`                      | Exporter image pull policy                                                                                                     | `IfNotPresent`            |
@@ -361,14 +361,14 @@ The command removes all the Kubernetes components associated with the chart and 
 | `metrics.prometheusRule.additionalLabels`       | Additional labels that can be used so prometheusRule will be discovered by Prometheus                                          | `{}`                      |
 | `metrics.prometheusRule.rules`                  | Prometheus Rule definitions                                                                                                    | `[]`                      |
 
-The above parameters map to the env variables defined in [bitnami-mirror/mysql](https://github.com/bitnami/containers/tree/main/bitnami/mysql). For more information please refer to the [bitnami/mysql](https://github.com/bitnami/containers/tree/main/bitnami/mysql) image documentation.
+The above parameters map to the env variables defined in [bitnami/mysql](https://github.com/bitnami/containers/tree/main/bitnami/mysql). For more information please refer to the [bitnami/mysql](https://github.com/bitnami/containers/tree/main/bitnami/mysql) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
 helm install my-release \
   --set auth.rootPassword=secretpassword,auth.database=app_database \
-    oci://registry-1.docker.io/bitnamicharts/mysql
+    bitnami-mirror/mysql
 ```
 
 The above command sets the MySQL `root` account password to `secretpassword`. Additionally it creates a database named `app_database`.
@@ -378,7 +378,7 @@ The above command sets the MySQL `root` account password to `secretpassword`. Ad
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/mysql
+helm install my-release -f values.yaml bitnami-mirror/mysql
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -397,7 +397,7 @@ To modify the application version used in this chart, specify a different versio
 
 ### Customize a new MySQL instance
 
-The [Bitnami MySQL](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mysql) image allows you to use your custom scripts to initialize a fresh instance. Custom scripts may be specified using the `initdbScripts` parameter. Alternatively, an external ConfigMap may be created with all the initialization scripts and the ConfigMap passed to the chart via the `initdbScriptsConfigMap` parameter. Note that this will override the `initdbScripts` parameter.
+The [Bitnami MySQL](https://github.com/bitnami/containers/tree/main/bitnami/mysql) image allows you to use your custom scripts to initialize a fresh instance. Custom scripts may be specified using the `initdbScripts` parameter. Alternatively, an external ConfigMap may be created with all the initialization scripts and the ConfigMap passed to the chart via the `initdbScriptsConfigMap` parameter. Note that this will override the `initdbScripts` parameter.
 
 The allowed extensions are `.sh`, `.sql` and `.sql.gz`.
 
@@ -433,7 +433,7 @@ initContainers:
 
 ## Persistence
 
-The [Bitnami MySQL](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mysql) image stores the MySQL data and configurations at the `/bitnami/mysql` path of the container.
+The [Bitnami MySQL](https://github.com/bitnami/containers/tree/main/bitnami/mysql) image stores the MySQL data and configurations at the `/bitnami/mysql` path of the container.
 
 The chart mounts a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) volume at this location. The volume is created using dynamic volume provisioning by default. An existing PersistentVolumeClaim can also be defined for this purpose.
 
@@ -469,7 +469,7 @@ Find more information about how to deal with common errors related to Bitnami's 
 It's necessary to set the `auth.rootPassword` parameter when upgrading for readiness/liveness probes to work properly. When you install this chart for the first time, some notes will be displayed providing the credentials you must use under the 'Administrator credentials' section. Please note down the password and run the command below to upgrade your chart:
 
 ```console
-helm upgrade my-release oci://registry-1.docker.io/bitnamicharts/mysql --set auth.rootPassword=[ROOT_PASSWORD]
+helm upgrade my-release bitnami-mirror/mysql --set auth.rootPassword=[ROOT_PASSWORD]
 ```
 
 | Note: you need to substitute the placeholder _[ROOT_PASSWORD]_ with the value obtained in the installation notes.
@@ -484,7 +484,7 @@ Affected values:
 - The way how passwords are handled has been refactored and value `auth.forcePassword` has been removed. Now, the password configuration will have the following priority:
   1. Search for an already existing 'Secret' resource and reuse previous password.
   2. Password provided via the values.yaml
-  3. If no secret existed, and no password was provided, the bitnami-mirror/mysql chart will set a randomly generated password.
+  3. If no secret existed, and no password was provided, the bitnami/mysql chart will set a randomly generated password.
 - `primary.service.port` was renamed as `primary.service.ports.mysql`.
 - `secondary.service.port` was renamed as `secondary.service.ports.mysql`.
 - `primary.service.nodePort` was renamed as `primary.service.nodePorts.mysql`.
@@ -512,7 +512,7 @@ Consequences:
   - Reuse the PVC used to hold the master data on your previous release. To do so, use the `primary.persistence.existingClaim` parameter. The following example assumes that the release name is `mysql`:
 
 ```console
-helm install mysql oci://registry-1.docker.io/bitnamicharts/mysql --set auth.rootPassword=[ROOT_PASSWORD] --set primary.persistence.existingClaim=[EXISTING_PVC]
+helm install mysql bitnami-mirror/mysql --set auth.rootPassword=[ROOT_PASSWORD] --set primary.persistence.existingClaim=[EXISTING_PVC]
 ```
 
 | Note: you need to substitute the placeholder _[EXISTING_PVC]_ with the name of the PVC used on your previous release, and _[ROOT_PASSWORD]_ with the root password used in your previous release.

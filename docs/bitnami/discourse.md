@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/discourse
+helm install my-release bitnami-mirror/discourse
 ```
 
 ## Introduction
@@ -34,7 +34,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/discourse
+helm install my-release bitnami-mirror/discourse
 ```
 
 The command deploys Discourse on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -81,7 +81,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                            | Description                                                                                                              | Value                 |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | --------------------- |
 | `image.registry`                | Discourse image registry                                                                                                 | `docker.io`           |
-| `image.repository`              | Discourse image repository                                                                                               | `bitnami-mirror/discourse`   |
+| `image.repository`              | Discourse image repository                                                                                               | `bitnami/discourse`   |
 | `image.tag`                     | Discourse image tag                                                                                                      | `3.0.3-debian-11-r11` |
 | `image.digest`                  | Discourse image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                | `""`                  |
 | `image.pullPolicy`              | Discourse image pull policy                                                                                              | `IfNotPresent`        |
@@ -323,14 +323,14 @@ The command removes all the Kubernetes components associated with the chart and 
 | `externalRedis.existingSecret`            | Name of an existing secret resource containing the Redis&trade credentials | `""`             |
 | `externalRedis.existingSecretPasswordKey` | Name of an existing secret key containing the Redis&trade credentials      | `redis-password` |
 
-The above parameters map to the env variables defined in [bitnami-mirror/discourse](https://github.com/bitnami/containers/tree/main/bitnami/discourse). For more information please refer to the [bitnami/discourse](https://github.com/bitnami/containers/tree/main/bitnami/discourse) image documentation.
+The above parameters map to the env variables defined in [bitnami/discourse](https://github.com/bitnami/containers/tree/main/bitnami/discourse). For more information please refer to the [bitnami/discourse](https://github.com/bitnami/containers/tree/main/bitnami/discourse) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
 helm install my-release \
   --set auth.username=admin,auth.password=password \
-    oci://registry-1.docker.io/bitnamicharts/discourse
+    bitnami-mirror/discourse
 ```
 
 The above command sets the Discourse administrator account username and password to `admin` and `password` respectively.
@@ -340,7 +340,7 @@ The above command sets the Discourse administrator account username and password
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/discourse
+helm install my-release -f values.yaml bitnami-mirror/discourse
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -362,7 +362,7 @@ By default, this Chart only deploys a single pod running Discourse. Should you w
 1. Create a conventional release, that will be scaled later:
 
     ```console
-    helm install my-release oci://registry-1.docker.io/bitnamicharts/discourse
+    helm install my-release bitnami-mirror/discourse
     ...
     ```
 
@@ -379,7 +379,7 @@ By default, this Chart only deploys a single pod running Discourse. Should you w
 3. Perform an upgrade specifying the number of replicas and the credentials used.
 
     ```console
-    helm upgrade my-release --set replicaCount=2,discourse.skipInstall=true oci://registry-1.docker.io/bitnamicharts/discourse
+    helm upgrade my-release --set replicaCount=2,discourse.skipInstall=true bitnami-mirror/discourse
     ```
 
     Note that for this to work properly, you need to provide ReadWriteMany PVCs. If you don't have a provisioner for this type of storage, we recommend that you install the NFS provisioner chart (with the correct parameters, such as `persistence.enabled=true` and `persistence.size=10Gi`) and map it to a RWO volume.
@@ -462,7 +462,7 @@ As an alternative, you can use of the preset configurations for pod affinity, po
 
 ## Persistence
 
-The [Bitnami Discourse](https://github.com/bitnami/containers/tree/main/bitnami-mirror/discourse) image stores the Discourse data and configurations at the `/bitnami` path of the container.
+The [Bitnami Discourse](https://github.com/bitnami/containers/tree/main/bitnami/discourse) image stores the Discourse data and configurations at the `/bitnami` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.

@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/oauth2-proxy
+helm install my-release bitnami-mirror/oauth2-proxy
 ```
 
 ## Introduction
@@ -34,7 +34,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/oauth2-proxy
+helm install my-release bitnami-mirror/oauth2-proxy
 ```
 
 The command deploys OAuth2 Proxy on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -113,7 +113,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                | Description                                                                                                  | Value                  |
 | ------------------- | ------------------------------------------------------------------------------------------------------------ | ---------------------- |
 | `image.registry`    | OAuth2 Proxy image registry                                                                                  | `docker.io`            |
-| `image.repository`  | OAuth2 Proxy image repository                                                                                | `bitnami-mirror/oauth2-proxy` |
+| `image.repository`  | OAuth2 Proxy image repository                                                                                | `bitnami/oauth2-proxy` |
 | `image.tag`         | OAuth2 Proxy image tag (immutable tags are recommended)                                                      | `7.4.0-debian-11-r70`  |
 | `image.digest`      | OAuth2 Proxy image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                   |
 | `image.pullPolicy`  | OAuth2 Proxy image pull policy                                                                               | `IfNotPresent`         |
@@ -242,14 +242,14 @@ The command removes all the Kubernetes components associated with the chart and 
 
 See <https://github.com/bitnami-labs/readmenator> to create the table
 
-The above parameters map to the env variables defined in [bitnami-mirror/oauth2-proxy](https://github.com/bitnami/containers/tree/main/bitnami/oauth2-proxy). For more information please refer to the [bitnami/oauth2-proxy](https://github.com/bitnami/containers/tree/main/bitnami/oauth2-proxy) image documentation.
+The above parameters map to the env variables defined in [bitnami/oauth2-proxy](https://github.com/bitnami/containers/tree/main/bitnami/oauth2-proxy). For more information please refer to the [bitnami/oauth2-proxy](https://github.com/bitnami/containers/tree/main/bitnami/oauth2-proxy) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
 helm install my-release \
   --set replicaCount=2 \
-    oci://registry-1.docker.io/bitnamicharts/oauth2-proxy
+    bitnami-mirror/oauth2-proxy
 ```
 
 The above command increase the default number of replicas.
@@ -259,7 +259,7 @@ The above command increase the default number of replicas.
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/oauth2-proxy
+helm install my-release -f values.yaml bitnami-mirror/oauth2-proxy
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -284,7 +284,7 @@ The chart also facilitates the creation of TLS secrets for use with the Ingress 
 
 ## Persistence
 
-The [Bitnami OAuth2 Proxy](https://github.com/bitnami/containers/tree/main/bitnami-mirror/oauth2-proxy) image stores the OAuth2 Proxy data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments.
+The [Bitnami OAuth2 Proxy](https://github.com/bitnami/containers/tree/main/bitnami/oauth2-proxy) image stores the OAuth2 Proxy data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments.
 
 ### Additional environment variables
 

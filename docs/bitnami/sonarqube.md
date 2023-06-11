@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/sonarqube
+helm install my-release bitnami-mirror/sonarqube
 ```
 
 ## Introduction
 
-This chart bootstraps an [SonarQube&trade;](https://github.com/bitnami/containers/tree/main/bitnami-mirror/sonarqube) cluster on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps an [SonarQube&trade;](https://github.com/bitnami/containers/tree/main/bitnami/sonarqube) cluster on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -30,7 +30,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/sonarqube
+helm install my-release bitnami-mirror/sonarqube
 ```
 
 The command deploys SonarQube&trade; on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -77,7 +77,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                | Description                                                                                                      | Value                 |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`    | SonarQube&trade; image registry                                                                                  | `docker.io`           |
-| `image.repository`  | SonarQube&trade; image repository                                                                                | `bitnami-mirror/sonarqube`   |
+| `image.repository`  | SonarQube&trade; image repository                                                                                | `bitnami/sonarqube`   |
 | `image.tag`         | SonarQube&trade; image tag (immutable tags are recommended)                                                      | `10.0.0-debian-11-r7` |
 | `image.digest`      | SonarQube&trade; image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`  | SonarQube&trade; image pull policy                                                                               | `IfNotPresent`        |
@@ -90,7 +90,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
 | `sonarqubeUsername`           | SonarQube&trade; username                                                                                                                                                   | `user`                                                   |
 | `sonarqubePassword`           | SonarQube&trade; user password                                                                                                                                              | `""`                                                     |
-| `provisioningFolder`          | Directory to use for provisioning content to Sonarqube                                                                                                                      | `/bitnami-mirror/sonarqube-provisioning`                        |
+| `provisioningFolder`          | Directory to use for provisioning content to Sonarqube                                                                                                                      | `/bitnami/sonarqube-provisioning`                        |
 | `existingSecret`              | Name of existing secret containing SonarQube&trade; credentials                                                                                                             | `""`                                                     |
 | `sonarqubeEmail`              | SonarQube&trade; user email                                                                                                                                                 | `user@example.com`                                       |
 | `minHeapSize`                 | Minimum heap size for SonarQube&trade;                                                                                                                                      | `1024m`                                                  |
@@ -359,7 +359,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `externalDatabase.database`       | Database inside an external PostgreSQL to connect (only if postgresql.enabled=false)                            | `sonarqube` |
 | `externalDatabase.port`           | Port of an external PostgreSQL to connect (only if postgresql.enabled=false)                                    | `5432`      |
 
-The above parameters map to the env variables defined in [bitnami-mirror/sonarqube](https://github.com/bitnami/containers/tree/main/bitnami/sonarqube). For more information please refer to the [bitnami/sonarqube](https://github.com/bitnami/containers/tree/main/bitnami/sonarqube) image documentation.
+The above parameters map to the env variables defined in [bitnami/sonarqube](https://github.com/bitnami/containers/tree/main/bitnami/sonarqube). For more information please refer to the [bitnami/sonarqube](https://github.com/bitnami/containers/tree/main/bitnami/sonarqube) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -368,7 +368,7 @@ helm install my-release \
   --set sonarqubeUsername=admin \
   --set sonarqubePassword=password \
   --set postgresql.auth.password=secretpassword \
-    oci://registry-1.docker.io/bitnamicharts/sonarqube
+    bitnami-mirror/sonarqube
 ```
 
 The above command sets the sonarqube administrator account username and password to `admin` and `password` respectively. Additionally, it sets the PostgreSQL `postgres` user password to `secretpassword`.
@@ -378,7 +378,7 @@ The above command sets the sonarqube administrator account username and password
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/sonarqube
+helm install my-release -f values.yaml bitnami-mirror/sonarqube
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -441,7 +441,7 @@ As an alternative, use one of the preset configurations for pod affinity, pod an
 
 ## Persistence
 
-The [Bitnami SonarQube&trade;](https://github.com/bitnami/containers/tree/main/bitnami-mirror/sonarqube) image stores the SonarQube&trade; data and configurations at the `/bitnami/sonarqube` path of the container. Persistent Volume Claims are used to keep the data across deployments.
+The [Bitnami SonarQube&trade;](https://github.com/bitnami/containers/tree/main/bitnami/sonarqube) image stores the SonarQube&trade; data and configurations at the `/bitnami/sonarqube` path of the container. Persistent Volume Claims are used to keep the data across deployments.
 
 ### Adjust permissions of persistent volume mountpoint
 

@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/appsmith
+helm install my-release bitnami-mirror/appsmith
 ```
 
 ## Introduction
@@ -36,7 +36,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/appsmith
+helm install my-release bitnami-mirror/appsmith
 ```
 
 The command deploys Appsmith on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -79,7 +79,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `diagnosticMode.command` | Command to override all containers in the deployment                                                                                                | `["sleep"]`           |
 | `diagnosticMode.args`    | Args to override all containers in the deployment                                                                                                   | `["infinity"]`        |
 | `image.registry`         | Appsmith image registry                                                                                                                             | `docker.io`           |
-| `image.repository`       | Appsmith image repository                                                                                                                           | `bitnami-mirror/appsmith`    |
+| `image.repository`       | Appsmith image repository                                                                                                                           | `bitnami/appsmith`    |
 | `image.tag`              | Appsmith image tag (immutable tags are recommended)                                                                                                 | `1.9.21-debian-11-r2` |
 | `image.digest`           | Appsmith image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended) | `""`                  |
 | `image.pullPolicy`       | Appsmith image pull policy                                                                                                                          | `IfNotPresent`        |
@@ -270,7 +270,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                | Description                                                                                             | Value               |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------- |
 | `backend.persistence.enabled`       | Enable persistence using Persistent Volume Claims                                                       | `true`              |
-| `backend.persistence.mountPath`     | Path to mount the volume at.                                                                            | `/bitnami-mirror/appsmith` |
+| `backend.persistence.mountPath`     | Path to mount the volume at.                                                                            | `/bitnami/appsmith` |
 | `backend.persistence.subPath`       | The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services | `""`                |
 | `backend.persistence.storageClass`  | Storage class of backing PVC                                                                            | `""`                |
 | `backend.persistence.annotations`   | Persistent Volume Claim annotations                                                                     | `{}`                |
@@ -427,7 +427,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `mongodb.containerPorts.mongodb` | MongoDB container port (used by the headless service)  | `27017`      |
 | `mongodb.arbiter.enabled`        | Enable Arbiter nodes in the ReplicaSet                 | `false`      |
 
-The above parameters map to the env variables defined in [bitnami-mirror/appsmith](https://github.com/bitnami/containers/tree/main/bitnami/appsmith). For more information please refer to the [bitnami/appsmith](https://github.com/bitnami/containers/tree/main/bitnami/appsmith) image documentation.
+The above parameters map to the env variables defined in [bitnami/appsmith](https://github.com/bitnami/containers/tree/main/bitnami/appsmith). For more information please refer to the [bitnami/appsmith](https://github.com/bitnami/containers/tree/main/bitnami/appsmith) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -436,7 +436,7 @@ helm install my-release \
   --set appsmithUsername=admin \
   --set appsmithPassword=password \
   --set mariadb.auth.rootPassword=secretpassword \
-    oci://registry-1.docker.io/bitnamicharts/appsmith
+    bitnami-mirror/appsmith
 ```
 
 The above command sets the appsmith administrator account username and password to `admin` and `password` respectively. Additionally, it sets the MariaDB `root` user password to `secretpassword`.
@@ -446,7 +446,7 @@ The above command sets the appsmith administrator account username and password 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/appsmith
+helm install my-release -f values.yaml bitnami-mirror/appsmith
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -497,7 +497,7 @@ The chart also facilitates the creation of TLS secrets for use with the Ingress 
 
 ## Persistence
 
-The [Bitnami appsmith](https://github.com/bitnami/containers/tree/main/bitnami-mirror/appsmith) image stores the appsmith data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
+The [Bitnami appsmith](https://github.com/bitnami/containers/tree/main/bitnami/appsmith) image stores the appsmith data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 
 ### Additional environment variables
 

@@ -34,7 +34,7 @@ helm repo add grafana-mirror https://helm-charts.itboon.top/grafana
 | extraVolumes | list | `[]` | Volumes to add to the containers |
 | fullnameOverride | string | `""` | Overrides the chart's computed fullname |
 | image.pullPolicy | string | `"IfNotPresent"` | Docker image pull policy |
-| image.repository | string | `"docker.io/grafana-mirror/loki-canary"` | Docker image repository |
+| image.repository | string | `"docker.io/grafana/loki-canary"` | Docker image repository |
 | image.tag | string | `nil` | Overrides the image tag whose default is the chart's appVersion |
 | imagePullSecrets | list | `[]` | Image pull secrets for Docker images |
 | lokiAddress | string | `nil` | The Loki server URL:Port, e.g. loki:3100 |

@@ -11,14 +11,14 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/nginx
+helm install my-release bitnami-mirror/nginx
 ```
 
 ## Introduction
 
 Bitnami charts for Helm are carefully engineered, actively maintained and are the quickest and easiest way to deploy containers on a Kubernetes cluster that are ready to handle production workloads.
 
-This chart bootstraps a [NGINX Open Source](https://github.com/bitnami/containers/tree/main/bitnami-mirror/nginx) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [NGINX Open Source](https://github.com/bitnami/containers/tree/main/bitnami/nginx) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -32,7 +32,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/nginx
+helm install my-release bitnami-mirror/nginx
 ```
 
 These commands deploy NGINX Open Source on the Kubernetes cluster in the default configuration.
@@ -79,7 +79,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                 | Description                                                                                           | Value                 |
 | -------------------- | ----------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`     | NGINX image registry                                                                                  | `docker.io`           |
-| `image.repository`   | NGINX image repository                                                                                | `bitnami-mirror/nginx`       |
+| `image.repository`   | NGINX image repository                                                                                | `bitnami/nginx`       |
 | `image.tag`          | NGINX image tag (immutable tags are recommended)                                                      | `1.25.0-debian-11-r0` |
 | `image.digest`       | NGINX image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`   | NGINX image pull policy                                                                               | `IfNotPresent`        |
@@ -245,7 +245,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `metrics.enabled`                          | Start a Prometheus exporter sidecar container                                                                                             | `false`                  |
 | `metrics.port`                             | NGINX Container Status Port scraped by Prometheus Exporter                                                                                | `""`                     |
 | `metrics.image.registry`                   | NGINX Prometheus exporter image registry                                                                                                  | `docker.io`              |
-| `metrics.image.repository`                 | NGINX Prometheus exporter image repository                                                                                                | `bitnami-mirror/nginx-exporter` |
+| `metrics.image.repository`                 | NGINX Prometheus exporter image repository                                                                                                | `bitnami/nginx-exporter` |
 | `metrics.image.tag`                        | NGINX Prometheus exporter image tag (immutable tags are recommended)                                                                      | `0.11.0-debian-11-r84`   |
 | `metrics.image.digest`                     | NGINX Prometheus exporter image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                 | `""`                     |
 | `metrics.image.pullPolicy`                 | NGINX Prometheus exporter image pull policy                                                                                               | `IfNotPresent`           |
@@ -277,7 +277,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set imagePullPolicy=Always \
-    oci://registry-1.docker.io/bitnamicharts/nginx
+    bitnami-mirror/nginx
 ```
 
 The above command sets the `imagePullPolicy` to `Always`.
@@ -285,7 +285,7 @@ The above command sets the `imagePullPolicy` to `Always`.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/nginx
+helm install my-release -f values.yaml bitnami-mirror/nginx
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -362,7 +362,7 @@ There are cases where you may want to deploy extra objects, such a ConfigMap con
 
 ### Ingress
 
-This chart provides support for ingress resources. If you have an ingress controller installed on your cluster, such as [nginx-ingress-controller](https://github.com/bitnami/charts/tree/main/bitnami-mirror/nginx-ingress-controller) or [contour](https://github.com/bitnami/charts/tree/main/bitnami/contour) you can utilize the ingress controller to serve your application.
+This chart provides support for ingress resources. If you have an ingress controller installed on your cluster, such as [nginx-ingress-controller](https://github.com/bitnami/charts/tree/main/bitnami/nginx-ingress-controller) or [contour](https://github.com/bitnami/charts/tree/main/bitnami/contour) you can utilize the ingress controller to serve your application.
 
 To enable ingress integration, please set `ingress.enabled` to `true`.
 
@@ -393,7 +393,7 @@ Affected values:
 
 ### To 10.0.0
 
-This major release no longer uses the bitnami-mirror/nginx-ldap-auth-daemon container as a dependency since its upstream project is not actively maintained.
+This major release no longer uses the bitnami/nginx-ldap-auth-daemon container as a dependency since its upstream project is not actively maintained.
 
 *2022-04-12 edit*:
 
@@ -442,7 +442,7 @@ Use the workaround below to upgrade from versions previous to 5.0.0. The followi
 
 ```console
 kubectl delete deployment nginx --cascade=false
-helm upgrade nginx oci://registry-1.docker.io/bitnamicharts/nginx
+helm upgrade nginx bitnami-mirror/nginx
 ```
 
 ### To 1.0.0

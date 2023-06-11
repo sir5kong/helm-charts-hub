@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/etcd
+helm install my-release bitnami-mirror/etcd
 ```
 
 ## Introduction
 
-This chart bootstraps a [etcd](https://github.com/bitnami/containers/tree/main/bitnami-mirror/etcd) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [etcd](https://github.com/bitnami/containers/tree/main/bitnami/etcd) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -31,7 +31,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/etcd
+helm install my-release bitnami-mirror/etcd
 ```
 
 These commands deploy etcd on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -78,7 +78,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                   | Description                                                                                                 | Value                |
 | -------------------------------------- | ----------------------------------------------------------------------------------------------------------- | -------------------- |
 | `image.registry`                       | etcd image registry                                                                                         | `docker.io`          |
-| `image.repository`                     | etcd image name                                                                                             | `bitnami-mirror/etcd`       |
+| `image.repository`                     | etcd image name                                                                                             | `bitnami/etcd`       |
 | `image.tag`                            | etcd image tag                                                                                              | `3.5.9-debian-11-r4` |
 | `image.digest`                         | etcd image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag        | `""`                 |
 | `image.pullPolicy`                     | etcd image pull policy                                                                                      | `IfNotPresent`       |
@@ -310,7 +310,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ```console
 helm install my-release \
-  --set auth.rbac.rootPassword=secretpassword oci://registry-1.docker.io/bitnamicharts/etcd
+  --set auth.rbac.rootPassword=secretpassword bitnami-mirror/etcd
 ```
 
 The above command sets the etcd `root` account password to `secretpassword`.
@@ -320,7 +320,7 @@ The above command sets the etcd `root` account password to `secretpassword`.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/etcd
+helm install my-release -f values.yaml bitnami-mirror/etcd
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -347,7 +347,7 @@ The etcd chart can be configured with Role-based access control and TLS encrypti
 
 ### Persistence
 
-The [Bitnami etcd](https://github.com/bitnami/containers/tree/main/bitnami-mirror/etcd) image stores the etcd data at the `/bitnami/etcd` path of the container. Persistent Volume Claims are used to keep the data across statefulsets.
+The [Bitnami etcd](https://github.com/bitnami/containers/tree/main/bitnami/etcd) image stores the etcd data at the `/bitnami/etcd` path of the container. Persistent Volume Claims are used to keep the data across statefulsets.
 
 The chart mounts a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) volume at this location. The volume is created using dynamic volume provisioning by default. An existing PersistentVolumeClaim can also be defined for this purpose.
 
@@ -442,7 +442,7 @@ Find more information about how to deal with common errors related to Bitnami's 
 
 ### To 8.0.0
 
-This version reverts the change in the previous major bump ([7.0.0](https://github.com/bitnami/charts/tree/main/bitnami-mirror/etcd#to-700)). Now the default `etcd` branch is `3.5` again once confirmed by the [etcd developers](https://github.com/etcd-io/etcd/tree/main/CHANGELOG#production-recommendation) that this version is production-ready once solved the data corruption issue.
+This version reverts the change in the previous major bump ([7.0.0](https://github.com/bitnami/charts/tree/main/bitnami/etcd#to-700)). Now the default `etcd` branch is `3.5` again once confirmed by the [etcd developers](https://github.com/etcd-io/etcd/tree/main/CHANGELOG#production-recommendation) that this version is production-ready once solved the data corruption issue.
 
 ### To 7.0.0
 
@@ -502,7 +502,7 @@ To upgrade from previous charts versions, create a snapshot of the keyspace and 
 You can use the command below to upgrade your chart by starting a new cluster using an existing snapshot, available in an existing PVC, to initialize the members:
 
 ```console
-helm install new-release oci://registry-1.docker.io/bitnamicharts/etcd \
+helm install new-release bitnami-mirror/etcd \
   --set statefulset.replicaCount=3 \
   --set persistence.enabled=true \
   --set persistence.size=8Gi \

@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/clickhouse
+helm install my-release bitnami-mirror/clickhouse
 ```
 
 ## Introduction
@@ -40,7 +40,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/clickhouse
+helm install my-release bitnami-mirror/clickhouse
 ```
 
 The command deploys ClickHouse on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -88,7 +88,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                                | Description                                                                                                | Value                 |
 | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`                                    | ClickHouse image registry                                                                                  | `docker.io`           |
-| `image.repository`                                  | ClickHouse image repository                                                                                | `bitnami-mirror/clickhouse`  |
+| `image.repository`                                  | ClickHouse image repository                                                                                | `bitnami/clickhouse`  |
 | `image.tag`                                         | ClickHouse image tag (immutable tags are recommended)                                                      | `23.5.2-debian-11-r0` |
 | `image.digest`                                      | ClickHouse image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`                                  | ClickHouse image pull policy                                                                               | `IfNotPresent`        |
@@ -339,7 +339,7 @@ The command removes all the Kubernetes components associated with the chart and 
 
 See <https://github.com/bitnami-labs/readme-generator-for-helm> to create the table.
 
-The above parameters map to the env variables defined in [bitnami-mirror/clickhouse](https://github.com/bitnami/containers/tree/main/bitnami/clickhouse). For more information please refer to the [bitnami/clickhouse](https://github.com/bitnami/containers/tree/main/bitnami/clickhouse) image documentation.
+The above parameters map to the env variables defined in [bitnami/clickhouse](https://github.com/bitnami/containers/tree/main/bitnami/clickhouse). For more information please refer to the [bitnami/clickhouse](https://github.com/bitnami/containers/tree/main/bitnami/clickhouse) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -347,7 +347,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 helm install my-release \
   --set auth.username=admin \
   --set auth.password=password \
-    oci://registry-1.docker.io/bitnamicharts/clickhouse
+    bitnami-mirror/clickhouse
 ```
 
 The above command sets the ClickHouse administrator account username and password to `admin` and `password` respectively.
@@ -357,7 +357,7 @@ The above command sets the ClickHouse administrator account username and passwor
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/clickhouse
+helm install my-release -f values.yaml bitnami-mirror/clickhouse
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -393,7 +393,7 @@ The chart also facilitates the creation of TLS secrets for use with the Ingress 
 
 ## Persistence
 
-The [Bitnami ClickHouse](https://github.com/bitnami/containers/tree/main/bitnami-mirror/clickhouse) image stores the ClickHouse data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
+The [Bitnami ClickHouse](https://github.com/bitnami/containers/tree/main/bitnami/clickhouse) image stores the ClickHouse data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 
 ### Additional environment variables
 

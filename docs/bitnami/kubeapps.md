@@ -9,7 +9,7 @@ Kubeapps is a web-based UI for launching and managing applications on Kubernetes
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/kubeapps --namespace kubeapps --create-namespace
+helm install my-release bitnami-mirror/kubeapps --namespace kubeapps --create-namespace
 ```
 
 > Check out the [getting started](https://github.com/vmware-tanzu/kubeapps/blob/main/site/content/docs/latest/tutorials/getting-started.md) to start deploying apps with Kubeapps.
@@ -43,7 +43,7 @@ It also packages the [Bitnami PostgreSQL chart](https://github.com/bitnami/chart
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/kubeapps --namespace kubeapps --create-namespace
+helm install my-release bitnami-mirror/kubeapps --namespace kubeapps --create-namespace
 ```
 
 The command deploys Kubeapps on the Kubernetes cluster in the `kubeapps` namespace. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -193,7 +193,7 @@ Once you have installed Kubeapps follow the [Getting Started Guide](https://gith
 | ------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------- |
 | `dashboard.enabled`                               | Specifies whether Kubeapps Dashboard should be deployed or not                                            | `true`                       |
 | `dashboard.image.registry`                        | Dashboard image registry                                                                                  | `docker.io`                  |
-| `dashboard.image.repository`                      | Dashboard image repository                                                                                | `bitnami-mirror/kubeapps-dashboard` |
+| `dashboard.image.repository`                      | Dashboard image repository                                                                                | `bitnami/kubeapps-dashboard` |
 | `dashboard.image.tag`                             | Dashboard image tag (immutable tags are recommended)                                                      | `2.7.0-debian-11-r12`        |
 | `dashboard.image.digest`                          | Dashboard image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                         |
 | `dashboard.image.pullPolicy`                      | Dashboard image pull policy                                                                               | `IfNotPresent`               |
@@ -272,13 +272,13 @@ Once you have installed Kubeapps follow the [Getting Started Guide](https://gith
 | Name                                                        | Description                                                                                                                                                                                              | Value                                       |
 | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
 | `apprepository.image.registry`                              | Kubeapps AppRepository Controller image registry                                                                                                                                                         | `docker.io`                                 |
-| `apprepository.image.repository`                            | Kubeapps AppRepository Controller image repository                                                                                                                                                       | `bitnami-mirror/kubeapps-apprepository-controller` |
+| `apprepository.image.repository`                            | Kubeapps AppRepository Controller image repository                                                                                                                                                       | `bitnami/kubeapps-apprepository-controller` |
 | `apprepository.image.tag`                                   | Kubeapps AppRepository Controller image tag (immutable tags are recommended)                                                                                                                             | `2.7.0-scratch-r0`                          |
 | `apprepository.image.digest`                                | Kubeapps AppRepository Controller image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                                        | `""`                                        |
 | `apprepository.image.pullPolicy`                            | Kubeapps AppRepository Controller image pull policy                                                                                                                                                      | `IfNotPresent`                              |
 | `apprepository.image.pullSecrets`                           | Kubeapps AppRepository Controller image pull secrets                                                                                                                                                     | `[]`                                        |
 | `apprepository.syncImage.registry`                          | Kubeapps Asset Syncer image registry                                                                                                                                                                     | `docker.io`                                 |
-| `apprepository.syncImage.repository`                        | Kubeapps Asset Syncer image repository                                                                                                                                                                   | `bitnami-mirror/kubeapps-asset-syncer`             |
+| `apprepository.syncImage.repository`                        | Kubeapps Asset Syncer image repository                                                                                                                                                                   | `bitnami/kubeapps-asset-syncer`             |
 | `apprepository.syncImage.tag`                               | Kubeapps Asset Syncer image tag (immutable tags are recommended)                                                                                                                                         | `2.7.0-scratch-r0`                          |
 | `apprepository.syncImage.digest`                            | Kubeapps Asset Syncer image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                                                    | `""`                                        |
 | `apprepository.syncImage.pullPolicy`                        | Kubeapps Asset Syncer image pull policy                                                                                                                                                                  | `IfNotPresent`                              |
@@ -380,7 +380,7 @@ Once you have installed Kubeapps follow the [Getting Started Guide](https://gith
 | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | --------------------------------- |
 | `pinnipedProxy.enabled`                               | Specifies whether Kubeapps should configure Pinniped Proxy                                                     | `false`                           |
 | `pinnipedProxy.image.registry`                        | Pinniped Proxy image registry                                                                                  | `docker.io`                       |
-| `pinnipedProxy.image.repository`                      | Pinniped Proxy image repository                                                                                | `bitnami-mirror/kubeapps-pinniped-proxy` |
+| `pinnipedProxy.image.repository`                      | Pinniped Proxy image repository                                                                                | `bitnami/kubeapps-pinniped-proxy` |
 | `pinnipedProxy.image.tag`                             | Pinniped Proxy image tag (immutable tags are recommended)                                                      | `2.7.0-debian-11-r9`              |
 | `pinnipedProxy.image.digest`                          | Pinniped Proxy image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                              |
 | `pinnipedProxy.image.pullPolicy`                      | Pinniped Proxy image pull policy                                                                               | `IfNotPresent`                    |
@@ -460,7 +460,7 @@ Once you have installed Kubeapps follow the [Getting Started Guide](https://gith
 | `kubeappsapis.pluginConfig.resources.packages.v1alpha1.trustedNamespaces.headerName`            | Optional header name for trusted namespaces                                                                                                                                | `""`                               |
 | `kubeappsapis.pluginConfig.resources.packages.v1alpha1.trustedNamespaces.headerPattern`         | Optional header pattern for trusted namespaces                                                                                                                             | `""`                               |
 | `kubeappsapis.image.registry`                                                                   | Kubeapps-APIs image registry                                                                                                                                               | `docker.io`                        |
-| `kubeappsapis.image.repository`                                                                 | Kubeapps-APIs image repository                                                                                                                                             | `bitnami-mirror/kubeapps-apis`            |
+| `kubeappsapis.image.repository`                                                                 | Kubeapps-APIs image repository                                                                                                                                             | `bitnami/kubeapps-apis`            |
 | `kubeappsapis.image.tag`                                                                        | Kubeapps-APIs image tag (immutable tags are recommended)                                                                                                                   | `2.7.0-debian-11-r10`              |
 | `kubeappsapis.image.digest`                                                                     | Kubeapps-APIs image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                              | `""`                               |
 | `kubeappsapis.image.pullPolicy`                                                                 | Kubeapps-APIs image pull policy                                                                                                                                            | `IfNotPresent`                     |
@@ -552,7 +552,7 @@ Once you have installed Kubeapps follow the [Getting Started Guide](https://gith
 ```console
 helm install kubeapps --namespace kubeapps \
   --set ingress.enabled=true \
-    oci://registry-1.docker.io/bitnamicharts/kubeapps
+    bitnami-mirror/kubeapps
 ```
 
 The above command enables an Ingress Rule to expose Kubeapps.
@@ -560,7 +560,7 @@ The above command enables an Ingress Rule to expose Kubeapps.
 Alternatively, a YAML file that specifies the values for parameters can be provided while installing the chart. For example,
 
 ```console
-helm install kubeapps --namespace kubeapps -f custom-values.yaml oci://registry-1.docker.io/bitnamicharts/kubeapps
+helm install kubeapps --namespace kubeapps -f custom-values.yaml bitnami-mirror/kubeapps
 ```
 
 ## Configuration and installation details
@@ -651,7 +651,7 @@ Now upgrade Kubeapps:
 
 ```console
 export RELEASE_NAME=kubeapps
-helm upgrade $RELEASE_NAME oci://registry-1.docker.io/bitnamicharts/kubeapps
+helm upgrade $RELEASE_NAME bitnami-mirror/kubeapps
 ```
 
 If you find issues upgrading Kubeapps, check the [troubleshooting](#error-while-upgrading-the-chart) section.
@@ -715,7 +715,7 @@ Have a look at the [dashboard documentation](https://github.com/vmware-tanzu/kub
 The example below will match the URL `http://example.com` to the Kubeapps dashboard. For further configuration, please refer to your specific Ingress configuration docs (e.g., [NGINX](https://github.com/kubernetes/ingress-nginx) or [HAProxy](https://github.com/haproxytech/kubernetes-ingress)).
 
 ```console
-helm install kubeapps oci://registry-1.docker.io/bitnamicharts/kubeapps \
+helm install kubeapps bitnami-mirror/kubeapps \
   --namespace kubeapps \
   --set ingress.enabled=true \
   --set ingress.hostname=example.com \
@@ -737,7 +737,7 @@ You can work around this problem by setting the following Nginx ingress annotati
 You may want to serve Kubeapps with a subpath, for instance `http://example.com/subpath`, you have to set the proper Ingress configuration. If you are using the ingress configuration provided by the Kubeapps chart, you will have to set the `ingress.hostname` and `path` parameters:
 
 ```console
-helm install kubeapps oci://registry-1.docker.io/bitnamicharts/kubeapps \
+helm install kubeapps bitnami-mirror/kubeapps \
   --namespace kubeapps \
   --set ingress.enabled=true \
   --set ingress.hostname=example.com \
@@ -748,7 +748,7 @@ helm install kubeapps oci://registry-1.docker.io/bitnamicharts/kubeapps \
 Besides, if you are using the OAuth2/OIDC login (more information at the [using an OIDC provider documentation](https://github.com/vmware-tanzu/kubeapps/blob/main/site/content/docs/latest/tutorials/using-an-OIDC-provider.md)), you will need, also, to configure the different URLs:
 
 ```console
-helm install kubeapps oci://registry-1.docker.io/bitnamicharts/kubeapps \
+helm install kubeapps bitnami-mirror/kubeapps \
   --namespace kubeapps \
   # ... other OIDC and ingress flags
   --set authProxy.oauthLoginURI="/subpath/oauth2/login" \
@@ -865,7 +865,7 @@ kubectl api-versions
 If the above command does not include entries for `rbac.authorization.k8s.io` you should perform the chart installation by setting `rbac.create=false`:
 
 ```console
-helm install --name kubeapps --namespace kubeapps oci://registry-1.docker.io/bitnamicharts/kubeapps --set rbac.create=false
+helm install --name kubeapps --namespace kubeapps bitnami-mirror/kubeapps --set rbac.create=false
 ```
 
 ### Error while upgrading the Chart
@@ -908,7 +908,7 @@ It is possible that when upgrading Kubeapps an error appears. That can be caused
 
     ```console
     helm repo update
-    helm install --name kubeapps --namespace kubeapps oci://registry-1.docker.io/bitnamicharts/kubeapps
+    helm install --name kubeapps --namespace kubeapps bitnami-mirror/kubeapps
     ```
 
 6. (Optional) Restore any repositories you backed up in the first step:
@@ -969,7 +969,7 @@ After that, you will be able to upgrade Kubeapps to 2.3.1 using the existing dat
 > **WARNING**: Make sure that the variable `$POSTGRESQL_PASSWORD` is properly populated. Setting a wrong (or empty) password will corrupt the release.
 
 ```console
-helm upgrade kubeapps oci://registry-1.docker.io/bitnamicharts/kubeapps -n kubeapps --set postgresql.postgresqlPassword=$POSTGRESQL_PASSWORD
+helm upgrade kubeapps bitnami-mirror/kubeapps -n kubeapps --set postgresql.postgresqlPassword=$POSTGRESQL_PASSWORD
 ```
 
 ### Upgrading to 2.0.1 (Chart 5.0.0)

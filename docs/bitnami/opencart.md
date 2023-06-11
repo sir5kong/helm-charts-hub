@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/opencart
+helm install my-release bitnami-mirror/opencart
 ```
 
 ## Introduction
 
-This chart bootstraps an [OpenCart](https://github.com/bitnami/containers/tree/main/bitnami-mirror/opencart) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps an [OpenCart](https://github.com/bitnami/containers/tree/main/bitnami/opencart) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 It also packages the [Bitnami MariaDB chart](https://github.com/bitnami/charts/tree/main/bitnami/mariadb) which is required for bootstrapping a MariaDB deployment for the database requirements of the OpenCart application.
 
@@ -34,7 +34,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/opencart
+helm install my-release bitnami-mirror/opencart
 ```
 
 The command deploys OpenCart on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -78,7 +78,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                    | Description                                                                                              | Value                   |
 | --------------------------------------- | -------------------------------------------------------------------------------------------------------- | ----------------------- |
 | `image.registry`                        | OpenCart image registry                                                                                  | `docker.io`             |
-| `image.repository`                      | OpenCart image repository                                                                                | `bitnami-mirror/opencart`      |
+| `image.repository`                      | OpenCart image repository                                                                                | `bitnami/opencart`      |
 | `image.tag`                             | OpenCart image tag (immutable tags are recommended)                                                      | `4.0.2-1-debian-11-r12` |
 | `image.digest`                          | OpenCart image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                    |
 | `image.pullPolicy`                      | OpenCart image pull policy                                                                               | `IfNotPresent`          |
@@ -288,7 +288,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `networkPolicy.egressRules.denyConnectionsToExternal`         | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                               | `false` |
 | `networkPolicy.egressRules.customRules`                       | Custom network policy rule                                                                                                   | `{}`    |
 
-The above parameters map to the env variables defined in [bitnami-mirror/opencart](https://github.com/bitnami/containers/tree/main/bitnami/opencart). For more information please refer to the [bitnami/opencart](https://github.com/bitnami/containers/tree/main/bitnami/opencart) image documentation.
+The above parameters map to the env variables defined in [bitnami/opencart](https://github.com/bitnami/containers/tree/main/bitnami/opencart). For more information please refer to the [bitnami/opencart](https://github.com/bitnami/containers/tree/main/bitnami/opencart) image documentation.
 
 > **Note**:
 >
@@ -309,7 +309,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set opencartUsername=admin,opencartPassword=password,mariadb.auth.rootPassword=secretpassword \
-    oci://registry-1.docker.io/bitnamicharts/opencart
+    bitnami-mirror/opencart
 ```
 
 The above command sets the OpenCart administrator account username and password to `admin` and `password` respectively. Additionally, it sets the MariaDB `root` user password to `secretpassword`.
@@ -319,7 +319,7 @@ The above command sets the OpenCart administrator account username and password 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/opencart
+helm install my-release -f values.yaml bitnami-mirror/opencart
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -358,7 +358,7 @@ As an alternative, you can use of the preset configurations for pod affinity, po
 
 ## Persistence
 
-The [Bitnami OpenCart](https://github.com/bitnami/containers/tree/main/bitnami-mirror/opencart) image stores the OpenCart data and configurations at the `/bitnami/opencart` path of the container.
+The [Bitnami OpenCart](https://github.com/bitnami/containers/tree/main/bitnami/opencart) image stores the OpenCart data and configurations at the `/bitnami/opencart` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
@@ -370,7 +370,7 @@ See the [Parameters](#parameters) section to configure the PVC or to disable per
 3. Install the chart
 
 ```console
-helm install my-release --set persistence.existingClaim=PVC_NAME oci://registry-1.docker.io/bitnamicharts/prestashop
+helm install my-release --set persistence.existingClaim=PVC_NAME bitnami-mirror/opencart
 ```
 
 ### Host path
@@ -386,7 +386,7 @@ helm install my-release --set persistence.existingClaim=PVC_NAME oci://registry-
 2. Install the chart
 
     ```console
-    helm install my-release --set persistence.hostPath=/PATH/TO/HOST/MOUNT oci://registry-1.docker.io/bitnamicharts/prestashop
+    helm install my-release --set persistence.hostPath=/PATH/TO/HOST/MOUNT bitnami-mirror/opencart
     ```
 
     This will mount the `prestashop-data` volume into the `hostPath` directory. The site data will be persisted if the mount path contains valid data, else the site data will be initialized at first launch.
@@ -471,11 +471,11 @@ Locations for volume mounts have been changed. Now, OpenCart's persisted volume 
 - `opencart`: Persisted OpenCart files
 - `opencart_storage`: OpenCart storage files
 
-These folders will be mounted to the respective sub-paths in `/bitnami`. Before, the entire volume was mounted to `/bitnami-mirror/opencart`.
+These folders will be mounted to the respective sub-paths in `/bitnami`. Before, the entire volume was mounted to `/bitnami/opencart`.
 
 #### Support for non-root user approach
 
-The [Bitnami OpenCart](https://github.com/bitnami/containers/tree/main/bitnami-mirror/opencart) image was updated to support and enable the "non-root" user approach
+The [Bitnami OpenCart](https://github.com/bitnami/containers/tree/main/bitnami/opencart) image was updated to support and enable the "non-root" user approach
 
 If you want to continue to run the container image as the `root` user, you need to set `podSecurityContext.enabled=false` and `containerSecurity.context.enabled=false`.
 

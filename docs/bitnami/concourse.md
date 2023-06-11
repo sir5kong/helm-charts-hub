@@ -9,7 +9,7 @@ Concourse is an automation system written in Go. It is most commonly used for CI
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/concourse
+helm install my-release bitnami-mirror/concourse
 ```
 
 ## Introduction
@@ -32,7 +32,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/concourse
+helm install my-release bitnami-mirror/concourse
 ```
 
 The command deploys concourse on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -79,7 +79,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                            | Description                                                                                                                            | Value                 |
 | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`                | image registry                                                                                                                         | `docker.io`           |
-| `image.repository`              | image repository                                                                                                                       | `bitnami-mirror/concourse`   |
+| `image.repository`              | image repository                                                                                                                       | `bitnami/concourse`   |
 | `image.tag`                     | image tag (immutable tags are recommended)                                                                                             | `7.9.1-debian-11-r34` |
 | `image.digest`                  | image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                        | `""`                  |
 | `image.pullPolicy`              | image pull policy                                                                                                                      | `IfNotPresent`        |
@@ -389,14 +389,14 @@ The command removes all the Kubernetes components associated with the chart and 
 
 See <https://github.com/bitnami-labs/readme-generator-for-helm> to create the table.
 
-The above parameters map to the env variables defined in [bitnami-mirror/concourse](https://github.com/bitnami/containers/tree/main/bitnami/concourse). For more information please refer to the [bitnami/concourse](https://github.com/bitnami/containers/tree/main/bitnami/concourse) image documentation.
+The above parameters map to the env variables defined in [bitnami/concourse](https://github.com/bitnami/containers/tree/main/bitnami/concourse). For more information please refer to the [bitnami/concourse](https://github.com/bitnami/containers/tree/main/bitnami/concourse) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
 helm install my-release \
   --set secrets.localUsers=admin:password \
-    oci://registry-1.docker.io/bitnamicharts/concourse
+    bitnami-mirror/concourse
 ```
 
 The above command sets the Concourse account username and password to `admin` and `password` respectively.
@@ -406,7 +406,7 @@ The above command sets the Concourse account username and password to `admin` an
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/concourse
+helm install my-release -f values.yaml bitnami-mirror/concourse
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -437,7 +437,7 @@ The chart also facilitates the creation of TLS secrets for use with the Ingress 
 
 ## Persistence
 
-The [Bitnami Concourse](https://github.com/bitnami/containers/tree/main/bitnami-mirror/concourse) image stores the concourse data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments.
+The [Bitnami Concourse](https://github.com/bitnami/containers/tree/main/bitnami/concourse) image stores the concourse data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments.
 
 ### Configure extra environment variables
 

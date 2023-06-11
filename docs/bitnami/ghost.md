@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/ghost
+helm install my-release bitnami-mirror/ghost
 ```
 
 ## Introduction
 
-This chart bootstraps a [Ghost](https://github.com/bitnami/containers/tree/main/bitnami-mirror/ghost) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Ghost](https://github.com/bitnami/containers/tree/main/bitnami/ghost) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 It also packages the [Bitnami MySQL chart](https://github.com/bitnami/charts/tree/main/bitnami/mysql) which is required for bootstrapping a MySQL deployment for the database requirements of the Ghost application.
 
@@ -34,7 +34,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/ghost
+helm install my-release bitnami-mirror/ghost
 ```
 
 The command deploys Ghost on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -78,7 +78,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                | Description                                                                                           | Value                 |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`    | Ghost image registry                                                                                  | `docker.io`           |
-| `image.repository`  | Ghost image repository                                                                                | `bitnami-mirror/ghost`       |
+| `image.repository`  | Ghost image repository                                                                                | `bitnami/ghost`       |
 | `image.tag`         | Ghost image tag (immutable tags are recommended)                                                      | `5.51.0-debian-11-r0` |
 | `image.digest`      | Ghost image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`  | Ghost image pull policy                                                                               | `IfNotPresent`        |
@@ -266,7 +266,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `serviceAccount.automountServiceAccountToken`                 | Automount service account token for the server service account                                                            | `true`  |
 | `serviceAccount.annotations`                                  | Annotations for service account. Evaluated as a template. Only used if `create` is `true`.                                | `{}`    |
 
-The above parameters map to the env variables defined in [bitnami-mirror/ghost](https://github.com/bitnami/containers/tree/main/bitnami/ghost). For more information please refer to the [bitnami/ghost](https://github.com/bitnami/containers/tree/main/bitnami/ghost) image documentation.
+The above parameters map to the env variables defined in [bitnami/ghost](https://github.com/bitnami/containers/tree/main/bitnami/ghost). For more information please refer to the [bitnami/ghost](https://github.com/bitnami/containers/tree/main/bitnami/ghost) image documentation.
 
 > **Note**:
 >
@@ -287,7 +287,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set ghostUsername=admin,ghostPassword=password,mysql.auth.rootPassword=secretpassword \
-    oci://registry-1.docker.io/bitnamicharts/ghost
+    bitnami-mirror/ghost
 ```
 
 The above command sets the Ghost administrator account username and password to `admin` and `password` respectively. Additionally, it sets the MySQL `root` user password to `secretpassword`.
@@ -297,7 +297,7 @@ The above command sets the Ghost administrator account username and password to 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/ghost
+helm install my-release -f values.yaml bitnami-mirror/ghost
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -365,7 +365,7 @@ As an alternative, you can use the preset configurations for pod affinity, pod a
 
 ## Persistence
 
-The [Bitnami Ghost](https://github.com/bitnami/containers/tree/main/bitnami-mirror/ghost) image stores the Ghost data and configurations at the `/bitnami/ghost` and `/bitnami/apache` paths of the container.
+The [Bitnami Ghost](https://github.com/bitnami/containers/tree/main/bitnami/ghost) image stores the Ghost data and configurations at the `/bitnami/ghost` and `/bitnami/apache` paths of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
@@ -399,7 +399,7 @@ Affected values:
 
 ### To 14.0.0
 
-Due to recent changes in the container image (see [Notable changes](https://github.com/bitnami/containers/tree/main/bitnami-mirror/ghost#notable-changes)), the major version of the chart has been bumped preemptively.
+Due to recent changes in the container image (see [Notable changes](https://github.com/bitnami/containers/tree/main/bitnami/ghost#notable-changes)), the major version of the chart has been bumped preemptively.
 
 Compatibility is not guaranteed due to the amount of involved changes, however no breaking changes are expected.
 
@@ -468,7 +468,7 @@ Delete the Ghost deployment and delete the MariaDB statefulset. Notice the optio
 Upgrade you release to 11.0.0 reusing the existing PVC, and enabling back MariaDB:
 
 ```console
-helm upgrade ghost oci://registry-1.docker.io/bitnamicharts/ghost --set mariadb.primary.persistence.existingClaim=$MARIADB_PVC --set mariadb.auth.rootPassword=$MARIADB_ROOT_PASSWORD --set mariadb.auth.password=$MARIADB_PASSWORD --set ghostPassword=$GHOST_PASSWORD --set ghostHost=$GHOST_HOST
+helm upgrade ghost bitnami-mirror/ghost --set mariadb.primary.persistence.existingClaim=$MARIADB_PVC --set mariadb.auth.rootPassword=$MARIADB_ROOT_PASSWORD --set mariadb.auth.password=$MARIADB_PASSWORD --set ghostPassword=$GHOST_PASSWORD --set ghostHost=$GHOST_HOST
 ```
 
 You will need to kill the existing MariaDB pod now as the new statefulset is going to create a new one:

@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/spark
+helm install my-release bitnami-mirror/spark
 ```
 
 ## Introduction
 
-This chart bootstraps an [Apache Spark](https://github.com/bitnami/containers/tree/main/bitnami-mirror/spark) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps an [Apache Spark](https://github.com/bitnami/containers/tree/main/bitnami/spark) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Apache Spark includes APIs for Java, Python, Scala and R.
 
@@ -32,7 +32,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/spark
+helm install my-release bitnami-mirror/spark
 ```
 
 These commands deploy Apache Spark on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -83,7 +83,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                | Description                                                                                           | Value                |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------------------- |
 | `image.registry`    | Spark image registry                                                                                  | `docker.io`          |
-| `image.repository`  | Spark image repository                                                                                | `bitnami-mirror/spark`      |
+| `image.repository`  | Spark image repository                                                                                | `bitnami/spark`      |
 | `image.tag`         | Spark image tag (immutable tags are recommended)                                                      | `3.4.0-debian-11-r2` |
 | `image.digest`      | Spark image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                 |
 | `image.pullPolicy`  | Spark image pull policy                                                                               | `IfNotPresent`       |
@@ -327,7 +327,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ```console
 helm install my-release \
-  --set master.webPort=8081 oci://registry-1.docker.io/bitnamicharts/spark
+  --set master.webPort=8081 bitnami-mirror/spark
 ```
 
 The above command sets the spark master web port to `8081`.
@@ -335,7 +335,7 @@ The above command sets the spark master web port to `8081`.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/spark
+helm install my-release -f values.yaml bitnami-mirror/spark
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -365,7 +365,7 @@ The command below illustrates the process of deploying one of the sample applica
 ```console
 $ ./bin/spark-submit \
     --class org.apache.spark.examples.SparkPi \
-    --conf spark.kubernetes.container.image=bitnami-mirror/spark:3 \
+    --conf spark.kubernetes.container.image=bitnami/spark:3 \
     --master k8s://https://k8s-apiserver-host:k8s-apiserver-port \
     --conf spark.kubernetes.driverEnv.SPARK_MASTER_URL=spark://spark-master-svc:spark-master-port \
     --deploy-mode cluster \
@@ -458,7 +458,7 @@ This version standardizes the way of defining Ingress rules. When configuring a 
 
 - This version introduces `bitnami/common`, a [library chart](https://helm.sh/docs/topics/library_charts/#helm) as a dependency. More documentation about this new utility could be found [here](https://github.com/bitnami/charts/tree/main/bitnami/common#bitnami-common-library-chart). Please, make sure that you have updated the chart dependencies before executing any upgrade.
 
-- Spark container images are updated to use Hadoop `3.2.x`: [Notable Changes: 3.0.0-debian-10-r44](https://github.com/bitnami/containers/tree/main/bitnami-mirror/spark#300-debian-10-r44)
+- Spark container images are updated to use Hadoop `3.2.x`: [Notable Changes: 3.0.0-debian-10-r44](https://github.com/bitnami/containers/tree/main/bitnami/spark#300-debian-10-r44)
 
 > Note: Backwards compatibility is not guaranteed due to the above mentioned changes. Please make sure your workloads are compatible with the new version of Hadoop before upgrading. Backups are always recommended before any upgrade operation.
 

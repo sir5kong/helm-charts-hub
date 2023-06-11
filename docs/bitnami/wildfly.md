@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/wildfly
+helm install my-release bitnami-mirror/wildfly
 ```
 
 ## Introduction
 
-This chart bootstraps a [WildFly](https://github.com/bitnami/containers/tree/main/bitnami-mirror/wildfly) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [WildFly](https://github.com/bitnami/containers/tree/main/bitnami/wildfly) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 WildFly is written in Java, and implements the Java Platform, Enterprise Edition (Java EE) specification.
 
@@ -34,7 +34,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/wildfly
+helm install my-release bitnami-mirror/wildfly
 ```
 
 These commands deploy WildFly on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -81,7 +81,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                | Description                                                                                             | Value                 |
 | ------------------- | ------------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`    | WildFly image registry                                                                                  | `docker.io`           |
-| `image.repository`  | WildFly image repository                                                                                | `bitnami-mirror/wildfly`     |
+| `image.repository`  | WildFly image repository                                                                                | `bitnami/wildfly`     |
 | `image.tag`         | WildFly image tag (immutable tags are recommended)                                                      | `28.0.1-debian-11-r0` |
 | `image.digest`      | WildFly image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`  | WildFly image pull policy                                                                               | `IfNotPresent`        |
@@ -221,14 +221,14 @@ The command removes all the Kubernetes components associated with the chart and 
 | `volumePermissions.resources.requests`        | The requested resources for the init container                                                                | `{}`                    |
 | `volumePermissions.securityContext.runAsUser` | Set init container's Security Context runAsUser                                                               | `0`                     |
 
-The above parameters map to the env variables defined in [bitnami-mirror/wildfly](https://github.com/bitnami/containers/tree/main/bitnami/wildfly). For more information please refer to the [bitnami/wildfly](https://github.com/bitnami/containers/tree/main/bitnami/wildfly) image documentation.
+The above parameters map to the env variables defined in [bitnami/wildfly](https://github.com/bitnami/containers/tree/main/bitnami/wildfly). For more information please refer to the [bitnami/wildfly](https://github.com/bitnami/containers/tree/main/bitnami/wildfly) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
 helm install my-release \
   --set wildflyUser=manager,wildflyPassword=password \
-    oci://registry-1.docker.io/bitnamicharts/wildfly
+    bitnami-mirror/wildfly
 ```
 
 The above command sets the WildFly management username and password to `manager` and `password` respectively.
@@ -238,7 +238,7 @@ The above command sets the WildFly management username and password to `manager`
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/wildfly
+helm install my-release -f values.yaml bitnami-mirror/wildfly
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -253,7 +253,7 @@ Bitnami will release a new chart updating its containers if a new version of the
 
 ## Persistence
 
-The [Bitnami WildFly](https://github.com/bitnami/containers/tree/main/bitnami-mirror/wildfly) image stores the WildFly data and configurations at the `/bitnami/wildfly` path of the container.
+The [Bitnami WildFly](https://github.com/bitnami/containers/tree/main/bitnami/wildfly) image stores the WildFly data and configurations at the `/bitnami/wildfly` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
@@ -316,7 +316,7 @@ Consequences:
 ```console
 export WILDFLY_PASSWORD=$(kubectl get secret --namespace default wildfly -o jsonpath="{.data.wildfly-password}" | base64 -d)
 kubectl delete deployments.apps wildfly
-helm upgrade wildfly oci://registry-1.docker.io/bitnamicharts/wildfly --set wildflyPassword=$WILDFLY_PASSWORD
+helm upgrade wildfly bitnami-mirror/wildfly --set wildflyPassword=$WILDFLY_PASSWORD
 ```
 
 ### To 6.0.0
@@ -330,13 +330,13 @@ helm upgrade wildfly oci://registry-1.docker.io/bitnamicharts/wildfly --set wild
 WildFly container was moved to a non-root approach. There shouldn't be any issue when upgrading since the corresponding `securityContext` is enabled by default. Both the container image and the chart can be upgraded by running the command below:
 
 ```console
-helm upgrade my-release oci://registry-1.docker.io/bitnamicharts/wildfly
+helm upgrade my-release bitnami-mirror/wildfly
 ```
 
 If you use a previous container image (previous to **14.0.1-r75**) disable the `securityContext` by running the command below:
 
 ```console
-helm upgrade my-release oci://registry-1.docker.io/bitnamicharts/wildfly --set securityContext.enabled=false,image.tag=XXX
+helm upgrade my-release bitnami-mirror/wildfly --set securityContext.enabled=false,image.tag=XXX
 ```
 
 ### To 1.0.0

@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/schema-registry
+helm install my-release bitnami-mirror/schema-registry
 ```
 
 ## Introduction
 
-This chart bootstraps a [Schema Registry](https://github.com/bitnami/containers/tree/main/bitnami-mirror/schema-registry) statefulset on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Schema Registry](https://github.com/bitnami/containers/tree/main/bitnami/schema-registry) statefulset on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment and management of Helm Charts in clusters.
 
@@ -32,7 +32,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/schema-registry
+helm install my-release bitnami-mirror/schema-registry
 ```
 
 These commands deploy Schema Registry on the Kubernetes cluster with the default configuration. The [parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -80,7 +80,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                            | Description                                                                                                     | Value                     |
 | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------- |
 | `image.registry`                                | Schema Registry image registry                                                                                  | `docker.io`               |
-| `image.repository`                              | Schema Registry image repository                                                                                | `bitnami-mirror/schema-registry` |
+| `image.repository`                              | Schema Registry image repository                                                                                | `bitnami/schema-registry` |
 | `image.tag`                                     | Schema Registry image tag (immutable tags are recommended)                                                      | `7.4.0-debian-11-r0`      |
 | `image.digest`                                  | Schema Registry image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                      |
 | `image.pullPolicy`                              | Schema Registry image pull policy                                                                               | `IfNotPresent`            |
@@ -234,7 +234,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set replicaCount=2 \
-    oci://registry-1.docker.io/bitnamicharts/schema-registry
+    bitnami-mirror/schema-registry
 ```
 
 The above command installs Schema Registry chart with 2 replicas.
@@ -242,7 +242,7 @@ The above command installs Schema Registry chart with 2 replicas.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/schema-registry
+helm install my-release -f values.yaml bitnami-mirror/schema-registry
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

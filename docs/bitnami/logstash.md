@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/logstash
+helm install my-release bitnami-mirror/logstash
 ```
 
 ## Introduction
 
-This chart bootstraps a [logstash](https://github.com/bitnami/containers/tree/main/bitnami-mirror/logstash) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [logstash](https://github.com/bitnami/containers/tree/main/bitnami/logstash) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -30,7 +30,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/logstash
+helm install my-release bitnami-mirror/logstash
 ```
 
 These commands deploy logstash on the Kubernetes cluster in the default configuration. The [configuration](#configuration-and-installation-details) section lists the parameters that can be configured during installation.
@@ -77,7 +77,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                          | Description                                                                                                                       | Value                    |
 | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
 | `image.registry`                              | Logstash image registry                                                                                                           | `docker.io`              |
-| `image.repository`                            | Logstash image repository                                                                                                         | `bitnami-mirror/logstash`       |
+| `image.repository`                            | Logstash image repository                                                                                                         | `bitnami/logstash`       |
 | `image.tag`                                   | Logstash image tag (immutable tags are recommended)                                                                               | `8.8.1-debian-11-r0`     |
 | `image.digest`                                | Logstash image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                          | `""`                     |
 | `image.pullPolicy`                            | Logstash image pull policy                                                                                                        | `IfNotPresent`           |
@@ -168,7 +168,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `persistence.accessModes`                     | PVC Access Mode for Logstash data volume                                                                                          | `["ReadWriteOnce"]`      |
 | `persistence.size`                            | PVC Storage Request for Logstash data volume                                                                                      | `2Gi`                    |
 | `persistence.annotations`                     | Annotations for the PVC                                                                                                           | `{}`                     |
-| `persistence.mountPath`                       | Mount path of the Logstash data volume                                                                                            | `/bitnami-mirror/logstash/data` |
+| `persistence.mountPath`                       | Mount path of the Logstash data volume                                                                                            | `/bitnami/logstash/data` |
 | `persistence.selector`                        | Selector to match an existing Persistent Volume for WordPress data PVC                                                            | `{}`                     |
 | `volumePermissions.enabled`                   | Enable init container that changes the owner and group of the persistent volume(s) mountpoint to `runAsUser:fsGroup`              | `false`                  |
 | `volumePermissions.securityContext.runAsUser` | User ID for the volumePermissions init container                                                                                  | `0`                      |
@@ -202,7 +202,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ```console
 helm install my-release \
-  --set enableMonitoringAPI=false oci://registry-1.docker.io/bitnamicharts/logstash
+  --set enableMonitoringAPI=false bitnami-mirror/logstash
 ```
 
 The above command disables the Logstash Monitoring API.
@@ -210,7 +210,7 @@ The above command disables the Logstash Monitoring API.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/logstash
+helm install my-release -f values.yaml bitnami-mirror/logstash
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -275,7 +275,7 @@ As an alternative, use one of the preset configurations for pod affinity, pod an
 
 ## Persistence
 
-The [Bitnami Logstash](https://github.com/bitnami/containers/tree/main/bitnami-mirror/logstash) image stores the Logstash data at the `/bitnami/logstash/data` path of the container.
+The [Bitnami Logstash](https://github.com/bitnami/containers/tree/main/bitnami/logstash) image stores the Logstash data at the `/bitnami/logstash/data` path of the container.
 
 Persistent Volume Claims (PVCs) are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 
@@ -289,7 +289,7 @@ Find more information about how to deal with common errors related to Bitnami's 
 
 ### To 5.0.0
 
-This major release is no longer contains the metrics section because the container `bitnami-mirror/logstash-exporter` has been deprecated due to the upstream project is not maintained.
+This major release is no longer contains the metrics section because the container `bitnami/logstash-exporter` has been deprecated due to the upstream project is not maintained.
 
 ### To 4.0.0
 

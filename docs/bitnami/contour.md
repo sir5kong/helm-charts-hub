@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/contour
+helm install my-release bitnami-mirror/contour
 ```
 
 ## Introduction
@@ -33,7 +33,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/contour
+helm install my-release bitnami-mirror/contour
 ```
 
 These commands deploy contour on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -87,7 +87,7 @@ helm uninstall my-release
 | `configInline`                                                | Specifies Contour's configuration directly in YAML format                                                                          | `{}`                  |
 | `contour.enabled`                                             | Contour Deployment creation.                                                                                                       | `true`                |
 | `contour.image.registry`                                      | Contour image registry                                                                                                             | `docker.io`           |
-| `contour.image.repository`                                    | Contour image name                                                                                                                 | `bitnami-mirror/contour`     |
+| `contour.image.repository`                                    | Contour image name                                                                                                                 | `bitnami/contour`     |
 | `contour.image.tag`                                           | Contour image tag                                                                                                                  | `1.25.0-debian-11-r3` |
 | `contour.image.digest`                                        | Contour image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                            | `""`                  |
 | `contour.image.pullPolicy`                                    | Contour Image pull policy                                                                                                          | `IfNotPresent`        |
@@ -437,7 +437,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set envoy.readinessProbe.successThreshold=5 \
-    oci://registry-1.docker.io/bitnamicharts/contour
+    bitnami-mirror/contour
 ```
 
 The above command sets the `envoy.readinessProbe.successThreshold` to `5`.
@@ -630,7 +630,7 @@ kubectl delete tlscertificatedelegations.projectcontour.io
 Upgrade the Contour chart with the release name `my-release`:
 
 ```console
-helm upgrade my-release oci://registry-1.docker.io/bitnamicharts/contour
+helm upgrade my-release bitnami-mirror/contour
 ```
 
 If you made a backup earlier, restore the objects:

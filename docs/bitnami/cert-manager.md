@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/cert-manager
+helm install my-release bitnami-mirror/cert-manager
 ```
 
 ## Introduction
@@ -33,7 +33,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/cert-manager
+helm install my-release bitnami-mirror/cert-manager
 ```
 
 > **Tip**: List all releases using `helm list`
@@ -80,7 +80,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------- |
 | `controller.replicaCount`                                | Number of Controller replicas                                                                              | `1`                    |
 | `controller.image.registry`                              | Controller image registry                                                                                  | `docker.io`            |
-| `controller.image.repository`                            | Controller image repository                                                                                | `bitnami-mirror/cert-manager` |
+| `controller.image.repository`                            | Controller image repository                                                                                | `bitnami/cert-manager` |
 | `controller.image.tag`                                   | Controller image tag (immutable tags are recommended)                                                      | `1.12.1-debian-11-r0`  |
 | `controller.image.digest`                                | Controller image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                   |
 | `controller.image.pullPolicy`                            | Controller image pull policy                                                                               | `IfNotPresent`         |
@@ -142,7 +142,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------ |
 | `webhook.replicaCount`                                | Number of Webhook replicas                                                                              | `1`                            |
 | `webhook.image.registry`                              | Webhook image registry                                                                                  | `docker.io`                    |
-| `webhook.image.repository`                            | Webhook image repository                                                                                | `bitnami-mirror/cert-manager-webhook` |
+| `webhook.image.repository`                            | Webhook image repository                                                                                | `bitnami/cert-manager-webhook` |
 | `webhook.image.tag`                                   | Webhook image tag (immutable tags are recommended)                                                      | `1.11.2-debian-11-r8`          |
 | `webhook.image.digest`                                | Webhook image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                           |
 | `webhook.image.pullPolicy`                            | Webhook image pull policy                                                                               | `IfNotPresent`                 |
@@ -289,14 +289,14 @@ The command removes all the Kubernetes components associated with the chart and 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/cert-manager \
+helm install my-release bitnami-mirror/cert-manager \
   --set installCRDs=true
 ```
 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/cert-manager
+helm install my-release -f values.yaml bitnami-mirror/cert-manager
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/rabbitmq-cluster-operator
+helm install my-release bitnami-mirror/rabbitmq-cluster-operator
 ```
 
 ## Introduction
@@ -33,7 +33,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/rabbitmq-cluster-operator
+helm install my-release bitnami-mirror/rabbitmq-cluster-operator
 ```
 
 The command deploy the RabbitMQ Cluster Kubernetes Operator on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -166,7 +166,7 @@ This solution allows to easily deploy multiple RabbitMQ instances compared to th
 | `credentialUpdaterImage.digest`                                   | RabbitMQ Default User Credential Updater image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                                     |
 | `credentialUpdaterImage.pullSecrets`                              | RabbitMQ Default User Credential Updater image pull secrets                                                                              | `[]`                                     |
 | `clusterOperator.image.registry`                                  | RabbitMQ Cluster Operator image registry                                                                                                 | `docker.io`                              |
-| `clusterOperator.image.repository`                                | RabbitMQ Cluster Operator image repository                                                                                               | `bitnami-mirror/rabbitmq-cluster-operator`      |
+| `clusterOperator.image.repository`                                | RabbitMQ Cluster Operator image repository                                                                                               | `bitnami/rabbitmq-cluster-operator`      |
 | `clusterOperator.image.tag`                                       | RabbitMQ Cluster Operator image tag (immutable tags are recommended)                                                                     | `2.3.0-scratch-r0`                       |
 | `clusterOperator.image.digest`                                    | RabbitMQ Cluster Operator image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                | `""`                                     |
 | `clusterOperator.image.pullPolicy`                                | RabbitMQ Cluster Operator image pull policy                                                                                              | `IfNotPresent`                           |
@@ -383,14 +383,14 @@ This solution allows to easily deploy multiple RabbitMQ instances compared to th
 | ---------------- | ----------------------------------------------------------------- | ------- |
 | `useCertManager` | Deploy cert-manager objects (Issuer and Certificate) for webhooks | `false` |
 
-The above parameters map to the env variables defined in [bitnami-mirror/rabbitmq-cluster-operator](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq-cluster-operator). For more information please refer to the [bitnami/rabbitmq-cluster-operator](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq-cluster-operator) image documentation.
+The above parameters map to the env variables defined in [bitnami/rabbitmq-cluster-operator](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq-cluster-operator). For more information please refer to the [bitnami/rabbitmq-cluster-operator](https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq-cluster-operator) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
 helm install my-release \
   --set livenessProbe.enabled=false \
-    oci://registry-1.docker.io/bitnamicharts/rabbitmq-cluster-operator
+    bitnami-mirror/rabbitmq-cluster-operator
 ```
 
 The above command disables the Operator liveness probes.
@@ -398,7 +398,7 @@ The above command disables the Operator liveness probes.
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/rabbitmq-cluster-operator
+helm install my-release -f values.yaml bitnami-mirror/rabbitmq-cluster-operator
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -495,7 +495,7 @@ You need to manually delete the old CRD before upgrading the release.
 
 ```console
 kubectl delete crd rabbitmqclusters.rabbitmq.com
-helm upgrade my-release oci://registry-1.docker.io/bitnamicharts/rabbitmq-cluster-operator
+helm upgrade my-release bitnami-mirror/rabbitmq-cluster-operator
 ```
 
 ## License

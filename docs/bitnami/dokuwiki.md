@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/dokuwiki
+helm install my-release bitnami-mirror/dokuwiki
 ```
 
 ## Introduction
 
-This chart bootstraps a [DokuWiki](https://github.com/bitnami/containers/tree/main/bitnami-mirror/dokuwiki) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [DokuWiki](https://github.com/bitnami/containers/tree/main/bitnami/dokuwiki) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -32,7 +32,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/dokuwiki
+helm install my-release bitnami-mirror/dokuwiki
 ```
 
 The command deploys DokuWiki on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -76,7 +76,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                    | Description                                                                                                           | Value                       |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------- |
 | `image.registry`                        | DokuWiki image registry                                                                                               | `docker.io`                 |
-| `image.repository`                      | DokuWiki image repository                                                                                             | `bitnami-mirror/dokuwiki`          |
+| `image.repository`                      | DokuWiki image repository                                                                                             | `bitnami/dokuwiki`          |
 | `image.tag`                             | DokuWiki image tag                                                                                                    | `20230404.1.0-debian-11-r1` |
 | `image.digest`                          | DokuWiki image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag              | `""`                        |
 | `image.pullPolicy`                      | Image pull policy                                                                                                     | `IfNotPresent`              |
@@ -234,14 +234,14 @@ The command removes all the Kubernetes components associated with the chart and 
 | `certificates.image.pullPolicy`                      | Container sidecar image pull policy                                                                               | `IfNotPresent`                           |
 | `certificates.image.pullSecrets`                     | Container sidecar image pull secrets                                                                              | `[]`                                     |
 
-The above parameters map to the env variables defined in [bitnami-mirror/dokuwiki](https://github.com/bitnami/containers/tree/main/bitnami/dokuwiki). For more information please refer to the [bitnami/dokuwiki](https://github.com/bitnami/containers/tree/main/bitnami/dokuwiki) image documentation.
+The above parameters map to the env variables defined in [bitnami/dokuwiki](https://github.com/bitnami/containers/tree/main/bitnami/dokuwiki). For more information please refer to the [bitnami/dokuwiki](https://github.com/bitnami/containers/tree/main/bitnami/dokuwiki) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
 helm install my-release \
   --set dokuwikiUsername=admin,dokuwikiPassword=password \
-    oci://registry-1.docker.io/bitnamicharts/dokuwiki
+    bitnami-mirror/dokuwiki
 ```
 
 The above command sets the DokuWiki administrator account username and password to `admin` and `password` respectively.
@@ -251,7 +251,7 @@ The above command sets the DokuWiki administrator account username and password 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/dokuwiki
+helm install my-release -f values.yaml bitnami-mirror/dokuwiki
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -272,7 +272,7 @@ As an alternative, you can use of the preset configurations for pod affinity, po
 
 ## Persistence
 
-The [Bitnami DokuWiki](https://github.com/bitnami/containers/tree/main/bitnami-mirror/dokuwiki) image stores the DokuWiki data and configurations at the `/bitnami/dokuwiki` path of the container.
+The [Bitnami DokuWiki](https://github.com/bitnami/containers/tree/main/bitnami/dokuwiki) image stores the DokuWiki data and configurations at the `/bitnami/dokuwiki` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. There is a [known issue](https://github.com/kubernetes/kubernetes/issues/39178) in Kubernetes Clusters with EBS in different availability zones. Ensure your cluster is configured properly to create Volumes in the same availability zone where the nodes are running. Kuberentes 1.12 solved this issue with the [Volume Binding Mode](https://kubernetes.io/docs/concepts/storage/storage-classes/#volume-binding-mode).
 
@@ -378,7 +378,7 @@ This version standardizes the way of defining Ingress rules. When configuring a 
 
 This version also introduces `bitnami/common`, a [library chart](https://helm.sh/docs/topics/library_charts/#helm) as a dependency. More documentation about this new utility could be found [here](https://github.com/bitnami/charts/tree/main/bitnami/common#bitnami-common-library-chart). Please, make sure that you have updated the chart dependencies before executing any upgrade.
 
-The [Bitnami Dokuwiki](https://github.com/bitnami/containers/tree/main/bitnami-mirror/dokuwiki) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the Apache daemon was started as the `daemon` user. From now on, both the container and the Apache daemon run as user `1001`. You can revert this behavior by setting the parameters `containerSecurityContext.runAsUser` to `root`.
+The [Bitnami Dokuwiki](https://github.com/bitnami/containers/tree/main/bitnami/dokuwiki) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the Apache daemon was started as the `daemon` user. From now on, both the container and the Apache daemon run as user `1001`. You can revert this behavior by setting the parameters `containerSecurityContext.runAsUser` to `root`.
 
 Consequences:
 

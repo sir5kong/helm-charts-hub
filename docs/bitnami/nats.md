@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/nats
+helm install my-release bitnami-mirror/nats
 ```
 
 ## Introduction
 
-This chart bootstraps a [NATS](https://github.com/bitnami/containers/tree/main/bitnami-mirror/nats) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [NATS](https://github.com/bitnami/containers/tree/main/bitnami/nats) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -30,7 +30,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/nats
+helm install my-release bitnami-mirror/nats
 ```
 
 The command deploys NATS on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -76,7 +76,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                     | Description                                                                                           | Value                 |
 | ------------------------ | ----------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`         | NATS image registry                                                                                   | `docker.io`           |
-| `image.repository`       | NATS image repository                                                                                 | `bitnami-mirror/nats`        |
+| `image.repository`       | NATS image repository                                                                                 | `bitnami/nats`        |
 | `image.tag`              | NATS image tag (immutable tags are recommended)                                                       | `2.9.17-debian-11-r1` |
 | `image.digest`           | NATS image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag  | `""`                  |
 | `image.pullPolicy`       | NATS image pull policy                                                                                | `IfNotPresent`        |
@@ -214,7 +214,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------- | ----------------------- |
 | `metrics.enabled`                          | Enable Prometheus metrics via exporter side-car                                                               | `false`                 |
 | `metrics.image.registry`                   | Prometheus metrics exporter image registry                                                                    | `docker.io`             |
-| `metrics.image.repository`                 | Prometheus metrics exporter image repository                                                                  | `bitnami-mirror/nats-exporter` |
+| `metrics.image.repository`                 | Prometheus metrics exporter image repository                                                                  | `bitnami/nats-exporter` |
 | `metrics.image.tag`                        | Prometheus metrics exporter image tag (immutable tags are recommended)                                        | `0.11.0-debian-11-r8`   |
 | `metrics.image.digest`                     | NATS Exporter image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                    |
 | `metrics.image.pullPolicy`                 | Prometheus metrics image pull policy                                                                          | `IfNotPresent`          |
@@ -261,7 +261,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set auth.enabled=true,auth.user=my-user,auth.password=T0pS3cr3t \
-    oci://registry-1.docker.io/bitnamicharts/nats
+    bitnami-mirror/nats
 ```
 
 The above command enables NATS client authentication with `my-user` as user and `T0pS3cr3t` as password credentials.
@@ -271,7 +271,7 @@ The above command enables NATS client authentication with `my-user` as user and 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/nats
+helm install my-release -f values.yaml bitnami-mirror/nats
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -324,12 +324,12 @@ NATS version 2.0.0 has renamed the server binary filename from `gnatsd` to `nats
 however, it is still possible to use the chart to deploy NATS version 1.x.x using the `natsFilename` property.
 
 ```console
-helm install nats-v1 --set natsFilename=gnatsd --set image.tag=1.4.1 oci://registry-1.docker.io/bitnamicharts/nats
+helm install nats-v1 --set natsFilename=gnatsd --set image.tag=1.4.1 bitnami-mirror/nats
 ```
 
 ### To 7.0.0
 
-This new version updates the NATS image to a [new version that has support to configure NATS based on bash logic](https://github.com/bitnami/containers/tree/main/bitnami-mirror/nats#264-r13), although this chart overwrites the configuration file so that shouldn't affect the functionality. It also adds several standardizations that were missing in the chart:
+This new version updates the NATS image to a [new version that has support to configure NATS based on bash logic](https://github.com/bitnami/containers/tree/main/bitnami/nats#264-r13), although this chart overwrites the configuration file so that shouldn't affect the functionality. It also adds several standardizations that were missing in the chart:
 
 - Add missing parameters such as `existingSecret`, `containerPorts.*`, `startupProbe.*` or `lifecycleHooks`.
 - Add missing parameters to extend the services such as `service.extraPorts` or `service.sessionAffinity`.

@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/suitecrm
+helm install my-release bitnami-mirror/suitecrm
 ```
 
 ## Introduction
 
-This chart bootstraps a [SuiteCRM](https://github.com/bitnami/containers/tree/main/bitnami-mirror/suitecrm) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [SuiteCRM](https://github.com/bitnami/containers/tree/main/bitnami/suitecrm) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 SuiteCRM is a software fork of the popular customer relationship management (CRM) system SugarCRM.
 
@@ -36,7 +36,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/suitecrm
+helm install my-release bitnami-mirror/suitecrm
 ```
 
 The command deploys SuiteCRM on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -79,7 +79,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                    | Description                                                                                              | Value                 |
 | --------------------------------------- | -------------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`                        | SuiteCRM image registry                                                                                  | `docker.io`           |
-| `image.repository`                      | SuiteCRM image repository                                                                                | `bitnami-mirror/suitecrm`    |
+| `image.repository`                      | SuiteCRM image repository                                                                                | `bitnami/suitecrm`    |
 | `image.tag`                             | SuiteCRM image tag (immutable tags are recommended)                                                      | `7.13.3-debian-11-r4` |
 | `image.digest`                          | SuiteCRM image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`                      | SuiteCRM image pull policy                                                                               | `IfNotPresent`        |
@@ -305,7 +305,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `networkPolicy.egressRules.denyConnectionsToExternal`         | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                               | `false` |
 | `networkPolicy.egressRules.customRules`                       | Custom network policy rule                                                                                                   | `{}`    |
 
-The above parameters map to the env variables defined in [bitnami-mirror/suitecrm](https://github.com/bitnami/containers/tree/main/bitnami/suitecrm). For more information please refer to the [bitnami/suitecrm](https://github.com/bitnami/containers/tree/main/bitnami/suitecrm) image documentation.
+The above parameters map to the env variables defined in [bitnami/suitecrm](https://github.com/bitnami/containers/tree/main/bitnami/suitecrm). For more information please refer to the [bitnami/suitecrm](https://github.com/bitnami/containers/tree/main/bitnami/suitecrm) image documentation.
 
 > **Note**:
 >
@@ -326,7 +326,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set suitecrmUsername=admin,suitecrmPassword=password,mariadb.auth.rootPassword=secretpassword \
-    oci://registry-1.docker.io/bitnamicharts/suitecrm
+    bitnami-mirror/suitecrm
 ```
 
 The above command sets the SuiteCRM administrator account username and password to `admin` and `password` respectively. Additionally, it sets the MariaDB `root` user password to `secretpassword`.
@@ -336,7 +336,7 @@ The above command sets the SuiteCRM administrator account username and password 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/suitecrm
+helm install my-release -f values.yaml bitnami-mirror/suitecrm
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -375,7 +375,7 @@ As an alternative, you can use of the preset configurations for pod affinity, po
 
 ## Persistence
 
-The [Bitnami SuiteCRM](https://github.com/bitnami/containers/tree/main/bitnami-mirror/suitecrm) image stores the SuiteCRM data and configurations at the `/bitnami/suitecrm` path of the container.
+The [Bitnami SuiteCRM](https://github.com/bitnami/containers/tree/main/bitnami/suitecrm) image stores the SuiteCRM data and configurations at the `/bitnami/suitecrm` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
@@ -387,7 +387,7 @@ See the [Parameters](#parameters) section to configure the PVC or to disable per
 3. Install the chart
 
     ```console
-    helm install my-release --set persistence.existingClaim=PVC_NAME oci://registry-1.docker.io/bitnamicharts/suitecrm
+    helm install my-release --set persistence.existingClaim=PVC_NAME bitnami-mirror/suitecrm
     ```
 
 ### Host path
@@ -403,7 +403,7 @@ See the [Parameters](#parameters) section to configure the PVC or to disable per
 2. Install the chart
 
     ```console
-    helm install my-release --set persistence.hostPath=/PATH/TO/HOST/MOUNT oci://registry-1.docker.io/bitnamicharts/suitecrm
+    helm install my-release --set persistence.hostPath=/PATH/TO/HOST/MOUNT bitnami-mirror/suitecrm
     ```
 
     This will mount the `suitecrm-data` volume into the `hostPath` directory. The site data will be persisted if the mount path contains valid data, else the site data will be initialized at first launch.
@@ -474,7 +474,7 @@ In this major the MariaDB dependency version was also bumped to a new major vers
 
 #### 3. Migration of the SuiteCRM image to non-root
 
-The [Bitnami SuiteCRM](https://github.com/bitnami/containers/tree/main/bitnami-mirror/suitecrm) image was updated to support and enable the "non-root" user approach
+The [Bitnami SuiteCRM](https://github.com/bitnami/containers/tree/main/bitnami/suitecrm) image was updated to support and enable the "non-root" user approach
 
 If you want to continue to run the container image as the `root` user, you need to set `podSecurityContext.enabled=false` and `containerSecurity.context.enabled=false`.
 
@@ -500,13 +500,13 @@ export MARIADB_PVC=$(kubectl get pvc -l app=mariadb,component=master,release=sui
 Upgrade your release (maintaining the version) disabling MariaDB and scaling SuiteCRM replicas to 0:
 
 ```console
-helm upgrade suitecrm oci://registry-1.docker.io/bitnamicharts/suitecrm --set suitecrmPassword=$SUITECRM_PASSWORD --set replicaCount=0 --set mariadb.enabled=false --version 8.0.26
+helm upgrade suitecrm bitnami-mirror/suitecrm --set suitecrmPassword=$SUITECRM_PASSWORD --set replicaCount=0 --set mariadb.enabled=false --version 8.0.26
 ```
 
 Finally, upgrade your release to `9.0.0` reusing the existing PVC, and enabling back MariaDB:
 
 ```console
-helm upgrade suitecrm oci://registry-1.docker.io/bitnamicharts/suitecrm --set mariadb.primary.persistence.existingClaim=$MARIADB_PVC --set mariadb.auth.rootPassword=$MARIADB_ROOT_PASSWORD --set mariadb.auth.password=$MARIADB_PASSWORD --set suitecrmPassword=$SUITECRM_PASSWORD --set containerSecurityContext.runAsUser=0 --set podSecurityContext.fsGroup=0
+helm upgrade suitecrm bitnami-mirror/suitecrm --set mariadb.primary.persistence.existingClaim=$MARIADB_PVC --set mariadb.auth.rootPassword=$MARIADB_ROOT_PASSWORD --set mariadb.auth.password=$MARIADB_PASSWORD --set suitecrmPassword=$SUITECRM_PASSWORD --set containerSecurityContext.runAsUser=0 --set podSecurityContext.fsGroup=0
 ```
 
 You should see the lines below in MariaDB container logs:

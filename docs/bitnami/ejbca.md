@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/ejbca
+helm install my-release bitnami-mirror/ejbca
 ```
 
 ## Introduction
@@ -33,7 +33,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/ejbca
+helm install my-release bitnami-mirror/ejbca
 ```
 
 The command deploys EJBCA on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -80,7 +80,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                    | Description                                                                                                 | Value                  |
 | --------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ---------------------- |
 | `image.registry`                        | EJBCA image registry                                                                                        | `docker.io`            |
-| `image.repository`                      | EJBCA image name                                                                                            | `bitnami-mirror/ejbca`        |
+| `image.repository`                      | EJBCA image name                                                                                            | `bitnami/ejbca`        |
 | `image.tag`                             | EJBCA image tag                                                                                             | `7.11.0-debian-11-r38` |
 | `image.digest`                          | EJBCA image image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                   |
 | `image.pullPolicy`                      | EJBCA image pull policy                                                                                     | `IfNotPresent`         |
@@ -234,14 +234,14 @@ The command removes all the Kubernetes components associated with the chart and 
 | `networkPolicy.egressRules.denyConnectionsToExternal`         | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                            | `false` |
 | `networkPolicy.egressRules.customRules`                       | Custom network policy rule                                                                                                | `{}`    |
 
-The above parameters map to the env variables defined in [bitnami-mirror/ejbca](https://github.com/bitnami/containers/tree/main/bitnami/ejbca). For more information please refer to the [bitnami/ejbca](https://github.com/bitnami/containers/tree/main/bitnami/ejbca) image documentation.
+The above parameters map to the env variables defined in [bitnami/ejbca](https://github.com/bitnami/containers/tree/main/bitnami/ejbca). For more information please refer to the [bitnami/ejbca](https://github.com/bitnami/containers/tree/main/bitnami/ejbca) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
 helm install my-release \
   --set ejbcaAdminUsername=admin,ejbcaAdminPassword=password,mariadb.auth.password=secretpassword \
-    oci://registry-1.docker.io/bitnamicharts/discourse
+    bitnami-mirror/ejbca
 ```
 
 The above command sets the EJBCA administrator account username and password to `admin` and `password` respectively. Additionally, it sets the MariaDB `bn_ejbca` user password to `secretpassword`.
@@ -251,7 +251,7 @@ The above command sets the EJBCA administrator account username and password to 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/ejbca
+helm install my-release -f values.yaml bitnami-mirror/ejbca
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -360,13 +360,13 @@ export MARIADB_PVC=$(kubectl get pvc -l app=mariadb,component=master,release=ejb
 Upgrade your release (maintaining the version) disabling MariaDB and scaling EJBCA replicas to 0:
 
 ```console
-helm upgrade ejbca oci://registry-1.docker.io/bitnamicharts/ejbca --set ejbcaAdminPassword=$EJBCA_ADMIN_PASSWORD --set replicaCount=0 --set mariadb.enabled=false --version 0.4.0
+helm upgrade ejbca bitnami-mirror/ejbca --set ejbcaAdminPassword=$EJBCA_ADMIN_PASSWORD --set replicaCount=0 --set mariadb.enabled=false --version 0.4.0
 ```
 
 Finally, upgrade you release to 1.0.0 reusing the existing PVC, and enabling back MariaDB:
 
 ```console
-helm upgrade ejbca oci://registry-1.docker.io/bitnamicharts/ejbca --set mariadb.primary.persistence.existingClaim=$MARIADB_PVC --set mariadb.auth.rootPassword=$MARIADB_ROOT_PASSWORD --set mariadb.auth.password=$MARIADB_PASSWORD --set ejbcaAdminPassword=$EJBCA_ADMIN_PASSWORD
+helm upgrade ejbca bitnami-mirror/ejbca --set mariadb.primary.persistence.existingClaim=$MARIADB_PVC --set mariadb.auth.rootPassword=$MARIADB_ROOT_PASSWORD --set mariadb.auth.password=$MARIADB_PASSWORD --set ejbcaAdminPassword=$EJBCA_ADMIN_PASSWORD
 ```
 
 You should see the lines below in MariaDB container logs:

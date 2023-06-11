@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/gitea
+helm install my-release bitnami-mirror/gitea
 ```
 
 ## Introduction
 
-This chart bootstraps a [Gitea](https://github.com/bitnami/containers/tree/main/bitnami-mirror/gitea) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Gitea](https://github.com/bitnami/containers/tree/main/bitnami/gitea) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 It also packages the [Bitnami PostgreSQL chart](https://github.com/bitnami/charts/tree/main/bitnami/postgresql) which is required for bootstrapping a PostgreSQL deployment as a database for the Gitea application.
 
@@ -34,7 +34,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/gitea
+helm install my-release bitnami-mirror/gitea
 ```
 
 The command deploys Gitea on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -78,7 +78,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                    | Description                                                                                                           | Value                 |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`                        | Gitea image registry                                                                                                  | `docker.io`           |
-| `image.repository`                      | Gitea Image name                                                                                                      | `bitnami-mirror/gitea`       |
+| `image.repository`                      | Gitea Image name                                                                                                      | `bitnami/gitea`       |
 | `image.tag`                             | Gitea Image tag                                                                                                       | `1.19.3-debian-11-r6` |
 | `image.digest`                          | Gitea image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                 | `""`                  |
 | `image.pullPolicy`                      | Gitea image pull policy                                                                                               | `IfNotPresent`        |
@@ -244,7 +244,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set adminUsername=user,giteaPassword=password,postgresql.auth.rootPassword=secretpassword \
-    oci://registry-1.docker.io/bitnamicharts/gitea
+    bitnami-mirror/gitea
 ```
 
 The above command sets the Gitea administrator account username and password to `user` and `password` respectively. Additionally, it sets the PostgreSQL `root` user password to `secretpassword`.
@@ -254,7 +254,7 @@ The above command sets the Gitea administrator account username and password to 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/gitea
+helm install my-release -f values.yaml bitnami-mirror/gitea
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -293,7 +293,7 @@ As an alternative, you can use of the preset configurations for pod affinity, po
 
 ## Persistence
 
-The [Bitnami Gitea](https://github.com/bitnami/containers/tree/main/bitnami-mirror/gitea) image stores the Gitea data and configurations at the `/bitnami/gitea` path of the container.
+The [Bitnami Gitea](https://github.com/bitnami/containers/tree/main/bitnami/gitea) image stores the Gitea data and configurations at the `/bitnami/gitea` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
@@ -305,7 +305,7 @@ See the [Parameters](#parameters) section to configure the PVC or to disable per
 3. Install the chart
 
 ```console
-helm install my-release --set persistence.existingClaim=PVC_NAME oci://registry-1.docker.io/bitnamicharts/gitea
+helm install my-release --set persistence.existingClaim=PVC_NAME bitnami-mirror/gitea
 ```
 
 ### Host path
@@ -321,7 +321,7 @@ helm install my-release --set persistence.existingClaim=PVC_NAME oci://registry-
 2. Install the chart
 
     ```console
-    helm install my-release --set persistence.hostPath=/PATH/TO/HOST/MOUNT oci://registry-1.docker.io/bitnamicharts/gitea
+    helm install my-release --set persistence.hostPath=/PATH/TO/HOST/MOUNT bitnami-mirror/gitea
     ```
 
     This will mount the `gitea-data` volume into the `hostPath` directory. The site data will be persisted if the mount path contains valid data, else the site data will be initialized at first launch.

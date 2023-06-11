@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/external-dns
+helm install my-release bitnami-mirror/external-dns
 ```
 
 ## Introduction
 
-This chart bootstraps a [ExternalDNS](https://github.com/bitnami/containers/tree/main/bitnami-mirror/external-dns) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [ExternalDNS](https://github.com/bitnami/containers/tree/main/bitnami/external-dns) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -30,7 +30,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/external-dns
+helm install my-release bitnami-mirror/external-dns
 ```
 
 The command deploys ExternalDNS on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -75,7 +75,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                            | Description                                                                                                                                                                  | Value                     |
 | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
 | `image.registry`                                | ExternalDNS image registry                                                                                                                                                   | `docker.io`               |
-| `image.repository`                              | ExternalDNS image repository                                                                                                                                                 | `bitnami-mirror/external-dns`    |
+| `image.repository`                              | ExternalDNS image repository                                                                                                                                                 | `bitnami/external-dns`    |
 | `image.tag`                                     | ExternalDNS Image tag (immutable tags are recommended)                                                                                                                       | `0.13.4-debian-11-r19`    |
 | `image.digest`                                  | ExternalDNS image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                                  | `""`                      |
 | `image.pullPolicy`                              | ExternalDNS image pull policy                                                                                                                                                | `IfNotPresent`            |
@@ -346,13 +346,13 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ```console
 helm install my-release \
-  --set provider=aws oci://registry-1.docker.io/bitnamicharts/external-dns
+  --set provider=aws bitnami-mirror/external-dns
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/external-dns
+helm install my-release -f values.yaml bitnami-mirror/external-dns
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -400,7 +400,7 @@ helm install my-release \
   --set aws.zoneType=public \
   --set txtOwnerId=HOSTED_ZONE_IDENTIFIER \
   --set domainFilters[0]=HOSTED_ZONE_NAME \
-  oci://registry-1.docker.io/bitnamicharts/external-dns
+  bitnami-mirror/external-dns
 ```
 
 ## Troubleshooting
@@ -467,12 +467,12 @@ Use the workaround below to upgrade from versions previous to 1.0.0. The followi
 
 ```console
 kubectl delete deployment my-release-external-dns
-helm upgrade my-release oci://registry-1.docker.io/bitnamicharts/external-dns
+helm upgrade my-release bitnami-mirror/external-dns
 ```
 
 Other mayor changes included in this major version are:
 
-- Default image changes from `registry.opensource.zalan.do/teapot/external-dns` to `bitnami-mirror/external-dns`.
+- Default image changes from `registry.opensource.zalan.do/teapot/external-dns` to `bitnami/external-dns`.
 - The parameters below are renamed:
   - `aws.secretKey` -> `aws.credentials.secretKey`
   - `aws.accessKey` -> `aws.credentials.accessKey`

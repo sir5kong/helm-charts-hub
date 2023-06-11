@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/argo-cd
+helm install my-release bitnami-mirror/argo-cd
 ```
 
 ## Introduction
@@ -32,7 +32,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/argo-cd
+helm install my-release bitnami-mirror/argo-cd
 ```
 
 The command deploys argo-cd on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -76,7 +76,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                | Description                                                                                             | Value                |
 | ------------------- | ------------------------------------------------------------------------------------------------------- | -------------------- |
 | `image.registry`    | Argo CD image registry                                                                                  | `docker.io`          |
-| `image.repository`  | Argo CD image repository                                                                                | `bitnami-mirror/argo-cd`    |
+| `image.repository`  | Argo CD image repository                                                                                | `bitnami/argo-cd`    |
 | `image.tag`         | Argo CD image tag (immutable tags are recommended)                                                      | `2.7.4-debian-11-r0` |
 | `image.digest`      | Argo CD image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                 |
 | `image.pullPolicy`  | Argo CD image pull policy                                                                               | `IfNotPresent`       |
@@ -865,7 +865,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `redisWait.extraArgs`                     | Additional arguments for the redis-cli call, such as TLS                                              | `""`                   |
 | `redisWait.securityContext`               | Security context for init container                                                                   | `{}`                   |
 
-The above parameters map to the env variables defined in [bitnami-mirror/argo-cd](https://github.com/bitnami/containers/tree/main/bitnami/argo-cd). For more information please refer to the [bitnami/argo-cd](https://github.com/bitnami/containers/tree/main/bitnami/argo-cd) image documentation.
+The above parameters map to the env variables defined in [bitnami/argo-cd](https://github.com/bitnami/containers/tree/main/bitnami/argo-cd). For more information please refer to the [bitnami/argo-cd](https://github.com/bitnami/containers/tree/main/bitnami/argo-cd) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -873,7 +873,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 helm install my-release \
   --set controller.replicaCount=2 \
   --set server.metrics.enabled=true \
-    oci://registry-1.docker.io/bitnamicharts/argo-cd
+    bitnami-mirror/argo-cd
 ```
 
 The above command sets the argo-cd controller replicas to 2, and enabled argo-cd server metrics.
@@ -883,7 +883,7 @@ The above command sets the argo-cd controller replicas to 2, and enabled argo-cd
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/argo-cd
+helm install my-release -f values.yaml bitnami-mirror/argo-cd
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

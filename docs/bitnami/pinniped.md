@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/pinniped
+helm install my-release bitnami-mirror/pinniped
 ```
 
 ## Introduction
@@ -34,7 +34,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/pinniped
+helm install my-release bitnami-mirror/pinniped
 ```
 
 The command deploys pinniped on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -74,7 +74,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `clusterDomain`     | Kubernetes cluster domain name                                                                           | `cluster.local`     |
 | `extraDeploy`       | Array of extra objects to deploy with the release                                                        | `[]`                |
 | `image.registry`    | Pinniped image registry                                                                                  | `docker.io`         |
-| `image.repository`  | Pinniped image repository                                                                                | `bitnami-mirror/pinniped`  |
+| `image.repository`  | Pinniped image repository                                                                                | `bitnami/pinniped`  |
 | `image.tag`         | Pinniped image tag (immutable tags are recommended)                                                      | `0.23.0-scratch-r4` |
 | `image.digest`      | Pinniped image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                |
 | `image.pullPolicy`  | Pinniped image pull policy                                                                               | `IfNotPresent`      |
@@ -309,14 +309,14 @@ The command removes all the Kubernetes components associated with the chart and 
 
 See <https://github.com/bitnami-labs/readme-generator-for-helm> to create the table
 
-The above parameters map to the env variables defined in [bitnami-mirror/pinniped](https://github.com/bitnami/containers/tree/main/bitnami/pinniped). For more information please refer to the [bitnami/pinniped](https://github.com/bitnami/containers/tree/main/bitnami/pinniped) image documentation.
+The above parameters map to the env variables defined in [bitnami/pinniped](https://github.com/bitnami/containers/tree/main/bitnami/pinniped). For more information please refer to the [bitnami/pinniped](https://github.com/bitnami/containers/tree/main/bitnami/pinniped) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
 helm install my-release \
   --set supervisor.enabled=false \
-    oci://registry-1.docker.io/bitnamicharts/pinniped
+    bitnami-mirror/pinniped
 ```
 
 The above command sets disables the supervisor compoment deployment.
@@ -324,7 +324,7 @@ The above command sets disables the supervisor compoment deployment.
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/pinniped
+helm install my-release -f values.yaml bitnami-mirror/pinniped
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -339,7 +339,7 @@ Bitnami will release a new chart updating its containers if a new version of the
 
 ## Persistence
 
-The [Bitnami pinniped](https://github.com/bitnami/containers/tree/main/bitnami-mirror/pinniped) image stores the pinniped data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
+The [Bitnami pinniped](https://github.com/bitnami/containers/tree/main/bitnami/pinniped) image stores the pinniped data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 
 ### Additional environment variables
 

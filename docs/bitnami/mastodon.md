@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/mastodon
+helm install my-release bitnami-mirror/mastodon
 ```
 
 ## Introduction
@@ -35,7 +35,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/mastodon
+helm install my-release bitnami-mirror/mastodon
 ```
 
 The command deploys Mastodon on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -78,7 +78,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `diagnosticMode.command` | Command to override all containers in the deployment                                                                                                | `["sleep"]`           |
 | `diagnosticMode.args`    | Args to override all containers in the deployment                                                                                                   | `["infinity"]`        |
 | `image.registry`         | Mastodon image registry                                                                                                                             | `docker.io`           |
-| `image.repository`       | Mastodon image repository                                                                                                                           | `bitnami-mirror/mastodon`    |
+| `image.repository`       | Mastodon image repository                                                                                                                           | `bitnami/mastodon`    |
 | `image.tag`              | Mastodon image tag (immutable tags are recommended)                                                                                                 | `4.1.2-debian-11-r18` |
 | `image.digest`           | Mastodon image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended) | `""`                  |
 | `image.pullPolicy`       | Mastodon image pull policy                                                                                                                          | `IfNotPresent`        |
@@ -409,7 +409,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                        | Description                                                                                             | Value               |
 | --------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------- |
 | `persistence.enabled`       | Enable persistence using Persistent Volume Claims                                                       | `false`             |
-| `persistence.mountPath`     | Path to mount the volume at.                                                                            | `/bitnami-mirror/mastodon` |
+| `persistence.mountPath`     | Path to mount the volume at.                                                                            | `/bitnami/mastodon` |
 | `persistence.subPath`       | The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services | `""`                |
 | `persistence.storageClass`  | Storage class of backing PVC                                                                            | `""`                |
 | `persistence.annotations`   | Persistent Volume Claim annotations                                                                     | `{}`                |
@@ -562,7 +562,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 helm install my-release \
   --set adminUsername=admin \
   --set adminPassword=password \
-    oci://registry-1.docker.io/bitnamicharts/mastodon
+    bitnami-mirror/mastodon
 ```
 
 The above command sets the mastodon administrator account username and password to `admin` and `password` respectively.
@@ -572,7 +572,7 @@ The above command sets the mastodon administrator account username and password 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/mastodon
+helm install my-release -f values.yaml bitnami-mirror/mastodon
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -643,7 +643,7 @@ The chart also facilitates the creation of TLS secrets for use with the Ingress 
 
 ## Persistence
 
-The [Bitnami mastodon](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mastodon) image stores the mastodon data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
+The [Bitnami mastodon](https://github.com/bitnami/containers/tree/main/bitnami/mastodon) image stores the mastodon data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 
 ### Additional environment variables
 

@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/kong
+helm install my-release bitnami-mirror/kong
 ```
 
 ## Introduction
 
-This chart bootstraps a [kong](https://github.com/bitnami/containers/tree/main/bitnami-mirror/kong) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager. It also includes the [kong-ingress-controller](https://github.com/bitnami/containers/tree/main/bitnami/kong-ingress-controller) container for managing Ingress resources using Kong.
+This chart bootstraps a [kong](https://github.com/bitnami/containers/tree/main/bitnami/kong) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager. It also includes the [kong-ingress-controller](https://github.com/bitnami/containers/tree/main/bitnami/kong-ingress-controller) container for managing Ingress resources using Kong.
 
 Extra functionalities beyond the Kong core are extended through plugins. Kong is built on top of reliable technologies like NGINX and provides an easy-to-use RESTful API to operate and configure the system.
 
@@ -33,7 +33,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/kong
+helm install my-release bitnami-mirror/kong
 ```
 
 These commands deploy kong on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -78,7 +78,7 @@ helm delete my-release
 | Name                | Description                                                                                          | Value                |
 | ------------------- | ---------------------------------------------------------------------------------------------------- | -------------------- |
 | `image.registry`    | kong image registry                                                                                  | `docker.io`          |
-| `image.repository`  | kong image repository                                                                                | `bitnami-mirror/kong`       |
+| `image.repository`  | kong image repository                                                                                | `bitnami/kong`       |
 | `image.tag`         | kong image tag (immutable tags are recommended)                                                      | `3.3.0-debian-11-r1` |
 | `image.digest`      | kong image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                 |
 | `image.pullPolicy`  | kong image pull policy                                                                               | `IfNotPresent`       |
@@ -212,7 +212,7 @@ helm delete my-release
 | --------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
 | `ingressController.enabled`                                     | Enable/disable the Kong Ingress Controller                                                                                                    | `true`                            |
 | `ingressController.image.registry`                              | Kong Ingress Controller image registry                                                                                                        | `docker.io`                       |
-| `ingressController.image.repository`                            | Kong Ingress Controller image name                                                                                                            | `bitnami-mirror/kong-ingress-controller` |
+| `ingressController.image.repository`                            | Kong Ingress Controller image name                                                                                                            | `bitnami/kong-ingress-controller` |
 | `ingressController.image.tag`                                   | Kong Ingress Controller image tag                                                                                                             | `2.9.3-debian-11-r10`             |
 | `ingressController.image.digest`                                | Kong Ingress Controller image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                       | `""`                              |
 | `ingressController.image.pullPolicy`                            | Kong Ingress Controller image pull policy                                                                                                     | `IfNotPresent`                    |
@@ -342,7 +342,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ```console
 helm install my-release \
-  --set service.exposeAdmin=true oci://registry-1.docker.io/bitnamicharts/kong
+  --set service.exposeAdmin=true bitnami-mirror/kong
 ```
 
 The above command exposes the Kong admin ports inside the Kong service.
@@ -350,7 +350,7 @@ The above command exposes the Kong admin ports inside the Kong service.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/kong
+helm install my-release -f values.yaml bitnami-mirror/kong
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -370,13 +370,13 @@ The Bitnami Kong chart allows setting two database backends: PostgreSQL or Cassa
 - Deploy the PostgreSQL sub-chart (default)
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/kong
+helm install my-release bitnami-mirror/kong
 ```
 
 - Use an external PostgreSQL database
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/kong \
+helm install my-release bitnami-mirror/kong \
     --set postgresql.enabled=false \
     --set postgresql.external.host=_HOST_OF_YOUR_POSTGRESQL_INSTALLATION_ \
     --set postgresql.external.password=_PASSWORD_OF_YOUR_POSTGRESQL_INSTALLATION_ \
@@ -386,7 +386,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/kong \
 - Deploy the Cassandra sub-chart
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/kong \
+helm install my-release bitnami-mirror/kong \
     --set database=cassandra \
     --set postgresql.enabled=false \
     --set cassandra.enabled=true
@@ -395,7 +395,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/kong \
 - Use an existing Cassandra installation
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/kong \
+helm install my-release bitnami-mirror/kong \
     --set database=cassandra \
     --set postgresql.enabled=false \
     --set cassandra.enabled=false \
@@ -509,7 +509,7 @@ Find more information about how to deal with common errors related to Bitnami's 
 It's necessary to specify the existing passwords while performing a upgrade to ensure the secrets are not updated with invalid randomly generated passwords. Remember to specify the existing values of the `postgresql.postgresqlPassword` or `cassandra.password` parameters when upgrading the chart:
 
 ```console
-helm upgrade my-release oci://registry-1.docker.io/bitnamicharts/kong \
+helm upgrade my-release bitnami-mirror/kong \
     --set database=postgresql
     --set postgresql.enabled=true
     --set
@@ -580,7 +580,7 @@ kubectl delete statefulsets.apps kong-postgresql --cascade=false
 ##### Upgrade the chart release
 
 ```console
-helm upgrade kong oci://registry-1.docker.io/bitnamicharts/kong \
+helm upgrade kong bitnami-mirror/kong \
     --set postgresql.postgresqlPassword=$POSTGRESQL_PASSWORD \
     --set postgresql.persistence.existingClaim=$POSTGRESQL_PVC
 ```

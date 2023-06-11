@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/kafka
+helm install my-release bitnami-mirror/kafka
 ```
 
 ## Introduction
 
-This chart bootstraps a [Kafka](https://github.com/bitnami/containers/tree/main/bitnami-mirror/kafka) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Kafka](https://github.com/bitnami/containers/tree/main/bitnami/kafka) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -31,7 +31,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/kafka
+helm install my-release bitnami-mirror/kafka
 ```
 
 These commands deploy Kafka on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -79,7 +79,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                              | Description                                                                                                                                                                         | Value                               |
 | ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
 | `image.registry`                                  | Kafka image registry                                                                                                                                                                | `docker.io`                         |
-| `image.repository`                                | Kafka image repository                                                                                                                                                              | `bitnami-mirror/kafka`                     |
+| `image.repository`                                | Kafka image repository                                                                                                                                                              | `bitnami/kafka`                     |
 | `image.tag`                                       | Kafka image tag (immutable tags are recommended)                                                                                                                                    | `3.4.1-debian-11-r0`                |
 | `image.digest`                                    | Kafka image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                                               | `""`                                |
 | `image.pullPolicy`                                | Kafka image pull policy                                                                                                                                                             | `IfNotPresent`                      |
@@ -98,7 +98,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `logRetentionCheckIntervalMs`                     | The interval at which log segments are checked to see if they can be deleted                                                                                                        | `300000`                            |
 | `logRetentionHours`                               | The minimum age of a log file to be eligible for deletion due to age                                                                                                                | `168`                               |
 | `logSegmentBytes`                                 | The maximum size of a log segment file. When this size is reached a new log segment will be created                                                                                 | `_1073741824`                       |
-| `logsDirs`                                        | A comma separated list of directories in which kafka's log data is kept                                                                                                             | `/bitnami-mirror/kafka/data`               |
+| `logsDirs`                                        | A comma separated list of directories in which kafka's log data is kept                                                                                                             | `/bitnami/kafka/data`               |
 | `maxMessageBytes`                                 | The largest record batch size allowed by Kafka                                                                                                                                      | `_1000012`                          |
 | `defaultReplicationFactor`                        | Default replication factors for automatically created topics                                                                                                                        | `1`                                 |
 | `offsetsTopicReplicationFactor`                   | The replication factor for the offsets topic                                                                                                                                        | `1`                                 |
@@ -293,7 +293,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `persistence.annotations`      | Annotations for the PVC                                                                                                                | `{}`                      |
 | `persistence.labels`           | Labels for the PVC                                                                                                                     | `{}`                      |
 | `persistence.selector`         | Selector to match an existing Persistent Volume for Kafka data PVC. If set, the PVC can't have a PV dynamically provisioned for it     | `{}`                      |
-| `persistence.mountPath`        | Mount path of the Kafka data volume                                                                                                    | `/bitnami-mirror/kafka`          |
+| `persistence.mountPath`        | Mount path of the Kafka data volume                                                                                                    | `/bitnami/kafka`          |
 | `logPersistence.enabled`       | Enable Kafka logs persistence using PVC, note that ZooKeeper persistence is unaffected                                                 | `false`                   |
 | `logPersistence.existingClaim` | A manually managed Persistent Volume and Claim                                                                                         | `""`                      |
 | `logPersistence.storageClass`  | PVC Storage Class for Kafka logs volume                                                                                                | `""`                      |
@@ -301,7 +301,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `logPersistence.size`          | PVC Storage Request for Kafka logs volume                                                                                              | `8Gi`                     |
 | `logPersistence.annotations`   | Annotations for the PVC                                                                                                                | `{}`                      |
 | `logPersistence.selector`      | Selector to match an existing Persistent Volume for Kafka log data PVC. If set, the PVC can't have a PV dynamically provisioned for it | `{}`                      |
-| `logPersistence.mountPath`     | Mount path of the Kafka logs volume                                                                                                    | `/opt/bitnami-mirror/kafka/logs` |
+| `logPersistence.mountPath`     | Mount path of the Kafka logs volume                                                                                                    | `/opt/bitnami/kafka/logs` |
 
 ### Volume Permissions parameters
 
@@ -334,7 +334,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `metrics.kafka.enabled`                                     | Whether or not to create a standalone Kafka exporter to expose Kafka metrics                                                     | `false`                                                                                 |
 | `metrics.kafka.image.registry`                              | Kafka exporter image registry                                                                                                    | `docker.io`                                                                             |
-| `metrics.kafka.image.repository`                            | Kafka exporter image repository                                                                                                  | `bitnami-mirror/kafka-exporter`                                                                |
+| `metrics.kafka.image.repository`                            | Kafka exporter image repository                                                                                                  | `bitnami/kafka-exporter`                                                                |
 | `metrics.kafka.image.tag`                                   | Kafka exporter image tag (immutable tags are recommended)                                                                        | `1.7.0-debian-11-r4`                                                                    |
 | `metrics.kafka.image.digest`                                | Kafka exporter image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                   | `""`                                                                                    |
 | `metrics.kafka.image.pullPolicy`                            | Kafka exporter image pull policy                                                                                                 | `IfNotPresent`                                                                          |
@@ -498,7 +498,7 @@ The command removes all the Kubernetes components associated with the chart and 
 ```console
 helm install my-release \
   --set replicaCount=3 \
-  oci://registry-1.docker.io/bitnamicharts/kafka
+  bitnami-mirror/kafka
 ```
 
 The above command deploys Kafka with 3 brokers (replicas).
@@ -506,7 +506,7 @@ The above command deploys Kafka with 3 brokers (replicas).
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/kafka
+helm install my-release -f values.yaml bitnami-mirror/kafka
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -796,7 +796,7 @@ extraDeploy:
                   containerPort: 8083
               volumeMounts:
                 - name: configuration
-                  mountPath: /bitnami-mirror/kafka/config
+                  mountPath: /bitnami/kafka/config
           volumes:
             - name: configuration
               configMap:
@@ -834,17 +834,17 @@ extraDeploy:
 You can create the Kafka Connect image using the Dockerfile below:
 
 ```Dockerfile
-FROM bitnami-mirror/kafka:latest
+FROM bitnami/kafka:latest
 # Download MongoDB&reg; Connector for Apache Kafka https://www.confluent.io/hub/mongodb/kafka-connect-mongodb
-RUN mkdir -p /opt/bitnami-mirror/kafka/plugins && \
-    cd /opt/bitnami-mirror/kafka/plugins && \
+RUN mkdir -p /opt/bitnami/kafka/plugins && \
+    cd /opt/bitnami/kafka/plugins && \
     curl --remote-name --location --silent https://search.maven.org/remotecontent?filepath=org/mongodb/kafka/mongo-kafka-connect/1.2.0/mongo-kafka-connect-1.2.0-all.jar
-CMD /opt/bitnami-mirror/kafka/bin/connect-standalone.sh /opt/bitnami/kafka/config/connect-standalone.properties /opt/bitnami/kafka/config/mongo.properties
+CMD /opt/bitnami/kafka/bin/connect-standalone.sh /opt/bitnami/kafka/config/connect-standalone.properties /opt/bitnami/kafka/config/mongo.properties
 ```
 
 ## Persistence
 
-The [Bitnami Kafka](https://github.com/bitnami/containers/tree/main/bitnami-mirror/kafka) image stores the Kafka data at the `/bitnami/kafka` path of the container.
+The [Bitnami Kafka](https://github.com/bitnami/containers/tree/main/bitnami/kafka) image stores the Kafka data at the `/bitnami/kafka` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube. See the [Parameters](#persistence-parameters) section to configure the PVC or to disable persistence.
 
@@ -910,7 +910,7 @@ In this version, the `image` block is defined once and is used in the different 
 ```yaml
 image:
   registry: docker.io
-  repository: bitnami-mirror/kafka
+  repository: bitnami/kafka
   tag: 2.8.0
 ```
 
@@ -919,13 +919,13 @@ VS
 ```yaml
 image:
   registry: docker.io
-  repository: bitnami-mirror/kafka
+  repository: bitnami/kafka
   tag: 2.8.0
 ...
 provisioning:
   image:
     registry: docker.io
-    repository: bitnami-mirror/kafka
+    repository: bitnami/kafka
     tag: 2.8.0
 ```
 
@@ -998,7 +998,7 @@ Backwards compatibility is not guaranteed you adapt your values.yaml to the new 
 
 ### To 10.0.0
 
-If you are setting the `config` or `log4j` parameter, backwards compatibility is not guaranteed, because the `KAFKA_MOUNTED_CONFDIR` has moved from `/opt/bitnami-mirror/kafka/conf` to `/bitnami/kafka/config`. In order to continue using these parameters, you must also upgrade your image to `docker.io/bitnami/kafka:2.4.1-debian-10-r38` or later.
+If you are setting the `config` or `log4j` parameter, backwards compatibility is not guaranteed, because the `KAFKA_MOUNTED_CONFDIR` has moved from `/opt/bitnami/kafka/conf` to `/bitnami/kafka/config`. In order to continue using these parameters, you must also upgrade your image to `docker.io/bitnami/kafka:2.4.1-debian-10-r38` or later.
 
 ### To 9.0.0
 
@@ -1032,8 +1032,8 @@ Backwards compatibility is not guaranteed when Kafka metrics are enabled, unless
 Use the workaround below to upgrade from versions previous to 7.0.0. The following example assumes that the release name is kafka:
 
 ```console
-helm upgrade kafka oci://registry-1.docker.io/bitnamicharts/kafka --version 6.1.8 --set metrics.kafka.enabled=false
-helm upgrade kafka oci://registry-1.docker.io/bitnamicharts/kafka --version 7.0.0 --set metrics.kafka.enabled=true
+helm upgrade kafka bitnami-mirror/kafka --version 6.1.8 --set metrics.kafka.enabled=false
+helm upgrade kafka bitnami-mirror/kafka --version 7.0.0 --set metrics.kafka.enabled=true
 ```
 
 ### To 2.0.0

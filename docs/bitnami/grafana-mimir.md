@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/grafana-mimir
+helm install my-release bitnami-mirror/grafana-mimir
 ```
 
 ## Introduction
@@ -35,7 +35,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/grafana-mimir
+helm install my-release bitnami-mirror/grafana-mimir
 ```
 
 The command deploys grafana-mimir on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -83,12 +83,12 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                   | Description                                                                                                                                              | Value                    |
 | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
 | `mimir.image.registry`                 | Grafana Mimir image registry                                                                                                                             | `docker.io`              |
-| `mimir.image.repository`               | Grafana Mimir image repository                                                                                                                           | `bitnami-mirror/grafana-mimir`  |
+| `mimir.image.repository`               | Grafana Mimir image repository                                                                                                                           | `bitnami/grafana-mimir`  |
 | `mimir.image.tag`                      | Grafana Mimir image tag (immutable tags are recommended)                                                                                                 | `2.8.0-debian-11-r6`     |
 | `mimir.image.digest`                   | Grafana Mimir image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended) | `""`                     |
 | `mimir.image.pullPolicy`               | Grafana Mimir image pull policy                                                                                                                          | `IfNotPresent`           |
 | `mimir.image.pullSecrets`              | Grafana Mimir image pull secrets                                                                                                                         | `[]`                     |
-| `mimir.dataDir`                        | path to the Mimir data directory                                                                                                                         | `/bitnami-mirror/grafana-mimir` |
+| `mimir.dataDir`                        | path to the Mimir data directory                                                                                                                         | `/bitnami/grafana-mimir` |
 | `mimir.configuration`                  | Mimir components configuration                                                                                                                           | `""`                     |
 | `mimir.overrideConfiguration`          | Mimir components configuration override. Values defined here takes precedence over mimir.configuration                                                   | `{}`                     |
 | `mimir.existingConfigmap`              | Name of a ConfigMap with the Mimir configuration                                                                                                         | `""`                     |
@@ -1225,7 +1225,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set mimir.image.debug=true \
-  oci://registry-1.docker.io/bitnamicharts/grafana-mimir
+  bitnami-mirror/grafana-mimir
 ```
 
 The above command enables the debug mode in the image.
@@ -1233,7 +1233,7 @@ The above command enables the debug mode in the image.
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/grafana-mimir
+helm install my-release -f values.yaml bitnami-mirror/grafana-mimir
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml) as starting point.
@@ -1261,7 +1261,7 @@ The mimir configuration file `mimir.yaml` is shared across the different compone
 
 ### Data
 
-The [Bitnami grafana-mimir](https://github.com/bitnami/containers/tree/main/bitnami-mirror/grafana-mimir) image stores the data at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments.
+The [Bitnami grafana-mimir](https://github.com/bitnami/containers/tree/main/bitnami/grafana-mimir) image stores the data at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments.
 
 ### Additional environment variables
 

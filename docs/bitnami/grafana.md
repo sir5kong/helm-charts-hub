@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/grafana
+helm install my-release bitnami-mirror/grafana
 ```
 
 ## Introduction
 
-This chart bootstraps a [grafana](https://github.com/bitnami/containers/tree/main/bitnami-mirror/grafana) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [grafana](https://github.com/bitnami/containers/tree/main/bitnami/grafana) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -32,7 +32,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/grafana
+helm install my-release bitnami-mirror/grafana
 ```
 
 These commands deploy grafana on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -51,9 +51,9 @@ The command removes all the Kubernetes components associated with the chart and 
 
 ## Differences between the Bitnami Grafana chart and the Bitnami Grafana Operator chart
 
-In the Bitnami catalog we offer both the bitnami-mirror/grafana and bitnami/grafana-operator charts. Each solution covers different needs and use cases.
+In the Bitnami catalog we offer both the bitnami/grafana and bitnami/grafana-operator charts. Each solution covers different needs and use cases.
 
-The *bitnami-mirror/grafana* chart deploys a single Grafana installation (with grafana-image-renderer) using a Kubernetes Deployment object (together with Services, PVCs, ConfigMaps, etc.). The figure below shows the deployed objects in the cluster after executing *helm install*:
+The *bitnami/grafana* chart deploys a single Grafana installation (with grafana-image-renderer) using a Kubernetes Deployment object (together with Services, PVCs, ConfigMaps, etc.). The figure below shows the deployed objects in the cluster after executing *helm install*:
 
 ```text
                     +--------------+             +-----+
@@ -74,7 +74,7 @@ The *bitnami-mirror/grafana* chart deploys a single Grafana installation (with g
 
 Its lifecycle is managed using Helm and, at the Grafana container level, the following operations are automated: persistence management, configuration based on environment variables and plugin initialization. The chart also allows deploying dashboards and data sources using ConfigMaps. The Deployments do not require any ServiceAccounts with special RBAC privileges so this solution would fit better in more restricted Kubernetes installations.
 
-The *bitnami-mirror/grafana-operator* chart deploys a Grafana Operator installation using a Kubernetes Deployment.  The figure below shows the Grafana operator deployment after executing *helm install*:
+The *bitnami/grafana-operator* chart deploys a Grafana Operator installation using a Kubernetes Deployment.  The figure below shows the Grafana operator deployment after executing *helm install*:
 
 ```text
 +--------------------+
@@ -130,7 +130,7 @@ The operator will extend the Kubernetes API with the following objects: *Grafana
 
 ```
 
-This solution allows to easily deploy multiple Grafana instances compared to the *bitnami-mirror/grafana* chart. As the operator automatically deploys Grafana installations, the Grafana Operator pods will require a ServiceAccount with privileges to create and destroy mulitple Kubernetes objects. This may be problematic for Kubernetes clusters with strict role-based access policies.
+This solution allows to easily deploy multiple Grafana instances compared to the *bitnami/grafana* chart. As the operator automatically deploys Grafana installations, the Grafana Operator pods will require a ServiceAccount with privileges to create and destroy mulitple Kubernetes objects. This may be problematic for Kubernetes clusters with strict role-based access policies.
 
 ## Parameters
 
@@ -159,7 +159,7 @@ This solution allows to easily deploy multiple Grafana instances compared to the
 | Name                               | Description                                                                                                                                          | Value                             |
 | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
 | `image.registry`                   | Grafana image registry                                                                                                                               | `docker.io`                       |
-| `image.repository`                 | Grafana image repository                                                                                                                             | `bitnami-mirror/grafana`                 |
+| `image.repository`                 | Grafana image repository                                                                                                                             | `bitnami/grafana`                 |
 | `image.tag`                        | Grafana image tag (immutable tags are recommended)                                                                                                   | `9.5.3-debian-11-r0`              |
 | `image.digest`                     | Grafana image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                              | `""`                              |
 | `image.pullPolicy`                 | Grafana image pull policy                                                                                                                            | `IfNotPresent`                    |
@@ -194,7 +194,7 @@ This solution allows to easily deploy multiple Grafana instances compared to the
 | `ldap.tls.enabled`                 | Enabled TLS configuration.                                                                                                                           | `false`                           |
 | `ldap.tls.startTls`                | Use STARTTLS instead of LDAPS.                                                                                                                       | `false`                           |
 | `ldap.tls.skipVerify`              | Skip any SSL verification (hostanames or certificates)                                                                                               | `false`                           |
-| `ldap.tls.certificatesMountPath`   | Where LDAP certifcates are mounted.                                                                                                                  | `/opt/bitnami-mirror/grafana/conf/ldap/` |
+| `ldap.tls.certificatesMountPath`   | Where LDAP certifcates are mounted.                                                                                                                  | `/opt/bitnami/grafana/conf/ldap/` |
 | `ldap.tls.certificatesSecret`      | Secret with LDAP certificates.                                                                                                                       | `""`                              |
 | `ldap.tls.CAFilename`              | CA certificate filename. Should match with the CA entry key in the ldap.tls.certificatesSecret.                                                      | `""`                              |
 | `ldap.tls.certFilename`            | Client certificate filename to authenticate against the LDAP server. Should match with certificate the entry key in the ldap.tls.certificatesSecret. | `""`                              |
@@ -357,7 +357,7 @@ This solution allows to easily deploy multiple Grafana instances compared to the
 | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
 | `imageRenderer.enabled`                                  | Enable using a remote rendering service to render PNG images                                                                              | `false`                          |
 | `imageRenderer.image.registry`                           | Grafana Image Renderer image registry                                                                                                     | `docker.io`                      |
-| `imageRenderer.image.repository`                         | Grafana Image Renderer image repository                                                                                                   | `bitnami-mirror/grafana-image-renderer` |
+| `imageRenderer.image.repository`                         | Grafana Image Renderer image repository                                                                                                   | `bitnami/grafana-image-renderer` |
 | `imageRenderer.image.tag`                                | Grafana Image Renderer image tag (immutable tags are recommended)                                                                         | `3.7.1-debian-11-r7`             |
 | `imageRenderer.image.digest`                             | Grafana Image Renderer image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                    | `""`                             |
 | `imageRenderer.image.pullPolicy`                         | Grafana Image Renderer image pull policy                                                                                                  | `IfNotPresent`                   |
@@ -452,7 +452,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ```console
 helm install my-release \
-  --set admin.user=admin-user oci://registry-1.docker.io/bitnamicharts/grafana
+  --set admin.user=admin-user bitnami-mirror/grafana
 ```
 
 The above command sets the Grafana admin user to `admin-user`.
@@ -462,7 +462,7 @@ The above command sets the Grafana admin user to `admin-user`.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/grafana
+helm install my-release -f values.yaml bitnami-mirror/grafana
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -492,7 +492,7 @@ data:
 And now you need to pass the ConfigMap name, to the corresponding parameters: `config.useGrafanaIniFile=true` and `config.grafanaIniConfigMap=myconfig`.
 
 To provide dashboards on deployment time, Grafana needs a dashboards provider and the dashboards themselves.
-A default provider is created if enabled, or you can mount your own provider using a ConfigMap, but have in mind that the path to the dashboard folder must be `/opt/bitnami-mirror/grafana/dashboards`.
+A default provider is created if enabled, or you can mount your own provider using a ConfigMap, but have in mind that the path to the dashboard folder must be `/opt/bitnami/grafana/dashboards`.
 
   1. To create a dashboard, it is needed to have a datasource for it. The datasources must be created mounting a secret with all the datasource files in it. In this case, it is not a ConfigMap because the datasource could contain sensitive information.
   2. To load the dashboards themselves you need to create a ConfigMap for each one containing the `json` file that defines the dashboard and set the array with the ConfigMap names into the `dashboardsConfigMaps` parameter.
@@ -601,7 +601,7 @@ As an alternative, you can use of the preset configurations for pod affinity, po
 
 ## Persistence
 
-The [Bitnami Grafana](https://github.com/bitnami/containers/tree/main/bitnami-mirror/grafana) image stores the Grafana data and configurations at the `/opt/bitnami/grafana/data` path of the container.
+The [Bitnami Grafana](https://github.com/bitnami/containers/tree/main/bitnami/grafana) image stores the Grafana data and configurations at the `/opt/bitnami/grafana/data` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
@@ -624,7 +624,7 @@ Since the volume access mode when persistence is enabled is `ReadWriteOnce` in o
 
 ```console
 kubectl delete deployment <deployment-name>
-helm upgrade <release-name> oci://registry-1.docker.io/bitnamicharts/grafana
+helm upgrade <release-name> bitnami-mirror/grafana
 ```
 
 ### To 4.1.0

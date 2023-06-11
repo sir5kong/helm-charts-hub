@@ -11,12 +11,12 @@ InfluxDB(TM) is a trademark owned by InfluxData, which is not affiliated with, a
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/influxdb
+helm install my-release bitnami-mirror/influxdb
 ```
 
 ## Introduction
 
-This chart bootstraps a [influxdb](https://github.com/bitnami/containers/tree/main/bitnami-mirror/influxdb) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [influxdb](https://github.com/bitnami/containers/tree/main/bitnami/influxdb) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -32,7 +32,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/influxdb
+helm install my-release bitnami-mirror/influxdb
 ```
 
 These commands deploy influxdb on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -79,7 +79,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                             | Description                                                                                                                                                                                                                                                          | Value                |
 | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
 | `image.registry`                                 | InfluxDB&trade; image registry                                                                                                                                                                                                                                       | `docker.io`          |
-| `image.repository`                               | InfluxDB&trade; image repository                                                                                                                                                                                                                                     | `bitnami-mirror/influxdb`   |
+| `image.repository`                               | InfluxDB&trade; image repository                                                                                                                                                                                                                                     | `bitnami/influxdb`   |
 | `image.tag`                                      | InfluxDB&trade; image tag (immutable tags are recommended)                                                                                                                                                                                                           | `2.7.1-debian-11-r8` |
 | `image.digest`                                   | InfluxDB&trade; image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                                                                                                                      | `""`                 |
 | `image.pullPolicy`                               | InfluxDB&trade; image pull policy                                                                                                                                                                                                                                    | `IfNotPresent`       |
@@ -334,7 +334,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ```console
 helm install my-release \
-  --set auth.admin.username=admin-user oci://registry-1.docker.io/bitnamicharts/influxdb
+  --set auth.admin.username=admin-user bitnami-mirror/influxdb
 ```
 
 The above command sets the InfluxDB&trade; admin user to `admin-user`.
@@ -344,7 +344,7 @@ The above command sets the InfluxDB&trade; admin user to `admin-user`.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/influxdb
+helm install my-release -f values.yaml bitnami-mirror/influxdb
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -410,7 +410,7 @@ extraEnvVars:
 
 ### Initialize a fresh instance
 
-The [Bitnami InfluxDB&trade;](https://github.com/bitnami/containers/tree/main/bitnami-mirror/influxdb) image allows you to use your custom scripts to initialize a fresh instance. In order to execute the scripts, they must be located inside the chart folder `files/docker-entrypoint-initdb.d` so they can be consumed as a ConfigMap.
+The [Bitnami InfluxDB&trade;](https://github.com/bitnami/containers/tree/main/bitnami/influxdb) image allows you to use your custom scripts to initialize a fresh instance. In order to execute the scripts, they must be located inside the chart folder `files/docker-entrypoint-initdb.d` so they can be consumed as a ConfigMap.
 
 Alternatively, you can specify custom scripts using the `influxdb.initdbScripts` parameter.
 
@@ -448,7 +448,7 @@ Find more information about how to deal with common errors related to Bitnami's 
 It's necessary to specify the existing passwords while performing an upgrade to ensure the secrets are not updated with invalid randomly generated passwords. Remember to specify the existing values of the `auth.admin.password`, `user.pwd`, `auth.readUser.password` and `auth.writeUser.password` parameters when upgrading the chart:
 
 ```console
-helm upgrade my-release oci://registry-1.docker.io/bitnamicharts/influxdb \
+helm upgrade my-release bitnami-mirror/influxdb \
     --set auth.admin.password=[ADMIN_USER_PASSWORD] \
     --set auth.user.password=[USER_PASSWORD] \
     --set auth.readUser.password=[READ_USER_PASSWORD] \
@@ -467,7 +467,7 @@ To update from the previous major, please follow this steps:
 
 ```console
 kubectl delete deployments.apps influxdb
-helm upgrade influxdb oci://registry-1.docker.io/bitnamicharts/influxdb
+helm upgrade influxdb bitnami-mirror/influxdb
 ```
 
 ### To 4.0.0
@@ -498,7 +498,7 @@ However, you can use images for versions ~1.x.x taking into account the chart ma
 #### Installing InfluxDB&trade; v1 in chart v2
 
 ```console
-helm install oci://registry-1.docker.io/bitnamicharts/influxdb --set image.tag=1.8.3-debian-10-r88
+helm install bitnami-mirror/influxdb --set image.tag=1.8.3-debian-10-r88
 ```
 
 As a consecuece some breaking changes have been included in this version.
@@ -524,7 +524,7 @@ We actually recommend to backup all the data form a previous helm release, insta
 Having an already existing chart release called `influxdb` and deployed like
 
 ```console
-helm install influxdb oci://registry-1.docker.io/bitnamicharts/influxdb
+helm install influxdb bitnami-mirror/influxdb
 ```
 
 ##### Export secrets and required values to update
@@ -538,7 +538,7 @@ export INFLUXDB_ADMIN_PASSWORD=$(kubectl get secret --namespace default influxdb
 > NOTE: Please remember to migrate all the values to its new path following the above notes, e.g: `adminUser.pwd` -> `auth.admin.password`.
 
 ```console
-helm upgrade influxdb oci://registry-1.docker.io/bitnamicharts/influxdb --set image.tag=1.8.3-debian-10-r99 \
+helm upgrade influxdb bitnami-mirror/influxdb --set image.tag=1.8.3-debian-10-r99 \
   --set auth.admin.password=${INFLUXDB_ADMIN_PASSWORD}
 ```
 

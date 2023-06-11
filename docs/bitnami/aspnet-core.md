@@ -11,14 +11,14 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/aspnet-core
+helm install my-release bitnami-mirror/aspnet-core
 ```
 
 ## Introduction
 
 Bitnami charts for Helm are carefully engineered, actively maintained and are the quickest and easiest way to deploy containers on a Kubernetes cluster that are ready to handle production workloads.
 
-This chart bootstraps an [ASP.NET Core](https://github.com/bitnami/containers/tree/main/bitnami-mirror/aspnet-core) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps an [ASP.NET Core](https://github.com/bitnami/containers/tree/main/bitnami/aspnet-core) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -32,7 +32,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/aspnet-core
+helm install my-release bitnami-mirror/aspnet-core
 ```
 
 These commands deploy a ASP.NET Core application on the Kubernetes cluster in the default configuration.
@@ -77,7 +77,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                 | Description                                                                                                  | Value                 |
 | -------------------- | ------------------------------------------------------------------------------------------------------------ | --------------------- |
 | `image.registry`     | ASP.NET Core image registry                                                                                  | `docker.io`           |
-| `image.repository`   | ASP.NET Core image repository                                                                                | `bitnami-mirror/aspnet-core` |
+| `image.repository`   | ASP.NET Core image repository                                                                                | `bitnami/aspnet-core` |
 | `image.tag`          | ASP.NET Core image tag (immutable tags are recommended)                                                      | `7.0.5-debian-11-r14` |
 | `image.digest`       | ASP.NET Core image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`   | ASP.NET Core image pull policy                                                                               | `IfNotPresent`        |
@@ -233,7 +233,7 @@ The command removes all the Kubernetes components associated with the chart and 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
-helm install my-release --set replicaCount=2 oci://registry-1.docker.io/bitnamicharts/aspnet-core
+helm install my-release --set replicaCount=2 bitnami-mirror/aspnet-core
 ```
 
 The above command install ASP.NET Core chart with 2 replicas.
@@ -241,7 +241,7 @@ The above command install ASP.NET Core chart with 2 replicas.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/aspnet-core
+helm install my-release -f values.yaml bitnami-mirror/aspnet-core
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

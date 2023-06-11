@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/whereabouts
+helm install my-release bitnami-mirror/whereabouts
 ```
 
 ## Introduction
 
-This chart bootstraps a [Whereabouts](https://github.com/bitnami/containers/tree/main/bitnami-mirror/whereabouts) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Whereabouts](https://github.com/bitnami/containers/tree/main/bitnami/whereabouts) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment and management of Helm Charts in clusters.
 
@@ -32,7 +32,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/whereabouts
+helm install my-release bitnami-mirror/whereabouts
 ```
 
 The command deploys Whereabouts on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -79,7 +79,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                    | Description                                                                                                           | Value                       |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------- |
 | `image.registry`                        | Whereabouts image registry                                                                                            | `docker.io`                 |
-| `image.repository`                      | Whereabouts Image name                                                                                                | `bitnami-mirror/whereabouts`       |
+| `image.repository`                      | Whereabouts Image name                                                                                                | `bitnami/whereabouts`       |
 | `image.tag`                             | Whereabouts Image tag                                                                                                 | `0.6.1-debian-11-r25`       |
 | `image.digest`                          | Whereabouts image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag           | `""`                        |
 | `image.pullPolicy`                      | Whereabouts image pull policy                                                                                         | `IfNotPresent`              |
@@ -87,7 +87,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `image.debug`                           | Specify if debug logs should be enabled                                                                               | `false`                     |
 | `hostCNIBinDir`                         | CNI binary dir in the host machine to mount                                                                           | `/opt/cni/bin`              |
 | `hostCNINetDir`                         | CNI net.d dir in the host machine to mount                                                                            | `/etc/cni/net.d`            |
-| `CNIMountPath`                          | Path inside the container to mount the CNI dirs                                                                       | `/bitnami-mirror/whereabouts/host` |
+| `CNIMountPath`                          | Path inside the container to mount the CNI dirs                                                                       | `/bitnami/whereabouts/host` |
 | `command`                               | Override default container command (useful when using custom images)                                                  | `[]`                        |
 | `args`                                  | Override default container args (useful when using custom images)                                                     | `[]`                        |
 | `updateStrategy.type`                   | Update strategy - only really applicable for deployments with RWO PVs attached                                        | `RollingUpdate`             |
@@ -158,7 +158,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set schedulerName=high-priority \
-    oci://registry-1.docker.io/bitnamicharts/whereabouts
+    bitnami-mirror/whereabouts
 ```
 
 The above command sets the Whereabouts scheduler to high-priority.
@@ -166,7 +166,7 @@ The above command sets the Whereabouts scheduler to high-priority.
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/whereabouts
+helm install my-release -f values.yaml bitnami-mirror/whereabouts
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

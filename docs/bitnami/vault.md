@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/vault
+helm install my-release bitnami-mirror/vault
 ```
 
 ## Introduction
 
-This chart bootstraps a [HashiCorp Vault](https://github.com/bitnami/containers/tree/main/bitnami-mirror/vault) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [HashiCorp Vault](https://github.com/bitnami/containers/tree/main/bitnami/vault) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment and management of Helm Charts in clusters.
 
@@ -79,7 +79,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
 | `server.enabled`                                           | Enable Vault Server                                                                                                                                     | `true`                |
 | `server.image.registry`                                    | Vault Server image registry                                                                                                                             | `docker.io`           |
-| `server.image.repository`                                  | Vault Server image repository                                                                                                                           | `bitnami-mirror/vault`       |
+| `server.image.repository`                                  | Vault Server image repository                                                                                                                           | `bitnami/vault`       |
 | `server.image.tag`                                         | Vault Server image tag (immutable tags are recommended)                                                                                                 | `1.13.2-debian-11-r0` |
 | `server.image.digest`                                      | Vault Server image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended) | `""`                  |
 | `server.image.pullPolicy`                                  | Vault Server image pull policy                                                                                                                          | `IfNotPresent`        |
@@ -213,7 +213,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                               | Description                                                                             | Value                 |
 | ---------------------------------- | --------------------------------------------------------------------------------------- | --------------------- |
 | `server.persistence.enabled`       | Enable persistence using Persistent Volume Claims                                       | `true`                |
-| `server.persistence.mountPath`     | Persistent Volume mount root path                                                       | `/bitnami-mirror/vault/data` |
+| `server.persistence.mountPath`     | Persistent Volume mount root path                                                       | `/bitnami/vault/data` |
 | `server.persistence.storageClass`  | Persistent Volume storage class                                                         | `""`                  |
 | `server.persistence.accessModes`   | Persistent Volume access modes                                                          | `[]`                  |
 | `server.persistence.size`          | Persistent Volume size                                                                  | `10Gi`                |
@@ -246,7 +246,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
 | `csiProvider.enabled`                                                    | Enable Vault CSI Provider                                                                                                                                     | `false`                                       |
 | `csiProvider.image.registry`                                             | Vault CSI Provider image registry                                                                                                                             | `docker.io`                                   |
-| `csiProvider.image.repository`                                           | Vault CSI Provider image repository                                                                                                                           | `bitnami-mirror/vault-csi-provider`                  |
+| `csiProvider.image.repository`                                           | Vault CSI Provider image repository                                                                                                                           | `bitnami/vault-csi-provider`                  |
 | `csiProvider.image.tag`                                                  | Vault CSI Provider image tag (immutable tags are recommended)                                                                                                 | `1.4.0-debian-11-r7`                          |
 | `csiProvider.image.digest`                                               | Vault CSI Provider image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended) | `""`                                          |
 | `csiProvider.image.pullPolicy`                                           | Vault CSI Provider image pull policy                                                                                                                          | `IfNotPresent`                                |
@@ -369,7 +369,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
 | `injector.enabled`                                           | Enable Vault Kubernetes Injector                                                                                                                                     | `true`                |
 | `injector.image.registry`                                    | Vault Kubernetes Injector image registry                                                                                                                             | `docker.io`           |
-| `injector.image.repository`                                  | Vault Kubernetes Injector image repository                                                                                                                           | `bitnami-mirror/vault-k8s`   |
+| `injector.image.repository`                                  | Vault Kubernetes Injector image repository                                                                                                                           | `bitnami/vault-k8s`   |
 | `injector.image.tag`                                         | Vault Kubernetes Injector image tag (immutable tags are recommended)                                                                                                 | `1.2.1-debian-11-r11` |
 | `injector.image.digest`                                      | Vault Kubernetes Injector image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended) | `""`                  |
 | `injector.image.pullPolicy`                                  | Vault Kubernetes Injector image pull policy                                                                                                                          | `IfNotPresent`        |
@@ -482,7 +482,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `volumePermissions.containerSecurityContext.enabled`   | Enable init container's Security Context                                                                      | `true`                  |
 | `volumePermissions.containerSecurityContext.runAsUser` | Set init container's Security Context runAsUser                                                               | `0`                     |
 
-The above parameters map to the env variables defined in [bitnami-mirror/vault](https://github.com/bitnami/containers/tree/main/bitnami/vault). For more information please refer to the [bitnami/vault](https://github.com/bitnami/containers/tree/main/bitnami/vault) image documentation.
+The above parameters map to the env variables defined in [bitnami/vault](https://github.com/bitnami/containers/tree/main/bitnami/vault). For more information please refer to the [bitnami/vault](https://github.com/bitnami/containers/tree/main/bitnami/vault) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -524,7 +524,7 @@ The chart also facilitates the creation of TLS secrets for use with the Ingress 
 
 ## Persistence
 
-The [Bitnami vault](https://github.com/bitnami/containers/tree/main/bitnami-mirror/vault) image stores the vault data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
+The [Bitnami vault](https://github.com/bitnami/containers/tree/main/bitnami/vault) image stores the vault data and configurations at the `/bitnami` path of the container. Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 
 ### Additional environment variables
 

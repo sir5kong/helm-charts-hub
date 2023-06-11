@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/mariadb-galera
+helm install my-release bitnami-mirror/mariadb-galera
 ```
 
 ## Introduction
 
-This chart bootstraps a [MariaDB Galera](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mariadb-galera) cluster on [Kubernetes](https://kubernetes.io) using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [MariaDB Galera](https://github.com/bitnami/containers/tree/main/bitnami/mariadb-galera) cluster on [Kubernetes](https://kubernetes.io) using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -31,7 +31,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/mariadb-galera
+helm install my-release bitnami-mirror/mariadb-galera
 ```
 
 The command deploys MariaDB Galera on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -86,7 +86,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                          | Description                                                                                                                                                                                   | Value                     |
 | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
 | `image.registry`                              | MariaDB Galera image registry                                                                                                                                                                 | `docker.io`               |
-| `image.repository`                            | MariaDB Galera image repository                                                                                                                                                               | `bitnami-mirror/mariadb-galera`  |
+| `image.repository`                            | MariaDB Galera image repository                                                                                                                                                               | `bitnami/mariadb-galera`  |
 | `image.tag`                                   | MariaDB Galera image tag (immutable tags are recommended)                                                                                                                                     | `10.11.4-debian-11-r0`    |
 | `image.digest`                                | MariaDB Galera image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                                                | `""`                      |
 | `image.pullPolicy`                            | MariaDB Galera image pull policy                                                                                                                                                              | `IfNotPresent`            |
@@ -254,7 +254,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `metrics.prometheusRules.additionalLabels`    | Additional labels to add to the PrometheusRule so it is picked up by the operator                                                                                                             | `{}`                      |
 | `metrics.prometheusRules.rules`               | PrometheusRule rules to configure                                                                                                                                                             | `{}`                      |
 
-The above parameters map to the env variables defined in [bitnami-mirror/mariadb-galera](https://github.com/bitnami/containers/tree/main/bitnami/mariadb-galera). For more information please refer to the [bitnami/mariadb-galera](https://github.com/bitnami/containers/tree/main/bitnami/mariadb-galera) image documentation.
+The above parameters map to the env variables defined in [bitnami/mariadb-galera](https://github.com/bitnami/containers/tree/main/bitnami/mariadb-galera). For more information please refer to the [bitnami/mariadb-galera](https://github.com/bitnami/containers/tree/main/bitnami/mariadb-galera) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -262,7 +262,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 helm install my-release \
   --set rootUser.password=secretpassword,
   --set db.user=app_database \
-    oci://registry-1.docker.io/bitnamicharts/mariadb-galera
+    bitnami-mirror/mariadb-galera
 ```
 
 The above command sets the MariaDB `root` account password to `secretpassword`. Additionally it creates a database named `my_database`.
@@ -272,7 +272,7 @@ The above command sets the MariaDB `root` account password to `secretpassword`. 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/mariadb-galera
+helm install my-release -f values.yaml bitnami-mirror/mariadb-galera
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -286,7 +286,7 @@ For example, if you want to enable the PAM cleartext plugin, specify the command
 ```console
 helm install my-release \
   --set extraFlags="--pam-use-cleartext-plugin=ON" \
-  oci://registry-1.docker.io/bitnamicharts/mariadb-galera
+  bitnami-mirror/mariadb-galera
 ```
 
 ## Configuration and installation details
@@ -299,7 +299,7 @@ Bitnami will release a new chart updating its containers if a new version of the
 
 ### Change MariaDB version
 
-To modify the MariaDB version used in this chart you can specify a [valid image tag](https://hub.docker.com/r/bitnami-mirror/mariadb-galera/tags/) using the `image.tag` parameter. For example, `image.tag=X.Y.Z`. This approach is also applicable to other images like exporters.
+To modify the MariaDB version used in this chart you can specify a [valid image tag](https://hub.docker.com/r/bitnami/mariadb-galera/tags/) using the `image.tag` parameter. For example, `image.tag=X.Y.Z`. This approach is also applicable to other images like exporters.
 
 ### LDAP
 
@@ -373,7 +373,7 @@ tls.certCAFilename="ca.pem"
 
 ### Initialize a fresh instance
 
-The [Bitnami MariaDB Galera](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mariadb-galera) image allows you to use your custom scripts to initialize a fresh instance. In order to execute the scripts, they must be located inside the chart folder `files/docker-entrypoint-initdb.d` so they can be consumed as a ConfigMap.
+The [Bitnami MariaDB Galera](https://github.com/bitnami/containers/tree/main/bitnami/mariadb-galera) image allows you to use your custom scripts to initialize a fresh instance. In order to execute the scripts, they must be located inside the chart folder `files/docker-entrypoint-initdb.d` so they can be consumed as a ConfigMap.
 
 Alternatively, you can specify custom scripts using the `initdbScripts` parameter as dict.
 
@@ -510,7 +510,7 @@ There are two possible scenarios:
 In this case you will need the node number `N` and run:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/mariadb-galera \
+helm install my-release bitnami-mirror/mariadb-galera \
 --set rootUser.password=XXXX \
 --set galera.mariabackup.password=YYYY \
 --set galera.bootstrap.forceBootstrap=true \
@@ -523,7 +523,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/mariadb-galera 
 In this case the cluster was not stopped cleanly and you need to pick one to force the bootstrap from. The one to be chosen in the one with the highest `seqno` in `/bitnami/mariadb/data/grastate.dat`. The following example shows how to force bootstrap from node 3.
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/mariadb-galera \
+helm install my-release bitnami-mirror/mariadb-galera \
 --set rootUser.password=XXXX \
 --set galera.mariabackup.password=YYYY \
 --set galera.bootstrap.forceBootstrap=true \
@@ -537,7 +537,7 @@ helm install my-release oci://registry-1.docker.io/bitnamicharts/mariadb-galera 
 After you have started the cluster by forcing the bootstraping on one of the nodes, you will need to remove the forcing so the node can restart with normality.
 
 ```console
-helm upgrade my-release oci://registry-1.docker.io/bitnamicharts/mariadb-galera \
+helm upgrade my-release bitnami-mirror/mariadb-galera \
 --set rootUser.password=XXXX \
 --set galera.mariabackup.password=YYYY \
 --set podManagementPolicy=Parallel
@@ -545,7 +545,7 @@ helm upgrade my-release oci://registry-1.docker.io/bitnamicharts/mariadb-galera 
 
 ## Persistence
 
-The [Bitnami MariaDB Galera](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mariadb-galera) image stores the MariaDB data and configurations at the `/bitnami/mariadb` path of the container.
+The [Bitnami MariaDB Galera](https://github.com/bitnami/containers/tree/main/bitnami/mariadb-galera) image stores the MariaDB data and configurations at the `/bitnami/mariadb` path of the container.
 
 The chart mounts a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) volume at this location. The volume is created using dynamic volume provisioning, by default. An existing PersistentVolumeClaim can be defined.
 
@@ -564,7 +564,7 @@ Find more information about how to deal with common errors related to Bitnami's 
 It's necessary to specify the existing passwords while performing a upgrade to ensure the secrets are not updated with invalid randomly generated passwords. Remember to specify the existing values of the `rootUser.password`, `db.password` and `galera.mariabackup.password` parameters when upgrading the chart:
 
 ```console
-helm upgrade my-release oci://registry-1.docker.io/bitnamicharts/mariadb-galera \
+helm upgrade my-release bitnami-mirror/mariadb-galera \
     --set rootUser.password=[ROOT_PASSWORD] \
     --set db.password=[MARIADB_PASSWORD] \
     --set galera.mariabackup.password=[GALERA_MARIABACKUP_PASSWORD]
@@ -643,7 +643,7 @@ In this version the bootstraping was improved. Now it is possible to indicate a 
 
 ### To 1.0.0
 
-The [Bitnami MariaDB Galera](https://github.com/bitnami/containers/tree/main/bitnami-mirror/mariadb-galera) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the MySQL daemon was started as the `mysql` user. From now on, both the container and the MySQL daemon run as user `1001`. You can revert this behavior by setting the parameters `securityContext.runAsUser`, and `securityContext.fsGroup` to `0`.
+The [Bitnami MariaDB Galera](https://github.com/bitnami/containers/tree/main/bitnami/mariadb-galera) image was migrated to a "non-root" user approach. Previously the container ran as the `root` user and the MySQL daemon was started as the `mysql` user. From now on, both the container and the MySQL daemon run as user `1001`. You can revert this behavior by setting the parameters `securityContext.runAsUser`, and `securityContext.fsGroup` to `0`.
 
 Consequences:
 

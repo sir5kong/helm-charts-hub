@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/consul
+helm install my-release bitnami-mirror/consul
 ```
 
 ## Introduction
 
-This chart bootstraps a [HashiCorp Consul](https://github.com/bitnami/containers/tree/main/bitnami-mirror/consul) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [HashiCorp Consul](https://github.com/bitnami/containers/tree/main/bitnami/consul) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -31,7 +31,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/consul
+helm install my-release bitnami-mirror/consul
 ```
 
 These commands deploy HashiCorp Consul on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -82,7 +82,7 @@ helm delete --purge my-release
 | Name                            | Description                                                                                                      | Value                 |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`                | HashiCorp Consul image registry                                                                                  | `docker.io`           |
-| `image.repository`              | HashiCorp Consul image repository                                                                                | `bitnami-mirror/consul`      |
+| `image.repository`              | HashiCorp Consul image repository                                                                                | `bitnami/consul`      |
 | `image.tag`                     | HashiCorp Consul image tag (immutable tags are recommended)                                                      | `1.15.3-debian-11-r0` |
 | `image.digest`                  | HashiCorp Consul image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                  |
 | `image.pullPolicy`              | HashiCorp Consul image pull policy                                                                               | `IfNotPresent`        |
@@ -231,7 +231,7 @@ helm delete --purge my-release
 | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------- |
 | `metrics.enabled`                               | Start a side-car prometheus exporter                                                                                                 | `false`                   |
 | `metrics.image.registry`                        | HashiCorp Consul Prometheus Exporter image registry                                                                                  | `docker.io`               |
-| `metrics.image.repository`                      | HashiCorp Consul Prometheus Exporter image repository                                                                                | `bitnami-mirror/consul-exporter` |
+| `metrics.image.repository`                      | HashiCorp Consul Prometheus Exporter image repository                                                                                | `bitnami/consul-exporter` |
 | `metrics.image.tag`                             | HashiCorp Consul Prometheus Exporter image tag (immutable tags are recommended)                                                      | `0.9.0-debian-11-r60`     |
 | `metrics.image.digest`                          | HashiCorp Consul Prometheus Exporter image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                      |
 | `metrics.image.pullPolicy`                      | HashiCorp Consul Prometheus Exporter image pull policy                                                                               | `IfNotPresent`            |
@@ -259,7 +259,7 @@ helm delete --purge my-release
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
-helm install my-release --set domain=consul-domain,gossipKey=secretkey oci://registry-1.docker.io/bitnamicharts/consul
+helm install my-release --set domain=consul-domain,gossipKey=secretkey bitnami-mirror/consul
 ```
 
 The above command sets the HashiCorp Consul domain to `consul-domain` and sets the gossip key to `secretkey`.
@@ -269,7 +269,7 @@ The above command sets the HashiCorp Consul domain to `consul-domain` and sets t
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/consul
+helm install my-release -f values.yaml bitnami-mirror/consul
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -346,12 +346,12 @@ You must manually create a secret containing your PEM-encoded certificate author
 
 > Take into account that you will need to create a config map with the proper configuration.
 
-If the secret is specified, the chart will locate those files at `/opt/bitnami-mirror/consul/certs/`, so you will want to use the below snippet to configure HashiCorp Consul TLS encryption in your config map:
+If the secret is specified, the chart will locate those files at `/opt/bitnami/consul/certs/`, so you will want to use the below snippet to configure HashiCorp Consul TLS encryption in your config map:
 
 ```json
-  "ca_file": "/opt/bitnami-mirror/consul/certs/ca.pem",
-  "cert_file": "/opt/bitnami-mirror/consul/certs/consul.pem",
-  "key_file": "/opt/bitnami-mirror/consul/certs/consul-key.pem",
+  "ca_file": "/opt/bitnami/consul/certs/ca.pem",
+  "cert_file": "/opt/bitnami/consul/certs/consul.pem",
+  "key_file": "/opt/bitnami/consul/certs/consul-key.pem",
   "verify_incoming": true,
   "verify_outgoing": true,
   "verify_server_hostname": true,
@@ -409,7 +409,7 @@ initContainers:
 
 ## Persistence
 
-The [Bitnami HashiCorp Consul](https://github.com/bitnami/containers/tree/main/bitnami-mirror/consul) image stores the HashiCorp Consul data at the `/bitnami` path of the container.
+The [Bitnami HashiCorp Consul](https://github.com/bitnami/containers/tree/main/bitnami/consul) image stores the HashiCorp Consul data at the `/bitnami` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
@@ -480,7 +480,7 @@ The field `podManagementPolicy` can't be updated in a StatefulSet, so you need t
 
 ```console
 kubectl delete statefulset consul
-helm upgrade <DEPLOYMENT_NAME> oci://registry-1.docker.io/bitnamicharts/consul
+helm upgrade <DEPLOYMENT_NAME> bitnami-mirror/consul
 ```
 
 ### To 6.0.0
@@ -492,13 +492,13 @@ This release updates the Bitnami Consul container to `1.6.1-debian-9-r6`, which 
 Consul container was moved to a non-root approach. There shouldn't be any issue when upgrading since the corresponding `securityContext` is enabled by default. Both the container image and the chart can be upgraded by running the command below:
 
 ```console
-helm upgrade my-release oci://registry-1.docker.io/bitnamicharts/consul
+helm upgrade my-release bitnami-mirror/consul
 ```
 
 If you use a previous container image (previous to **1.4.0-r16**) disable the `securityContext` by running the command below:
 
 ```console
-helm upgrade my-release oci://registry-1.docker.io/bitnamicharts/consul --set securityContext.enabled=false,image.tag=XXX
+helm upgrade my-release bitnami-mirror/consul --set securityContext.enabled=false,image.tag=XXX
 ```
 
 ### To 2.0.0

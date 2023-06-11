@@ -11,12 +11,12 @@ Disclaimer: The respective trademarks mentioned in the offering are owned by the
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/moodle
+helm install my-release bitnami-mirror/moodle
 ```
 
 ## Introduction
 
-This chart bootstraps a [Moodle&trade;](https://github.com/bitnami/containers/tree/main/bitnami-mirror/moodle) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Moodle&trade;](https://github.com/bitnami/containers/tree/main/bitnami/moodle) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 It also packages the [Bitnami MariaDB chart](https://github.com/bitnami/charts/tree/main/bitnami/mariadb) which is required for bootstrapping a MariaDB deployment for the database requirements of the Moodle&trade; application.
 
@@ -34,7 +34,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/moodle
+helm install my-release bitnami-mirror/moodle
 ```
 
 The command deploys Moodle&trade; on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -77,7 +77,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                    | Description                                                                                                           | Value                |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | -------------------- |
 | `image.registry`                        | Moodle image registry                                                                                                 | `docker.io`          |
-| `image.repository`                      | Moodle image repository                                                                                               | `bitnami-mirror/moodle`     |
+| `image.repository`                      | Moodle image repository                                                                                               | `bitnami/moodle`     |
 | `image.tag`                             | Moodle image tag (immutable tags are recommended)                                                                     | `4.2.0-debian-11-r5` |
 | `image.digest`                          | Moodle image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                | `""`                 |
 | `image.pullPolicy`                      | Moodle image pull policy                                                                                              | `IfNotPresent`       |
@@ -304,7 +304,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set moodleUsername=admin,moodlePassword=password,mariadb.auth.rootPassword=secretpassword \
-    oci://registry-1.docker.io/bitnamicharts/moodle
+    bitnami-mirror/moodle
 ```
 
 The above command sets the Moodle&trade; administrator account username and password to `admin` and `password` respectively. Additionally, it sets the MariaDB `root` user password to `secretpassword`.
@@ -314,7 +314,7 @@ The above command sets the Moodle&trade; administrator account username and pass
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/moodle
+helm install my-release -f values.yaml bitnami-mirror/moodle
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -377,7 +377,7 @@ ingress:
 
 ## Persistence
 
-The [Bitnami Container Image for Moodle&trade;](https://github.com/bitnami/containers/tree/main/bitnami-mirror/moodle) stores the Moodle&trade; data and configurations at the `/bitnami/moodle` and `/bitnami/apache` paths of the container.
+The [Bitnami Container Image for Moodle&trade;](https://github.com/bitnami/containers/tree/main/bitnami/moodle) stores the Moodle&trade; data and configurations at the `/bitnami/moodle` and `/bitnami/apache` paths of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, vpshere, and minikube.
 See the [Parameters](#parameters) section to configure the PVC or to disable persistence.
@@ -455,13 +455,13 @@ export MARIADB_PVC=$(kubectl get pvc -l app=mariadb,component=master,release=moo
 Upgrade your release (maintaining the version) disabling MariaDB and scaling Moodle&trade; replicas to 0:
 
 ```console
-helm upgrade moodle oci://registry-1.docker.io/bitnamicharts/moodle --set moodlePassword=$MOODLE_PASSWORD --set replicaCount=0 --set mariadb.enabled=false --version 8.1.6
+helm upgrade moodle bitnami-mirror/moodle --set moodlePassword=$MOODLE_PASSWORD --set replicaCount=0 --set mariadb.enabled=false --version 8.1.6
 ```
 
 Finally, upgrade you release to 9.0.0 reusing the existing PVC, and enabling back MariaDB:
 
 ```console
-helm upgrade moodle oci://registry-1.docker.io/bitnamicharts/moodle --set mariadb.primary.persistence.existingClaim=$MARIADB_PVC --set mariadb.auth.rootPassword=$MARIADB_ROOT_PASSWORD --set mariadb.auth.password=$MARIADB_PASSWORD --set moodlePassword=$MOODLE_PASSWORD
+helm upgrade moodle bitnami-mirror/moodle --set mariadb.primary.persistence.existingClaim=$MARIADB_PVC --set mariadb.auth.rootPassword=$MARIADB_ROOT_PASSWORD --set mariadb.auth.password=$MARIADB_PASSWORD --set moodlePassword=$MOODLE_PASSWORD
 ```
 
 You should see the lines below in MariaDB container logs:
@@ -476,7 +476,7 @@ mariadb 12:13:25.01 INFO  ==> Running mysql_upgrade
 
 ### To 8.0.0
 
-The [Bitnami Container Image for Moodle&trade;](https://github.com/bitnami/containers/tree/main/bitnami-mirror/moodle) was updated to support "non-root" user approach, however, **it is not enabled by default**. The container still runs as the `root` user and the Apache daemon is started as the `daemon` user, due to running Cron as a service, which requires running as root.
+The [Bitnami Container Image for Moodle&trade;](https://github.com/bitnami/containers/tree/main/bitnami/moodle) was updated to support "non-root" user approach, however, **it is not enabled by default**. The container still runs as the `root` user and the Apache daemon is started as the `daemon` user, due to running Cron as a service, which requires running as root.
 
 If you want to run with a non-root user, you need to set `podSecurityContext.enabled=true` and `containerSecurity.context.enabled=true`. In addition to that, you will also need to change the default Apache HTTP ports to run as a non-privileged user by setting `containerPorts.http` and `containerPorts.https` to a non-privileged port number (higher than 1024, i.e. 8080 and 8443, respectively). Note that, when running as a non-root user, Cron will not supported and therefore scheduled tasks will not be enabled for Moodle&trade;.
 

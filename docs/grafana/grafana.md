@@ -58,7 +58,7 @@ This version requires Helm >= 3.1.0.
 | `readinessProbe`                          | Readiness Probe settings                      | `{ "httpGet": { "path": "/api/health", "port": 3000 } }`|
 | `securityContext`                         | Deployment securityContext                    | `{"runAsUser": 472, "runAsGroup": 472, "fsGroup": 472}`  |
 | `priorityClassName`                       | Name of Priority Class to assign pods         | `nil`                                                   |
-| `image.repository`                        | Image repository                              | `grafana-mirror/grafana`                                       |
+| `image.repository`                        | Image repository                              | `grafana/grafana`                                       |
 | `image.tag`                               | Overrides the Grafana image tag whose default is the chart appVersion (`Must be >= 5.0.0`) | ``                                                      |
 | `image.sha`                               | Image sha (optional)                          | ``                                                      |
 | `image.pullPolicy`                        | Image pull policy                             | `IfNotPresent`                                          |
@@ -247,7 +247,7 @@ This version requires Helm >= 3.1.0.
 | `serviceMonitor.relabelings`              | MetricRelabelConfigs to apply to samples before ingestion.  | `[]`                                      |
 | `revisionHistoryLimit`                    | Number of old ReplicaSets to retain           | `10`                                                    |
 | `imageRenderer.enabled`                    | Enable the image-renderer deployment & service                                     | `false`                          |
-| `imageRenderer.image.repository`           | image-renderer Image repository                                                    | `grafana-mirror/grafana-image-renderer` |
+| `imageRenderer.image.repository`           | image-renderer Image repository                                                    | `grafana/grafana-image-renderer` |
 | `imageRenderer.image.tag`                  | image-renderer Image tag                                                           | `latest`                         |
 | `imageRenderer.image.sha`                  | image-renderer Image sha (optional)                                                | `""`                             |
 | `imageRenderer.image.pullPolicy`           | image-renderer ImagePullPolicy                                                     | `Always`                         |
@@ -650,7 +650,7 @@ This example uses a CSI driver e.g. retrieving secrets using [Azure Key Vault Pr
 
 ## Image Renderer Plug-In
 
-This chart supports enabling [remote image rendering](https://github.com/grafana-mirror/grafana-image-renderer/blob/master/README.md#run-in-docker)
+This chart supports enabling [remote image rendering](https://github.com/grafana/grafana-image-renderer/blob/master/README.md#run-in-docker)
 
 ```yaml
 imageRenderer:

@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/fluent-bit
+helm install my-release bitnami-mirror/fluent-bit
 ```
 
 ## Introduction
 
-This chart bootstraps a [fluent-bit](https://github.com/bitnami/containers/tree/main/bitnami-mirror/fluent-bit) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [fluent-bit](https://github.com/bitnami/containers/tree/main/bitnami/fluent-bit) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -32,7 +32,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/fluent-bit
+helm install my-release bitnami-mirror/fluent-bit
 ```
 
 These commands deploy fluent-bit on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -77,7 +77,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                | Description                                                                                                | Value                |
 | ------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------- |
 | `image.registry`    | Fluent Bit image registry                                                                                  | `docker.io`          |
-| `image.repository`  | Fluent Bit image repository                                                                                | `bitnami-mirror/fluent-bit` |
+| `image.repository`  | Fluent Bit image repository                                                                                | `bitnami/fluent-bit` |
 | `image.tag`         | Fluent Bit image tag (immutable tags are recommended)                                                      | `2.1.3-debian-11-r2` |
 | `image.digest`      | Fluent Bit image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                 |
 | `image.pullPolicy`  | image pull policy                                                                                          | `IfNotPresent`       |
@@ -251,7 +251,7 @@ Bitnami will release a new chart updating its containers if a new version of the
 
 ### Persistence
 
-The [Bitnami Fluent Bit](https://github.com/bitnami/containers/tree/main/bitnami-mirror/fluent-bit) doesn't implement storage persistence by default, but you could mount an extraVolume with Persistent Volume Claims to keep the buffer and/or the output if configured out-of-memory (see [Buffering & Storage](https://docs.fluentbit.io/manual/administration/buffering-and-storage))
+The [Bitnami Fluent Bit](https://github.com/bitnami/containers/tree/main/bitnami/fluent-bit) doesn't implement storage persistence by default, but you could mount an extraVolume with Persistent Volume Claims to keep the buffer and/or the output if configured out-of-memory (see [Buffering & Storage](https://docs.fluentbit.io/manual/administration/buffering-and-storage))
 
 ### Additional environment variables
 

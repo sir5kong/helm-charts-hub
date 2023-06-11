@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/kube-state-metrics
+helm install my-release bitnami-mirror/kube-state-metrics
 ```
 
 ## Introduction
 
-This chart bootstraps [kube-state-metrics](https://github.com/bitnami/containers/tree/main/bitnami-mirror/kube-state-metrics) on [Kubernetes](https://kubernetes.io) using the [Helm](https://helm.sh) package manager.
+This chart bootstraps [kube-state-metrics](https://github.com/bitnami/containers/tree/main/bitnami/kube-state-metrics) on [Kubernetes](https://kubernetes.io) using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -30,7 +30,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/kube-state-metrics
+helm install my-release bitnami-mirror/kube-state-metrics
 ```
 
 The command deploys kube-state-metrics on the Kubernetes cluster in the default configuration. The [configuration](#configuration-and-installation-details) section lists the parameters that can be configured during installation.
@@ -82,7 +82,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `serviceAccount.automountServiceAccountToken`   | Automount service account token for the server service account                                                                                                     | `true`                       |
 | `serviceAccount.annotations`                    | Annotations for service account. Evaluated as a template. Only used if `create` is `true`.                                                                         | `{}`                         |
 | `image.registry`                                | kube-state-metrics image registry                                                                                                                                  | `docker.io`                  |
-| `image.repository`                              | kube-state-metrics image repository                                                                                                                                | `bitnami-mirror/kube-state-metrics` |
+| `image.repository`                              | kube-state-metrics image repository                                                                                                                                | `bitnami/kube-state-metrics` |
 | `image.tag`                                     | kube-state-metrics image tag (immutable tags are recommended)                                                                                                      | `2.9.2-debian-11-r0`         |
 | `image.digest`                                  | kube-state-metrics image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                 | `""`                         |
 | `image.pullPolicy`                              | kube-state-metrics image pull policy                                                                                                                               | `IfNotPresent`               |
@@ -203,13 +203,13 @@ The command removes all the Kubernetes components associated with the chart and 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example the following command sets the `replicas` of the kube-state-metrics Pods to `2`.
 
 ```console
-helm install my-release --set replicas=2 oci://registry-1.docker.io/bitnamicharts/kube-state-metrics
+helm install my-release --set replicas=2 bitnami-mirror/kube-state-metrics
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/kube-state-metrics
+helm install my-release -f values.yaml bitnami-mirror/kube-state-metrics
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -241,7 +241,7 @@ Find more information about how to deal with common errors related to Bitnami's 
 ## Upgrading
 
 ```console
-helm upgrade my-release oci://registry-1.docker.io/bitnamicharts/kube-state-metrics
+helm upgrade my-release bitnami-mirror/kube-state-metrics
 ```
 
 ### To 3.0.0

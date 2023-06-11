@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/pytorch
+helm install my-release bitnami-mirror/pytorch
 ```
 
 ## Introduction
 
-This chart bootstraps a [PyTorch](https://github.com/bitnami/containers/tree/main/bitnami-mirror/pytorch) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [PyTorch](https://github.com/bitnami/containers/tree/main/bitnami/pytorch) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Python is built for full integration into Python that enables you to use it with its libraries and main packages.
 
@@ -34,7 +34,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/pytorch
+helm install my-release bitnami-mirror/pytorch
 ```
 
 These commands deploy PyTorch on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured.
@@ -80,7 +80,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                              | Description                                                                                                              | Value                |
 | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------- |
 | `image.registry`                                  | PyTorch image registry                                                                                                   | `docker.io`          |
-| `image.repository`                                | PyTorch image repository                                                                                                 | `bitnami-mirror/pytorch`    |
+| `image.repository`                                | PyTorch image repository                                                                                                 | `bitnami/pytorch`    |
 | `image.tag`                                       | PyTorch image tag (immutable tags are recommended)                                                                       | `2.0.1-debian-11-r5` |
 | `image.digest`                                    | PyTorch image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                  | `""`                 |
 | `image.pullPolicy`                                | PyTorch image pull policy                                                                                                | `IfNotPresent`       |
@@ -195,7 +195,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                        | Description                                                                                             | Value               |
 | --------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------- |
 | `persistence.enabled`       | Enable persistence using Persistent Volume Claims                                                       | `true`              |
-| `persistence.mountPath`     | Path to mount the volume at.                                                                            | `/bitnami-mirror/pytorch`  |
+| `persistence.mountPath`     | Path to mount the volume at.                                                                            | `/bitnami/pytorch`  |
 | `persistence.subPath`       | The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services | `""`                |
 | `persistence.storageClass`  | Storage class of backing PVC                                                                            | `""`                |
 | `persistence.annotations`   | Persistent Volume Claim annotations                                                                     | `{}`                |
@@ -211,7 +211,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 helm install my-release \
   --set mode=distributed \
   --set worldSize=4 \
-    oci://registry-1.docker.io/bitnamicharts/pytorch
+    bitnami-mirror/pytorch
 ```
 
 The above command create 4 pods for PyTorch: one master and three workers.
@@ -219,7 +219,7 @@ The above command create 4 pods for PyTorch: one master and three workers.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/pytorch
+helm install my-release -f values.yaml bitnami-mirror/pytorch
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -256,7 +256,7 @@ cloneFilesFromGit.revision=master
 
 ## Persistence
 
-The [Bitnami PyTorch](https://github.com/bitnami/containers/tree/main/bitnami-mirror/pytorch) image can persist data. If enabled, the persisted path is `/bitnami/pytorch` by default.
+The [Bitnami PyTorch](https://github.com/bitnami/containers/tree/main/bitnami/pytorch) image can persist data. If enabled, the persisted path is `/bitnami/pytorch` by default.
 
 The chart mounts a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) at this location. The volume is created using dynamic volume provisioning.
 

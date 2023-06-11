@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/elasticsearch
+helm install my-release bitnami-mirror/elasticsearch
 ```
 
 ## Introduction
 
-This chart bootstraps a [Elasticsearch](https://github.com/bitnami/containers/tree/main/bitnami-mirror/elasticsearch) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Elasticsearch](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -31,7 +31,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/elasticsearch
+helm install my-release bitnami-mirror/elasticsearch
 ```
 
 These commands deploy Elasticsearch on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -105,7 +105,7 @@ helm delete --purge my-release
 | `initContainers`                           | Add additional init containers to the all elasticsearch node pod(s)                                                                                 | `[]`                           |
 | `useIstioLabels`                           | Use this variable to add Istio labels to all pods                                                                                                   | `true`                         |
 | `image.registry`                           | Elasticsearch image registry                                                                                                                        | `docker.io`                    |
-| `image.repository`                         | Elasticsearch image repository                                                                                                                      | `bitnami-mirror/elasticsearch`        |
+| `image.repository`                         | Elasticsearch image repository                                                                                                                      | `bitnami/elasticsearch`        |
 | `image.tag`                                | Elasticsearch image tag (immutable tags are recommended)                                                                                            | `8.8.1-debian-11-r0`           |
 | `image.digest`                             | Elasticsearch image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                       | `""`                           |
 | `image.pullPolicy`                         | Elasticsearch image pull policy                                                                                                                     | `IfNotPresent`                 |
@@ -536,7 +536,7 @@ helm delete --purge my-release
 | `metrics.nameOverride`                          | Metrics pod name                                                                                                               | `""`                             |
 | `metrics.fullnameOverride`                      | String to fully override common.names.fullname                                                                                 | `""`                             |
 | `metrics.image.registry`                        | Metrics exporter image registry                                                                                                | `docker.io`                      |
-| `metrics.image.repository`                      | Metrics exporter image repository                                                                                              | `bitnami-mirror/elasticsearch-exporter` |
+| `metrics.image.repository`                      | Metrics exporter image repository                                                                                              | `bitnami/elasticsearch-exporter` |
 | `metrics.image.tag`                             | Metrics exporter image tag                                                                                                     | `1.5.0-debian-11-r106`           |
 | `metrics.image.digest`                          | Metrics exporter image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag               | `""`                             |
 | `metrics.image.pullPolicy`                      | Metrics exporter image pull policy                                                                                             | `IfNotPresent`                   |
@@ -647,7 +647,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set name=my-elastic,client.service.port=8080 \
-  oci://registry-1.docker.io/bitnamicharts/elasticsearch
+  bitnami-mirror/elasticsearch
 ```
 
 The above command sets the Elasticsearch cluster name to `my-elastic` and REST port number to `8080`.
@@ -655,7 +655,7 @@ The above command sets the Elasticsearch cluster name to `my-elastic` and REST p
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/elasticsearch
+helm install my-release -f values.yaml bitnami-mirror/elasticsearch
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml).
@@ -670,7 +670,7 @@ Bitnami will release a new chart updating its containers if a new version of the
 
 ### Change ElasticSearch version
 
-To modify the ElasticSearch version used in this chart you can specify a [valid image tag](https://hub.docker.com/r/bitnami-mirror/elasticsearch/tags/) using the `image.tag` parameter. For example, `image.tag=X.Y.Z`. This approach is also applicable to other images like exporters.
+To modify the ElasticSearch version used in this chart you can specify a [valid image tag](https://hub.docker.com/r/bitnami/elasticsearch/tags/) using the `image.tag` parameter. For example, `image.tag=X.Y.Z`. This approach is also applicable to other images like exporters.
 
 ### Default kernel settings
 
@@ -806,7 +806,7 @@ As an alternative, you can use of the preset configurations for pod affinity, po
 
 ## Persistence
 
-The [Bitnami Elasticsearch](https://github.com/bitnami/containers/tree/main/bitnami-mirror/elasticsearch) image stores the Elasticsearch data at the `/bitnami/elasticsearch/data` path of the container.
+The [Bitnami Elasticsearch](https://github.com/bitnami/containers/tree/main/bitnami/elasticsearch) image stores the Elasticsearch data at the `/bitnami/elasticsearch/data` path of the container.
 
 By default, the chart mounts a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) at this location. The volume is created using dynamic volume provisioning. See the [Parameters](#parameters) section to configure the PVC.
 
@@ -835,7 +835,7 @@ The new version of this chart no longer supports elasticsearch-curator, this rep
 
 ### To 18.0.0
 
-This major release refactors the bitnami-mirror/elasticsearch chart, adding some organization and functional changes.
+This major release refactors the bitnami/elasticsearch chart, adding some organization and functional changes.
 
 - Each role has now the same structure: its Statefulset, a headless service (for FQDN, it gives each node an individual Advertised name, required for TLS verification), its own ServiceAccount (BWC), and HorizontalPodAutoscaling.
 - Previously, the chart would alternate between a Coordinating service and an All-nodes service for traffic exposure. This logic has been replaced with a single Traffic exposure service, that will have coordinating-only nodes as backend pods, or master pods if no coordinating nodes are enabled.
@@ -928,7 +928,7 @@ The field `podManagementPolicy` can't be updated in a StatefulSet, so you need t
 
 ```console
 kubectl delete statefulset elasticsearch-master
-helm upgrade <DEPLOYMENT_NAME> oci://registry-1.docker.io/bitnamicharts/elasticsearch
+helm upgrade <DEPLOYMENT_NAME> bitnami-mirror/elasticsearch
 ```
 
 ### TO 10.0.0
@@ -937,7 +937,7 @@ In this version, Kibana was added as dependent chart. More info about how to ena
 
 ### To 9.0.0
 
-Elasticsearch master nodes store the cluster status at `/bitnami-mirror/elasticsearch/data`. Among other things this includes the UUID of the elasticsearch cluster. Without a persistent data store for this data, the UUID of a cluster could change if k8s node(s) hosting the es master nodes go down and are scheduled on some other master node. In the event that this happens, the data nodes will no longer be able to join a cluster as the uuid changed resulting in a broken cluster.
+Elasticsearch master nodes store the cluster status at `/bitnami/elasticsearch/data`. Among other things this includes the UUID of the elasticsearch cluster. Without a persistent data store for this data, the UUID of a cluster could change if k8s node(s) hosting the es master nodes go down and are scheduled on some other master node. In the event that this happens, the data nodes will no longer be able to join a cluster as the uuid changed resulting in a broken cluster.
 
 To resolve such issues, PVC's are now attached for master node data persistence.
 

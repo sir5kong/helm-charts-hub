@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/kibana --set elasticsearch.hosts[0]=<Hostname of your ES instance> --set elasticsearch.port=<port of your ES instance>
+helm install my-release bitnami-mirror/kibana --set elasticsearch.hosts[0]=<Hostname of your ES instance> --set elasticsearch.port=<port of your ES instance>
 ```
 
 ## Introduction
 
-This chart bootstraps a [Kibana](https://github.com/bitnami/containers/tree/main/bitnami-mirror/kibana) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Kibana](https://github.com/bitnami/containers/tree/main/bitnami/kibana) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -32,7 +32,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/kibana \
+helm install my-release bitnami-mirror/kibana \
   --set elasticsearch.hosts[0]=<Hostname of your ES instance> \
   --set elasticsearch.port=<port of your ES instance> \
 ```
@@ -81,7 +81,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                          | Description                                                                                                                                               | Value                    |
 | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
 | `image.registry`                              | Kibana image registry                                                                                                                                     | `docker.io`              |
-| `image.repository`                            | Kibana image repository                                                                                                                                   | `bitnami-mirror/kibana`         |
+| `image.repository`                            | Kibana image repository                                                                                                                                   | `bitnami/kibana`         |
 | `image.tag`                                   | Kibana image tag (immutable tags are recommended)                                                                                                         | `8.8.1-debian-11-r0`     |
 | `image.digest`                                | Kibana image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                                                    | `""`                     |
 | `image.pullPolicy`                            | Kibana image pull policy                                                                                                                                  | `IfNotPresent`           |
@@ -246,7 +246,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ```console
 helm install my-release \
-  --set admin.user=admin-user oci://registry-1.docker.io/bitnamicharts/kibana
+  --set admin.user=admin-user bitnami-mirror/kibana
 ```
 
 The above command sets the Kibana admin user to `admin-user`.
@@ -256,7 +256,7 @@ The above command sets the Kibana admin user to `admin-user`.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/kibana
+helm install my-release -f values.yaml bitnami-mirror/kibana
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -359,7 +359,7 @@ As an alternative, you can use one of the preset configurations for pod affinity
 
 ## Persistence
 
-The [Bitnami Kibana](https://github.com/bitnami/containers/tree/main/bitnami-mirror/kibana) image can persist data. If enabled, the persisted path is `/bitnami/kibana` by default.
+The [Bitnami Kibana](https://github.com/bitnami/containers/tree/main/bitnami/kibana) image can persist data. If enabled, the persisted path is `/bitnami/kibana` by default.
 
 The chart mounts a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) at this location. The volume is created using dynamic volume provisioning.
 

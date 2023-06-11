@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/jupyterhub
+helm install my-release bitnami-mirror/jupyterhub
 ```
 
 ## Introduction
@@ -35,7 +35,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/jupyterhub
+helm install my-release bitnami-mirror/jupyterhub
 ```
 
 These commands deploy JupyterHub on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -82,7 +82,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                        | Description                                                                                                              | Value                |
 | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------- |
 | `hub.image.registry`                        | Hub image registry                                                                                                       | `docker.io`          |
-| `hub.image.repository`                      | Hub image repository                                                                                                     | `bitnami-mirror/jupyterhub` |
+| `hub.image.repository`                      | Hub image repository                                                                                                     | `bitnami/jupyterhub` |
 | `hub.image.tag`                             | Hub image tag (immutable tags are recommended)                                                                           | `4.0.0-debian-11-r8` |
 | `hub.image.digest`                          | Hub image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag                      | `""`                 |
 | `hub.image.pullPolicy`                      | Hub image pull policy                                                                                                    | `IfNotPresent`       |
@@ -400,7 +400,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `singleuser.image.digest`                       | Single User image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                                 |
 | `singleuser.image.pullPolicy`                   | Single User image pull policy                                                                               | `IfNotPresent`                       |
 | `singleuser.image.pullSecrets`                  | Single User image pull secrets                                                                              | `[]`                                 |
-| `singleuser.notebookDir`                        | Notebook directory (it will be the same as the PVC volume mount)                                            | `/opt/bitnami-mirror/jupyterhub-singleuser` |
+| `singleuser.notebookDir`                        | Notebook directory (it will be the same as the PVC volume mount)                                            | `/opt/bitnami/jupyterhub-singleuser` |
 | `singleuser.allowPrivilegeEscalation`           | Controls whether a process can gain more privileges than its parent process                                 | `false`                              |
 | `singleuser.command`                            | Override Single User default command                                                                        | `[]`                                 |
 | `singleuser.extraEnvVars`                       | Extra environment variables that should be set for the user pods                                            | `[]`                                 |
@@ -485,7 +485,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set proxy.livenessProbe.successThreshold=5 \
-    oci://registry-1.docker.io/bitnamicharts/jupyterhub
+    bitnami-mirror/jupyterhub
 ```
 
 The above command sets the `proxy.livenessProbe.successThreshold` to `5`.
@@ -493,7 +493,7 @@ The above command sets the `proxy.livenessProbe.successThreshold` to `5`.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/jupyterhub
+helm install my-release -f values.yaml bitnami-mirror/jupyterhub
 ```
 
 ## Configuration and installation details

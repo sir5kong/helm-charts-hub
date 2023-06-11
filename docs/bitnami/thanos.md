@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/thanos
+helm install my-release bitnami-mirror/thanos
 ```
 
 ## Introduction
 
-This chart bootstraps a [Thanos](https://github.com/bitnami/containers/tree/main/bitnami-mirror/thanos) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Thanos](https://github.com/bitnami/containers/tree/main/bitnami/thanos) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -31,7 +31,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/thanos
+helm install my-release bitnami-mirror/thanos
 ```
 
 These commands deploy Thanos on the Kubernetes cluster with the default configuration. The [configuration](#configuration-and-installation-details) section lists the parameters that can be configured during installation.
@@ -106,7 +106,7 @@ Check the section [Integrate Thanos with Prometheus and Alertmanager](#integrate
 | Name                                          | Description                                                                                                         | Value               |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------- |
 | `image.registry`                              | Thanos image registry                                                                                               | `docker.io`         |
-| `image.repository`                            | Thanos image repository                                                                                             | `bitnami-mirror/thanos`    |
+| `image.repository`                            | Thanos image repository                                                                                             | `bitnami/thanos`    |
 | `image.tag`                                   | Thanos image tag (immutable tags are recommended)                                                                   | `0.31.0-scratch-r5` |
 | `image.digest`                                | Thanos image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag              | `""`                |
 | `image.pullPolicy`                            | Thanos image pull policy                                                                                            | `IfNotPresent`      |
@@ -1192,7 +1192,7 @@ Check the section [Integrate Thanos with Prometheus and Alertmanager](#integrate
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
-helm install my-release --set query.replicaCount=2 oci://registry-1.docker.io/bitnamicharts/thanos
+helm install my-release --set query.replicaCount=2 bitnami-mirror/thanos
 ```
 
 The above command install Thanos chart with 2 Thanos Query replicas.
@@ -1200,7 +1200,7 @@ The above command install Thanos chart with 2 Thanos Query replicas.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/thanos
+helm install my-release -f values.yaml bitnami-mirror/thanos
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -1399,7 +1399,7 @@ helm install kube-prometheus \
 helm install thanos \
     --values values.yaml \
     --namespace monitoring \
-    oci://registry-1.docker.io/bitnamicharts/thanos
+    bitnami-mirror/thanos
 ```
 
 That's all! Now you have Thanos fully integrated with Prometheus and Alertmanager.

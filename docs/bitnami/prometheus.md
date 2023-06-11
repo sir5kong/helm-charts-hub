@@ -11,7 +11,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/prometheus
+helm install my-release bitnami-mirror/prometheus
 ```
 
 ## Introduction
@@ -36,7 +36,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/prometheus
+helm install my-release bitnami-mirror/prometheus
 ```
 
 The command deploys Prometheus on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -200,7 +200,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name                                                              | Description                                                                                                                                                                                 | Value                      |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
 | `server.image.registry`                                           | Prometheus image registry                                                                                                                                                                   | `docker.io`                |
-| `server.image.repository`                                         | Prometheus image repository                                                                                                                                                                 | `bitnami-mirror/prometheus`       |
+| `server.image.repository`                                         | Prometheus image repository                                                                                                                                                                 | `bitnami/prometheus`       |
 | `server.image.tag`                                                | Prometheus image tag (immutable tags are recommended)                                                                                                                                       | `2.44.0-debian-11-r7`      |
 | `server.image.digest`                                             | Prometheus image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended)                                       | `""`                       |
 | `server.image.pullPolicy`                                         | Prometheus image pull policy                                                                                                                                                                | `IfNotPresent`             |
@@ -371,7 +371,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `server.service.sessionAffinity`                                  | Control where client requests go, to the same pod or round-robin. ClientIP by default.                                                                                                      | `ClientIP`                 |
 | `server.service.sessionAffinityConfig`                            | Additional settings for the sessionAffinity                                                                                                                                                 | `{}`                       |
 | `server.persistence.enabled`                                      | Enable persistence using Persistent Volume Claims. If you have multiple instances (server.repicacount > 1), please considere using an external storage service like Thanos or Grafana Mimir | `false`                    |
-| `server.persistence.mountPath`                                    | Path to mount the volume at.                                                                                                                                                                | `/bitnami-mirror/prometheus/data` |
+| `server.persistence.mountPath`                                    | Path to mount the volume at.                                                                                                                                                                | `/bitnami/prometheus/data` |
 | `server.persistence.subPath`                                      | The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services                                                                                     | `""`                       |
 | `server.persistence.storageClass`                                 | Storage class of backing PVC                                                                                                                                                                | `""`                       |
 | `server.persistence.annotations`                                  | Persistent Volume Claim annotations                                                                                                                                                         | `{}`                       |
@@ -401,7 +401,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ```console
 helm install my-release --set alertmanager.enabled=true \
-  oci://registry-1.docker.io/bitnamicharts/prometheus
+  bitnami-mirror/prometheus
 ```
 
 The above command install Prometheus chart with Alertmanager.
@@ -409,7 +409,7 @@ The above command install Prometheus chart with Alertmanager.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml oci://registry-1.docker.io/bitnamicharts/prometheus
+helm install my-release -f values.yaml bitnami-mirror/prometheus
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -494,11 +494,11 @@ kubectl create namespace monitoring
 helm install prometheus \
     --set prometheus.thanos.create=true \
     --namespace monitoring \
-    oci://registry-1.docker.io/bitnamicharts/prometheus
+    bitnami-mirror/prometheus
 helm install thanos \
     --values values.yaml \
     --namespace monitoring \
-    oci://registry-1.docker.io/bitnamicharts/thanos
+    bitnami-mirror/prometheus
 ```
 
 That's all! Now you have Thanos fully integrated with Prometheus and Alertmanager.
@@ -526,9 +526,9 @@ kubectl create namespace monitoring
 helm install prometheus \
     --values values.yaml \
     --namespace monitoring \
-    oci://registry-1.docker.io/bitnamicharts/prometheus
+    bitnami-mirror/prometheus
 helm install grafana-mimir \
-    oci://registry-1.docker.io/bitnamicharts/grafana-mimir
+    bitnami-mirror/prometheus
 ```
 
 That's all! Now you have Prometheus integrated with Grafana Mimir.
@@ -570,11 +570,11 @@ For Helm 3:
 kubectl create namespace monitoring
 helm install prometheus \
     --namespace monitoring \
-    oci://registry-1.docker.io/bitnamicharts/prometheus
+    bitnami-mirror/prometheus
 helm install grafana-mimir \
     --values values.yaml \
     --namespace monitoring \
-    oci://registry-1.docker.io/bitnamicharts/grafana
+    bitnami-mirror/prometheus
 ```
 
 ### How to add new targets

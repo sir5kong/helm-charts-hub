@@ -11,12 +11,12 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-helm install my-release oci://registry-1.docker.io/bitnamicharts/apisix
+helm install my-release bitnami-mirror/apisix
 ```
 
 ## Introduction
 
-This chart bootstraps a [Apache APISIX](https://github.com/bitnami/containers/tree/main/bitnami-mirror/apisix) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Apache APISIX](https://github.com/bitnami/containers/tree/main/bitnami/apisix) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment and management of Helm Charts in clusters.
 
@@ -73,7 +73,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `diagnosticMode.command` | Command to override all containers in the deployment                                                                                              | `["sleep"]`          |
 | `diagnosticMode.args`    | Args to override all containers in the deployment                                                                                                 | `["infinity"]`       |
 | `image.registry`         | APISIX image registry                                                                                                                             | `docker.io`          |
-| `image.repository`       | APISIX image repository                                                                                                                           | `bitnami-mirror/apisix`     |
+| `image.repository`       | APISIX image repository                                                                                                                           | `bitnami/apisix`     |
 | `image.tag`              | APISIX image tag (immutable tags are recommended)                                                                                                 | `3.3.0-debian-11-r7` |
 | `image.digest`           | APISIX image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended) | `""`                 |
 | `image.pullPolicy`       | APISIX image pull policy                                                                                                                          | `IfNotPresent`       |
@@ -424,7 +424,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `dashboard.enabled`                                           | Enable APISIX Dashboard                                                                                                                                     | `true`                     |
 | `dashboard.replicaCount`                                      | Number of APISIX Dashboard replicas to deploy                                                                                                               | `1`                        |
 | `dashboard.image.registry`                                    | APISIX Dashboard image registry                                                                                                                             | `docker.io`                |
-| `dashboard.image.repository`                                  | APISIX Dashboard image repository                                                                                                                           | `bitnami-mirror/apisix-dashboard` |
+| `dashboard.image.repository`                                  | APISIX Dashboard image repository                                                                                                                           | `bitnami/apisix-dashboard` |
 | `dashboard.image.tag`                                         | APISIX Dashboard image tag (immutable tags are recommended)                                                                                                 | `3.0.1-debian-11-r5`       |
 | `dashboard.image.digest`                                      | APISIX Dashboard image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended) | `""`                       |
 | `dashboard.image.pullPolicy`                                  | APISIX Dashboard image pull policy                                                                                                                          | `IfNotPresent`             |
@@ -571,7 +571,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
 | `ingressController.enabled`                                           | Enable APISIX Ingress Controller                                                                                                                                     | `true`                              |
 | `ingressController.image.registry`                                    | APISIX Ingress Controller image registry                                                                                                                             | `docker.io`                         |
-| `ingressController.image.repository`                                  | APISIX Ingress Controller image repository                                                                                                                           | `bitnami-mirror/apisix-ingress-controller` |
+| `ingressController.image.repository`                                  | APISIX Ingress Controller image repository                                                                                                                           | `bitnami/apisix-ingress-controller` |
 | `ingressController.image.tag`                                         | APISIX Ingress Controller image tag (immutable tags are recommended)                                                                                                 | `1.6.1-debian-11-r5`                |
 | `ingressController.image.digest`                                      | APISIX Ingress Controller image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended) | `""`                                |
 | `ingressController.image.pullPolicy`                                  | APISIX Ingress Controller image pull policy                                                                                                                          | `IfNotPresent`                      |
@@ -767,7 +767,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `etcd.auth.rbac.rootPassword`      | etcd root password                          | `""`    |
 | `etcd.auth.client.secureTransport` | use TLS for client-to-server communications | `false` |
 
-The above parameters map to the env variables defined in [bitnami-mirror/apisix](https://github.com/bitnami/containers/tree/main/bitnami/apisix). For more information please refer to the [bitnami/apisix](https://github.com/bitnami/containers/tree/main/bitnami/apisix) image documentation.
+The above parameters map to the env variables defined in [bitnami/apisix](https://github.com/bitnami/containers/tree/main/bitnami/apisix). For more information please refer to the [bitnami/apisix](https://github.com/bitnami/containers/tree/main/bitnami/apisix) image documentation.
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -846,7 +846,7 @@ dataPlane:
         name: apisix-routes
   extraVolumeMounts:
     - name: routes
-      mountPath: /opt/bitnami-mirror/apisix/conf/apisix.yaml
+      mountPath: /opt/bitnami/apisix/conf/apisix.yaml
       subPath: apisix.yaml
 extraDeploy:
   - apiVersion: v1
