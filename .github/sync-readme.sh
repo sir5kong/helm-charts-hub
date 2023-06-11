@@ -23,11 +23,13 @@ get_readme_github() {
     echo "[env] chart: $chart"
     source_readme="$charts_tmp_dir/$chart/README.md"
     ls -alh "$source_readme"
-    repo_name="$(grep -Eo 'helm repo add \S+' "$source_readme" | cut -d " " -f 4)"
-    if [[ -z "$repo_name" ]]; then repo_name="$chart_namespace"; fi
+    repo_name="$(grep -Eo 'helm repo add [a-zA-Z0-9_-]+' "$source_readme" | cut -d " " -f 4)"
+    if echo "$repo_name" | grep -Ev '^[a-zA-Z0-9_-]+$' ; then
+      repo_name="$chart_namespace"
+    fi
     chart_repo_raw="$repo_name/$chart"
     chart_repo_mirror="${repo_name}-mirror/$chart"
-    echo "[env] chart_repo_mirror: $chart_repo_mirror"
+    echo "[env] repo_name: $repo_name, chart_repo_mirror: $chart_repo_mirror"
     sed -i -E 's%(helm repo add \S+) \S+%\1-mirror '$CHART_BASE_URL/$chart_namespace'%' "$source_readme"
     sed -i -E 's%(helm .+?) '$chart_repo_raw'%\1 '$chart_repo_mirror'%' "$source_readme"
     sed -i -E 's%(\s*)'$chart_repo_raw'%\1'$chart_repo_mirror'%' "$source_readme"
