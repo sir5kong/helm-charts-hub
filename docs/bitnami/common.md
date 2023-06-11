@@ -6,7 +6,10 @@ Looking to use our applications in production? Try [VMware Application Catalog](
 
 ## TL;DR
 
-使用镜像地址添加仓库: `helm repo add bitnami-mirror https://helm-charts.itboon.top/bitnami`
+
+使用加速地址添加仓库:
+```shell
+`helm
 
 ```yaml
 dependencies:
