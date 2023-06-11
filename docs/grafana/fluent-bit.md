@@ -20,7 +20,7 @@ To install the chart with the release name `my-release` using our helm repositor
 
 ```bash
 helm repo add grafana-mirror https://helm-charts.itboon.top/grafana
-helm upgrade --install my-release grafana/fluent-bit \
+helm upgrade --install my-release grafana-mirror/fluent-bit \
     --set loki.serviceName=loki.default.svc.cluster.local
 ```
 
@@ -31,7 +31,7 @@ The command deploys Fluent Bit on the Kubernetes cluster with the default config
 To configure the chart to send to [Grafana Cloud](https://grafana.com/products/cloud) use:
 
 ```bash
-helm upgrade --install my-release grafana/fluent-bit \
+helm upgrade --install my-release grafana-mirror/fluent-bit \
     --set loki.serviceName=logs-us-west1.grafana.net,loki.servicePort=80,loki.serviceScheme=https \
     --set loki.user=2830,loki.password=1234
 ```
@@ -41,11 +41,11 @@ helm upgrade --install my-release grafana/fluent-bit \
 To install a custom tag use the following command:
 
 ```bash
-helm upgrade --install my-release grafana/fluent-bit \
+helm upgrade --install my-release grafana-mirror/fluent-bit \
     --set image.tag=<custom tag>
 ```
 
-The full list of available tags on [docker hub](https://cloud.docker.com/u/grafana/repository/docker/grafana/fluent-bit-plugin-loki).
+The full list of available tags on [docker hub](https://cloud.docker.com/u/grafana/repository/docker/grafana-mirror/fluent-bit-plugin-loki).
 
 Alternatively you can install the full [Loki stack](../loki-stack) (Loki + Fluent Bit) using:
 
@@ -105,7 +105,7 @@ For more details, read the [Fluent Bit documentation](../../../cmd/fluent-bit/RE
 | `affinity`               | [affinity][affinity] settings for pod assignment                                                   | `{}`                             |
 | `annotations`            | Annotations to add to Kubernetes resources.                                                        | `{}`                             |
 | `deploymentStrategy`     | The deployment strategy to use with the daemonset                                                  | `RollingUpdate`                  |
-| `image.repository`       | The Fluent Bit docker image repository                                                             | `grafana/fluent-bit-plugin-loki` |
+| `image.repository`       | The Fluent Bit docker image repository                                                             | `grafana-mirror/fluent-bit-plugin-loki` |
 | `image.tag`              | The Fluent Bit docker image tag                                                                    | `0.1`                            |
 | `image.pullPolicy`       | The Fluent Bit docker image pull policy                                                            | `IfNotPresent`                   |
 | `nodeSelector`           | Fluent Bit [node labels][nodeSelector] for pod assignment                                          | `{}`                             |
