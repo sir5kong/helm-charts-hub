@@ -19,7 +19,7 @@ get_readme_github() {
   local charts_tmp_dir="$chart_tmp_root/$charts_dir"
   ls "$charts_tmp_dir" | while read chart ; do
     ls -alh "$charts_tmp_dir/$chart/README.md"
-    cp -f "$charts_tmp_dir/$chart/README.md" "docs/${chart_namespace}/"
+    cp -f "$charts_tmp_dir/$chart/README.md" "docs/${chart_namespace}/${chart}.md"
   done
   ls -alh "docs/"
   ls -alh "docs/${chart_namespace}/"
