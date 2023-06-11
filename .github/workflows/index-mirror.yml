@@ -13,6 +13,12 @@ on:
         default: 'https://helm-charts.itboon.top'
         required: false
         type: string
+      oss-key-id:
+        required: true
+        type: string
+      oss-key-secret:
+        required: true
+        type: string
 
 jobs:
   ossUpload:

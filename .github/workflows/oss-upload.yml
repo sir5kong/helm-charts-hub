@@ -14,8 +14,12 @@ jobs:
     with:
       source-url: 'https://grafana.github.io/helm-charts/index.yaml'
       dest-namespace: grafana
+      oss-key-id: "${{ secrets.OSS_KEY_ID }}"
+      oss-key-secret: "${{ secrets.OSS_KEY_SECRET }}"
   prometheus-mirror:
     uses: ./.github/workflows/index-mirror.yml
     with:
       source-url: 'https://prometheus-community.github.io/helm-charts/index.yaml'
       dest-namespace: prometheus-community
+      oss-key-id: "${{ secrets.OSS_KEY_ID }}"
+      oss-key-secret: "${{ secrets.OSS_KEY_SECRET }}"
