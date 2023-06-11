@@ -18,7 +18,7 @@ setup_yq() {
   chmod a+rx $YQ
 }
 
-get_chart_index() {
+get_chart_index_github() {
   local index_url="$1"
   local namespace="$2"
   if [[ $(basename $index_url) != "index.yaml" ]]; then
@@ -28,7 +28,8 @@ get_chart_index() {
   curl -o /tmp/index.yaml -L "$index_url"
   head -n50 /tmp/index.yaml
   if head -n50 /tmp/index.yaml | grep -E '^apiVersion:' ; then
-    sed -i 's%https://github.com/\('$namespace'/helm-charts/releases\)%'$chart_base_url'/github/\1%' /tmp/index.yaml
+    local github_org=$(echo "$index_url" | grep -Eo '//[^/.]+' | grep -Eo '[^/.]+')
+    sed -i 's%https://github.com/\('$github_org'/helm-charts/releases\)%'$chart_base_url'/github/\1%' /tmp/index.yaml
     $ALIOSS cp -f /tmp/index.yaml \
       "oss://${OSS_BUCKET}/${namespace}/index.yaml" \
       --meta "content-type:text/plain; charset=utf-8"
@@ -43,7 +44,7 @@ main() {
   for ((i=0; i<$num; i++)); do
     local this_url=$(yq e .repos[${i}].url $yml)
     local this_namespace=$(yq e .repos[${i}].namespace $yml)
-    get_chart_index "$this_url" "$this_namespace"
+    get_chart_index_github "$this_url" "$this_namespace"
   done
 }
 
