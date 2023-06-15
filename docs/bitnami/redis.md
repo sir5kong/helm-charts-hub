@@ -13,7 +13,7 @@ Disclaimer: Redis is a registered trademark of Redis Ltd. Any rights therein are
 > 使用加速地址添加仓库:
 
 ``` shell
-helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami" --force-update
 helm update bitnami
 ```
 

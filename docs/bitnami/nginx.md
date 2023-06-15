@@ -13,7 +13,7 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 > 使用加速地址添加仓库:
 
 ``` shell
-helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami" --force-update
 helm update bitnami
 ```
 

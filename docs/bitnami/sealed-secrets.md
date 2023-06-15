@@ -11,7 +11,7 @@ Sealed Secrets are "one-way" encrypted K8s Secrets that can be created by anyone
 > 使用加速地址添加仓库:
 
 ``` shell
-helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami" --force-update
 helm update bitnami
 ```
 

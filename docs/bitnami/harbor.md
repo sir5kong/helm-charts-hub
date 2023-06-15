@@ -11,7 +11,7 @@ Harbor is an open source trusted cloud-native registry to store, sign, and scan 
 > 使用加速地址添加仓库:
 
 ``` shell
-helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami" --force-update
 helm update bitnami
 ```
 

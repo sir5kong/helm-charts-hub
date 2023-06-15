@@ -11,7 +11,7 @@ Spring Cloud Data Flow is a microservices-based toolkit for building streaming a
 > 使用加速地址添加仓库:
 
 ``` shell
-helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami" --force-update
 helm update bitnami
 ```
 
