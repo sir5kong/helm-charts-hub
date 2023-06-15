@@ -11,7 +11,7 @@ This chart creates a [SNMP Exporter](https://github.com/prometheus/snmp_exporter
 ## Add Helm repository
 
 ```console
-helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
+helm repo add prometheus-community https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -20,7 +20,7 @@ _See [`helm repo`](https://helm.sh/docs/helm/helm_repo/) for command documentati
 ## Install Chart
 
 ```console
-helm install [RELEASE_NAME] prometheus-community-mirror/prometheus-snmp-exporter
+helm install [RELEASE_NAME] prometheus-community/prometheus-snmp-exporter
 ```
 
 _See [configuration](#configuration) below._
@@ -79,10 +79,10 @@ See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_h
 
 ```console
 # Helm 2
-$ helm inspect values prometheus-community-mirror/prometheus-snmp-exporter
+$ helm inspect values prometheus-community/prometheus-snmp-exporter
 
 # Helm 3
-$ helm show values prometheus-community-mirror/prometheus-snmp-exporter
+$ helm show values prometheus-community/prometheus-snmp-exporter
 ```
 
 See [prometheus/snmp_exporter/README.md](https://github.com/prometheus/snmp_exporter/) for further information.

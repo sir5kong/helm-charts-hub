@@ -22,14 +22,14 @@ These are the common tasks to perform before any of the use cases.
 
 ```bash
 # Add the repository
-helm repo add grafana-mirror https://helm-charts.itboon.top/grafana
+helm repo add grafana https://helm-charts.itboon.top/grafana
 helm repo update
 ```
 
 ### Installation of Grafana Rollout Operator
 
 ```bash
-helm install  -n <namespace> <release> grafana-mirror/rollout-operator
+helm install  -n <namespace> <release> grafana/rollout-operator
 ```
 
 The Grafana rollout-operator should be installed in the same namespace as the statefulsets it is operating upon.

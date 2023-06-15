@@ -23,7 +23,7 @@ Helm v2 was no longer supported from chart version 1.0.0.
 ## Get repository Info
 
 ```console
-helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
+helm repo add prometheus-community https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -32,7 +32,7 @@ _See [`helm repo`](https://helm.sh/docs/helm/helm_repo/) for command documentati
 ## Install Chart
 
 ```console
-helm install [RELEASE_NAME] prometheus-community-mirror/prometheus-druid-exporter
+helm install [RELEASE_NAME] prometheus-community/prometheus-druid-exporter
 ```
 
 _See [configuration](#configuration) below._
@@ -68,7 +68,7 @@ _See [Migrating Helm v2 to v3](https://helm.sh/docs/topics/v2_v3_migration/) gui
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values.yaml](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus-druid-exporter/values.yaml), or run these configuration commands:
 
 ```console
-helm show values prometheus-community-mirror/prometheus-druid-exporter
+helm show values prometheus-community/prometheus-druid-exporter
 ```
 
 ### Druid Server Connection

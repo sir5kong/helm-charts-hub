@@ -8,14 +8,16 @@ Sealed Secrets are "one-way" encrypted K8s Secrets that can be created by anyone
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/sealed-secrets
+helm install my-release bitnami/sealed-secrets
 ```
 
 ## Introduction
@@ -36,7 +38,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/sealed-secrets
+helm install my-release bitnami/sealed-secrets
 ```
 
 The command deploys the Sealed Secrets controller on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -82,7 +84,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------ |
 | `image.registry`                                    | Sealed Secrets image registry                                                                                            | `docker.io`              |
 | `image.repository`                                  | Sealed Secrets image repository                                                                                          | `bitnami/sealed-secrets` |
-| `image.tag`                                         | Sealed Secrets image tag (immutable tags are recommended)                                                                | `0.21.0-scratch-r1`      |
+| `image.tag`                                         | Sealed Secrets image tag (immutable tags are recommended)                                                                | `0.22.0-scratch-r0`      |
 | `image.digest`                                      | Sealed Secrets image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag           | `""`                     |
 | `image.pullPolicy`                                  | Sealed Secrets image pull policy                                                                                         | `IfNotPresent`           |
 | `image.pullSecrets`                                 | Sealed Secrets image pull secrets                                                                                        | `[]`                     |
@@ -217,7 +219,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set livenessProbe.successThreshold=5 \
-    bitnami-mirror/sealed-secrets
+    bitnami/sealed-secrets
 ```
 
 The above command sets the `livenessProbe.successThreshold` to `5`.
@@ -225,7 +227,7 @@ The above command sets the `livenessProbe.successThreshold` to `5`.
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/sealed-secrets
+helm install my-release -f values.yaml bitnami/sealed-secrets
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

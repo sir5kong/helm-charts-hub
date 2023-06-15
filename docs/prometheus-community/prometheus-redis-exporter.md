@@ -12,7 +12,7 @@ This chart bootstraps a [Redis exporter](https://github.com/oliver006/redis_expo
 ## Get Repository Info
 
 ```console
-helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
+helm repo add prometheus-community https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -21,7 +21,7 @@ _See [`helm repo`](https://helm.sh/docs/helm/helm_repo/) for command documentati
 ## Install Chart
 
 ```console
-helm install [RELEASE_NAME] prometheus-community-mirror/prometheus-redis-exporter
+helm install [RELEASE_NAME] prometheus-community/prometheus-redis-exporter
 ```
 
 _See [configuration](#configuration) below._
@@ -52,7 +52,7 @@ From 5.0.0 redis exporter is using the [Kubernetes recommended labels](https://k
 
 ```console
 kubectl delete deployment -l app=prometheus-redis-exporter
-helm upgrade -i prometheus-redis-exporter prometheus-community-mirror/prometheus-redis-exporter
+helm upgrade -i prometheus-redis-exporter prometheus-community/prometheus-redis-exporter
 ```
 
 From 5.0.0 redis exporter helm chart supports multiple targets.
@@ -84,7 +84,7 @@ serviceMonitor:
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values.yaml](./values.yaml), or run these configuration commands:
 
 ```console
-helm show values prometheus-community-mirror/prometheus-redis-exporter
+helm show values prometheus-community/prometheus-redis-exporter
 ```
 
 For more information please refer to the [redis_exporter](https://github.com/oliver006/redis_exporter) documentation.

@@ -7,7 +7,7 @@ This chart bootstraps a Prometheus [MySQL Exporter](https://github.com/prometheu
 ## Get Helm Repository Info
 
 ```console
-helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
+helm repo add prometheus-community https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -16,7 +16,7 @@ _See [`helm repo`](https://helm.sh/docs/helm/helm_repo/) for command documentati
 ## Install Chart
 
 ```console
-helm install [RELEASE_NAME] prometheus-community-mirror/prometheus-mysql-exporter
+helm install [RELEASE_NAME] prometheus-community/prometheus-mysql-exporter
 ```
 
 _See [configuration](#configuration) below._
@@ -51,7 +51,7 @@ Version 1.0.0 is a major update.
 The simplest way to update is to do a force upgrade, which recreates the resources by doing a delete and an install.
 
 ```console
-helm upgrade prometheus-mysql-exporter prometheus-community-mirror/prometheus-mysql-exporter --force
+helm upgrade prometheus-mysql-exporter prometheus-community/prometheus-mysql-exporter --force
 ```
 
 ## Configuration
@@ -59,7 +59,7 @@ helm upgrade prometheus-mysql-exporter prometheus-community-mirror/prometheus-my
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values.yaml](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus-mysql-exporter/values.yaml), or run these configuration commands:
 
 ```console
-helm show values prometheus-community-mirror/prometheus-mysql-exporter
+helm show values prometheus-community/prometheus-mysql-exporter
 ```
 
 ### MySQL Connection

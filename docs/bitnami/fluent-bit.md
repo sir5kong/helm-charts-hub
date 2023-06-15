@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/fluent-bit
+helm install my-release bitnami/fluent-bit
 ```
 
 ## Introduction
@@ -38,7 +40,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/fluent-bit
+helm install my-release bitnami/fluent-bit
 ```
 
 These commands deploy fluent-bit on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -84,7 +86,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | ------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------- |
 | `image.registry`    | Fluent Bit image registry                                                                                  | `docker.io`          |
 | `image.repository`  | Fluent Bit image repository                                                                                | `bitnami/fluent-bit` |
-| `image.tag`         | Fluent Bit image tag (immutable tags are recommended)                                                      | `2.1.3-debian-11-r2` |
+| `image.tag`         | Fluent Bit image tag (immutable tags are recommended)                                                      | `2.1.5-debian-11-r0` |
 | `image.digest`      | Fluent Bit image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                 |
 | `image.pullPolicy`  | image pull policy                                                                                          | `IfNotPresent`       |
 | `image.pullSecrets` | Fluent Bit image pull secrets                                                                              | `[]`                 |

@@ -13,7 +13,7 @@ This chart creates a [Pingmesh Exporter](https://github.com/kubeservice-stack/pi
 ## Add Helm repository
 
 ```console
-helm repo add kubeservice-stack-mirror https://helm-charts.itboon.top/prometheus-community
+helm repo add kubeservice-stack https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 

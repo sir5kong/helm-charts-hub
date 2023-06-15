@@ -15,7 +15,7 @@ Helm chart for Grafana Loki Canary
 Add the following repo to use the chart:
 
 ```console
-helm repo add grafana-mirror https://helm-charts.itboon.top/grafana
+helm repo add grafana https://helm-charts.itboon.top/grafana
 ```
 
 ## Values

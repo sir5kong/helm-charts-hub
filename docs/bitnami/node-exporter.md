@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/node-exporter
+helm install my-release bitnami/node-exporter
 ```
 
 ## Introduction
@@ -36,7 +38,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/node-exporter
+helm install my-release bitnami/node-exporter
 ```
 
 The command deploys Node Exporter on the Kubernetes cluster in the default configuration. The [configuration](#configuration-and-installation-details) section lists the parameters that can be configured during installation.
@@ -179,13 +181,13 @@ The command removes all the Kubernetes components associated with the chart and 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example the following command sets the `minReadySeconds` of the Node Exporter Pods to `120` seconds.
 
 ```console
-helm install my-release --set minReadySeconds=120 bitnami-mirror/node-exporter
+helm install my-release --set minReadySeconds=120 bitnami/node-exporter
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/node-exporter
+helm install my-release -f values.yaml bitnami/node-exporter
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -211,7 +213,7 @@ Find more information about how to deal with common errors related to Bitnami's 
 ## Upgrading
 
 ```console
-helm upgrade my-release bitnami-mirror/node-exporter
+helm upgrade my-release bitnami/node-exporter
 ```
 
 ### To 3.0.0

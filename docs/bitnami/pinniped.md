@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/pinniped
+helm install my-release bitnami/pinniped
 ```
 
 ## Introduction
@@ -40,7 +42,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/pinniped
+helm install my-release bitnami/pinniped
 ```
 
 The command deploys pinniped on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -81,7 +83,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `extraDeploy`       | Array of extra objects to deploy with the release                                                        | `[]`                |
 | `image.registry`    | Pinniped image registry                                                                                  | `docker.io`         |
 | `image.repository`  | Pinniped image repository                                                                                | `bitnami/pinniped`  |
-| `image.tag`         | Pinniped image tag (immutable tags are recommended)                                                      | `0.23.0-scratch-r4` |
+| `image.tag`         | Pinniped image tag (immutable tags are recommended)                                                      | `0.24.0-scratch-r0` |
 | `image.digest`      | Pinniped image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                |
 | `image.pullPolicy`  | Pinniped image pull policy                                                                               | `IfNotPresent`      |
 | `image.pullSecrets` | Pinniped image pull secrets                                                                              | `[]`                |
@@ -322,7 +324,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set supervisor.enabled=false \
-    bitnami-mirror/pinniped
+    bitnami/pinniped
 ```
 
 The above command sets disables the supervisor compoment deployment.
@@ -330,7 +332,7 @@ The above command sets disables the supervisor compoment deployment.
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/pinniped
+helm install my-release -f values.yaml bitnami/pinniped
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

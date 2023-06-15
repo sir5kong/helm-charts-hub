@@ -14,7 +14,7 @@ _Note: This chart was formerly named `prometheus-operator` chart, now renamed to
 ## Get Helm Repository Info
 
 ```console
-helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
+helm repo add prometheus-community https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -23,7 +23,7 @@ _See [`helm repo`](https://helm.sh/docs/helm/helm_repo/) for command documentati
 ## Install Helm Chart
 
 ```console
-helm install [RELEASE_NAME] prometheus-community-mirror/kube-prometheus-stack
+helm install [RELEASE_NAME] prometheus-community/kube-prometheus-stack
 ```
 
 _See [configuration](#configuration) below._
@@ -70,7 +70,7 @@ kubectl delete crd thanosrulers.monitoring.coreos.com
 ## Upgrading Chart
 
 ```console
-helm upgrade [RELEASE_NAME] prometheus-community-mirror/kube-prometheus-stack
+helm upgrade [RELEASE_NAME] prometheus-community/kube-prometheus-stack
 ```
 
 With Helm v3, CRDs created by this chart are not updated by default and should be manually updated.
@@ -222,7 +222,7 @@ Starting from prometheus-node-exporter version 4.0.0, the `node exporter` chart 
 
 ```console
 kubectl delete daemonset -l app=prometheus-node-exporter
-helm upgrade -i kube-prometheus-stack prometheus-community-mirror/kube-prometheus-stack
+helm upgrade -i kube-prometheus-stack prometheus-community/kube-prometheus-stack
 ```
 
 If you use your own custom [ServiceMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#servicemonitor) or [PodMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#podmonitor), please ensure to upgrade their `selector` fields accordingly to the new labels.
@@ -544,13 +544,13 @@ Version 9 of the helm chart removes the existing `additionalScrapeConfigsExterna
 Due to new template functions being used in the rules in version 8.x.x of the chart, an upgrade to Prometheus Operator and Prometheus is necessary in order to support them. First, upgrade to the latest version of 7.x.x
 
 ```console
-helm upgrade [RELEASE_NAME] prometheus-community-mirror/kube-prometheus-stack --version 7.5.0
+helm upgrade [RELEASE_NAME] prometheus-community/kube-prometheus-stack --version 7.5.0
 ```
 
 Then upgrade to 8.x.x
 
 ```console
-helm upgrade [RELEASE_NAME] prometheus-community-mirror/kube-prometheus-stack --version [8.x.x]
+helm upgrade [RELEASE_NAME] prometheus-community/kube-prometheus-stack --version [8.x.x]
 ```
 
 Minimal recommended Prometheus version for this chart release is `2.12.x`
@@ -574,7 +574,7 @@ If this error has already been encountered, a `helm history` command can be used
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments:
 
 ```console
-helm show values prometheus-community-mirror/kube-prometheus-stack
+helm show values prometheus-community/kube-prometheus-stack
 ```
 
 You may also `helm show values` on this chart's [dependencies](#dependencies) for additional options.
@@ -652,7 +652,7 @@ However, the old name prefix needs to be kept. If you want the new name please f
 You can override the name to achieve this:
 
 ```console
-helm upgrade prometheus-operator prometheus-community-mirror/kube-prometheus-stack -n monitoring --reuse-values --set nameOverride=prometheus-operator
+helm upgrade prometheus-operator prometheus-community/kube-prometheus-stack -n monitoring --reuse-values --set nameOverride=prometheus-operator
 ```
 
 **Note**: It is recommended to run this first with `--dry-run --debug`.

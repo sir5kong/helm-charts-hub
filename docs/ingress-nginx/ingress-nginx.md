@@ -15,7 +15,7 @@ Kubernetes: `>=1.20.0-0`
 ## Get Repo Info
 
 ```console
-helm repo add ingress-nginx-mirror https://helm-charts.itboon.top/ingress-nginx
+helm repo add ingress-nginx https://helm-charts.itboon.top/ingress-nginx
 helm repo update
 ```
 
@@ -24,7 +24,7 @@ helm repo update
 **Important:** only helm3 is supported
 
 ```console
-helm install [RELEASE_NAME] ingress-nginx-mirror/ingress-nginx
+helm install [RELEASE_NAME] ingress-nginx/ingress-nginx
 ```
 
 The command deploys ingress-nginx on the Kubernetes cluster in the default configuration.
@@ -69,7 +69,7 @@ Note that there are some different and upgraded configurations between the two c
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values.yaml](./values.yaml), or run these configuration commands:
 
 ```console
-helm show values ingress-nginx-mirror/ingress-nginx
+helm show values ingress-nginx/ingress-nginx
 ```
 
 ### PodDisruptionBudget

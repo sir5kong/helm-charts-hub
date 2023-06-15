@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/prometheus
+helm install my-release bitnami/prometheus
 ```
 
 ## Introduction
@@ -42,7 +44,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/prometheus
+helm install my-release bitnami/prometheus
 ```
 
 The command deploys Prometheus on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -407,7 +409,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ```console
 helm install my-release --set alertmanager.enabled=true \
-  bitnami-mirror/prometheus
+  bitnami/prometheus
 ```
 
 The above command install Prometheus chart with Alertmanager.
@@ -415,7 +417,7 @@ The above command install Prometheus chart with Alertmanager.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/prometheus
+helm install my-release -f values.yaml bitnami/prometheus
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -500,11 +502,11 @@ kubectl create namespace monitoring
 helm install prometheus \
     --set prometheus.thanos.create=true \
     --namespace monitoring \
-    bitnami-mirror/prometheus
+    bitnami/prometheus
 helm install thanos \
     --values values.yaml \
     --namespace monitoring \
-    bitnami-mirror/prometheus
+    bitnami/prometheus
 ```
 
 That's all! Now you have Thanos fully integrated with Prometheus and Alertmanager.
@@ -532,9 +534,9 @@ kubectl create namespace monitoring
 helm install prometheus \
     --values values.yaml \
     --namespace monitoring \
-    bitnami-mirror/prometheus
+    bitnami/prometheus
 helm install grafana-mimir \
-    bitnami-mirror/prometheus
+    bitnami/prometheus
 ```
 
 That's all! Now you have Prometheus integrated with Grafana Mimir.
@@ -576,11 +578,11 @@ For Helm 3:
 kubectl create namespace monitoring
 helm install prometheus \
     --namespace monitoring \
-    bitnami-mirror/prometheus
+    bitnami/prometheus
 helm install grafana-mimir \
     --values values.yaml \
     --namespace monitoring \
-    bitnami-mirror/prometheus
+    bitnami/prometheus
 ```
 
 ### How to add new targets

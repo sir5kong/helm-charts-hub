@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/consul
+helm install my-release bitnami/consul
 ```
 
 ## Introduction
@@ -37,7 +39,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/consul
+helm install my-release bitnami/consul
 ```
 
 These commands deploy HashiCorp Consul on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -265,7 +267,7 @@ helm delete --purge my-release
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
-helm install my-release --set domain=consul-domain,gossipKey=secretkey bitnami-mirror/consul
+helm install my-release --set domain=consul-domain,gossipKey=secretkey bitnami/consul
 ```
 
 The above command sets the HashiCorp Consul domain to `consul-domain` and sets the gossip key to `secretkey`.
@@ -275,7 +277,7 @@ The above command sets the HashiCorp Consul domain to `consul-domain` and sets t
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/consul
+helm install my-release -f values.yaml bitnami/consul
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -486,7 +488,7 @@ The field `podManagementPolicy` can't be updated in a StatefulSet, so you need t
 
 ```console
 kubectl delete statefulset consul
-helm upgrade <DEPLOYMENT_NAME> bitnami-mirror/consul
+helm upgrade <DEPLOYMENT_NAME> bitnami/consul
 ```
 
 ### To 6.0.0
@@ -498,13 +500,13 @@ This release updates the Bitnami Consul container to `1.6.1-debian-9-r6`, which 
 Consul container was moved to a non-root approach. There shouldn't be any issue when upgrading since the corresponding `securityContext` is enabled by default. Both the container image and the chart can be upgraded by running the command below:
 
 ```console
-helm upgrade my-release bitnami-mirror/consul
+helm upgrade my-release bitnami/consul
 ```
 
 If you use a previous container image (previous to **1.4.0-r16**) disable the `securityContext` by running the command below:
 
 ```console
-helm upgrade my-release bitnami-mirror/consul --set securityContext.enabled=false,image.tag=XXX
+helm upgrade my-release bitnami/consul --set securityContext.enabled=false,image.tag=XXX
 ```
 
 ### To 2.0.0

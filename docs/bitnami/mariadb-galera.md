@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/mariadb-galera
+helm install my-release bitnami/mariadb-galera
 ```
 
 ## Introduction
@@ -37,7 +39,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/mariadb-galera
+helm install my-release bitnami/mariadb-galera
 ```
 
 The command deploys MariaDB Galera on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -268,7 +270,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 helm install my-release \
   --set rootUser.password=secretpassword,
   --set db.user=app_database \
-    bitnami-mirror/mariadb-galera
+    bitnami/mariadb-galera
 ```
 
 The above command sets the MariaDB `root` account password to `secretpassword`. Additionally it creates a database named `my_database`.
@@ -278,7 +280,7 @@ The above command sets the MariaDB `root` account password to `secretpassword`. 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/mariadb-galera
+helm install my-release -f values.yaml bitnami/mariadb-galera
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -292,7 +294,7 @@ For example, if you want to enable the PAM cleartext plugin, specify the command
 ```console
 helm install my-release \
   --set extraFlags="--pam-use-cleartext-plugin=ON" \
-  bitnami-mirror/mariadb-galera
+  bitnami/mariadb-galera
 ```
 
 ## Configuration and installation details
@@ -516,7 +518,7 @@ There are two possible scenarios:
 In this case you will need the node number `N` and run:
 
 ```console
-helm install my-release bitnami-mirror/mariadb-galera \
+helm install my-release bitnami/mariadb-galera \
 --set rootUser.password=XXXX \
 --set galera.mariabackup.password=YYYY \
 --set galera.bootstrap.forceBootstrap=true \
@@ -529,7 +531,7 @@ helm install my-release bitnami-mirror/mariadb-galera \
 In this case the cluster was not stopped cleanly and you need to pick one to force the bootstrap from. The one to be chosen in the one with the highest `seqno` in `/bitnami/mariadb/data/grastate.dat`. The following example shows how to force bootstrap from node 3.
 
 ```console
-helm install my-release bitnami-mirror/mariadb-galera \
+helm install my-release bitnami/mariadb-galera \
 --set rootUser.password=XXXX \
 --set galera.mariabackup.password=YYYY \
 --set galera.bootstrap.forceBootstrap=true \
@@ -543,7 +545,7 @@ helm install my-release bitnami-mirror/mariadb-galera \
 After you have started the cluster by forcing the bootstraping on one of the nodes, you will need to remove the forcing so the node can restart with normality.
 
 ```console
-helm upgrade my-release bitnami-mirror/mariadb-galera \
+helm upgrade my-release bitnami/mariadb-galera \
 --set rootUser.password=XXXX \
 --set galera.mariabackup.password=YYYY \
 --set podManagementPolicy=Parallel
@@ -570,7 +572,7 @@ Find more information about how to deal with common errors related to Bitnami's 
 It's necessary to specify the existing passwords while performing a upgrade to ensure the secrets are not updated with invalid randomly generated passwords. Remember to specify the existing values of the `rootUser.password`, `db.password` and `galera.mariabackup.password` parameters when upgrading the chart:
 
 ```console
-helm upgrade my-release bitnami-mirror/mariadb-galera \
+helm upgrade my-release bitnami/mariadb-galera \
     --set rootUser.password=[ROOT_PASSWORD] \
     --set db.password=[MARIADB_PASSWORD] \
     --set galera.mariabackup.password=[GALERA_MARIABACKUP_PASSWORD]

@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/whereabouts
+helm install my-release bitnami/whereabouts
 ```
 
 ## Introduction
@@ -38,7 +40,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/whereabouts
+helm install my-release bitnami/whereabouts
 ```
 
 The command deploys Whereabouts on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -86,7 +88,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------- |
 | `image.registry`                        | Whereabouts image registry                                                                                            | `docker.io`                 |
 | `image.repository`                      | Whereabouts Image name                                                                                                | `bitnami/whereabouts`       |
-| `image.tag`                             | Whereabouts Image tag                                                                                                 | `0.6.1-debian-11-r25`       |
+| `image.tag`                             | Whereabouts Image tag                                                                                                 | `0.6.2-debian-11-r0`        |
 | `image.digest`                          | Whereabouts image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag           | `""`                        |
 | `image.pullPolicy`                      | Whereabouts image pull policy                                                                                         | `IfNotPresent`              |
 | `image.pullSecrets`                     | Specify docker-registry secret names as an array                                                                      | `[]`                        |
@@ -164,7 +166,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set schedulerName=high-priority \
-    bitnami-mirror/whereabouts
+    bitnami/whereabouts
 ```
 
 The above command sets the Whereabouts scheduler to high-priority.
@@ -172,7 +174,7 @@ The above command sets the Whereabouts scheduler to high-priority.
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/whereabouts
+helm install my-release -f values.yaml bitnami/whereabouts
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

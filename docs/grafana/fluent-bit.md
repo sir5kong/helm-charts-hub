@@ -7,7 +7,7 @@ This chart install the Fluent Bit application to ship logs to Loki. It defines d
 ## Get Repo Info
 
 ```console
-helm repo add grafana-mirror https://helm-charts.itboon.top/grafana
+helm repo add grafana https://helm-charts.itboon.top/grafana
 helm repo update
 ```
 
@@ -19,8 +19,8 @@ _See [helm repo](https://helm.sh/docs/helm/helm_repo/) for command documentation
 To install the chart with the release name `my-release` using our helm repository:
 
 ```bash
-helm repo add grafana-mirror https://helm-charts.itboon.top/grafana
-helm upgrade --install my-release grafana-mirror/fluent-bit \
+helm repo add grafana https://helm-charts.itboon.top/grafana
+helm upgrade --install my-release grafana/fluent-bit \
     --set loki.serviceName=loki.default.svc.cluster.local
 ```
 
@@ -31,7 +31,7 @@ The command deploys Fluent Bit on the Kubernetes cluster with the default config
 To configure the chart to send to [Grafana Cloud](https://grafana.com/products/cloud) use:
 
 ```bash
-helm upgrade --install my-release grafana-mirror/fluent-bit \
+helm upgrade --install my-release grafana/fluent-bit \
     --set loki.serviceName=logs-us-west1.grafana.net,loki.servicePort=80,loki.serviceScheme=https \
     --set loki.user=2830,loki.password=1234
 ```
@@ -41,7 +41,7 @@ helm upgrade --install my-release grafana-mirror/fluent-bit \
 To install a custom tag use the following command:
 
 ```bash
-helm upgrade --install my-release grafana-mirror/fluent-bit \
+helm upgrade --install my-release grafana/fluent-bit \
     --set image.tag=<custom tag>
 ```
 

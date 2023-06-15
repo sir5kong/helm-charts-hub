@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/wildfly
+helm install my-release bitnami/wildfly
 ```
 
 ## Introduction
@@ -40,7 +42,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/wildfly
+helm install my-release bitnami/wildfly
 ```
 
 These commands deploy WildFly on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -234,7 +236,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set wildflyUser=manager,wildflyPassword=password \
-    bitnami-mirror/wildfly
+    bitnami/wildfly
 ```
 
 The above command sets the WildFly management username and password to `manager` and `password` respectively.
@@ -244,7 +246,7 @@ The above command sets the WildFly management username and password to `manager`
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/wildfly
+helm install my-release -f values.yaml bitnami/wildfly
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -322,7 +324,7 @@ Consequences:
 ```console
 export WILDFLY_PASSWORD=$(kubectl get secret --namespace default wildfly -o jsonpath="{.data.wildfly-password}" | base64 -d)
 kubectl delete deployments.apps wildfly
-helm upgrade wildfly bitnami-mirror/wildfly --set wildflyPassword=$WILDFLY_PASSWORD
+helm upgrade wildfly bitnami/wildfly --set wildflyPassword=$WILDFLY_PASSWORD
 ```
 
 ### To 6.0.0
@@ -336,13 +338,13 @@ helm upgrade wildfly bitnami-mirror/wildfly --set wildflyPassword=$WILDFLY_PASSW
 WildFly container was moved to a non-root approach. There shouldn't be any issue when upgrading since the corresponding `securityContext` is enabled by default. Both the container image and the chart can be upgraded by running the command below:
 
 ```console
-helm upgrade my-release bitnami-mirror/wildfly
+helm upgrade my-release bitnami/wildfly
 ```
 
 If you use a previous container image (previous to **14.0.1-r75**) disable the `securityContext` by running the command below:
 
 ```console
-helm upgrade my-release bitnami-mirror/wildfly --set securityContext.enabled=false,image.tag=XXX
+helm upgrade my-release bitnami/wildfly --set securityContext.enabled=false,image.tag=XXX
 ```
 
 ### To 1.0.0

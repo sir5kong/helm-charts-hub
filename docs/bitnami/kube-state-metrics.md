@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/kube-state-metrics
+helm install my-release bitnami/kube-state-metrics
 ```
 
 ## Introduction
@@ -36,7 +38,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/kube-state-metrics
+helm install my-release bitnami/kube-state-metrics
 ```
 
 The command deploys kube-state-metrics on the Kubernetes cluster in the default configuration. The [configuration](#configuration-and-installation-details) section lists the parameters that can be configured during installation.
@@ -209,13 +211,13 @@ The command removes all the Kubernetes components associated with the chart and 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example the following command sets the `replicas` of the kube-state-metrics Pods to `2`.
 
 ```console
-helm install my-release --set replicas=2 bitnami-mirror/kube-state-metrics
+helm install my-release --set replicas=2 bitnami/kube-state-metrics
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/kube-state-metrics
+helm install my-release -f values.yaml bitnami/kube-state-metrics
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -247,7 +249,7 @@ Find more information about how to deal with common errors related to Bitnami's 
 ## Upgrading
 
 ```console
-helm upgrade my-release bitnami-mirror/kube-state-metrics
+helm upgrade my-release bitnami/kube-state-metrics
 ```
 
 ### To 3.0.0

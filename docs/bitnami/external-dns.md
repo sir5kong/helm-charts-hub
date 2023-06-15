@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/external-dns
+helm install my-release bitnami/external-dns
 ```
 
 ## Introduction
@@ -36,7 +38,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/external-dns
+helm install my-release bitnami/external-dns
 ```
 
 The command deploys ExternalDNS on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -352,13 +354,13 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ```console
 helm install my-release \
-  --set provider=aws bitnami-mirror/external-dns
+  --set provider=aws bitnami/external-dns
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/external-dns
+helm install my-release -f values.yaml bitnami/external-dns
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -406,7 +408,7 @@ helm install my-release \
   --set aws.zoneType=public \
   --set txtOwnerId=HOSTED_ZONE_IDENTIFIER \
   --set domainFilters[0]=HOSTED_ZONE_NAME \
-  bitnami-mirror/external-dns
+  bitnami/external-dns
 ```
 
 ## Troubleshooting
@@ -473,7 +475,7 @@ Use the workaround below to upgrade from versions previous to 1.0.0. The followi
 
 ```console
 kubectl delete deployment my-release-external-dns
-helm upgrade my-release bitnami-mirror/external-dns
+helm upgrade my-release bitnami/external-dns
 ```
 
 Other mayor changes included in this major version are:

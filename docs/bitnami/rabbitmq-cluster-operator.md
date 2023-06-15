@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/rabbitmq-cluster-operator
+helm install my-release bitnami/rabbitmq-cluster-operator
 ```
 
 ## Introduction
@@ -39,7 +41,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/rabbitmq-cluster-operator
+helm install my-release bitnami/rabbitmq-cluster-operator
 ```
 
 The command deploy the RabbitMQ Cluster Kubernetes Operator on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -396,7 +398,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set livenessProbe.enabled=false \
-    bitnami-mirror/rabbitmq-cluster-operator
+    bitnami/rabbitmq-cluster-operator
 ```
 
 The above command disables the Operator liveness probes.
@@ -404,7 +406,7 @@ The above command disables the Operator liveness probes.
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/rabbitmq-cluster-operator
+helm install my-release -f values.yaml bitnami/rabbitmq-cluster-operator
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -476,7 +478,7 @@ In order to upgrade the CRD objects, perform the following steps:
 - Execute the following commands (replace the VERSION placeholder):
 
 ```console
-helm fetch bitnami-mirror/rabbitmq-cluster-operator --version VERSION
+helm fetch bitnami/rabbitmq-cluster-operator --version VERSION
 tar xf rabbitmq-cluster-operator-VERSION.tar.gz
 kubectl apply -f rabbitmq-cluster-operator/crds
 ```
@@ -501,7 +503,7 @@ You need to manually delete the old CRD before upgrading the release.
 
 ```console
 kubectl delete crd rabbitmqclusters.rabbitmq.com
-helm upgrade my-release bitnami-mirror/rabbitmq-cluster-operator
+helm upgrade my-release bitnami/rabbitmq-cluster-operator
 ```
 
 ## License

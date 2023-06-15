@@ -23,7 +23,7 @@ package manager.
 ## Get Helm Repository Info
 
 ```console
-helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
+helm repo add prometheus-community https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -33,10 +33,10 @@ _See [`helm repo`](https://helm.sh/docs/helm/helm_repo/) for command documentati
 
 ```console
 # Helm 3
-$ helm install [RELEASE_NAME] prometheus-community-mirror/prometheus-stackdriver-exporter --set stackdriver.projectId=google-project-name
+$ helm install [RELEASE_NAME] prometheus-community/prometheus-stackdriver-exporter --set stackdriver.projectId=google-project-name
 
 # Helm 2
-$ helm install --name [RELEASE_NAME] prometheus-community-mirror/prometheus-stackdriver-exporter --set stackdriver.projectId=google-project-name
+$ helm install --name [RELEASE_NAME] prometheus-community/prometheus-stackdriver-exporter --set stackdriver.projectId=google-project-name
 ```
 
 The command deploys Stackdriver-Exporter on the Kubernetes cluster using the default configuration.
@@ -135,10 +135,10 @@ To see all configurable options with detailed comments, visit the chart's [value
 
 ```console
 # Helm 2
-$ helm inspect values prometheus-community-mirror/prometheus-stackdriver-exporter
+$ helm inspect values prometheus-community/prometheus-stackdriver-exporter
 
 # Helm 3
-$ helm show values prometheus-community-mirror/prometheus-stackdriver-exporter
+$ helm show values prometheus-community/prometheus-stackdriver-exporter
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml), as long as you provide a value for stackdriver.projectId

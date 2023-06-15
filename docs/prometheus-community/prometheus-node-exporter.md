@@ -7,7 +7,7 @@ This chart bootstraps a prometheus [`Node Exporter`](http://github.com/prometheu
 ## Get Repository Info
 
 ```console
-helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
+helm repo add prometheus-community https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -16,7 +16,7 @@ _See [`helm repo`](https://helm.sh/docs/helm/helm_repo/) for command documentati
 ## Install Chart
 
 ```console
-helm install [RELEASE_NAME] prometheus-community-mirror/prometheus-node-exporter
+helm install [RELEASE_NAME] prometheus-community/prometheus-node-exporter
 ```
 
 _See [configuration](#configuring) below._
@@ -51,7 +51,7 @@ Starting from version 4.0.0, the `node exporter` chart is using the [Kubernetes 
 
 ```console
 kubectl delete daemonset -l app=prometheus-node-exporter
-helm upgrade -i prometheus-node-exporter prometheus-community-mirror/prometheus-node-exporter
+helm upgrade -i prometheus-node-exporter prometheus-community/prometheus-node-exporter
 ```
 
 If you use your own custom [ServiceMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#servicemonitor) or [PodMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#podmonitor), please ensure to upgrade their `selector` fields accordingly to the new labels.
@@ -77,7 +77,7 @@ hostRootFsMount:
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values.yaml](./values.yaml), or run these configuration commands:
 
 ```console
-helm show values prometheus-community-mirror/prometheus-node-exporter
+helm show values prometheus-community/prometheus-node-exporter
 ```
 
 ### kube-rbac-proxy

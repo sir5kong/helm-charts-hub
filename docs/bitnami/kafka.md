@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/kafka
+helm install my-release bitnami/kafka
 ```
 
 ## Introduction
@@ -37,7 +39,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/kafka
+helm install my-release bitnami/kafka
 ```
 
 These commands deploy Kafka on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -504,7 +506,7 @@ The command removes all the Kubernetes components associated with the chart and 
 ```console
 helm install my-release \
   --set replicaCount=3 \
-  bitnami-mirror/kafka
+  bitnami/kafka
 ```
 
 The above command deploys Kafka with 3 brokers (replicas).
@@ -512,7 +514,7 @@ The above command deploys Kafka with 3 brokers (replicas).
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/kafka
+helm install my-release -f values.yaml bitnami/kafka
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -1038,8 +1040,8 @@ Backwards compatibility is not guaranteed when Kafka metrics are enabled, unless
 Use the workaround below to upgrade from versions previous to 7.0.0. The following example assumes that the release name is kafka:
 
 ```console
-helm upgrade kafka bitnami-mirror/kafka --version 6.1.8 --set metrics.kafka.enabled=false
-helm upgrade kafka bitnami-mirror/kafka --version 7.0.0 --set metrics.kafka.enabled=true
+helm upgrade kafka bitnami/kafka --version 6.1.8 --set metrics.kafka.enabled=false
+helm upgrade kafka bitnami/kafka --version 7.0.0 --set metrics.kafka.enabled=true
 ```
 
 ### To 2.0.0

@@ -7,7 +7,7 @@ Make sure you have Helm [installed](https://helm.sh/docs/using_helm/#installing-
 ## Get Repo Info
 
 ```console
-helm repo add grafana-mirror https://helm-charts.itboon.top/grafana
+helm repo add grafana https://helm-charts.itboon.top/grafana
 helm repo update
 ```
 
@@ -18,25 +18,25 @@ _See [helm repo](https://helm.sh/docs/helm/helm_repo/) for command documentation
 ### Deploy with default config
 
 ```bash
-helm upgrade --install loki grafana-mirror/loki-stack
+helm upgrade --install loki grafana/loki-stack
 ```
 
 ### Deploy in a custom namespace
 
 ```bash
-helm upgrade --install loki --namespace=loki-stack grafana-mirror/loki-stack
+helm upgrade --install loki --namespace=loki-stack grafana/loki-stack
 ```
 
 ### Deploy with custom config
 
 ```bash
-helm upgrade --install loki grafana-mirror/loki-stack --set "key1=val1,key2=val2,..."
+helm upgrade --install loki grafana/loki-stack --set "key1=val1,key2=val2,..."
 ```
 
 ## Deploy Loki and Fluent Bit to your cluster
 
 ```bash
-helm upgrade --install loki grafana-mirror/loki-stack \
+helm upgrade --install loki grafana/loki-stack \
     --set fluent-bit.enabled=true,promtail.enabled=false
 ```
 

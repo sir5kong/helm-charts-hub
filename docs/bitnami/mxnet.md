@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/mxnet
+helm install my-release bitnami/mxnet
 ```
 
 ## Introduction
@@ -38,7 +40,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/mxnet
+helm install my-release bitnami/mxnet
 ```
 
 These commands deploy Apache MXNet (Incubating) on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured.
@@ -395,7 +397,7 @@ helm install my-release \
   --set mode=distributed \
   --set server.replicaCount=2 \
   --set worker.replicaCount=3 \
-    bitnami-mirror/mxnet
+    bitnami/mxnet
 ```
 
 The above command creates 6 pods for Apache MXNet (Incubating): one scheduler, two servers, and three workers.
@@ -403,7 +405,7 @@ The above command creates 6 pods for Apache MXNet (Incubating): one scheduler, t
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/mxnet
+helm install my-release -f values.yaml bitnami/mxnet
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

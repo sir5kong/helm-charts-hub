@@ -12,7 +12,7 @@ This chart bootstraps a [cloudwatch exporter](http://github.com/prometheus/cloud
 ## Get Repository Info
 
 ```console
-helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
+helm repo add prometheus-community https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -22,10 +22,10 @@ _See [`helm repo`](https://helm.sh/docs/helm/helm_repo/) for command documentati
 
 ```console
 # Helm 3
-$ helm install [RELEASE_NAME] prometheus-community-mirror/prometheus-cloudwatch-exporter
+$ helm install [RELEASE_NAME] prometheus-community/prometheus-cloudwatch-exporter
 
 # Helm 2
-$ helm install --name [RELEASE_NAME] prometheus-community-mirror/prometheus-cloudwatch-exporter
+$ helm install --name [RELEASE_NAME] prometheus-community/prometheus-cloudwatch-exporter
 ```
 
 _See [Configuring](#configuring) below._
@@ -61,10 +61,10 @@ See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_h
 
 ```console
 # Helm 2
-$ helm inspect values prometheus-community-mirror/prometheus-cloudwatch-exporter
+$ helm inspect values prometheus-community/prometheus-cloudwatch-exporter
 
 # Helm 3
-$ helm show values prometheus-community-mirror/prometheus-cloudwatch-exporter
+$ helm show values prometheus-community/prometheus-cloudwatch-exporter
 ```
 
 ### AWS Credentials or Role

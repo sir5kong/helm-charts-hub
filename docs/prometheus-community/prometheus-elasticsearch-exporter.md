@@ -14,7 +14,7 @@ cluster using the [Helm](https://helm.sh) package manager.
 ## Get Helm Repository Info
 
 ```console
-helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
+helm repo add prometheus-community https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -24,10 +24,10 @@ _See [`helm repo`](https://helm.sh/docs/helm/helm_repo/) for command documentati
 
 ```console
 # Helm 3
-$ helm install [RELEASE_NAME] prometheus-community-mirror/prometheus-elasticsearch-exporter
+$ helm install [RELEASE_NAME] prometheus-community/prometheus-elasticsearch-exporter
 
 # Helm 2
-$ helm install --name [RELEASE_NAME] prometheus-community-mirror/prometheus-elasticsearch-exporter
+$ helm install --name [RELEASE_NAME] prometheus-community/prometheus-elasticsearch-exporter
 ```
 
 The command deploys Elasticsearch Exporter on the Kubernetes cluster using the default configuration.
@@ -101,10 +101,10 @@ To see all configurable options with detailed comments, visit the chart's [value
 
 ```console
 # Helm 2
-$ helm inspect values prometheus-community-mirror/prometheus-elasticsearch-exporter
+$ helm inspect values prometheus-community/prometheus-elasticsearch-exporter
 
 # Helm 3
-$ helm show values prometheus-community-mirror/prometheus-elasticsearch-exporter
+$ helm show values prometheus-community/prometheus-elasticsearch-exporter
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

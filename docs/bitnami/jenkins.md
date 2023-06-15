@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/jenkins
+helm install my-release bitnami/jenkins
 ```
 
 ## Introduction
@@ -38,7 +40,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/jenkins
+helm install my-release bitnami/jenkins
 ```
 
 These commands deploy Jenkins on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -86,7 +88,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | ------------------- | ------------------------------------------------------------------------------------------------------- | ---------------------- |
 | `image.registry`    | Jenkins image registry                                                                                  | `docker.io`            |
 | `image.repository`  | Jenkins image repository                                                                                | `bitnami/jenkins`      |
-| `image.tag`         | Jenkins image tag (immutable tags are recommended)                                                      | `2.387.3-debian-11-r6` |
+| `image.tag`         | Jenkins image tag (immutable tags are recommended)                                                      | `2.401.1-debian-11-r0` |
 | `image.digest`      | Jenkins image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                   |
 | `image.pullPolicy`  | Jenkins image pull policy                                                                               | `IfNotPresent`         |
 | `image.pullSecrets` | Jenkins image pull secrets                                                                              | `[]`                   |
@@ -164,7 +166,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `agent.enabled`                                                           | Set to true to enable the configuration of Jenkins kubernetes agents                                    | `false`                  |
 | `agent.image.registry`                                                    | Jenkins image registry                                                                                  | `docker.io`              |
 | `agent.image.repository`                                                  | Jenkins image repository                                                                                | `bitnami/jenkins-agent`  |
-| `agent.image.tag`                                                         | Jenkins image tag (immutable tags are recommended)                                                      | `0.3107.0-debian-11-r27` |
+| `agent.image.tag`                                                         | Jenkins image tag (immutable tags are recommended)                                                      | `0.3107.0-debian-11-r36` |
 | `agent.image.digest`                                                      | Jenkins image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                     |
 | `agent.image.pullPolicy`                                                  | Jenkins image pull policy                                                                               | `IfNotPresent`           |
 | `agent.image.pullSecrets`                                                 | Jenkins image pull secrets                                                                              | `[]`                     |
@@ -300,7 +302,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `volumePermissions.enabled`                   | Enable init container that changes the owner/group of the PV mount point to `runAsUser:fsGroup`               | `false`                 |
 | `volumePermissions.image.registry`            | Bitnami Shell image registry                                                                                  | `docker.io`             |
 | `volumePermissions.image.repository`          | Bitnami Shell image repository                                                                                | `bitnami/bitnami-shell` |
-| `volumePermissions.image.tag`                 | Bitnami Shell image tag (immutable tags are recommended)                                                      | `11-debian-11-r118`     |
+| `volumePermissions.image.tag`                 | Bitnami Shell image tag (immutable tags are recommended)                                                      | `11-debian-11-r126`     |
 | `volumePermissions.image.digest`              | Bitnami Shell image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                    |
 | `volumePermissions.image.pullPolicy`          | Bitnami Shell image pull policy                                                                               | `IfNotPresent`          |
 | `volumePermissions.image.pullSecrets`         | Bitnami Shell image pull secrets                                                                              | `[]`                    |
@@ -327,7 +329,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 helm install my-release \
   --set jenkinsUser=admin \
   --set jenkinsPassword=password \
-  bitnami-mirror/jenkins
+  bitnami/jenkins
 ```
 
 The above command sets the Jenkins administrator account username and password to `admin` and `password` respectively.
@@ -337,7 +339,7 @@ The above command sets the Jenkins administrator account username and password t
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/jenkins
+helm install my-release -f values.yaml bitnami/jenkins
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -436,7 +438,7 @@ kubectl delete deployments.apps jenkins
 - Upgrade your release and delete data that should not be persisted anymore:
 
 ```console
-helm upgrade jenkins bitnami-mirror/jenkins --set jenkinsPassword=$JENKINS_PASSWORD --set jenkinsHome=/bitnami/jenkins/jenkins_home
+helm upgrade jenkins bitnami/jenkins --set jenkinsPassword=$JENKINS_PASSWORD --set jenkinsHome=/bitnami/jenkins/jenkins_home
 kubectl exec -it $(kubectl get pod -l app.kubernetes.io/instance=jenkins,app.kubernetes.io/name=jenkins -o jsonpath="{.items[0].metadata.name}") -- find /bitnami/jenkins -mindepth 1 -maxdepth 1 -not -name jenkins_home -exec rm -rf {} \;
 ```
 
@@ -451,7 +453,7 @@ Consequences:
 ```console
 export JENKINS_PASSWORD=$(kubectl get secret --namespace default jenkins -o jsonpath="{.data.jenkins-password}" | base64 -d)
 kubectl delete deployments.apps jenkins
-helm upgrade jenkins bitnami-mirror/jenkins --set jenkinsPassword=$JENKINS_PASSWORD
+helm upgrade jenkins bitnami/jenkins --set jenkinsPassword=$JENKINS_PASSWORD
 ```
 
 ### To 6.1.0

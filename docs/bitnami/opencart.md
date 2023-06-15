@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/opencart
+helm install my-release bitnami/opencart
 ```
 
 ## Introduction
@@ -40,7 +42,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/opencart
+helm install my-release bitnami/opencart
 ```
 
 The command deploys OpenCart on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -315,7 +317,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set opencartUsername=admin,opencartPassword=password,mariadb.auth.rootPassword=secretpassword \
-    bitnami-mirror/opencart
+    bitnami/opencart
 ```
 
 The above command sets the OpenCart administrator account username and password to `admin` and `password` respectively. Additionally, it sets the MariaDB `root` user password to `secretpassword`.
@@ -325,7 +327,7 @@ The above command sets the OpenCart administrator account username and password 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/opencart
+helm install my-release -f values.yaml bitnami/opencart
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -376,7 +378,7 @@ See the [Parameters](#parameters) section to configure the PVC or to disable per
 3. Install the chart
 
 ```console
-helm install my-release --set persistence.existingClaim=PVC_NAME bitnami-mirror/opencart
+helm install my-release --set persistence.existingClaim=PVC_NAME bitnami/opencart
 ```
 
 ### Host path
@@ -392,7 +394,7 @@ helm install my-release --set persistence.existingClaim=PVC_NAME bitnami-mirror/
 2. Install the chart
 
     ```console
-    helm install my-release --set persistence.hostPath=/PATH/TO/HOST/MOUNT bitnami-mirror/opencart
+    helm install my-release --set persistence.hostPath=/PATH/TO/HOST/MOUNT bitnami/opencart
     ```
 
     This will mount the `prestashop-data` volume into the `hostPath` directory. The site data will be persisted if the mount path contains valid data, else the site data will be initialized at first launch.
@@ -508,14 +510,6 @@ Use the workaround below to upgrade from versions previous to 3.0.0. The followi
 kubectl patch deployment opencart-opencart --type=json -p='[{"op": "remove", "path": "/spec/selector/matchLabels/chart"}]'
 kubectl delete statefulset opencart-mariadb --cascade=false
 ```
-
-## Community supported solution
-
-Please, note this Helm chart is a community-supported solution. This means that the Bitnami team is not actively working on new features/improvements nor providing support through GitHub Issues for this Helm chart. Any new issue will stay open for 20 days to allow the community to contribute, after 15 days without activity the issue will be marked as stale being closed after 5 days.
-
-The Bitnami team will review any PR that is created, feel free to create a PR if you find any issue or want to implement a new feature.
-
-New versions are not going to be affected. Once a new version is released in the upstream project, the Bitnami container image will be updated to use the latest version.
 
 ## License
 

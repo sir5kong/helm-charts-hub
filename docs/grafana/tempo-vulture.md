@@ -13,7 +13,7 @@ Grafana Tempo Vulture - A tool to monitor Tempo performance.
 Add the following repo to use the chart:
 
 ```console
-helm repo add grafana-mirror https://helm-charts.itboon.top/grafana
+helm repo add grafana https://helm-charts.itboon.top/grafana
 ```
 
 ## Installing the Chart
@@ -21,7 +21,7 @@ helm repo add grafana-mirror https://helm-charts.itboon.top/grafana
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release grafana-mirror/tempo-vulture
+helm install my-release grafana/tempo-vulture
 ```
 
 ## Uninstalling the Chart

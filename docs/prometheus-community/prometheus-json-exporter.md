@@ -11,8 +11,8 @@ This chart bootstraps a [json_exporter](https://github.com/prometheus-community/
 ## Get Repo Info
 
 ```console
-helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
-helm repo add stable-mirror https://helm-charts.itboon.top/prometheus-community
+helm repo add prometheus-community https://helm-charts.itboon.top/prometheus-community
+helm repo add stable https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -22,7 +22,7 @@ _See [helm repo](https://helm.sh/docs/helm/helm_repo/) for command documentation
 
 ```console
 # Helm
-$ helm install [RELEASE_NAME] prometheus-community-mirror/prometheus-json-exporter
+$ helm install [RELEASE_NAME] prometheus-community/prometheus-json-exporter
 ```
 _See [configuration](## Configuring) below._
 
@@ -52,7 +52,7 @@ See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_h
 
 ```console
 # Helm
-$ helm show values prometheus-community-mirror/prometheus-json-exporter
+$ helm show values prometheus-community/prometheus-json-exporter
 ```
 
 For more information please refer to the [json_exporter](https://github.com/prometheus-community/json_exporter) documentation.

@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/grafana-mimir
+helm install my-release bitnami/grafana-mimir
 ```
 
 ## Introduction
@@ -41,7 +43,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/grafana-mimir
+helm install my-release bitnami/grafana-mimir
 ```
 
 The command deploys grafana-mimir on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -1231,7 +1233,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set mimir.image.debug=true \
-  bitnami-mirror/grafana-mimir
+  bitnami/grafana-mimir
 ```
 
 The above command enables the debug mode in the image.
@@ -1239,7 +1241,7 @@ The above command enables the debug mode in the image.
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/grafana-mimir
+helm install my-release -f values.yaml bitnami/grafana-mimir
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml) as starting point.

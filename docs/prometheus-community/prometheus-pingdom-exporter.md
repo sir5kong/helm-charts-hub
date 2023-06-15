@@ -11,7 +11,7 @@ The [prometheus-pingdom-exporter](https://github.com/giantswarm/prometheus-pingd
 ## Get Repo Info
 
 ```console
-helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
+helm repo add prometheus-community https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -21,10 +21,10 @@ _See [helm repo](https://helm.sh/docs/helm/helm_repo/) for command documentation
 
 ```console
 # Helm 3
-$ helm install [RELEASE_NAME] prometheus-community-mirror/prometheus-pingdom-exporter
+$ helm install [RELEASE_NAME] prometheus-community/prometheus-pingdom-exporter
 
 # Helm 2
-$ helm install --name [RELEASE_NAME] prometheus-community-mirror/prometheus-pingdom-exporter
+$ helm install --name [RELEASE_NAME] prometheus-community/prometheus-pingdom-exporter
 ```
 
 _See [configuration](#configuration) below._
@@ -60,8 +60,8 @@ See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_h
 
 ```console
 # Helm 2
-$ helm inspect values prometheus-community-mirror/prometheus-pingdom-exporter
+$ helm inspect values prometheus-community/prometheus-pingdom-exporter
 
 # Helm 3
-$ helm show values prometheus-community-mirror/prometheus-pingdom-exporter
+$ helm show values prometheus-community/prometheus-pingdom-exporter
 ```

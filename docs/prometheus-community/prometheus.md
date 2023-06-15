@@ -12,7 +12,7 @@ This chart bootstraps a [Prometheus](https://prometheus.io/) deployment on a [Ku
 ## Get Repository Info
 
 ```console
-helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
+helm repo add prometheus-community https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -23,7 +23,7 @@ _See [helm repository](https://helm.sh/docs/helm/helm_repo/) for command documen
 Start from Version 16.0, Prometheus chart required Helm 3.7+ in order to install successfully. Please check your Helm chart version before installation.
 
 ```console
-helm install [RELEASE_NAME] prometheus-community-mirror/prometheus
+helm install [RELEASE_NAME] prometheus-community/prometheus
 ```
 
 _See [configuration](#configuration) below._
@@ -123,7 +123,7 @@ kubectl delete sts -l app=prometheus
 After that do the actual upgrade:
 
 ```console
-helm upgrade -i prometheus prometheus-community-mirror/prometheus
+helm upgrade -i prometheus prometheus-community/prometheus
 ```
 
 ### To 20.0
@@ -153,7 +153,7 @@ If Prometheus is used as deployment the updatestrategy has been changed to "Recr
 All files in `templates/server` directory has been moved to `templates` directory.
 
 ```bash
-helm upgrade [RELEASE_NAME] prometheus-community-mirror/prometheus --version 19.0.0
+helm upgrade [RELEASE_NAME] prometheus-community/prometheus --version 19.0.0
 ```
 
 ### To 18.0
@@ -168,7 +168,7 @@ Before you update, please scale down the `prometheus-server` deployment to `0` t
 # In 17.x
 kubectl scale deploy prometheus-server --replicas=0
 # Upgrade
-helm upgrade [RELEASE_NAME] prometheus-community-mirror/prometheus --version 18.0.0
+helm upgrade [RELEASE_NAME] prometheus-community/prometheus --version 18.0.0
 ```
 
 ### To 17.0
@@ -181,7 +181,7 @@ Before you update, please scale down the `prometheus-server` deployment to `0` t
 # In 16.x
 kubectl scale deploy prometheus-server --replicas=0
 # Upgrade
-helm upgrade [RELEASE_NAME] prometheus-community-mirror/prometheus --version 17.0.0
+helm upgrade [RELEASE_NAME] prometheus-community/prometheus --version 17.0.0
 ```
 
 ### To 16.0
@@ -194,7 +194,7 @@ Before you update, please scale down the `prometheus-server` deployment to `0` t
 # In 15.x
 kubectl scale deploy prometheus-server --replicas=0
 # Upgrade
-helm upgrade [RELEASE_NAME] prometheus-community-mirror/prometheus --version 16.0.0
+helm upgrade [RELEASE_NAME] prometheus-community/prometheus --version 16.0.0
 ```
 
 ### To 15.0
@@ -262,7 +262,7 @@ Assuming you have an existing release of the prometheus chart, named `prometheus
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values.yaml](./values.yaml), or run these configuration commands:
 
 ```console
-helm show values prometheus-community-mirror/prometheus
+helm show values prometheus-community/prometheus
 ```
 
 You may similarly use the above configuration commands on each chart [dependency](#dependencies) to see it's configurations.
@@ -307,7 +307,7 @@ serverFiles:
 ```
 
 ```console
-helm install [RELEASE_NAME] prometheus-community-mirror/prometheus -f values.yaml -f service1-alert.yaml -f service2-alert.yaml
+helm install [RELEASE_NAME] prometheus-community/prometheus -f values.yaml -f service1-alert.yaml -f service2-alert.yaml
 ```
 
 ### RBAC Configuration

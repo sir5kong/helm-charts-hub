@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/appsmith
+helm install my-release bitnami/appsmith
 ```
 
 ## Introduction
@@ -42,7 +44,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/appsmith
+helm install my-release bitnami/appsmith
 ```
 
 The command deploys Appsmith on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -442,7 +444,7 @@ helm install my-release \
   --set appsmithUsername=admin \
   --set appsmithPassword=password \
   --set mariadb.auth.rootPassword=secretpassword \
-    bitnami-mirror/appsmith
+    bitnami/appsmith
 ```
 
 The above command sets the appsmith administrator account username and password to `admin` and `password` respectively. Additionally, it sets the MariaDB `root` user password to `secretpassword`.
@@ -452,7 +454,7 @@ The above command sets the appsmith administrator account username and password 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/appsmith
+helm install my-release -f values.yaml bitnami/appsmith
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

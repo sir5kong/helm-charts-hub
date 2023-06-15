@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/etcd
+helm install my-release bitnami/etcd
 ```
 
 ## Introduction
@@ -37,7 +39,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/etcd
+helm install my-release bitnami/etcd
 ```
 
 These commands deploy etcd on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -316,7 +318,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ```console
 helm install my-release \
-  --set auth.rbac.rootPassword=secretpassword bitnami-mirror/etcd
+  --set auth.rbac.rootPassword=secretpassword bitnami/etcd
 ```
 
 The above command sets the etcd `root` account password to `secretpassword`.
@@ -326,7 +328,7 @@ The above command sets the etcd `root` account password to `secretpassword`.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/etcd
+helm install my-release -f values.yaml bitnami/etcd
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -508,7 +510,7 @@ To upgrade from previous charts versions, create a snapshot of the keyspace and 
 You can use the command below to upgrade your chart by starting a new cluster using an existing snapshot, available in an existing PVC, to initialize the members:
 
 ```console
-helm install new-release bitnami-mirror/etcd \
+helm install new-release bitnami/etcd \
   --set statefulset.replicaCount=3 \
   --set persistence.enabled=true \
   --set persistence.size=8Gi \

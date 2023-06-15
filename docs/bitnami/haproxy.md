@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/haproxy
+helm install my-release bitnami/haproxy
 ```
 
 ## Introduction
@@ -40,7 +42,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/haproxy
+helm install my-release bitnami/haproxy
 ```
 
 The command deploys haproxy on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -117,7 +119,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | --------------------------------------- | ------------------------------------------------------------------------------------------------------- | -------------------- |
 | `image.registry`                        | HAProxy image registry                                                                                  | `docker.io`          |
 | `image.repository`                      | HAProxy image repository                                                                                | `bitnami/haproxy`    |
-| `image.tag`                             | HAProxy image tag (immutable tags are recommended)                                                      | `2.8.0-debian-11-r0` |
+| `image.tag`                             | HAProxy image tag (immutable tags are recommended)                                                      | `2.8.0-debian-11-r5` |
 | `image.digest`                          | HAProxy image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag | `""`                 |
 | `image.pullPolicy`                      | HAProxy image pull policy                                                                               | `IfNotPresent`       |
 | `image.pullSecrets`                     | HAProxy image pull secrets                                                                              | `[]`                 |
@@ -203,7 +205,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set service.type=LoadBalancer \
-    bitnami-mirror/haproxy
+    bitnami/haproxy
 ```
 
 The above command sets the HAProxy service type as LoadBalancer.
@@ -213,7 +215,7 @@ The above command sets the HAProxy service type as LoadBalancer.
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/haproxy
+helm install my-release -f values.yaml bitnami/haproxy
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

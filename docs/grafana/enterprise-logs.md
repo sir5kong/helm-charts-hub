@@ -35,10 +35,10 @@ license file called `license.jwt`:
 
 ```console
 $ # Add the repository
-$ helm repo add grafana-mirror https://helm-charts.itboon.top/grafana
+$ helm repo add grafana https://grafana.github.io/helm-charts
 $ helm repo update
 $ # Perform install
-$ helm install <cluster name> grafana-mirror/enterprise-logs \
+$ helm install <cluster name> grafana/enterprise-logs \
     --set-file 'license.contents=./license.jwt'
 ```
 
@@ -60,7 +60,7 @@ These values configure the Grafana Enterprise Logs cluster to handle production 
 To deploy a cluster using `small.yaml` values file:
 
 ```console
-$ helm install <cluster name> grafana-mirror/enterprise-logs \
+$ helm install <cluster name> grafana/enterprise-logs \
     --set-file 'license.contents=./license.jwt' \
     -f small.yaml
 ```

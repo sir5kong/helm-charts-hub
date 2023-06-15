@@ -1,9 +1,3 @@
-> 使用加速地址添加仓库:
-
-``` shell
-helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
-```
-
 <!--- app-name: Apache Airflow -->
 
 # Apache Airflow packaged by Bitnami
@@ -16,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/airflow
+helm install my-release bitnami/airflow
 ```
 
 ## Introduction
@@ -42,7 +38,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/airflow
+helm install my-release bitnami/airflow
 ```
 
 These commands deploy Airflow on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -501,7 +497,7 @@ helm install my-release \
                --set auth.password=my-passsword \
                --set auth.fernetKey=my-fernet-key \
                --set auth.secretKey=my-secret-key \
-               bitnami-mirror/airflow
+               bitnami/airflow
 ```
 
 The above command sets the credentials to access the Airflow web UI.
@@ -511,7 +507,7 @@ The above command sets the credentials to access the Airflow web UI.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/airflow
+helm install my-release -f values.yaml bitnami/airflow
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

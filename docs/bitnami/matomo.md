@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/matomo
+helm install my-release bitnami/matomo
 ```
 
 ## Introduction
@@ -40,7 +42,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/matomo
+helm install my-release bitnami/matomo
 ```
 
 The command deploys Matomo on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -304,7 +306,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set matomoUsername=user,matomoPassword=password,mariadb.auth.rootPassword=secretpassword \
-    bitnami-mirror/matomo
+    bitnami/matomo
 ```
 
 The above command sets the Matomo administrator account username and password to `user` and `password` respectively. Additionally, it sets the MariaDB `root` user password to `secretpassword`.
@@ -314,7 +316,7 @@ The above command sets the Matomo administrator account username and password to
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/matomo
+helm install my-release -f values.yaml bitnami/matomo
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -365,7 +367,7 @@ See the [Parameters](#parameters) section to configure the PVC or to disable per
 3. Install the chart
 
 ```console
-helm install my-release --set persistence.existingClaim=PVC_NAME bitnami-mirror/matomo
+helm install my-release --set persistence.existingClaim=PVC_NAME bitnami/matomo
 ```
 
 ### Host path
@@ -381,7 +383,7 @@ helm install my-release --set persistence.existingClaim=PVC_NAME bitnami-mirror/
 2. Install the chart
 
     ```console
-    helm install my-release --set persistence.hostPath=/PATH/TO/HOST/MOUNT bitnami-mirror/matomo
+    helm install my-release --set persistence.hostPath=/PATH/TO/HOST/MOUNT bitnami/matomo
     ```
 
     This will mount the `matomo-data` volume into the `hostPath` directory. The site data will be persisted if the mount path contains valid data, else the site data will be initialized at first launch.

@@ -10,14 +10,16 @@ Disclaimer: All software products, projects and company names are trademark(TM) 
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/minio
+helm install my-release bitnami/minio
 ```
 
 ## Introduction
@@ -37,7 +39,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/minio
+helm install my-release bitnami/minio
 ```
 
 These commands deploy MinIO&reg; on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -314,7 +316,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 helm install my-release \
   --set auth.rootUser=minio-admin \
   --set auth.rootPassword=minio-secret-password \
-    bitnami-mirror/minio
+    bitnami/minio
 ```
 
 The above command sets the MinIO&reg; Server root user and password to `minio-admin` and `minio-secret-password`, respectively.
@@ -322,7 +324,7 @@ The above command sets the MinIO&reg; Server root user and password to `minio-ad
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/minio
+helm install my-release -f values.yaml bitnami/minio
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

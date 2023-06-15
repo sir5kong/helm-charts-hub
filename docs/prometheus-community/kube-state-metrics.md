@@ -5,7 +5,7 @@ Installs the [kube-state-metrics agent](https://github.com/kubernetes/kube-state
 ## Get Repository Info
 <!-- textlint-disable -->
 ```console
-helm repo add prometheus-community-mirror https://helm-charts.itboon.top/prometheus-community
+helm repo add prometheus-community https://helm-charts.itboon.top/prometheus-community
 helm repo update
 ```
 
@@ -15,7 +15,7 @@ _See [helm repo](https://helm.sh/docs/helm/helm_repo/) for command documentation
 ## Install Chart
 
 ```console
-helm install [RELEASE_NAME] prometheus-community-mirror/kube-state-metrics [flags]
+helm install [RELEASE_NAME] prometheus-community/kube-state-metrics [flags]
 ```
 
 _See [configuration](#configuration) below._
@@ -35,7 +35,7 @@ _See [helm uninstall](https://helm.sh/docs/helm/helm_uninstall/) for command doc
 ## Upgrading Chart
 
 ```console
-helm upgrade [RELEASE_NAME] prometheus-community-mirror/kube-state-metrics [flags]
+helm upgrade [RELEASE_NAME] prometheus-community/kube-state-metrics [flags]
 ```
 
 _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documentation._
@@ -62,7 +62,7 @@ The upgraded chart now the following changes:
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments:
 
 ```console
-helm show values prometheus-community-mirror/kube-state-metrics
+helm show values prometheus-community/kube-state-metrics
 ```
 
 ### kube-rbac-proxy

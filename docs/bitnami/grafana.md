@@ -10,14 +10,16 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-使用加速地址添加仓库:
+> 使用加速地址添加仓库:
+
 ``` shell
-helm repo add bitnami-mirror "https://helm-charts.itboon.top/bitnami"
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+helm update bitnami
 ```
 
 
 ```console
-helm install my-release bitnami-mirror/grafana
+helm install my-release bitnami/grafana
 ```
 
 ## Introduction
@@ -38,7 +40,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-mirror/grafana
+helm install my-release bitnami/grafana
 ```
 
 These commands deploy grafana on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -458,7 +460,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ```console
 helm install my-release \
-  --set admin.user=admin-user bitnami-mirror/grafana
+  --set admin.user=admin-user bitnami/grafana
 ```
 
 The above command sets the Grafana admin user to `admin-user`.
@@ -468,7 +470,7 @@ The above command sets the Grafana admin user to `admin-user`.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-mirror/grafana
+helm install my-release -f values.yaml bitnami/grafana
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -630,7 +632,7 @@ Since the volume access mode when persistence is enabled is `ReadWriteOnce` in o
 
 ```console
 kubectl delete deployment <deployment-name>
-helm upgrade <release-name> bitnami-mirror/grafana
+helm upgrade <release-name> bitnami/grafana
 ```
 
 ### To 4.1.0
