@@ -8,3 +8,6 @@ repos:
 - url: 'https://kubernetes.github.io/ingress-nginx'
   repo: kubernetes/ingress-nginx
   namespace: ingress-nginx
+- url: 'https://itboon.github.io/bitnami-charts/index.yaml'
+  repo: itboon/bitnami-charts
+  namespace: bitnami

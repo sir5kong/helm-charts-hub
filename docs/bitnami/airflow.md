@@ -1,3 +1,9 @@
+> 使用加速地址添加仓库:
+
+``` shell
+helm repo add bitnami "https://helm-charts.itboon.top/bitnami"
+```
+
 <!--- app-name: Apache Airflow -->
 
 # Apache Airflow packaged by Bitnami
