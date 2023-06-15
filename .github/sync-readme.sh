@@ -9,7 +9,7 @@ cat > "$tmpfile" <<EOF
 > 使用加速地址添加仓库:
 
 \`\`\` shell
-helm repo add bitnami "$chart_url_mirror"
+helm repo add bitnami "$chart_url_mirror" --force-update
 helm update bitnami
 \`\`\`
 
