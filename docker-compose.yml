@@ -1,0 +1,12 @@
+version: '3.5'
+
+services:
+  mkdocs:
+    image: squidfunk/mkdocs-material:9.1
+    container_name: helm-charts-hub
+    restart: unless-stopped
+    stop_grace_period: 1s
+    ports:
+      - "127.0.0.81:80:8000"
+    volumes:
+      - ./:/docs:ro

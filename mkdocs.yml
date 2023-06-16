@@ -1,0 +1,65 @@
+site_name: My Notes
+
+theme:
+  name: 'material'
+  font: false
+  language: 'zh'
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.instant
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+
+# markdown_extensions:
+#   - admonition
+#   - pymdownx.highlight
+#   - pymdownx.superfences
+
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
+      # insert a blank space before the character
+      permalink: " ¶"
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# dev_addr: 127.0.0.1:7001
+
+nav:
+  - Welcome:
+      - Welcome: "index.md"
+  - 'Chart 列表':
+      - 'Chart 列表': "grafana/grafana.md"
+  - 'Chart 文档': 'grafana/'
