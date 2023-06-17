@@ -5,7 +5,7 @@
 !!! info
     国内访问 GitHub 网速比较慢，有时甚至访问不了。除非你引用本地 `Chart`，否则每次使用 `helm install`、 `helm upgrade` 都需要联网，网络不好会相当难受。
 
-## 镜像资源
+## 镜像源
 
 - [Bitnami](https://github.com/bitnami/charts)
 - [Prometheus Community](https://github.com/prometheus-community/helm-charts)
@@ -49,5 +49,3 @@ helm upgrade --install redis \
   bitnami/redis
 
 ```
-
-## 查看文档
