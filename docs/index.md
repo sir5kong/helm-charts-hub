@@ -7,18 +7,18 @@
 
 ## 镜像资源
 
-- [Bitnami Helm Charts](https://github.com/bitnami/charts)
-- [Prometheus Community Kubernetes Helm Charts](https://github.com/prometheus-community/helm-charts)
-- [Grafana Community Kubernetes Helm Charts](https://github.com/grafana/helm-charts)
-- [Ingress-NGINX Controller for Kubernetes](https://github.com/kubernetes/ingress-nginx/)
+- [Bitnami](https://github.com/bitnami/charts)
+- [Prometheus Community](https://github.com/prometheus-community/helm-charts)
+- [Grafana](https://github.com/grafana/helm-charts)
+- [Ingress Nginx](https://github.com/kubernetes/ingress-nginx/)
 
 ## 添加仓库
 
 ``` shell
 helm repo add bitnami "https://helm-charts.itboon.top/bitnami" --force-update
 helm repo add grafana "https://helm-charts.itboon.top/grafana" --force-update
-helm repo add grafana "https://helm-charts.itboon.top/prometheus-community" --force-update
-helm repo add grafana "https://helm-charts.itboon.top/ingress-nginx" --force-update
+helm repo add prometheus-community "https://helm-charts.itboon.top/prometheus-community" --force-update
+helm repo add ingress-nginx "https://helm-charts.itboon.top/ingress-nginx" --force-update
 helm repo update
 ```
 
