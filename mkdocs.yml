@@ -1,9 +1,9 @@
 site_name: Helm Charts Hub
-# site_url: http://127.0.0.81/docs
+# site_url: https://sir5kong.github.io/helm-charts-hub
 
 ## Repository
-# repo_name: 'user/repo'
-# repo_url: 'https://github.com/user/repo'
+repo_name: 'sir5kong/helm-charts-hub'
+repo_url: 'https://github.com/sir5kong/helm-charts-hub'
 
 theme:
   name: 'material'
@@ -78,12 +78,3 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
-
-# dev_addr: 127.0.0.1:7001
-
-# nav:
-#   - Welcome:
-#       - Welcome: "index.md"
-#   - 'Chart 列表':
-#       - 'Chart 列表': "grafana/grafana.md"
-#   - 'Chart 文档': 'grafana/'
