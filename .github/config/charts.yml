@@ -11,3 +11,4 @@ repos:
 - url: 'https://itboon.github.io/bitnami-charts/index.yaml'
   repo: itboon/bitnami-charts
   namespace: bitnami
+  chartsDir: charts-bitnami

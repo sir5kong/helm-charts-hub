@@ -36,50 +36,68 @@ get_readme_by_github_repo() {
   local source_readme="_tmp/README.md"
   cp -f "$charts_tmp_dir/$chart/README.md" "$source_readme"
   ls -alh "$source_readme"
+  if cat "$source_readme" | grep -Ei '^# .*DEPRECATED' &> /dev/null; then
+    head -n5 "$source_readme"
+    echo "[info] 跳过 DEPRECATED 文档 $source_readme"
+    return
+  fi
   local repo_name="$(grep -Eo 'helm repo add [a-zA-Z0-9_-]+' "$source_readme" | head -n1 | awk '{printf $4}')"
   if echo "$repo_name" | grep -Ev '^[a-zA-Z0-9_-]+$' ; then
-    repo_name="$chart_namespace"
+    repo_name="$CHART_NAMESPACE"
   fi
   local chart_repo_raw="$repo_name/$chart"
   local chart_repo_mirror="${repo_name}/$chart"
-  export chart_url_mirror="$CHART_BASE_URL/$chart_namespace"
+  export chart_url_mirror="$CHART_BASE_URL/$CHART_NAMESPACE"
   echo "[env] repo_name: $repo_name, chart_repo_mirror: $chart_repo_mirror"
   sed -i -E 's%^(helm repo add \S+)\s+\S+%\1 '$chart_url_mirror'%' "$source_readme"
   sed -i -E 's%(helm .+?) '$chart_repo_raw'%\1 '$chart_repo_mirror'%' "$source_readme"
   sed -i -E 's%^(\s*)'$chart_repo_raw'%\1'$chart_repo_mirror'%' "$source_readme"
-  if [[ "$chart_namespace" == "bitnami" ]]; then
+  if [[ "$CHART_NAMESPACE" == "bitnami" ]]; then
     sed -i -E 's%oci://[^/]+/bitnamicharts/\S*%'$chart_repo_mirror'%' "$source_readme"
     write_bitnami_notice_file "/tmp/helm-cmd.tmp"
     sed -i -E '/^## TL;DR/r /tmp/helm-cmd.tmp' "$source_readme"
   fi
-  cp -f "$source_readme" "docs/${chart_namespace}/${chart}.md"
+  cp -f "$source_readme" "docs/${CHART_NAMESPACE}/${chart}.md"
 }
 
 get_readme_github() {
   local charts_dir="$1"
+  mkdir -p "docs/${CHART_NAMESPACE}"
   if [[ -z "$charts_dir" ]]; then charts_dir="charts"; fi
-  export GIT_REPO_URL="$github_repo"
-  mkdir -p "docs/${chart_namespace}"
-  if echo "$github_repo" | grep -Ev '^(ssh|http)'; then
-    export GIT_REPO_URL="https://github.com/${github_repo}.git"
+  export GIT_REPO_URL="$GITHUB_REPO"
+  if echo "$GITHUB_REPO" | grep -Ev '^(ssh|http)'; then
+    export GIT_REPO_URL="https://github.com/${GITHUB_REPO}.git"
   fi
   echo "[debug] GIT_REPO_URL: $GIT_REPO_URL"
-  local git_tmp_root="/tmp/tmpchart/$chart_namespace"
+  local git_tmp_root="/tmp/tmpchart/$CHART_NAMESPACE"
   clone_charts_git_repo "$git_tmp_root"
   export charts_tmp_dir="$git_tmp_root/$charts_dir"
   local chart=""
   ls "$charts_tmp_dir" | while read chart ; do
     get_readme_by_github_repo "$chart"
   done
+  gen_mkdocs_index_md "$CHART_NAMESPACE" "docs/$CHART_NAMESPACE"
   # ls -alh "docs/"
-  # ls -alh "docs/${chart_namespace}/"
+  # ls -alh "docs/${CHART_NAMESPACE}/"
 }
 
 get_readme_bitnami() {
-  export github_repo="https://github.com/bitnami/charts.git"
-  export chart_namespace="bitnami"
+  export GITHUB_REPO="https://github.com/bitnami/charts.git"
+  export CHART_NAMESPACE="bitnami"
   local charts_dir="bitnami"
   get_readme_github "$charts_dir"
+}
+
+gen_mkdocs_index_md() {
+  local chart_title="$1"
+  local chart_home="$2"
+  local indexmd="$chart_home/index.md"
+  echo -e "# $chart_title\n" > "$indexmd"
+  echo -e "Chart 列表:\n" > "$indexmd"
+  ls "$chart_home" | while read chart ; do
+    local name="$(echo $chart | sed 's/\.md//')"
+    echo "- [$name](./$name)" >> "$indexmd"
+  done
 }
 
 init_env() {
@@ -98,16 +116,20 @@ main() {
   if [[ ! "$num" -ge 1 ]]; then echo "$num"; exit "400"; fi
   for ((i=0; i<"$num"; i++)); do
     # local github_url=$(yq e .repos[${i}].url $yml)
-    export github_repo=$(yq e .repos[${i}].repo $yml)
-    export chart_namespace=$(yq e .repos[${i}].namespace $yml)
-    get_readme_github
+    export GITHUB_REPO=$(yq e .repos[${i}].repo $yml)
+    export CHART_NAMESPACE=$(yq e .repos[${i}].namespace $yml)
+    local charts_dir=$(yq e .repos[${i}].chartsDir $yml)
+    if [[ -z "$charts_dir" ]] || [[ "$charts_dir" == "null" ]]; then
+      local charts_dir="charts"
+    fi
+    get_readme_github "$charts_dir"
   done
-  get_readme_bitnami
+  ## get_readme_bitnami
 }
 
 main_test() {
-  export github_repo='grafana/helm-charts'
-  export chart_namespace="grafana"
+  export GITHUB_REPO='grafana/helm-charts'
+  export CHART_NAMESPACE="grafana"
   local charts_dir="charts"
   get_readme_github "$charts_dir"
 }
