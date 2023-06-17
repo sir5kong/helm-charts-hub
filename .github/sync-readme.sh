@@ -113,7 +113,7 @@ gen_chart_list_md() {
       ls "$dir" | while read line ; do
         local chart="$(echo $line | sed 's/\.md//')"
         if [[ "$chart" != "index" ]]; then
-          echo "- [$chart](。/$namespace/$chart/)" >> "$chart_list_md"
+          echo "- [$chart](./$namespace/$chart/)" >> "$chart_list_md"
         fi
       done
     fi
