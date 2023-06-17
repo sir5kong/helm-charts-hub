@@ -1,33 +1,34 @@
-name: Sync Charts Index
+name: Publish docs to OSS
 
 on:
   workflow_dispatch: ## on button click
 
-  schedule:
-    - cron: '0 */8 * * *'  ## every 8 hours
-
-  push:
-    branches:
-      - main
-
 jobs:
-  syncCharts:
+  release:
     runs-on: ubuntu-latest
     steps:
       -
         name: Checkout
         uses: actions/checkout@v3
+        with:
+          # fetch-depth: 0
+          ref: 'gh-pages'
       - 
-        name: Get Charts
+        name: Upload to OSS
         if: ${{ vars.OSS_MIRROR_ENABLED == 'true' }}
         shell: bash
         env:
           DL_URL_OSS: "https://gosspublic.alicdn.com/ossutil/1.7.1/ossutil64"
-          CHART_BASE_URL: 'https://helm-charts.itboon.top'
           OSS_KEY_ID: "${{ secrets.OSS_KEY_ID }}"
           OSS_KEY_SECRET: "${{ secrets.OSS_KEY_SECRET }}"
           OSS_EP: "${{ vars.OSS_EP }}"
           OSS_BUCKET: "${{ vars.OSS_BUCKET }}"
           CHART_INDEX_URL: "${{ vars.CHART_INDEX_URL }}"
           MIRROR_HOST: "${{ vars.MIRROR_HOST }}"
-        run: '.github/sync-charts.sh'
+        run: |
+          export ALIOSS="${HOME}/bin/ossutil"
+          mkdir -p $(dirname $ALIOSS)
+          curl -o $ALIOSS -L $DL_URL_OSS
+          chmod a+rx $ALIOSS
+          $ALIOSS config -e $OSS_EP -i $OSS_KEY_ID -k $OSS_KEY_SECRET
+          $ALIOSS cp -rf ./ "oss://${OSS_BUCKET}/docs/"

@@ -98,7 +98,7 @@ gen_mkdocs_index_md() {
   ls "$chart_home" | while read line ; do
     local chart="$(echo $line | sed 's/\.md//')"
     if [[ "$chart" != "index" ]]; then
-      echo "- [$chart](./$chart)" >> "$indexmd"
+      echo "- [$chart](./$chart/)" >> "$indexmd"
     fi
   done
 }
@@ -113,7 +113,7 @@ gen_chart_list_md() {
       ls "$dir" | while read line ; do
         local chart="$(echo $line | sed 's/\.md//')"
         if [[ "$chart" != "index" ]]; then
-          echo "- [$chart](/$namespace/$chart)" >> "$chart_list_md"
+          echo "- [$chart](。/$namespace/$chart/)" >> "$chart_list_md"
         fi
       done
     fi
