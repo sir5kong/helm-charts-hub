@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export CHARTS_CONFIG=".github/config/charts.yml"
+export DOCS_ROOT="docs"
 
 write_bitnami_notice_file() {
 local tmpfile="$1"
@@ -57,12 +58,12 @@ get_readme_by_github_repo() {
     write_bitnami_notice_file "/tmp/helm-cmd.tmp"
     sed -i -E '/^## TL;DR/r /tmp/helm-cmd.tmp' "$source_readme"
   fi
-  cp -f "$source_readme" "docs/${CHART_NAMESPACE}/${chart}.md"
+  cp -f "$source_readme" "${DOCS_ROOT}/${CHART_NAMESPACE}/${chart}.md"
 }
 
 get_readme_github() {
   local charts_dir="$1"
-  mkdir -p "docs/${CHART_NAMESPACE}"
+  mkdir -p "${DOCS_ROOT}/${CHART_NAMESPACE}"
   if [[ -z "$charts_dir" ]]; then charts_dir="charts"; fi
   export GIT_REPO_URL="$GITHUB_REPO"
   if echo "$GITHUB_REPO" | grep -Ev '^(ssh|http)'; then
@@ -76,9 +77,9 @@ get_readme_github() {
   ls "$charts_tmp_dir" | while read chart ; do
     get_readme_by_github_repo "$chart"
   done
-  gen_mkdocs_index_md "$CHART_NAMESPACE" "docs/$CHART_NAMESPACE"
-  # ls -alh "docs/"
-  # ls -alh "docs/${CHART_NAMESPACE}/"
+  gen_mkdocs_index_md "$CHART_NAMESPACE" "${DOCS_ROOT}/$CHART_NAMESPACE"
+  # ls -alh "${DOCS_ROOT}/"
+  # ls -alh "${DOCS_ROOT}/${CHART_NAMESPACE}/"
 }
 
 get_readme_bitnami() {
@@ -94,9 +95,26 @@ gen_mkdocs_index_md() {
   local indexmd="$chart_home/index.md"
   echo -e "# $chart_title\n" > "$indexmd"
   echo -e "Chart 列表:\n" > "$indexmd"
-  ls "$chart_home" | while read chart ; do
-    local name="$(echo $chart | sed 's/\.md//')"
-    echo "- [$name](./$name)" >> "$indexmd"
+  ls "$chart_home" | while read line ; do
+    local chart="$(echo $line | sed 's/\.md//')"
+    if [[ "$chart" != "index" ]]; then
+      echo "- [$chart](./$chart)" >> "$indexmd"
+    fi
+  done
+}
+
+gen_chart_list_md() {
+  local chart_list_md="chart-list.md"
+  echo -e "# Chart 列表\n" > "$chart_list_md"
+  ls "$DOCS_ROOT" | while read dir ; do
+    if [[ -d "$dir" ]]; then
+      ls "$dir" | while read line ; do
+        local chart="$(echo $line | sed 's/\.md//')"
+        if [[ "$chart" != "index" ]]; then
+          echo "- [$chart](/$dir/$chart)" >> "$chart_list_md"
+        fi
+      done
+    fi
   done
 }
 
@@ -125,6 +143,7 @@ main() {
     get_readme_github "$charts_dir"
   done
   ## get_readme_bitnami
+  gen_chart_list_md
 }
 
 main_test() {
