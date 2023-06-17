@@ -104,7 +104,7 @@ gen_mkdocs_index_md() {
 }
 
 gen_chart_list_md() {
-  local chart_list_md="chart-list.md"
+  local chart_list_md="$DOCS_ROOT/chart-list.md"
   echo -e "# Chart 列表\n" > "$chart_list_md"
   ls "$DOCS_ROOT" | while read dir ; do
     if [[ -d "$dir" ]]; then
