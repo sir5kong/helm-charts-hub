@@ -172,4 +172,5 @@
 - [prometheus-stackdriver-exporter](../prometheus-community/prometheus-stackdriver-exporter/)
 - [prometheus-statsd-exporter](../prometheus-community/prometheus-statsd-exporter/)
 - [prometheus-to-sd](../prometheus-community/prometheus-to-sd/)
+- [prometheus-windows-exporter](../prometheus-community/prometheus-windows-exporter/)
 - [prometheus](../prometheus-community/prometheus/)

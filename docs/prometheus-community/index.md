@@ -36,4 +36,5 @@ Chart 列表:
 - [prometheus-stackdriver-exporter](./prometheus-stackdriver-exporter/)
 - [prometheus-statsd-exporter](./prometheus-statsd-exporter/)
 - [prometheus-to-sd](./prometheus-to-sd/)
+- [prometheus-windows-exporter](./prometheus-windows-exporter/)
 - [prometheus](./prometheus/)
