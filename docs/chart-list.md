@@ -179,4 +179,5 @@
 
 - [commonapp](../sir5kong/commonapp/)
 - [ingress-nginx](../sir5kong/ingress-nginx/)
+- [kafka](../sir5kong/kafka/)
 - [nginx](../sir5kong/nginx/)
