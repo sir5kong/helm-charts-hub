@@ -1,4 +1,7 @@
 repos:
+# - url: 'https://sir5kong.github.io/helm-charts-hub'
+#   repo: sir5kong/helm-charts-hub
+#   namespace: sir5kong
 - url: 'https://grafana.github.io/helm-charts/index.yaml'
   repo: grafana/helm-charts
   namespace: grafana
