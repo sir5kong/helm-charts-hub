@@ -1,0 +1,17 @@
+apiVersion: v2
+name: nginx
+description:  A Helm chart for Kubernetes
+type: application
+
+version: 1.0.1
+appVersion: latest
+
+maintainers:
+  - name: sir5kong
+    url: "https://github.com/sir5kong/helm-charts-hub"
+
+keywords:
+  - nginx
+  - httpd
+  - web
+  - reverse proxy

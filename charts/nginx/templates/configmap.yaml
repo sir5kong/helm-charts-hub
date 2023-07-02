@@ -1,0 +1,15 @@
+{{- $cm := .Values.configMapMounts | default dict -}}
+{{- if and $cm.enabled (not $cm.extraConfigMapName) -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "common.fullname" . }}
+  labels:
+    {{- include "common.labels" . | nindent 4 }}
+  {{- with $cm.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+data:
+  {{- toYaml $cm.data | nindent 2 }}
+{{- end }}

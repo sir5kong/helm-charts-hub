@@ -1,0 +1,110 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "common.fullname" . }}
+  labels:
+    {{- include "common.labels" . | nindent 4 }}
+spec:
+  {{- if and (not .Values.autoscaling.enabled) (ne (int .Values.replicaCount) 1) }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  revisionHistoryLimit: {{ .Values.revisionHistoryLimit | default 10 }}
+  minReadySeconds: {{ .Values.minReadySeconds | default 3 }}
+  {{- with .Values.updateStrategy }}
+  strategy:
+    {{- toYaml .Values.updateStrategy | nindent 4 }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "common.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      labels:
+        {{- include "common.selectorLabels" . | nindent 8 }}
+      {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "common.serviceAccountName" . }}
+      {{- with .Values.podSecurityContext }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      topologySpreadConstraints:
+        {{- include "common.topologySpreadConstraints" . | nindent 8 }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{ toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Values.containerName | default "main" }}
+        {{- with .Values.securityContext }}
+          securityContext:
+            {{- toYaml . | nindent 12 }}
+        {{- end }}
+          image: "{{ .Values.image.repository | default "nginx" }}:{{ .Values.image.tag | default "latest" }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy | default "IfNotPresent" }}
+          ports:
+          {{- $portsFirstNum := (include "common.ports.firstContainerPort" .) | int }}
+          {{- if ge $portsFirstNum 1 }}
+            {{- include "common.container.ports" . | nindent 12 }}
+          {{- else }}
+            - name: {{ include "common.containerPortName" . }}
+              containerPort: {{ .Values.containerPort | default 80 }}
+              protocol: TCP
+          {{- end }}
+        {{- with .Values.command }}
+          command:
+            {{- toYaml . | nindent 12 }}
+        {{- end }}
+        {{- with .Values.args }}
+          args:
+            {{- toYaml . | nindent 12 }}
+        {{- end }}
+        {{- with .Values.startupProbe }}
+          startupProbe:
+            {{- toYaml . | nindent 12 }}
+        {{- end }}
+        {{- with .Values.livenessProbe }}
+          livenessProbe:
+            {{- toYaml . | nindent 12 }}
+        {{- end }}
+        {{- with .Values.readinessProbe }}
+          readinessProbe:
+            {{- toYaml . | nindent 12 }}
+        {{- end }}
+        {{- with .Values.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+        {{- end }}
+        {{- with .Values.env }}
+          env:
+            {{- toYaml . | nindent 12 }}
+        {{- end }}
+          volumeMounts:
+            {{- include "common.volumeMounts" . | nindent 12 }}
+      {{- with .Values.extraContainers }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.initContainers }}
+      initContainers:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      volumes:
+        {{- include "common.volumes" . | nindent 8 }}
