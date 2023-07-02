@@ -23,7 +23,7 @@ helm repo update sir5kong
 helm upgrade --install nginx-demo \
   --namespace helm-demo \
   --create-namespace \
-  --set nameOverride="grafana" \
+  --set nameOverride="nginx" \
   --set image.repository="nginx" \
   --set image.tag="latest" \
   sir5kong/commonapp
@@ -38,6 +38,7 @@ helm show values sir5kong/commonapp
 
 | Key | 类型 | 默认值 | 描述 |
 |-----|------|---------|-------------|
+| nameOverride | string | `""` | 应用名 |
 | replicaCount | int | `1` | Deployment Pod 副本数 |
 | image.repository | string | `nginx` | 容器镜像仓库，例如: `docker.io/kennethreitz/httpbin` |
 | image.tag | string | `latest` | 容器镜像 tag，例如: `latest`、`v1.0.0` |

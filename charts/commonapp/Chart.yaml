@@ -3,7 +3,7 @@ name: commonapp
 description:  A Helm chart for Kubernetes
 type: application
 
-version: 1.0.1
+version: 1.0.2
 appVersion: latest
 
 maintainers:
