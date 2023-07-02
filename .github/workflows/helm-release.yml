@@ -6,6 +6,7 @@ on:
     paths:
       - 'charts/**'
       - '.github/workflows/*'
+      - cr.yaml
     branches:
       - main
 
