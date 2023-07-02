@@ -1,0 +1,5350 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../magento/">
+      
+      
+        <link rel="next" href="../mariadb/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Mariadb galera - Helm Charts Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mariadb-galera-packaged-by-bitnami" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Helm Charts Hub" class="md-header__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Helm Charts Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mariadb galera
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Helm Charts Hub
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../chart-list/" class="md-tabs__link">
+      Chart 列表
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Bitnami
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../grafana/" class="md-tabs__link">
+        Grafana
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ingress-nginx/" class="md-tabs__link">
+        Ingress nginx
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../prometheus-community/" class="md-tabs__link">
+        Prometheus community
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sir5kong/" class="md-tabs__link">
+        Sir5kong
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Helm Charts Hub" class="md-nav__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Helm Charts Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Helm Charts Hub
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chart-list/" class="md-nav__link">
+        Chart 列表
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Bitnami</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Bitnami" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Bitnami
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../airflow/" class="md-nav__link">
+        Airflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apache/" class="md-nav__link">
+        Apache
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apisix/" class="md-nav__link">
+        Apisix
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appsmith/" class="md-nav__link">
+        Appsmith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-cd/" class="md-nav__link">
+        Argo cd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-workflows/" class="md-nav__link">
+        Argo workflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aspnet-core/" class="md-nav__link">
+        Aspnet core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cassandra/" class="md-nav__link">
+        Cassandra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cert-manager/" class="md-nav__link">
+        Cert manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clickhouse/" class="md-nav__link">
+        Clickhouse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common/" class="md-nav__link">
+        Bitnami Common Library Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concourse/" class="md-nav__link">
+        Concourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../consul/" class="md-nav__link">
+        Consul
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contour/" class="md-nav__link">
+        Contour
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../discourse/" class="md-nav__link">
+        Discourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dokuwiki/" class="md-nav__link">
+        Dokuwiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drupal/" class="md-nav__link">
+        Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejbca/" class="md-nav__link">
+        Ejbca
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../elasticsearch/" class="md-nav__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../etcd/" class="md-nav__link">
+        Etcd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../external-dns/" class="md-nav__link">
+        External dns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flink/" class="md-nav__link">
+        Flink
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluent-bit/" class="md-nav__link">
+        Fluent bit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluentd/" class="md-nav__link">
+        Fluentd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flux/" class="md-nav__link">
+        Flux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ghost/" class="md-nav__link">
+        Ghost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitea/" class="md-nav__link">
+        Gitea
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-loki/" class="md-nav__link">
+        Grafana loki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-mimir/" class="md-nav__link">
+        Grafana mimir
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-operator/" class="md-nav__link">
+        Grafana operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-tempo/" class="md-nav__link">
+        Grafana tempo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana/" class="md-nav__link">
+        Grafana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../haproxy/" class="md-nav__link">
+        Haproxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../harbor/" class="md-nav__link">
+        Harbor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../influxdb/" class="md-nav__link">
+        Influxdb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jaeger/" class="md-nav__link">
+        Jaeger
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jasperreports/" class="md-nav__link">
+        Jasperreports
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jenkins/" class="md-nav__link">
+        Jenkins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../joomla/" class="md-nav__link">
+        Joomla
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jupyterhub/" class="md-nav__link">
+        Jupyterhub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kafka/" class="md-nav__link">
+        Kafka
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keycloak/" class="md-nav__link">
+        Keycloak
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kiam/" class="md-nav__link">
+        Kiam
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kibana/" class="md-nav__link">
+        Kibana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kong/" class="md-nav__link">
+        Kong
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube-prometheus/" class="md-nav__link">
+        Kube prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube-state-metrics/" class="md-nav__link">
+        Kube state metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubeapps/" class="md-nav__link">
+        Kubeapps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-event-exporter/" class="md-nav__link">
+        Kubernetes event exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logstash/" class="md-nav__link">
+        Logstash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../magento/" class="md-nav__link">
+        Magento
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Mariadb galera
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Mariadb galera
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    TL;DR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    Installing the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    Uninstalling the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-parameters" class="md-nav__link">
+    Global parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-parameters" class="md-nav__link">
+    Common parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mariadb-galera-parameters" class="md-nav__link">
+    MariaDB Galera parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passing-extra-command-line-flags-to-mysqld-startup" class="md-nav__link">
+    Passing extra command-line flags to mysqld startup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-installation-details" class="md-nav__link">
+    Configuration and installation details
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and installation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-vs-immutable-tags" class="md-nav__link">
+    Rolling VS Immutable tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-mariadb-version" class="md-nav__link">
+    Change MariaDB version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ldap" class="md-nav__link">
+    LDAP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#securing-traffic-using-tls" class="md-nav__link">
+    Securing traffic using TLS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialize-a-fresh-instance" class="md-nav__link">
+    Initialize a fresh instance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extra-init-containers" class="md-nav__link">
+    Extra Init Containers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extra-containers" class="md-nav__link">
+    Extra Containers
+  </a>
+  
+    <nav class="md-nav" aria-label="Extra Containers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bootstraping-a-node-other-than-0" class="md-nav__link">
+    Bootstraping a node other than 0
+  </a>
+  
+    <nav class="md-nav" aria-label="Bootstraping a node other than 0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checking-safe_to_boostrap" class="md-nav__link">
+    Checking safe_to_boostrap
+  </a>
+  
+    <nav class="md-nav" aria-label="Checking safe_to_boostrap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#only-one-node-with-safe_to_bootstrap-1" class="md-nav__link">
+    Only one node with safe_to_bootstrap: 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-the-nodes-with-safe_to_bootstrap-0" class="md-nav__link">
+    All the nodes with safe_to_bootstrap: 0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-the-forced-boostraping" class="md-nav__link">
+    Remove the forced boostraping
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistence" class="md-nav__link">
+    Persistence
+  </a>
+  
+    <nav class="md-nav" aria-label="Persistence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-pods-affinity" class="md-nav__link">
+    Setting Pod's affinity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    Upgrading
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-700" class="md-nav__link">
+    To 7.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-520" class="md-nav__link">
+    To 5.2.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-500" class="md-nav__link">
+    To 5.0.0
+  </a>
+  
+    <nav class="md-nav" aria-label="To 5.0.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-changes-were-introduced-in-this-major-version" class="md-nav__link">
+    What changes were introduced in this major version?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#considerations-when-upgrading-to-this-version" class="md-nav__link">
+    Considerations when upgrading to this version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#useful-links" class="md-nav__link">
+    Useful links
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-200" class="md-nav__link">
+    To 2.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-100" class="md-nav__link">
+    To 1.0.0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitnami-kubernetes-documentation" class="md-nav__link">
+    Bitnami Kubernetes Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mariadb/" class="md-nav__link">
+        Mariadb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mastodon/" class="md-nav__link">
+        Mastodon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matomo/" class="md-nav__link">
+        Matomo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mediawiki/" class="md-nav__link">
+        Mediawiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memcached/" class="md-nav__link">
+        Memcached
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metallb/" class="md-nav__link">
+        Metallb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics-server/" class="md-nav__link">
+        Metrics server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../minio/" class="md-nav__link">
+        Minio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mongodb-sharded/" class="md-nav__link">
+        Mongodb sharded
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mongodb/" class="md-nav__link">
+        Mongodb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../moodle/" class="md-nav__link">
+        Moodle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multus-cni/" class="md-nav__link">
+        Multus cni
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mxnet/" class="md-nav__link">
+        Mxnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mysql/" class="md-nav__link">
+        Mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nats/" class="md-nav__link">
+        Nats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx-ingress-controller/" class="md-nav__link">
+        Nginx ingress controller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx/" class="md-nav__link">
+        Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../node-exporter/" class="md-nav__link">
+        Node exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oauth2-proxy/" class="md-nav__link">
+        Oauth2 proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../odoo/" class="md-nav__link">
+        Odoo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opencart/" class="md-nav__link">
+        Opencart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../osclass/" class="md-nav__link">
+        Osclass
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parse/" class="md-nav__link">
+        Parse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpbb/" class="md-nav__link">
+        Phpbb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpmyadmin/" class="md-nav__link">
+        Phpmyadmin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinniped/" class="md-nav__link">
+        Pinniped
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgresql-ha/" class="md-nav__link">
+        Postgresql ha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgresql/" class="md-nav__link">
+        Postgresql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prestashop/" class="md-nav__link">
+        Prestashop
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rabbitmq-cluster-operator/" class="md-nav__link">
+        Rabbitmq cluster operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rabbitmq/" class="md-nav__link">
+        Rabbitmq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis-cluster/" class="md-nav__link">
+        Redis cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redmine/" class="md-nav__link">
+        Redmine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema-registry/" class="md-nav__link">
+        Schema registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sealed-secrets/" class="md-nav__link">
+        Sealed secrets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solr/" class="md-nav__link">
+        Solr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sonarqube/" class="md-nav__link">
+        Sonarqube
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spark/" class="md-nav__link">
+        Spark
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-cloud-dataflow/" class="md-nav__link">
+        Spring cloud dataflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../suitecrm/" class="md-nav__link">
+        Suitecrm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supabase/" class="md-nav__link">
+        Supabase
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tensorflow-resnet/" class="md-nav__link">
+        Tensorflow resnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../thanos/" class="md-nav__link">
+        Thanos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tomcat/" class="md-nav__link">
+        Tomcat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault/" class="md-nav__link">
+        Vault
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavefront-hpa-adapter/" class="md-nav__link">
+        Wavefront hpa adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavefront-prometheus-storage-adapter/" class="md-nav__link">
+        Wavefront prometheus storage adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whereabouts/" class="md-nav__link">
+        Whereabouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wildfly/" class="md-nav__link">
+        Wildfly
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wordpress/" class="md-nav__link">
+        Wordpress
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zookeeper/" class="md-nav__link">
+        Zookeeper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../grafana/">Grafana</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Grafana" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Grafana
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/agent-operator/" class="md-nav__link">
+        grafana-agent-operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-logs-simple/" class="md-nav__link">
+        enterprise-logs-simple
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-logs/" class="md-nav__link">
+        Grafana Enterprise Logs Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-metrics/" class="md-nav__link">
+        Grafana Enterprise Metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/fluent-bit/" class="md-nav__link">
+        Fluent Bit Loki chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/grafana-agent/" class="md-nav__link">
+        Grafana Agent chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/grafana/" class="md-nav__link">
+        Grafana Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-canary/" class="md-nav__link">
+        loki-canary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-distributed/" class="md-nav__link">
+        loki-distributed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-stack/" class="md-nav__link">
+        Loki-Stack Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/mimir-distributed/" class="md-nav__link">
+        Notice of relocation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/promtail/" class="md-nav__link">
+        promtail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/rollout-operator/" class="md-nav__link">
+        Grafana rollout-operator Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/synthetic-monitoring-agent/" class="md-nav__link">
+        synthetic-monitoring-agent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo-distributed/" class="md-nav__link">
+        tempo-distributed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo-vulture/" class="md-nav__link">
+        tempo-vulture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo/" class="md-nav__link">
+        tempo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../ingress-nginx/">Ingress nginx</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Ingress nginx" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Ingress nginx
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ingress-nginx/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../prometheus-community/">Prometheus community</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Prometheus community" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Prometheus community
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager-snmp-notifier/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager/" class="md-nav__link">
+        Alertmanager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/jiralert/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-prometheus-stack/" class="md-nav__link">
+        kube-prometheus-stack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-state-metrics/" class="md-nav__link">
+        kube-state-metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prom-label-proxy/" class="md-nav__link">
+        prom-label-proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-adapter/" class="md-nav__link">
+        Prometheus Adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-blackbox-exporter/" class="md-nav__link">
+        Prometheus Blackbox Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-cloudwatch-exporter/" class="md-nav__link">
+        Prometheus Cloudwatch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-conntrack-stats-exporter/" class="md-nav__link">
+        Conntrack Stats Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-consul-exporter/" class="md-nav__link">
+        Prometheus Consul Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-couchdb-exporter/" class="md-nav__link">
+        prometheus-couchdb-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-druid-exporter/" class="md-nav__link">
+        Prometheus Druid Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-elasticsearch-exporter/" class="md-nav__link">
+        Elasticsearch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-fastly-exporter/" class="md-nav__link">
+        Prometheus Fastly Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-json-exporter/" class="md-nav__link">
+        prometheus-json-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-kafka-exporter/" class="md-nav__link">
+        prometheus-kafka-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mongodb-exporter/" class="md-nav__link">
+        Prometheus MongoDB Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mysql-exporter/" class="md-nav__link">
+        Prometheus Mysql Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nats-exporter/" class="md-nav__link">
+        Prometheus NATS Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nginx-exporter/" class="md-nav__link">
+        prometheus-nginx-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-node-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-admission-webhook/" class="md-nav__link">
+        Prometheus Operator Admission Webhook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-crds/" class="md-nav__link">
+        Prometheus Operator CRDs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pgbouncer-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingdom-exporter/" class="md-nav__link">
+        Prometheus Pingdom Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingmesh-exporter/" class="md-nav__link">
+        Prometheus Pingmesh Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-postgres-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pushgateway/" class="md-nav__link">
+        Prometheus Pushgateway
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-rabbitmq-exporter/" class="md-nav__link">
+        prometheus-rabbitmq-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-redis-exporter/" class="md-nav__link">
+        prometheus-redis-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-smartctl-exporter/" class="md-nav__link">
+        Prometheus smartctl Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-snmp-exporter/" class="md-nav__link">
+        Prometheus SNMP Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-stackdriver-exporter/" class="md-nav__link">
+        Stackdriver Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-statsd-exporter/" class="md-nav__link">
+        prometheus-statsd-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-to-sd/" class="md-nav__link">
+        prometheus-to-sd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-windows-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../sir5kong/">Sir5kong</a>
+          
+            <label for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Sir5kong" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Sir5kong
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/commonapp/" class="md-nav__link">
+        commonapp helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/kafka/" class="md-nav__link">
+        Kafka helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/nginx/" class="md-nav__link">
+        nginx helm chart
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    TL;DR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    Installing the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    Uninstalling the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-parameters" class="md-nav__link">
+    Global parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-parameters" class="md-nav__link">
+    Common parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mariadb-galera-parameters" class="md-nav__link">
+    MariaDB Galera parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passing-extra-command-line-flags-to-mysqld-startup" class="md-nav__link">
+    Passing extra command-line flags to mysqld startup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-installation-details" class="md-nav__link">
+    Configuration and installation details
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and installation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-vs-immutable-tags" class="md-nav__link">
+    Rolling VS Immutable tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-mariadb-version" class="md-nav__link">
+    Change MariaDB version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ldap" class="md-nav__link">
+    LDAP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#securing-traffic-using-tls" class="md-nav__link">
+    Securing traffic using TLS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialize-a-fresh-instance" class="md-nav__link">
+    Initialize a fresh instance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extra-init-containers" class="md-nav__link">
+    Extra Init Containers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extra-containers" class="md-nav__link">
+    Extra Containers
+  </a>
+  
+    <nav class="md-nav" aria-label="Extra Containers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bootstraping-a-node-other-than-0" class="md-nav__link">
+    Bootstraping a node other than 0
+  </a>
+  
+    <nav class="md-nav" aria-label="Bootstraping a node other than 0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checking-safe_to_boostrap" class="md-nav__link">
+    Checking safe_to_boostrap
+  </a>
+  
+    <nav class="md-nav" aria-label="Checking safe_to_boostrap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#only-one-node-with-safe_to_bootstrap-1" class="md-nav__link">
+    Only one node with safe_to_bootstrap: 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-the-nodes-with-safe_to_bootstrap-0" class="md-nav__link">
+    All the nodes with safe_to_bootstrap: 0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-the-forced-boostraping" class="md-nav__link">
+    Remove the forced boostraping
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistence" class="md-nav__link">
+    Persistence
+  </a>
+  
+    <nav class="md-nav" aria-label="Persistence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-pods-affinity" class="md-nav__link">
+    Setting Pod's affinity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    Upgrading
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-700" class="md-nav__link">
+    To 7.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-520" class="md-nav__link">
+    To 5.2.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-500" class="md-nav__link">
+    To 5.0.0
+  </a>
+  
+    <nav class="md-nav" aria-label="To 5.0.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-changes-were-introduced-in-this-major-version" class="md-nav__link">
+    What changes were introduced in this major version?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#considerations-when-upgrading-to-this-version" class="md-nav__link">
+    Considerations when upgrading to this version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#useful-links" class="md-nav__link">
+    Useful links
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-200" class="md-nav__link">
+    To 2.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-100" class="md-nav__link">
+    To 1.0.0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitnami-kubernetes-documentation" class="md-nav__link">
+    Bitnami Kubernetes Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<!--- app-name: MariaDB Galera -->
+
+<h1 id="mariadb-galera-packaged-by-bitnami">MariaDB Galera packaged by Bitnami<a class="headerlink" href="#mariadb-galera-packaged-by-bitnami" title="Permanent link">&para;</a></h1>
+<p>MariaDB Galera is a multi-primary database cluster solution for synchronous replication and high availability.</p>
+<p><a href="https://mariadb.com/kb/en/library/galera-cluster/">Overview of MariaDB Galera</a></p>
+<p>Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.</p>
+<h2 id="tldr">TL;DR<a class="headerlink" href="#tldr" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>使用加速地址添加仓库:</p>
+</blockquote>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>bitnami<span class="w"> </span><span class="s2">&quot;https://helm-charts.itboon.top/bitnami&quot;</span><span class="w"> </span>--force-update
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>helm<span class="w"> </span>update<span class="w"> </span>bitnami
+</span></code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="go">helm install my-release bitnami/mariadb-galera</span>
+</span></code></pre></div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>This chart bootstraps a <a href="https://github.com/bitnami/containers/tree/main/bitnami/mariadb-galera">MariaDB Galera</a> cluster on <a href="https://kubernetes.io">Kubernetes</a> using the <a href="https://helm.sh">Helm</a> package manager.</p>
+<p>Bitnami charts can be used with <a href="https://kubeapps.dev/">Kubeapps</a> for deployment and management of Helm Charts in clusters.</p>
+<p>Looking to use MariaDB Galera in production? Try <a href="https://bitnami.com/enterprise">VMware Application Catalog</a>, the enterprise edition of Bitnami Application Catalog.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Kubernetes 1.10+</li>
+<li>Helm 3.2.0+</li>
+<li>PV provisioner support in the underlying infrastructure</li>
+</ul>
+<h2 id="installing-the-chart">Installing the Chart<a class="headerlink" href="#installing-the-chart" title="Permanent link">&para;</a></h2>
+<p>To install the chart with the release name <code>my-release</code>:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">helm install my-release bitnami/mariadb-galera</span>
+</span></code></pre></div>
+<p>The command deploys MariaDB Galera on the Kubernetes cluster in the default configuration. The <a href="#parameters">Parameters</a> section lists the parameters that can be configured during installation.</p>
+<blockquote>
+<p><strong>Tip</strong>: List all releases using <code>helm list</code></p>
+</blockquote>
+<h2 id="uninstalling-the-chart">Uninstalling the Chart<a class="headerlink" href="#uninstalling-the-chart" title="Permanent link">&para;</a></h2>
+<p>For a graceful termination, set the replica count of the Pods in the <code>mariadb-galera</code> StatefulSet to <code>0</code>:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="go">kubectl scale sts my-release-mariadb-galera --replicas=0</span>
+</span></code></pre></div>
+<p>To uninstall/delete the <code>my-release</code> release:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="go">helm delete --purge my-release</span>
+</span></code></pre></div>
+<p>The command removes all the Kubernetes components associated with the chart and deletes the release.</p>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
+<h3 id="global-parameters">Global parameters<a class="headerlink" href="#global-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>global.imageRegistry</code></td>
+<td>Global Docker image registry</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>global.imagePullSecrets</code></td>
+<td>Global Docker registry secret names as an array</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>global.storageClass</code></td>
+<td>Global StorageClass for Persistent Volume(s)</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-parameters">Common parameters<a class="headerlink" href="#common-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kubeVersion</code></td>
+<td>Force target Kubernetes version (using Helm capabilities if not set)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>nameOverride</code></td>
+<td>String to partially override common.names.fullname template with a string (will prepend the release name)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>fullnameOverride</code></td>
+<td>String to fully override common.names.fullname template with a string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>namespaceOverride</code></td>
+<td>String to fully override common.names.namespace</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>commonAnnotations</code></td>
+<td>Annotations to add to all deployed objects</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>commonLabels</code></td>
+<td>Labels to add to all deployed objects</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>schedulerName</code></td>
+<td>Name of the Kubernetes scheduler (other than default)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>clusterDomain</code></td>
+<td>Kubernetes DNS Domain name to use</td>
+<td><code>cluster.local</code></td>
+</tr>
+<tr>
+<td><code>extraDeploy</code></td>
+<td>Array of extra objects to deploy with the release (evaluated as a template)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.enabled</code></td>
+<td>Enable diagnostic mode (all probes will be disabled and the command will be overridden)</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.command</code></td>
+<td>Command to override all containers in the deployment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.args</code></td>
+<td>Args to override all containers in the deployment</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="mariadb-galera-parameters">MariaDB Galera parameters<a class="headerlink" href="#mariadb-galera-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>image.registry</code></td>
+<td>MariaDB Galera image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>image.repository</code></td>
+<td>MariaDB Galera image repository</td>
+<td><code>bitnami/mariadb-galera</code></td>
+</tr>
+<tr>
+<td><code>image.tag</code></td>
+<td>MariaDB Galera image tag (immutable tags are recommended)</td>
+<td><code>10.11.4-debian-11-r3</code></td>
+</tr>
+<tr>
+<td><code>image.digest</code></td>
+<td>MariaDB Galera image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>image.pullPolicy</code></td>
+<td>MariaDB Galera image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>image.pullSecrets</code></td>
+<td>Specify docker-registry secret names as an array</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>image.debug</code></td>
+<td>Specify if debug logs should be enabled</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>podManagementPolicy</code></td>
+<td>StatefulSet controller supports relax its ordering guarantees while preserving its uniqueness and identity guarantees. There are two valid pod management policies: OrderedReady and Parallel</td>
+<td><code>OrderedReady</code></td>
+</tr>
+<tr>
+<td><code>hostAliases</code></td>
+<td>Add deployment host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>service.type</code></td>
+<td>Kubernetes service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>service.clusterIP</code></td>
+<td>Specific cluster IP when service type is cluster IP. Use <code>None</code> for headless service</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.ports.mysql</code></td>
+<td>MariaDB service port</td>
+<td><code>3306</code></td>
+</tr>
+<tr>
+<td><code>service.nodePorts.mysql</code></td>
+<td>Specify the nodePort value for the LoadBalancer and NodePort service types.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.extraPorts</code></td>
+<td>Extra ports to expose (normally used with the <code>sidecar</code> value)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>service.externalIPs</code></td>
+<td>External IP list to use with ClusterIP service type</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>service.loadBalancerIP</code></td>
+<td><code>loadBalancerIP</code> if service type is <code>LoadBalancer</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.loadBalancerSourceRanges</code></td>
+<td>Addresses that are allowed when svc is <code>LoadBalancer</code></td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>service.externalTrafficPolicy</code></td>
+<td>%%MAIN_CONTAINER_NAME%% service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>service.annotations</code></td>
+<td>Additional annotations for MariaDB Galera service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>service.sessionAffinity</code></td>
+<td>Session Affinity for Kubernetes service, can be "None" or "ClientIP"</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>service.headless.annotations</code></td>
+<td>Annotations for the headless service.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>service.headless.publishNotReadyAddresses</code></td>
+<td>Publish not Ready MariaDB Galera pods' IPs in the headless service.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.create</code></td>
+<td>Specify whether a ServiceAccount should be created</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.name</code></td>
+<td>Name of the service account to use. If not set and create is true, a name is generated using the fullname template.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.automountServiceAccountToken</code></td>
+<td>Automount service account token for the server service account</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.annotations</code></td>
+<td>Annotations for service account. Evaluated as a template. Only used if <code>create</code> is <code>true</code>.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>extraEnvVars</code></td>
+<td>Array containing extra env vars to configure MariaDB Galera replicas</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>extraEnvVarsCM</code></td>
+<td>ConfigMap containing extra env vars to configure MariaDB Galera replicas</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>extraEnvVarsSecret</code></td>
+<td>Secret containing extra env vars to configure MariaDB Galera replicas</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rbac.create</code></td>
+<td>Specify whether RBAC resources should be created and used</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>podSecurityContext.enabled</code></td>
+<td>Enable security context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>podSecurityContext.fsGroup</code></td>
+<td>Group ID for the container filesystem</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>podSecurityContext.runAsUser</code></td>
+<td>User ID for the container</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>containerSecurityContext.enabled</code></td>
+<td>Enabled galera's container Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>containerSecurityContext.runAsUser</code></td>
+<td>Set galera's container Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>containerSecurityContext.runAsNonRoot</code></td>
+<td>Set galera's container Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>rootUser.user</code></td>
+<td>Username for the admin user.</td>
+<td><code>root</code></td>
+</tr>
+<tr>
+<td><code>rootUser.password</code></td>
+<td>Password for the admin user. Ignored if existing secret is provided.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rootUser.forcePassword</code></td>
+<td>Option to force users to specify a password. That is required for 'helm upgrade' to work properly.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>existingSecret</code></td>
+<td>Use existing secret for password details (<code>rootUser.password</code>, <code>db.password</code>, <code>galera.mariabackup.password</code> will be ignored and picked up from this secret)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>usePasswordFiles</code></td>
+<td>Mount credentials as a files instead of using an environment variable.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>customPasswordFiles</code></td>
+<td>Use custom password files when <code>usePasswordFiles</code> is set to <code>true</code>. Define path for keys <code>root</code>, <code>user</code>, and <code>mariabackup</code>.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>db.user</code></td>
+<td>Username of new user to create</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>db.password</code></td>
+<td>Password for the new user. Ignored if existing secret is provided.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>db.name</code></td>
+<td>Name for new database to create</td>
+<td><code>my_database</code></td>
+</tr>
+<tr>
+<td><code>db.forcePassword</code></td>
+<td>Option to force users to specify a password. That is required for 'helm upgrade' to work properly.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>galera.name</code></td>
+<td>Galera cluster name</td>
+<td><code>galera</code></td>
+</tr>
+<tr>
+<td><code>galera.bootstrap.forceBootstrap</code></td>
+<td>Option to force the boostraping from the indicated node in <code>galera.bootstarp.bootstrapFromNode</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>galera.bootstrap.bootstrapFromNode</code></td>
+<td>Node to bootstrap from, you will need to change this parameter in case you want to bootstrap from other node</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>galera.bootstrap.forceSafeToBootstrap</code></td>
+<td>Force <code>safe_to_bootstrap: 1</code> in <code>grastate.date</code> file</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>galera.mariabackup.user</code></td>
+<td>MariaBackup username</td>
+<td><code>mariabackup</code></td>
+</tr>
+<tr>
+<td><code>galera.mariabackup.password</code></td>
+<td>MariaBackup password. Password is ignored if existingSecret is specified.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>galera.mariabackup.forcePassword</code></td>
+<td>Option to force users to specify a password. That is required for 'helm upgrade' to work properly.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ldap.enabled</code></td>
+<td>Enable LDAP support</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ldap.uri</code></td>
+<td>LDAP URL beginning in the form <code>ldap</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.base</code></td>
+<td>LDAP base DN</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.binddn</code></td>
+<td>LDAP bind DN</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.bindpw</code></td>
+<td>LDAP bind password</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.bslookup</code></td>
+<td>LDAP base lookup</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.filter</code></td>
+<td>LDAP custom filter</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.map</code></td>
+<td>LDAP custom map</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.nss_initgroups_ignoreusers</code></td>
+<td>LDAP ignored users</td>
+<td><code>root,nslcd</code></td>
+</tr>
+<tr>
+<td><code>ldap.scope</code></td>
+<td>LDAP search scope</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.tls_reqcert</code></td>
+<td>LDAP TLS check on server certificates</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>tls.enabled</code></td>
+<td>Enable TLS support for replication traffic</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>tls.autoGenerated</code></td>
+<td>Generate automatically self-signed TLS certificates</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>tls.certificatesSecret</code></td>
+<td>Name of the secret that contains the certificates</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>tls.certFilename</code></td>
+<td>Certificate filename</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>tls.certKeyFilename</code></td>
+<td>Certificate key filename</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>tls.certCAFilename</code></td>
+<td>CA Certificate filename</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>mariadbConfiguration</code></td>
+<td>Configuration for the MariaDB server</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>configurationConfigMap</code></td>
+<td>ConfigMap with the MariaDB configuration files (Note: Overrides <code>mariadbConfiguration</code>). The value is evaluated as a template.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>initdbScripts</code></td>
+<td>Specify dictionary of scripts to be run at first boot</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>initdbScriptsConfigMap</code></td>
+<td>ConfigMap with the initdb scripts (Note: Overrides <code>initdbScripts</code>)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>extraFlags</code></td>
+<td>MariaDB additional command line flags</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>replicaCount</code></td>
+<td>Desired number of cluster nodes</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>updateStrategy.type</code></td>
+<td>updateStrategy for MariaDB Master StatefulSet</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>podLabels</code></td>
+<td>Extra labels for MariaDB Galera pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>podAnnotations</code></td>
+<td>Annotations for MariaDB Galera  pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>nodeAffinityPreset.key</code></td>
+<td>Node label key to match. Ignored if <code>affinity</code> is set.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>affinity</code> is set.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>affinity</code></td>
+<td>Affinity for pod assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>nodeSelector</code></td>
+<td>Node labels for pod assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>tolerations</code></td>
+<td>Tolerations for pod assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pods assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>lifecycleHooks</code></td>
+<td>for the galera container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>containerPorts.mysql</code></td>
+<td>mariadb database container port</td>
+<td><code>3306</code></td>
+</tr>
+<tr>
+<td><code>containerPorts.galera</code></td>
+<td>galera cluster container port</td>
+<td><code>4567</code></td>
+</tr>
+<tr>
+<td><code>containerPorts.ist</code></td>
+<td>galera IST container port</td>
+<td><code>4568</code></td>
+</tr>
+<tr>
+<td><code>containerPorts.sst</code></td>
+<td>galera SST container port</td>
+<td><code>4444</code></td>
+</tr>
+<tr>
+<td><code>persistence.enabled</code></td>
+<td>Enable persistence using PVC</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>persistence.existingClaim</code></td>
+<td>Provide an existing <code>PersistentVolumeClaim</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>persistence.subPath</code></td>
+<td>Subdirectory of the volume to mount</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>persistence.mountPath</code></td>
+<td>Path to mount the volume at</td>
+<td><code>/bitnami/mariadb</code></td>
+</tr>
+<tr>
+<td><code>persistence.selector</code></td>
+<td>Selector to match an existing Persistent Volume (this value is evaluated as a template)</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>persistence.storageClass</code></td>
+<td>Persistent Volume Storage Class</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>persistence.annotations</code></td>
+<td>Persistent Volume Claim annotations</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>persistence.labels</code></td>
+<td>Persistent Volume Claim Labels</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>persistence.accessModes</code></td>
+<td>Persistent Volume Access Modes</td>
+<td><code>["ReadWriteOnce"]</code></td>
+</tr>
+<tr>
+<td><code>persistence.size</code></td>
+<td>Persistent Volume Size</td>
+<td><code>8Gi</code></td>
+</tr>
+<tr>
+<td><code>priorityClassName</code></td>
+<td>Priority Class Name for Statefulset</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>initContainers</code></td>
+<td>Additional init containers (this value is evaluated as a template)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>sidecars</code></td>
+<td>Add additional sidecar containers (this value is evaluated as a template)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>extraVolumes</code></td>
+<td>Extra volumes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>extraVolumeMounts</code></td>
+<td>Mount extra volume(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>resources.limits</code></td>
+<td>The resources limits for the container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>resources.requests</code></td>
+<td>The requested resources for the container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.enabled</code></td>
+<td>Turn on and off liveness probe</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.initialDelaySeconds</code></td>
+<td>Delay before liveness probe is initiated</td>
+<td><code>120</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.periodSeconds</code></td>
+<td>How often to perform the probe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.timeoutSeconds</code></td>
+<td>When the probe times out</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.failureThreshold</code></td>
+<td>Minimum consecutive failures for the probe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.successThreshold</code></td>
+<td>Minimum consecutive successes for the probe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.enabled</code></td>
+<td>Turn on and off readiness probe</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.initialDelaySeconds</code></td>
+<td>Delay before readiness probe is initiated</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.periodSeconds</code></td>
+<td>How often to perform the probe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.timeoutSeconds</code></td>
+<td>When the probe times out</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.failureThreshold</code></td>
+<td>Minimum consecutive failures for the probe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.successThreshold</code></td>
+<td>Minimum consecutive successes for the probe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.enabled</code></td>
+<td>Turn on and off startup probe</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.initialDelaySeconds</code></td>
+<td>Delay before startup probe is initiated</td>
+<td><code>120</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.periodSeconds</code></td>
+<td>How often to perform the probe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.timeoutSeconds</code></td>
+<td>When the probe times out</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.failureThreshold</code></td>
+<td>Minimum consecutive failures for the probe</td>
+<td><code>48</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.successThreshold</code></td>
+<td>Minimum consecutive successes for the probe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>customStartupProbe</code></td>
+<td>Custom liveness probe for the Web component</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>customLivenessProbe</code></td>
+<td>Custom liveness probe for the Web component</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>customReadinessProbe</code></td>
+<td>Custom rediness probe for the Web component</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>podDisruptionBudget.create</code></td>
+<td>Specifies whether a Pod disruption budget should be created</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>podDisruptionBudget.minAvailable</code></td>
+<td>Minimum number / percentage of pods that should remain scheduled</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>podDisruptionBudget.maxUnavailable</code></td>
+<td>Maximum number / percentage of pods that may be made unavailable</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.enabled</code></td>
+<td>Start a side-car prometheus exporter</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.image.registry</code></td>
+<td>MariaDB Prometheus exporter image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>metrics.image.repository</code></td>
+<td>MariaDB Prometheus exporter image repository</td>
+<td><code>bitnami/mysqld-exporter</code></td>
+</tr>
+<tr>
+<td><code>metrics.image.tag</code></td>
+<td>MariaDB Prometheus exporter image tag (immutable tags are recommended)</td>
+<td><code>0.14.0-debian-11-r129</code></td>
+</tr>
+<tr>
+<td><code>metrics.image.digest</code></td>
+<td>MariaDB Prometheus exporter image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.image.pullPolicy</code></td>
+<td>MariaDB Prometheus exporter image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>metrics.image.pullSecrets</code></td>
+<td>MariaDB Prometheus exporter image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.extraFlags</code></td>
+<td>MariaDB Prometheus exporter additional command line flags</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.resources.limits</code></td>
+<td>The resources limits for the container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.resources.requests</code></td>
+<td>The requested resources for the container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.containerSecurityContext.enabled</code></td>
+<td>Enabled exporter's container Security Context</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.type</code></td>
+<td>Prometheus exporter service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.port</code></td>
+<td>Prometheus exporter service port</td>
+<td><code>9104</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.annotations</code></td>
+<td>Prometheus exporter service annotations</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.loadBalancerIP</code></td>
+<td>Load Balancer IP if the Prometheus metrics server type is <code>LoadBalancer</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.clusterIP</code></td>
+<td>Prometheus metrics service Cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.loadBalancerSourceRanges</code></td>
+<td>Prometheus metrics service Load Balancer sources</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.externalTrafficPolicy</code></td>
+<td>Prometheus metrics service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.enabled</code></td>
+<td>if <code>true</code>, creates a Prometheus Operator ServiceMonitor (also requires <code>metrics.enabled</code> to be <code>true</code>)</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.namespace</code></td>
+<td>Optional namespace which Prometheus is running in</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.jobLabel</code></td>
+<td>The name of the label on the target service to use as the job name in prometheus.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.interval</code></td>
+<td>How frequently to scrape metrics (use by default, falling back to Prometheus' default)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.scrapeTimeout</code></td>
+<td>Timeout after which the scrape is ended</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.selector</code></td>
+<td>ServiceMonitor selector labels</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.relabelings</code></td>
+<td>RelabelConfigs to apply to samples before scraping</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.metricRelabelings</code></td>
+<td>MetricRelabelConfigs to apply to samples before ingestion</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.honorLabels</code></td>
+<td>honorLabels chooses the metric's labels on collisions with target labels</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.labels</code></td>
+<td>ServiceMonitor extra labels</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.prometheusRules.enabled</code></td>
+<td>if <code>true</code>, creates a Prometheus Operator PrometheusRule (also requires <code>metrics.enabled</code> to be <code>true</code>, and makes little sense without ServiceMonitor)</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.prometheusRules.additionalLabels</code></td>
+<td>Additional labels to add to the PrometheusRule so it is picked up by the operator</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.prometheusRules.rules</code></td>
+<td>PrometheusRule rules to configure</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<p>The above parameters map to the env variables defined in <a href="https://github.com/bitnami/containers/tree/main/bitnami/mariadb-galera">bitnami/mariadb-galera</a>. For more information please refer to the <a href="https://github.com/bitnami/containers/tree/main/bitnami/mariadb-galera">bitnami/mariadb-galera</a> image documentation.</p>
+<p>Specify each parameter using the <code>--set key=value[,key=value]</code> argument to <code>helm install</code>. For example,</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">helm install my-release \</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="go">  --set rootUser.password=secretpassword,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="go">  --set db.user=app_database \</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="go">    bitnami/mariadb-galera</span>
+</span></code></pre></div>
+<p>The above command sets the MariaDB <code>root</code> account password to <code>secretpassword</code>. Additionally it creates a database named <code>my_database</code>.</p>
+<blockquote>
+<p>NOTE: Once this chart is deployed, it is not possible to change the application's access credentials, such as usernames or passwords, using Helm. To change these application credentials after deployment, delete any persistent volumes (PVs) used by the chart and re-deploy it, or use the application's built-in administrative tools if available.</p>
+</blockquote>
+<p>Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="go">helm install my-release -f values.yaml bitnami/mariadb-galera</span>
+</span></code></pre></div>
+<blockquote>
+<p><strong>Tip</strong>: You can use the default <a href="values.yaml">values.yaml</a></p>
+</blockquote>
+<h2 id="passing-extra-command-line-flags-to-mysqld-startup">Passing extra command-line flags to mysqld startup<a class="headerlink" href="#passing-extra-command-line-flags-to-mysqld-startup" title="Permanent link">&para;</a></h2>
+<p>While the chart allows you to specify the server configuration using the <code>.mariadbConfiguration</code> chart parameter, some options for the MariaDB server can only be specified via command line flags. For such cases, the chart exposes the <code>.extraFlags</code> parameter.</p>
+<p>For example, if you want to enable the PAM cleartext plugin, specify the command line parameter while deploying the chart like so:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">helm install my-release \</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="go">  --set extraFlags=&quot;--pam-use-cleartext-plugin=ON&quot; \</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="go">  bitnami/mariadb-galera</span>
+</span></code></pre></div>
+<h2 id="configuration-and-installation-details">Configuration and installation details<a class="headerlink" href="#configuration-and-installation-details" title="Permanent link">&para;</a></h2>
+<h3 id="rolling-vs-immutable-tags"><a href="https://docs.bitnami.com/containers/how-to/understand-rolling-tags-containers/">Rolling VS Immutable tags</a><a class="headerlink" href="#rolling-vs-immutable-tags" title="Permanent link">&para;</a></h3>
+<p>It is strongly recommended to use immutable tags in a production environment. This ensures your deployment does not change automatically if the same tag is updated with a different image.</p>
+<p>Bitnami will release a new chart updating its containers if a new version of the main container, significant changes, or critical vulnerabilities exist.</p>
+<h3 id="change-mariadb-version">Change MariaDB version<a class="headerlink" href="#change-mariadb-version" title="Permanent link">&para;</a></h3>
+<p>To modify the MariaDB version used in this chart you can specify a <a href="https://hub.docker.com/r/bitnami/mariadb-galera/tags/">valid image tag</a> using the <code>image.tag</code> parameter. For example, <code>image.tag=X.Y.Z</code>. This approach is also applicable to other images like exporters.</p>
+<h3 id="ldap">LDAP<a class="headerlink" href="#ldap" title="Permanent link">&para;</a></h3>
+<p>LDAP support can be enabled in the chart by specifying the <code>ldap.</code> parameters while creating a release. The following parameters should be configured to properly enable the LDAP support in the chart.</p>
+<ul>
+<li><code>ldap.enabled</code>: Enable LDAP support. Defaults to <code>false</code>.</li>
+<li><code>ldap.uri</code>: LDAP URL beginning in the form <code>ldap[s]://&lt;hostname&gt;:&lt;port&gt;</code>. No defaults.</li>
+<li><code>ldap.base</code>: LDAP base DN. No defaults.</li>
+<li><code>ldap.binddn</code>: LDAP bind DN. No defaults.</li>
+<li><code>ldap.bindpw</code>: LDAP bind password. No defaults.</li>
+<li><code>ldap.bslookup</code>: LDAP base lookup. No defaults.</li>
+<li><code>ldap.nss_initgroups_ignoreusers</code>: LDAP ignored users. <code>root,nslcd</code>.</li>
+<li><code>ldap.scope</code>: LDAP search scope. No defaults.</li>
+<li><code>ldap.filter</code>: LDAP custom search filter. No defaults.</li>
+<li><code>ldap.map</code>: LDAP custom map to use. No defaults.</li>
+<li><code>ldap.tls_reqcert</code>: LDAP TLS check on server certificates. No defaults.</li>
+</ul>
+<p>For example:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="go">ldap.enabled=&quot;true&quot;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="go">ldap.uri=&quot;ldap://my_ldap_server&quot;</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="go">ldap.base=&quot;dc=example,dc=org&quot;</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="go">ldap.binddn=&quot;cn=admin,dc=example,dc=org&quot;</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="go">ldap.bindpw=&quot;admin&quot;</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="go">ldap.bslookup=&quot;ou=group-ok,dc=example,dc=org&quot;</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="go">ldap.nss_initgroups_ignoreusers=&quot;root,nslcd&quot;</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="go">ldap.scope=&quot;sub&quot;</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="go">ldap.filter=&quot;AccountName&quot;</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="go">ldap.map=&quot;number&quot;</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="go">ldap.tls_reqcert=&quot;demand&quot;</span>
+</span></code></pre></div>
+<p>Next, login to the MariaDB server using the <code>mysql</code> client and add the PAM authenticated LDAP users.</p>
+<p>For example,</p>
+<div class="language-mysql highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;bitnami&#39;</span><span class="nv">@&#39;localhost&#39;</span><span class="w"> </span><span class="k">IDENTIFIED</span><span class="w"> </span><span class="n">VIA</span><span class="w"> </span><span class="n">pam</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="s1">&#39;mariadb&#39;</span><span class="p">;</span>
+</span></code></pre></div>
+<p>With the above example, when the <code>bitnami</code> user attempts to login to the MariaDB server, he/she will be authenticated against the LDAP server.</p>
+<h3 id="securing-traffic-using-tls">Securing traffic using TLS<a class="headerlink" href="#securing-traffic-using-tls" title="Permanent link">&para;</a></h3>
+<p>TLS support can be enabled in the chart by specifying the <code>tls.</code> parameters while creating a release. The following parameters should be configured to properly enable the TLS support in the chart:</p>
+<ul>
+<li><code>tls.enabled</code>: Enable TLS support. Defaults to <code>false</code></li>
+<li><code>tls.certificatesSecret</code>: Name of the secret that contains the certificates. No defaults.</li>
+<li><code>tls.certFilename</code>: Certificate filename. No defaults.</li>
+<li><code>tls.certKeyFilename</code>: Certificate key filename. No defaults.</li>
+<li><code>tls.certCAFilename</code>: CA Certificate filename. No defaults.</li>
+</ul>
+<p>For example:</p>
+<p>First, create the secret with the cetificates files:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="go">kubectl create secret generic certificates-tls-secret --from-file=./cert.pem --from-file=./cert.key --from-file=./ca.pem</span>
+</span></code></pre></div>
+<p>Then, use the following parameters:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="go">tls.enabled=&quot;true&quot;</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="go">tls.certificatesSecret=&quot;certificates-tls-secret&quot;</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="go">tls.certFilename=&quot;cert.pem&quot;</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="go">tls.certKeyFilename=&quot;cert.key&quot;</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="go">tls.certCAFilename=&quot;ca.pem&quot;</span>
+</span></code></pre></div>
+<h3 id="initialize-a-fresh-instance">Initialize a fresh instance<a class="headerlink" href="#initialize-a-fresh-instance" title="Permanent link">&para;</a></h3>
+<p>The <a href="https://github.com/bitnami/containers/tree/main/bitnami/mariadb-galera">Bitnami MariaDB Galera</a> image allows you to use your custom scripts to initialize a fresh instance. In order to execute the scripts, they must be located inside the chart folder <code>files/docker-entrypoint-initdb.d</code> so they can be consumed as a ConfigMap.</p>
+<p>Alternatively, you can specify custom scripts using the <code>initdbScripts</code> parameter as dict.</p>
+<p>In addition to these options, you can also set an external ConfigMap with all the initialization scripts. This is done by setting the <code>initdbScriptsConfigMap</code> parameter. Note that this will override the two previous options.</p>
+<p>The allowed extensions are <code>.sh</code>, <code>.sql</code> and <code>.sql.gz</code>.</p>
+<p>Take into account those scripts are treated differently depending on the extension. While the <code>.sh</code> scripts are executed in all the nodes; the <code>.sql</code> and <code>.sql.gz</code> scripts are only executed in the bootstrap node. The reason behind this differentiation is that the <code>.sh</code> scripts allow adding conditions to determine what is the node running the script, while these conditions can't be set using <code>.sql</code> nor <code>sql.gz</code> files. This way it is possible to cover different use cases depending on their needs.</p>
+<p>If using a <code>.sh</code> script you want to do a "one-time" action like creating a database, you need to add a condition in your <code>.sh</code> script to be executed only in one of the nodes, such as</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">initdbScripts</span><span class="p">:</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="nt">my_init_script.sh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">     </span><span class="no">#!/bin/sh</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">     </span><span class="no">if [[ $(hostname) == *-0  ]]; then</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">       </span><span class="no">echo &quot;First node&quot;</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">       </span><span class="no">mysql -P 3306 -uroot -prandompassword -e &quot;create database new_database&quot;;</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">     </span><span class="no">else</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">       </span><span class="no">echo &quot;No first node&quot;</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">     </span><span class="no">fi</span>
+</span></code></pre></div>
+<h2 id="extra-init-containers">Extra Init Containers<a class="headerlink" href="#extra-init-containers" title="Permanent link">&para;</a></h2>
+<p>The feature allows for specifying a template string for a initContainer in the pod. Usecases include situations when you need some pre-run setup. For example, in IKS (IBM Cloud Kubernetes Service), non-root users do not have write permission on the volume mount path for NFS-powered file storage. So, you could use a initcontainer to <code>chown</code> the mount. See a example below, where we add an initContainer on the pod that reports to an external resource that the db is going to starting.
+<code>values.yaml</code></p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">extraInitContainers</span><span class="p">:</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">initcontainer</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bitnami/minideb</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">  </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/bin/sh&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-c&quot;</span><span class="p p-Indicator">]</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">  </span><span class="nt">args</span><span class="p">:</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install_packages curl &amp;&amp; curl http://api-service.local/db/starting;</span>
+</span></code></pre></div>
+<h2 id="extra-containers">Extra Containers<a class="headerlink" href="#extra-containers" title="Permanent link">&para;</a></h2>
+<p>The feature allows for specifying additional containers in the pod. Usecases include situations when you need to run some sidecar containers. For example, you can observe if mysql in pod is running and report to some service discovery software like eureka. Example:
+<code>values.yaml</code></p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nt">extraContainers</span><span class="p">:</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{</span><span class="nv"> </span><span class="s">.Chart.Name</span><span class="nv"> </span><span class="s">}}-eureka-sidecar&#39;</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;image:tag&#39;</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">  </span><span class="nt">env</span><span class="p">:</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SERVICE_NAME</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">&quot;common.names.fullname&quot;</span><span class="nv"> </span><span class="s">.</span><span class="nv"> </span><span class="s">}}&#39;</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EUREKA_APP_NAME</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">&quot;common.names.name&quot;</span><span class="nv"> </span><span class="s">.</span><span class="nv"> </span><span class="s">}}&#39;</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MARIADB_USER</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{</span><span class="nv"> </span><span class="s">.Values.db.user</span><span class="nv"> </span><span class="s">}}&#39;</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MARIADB_PASSWORD</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">    </span><span class="nt">valueFrom</span><span class="p">:</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">      </span><span class="nt">secretKeyRef</span><span class="p">:</span>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{</span><span class="nv"> </span><span class="s">template</span><span class="nv"> </span><span class="s">&quot;common.names.fullname&quot;</span><span class="nv"> </span><span class="s">.</span><span class="nv"> </span><span class="s">}}&#39;</span>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mariadb-password</span>
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="w">    </span><span class="nt">limits</span><span class="p">:</span>
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100m</span>
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="w">      </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20Mi</span>
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="w">    </span><span class="nt">requests</span><span class="p">:</span>
+</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50m</span>
+</span><span id="__span-14-22"><a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a><span class="w">      </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10Mi</span>
+</span></code></pre></div>
+<h3 id="bootstraping-a-node-other-than-0">Bootstraping a node other than 0<a class="headerlink" href="#bootstraping-a-node-other-than-0" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Note: Some of these procedures can lead to data loss, always make a backup beforehand.</p>
+</blockquote>
+<p>To restart the cluster you need to check the state in which it is after being stopped, also you will need the previous password for the <code>rootUser</code> and <code>mariabackup</code>, and the deployment name. The value of <code>safe_to_bootstrap</code> in <code>/bitnami/mariadb/data/grastate.dat</code>, will indicate if it is safe to bootstrap form that node. In the case it is other than node 0, it is needed to choose one and force the bootstraping from it. You will notice that in these cases it is needed to start the nodes in <code>Parallel</code> by setting <code>podManagementPolicy</code>.</p>
+<h4 id="checking-safe_to_boostrap">Checking <code>safe_to_boostrap</code><a class="headerlink" href="#checking-safe_to_boostrap" title="Permanent link">&para;</a></h4>
+<p>First you need to get the name of the persistent volume claims (pvc), for example:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="gp">$ </span>kubectl<span class="w"> </span>get<span class="w"> </span>pvc
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="go">NAME                              STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="go">data-my-galera-mariadb-galera-0   Bound    pvc-a496aded-f604-4a2d-b934-174907c4d235   8Gi        RWO            gp2            25h</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="go">data-my-galera-mariadb-galera-1   Bound    pvc-00ba6121-9042-4760-af14-3b8a40de936c   8Gi        RWO            gp2            25h</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="go">data-my-galera-mariadb-galera-2   Bound    pvc-61644bc9-2d7d-4e84-bf32-35e59d909b05   8Gi        RWO            gp2            25h</span>
+</span></code></pre></div>
+<p>The following command will print the content of <code>grastate.dat</code> for the persistent volume claim <code>data-my-galera-mariadb-galera-2</code>. This needs to be run for each of the pvc. You will need to change this name accordingly with yours for each PVC.</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="gp">$ </span>kubectl<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </span>--rm<span class="w"> </span>--tty<span class="w"> </span>volpod<span class="w"> </span>--overrides<span class="o">=</span><span class="err">&#39;</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="go">{</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="go">    &quot;apiVersion&quot;: &quot;v1&quot;,</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="go">    &quot;kind&quot;: &quot;Pod&quot;,</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="go">    &quot;metadata&quot;: {</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="go">        &quot;name&quot;: &quot;volpod&quot;</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="go">    },</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="go">    &quot;spec&quot;: {</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="go">        &quot;containers&quot;: [{</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="go">            &quot;command&quot;: [</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="go">                &quot;cat&quot;,</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="go">                &quot;/mnt/data/grastate.dat&quot;</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="go">            ],</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="go">            &quot;image&quot;: &quot;bitnami/minideb&quot;,</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="go">            &quot;name&quot;: &quot;mycontainer&quot;,</span>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="go">            &quot;volumeMounts&quot;: [{</span>
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="go">                &quot;mountPath&quot;: &quot;/mnt&quot;,</span>
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="go">                &quot;name&quot;: &quot;galeradata&quot;</span>
+</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="go">            }]</span>
+</span><span id="__span-16-20"><a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="go">        }],</span>
+</span><span id="__span-16-21"><a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a><span class="go">        &quot;restartPolicy&quot;: &quot;Never&quot;,</span>
+</span><span id="__span-16-22"><a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a><span class="go">        &quot;volumes&quot;: [{</span>
+</span><span id="__span-16-23"><a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a><span class="go">            &quot;name&quot;: &quot;galeradata&quot;,</span>
+</span><span id="__span-16-24"><a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a><span class="go">            &quot;persistentVolumeClaim&quot;: {</span>
+</span><span id="__span-16-25"><a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a><span class="go">                &quot;claimName&quot;: &quot;data-my-galera-mariadb-galera-2&quot;</span>
+</span><span id="__span-16-26"><a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a><span class="go">            }</span>
+</span><span id="__span-16-27"><a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a><span class="go">        }]</span>
+</span><span id="__span-16-28"><a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a><span class="go">    }</span>
+</span><span id="__span-16-29"><a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a><span class="go">}&#39; --image=&quot;bitnami/minideb&quot;</span>
+</span></code></pre></div>
+<p>The output should be similar to this:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a># GALERA saved state
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>version: 2.1
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>uuid:    6f2cbfcd-951b-11ea-a116-5f407049e57d
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>seqno:   25
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>safe_to_bootstrap: 1
+</span></code></pre></div>
+<p>There are two possible scenarios:</p>
+<h5 id="only-one-node-with-safe_to_bootstrap-1">Only one node with <code>safe_to_bootstrap: 1</code><a class="headerlink" href="#only-one-node-with-safe_to_bootstrap-1" title="Permanent link">&para;</a></h5>
+<p>In this case you will need the node number <code>N</code> and run:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="go">helm install my-release bitnami/mariadb-galera \</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="go">--set rootUser.password=XXXX \</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="go">--set galera.mariabackup.password=YYYY \</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="go">--set galera.bootstrap.forceBootstrap=true \</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="go">--set galera.bootstrap.bootstrapFromNode=N \</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="go">--set podManagementPolicy=Parallel</span>
+</span></code></pre></div>
+<h5 id="all-the-nodes-with-safe_to_bootstrap-0">All the nodes with <code>safe_to_bootstrap: 0</code><a class="headerlink" href="#all-the-nodes-with-safe_to_bootstrap-0" title="Permanent link">&para;</a></h5>
+<p>In this case the cluster was not stopped cleanly and you need to pick one to force the bootstrap from. The one to be chosen in the one with the highest <code>seqno</code> in <code>/bitnami/mariadb/data/grastate.dat</code>. The following example shows how to force bootstrap from node 3.</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="go">helm install my-release bitnami/mariadb-galera \</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="go">--set rootUser.password=XXXX \</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="go">--set galera.mariabackup.password=YYYY \</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="go">--set galera.bootstrap.forceBootstrap=true \</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="go">--set galera.bootstrap.bootstrapFromNode=3 \</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="go">--set galera.bootstrap.forceSafeToBootstrap=true \</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="go">--set podManagementPolicy=Parallel</span>
+</span></code></pre></div>
+<h4 id="remove-the-forced-boostraping">Remove the forced boostraping<a class="headerlink" href="#remove-the-forced-boostraping" title="Permanent link">&para;</a></h4>
+<p>After you have started the cluster by forcing the bootstraping on one of the nodes, you will need to remove the forcing so the node can restart with normality.</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="go">helm upgrade my-release bitnami/mariadb-galera \</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="go">--set rootUser.password=XXXX \</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="go">--set galera.mariabackup.password=YYYY \</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="go">--set podManagementPolicy=Parallel</span>
+</span></code></pre></div>
+<h2 id="persistence">Persistence<a class="headerlink" href="#persistence" title="Permanent link">&para;</a></h2>
+<p>The <a href="https://github.com/bitnami/containers/tree/main/bitnami/mariadb-galera">Bitnami MariaDB Galera</a> image stores the MariaDB data and configurations at the <code>/bitnami/mariadb</code> path of the container.</p>
+<p>The chart mounts a <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">Persistent Volume</a> volume at this location. The volume is created using dynamic volume provisioning, by default. An existing PersistentVolumeClaim can be defined.</p>
+<h3 id="setting-pods-affinity">Setting Pod's affinity<a class="headerlink" href="#setting-pods-affinity" title="Permanent link">&para;</a></h3>
+<p>This chart allows you to set your custom affinity using the <code>affinity</code> parameter. Find more information about Pod's affinity in the <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity">kubernetes documentation</a>.</p>
+<p>As an alternative, you can use of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the <a href="https://github.com/bitnami/charts/tree/main/bitnami/common#affinities">bitnami/common</a> chart. To do so, set the <code>podAffinityPreset</code>, <code>podAntiAffinityPreset</code>, or <code>nodeAffinityPreset</code> parameters.</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p>Find more information about how to deal with common errors related to Bitnami's Helm charts in <a href="https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues">this troubleshooting guide</a>.</p>
+<h2 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">&para;</a></h2>
+<p>It's necessary to specify the existing passwords while performing a upgrade to ensure the secrets are not updated with invalid randomly generated passwords. Remember to specify the existing values of the <code>rootUser.password</code>, <code>db.password</code> and <code>galera.mariabackup.password</code> parameters when upgrading the chart:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="go">helm upgrade my-release bitnami/mariadb-galera \</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="go">    --set rootUser.password=[ROOT_PASSWORD] \</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="go">    --set db.password=[MARIADB_PASSWORD] \</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="go">    --set galera.mariabackup.password=[GALERA_MARIABACKUP_PASSWORD]</span>
+</span></code></pre></div>
+<p>| Note: you need to substitute the placeholders <em>[ROOT_PASSWORD]</em>, <em>[MARIADB_PASSWORD]</em> and <em>[MARIABACKUP_PASSWORD]</em> with the values obtained from instructions in the installation notes.</p>
+<h3 id="to-700">To 7.0.0<a class="headerlink" href="#to-700" title="Permanent link">&para;</a></h3>
+<p>This major release renames several values in this chart and adds missing features, in order to be inline with the rest of assets in the Bitnami charts repository. Also, this release address issues related to cluster initialization and node's restarts.</p>
+<p>Affected values:</p>
+<ul>
+<li><code>service.port</code> renamed as <code>service.ports.mysql</code>.</li>
+<li><code>service.nodePort</code> renamed as <code>service.nodePorts.mysql</code>.</li>
+<li><code>securityContext</code> renamed as <code>podSecurityContext</code>.</li>
+<li><code>extraInitContainers</code> renamed as <code>initContainers</code>.</li>
+<li><code>prometheusRule.selector</code> renamed as <code>prometheusRule.additionalLabels</code></li>
+</ul>
+<p><img alt="⚠" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/26a0.svg" title=":warning:" /> This major release also break the Helm upgrade and therefore cause a service disruption. Next procedure is required in order to allow a rolling upgrade.</p>
+<blockquote>
+<p>Note</p>
+<ul>
+<li>It only consider Chart upgrade, not mariadb galera upgrade. Use the same version or validate mariadb galera upgrade path</li>
+<li>Pods dns name are updated. If you use a query router like proxysql or maxscale, configuration have to be updated</li>
+</ul>
+</blockquote>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="gp"># </span>Export<span class="w"> </span>current<span class="w"> </span>mariadb-galera<span class="w"> </span>statefulset<span class="w"> </span>resource
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="go">kubectl get sts mariadb-galera -o yaml   &gt; mariadb-galera-patch.yaml</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="gp"># </span>Patch<span class="w"> </span>the<span class="w"> </span>statefulset<span class="w"> </span>spec.serviceName<span class="w"> </span>from<span class="w"> </span><span class="s1">&#39;mariadb-galera&#39;</span><span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;mariadb-galera-headless&#39;</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="go">yq -i &#39;.spec.serviceName = &quot;mariadb-galera-headless&quot;&#39; mariadb-galera-patch.yaml</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="gp"># </span>Delete<span class="w"> </span>the<span class="w"> </span>statefulset<span class="w"> </span>keeping<span class="w"> </span>the<span class="w"> </span>pods
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="go">kubectl delete statefulsets.apps mariadb-galera --cascade=orphan</span>
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="go">statefulset.apps &quot;mariadb-galera&quot; deleted</span>
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="gp"># </span>Apply<span class="w"> </span>the<span class="w"> </span>patched<span class="w"> </span>statefulset
+</span><span id="__span-22-12"><a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="go">kubectl apply -f mariadb-galera-patch.yaml</span>
+</span><span id="__span-22-13"><a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>
+</span><span id="__span-22-14"><a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="gp"># </span>Rollout<span class="w"> </span>restart<span class="w"> </span>statefulset<span class="w"> </span><span class="o">(</span>pod<span class="w"> </span>restart<span class="w"> </span>is<span class="w"> </span>required<span class="w"> </span>to<span class="w"> </span>take<span class="w"> </span><span class="k">in</span><span class="w"> </span>account<span class="w"> </span>new<span class="w"> </span>configuration<span class="o">)</span>
+</span><span id="__span-22-15"><a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="go">kubect rollout restart statefulset mariadb-galera</span>
+</span><span id="__span-22-16"><a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="go">satefulset.apps/mariadb-galera restarted</span>
+</span><span id="__span-22-17"><a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a>
+</span><span id="__span-22-18"><a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a><span class="gp"># </span>Wait<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>pods<span class="w"> </span>to<span class="w"> </span>restart.<span class="w"> </span>Confirm<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span>heath<span class="w"> </span>state<span class="w"> </span>before<span class="w"> </span>run<span class="w"> </span>the<span class="w"> </span>helm<span class="w"> </span>upgrade
+</span><span id="__span-22-19"><a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a><span class="go">kubectl rollout status statefulset mariadb-galera -w</span>
+</span></code></pre></div>
+<h3 id="to-520">To 5.2.0<a class="headerlink" href="#to-520" title="Permanent link">&para;</a></h3>
+<p>This version introduces <code>bitnami/common</code>, a <a href="https://helm.sh/docs/topics/library_charts/#helm">library chart</a> as a dependency. More documentation about this new utility could be found <a href="https://github.com/bitnami/charts/tree/main/bitnami/common#bitnami-common-library-chart">here</a>. Please, make sure that you have updated the chart dependencies before executing any upgrade.</p>
+<h3 id="to-500">To 5.0.0<a class="headerlink" href="#to-500" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/helm/charts#status-of-the-project">On November 13, 2020, Helm v2 support was formally finished</a>, this major version is the result of the required changes applied to the Helm Chart to be able to incorporate the different features added in Helm v3 and to be consistent with the Helm project itself regarding the Helm v2 EOL.</p>
+<h4 id="what-changes-were-introduced-in-this-major-version">What changes were introduced in this major version?<a class="headerlink" href="#what-changes-were-introduced-in-this-major-version" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Previous versions of this Helm Chart use <code>apiVersion: v1</code> (installable by both Helm 2 and 3), this Helm Chart was updated to <code>apiVersion: v2</code> (installable by Helm 3 only). <a href="https://helm.sh/docs/topics/charts/#the-apiversion-field">Here</a> you can find more information about the <code>apiVersion</code> field.</li>
+<li>The different fields present in the <em>Chart.yaml</em> file has been ordered alphabetically in a homogeneous way for all the Bitnami Helm Charts</li>
+</ul>
+<h4 id="considerations-when-upgrading-to-this-version">Considerations when upgrading to this version<a class="headerlink" href="#considerations-when-upgrading-to-this-version" title="Permanent link">&para;</a></h4>
+<ul>
+<li>If you want to upgrade to this version from a previous one installed with Helm v3, you shouldn't face any issues</li>
+<li>If you want to upgrade to this version using Helm v2, this scenario is not supported as this version doesn't support Helm v2 anymore</li>
+<li>If you installed the previous version with Helm v2 and wants to upgrade to this version with Helm v3, please refer to the <a href="https://helm.sh/docs/topics/v2_v3_migration/#migration-use-cases">official Helm documentation</a> about migrating from Helm v2 to v3</li>
+</ul>
+<h4 id="useful-links">Useful links<a class="headerlink" href="#useful-links" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="https://docs.bitnami.com/tutorials/resolve-helm2-helm3-post-migration-issues/">https://docs.bitnami.com/tutorials/resolve-helm2-helm3-post-migration-issues/</a></li>
+<li><a href="https://helm.sh/docs/topics/v2_v3_migration/">https://helm.sh/docs/topics/v2_v3_migration/</a></li>
+<li><a href="https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/">https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/</a></li>
+</ul>
+<h3 id="to-200">To 2.0.0<a class="headerlink" href="#to-200" title="Permanent link">&para;</a></h3>
+<p>In this version the bootstraping was improved. Now it is possible to indicate a node where to bootstrap from, and force the parameter <code>safe_to_bootstrap</code>. This allows to handle situations where the cluster was not cleanly stopped. It should be safe to upgrade from v1 of the chart, but it is wise to create always a backup before performing operations where there is a risk of data loss.</p>
+<h3 id="to-100">To 1.0.0<a class="headerlink" href="#to-100" title="Permanent link">&para;</a></h3>
+<p>The <a href="https://github.com/bitnami/containers/tree/main/bitnami/mariadb-galera">Bitnami MariaDB Galera</a> image was migrated to a "non-root" user approach. Previously the container ran as the <code>root</code> user and the MySQL daemon was started as the <code>mysql</code> user. From now on, both the container and the MySQL daemon run as user <code>1001</code>. You can revert this behavior by setting the parameters <code>securityContext.runAsUser</code>, and <code>securityContext.fsGroup</code> to <code>0</code>.</p>
+<p>Consequences:</p>
+<ul>
+<li>Backwards compatibility is not guaranteed.</li>
+<li>Environment variables related to LDAP configuration were renamed removing the <code>MARIADB_</code> prefix. For instance, to indicate the LDAP URI to use, you must set <code>LDAP_URI</code> instead of <code>MARIADB_LDAP_URI</code></li>
+</ul>
+<p>To upgrade to <code>1.0.0</code>, install a new release of the MariaDB Galera chart, and migrate your data by creating a backup of the database, and restoring it on the new release. In the link below you can find a guide that explain the whole process:</p>
+<ul>
+<li><a href="https://docs.bitnami.com/general/infrastructure/mariadb/administration/backup-restore-mysql-mariadb/">Create And Restore MySQL/MariaDB Backups</a></li>
+</ul>
+<h2 id="bitnami-kubernetes-documentation">Bitnami Kubernetes Documentation<a class="headerlink" href="#bitnami-kubernetes-documentation" title="Permanent link">&para;</a></h2>
+<p>Bitnami Kubernetes documentation is available at <a href="https://docs.bitnami.com/">https://docs.bitnami.com/</a>. You can find there the following resources:</p>
+<ul>
+<li><a href="https://docs.bitnami.com/kubernetes/infrastructure/mariadb-galera/">Documentation for MariaDB Galera Helm chart</a></li>
+<li><a href="https://docs.bitnami.com/kubernetes/">Get Started with Kubernetes guides</a></li>
+<li><a href="https://docs.bitnami.com/kubernetes/apps/">Bitnami Helm charts documentation</a></li>
+<li><a href="https://docs.bitnami.com/kubernetes/faq/">Kubernetes FAQs</a></li>
+<li><a href="https://docs.bitnami.com/tutorials/">Kubernetes Developer guides</a></li>
+</ul>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<p>Copyright &copy; 2023 VMware, Inc.</p>
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../magento/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Magento" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  上一页
+                </span>
+                Magento
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../mariadb/" class="md-footer__link md-footer__link--next" aria-label="下一页: Mariadb" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  下一页
+                </span>
+                Mariadb
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>

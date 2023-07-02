@@ -1,0 +1,4739 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../whereabouts/">
+      
+      
+        <link rel="next" href="../wordpress/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Wildfly - Helm Charts Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#wildfly-packaged-by-bitnami" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Helm Charts Hub" class="md-header__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Helm Charts Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Wildfly
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Helm Charts Hub
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../chart-list/" class="md-tabs__link">
+      Chart 列表
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Bitnami
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../grafana/" class="md-tabs__link">
+        Grafana
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ingress-nginx/" class="md-tabs__link">
+        Ingress nginx
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../prometheus-community/" class="md-tabs__link">
+        Prometheus community
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sir5kong/" class="md-tabs__link">
+        Sir5kong
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Helm Charts Hub" class="md-nav__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Helm Charts Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Helm Charts Hub
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chart-list/" class="md-nav__link">
+        Chart 列表
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Bitnami</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Bitnami" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Bitnami
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../airflow/" class="md-nav__link">
+        Airflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apache/" class="md-nav__link">
+        Apache
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apisix/" class="md-nav__link">
+        Apisix
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appsmith/" class="md-nav__link">
+        Appsmith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-cd/" class="md-nav__link">
+        Argo cd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-workflows/" class="md-nav__link">
+        Argo workflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aspnet-core/" class="md-nav__link">
+        Aspnet core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cassandra/" class="md-nav__link">
+        Cassandra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cert-manager/" class="md-nav__link">
+        Cert manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clickhouse/" class="md-nav__link">
+        Clickhouse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common/" class="md-nav__link">
+        Bitnami Common Library Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concourse/" class="md-nav__link">
+        Concourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../consul/" class="md-nav__link">
+        Consul
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contour/" class="md-nav__link">
+        Contour
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../discourse/" class="md-nav__link">
+        Discourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dokuwiki/" class="md-nav__link">
+        Dokuwiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drupal/" class="md-nav__link">
+        Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejbca/" class="md-nav__link">
+        Ejbca
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../elasticsearch/" class="md-nav__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../etcd/" class="md-nav__link">
+        Etcd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../external-dns/" class="md-nav__link">
+        External dns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flink/" class="md-nav__link">
+        Flink
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluent-bit/" class="md-nav__link">
+        Fluent bit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluentd/" class="md-nav__link">
+        Fluentd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flux/" class="md-nav__link">
+        Flux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ghost/" class="md-nav__link">
+        Ghost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitea/" class="md-nav__link">
+        Gitea
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-loki/" class="md-nav__link">
+        Grafana loki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-mimir/" class="md-nav__link">
+        Grafana mimir
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-operator/" class="md-nav__link">
+        Grafana operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-tempo/" class="md-nav__link">
+        Grafana tempo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana/" class="md-nav__link">
+        Grafana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../haproxy/" class="md-nav__link">
+        Haproxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../harbor/" class="md-nav__link">
+        Harbor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../influxdb/" class="md-nav__link">
+        Influxdb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jaeger/" class="md-nav__link">
+        Jaeger
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jasperreports/" class="md-nav__link">
+        Jasperreports
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jenkins/" class="md-nav__link">
+        Jenkins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../joomla/" class="md-nav__link">
+        Joomla
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jupyterhub/" class="md-nav__link">
+        Jupyterhub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kafka/" class="md-nav__link">
+        Kafka
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keycloak/" class="md-nav__link">
+        Keycloak
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kiam/" class="md-nav__link">
+        Kiam
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kibana/" class="md-nav__link">
+        Kibana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kong/" class="md-nav__link">
+        Kong
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube-prometheus/" class="md-nav__link">
+        Kube prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube-state-metrics/" class="md-nav__link">
+        Kube state metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubeapps/" class="md-nav__link">
+        Kubeapps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-event-exporter/" class="md-nav__link">
+        Kubernetes event exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logstash/" class="md-nav__link">
+        Logstash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../magento/" class="md-nav__link">
+        Magento
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mariadb-galera/" class="md-nav__link">
+        Mariadb galera
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mariadb/" class="md-nav__link">
+        Mariadb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mastodon/" class="md-nav__link">
+        Mastodon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matomo/" class="md-nav__link">
+        Matomo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mediawiki/" class="md-nav__link">
+        Mediawiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memcached/" class="md-nav__link">
+        Memcached
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metallb/" class="md-nav__link">
+        Metallb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics-server/" class="md-nav__link">
+        Metrics server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../minio/" class="md-nav__link">
+        Minio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mongodb-sharded/" class="md-nav__link">
+        Mongodb sharded
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mongodb/" class="md-nav__link">
+        Mongodb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../moodle/" class="md-nav__link">
+        Moodle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multus-cni/" class="md-nav__link">
+        Multus cni
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mxnet/" class="md-nav__link">
+        Mxnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mysql/" class="md-nav__link">
+        Mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nats/" class="md-nav__link">
+        Nats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx-ingress-controller/" class="md-nav__link">
+        Nginx ingress controller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx/" class="md-nav__link">
+        Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../node-exporter/" class="md-nav__link">
+        Node exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oauth2-proxy/" class="md-nav__link">
+        Oauth2 proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../odoo/" class="md-nav__link">
+        Odoo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opencart/" class="md-nav__link">
+        Opencart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../osclass/" class="md-nav__link">
+        Osclass
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parse/" class="md-nav__link">
+        Parse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpbb/" class="md-nav__link">
+        Phpbb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpmyadmin/" class="md-nav__link">
+        Phpmyadmin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinniped/" class="md-nav__link">
+        Pinniped
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgresql-ha/" class="md-nav__link">
+        Postgresql ha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgresql/" class="md-nav__link">
+        Postgresql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prestashop/" class="md-nav__link">
+        Prestashop
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rabbitmq-cluster-operator/" class="md-nav__link">
+        Rabbitmq cluster operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rabbitmq/" class="md-nav__link">
+        Rabbitmq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis-cluster/" class="md-nav__link">
+        Redis cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redmine/" class="md-nav__link">
+        Redmine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema-registry/" class="md-nav__link">
+        Schema registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sealed-secrets/" class="md-nav__link">
+        Sealed secrets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solr/" class="md-nav__link">
+        Solr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sonarqube/" class="md-nav__link">
+        Sonarqube
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spark/" class="md-nav__link">
+        Spark
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-cloud-dataflow/" class="md-nav__link">
+        Spring cloud dataflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../suitecrm/" class="md-nav__link">
+        Suitecrm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supabase/" class="md-nav__link">
+        Supabase
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tensorflow-resnet/" class="md-nav__link">
+        Tensorflow resnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../thanos/" class="md-nav__link">
+        Thanos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tomcat/" class="md-nav__link">
+        Tomcat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault/" class="md-nav__link">
+        Vault
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavefront-hpa-adapter/" class="md-nav__link">
+        Wavefront hpa adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavefront-prometheus-storage-adapter/" class="md-nav__link">
+        Wavefront prometheus storage adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whereabouts/" class="md-nav__link">
+        Whereabouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Wildfly
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Wildfly
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    TL;DR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    Installing the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    Uninstalling the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-parameters" class="md-nav__link">
+    Global parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-parameters" class="md-nav__link">
+    Common parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wildfly-image-parameters" class="md-nav__link">
+    WildFly Image parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wildfly-configuration-parameters" class="md-nav__link">
+    WildFly Configuration parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wildfly-deployment-parameters" class="md-nav__link">
+    WildFly deployment parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traffic-exposure-parameters" class="md-nav__link">
+    Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistence-parameters" class="md-nav__link">
+    Persistence Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-installation-details" class="md-nav__link">
+    Configuration and installation details
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and installation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-vs-immutable-tags" class="md-nav__link">
+    Rolling vs Immutable tags
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistence" class="md-nav__link">
+    Persistence
+  </a>
+  
+    <nav class="md-nav" aria-label="Persistence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adjust-permissions-of-persistent-volume-mountpoint" class="md-nav__link">
+    Adjust permissions of persistent volume mountpoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-extra-environment-variables" class="md-nav__link">
+    Add extra environment variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-sidecars-and-init-containers" class="md-nav__link">
+    Use Sidecars and Init Containers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-pod-affinity" class="md-nav__link">
+    Set Pod affinity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    Upgrading
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-1000" class="md-nav__link">
+    To 10.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-700" class="md-nav__link">
+    To 7.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-600" class="md-nav__link">
+    To 6.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-210" class="md-nav__link">
+    To 2.1.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-100" class="md-nav__link">
+    To 1.0.0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wordpress/" class="md-nav__link">
+        Wordpress
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zookeeper/" class="md-nav__link">
+        Zookeeper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../grafana/">Grafana</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Grafana" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Grafana
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/agent-operator/" class="md-nav__link">
+        grafana-agent-operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-logs-simple/" class="md-nav__link">
+        enterprise-logs-simple
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-logs/" class="md-nav__link">
+        Grafana Enterprise Logs Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-metrics/" class="md-nav__link">
+        Grafana Enterprise Metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/fluent-bit/" class="md-nav__link">
+        Fluent Bit Loki chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/grafana-agent/" class="md-nav__link">
+        Grafana Agent chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/grafana/" class="md-nav__link">
+        Grafana Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-canary/" class="md-nav__link">
+        loki-canary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-distributed/" class="md-nav__link">
+        loki-distributed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-stack/" class="md-nav__link">
+        Loki-Stack Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/mimir-distributed/" class="md-nav__link">
+        Notice of relocation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/promtail/" class="md-nav__link">
+        promtail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/rollout-operator/" class="md-nav__link">
+        Grafana rollout-operator Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/synthetic-monitoring-agent/" class="md-nav__link">
+        synthetic-monitoring-agent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo-distributed/" class="md-nav__link">
+        tempo-distributed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo-vulture/" class="md-nav__link">
+        tempo-vulture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo/" class="md-nav__link">
+        tempo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../ingress-nginx/">Ingress nginx</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Ingress nginx" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Ingress nginx
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ingress-nginx/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../prometheus-community/">Prometheus community</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Prometheus community" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Prometheus community
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager-snmp-notifier/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager/" class="md-nav__link">
+        Alertmanager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/jiralert/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-prometheus-stack/" class="md-nav__link">
+        kube-prometheus-stack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-state-metrics/" class="md-nav__link">
+        kube-state-metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prom-label-proxy/" class="md-nav__link">
+        prom-label-proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-adapter/" class="md-nav__link">
+        Prometheus Adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-blackbox-exporter/" class="md-nav__link">
+        Prometheus Blackbox Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-cloudwatch-exporter/" class="md-nav__link">
+        Prometheus Cloudwatch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-conntrack-stats-exporter/" class="md-nav__link">
+        Conntrack Stats Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-consul-exporter/" class="md-nav__link">
+        Prometheus Consul Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-couchdb-exporter/" class="md-nav__link">
+        prometheus-couchdb-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-druid-exporter/" class="md-nav__link">
+        Prometheus Druid Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-elasticsearch-exporter/" class="md-nav__link">
+        Elasticsearch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-fastly-exporter/" class="md-nav__link">
+        Prometheus Fastly Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-json-exporter/" class="md-nav__link">
+        prometheus-json-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-kafka-exporter/" class="md-nav__link">
+        prometheus-kafka-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mongodb-exporter/" class="md-nav__link">
+        Prometheus MongoDB Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mysql-exporter/" class="md-nav__link">
+        Prometheus Mysql Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nats-exporter/" class="md-nav__link">
+        Prometheus NATS Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nginx-exporter/" class="md-nav__link">
+        prometheus-nginx-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-node-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-admission-webhook/" class="md-nav__link">
+        Prometheus Operator Admission Webhook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-crds/" class="md-nav__link">
+        Prometheus Operator CRDs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pgbouncer-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingdom-exporter/" class="md-nav__link">
+        Prometheus Pingdom Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingmesh-exporter/" class="md-nav__link">
+        Prometheus Pingmesh Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-postgres-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pushgateway/" class="md-nav__link">
+        Prometheus Pushgateway
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-rabbitmq-exporter/" class="md-nav__link">
+        prometheus-rabbitmq-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-redis-exporter/" class="md-nav__link">
+        prometheus-redis-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-smartctl-exporter/" class="md-nav__link">
+        Prometheus smartctl Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-snmp-exporter/" class="md-nav__link">
+        Prometheus SNMP Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-stackdriver-exporter/" class="md-nav__link">
+        Stackdriver Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-statsd-exporter/" class="md-nav__link">
+        prometheus-statsd-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-to-sd/" class="md-nav__link">
+        prometheus-to-sd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-windows-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../sir5kong/">Sir5kong</a>
+          
+            <label for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Sir5kong" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Sir5kong
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/commonapp/" class="md-nav__link">
+        commonapp helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/kafka/" class="md-nav__link">
+        Kafka helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/nginx/" class="md-nav__link">
+        nginx helm chart
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    TL;DR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    Installing the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    Uninstalling the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-parameters" class="md-nav__link">
+    Global parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-parameters" class="md-nav__link">
+    Common parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wildfly-image-parameters" class="md-nav__link">
+    WildFly Image parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wildfly-configuration-parameters" class="md-nav__link">
+    WildFly Configuration parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wildfly-deployment-parameters" class="md-nav__link">
+    WildFly deployment parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traffic-exposure-parameters" class="md-nav__link">
+    Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistence-parameters" class="md-nav__link">
+    Persistence Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-installation-details" class="md-nav__link">
+    Configuration and installation details
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and installation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-vs-immutable-tags" class="md-nav__link">
+    Rolling vs Immutable tags
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistence" class="md-nav__link">
+    Persistence
+  </a>
+  
+    <nav class="md-nav" aria-label="Persistence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adjust-permissions-of-persistent-volume-mountpoint" class="md-nav__link">
+    Adjust permissions of persistent volume mountpoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-extra-environment-variables" class="md-nav__link">
+    Add extra environment variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-sidecars-and-init-containers" class="md-nav__link">
+    Use Sidecars and Init Containers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-pod-affinity" class="md-nav__link">
+    Set Pod affinity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    Upgrading
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-1000" class="md-nav__link">
+    To 10.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-700" class="md-nav__link">
+    To 7.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-600" class="md-nav__link">
+    To 6.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-210" class="md-nav__link">
+    To 2.1.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-100" class="md-nav__link">
+    To 1.0.0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<!--- app-name: WildFly -->
+
+<h1 id="wildfly-packaged-by-bitnami">WildFly packaged by Bitnami<a class="headerlink" href="#wildfly-packaged-by-bitnami" title="Permanent link">&para;</a></h1>
+<p>Wildfly is a lightweight, open source application server, formerly known as JBoss, that implements the latest enterprise Java standards.</p>
+<p><a href="http://www.wildfly.org/">Overview of WildFly</a></p>
+<p>Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.</p>
+<h2 id="tldr">TL;DR<a class="headerlink" href="#tldr" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>使用加速地址添加仓库:</p>
+</blockquote>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>bitnami<span class="w"> </span><span class="s2">&quot;https://helm-charts.itboon.top/bitnami&quot;</span><span class="w"> </span>--force-update
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>helm<span class="w"> </span>update<span class="w"> </span>bitnami
+</span></code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="go">helm install my-release bitnami/wildfly</span>
+</span></code></pre></div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>This chart bootstraps a <a href="https://github.com/bitnami/containers/tree/main/bitnami/wildfly">WildFly</a> deployment on a <a href="https://kubernetes.io">Kubernetes</a> cluster using the <a href="https://helm.sh">Helm</a> package manager.</p>
+<p>WildFly is written in Java, and implements the Java Platform, Enterprise Edition (Java EE) specification.</p>
+<p>Bitnami charts can be used with <a href="https://kubeapps.dev/">Kubeapps</a> for deployment and management of Helm Charts in clusters.</p>
+<p>Looking to use WildFly in production? Try <a href="https://bitnami.com/enterprise">VMware Application Catalog</a>, the enterprise edition of Bitnami Application Catalog.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Kubernetes 1.19+</li>
+<li>Helm 3.2.0+</li>
+<li>PV provisioner support in the underlying infrastructure</li>
+<li>ReadWriteMany volumes for deployment scaling</li>
+</ul>
+<h2 id="installing-the-chart">Installing the Chart<a class="headerlink" href="#installing-the-chart" title="Permanent link">&para;</a></h2>
+<p>To install the chart with the release name <code>my-release</code>:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">helm install my-release bitnami/wildfly</span>
+</span></code></pre></div>
+<p>These commands deploy WildFly on the Kubernetes cluster in the default configuration. The <a href="#parameters">Parameters</a> section lists the parameters that can be configured during installation.</p>
+<blockquote>
+<p><strong>Tip</strong>: List all releases using <code>helm list</code></p>
+</blockquote>
+<h2 id="uninstalling-the-chart">Uninstalling the Chart<a class="headerlink" href="#uninstalling-the-chart" title="Permanent link">&para;</a></h2>
+<p>To uninstall/delete the <code>my-release</code> deployment:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="go">helm delete my-release</span>
+</span></code></pre></div>
+<p>The command removes all the Kubernetes components associated with the chart and deletes the release.</p>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
+<h3 id="global-parameters">Global parameters<a class="headerlink" href="#global-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>global.imageRegistry</code></td>
+<td>Global Docker image registry</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>global.imagePullSecrets</code></td>
+<td>Global Docker registry secret names as an array</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>global.storageClass</code></td>
+<td>Global StorageClass for Persistent Volume(s)</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-parameters">Common parameters<a class="headerlink" href="#common-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kubeVersion</code></td>
+<td>Override Kubernetes version</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>nameOverride</code></td>
+<td>String to partially override common.names.fullname</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>fullnameOverride</code></td>
+<td>String to fully override common.names.fullname</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>commonLabels</code></td>
+<td>Labels to add to all deployed objects</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>commonAnnotations</code></td>
+<td>Annotations to add to all deployed objects</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>clusterDomain</code></td>
+<td>Kubernetes cluster domain name</td>
+<td><code>cluster.local</code></td>
+</tr>
+<tr>
+<td><code>extraDeploy</code></td>
+<td>Array of extra objects to deploy with the release</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.enabled</code></td>
+<td>Enable diagnostic mode (all probes will be disabled and the command will be overridden)</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.command</code></td>
+<td>Command to override all containers in the the deployment(s)/statefulset(s)</td>
+<td><code>["sleep"]</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.args</code></td>
+<td>Args to override all containers in the the deployment(s)/statefulset(s)</td>
+<td><code>["infinity"]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="wildfly-image-parameters">WildFly Image parameters<a class="headerlink" href="#wildfly-image-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>image.registry</code></td>
+<td>WildFly image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>image.repository</code></td>
+<td>WildFly image repository</td>
+<td><code>bitnami/wildfly</code></td>
+</tr>
+<tr>
+<td><code>image.tag</code></td>
+<td>WildFly image tag (immutable tags are recommended)</td>
+<td><code>28.0.1-debian-11-r9</code></td>
+</tr>
+<tr>
+<td><code>image.digest</code></td>
+<td>WildFly image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>image.pullPolicy</code></td>
+<td>WildFly image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>image.pullSecrets</code></td>
+<td>WildFly image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>image.debug</code></td>
+<td>Enable image debug mode</td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="wildfly-configuration-parameters">WildFly Configuration parameters<a class="headerlink" href="#wildfly-configuration-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wildflyUsername</code></td>
+<td>WildFly username</td>
+<td><code>user</code></td>
+</tr>
+<tr>
+<td><code>wildflyPassword</code></td>
+<td>WildFly user password</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>exposeManagementConsole</code></td>
+<td>Allows exposing the WildFly Management console outside the cluster</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>lifecycleHooks</code></td>
+<td>for the container to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>extraEnvVars</code></td>
+<td>Array with extra environment variables to add to the WildFly container</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra env vars</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra env vars</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="wildfly-deployment-parameters">WildFly deployment parameters<a class="headerlink" href="#wildfly-deployment-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>replicaCount</code></td>
+<td>Number of Wildfly replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>updateStrategy.type</code></td>
+<td>WildFly deployment strategy type</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>hostAliases</code></td>
+<td>WildFly pod host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes for WildFly pods</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts for WildFly container(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>serviceAccountName</code></td>
+<td>Name of existing ServiceAccount to be connected</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>sidecars</code></td>
+<td>Add additional sidecar containers to the WildFly pod</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>initContainers</code></td>
+<td>Add additional init containers to the WildFly pods</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>podLabels</code></td>
+<td>Extra labels for WildFly pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>podAnnotations</code></td>
+<td>Annotations for WildFly pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>nodeAffinityPreset.key</code></td>
+<td>Node label key to match. Ignored if <code>affinity</code> is set</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>affinity</code> is set</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>affinity</code></td>
+<td>Affinity for pod assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>nodeSelector</code></td>
+<td>Node labels for pod assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>tolerations</code></td>
+<td>Tolerations for pod assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>priorityClassName</code></td>
+<td>Pod priorityClassName</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>schedulerName</code></td>
+<td>Name of the k8s scheduler (other than default)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>resources.limits</code></td>
+<td>The resources limits for the WildFly container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>resources.requests</code></td>
+<td>The requested resources for the WildFly container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>containerPorts.http</code></td>
+<td>WildFly HTTP container port</td>
+<td><code>8080</code></td>
+</tr>
+<tr>
+<td><code>containerPorts.mgmt</code></td>
+<td>WildFly HTTPS container port</td>
+<td><code>9990</code></td>
+</tr>
+<tr>
+<td><code>extraContainerPorts</code></td>
+<td>Array with extra container ports to add to the WildFly container</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>podSecurityContext.enabled</code></td>
+<td>Enabled WildFly pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>podSecurityContext.fsGroup</code></td>
+<td>Set WildFly pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>containerSecurityContext.enabled</code></td>
+<td>Enabled WildFly containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>containerSecurityContext.runAsUser</code></td>
+<td>Set WildFly container's Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>containerSecurityContext.runAsNonRoot</code></td>
+<td>Set WildFly container's Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.enabled</code></td>
+<td>Enable startupProbe</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>120</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.enabled</code></td>
+<td>Enable livenessProbe</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>120</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.enabled</code></td>
+<td>Enable readinessProbe</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>customStartupProbe</code></td>
+<td>Custom startupProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>customLivenessProbe</code></td>
+<td>Custom livenessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>customReadinessProbe</code></td>
+<td>Custom readinessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="traffic-exposure-parameters">Traffic Exposure Parameters<a class="headerlink" href="#traffic-exposure-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>service.type</code></td>
+<td>WildFly service type</td>
+<td><code>LoadBalancer</code></td>
+</tr>
+<tr>
+<td><code>service.ports.http</code></td>
+<td>WildFly service HTTP port</td>
+<td><code>80</code></td>
+</tr>
+<tr>
+<td><code>service.ports.mgmt</code></td>
+<td>WildFly service management console port</td>
+<td><code>9990</code></td>
+</tr>
+<tr>
+<td><code>service.nodePorts.http</code></td>
+<td>Node port for HTTP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.nodePorts.mgmt</code></td>
+<td>Node port for Management console</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.clusterIP</code></td>
+<td>WildFly service Cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.loadBalancerIP</code></td>
+<td>WildFly service Load Balancer IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.loadBalancerSourceRanges</code></td>
+<td>WildFly service Load Balancer sources</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>service.externalTrafficPolicy</code></td>
+<td>WildFly service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>service.annotations</code></td>
+<td>Additional custom annotations for WildFly service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>service.extraPorts</code></td>
+<td>Extra ports to expose on WildFly service</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>service.sessionAffinity</code></td>
+<td>Session Affinity for Kubernetes service, can be "None" or "ClientIP"</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>ingress.enabled</code></td>
+<td>Enable ingress record generation for WildFly</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ingress.pathType</code></td>
+<td>Ingress path type</td>
+<td><code>ImplementationSpecific</code></td>
+</tr>
+<tr>
+<td><code>ingress.apiVersion</code></td>
+<td>Force Ingress API version (automatically detected if not set)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ingress.hostname</code></td>
+<td>Default host for the ingress record</td>
+<td><code>wildfly.local</code></td>
+</tr>
+<tr>
+<td><code>ingress.path</code></td>
+<td>Default path for the ingress record</td>
+<td><code>/</code></td>
+</tr>
+<tr>
+<td><code>ingress.annotations</code></td>
+<td>Additional annotations for the Ingress resource. To enable certificate autogeneration, place here your cert-manager annotations.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>ingress.tls</code></td>
+<td>Enable TLS configuration for the host defined at <code>ingress.hostname</code> parameter</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ingress.extraHosts</code></td>
+<td>An array with additional hostname(s) to be covered with the ingress record</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingress.extraPaths</code></td>
+<td>An array with additional arbitrary paths that may need to be added to the ingress under the main host</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingress.extraTls</code></td>
+<td>TLS configuration for additional hostname(s) to be covered with this ingress record</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingress.secrets</code></td>
+<td>Custom TLS certificates as secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingress.ingressClassName</code></td>
+<td>IngressClass that will be be used to implement the Ingress (Kubernetes 1.18+)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ingress.extraRules</code></td>
+<td>Additional rules to be covered with this ingress record</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>mgmtIngress.enabled</code></td>
+<td>Set to true to enable ingress record generation for the Management console</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>mgmtIngress.pathType</code></td>
+<td>Ingress path type</td>
+<td><code>ImplementationSpecific</code></td>
+</tr>
+<tr>
+<td><code>mgmtIngress.hostname</code></td>
+<td>When the Management ingress is enabled, a host pointing to this will be created</td>
+<td><code>management.local</code></td>
+</tr>
+<tr>
+<td><code>mgmtIngress.annotations</code></td>
+<td>Additional annotations for the Management Ingress resource. To enable certificate autogeneration, place here your cert-manager annotations.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>mgmtIngress.tls</code></td>
+<td>Enable TLS configuration for the hostname defined at <code>mgmtIngress.hostname</code> parameter</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>mgmtIngress.extraHosts</code></td>
+<td>The list of additional hostnames to be covered with this Management ingress record</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>mgmtIngress.extraPaths</code></td>
+<td>An array with additional arbitrary paths that may need to be added to the ingress under the main host</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>mgmtIngress.extraTls</code></td>
+<td>TLS configuration for additional hostnames to be covered</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>mgmtIngress.secrets</code></td>
+<td>TLS Secret configuration</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>mgmtIngress.ingressClassName</code></td>
+<td>IngressClass that will be be used to implement the Ingress (Kubernetes 1.18+)</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="persistence-parameters">Persistence Parameters<a class="headerlink" href="#persistence-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>persistence.enabled</code></td>
+<td>Enable persistence using Persistent Volume Claims</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>persistence.storageClass</code></td>
+<td>Persistent Volume storage class</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>persistence.existingClaim</code></td>
+<td>Use a existing PVC which must be created manually before bound</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>persistence.accessModes</code></td>
+<td>Persistent Volume access modes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>persistence.size</code></td>
+<td>Persistent Volume size</td>
+<td><code>8Gi</code></td>
+</tr>
+<tr>
+<td><code>persistence.annotations</code></td>
+<td>Persistent Volume Claim annotations</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.enabled</code></td>
+<td>Enable init container that changes the owner/group of the PV mount point to <code>runAsUser:fsGroup</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.registry</code></td>
+<td>Bitnami Shell image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.repository</code></td>
+<td>Bitnami Shell image repository</td>
+<td><code>bitnami/bitnami-shell</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.tag</code></td>
+<td>Bitnami Shell image tag (immutable tags are recommended)</td>
+<td><code>11-debian-11-r127</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.digest</code></td>
+<td>Bitnami Shell image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.pullPolicy</code></td>
+<td>Bitnami Shell image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.pullSecrets</code></td>
+<td>Bitnami Shell image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.resources.limits</code></td>
+<td>The resources limits for the init container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.resources.requests</code></td>
+<td>The requested resources for the init container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.securityContext.runAsUser</code></td>
+<td>Set init container's Security Context runAsUser</td>
+<td><code>0</code></td>
+</tr>
+</tbody>
+</table>
+<p>The above parameters map to the env variables defined in <a href="https://github.com/bitnami/containers/tree/main/bitnami/wildfly">bitnami/wildfly</a>. For more information please refer to the <a href="https://github.com/bitnami/containers/tree/main/bitnami/wildfly">bitnami/wildfly</a> image documentation.</p>
+<p>Specify each parameter using the <code>--set key=value[,key=value]</code> argument to <code>helm install</code>. For example,</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="go">helm install my-release \</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="go">  --set wildflyUser=manager,wildflyPassword=password \</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="go">    bitnami/wildfly</span>
+</span></code></pre></div>
+<p>The above command sets the WildFly management username and password to <code>manager</code> and <code>password</code> respectively.</p>
+<blockquote>
+<p>NOTE: Once this chart is deployed, it is not possible to change the application's access credentials, such as usernames or passwords, using Helm. To change these application credentials after deployment, delete any persistent volumes (PVs) used by the chart and re-deploy it, or use the application's built-in administrative tools if available.</p>
+</blockquote>
+<p>Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">helm install my-release -f values.yaml bitnami/wildfly</span>
+</span></code></pre></div>
+<blockquote>
+<p><strong>Tip</strong>: You can use the default <a href="values.yaml">values.yaml</a></p>
+</blockquote>
+<h2 id="configuration-and-installation-details">Configuration and installation details<a class="headerlink" href="#configuration-and-installation-details" title="Permanent link">&para;</a></h2>
+<h3 id="rolling-vs-immutable-tags"><a href="https://docs.bitnami.com/containers/how-to/understand-rolling-tags-containers/">Rolling vs Immutable tags</a><a class="headerlink" href="#rolling-vs-immutable-tags" title="Permanent link">&para;</a></h3>
+<p>It is strongly recommended to use immutable tags in a production environment. This ensures your deployment does not change automatically if the same tag is updated with a different image.</p>
+<p>Bitnami will release a new chart updating its containers if a new version of the main container, significant changes, or critical vulnerabilities exist.</p>
+<h2 id="persistence">Persistence<a class="headerlink" href="#persistence" title="Permanent link">&para;</a></h2>
+<p>The <a href="https://github.com/bitnami/containers/tree/main/bitnami/wildfly">Bitnami WildFly</a> image stores the WildFly data and configurations at the <code>/bitnami/wildfly</code> path of the container.</p>
+<p>Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
+See the <a href="#parameters">Parameters</a> section to configure the PVC or to disable persistence.</p>
+<h3 id="adjust-permissions-of-persistent-volume-mountpoint">Adjust permissions of persistent volume mountpoint<a class="headerlink" href="#adjust-permissions-of-persistent-volume-mountpoint" title="Permanent link">&para;</a></h3>
+<p>As the image run as non-root by default, it is necessary to adjust the ownership of the persistent volume so that the container can write data into it.</p>
+<p>By default, the chart is configured to use Kubernetes Security Context to automatically change the ownership of the volume. However, this feature does not work in all Kubernetes distributions.
+As an alternative, this chart supports using an initContainer to change the ownership of the volume before mounting it in the final destination.</p>
+<p>You can enable this initContainer by setting <code>volumePermissions.enabled</code> to <code>true</code>.</p>
+<h3 id="add-extra-environment-variables">Add extra environment variables<a class="headerlink" href="#add-extra-environment-variables" title="Permanent link">&para;</a></h3>
+<p>To add extra environment variables (useful for advanced operations like custom init scripts),  use the <code>extraEnvVars</code> property.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">extraEnvVars</span><span class="p">:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LOG_LEVEL</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEBUG</span>
+</span></code></pre></div>
+<p>Alternatively, use a ConfigMap or a Secret with the environment variables. To do so, use the <code>extraEnvVarsCM</code> or the <code>extraEnvVarsSecret</code> values.</p>
+<h3 id="use-sidecars-and-init-containers">Use Sidecars and Init Containers<a class="headerlink" href="#use-sidecars-and-init-containers" title="Permanent link">&para;</a></h3>
+<p>If additional containers are needed in the same pod (such as additional metrics or logging exporters), they can be defined using the <code>sidecars</code> config parameter. Similarly, extra init containers can be added using the <code>initContainers</code> parameter.</p>
+<p>Refer to the chart documentation for more information on, and examples of, configuring and using <a href="https://docs.bitnami.com/kubernetes/infrastructure/wildfly/configuration/configure-sidecar-init-containers/">sidecars and init containers</a>.</p>
+<h3 id="set-pod-affinity">Set Pod affinity<a class="headerlink" href="#set-pod-affinity" title="Permanent link">&para;</a></h3>
+<p>This chart allows you to set custom Pod affinity using the <code>affinity</code> parameter. Find more information about Pod affinity in the <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity">Kubernetes documentation</a>.</p>
+<p>As an alternative, use one of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the <a href="https://github.com/bitnami/charts/tree/main/bitnami/common#affinities">bitnami/common</a> chart. To do so, set the <code>podAffinityPreset</code>, <code>podAntiAffinityPreset</code>, or <code>nodeAffinityPreset</code> parameters.</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p>Find more information about how to deal with common errors related to Bitnami's Helm charts in <a href="https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues">this troubleshooting guide</a>.</p>
+<h2 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">&para;</a></h2>
+<h3 id="to-1000">To 10.0.0<a class="headerlink" href="#to-1000" title="Permanent link">&para;</a></h3>
+<p>Due to recent changes in the container image (see <a href="https://github.com/bitnami/containers/tree/main/bitnami/apache#notable-changes">Notable changes</a>), the major version of the chart has been bumped preemptively.</p>
+<p>Upgrading from version <code>9.x.x</code> should be possible without any extra required step, but it's highly recommended to backup your custom web apps data before upgrading.</p>
+<h3 id="to-700">To 7.0.0<a class="headerlink" href="#to-700" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Chart labels were adapted to follow the <a href="https://helm.sh/docs/chart_best_practices/labels/#standard-labels">Helm charts standard labels</a>.</li>
+<li>Ingress configuration was also adapted to follow the Helm charts best practices.</li>
+<li>This version also introduces <code>bitnami/common</code>, a <a href="https://helm.sh/docs/topics/library_charts/#helm">library chart</a> as a dependency. More documentation about this new utility could be found <a href="https://github.com/bitnami/charts/tree/main/bitnami/common#bitnami-common-library-chart">here</a>. Please, make sure that you have updated the chart dependencies before executing any upgrade.</li>
+</ul>
+<p>Consequences:</p>
+<ul>
+<li>Backwards compatibility is not guaranteed. However, you can easily workaround this issue by removing Wildfly deployment before upgrading (the following example assumes that the release name is <code>wildfly</code>):</li>
+</ul>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">export WILDFLY_PASSWORD=$(kubectl get secret --namespace default wildfly -o jsonpath=&quot;{.data.wildfly-password}&quot; | base64 -d)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="go">kubectl delete deployments.apps wildfly</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="go">helm upgrade wildfly bitnami/wildfly --set wildflyPassword=$WILDFLY_PASSWORD</span>
+</span></code></pre></div>
+<h3 id="to-600">To 6.0.0<a class="headerlink" href="#to-600" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/helm/charts#status-of-the-project">On November 13, 2020, Helm v2 support formally ended</a>. This major version is the result of the required changes applied to the Helm Chart to be able to incorporate the different features added in Helm v3 and to be consistent with the Helm project itself regarding the Helm v2 EOL.</p>
+<p><a href="https://docs.bitnami.com/kubernetes/infrastructure/wildfly/administration/upgrade-helm3/">Learn more about this change and related upgrade considerations</a>.</p>
+<h3 id="to-210">To 2.1.0<a class="headerlink" href="#to-210" title="Permanent link">&para;</a></h3>
+<p>WildFly container was moved to a non-root approach. There shouldn't be any issue when upgrading since the corresponding <code>securityContext</code> is enabled by default. Both the container image and the chart can be upgraded by running the command below:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="go">helm upgrade my-release bitnami/wildfly</span>
+</span></code></pre></div>
+<p>If you use a previous container image (previous to <strong>14.0.1-r75</strong>) disable the <code>securityContext</code> by running the command below:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="go">helm upgrade my-release bitnami/wildfly --set securityContext.enabled=false,image.tag=XXX</span>
+</span></code></pre></div>
+<h3 id="to-100">To 1.0.0<a class="headerlink" href="#to-100" title="Permanent link">&para;</a></h3>
+<p>Backwards compatibility is not guaranteed unless you modify the labels used on the chart's deployments.
+Use the workaround below to upgrade from versions previous to 1.0.0. The following example assumes that the release name is wildfly:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="go">kubectl patch deployment wildfly --type=json -p=&#39;[{&quot;op&quot;: &quot;remove&quot;, &quot;path&quot;: &quot;/spec/selector/matchLabels/chart&quot;}]&#39;</span>
+</span></code></pre></div>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<p>Copyright &copy; 2023 VMware, Inc.</p>
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../whereabouts/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Whereabouts" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  上一页
+                </span>
+                Whereabouts
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../wordpress/" class="md-footer__link md-footer__link--next" aria-label="下一页: Wordpress" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  下一页
+                </span>
+                Wordpress
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>

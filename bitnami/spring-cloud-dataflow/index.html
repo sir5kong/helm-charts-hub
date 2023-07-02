@@ -1,0 +1,6448 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../spark/">
+      
+      
+        <link rel="next" href="../suitecrm/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Spring cloud dataflow - Helm Charts Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#spring-cloud-data-flow-packaged-by-bitnami" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Helm Charts Hub" class="md-header__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Helm Charts Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Spring cloud dataflow
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Helm Charts Hub
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../chart-list/" class="md-tabs__link">
+      Chart 列表
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Bitnami
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../grafana/" class="md-tabs__link">
+        Grafana
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ingress-nginx/" class="md-tabs__link">
+        Ingress nginx
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../prometheus-community/" class="md-tabs__link">
+        Prometheus community
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sir5kong/" class="md-tabs__link">
+        Sir5kong
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Helm Charts Hub" class="md-nav__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Helm Charts Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Helm Charts Hub
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chart-list/" class="md-nav__link">
+        Chart 列表
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Bitnami</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Bitnami" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Bitnami
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../airflow/" class="md-nav__link">
+        Airflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apache/" class="md-nav__link">
+        Apache
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apisix/" class="md-nav__link">
+        Apisix
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appsmith/" class="md-nav__link">
+        Appsmith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-cd/" class="md-nav__link">
+        Argo cd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-workflows/" class="md-nav__link">
+        Argo workflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aspnet-core/" class="md-nav__link">
+        Aspnet core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cassandra/" class="md-nav__link">
+        Cassandra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cert-manager/" class="md-nav__link">
+        Cert manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clickhouse/" class="md-nav__link">
+        Clickhouse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common/" class="md-nav__link">
+        Bitnami Common Library Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concourse/" class="md-nav__link">
+        Concourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../consul/" class="md-nav__link">
+        Consul
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contour/" class="md-nav__link">
+        Contour
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../discourse/" class="md-nav__link">
+        Discourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dokuwiki/" class="md-nav__link">
+        Dokuwiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drupal/" class="md-nav__link">
+        Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejbca/" class="md-nav__link">
+        Ejbca
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../elasticsearch/" class="md-nav__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../etcd/" class="md-nav__link">
+        Etcd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../external-dns/" class="md-nav__link">
+        External dns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flink/" class="md-nav__link">
+        Flink
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluent-bit/" class="md-nav__link">
+        Fluent bit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluentd/" class="md-nav__link">
+        Fluentd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flux/" class="md-nav__link">
+        Flux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ghost/" class="md-nav__link">
+        Ghost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitea/" class="md-nav__link">
+        Gitea
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-loki/" class="md-nav__link">
+        Grafana loki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-mimir/" class="md-nav__link">
+        Grafana mimir
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-operator/" class="md-nav__link">
+        Grafana operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-tempo/" class="md-nav__link">
+        Grafana tempo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana/" class="md-nav__link">
+        Grafana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../haproxy/" class="md-nav__link">
+        Haproxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../harbor/" class="md-nav__link">
+        Harbor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../influxdb/" class="md-nav__link">
+        Influxdb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jaeger/" class="md-nav__link">
+        Jaeger
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jasperreports/" class="md-nav__link">
+        Jasperreports
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jenkins/" class="md-nav__link">
+        Jenkins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../joomla/" class="md-nav__link">
+        Joomla
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jupyterhub/" class="md-nav__link">
+        Jupyterhub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kafka/" class="md-nav__link">
+        Kafka
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keycloak/" class="md-nav__link">
+        Keycloak
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kiam/" class="md-nav__link">
+        Kiam
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kibana/" class="md-nav__link">
+        Kibana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kong/" class="md-nav__link">
+        Kong
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube-prometheus/" class="md-nav__link">
+        Kube prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube-state-metrics/" class="md-nav__link">
+        Kube state metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubeapps/" class="md-nav__link">
+        Kubeapps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-event-exporter/" class="md-nav__link">
+        Kubernetes event exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logstash/" class="md-nav__link">
+        Logstash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../magento/" class="md-nav__link">
+        Magento
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mariadb-galera/" class="md-nav__link">
+        Mariadb galera
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mariadb/" class="md-nav__link">
+        Mariadb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mastodon/" class="md-nav__link">
+        Mastodon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matomo/" class="md-nav__link">
+        Matomo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mediawiki/" class="md-nav__link">
+        Mediawiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memcached/" class="md-nav__link">
+        Memcached
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metallb/" class="md-nav__link">
+        Metallb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics-server/" class="md-nav__link">
+        Metrics server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../minio/" class="md-nav__link">
+        Minio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mongodb-sharded/" class="md-nav__link">
+        Mongodb sharded
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mongodb/" class="md-nav__link">
+        Mongodb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../moodle/" class="md-nav__link">
+        Moodle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multus-cni/" class="md-nav__link">
+        Multus cni
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mxnet/" class="md-nav__link">
+        Mxnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mysql/" class="md-nav__link">
+        Mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nats/" class="md-nav__link">
+        Nats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx-ingress-controller/" class="md-nav__link">
+        Nginx ingress controller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx/" class="md-nav__link">
+        Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../node-exporter/" class="md-nav__link">
+        Node exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oauth2-proxy/" class="md-nav__link">
+        Oauth2 proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../odoo/" class="md-nav__link">
+        Odoo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opencart/" class="md-nav__link">
+        Opencart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../osclass/" class="md-nav__link">
+        Osclass
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parse/" class="md-nav__link">
+        Parse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpbb/" class="md-nav__link">
+        Phpbb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpmyadmin/" class="md-nav__link">
+        Phpmyadmin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinniped/" class="md-nav__link">
+        Pinniped
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgresql-ha/" class="md-nav__link">
+        Postgresql ha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgresql/" class="md-nav__link">
+        Postgresql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prestashop/" class="md-nav__link">
+        Prestashop
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rabbitmq-cluster-operator/" class="md-nav__link">
+        Rabbitmq cluster operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rabbitmq/" class="md-nav__link">
+        Rabbitmq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis-cluster/" class="md-nav__link">
+        Redis cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redmine/" class="md-nav__link">
+        Redmine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema-registry/" class="md-nav__link">
+        Schema registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sealed-secrets/" class="md-nav__link">
+        Sealed secrets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solr/" class="md-nav__link">
+        Solr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sonarqube/" class="md-nav__link">
+        Sonarqube
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spark/" class="md-nav__link">
+        Spark
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Spring cloud dataflow
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Spring cloud dataflow
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    TL;DR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    Installing the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    Uninstalling the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-parameters" class="md-nav__link">
+    Global parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-parameters" class="md-nav__link">
+    Common parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataflow-server-parameters" class="md-nav__link">
+    Dataflow Server parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataflow-skipper-parameters" class="md-nav__link">
+    Dataflow Skipper parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployer-parameters" class="md-nav__link">
+    Deployer parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rbac-parameters" class="md-nav__link">
+    RBAC parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-parameters" class="md-nav__link">
+    Metrics parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init-container-parameters" class="md-nav__link">
+    Init Container parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-parameters" class="md-nav__link">
+    Database parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rabbitmq-chart-parameters" class="md-nav__link">
+    RabbitMQ chart parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kafka-chart-parameters" class="md-nav__link">
+    Kafka chart parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-installation-details" class="md-nav__link">
+    Configuration and installation details
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and installation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-vs-immutable-tags" class="md-nav__link">
+    Rolling VS Immutable tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#messaging-solutions" class="md-nav__link">
+    Messaging solutions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-an-external-database" class="md-nav__link">
+    Using an external database
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-extra-flags" class="md-nav__link">
+    Adding extra flags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-custom-dataflow-configuration" class="md-nav__link">
+    Using custom Dataflow configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-custom-skipper-configuration" class="md-nav__link">
+    Using custom Skipper configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sidecars-and-init-containers" class="md-nav__link">
+    Sidecars and Init Containers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingress" class="md-nav__link">
+    Ingress
+  </a>
+  
+    <nav class="md-nav" aria-label="Ingress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hosts" class="md-nav__link">
+    Hosts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tls" class="md-nav__link">
+    TLS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-pods-affinity" class="md-nav__link">
+    Setting Pod's affinity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    Upgrading
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-1800" class="md-nav__link">
+    To 18.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-1700" class="md-nav__link">
+    To 17.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-1600" class="md-nav__link">
+    To 16.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-1500" class="md-nav__link">
+    To 15.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-1400" class="md-nav__link">
+    To 14.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-1300" class="md-nav__link">
+    To 13.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-1200" class="md-nav__link">
+    To 12.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-1100" class="md-nav__link">
+    To 11.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-1000" class="md-nav__link">
+    To 10.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-900" class="md-nav__link">
+    To 9.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-800" class="md-nav__link">
+    To 8.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-700" class="md-nav__link">
+    To 7.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-600" class="md-nav__link">
+    To 6.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-500" class="md-nav__link">
+    To 5.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-400" class="md-nav__link">
+    To 4.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-300" class="md-nav__link">
+    To 3.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-200" class="md-nav__link">
+    To 2.0.0
+  </a>
+  
+    <nav class="md-nav" aria-label="To 2.0.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-changes-were-introduced-in-this-major-version" class="md-nav__link">
+    What changes were introduced in this major version?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#considerations-when-upgrading-to-this-version" class="md-nav__link">
+    Considerations when upgrading to this version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#useful-links" class="md-nav__link">
+    Useful links
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v0xx" class="md-nav__link">
+    v0.x.x
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v1xx" class="md-nav__link">
+    v1.x.x
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-100" class="md-nav__link">
+    To 1.0.0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../suitecrm/" class="md-nav__link">
+        Suitecrm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supabase/" class="md-nav__link">
+        Supabase
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tensorflow-resnet/" class="md-nav__link">
+        Tensorflow resnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../thanos/" class="md-nav__link">
+        Thanos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tomcat/" class="md-nav__link">
+        Tomcat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault/" class="md-nav__link">
+        Vault
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavefront-hpa-adapter/" class="md-nav__link">
+        Wavefront hpa adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavefront-prometheus-storage-adapter/" class="md-nav__link">
+        Wavefront prometheus storage adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whereabouts/" class="md-nav__link">
+        Whereabouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wildfly/" class="md-nav__link">
+        Wildfly
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wordpress/" class="md-nav__link">
+        Wordpress
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zookeeper/" class="md-nav__link">
+        Zookeeper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../grafana/">Grafana</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Grafana" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Grafana
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/agent-operator/" class="md-nav__link">
+        grafana-agent-operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-logs-simple/" class="md-nav__link">
+        enterprise-logs-simple
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-logs/" class="md-nav__link">
+        Grafana Enterprise Logs Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-metrics/" class="md-nav__link">
+        Grafana Enterprise Metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/fluent-bit/" class="md-nav__link">
+        Fluent Bit Loki chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/grafana-agent/" class="md-nav__link">
+        Grafana Agent chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/grafana/" class="md-nav__link">
+        Grafana Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-canary/" class="md-nav__link">
+        loki-canary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-distributed/" class="md-nav__link">
+        loki-distributed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-stack/" class="md-nav__link">
+        Loki-Stack Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/mimir-distributed/" class="md-nav__link">
+        Notice of relocation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/promtail/" class="md-nav__link">
+        promtail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/rollout-operator/" class="md-nav__link">
+        Grafana rollout-operator Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/synthetic-monitoring-agent/" class="md-nav__link">
+        synthetic-monitoring-agent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo-distributed/" class="md-nav__link">
+        tempo-distributed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo-vulture/" class="md-nav__link">
+        tempo-vulture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo/" class="md-nav__link">
+        tempo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../ingress-nginx/">Ingress nginx</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Ingress nginx" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Ingress nginx
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ingress-nginx/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../prometheus-community/">Prometheus community</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Prometheus community" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Prometheus community
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager-snmp-notifier/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager/" class="md-nav__link">
+        Alertmanager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/jiralert/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-prometheus-stack/" class="md-nav__link">
+        kube-prometheus-stack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-state-metrics/" class="md-nav__link">
+        kube-state-metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prom-label-proxy/" class="md-nav__link">
+        prom-label-proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-adapter/" class="md-nav__link">
+        Prometheus Adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-blackbox-exporter/" class="md-nav__link">
+        Prometheus Blackbox Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-cloudwatch-exporter/" class="md-nav__link">
+        Prometheus Cloudwatch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-conntrack-stats-exporter/" class="md-nav__link">
+        Conntrack Stats Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-consul-exporter/" class="md-nav__link">
+        Prometheus Consul Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-couchdb-exporter/" class="md-nav__link">
+        prometheus-couchdb-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-druid-exporter/" class="md-nav__link">
+        Prometheus Druid Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-elasticsearch-exporter/" class="md-nav__link">
+        Elasticsearch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-fastly-exporter/" class="md-nav__link">
+        Prometheus Fastly Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-json-exporter/" class="md-nav__link">
+        prometheus-json-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-kafka-exporter/" class="md-nav__link">
+        prometheus-kafka-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mongodb-exporter/" class="md-nav__link">
+        Prometheus MongoDB Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mysql-exporter/" class="md-nav__link">
+        Prometheus Mysql Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nats-exporter/" class="md-nav__link">
+        Prometheus NATS Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nginx-exporter/" class="md-nav__link">
+        prometheus-nginx-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-node-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-admission-webhook/" class="md-nav__link">
+        Prometheus Operator Admission Webhook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-crds/" class="md-nav__link">
+        Prometheus Operator CRDs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pgbouncer-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingdom-exporter/" class="md-nav__link">
+        Prometheus Pingdom Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingmesh-exporter/" class="md-nav__link">
+        Prometheus Pingmesh Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-postgres-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pushgateway/" class="md-nav__link">
+        Prometheus Pushgateway
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-rabbitmq-exporter/" class="md-nav__link">
+        prometheus-rabbitmq-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-redis-exporter/" class="md-nav__link">
+        prometheus-redis-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-smartctl-exporter/" class="md-nav__link">
+        Prometheus smartctl Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-snmp-exporter/" class="md-nav__link">
+        Prometheus SNMP Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-stackdriver-exporter/" class="md-nav__link">
+        Stackdriver Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-statsd-exporter/" class="md-nav__link">
+        prometheus-statsd-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-to-sd/" class="md-nav__link">
+        prometheus-to-sd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-windows-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../sir5kong/">Sir5kong</a>
+          
+            <label for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Sir5kong" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Sir5kong
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/commonapp/" class="md-nav__link">
+        commonapp helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/kafka/" class="md-nav__link">
+        Kafka helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/nginx/" class="md-nav__link">
+        nginx helm chart
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    TL;DR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    Installing the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    Uninstalling the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-parameters" class="md-nav__link">
+    Global parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-parameters" class="md-nav__link">
+    Common parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataflow-server-parameters" class="md-nav__link">
+    Dataflow Server parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataflow-skipper-parameters" class="md-nav__link">
+    Dataflow Skipper parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployer-parameters" class="md-nav__link">
+    Deployer parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rbac-parameters" class="md-nav__link">
+    RBAC parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-parameters" class="md-nav__link">
+    Metrics parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init-container-parameters" class="md-nav__link">
+    Init Container parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-parameters" class="md-nav__link">
+    Database parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rabbitmq-chart-parameters" class="md-nav__link">
+    RabbitMQ chart parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kafka-chart-parameters" class="md-nav__link">
+    Kafka chart parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-installation-details" class="md-nav__link">
+    Configuration and installation details
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and installation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-vs-immutable-tags" class="md-nav__link">
+    Rolling VS Immutable tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#messaging-solutions" class="md-nav__link">
+    Messaging solutions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-an-external-database" class="md-nav__link">
+    Using an external database
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-extra-flags" class="md-nav__link">
+    Adding extra flags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-custom-dataflow-configuration" class="md-nav__link">
+    Using custom Dataflow configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-custom-skipper-configuration" class="md-nav__link">
+    Using custom Skipper configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sidecars-and-init-containers" class="md-nav__link">
+    Sidecars and Init Containers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingress" class="md-nav__link">
+    Ingress
+  </a>
+  
+    <nav class="md-nav" aria-label="Ingress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hosts" class="md-nav__link">
+    Hosts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tls" class="md-nav__link">
+    TLS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-pods-affinity" class="md-nav__link">
+    Setting Pod's affinity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    Upgrading
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-1800" class="md-nav__link">
+    To 18.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-1700" class="md-nav__link">
+    To 17.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-1600" class="md-nav__link">
+    To 16.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-1500" class="md-nav__link">
+    To 15.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-1400" class="md-nav__link">
+    To 14.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-1300" class="md-nav__link">
+    To 13.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-1200" class="md-nav__link">
+    To 12.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-1100" class="md-nav__link">
+    To 11.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-1000" class="md-nav__link">
+    To 10.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-900" class="md-nav__link">
+    To 9.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-800" class="md-nav__link">
+    To 8.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-700" class="md-nav__link">
+    To 7.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-600" class="md-nav__link">
+    To 6.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-500" class="md-nav__link">
+    To 5.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-400" class="md-nav__link">
+    To 4.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-300" class="md-nav__link">
+    To 3.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-200" class="md-nav__link">
+    To 2.0.0
+  </a>
+  
+    <nav class="md-nav" aria-label="To 2.0.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-changes-were-introduced-in-this-major-version" class="md-nav__link">
+    What changes were introduced in this major version?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#considerations-when-upgrading-to-this-version" class="md-nav__link">
+    Considerations when upgrading to this version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#useful-links" class="md-nav__link">
+    Useful links
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v0xx" class="md-nav__link">
+    v0.x.x
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v1xx" class="md-nav__link">
+    v1.x.x
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-100" class="md-nav__link">
+    To 1.0.0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<!--- app-name: Spring Cloud Data Flow -->
+
+<h1 id="spring-cloud-data-flow-packaged-by-bitnami">Spring Cloud Data Flow packaged by Bitnami<a class="headerlink" href="#spring-cloud-data-flow-packaged-by-bitnami" title="Permanent link">&para;</a></h1>
+<p>Spring Cloud Data Flow is a microservices-based toolkit for building streaming and batch data processing pipelines in Cloud Foundry and Kubernetes.</p>
+<p><a href="https://github.com/spring-cloud/spring-cloud-dataflow">Overview of Spring Cloud Data Flow</a></p>
+<h2 id="tldr">TL;DR<a class="headerlink" href="#tldr" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>使用加速地址添加仓库:</p>
+</blockquote>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>bitnami<span class="w"> </span><span class="s2">&quot;https://helm-charts.itboon.top/bitnami&quot;</span><span class="w"> </span>--force-update
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>helm<span class="w"> </span>update<span class="w"> </span>bitnami
+</span></code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="go">helm install my-release bitnami/spring-cloud-dataflow</span>
+</span></code></pre></div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>This chart bootstraps a <a href="https://github.com/bitnami/containers/tree/main/bitnami/spring-cloud-dataflow">Spring Cloud Data Flow</a> deployment on a <a href="https://kubernetes.io">Kubernetes</a> cluster using the <a href="https://helm.sh">Helm</a> package manager.</p>
+<p>Bitnami charts can be used with <a href="https://kubeapps.dev/">Kubeapps</a> for deployment and management of Helm Charts in clusters.</p>
+<p>Looking to use Spring Cloud Data Flow in production? Try <a href="https://bitnami.com/enterprise">VMware Application Catalog</a>, the enterprise edition of Bitnami Application Catalog.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Kubernetes 1.19+</li>
+<li>Helm 3.2.0+</li>
+<li>PV provisioner support in the underlying infrastructure</li>
+</ul>
+<h2 id="installing-the-chart">Installing the Chart<a class="headerlink" href="#installing-the-chart" title="Permanent link">&para;</a></h2>
+<p>To install the chart with the release name <code>my-release</code>:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">helm install my-release bitnami/spring-cloud-dataflow</span>
+</span></code></pre></div>
+<p>These commands deploy Spring Cloud Data Flow on the Kubernetes cluster with the default configuration. The <a href="#parameters">parameters</a> section lists the parameters that can be configured during installation.</p>
+<blockquote>
+<p><strong>Tip</strong>: List all releases using <code>helm list</code></p>
+</blockquote>
+<h2 id="uninstalling-the-chart">Uninstalling the Chart<a class="headerlink" href="#uninstalling-the-chart" title="Permanent link">&para;</a></h2>
+<p>To uninstall/delete the <code>my-release</code> chart:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="go">helm uninstall my-release</span>
+</span></code></pre></div>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
+<h3 id="global-parameters">Global parameters<a class="headerlink" href="#global-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>global.imageRegistry</code></td>
+<td>Global Docker image registry</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>global.imagePullSecrets</code></td>
+<td>Global Docker registry secret names as an array</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>global.storageClass</code></td>
+<td>Global StorageClass for Persistent Volume(s)</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-parameters">Common parameters<a class="headerlink" href="#common-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nameOverride</code></td>
+<td>String to partially override scdf.fullname template (will maintain the release name).</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>fullnameOverride</code></td>
+<td>String to fully override scdf.fullname template.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>commonAnnotations</code></td>
+<td>Annotations to add to all deployed objects</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>commonLabels</code></td>
+<td>Labels to add to all deployed objects</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>kubeVersion</code></td>
+<td>Force target Kubernetes version (using Helm capabilities if not set)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>clusterDomain</code></td>
+<td>Default Kubernetes cluster domain</td>
+<td><code>cluster.local</code></td>
+</tr>
+<tr>
+<td><code>extraDeploy</code></td>
+<td>Array of extra objects to deploy with the release</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="dataflow-server-parameters">Dataflow Server parameters<a class="headerlink" href="#dataflow-server-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>server.image.registry</code></td>
+<td>Spring Cloud Dataflow image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>server.image.repository</code></td>
+<td>Spring Cloud Dataflow image repository</td>
+<td><code>bitnami/spring-cloud-dataflow</code></td>
+</tr>
+<tr>
+<td><code>server.image.tag</code></td>
+<td>Spring Cloud Dataflow image tag (immutable tags are recommended)</td>
+<td><code>2.10.3-debian-11-r4</code></td>
+</tr>
+<tr>
+<td><code>server.image.digest</code></td>
+<td>Spring Cloud Dataflow image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.image.pullPolicy</code></td>
+<td>Spring Cloud Dataflow image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>server.image.pullSecrets</code></td>
+<td>Specify docker-registry secret names as an array</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.image.debug</code></td>
+<td>Enable image debug mode</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.hostAliases</code></td>
+<td>Deployment pod host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.composedTaskRunner.image.registry</code></td>
+<td>Spring Cloud Dataflow Composed Task Runner image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>server.composedTaskRunner.image.repository</code></td>
+<td>Spring Cloud Dataflow Composed Task Runner image repository</td>
+<td><code>bitnami/spring-cloud-dataflow-composed-task-runner</code></td>
+</tr>
+<tr>
+<td><code>server.composedTaskRunner.image.tag</code></td>
+<td>Spring Cloud Dataflow Composed Task Runner image tag (immutable tags are recommended)</td>
+<td><code>2.10.3-debian-11-r1</code></td>
+</tr>
+<tr>
+<td><code>server.composedTaskRunner.image.digest</code></td>
+<td>Spring Cloud Dataflow Composed Task Runner image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.configuration.streamingEnabled</code></td>
+<td>Enables or disables streaming data processing</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>server.configuration.batchEnabled</code></td>
+<td>Enables or disables batch data (tasks and schedules) processing</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>server.configuration.accountName</code></td>
+<td>The name of the account to configure for the Kubernetes platform</td>
+<td><code>default</code></td>
+</tr>
+<tr>
+<td><code>server.configuration.trustK8sCerts</code></td>
+<td>Trust K8s certificates when querying the Kubernetes API</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.configuration.containerRegistries</code></td>
+<td>Container registries configuration</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.configuration.grafanaInfo</code></td>
+<td>Endpoint to the grafana instance (Deprecated: use the metricsDashboard instead)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.configuration.metricsDashboard</code></td>
+<td>Endpoint to the metricsDashboard instance</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.configuration.defaultSpringApplicationJSON</code></td>
+<td>Injects default values for environment variable SPRING_APPLICATION_JSON</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>server.existingConfigmap</code></td>
+<td>ConfigMap with Spring Cloud Dataflow Server Configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.lifecycleHooks</code></td>
+<td>for the Dataflow server container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.extraEnvVars</code></td>
+<td>Extra environment variables to be set on Dataflow server container</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.extraEnvVarsCM</code></td>
+<td>ConfigMap with extra environment variables</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.extraEnvVarsSecret</code></td>
+<td>Secret with extra environment variables</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.replicaCount</code></td>
+<td>Number of Dataflow server replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>server.podAffinityPreset</code></td>
+<td>Dataflow server pod affinity preset. Ignored if <code>server.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.podAntiAffinityPreset</code></td>
+<td>Dataflow server pod anti-affinity preset. Ignored if <code>server.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>server.containerPort</code></td>
+<td>Dataflow server port</td>
+<td><code>8080</code></td>
+</tr>
+<tr>
+<td><code>server.nodeAffinityPreset.type</code></td>
+<td>Dataflow server node affinity preset type. Ignored if <code>server.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.nodeAffinityPreset.key</code></td>
+<td>Dataflow server node label key to match Ignored if <code>server.affinity</code> is set.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.nodeAffinityPreset.values</code></td>
+<td>Dataflow server node label values to match. Ignored if <code>server.affinity</code> is set.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.affinity</code></td>
+<td>Dataflow server affinity for pod assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.nodeSelector</code></td>
+<td>Dataflow server node labels for pod assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.tolerations</code></td>
+<td>Dataflow server tolerations for pod assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.podAnnotations</code></td>
+<td>Annotations for Dataflow server pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.updateStrategy.type</code></td>
+<td>Deployment strategy type for Dataflow server pods.</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>server.podLabels</code></td>
+<td>Extra labels for Dataflow Server pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.priorityClassName</code></td>
+<td>Dataflow Server pods' priority</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.schedulerName</code></td>
+<td>Name of the k8s scheduler (other than default)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.podSecurityContext.enabled</code></td>
+<td>Enabled Dataflow Server pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>server.podSecurityContext.fsGroup</code></td>
+<td>Group ID for the volumes of the pod</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>server.containerSecurityContext.enabled</code></td>
+<td>Enabled Dataflow Server containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>server.containerSecurityContext.runAsUser</code></td>
+<td>Set Dataflow Server container's Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>server.resources.limits</code></td>
+<td>The resources limits for the Dataflow server container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.resources.requests</code></td>
+<td>The requested resources for the Dataflow server container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.startupProbe.enabled</code></td>
+<td>Enable startupProbe</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>120</code></td>
+</tr>
+<tr>
+<td><code>server.startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>20</code></td>
+</tr>
+<tr>
+<td><code>server.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>server.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>server.startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>server.livenessProbe.enabled</code></td>
+<td>Enable livenessProbe</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>server.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>120</code></td>
+</tr>
+<tr>
+<td><code>server.livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>20</code></td>
+</tr>
+<tr>
+<td><code>server.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>server.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>server.livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>server.readinessProbe.enabled</code></td>
+<td>Enable readinessProbe</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>server.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>120</code></td>
+</tr>
+<tr>
+<td><code>server.readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>20</code></td>
+</tr>
+<tr>
+<td><code>server.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>server.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>server.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>server.customStartupProbe</code></td>
+<td>Override default startup probe</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.customLivenessProbe</code></td>
+<td>Override default liveness probe</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.customReadinessProbe</code></td>
+<td>Override default readiness probe</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.service.type</code></td>
+<td>Kubernetes service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>server.service.port</code></td>
+<td>Service HTTP port</td>
+<td><code>8080</code></td>
+</tr>
+<tr>
+<td><code>server.service.nodePort</code></td>
+<td>Specify the nodePort value for the LoadBalancer and NodePort service types</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.service.clusterIP</code></td>
+<td>Dataflow server service cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.service.externalTrafficPolicy</code></td>
+<td>Enable client source IP preservation</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>server.service.loadBalancerIP</code></td>
+<td>Load balancer IP if service type is <code>LoadBalancer</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.service.loadBalancerSourceRanges</code></td>
+<td>Addresses that are allowed when service is LoadBalancer</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.service.extraPorts</code></td>
+<td>Extra ports to expose (normally used with the <code>sidecar</code> value)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.service.annotations</code></td>
+<td>Provide any additional annotations which may be required. Evaluated as a template.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.service.sessionAffinity</code></td>
+<td>Session Affinity for Kubernetes service, can be "None" or "ClientIP"</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>server.service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.enabled</code></td>
+<td>Enable ingress controller resource</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.path</code></td>
+<td>The Path to WordPress. You may need to set this to '/*' in order to use this with ALB ingress controllers.</td>
+<td><code>/</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.apiVersion</code></td>
+<td>Force Ingress API version (automatically detected if not set)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.pathType</code></td>
+<td>Ingress path type</td>
+<td><code>ImplementationSpecific</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.hostname</code></td>
+<td>Default host for the ingress resource</td>
+<td><code>dataflow.local</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.annotations</code></td>
+<td>Additional annotations for the Ingress resource. To enable certificate autogeneration, place here your cert-manager annotations.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.tls</code></td>
+<td>Enable TLS configuration for the hostname defined at ingress.hostname parameter</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.certManager</code></td>
+<td>Add the corresponding annotations for cert-manager integration</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.extraHosts</code></td>
+<td>The list of additional hostnames to be covered with this ingress record.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.extraPaths</code></td>
+<td>An array with additional arbitrary paths that may need to be added to the ingress under the main host</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.extraTls</code></td>
+<td>The tls configuration for additional hostnames to be covered with this ingress record.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.secrets</code></td>
+<td>If you're providing your own certificates, please use this to add the certificates as secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.ingressClassName</code></td>
+<td>IngressClass that will be be used to implement the Ingress (Kubernetes 1.18+)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.extraRules</code></td>
+<td>Additional rules to be covered with this ingress record</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.initContainers</code></td>
+<td>Add init containers to the Dataflow Server pods</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.sidecars</code></td>
+<td>Add sidecars to the Dataflow Server pods</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.pdb.create</code></td>
+<td>Enable/disable a Pod Disruption Budget creation</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.pdb.minAvailable</code></td>
+<td>Minimum number/percentage of pods that should remain scheduled</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>server.pdb.maxUnavailable</code></td>
+<td>Maximum number/percentage of pods that may be made unavailable</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.autoscaling.enabled</code></td>
+<td>Enable autoscaling for Dataflow server</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.autoscaling.minReplicas</code></td>
+<td>Minimum number of Dataflow server replicas</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.autoscaling.maxReplicas</code></td>
+<td>Maximum number of Dataflow server replicas</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.autoscaling.targetCPU</code></td>
+<td>Target CPU utilization percentage</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.autoscaling.targetMemory</code></td>
+<td>Target Memory utilization percentage</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.extraVolumes</code></td>
+<td>Extra Volumes to be set on the Dataflow Server Pod</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.extraVolumeMounts</code></td>
+<td>Extra VolumeMounts to be set on the Dataflow Container</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.jdwp.enabled</code></td>
+<td>Set to true to enable Java debugger</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.jdwp.port</code></td>
+<td>Specify port for remote debugging</td>
+<td><code>5005</code></td>
+</tr>
+<tr>
+<td><code>server.proxy</code></td>
+<td>Add proxy configuration for SCDF server</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.applicationProperties</code></td>
+<td>Specify common application properties added by SCDF server to streams and/or tasks</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="dataflow-skipper-parameters">Dataflow Skipper parameters<a class="headerlink" href="#dataflow-skipper-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skipper.enabled</code></td>
+<td>Enable Spring Cloud Skipper component</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>skipper.hostAliases</code></td>
+<td>Deployment pod host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>skipper.image.registry</code></td>
+<td>Spring Cloud Skipper image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>skipper.image.repository</code></td>
+<td>Spring Cloud Skipper image repository</td>
+<td><code>bitnami/spring-cloud-skipper</code></td>
+</tr>
+<tr>
+<td><code>skipper.image.tag</code></td>
+<td>Spring Cloud Skipper image tag (immutable tags are recommended)</td>
+<td><code>2.9.3-debian-11-r2</code></td>
+</tr>
+<tr>
+<td><code>skipper.image.digest</code></td>
+<td>Spring Cloud Skipper image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>skipper.image.pullPolicy</code></td>
+<td>Spring Cloud Skipper image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>skipper.image.pullSecrets</code></td>
+<td>Specify docker-registry secret names as an array</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>skipper.image.debug</code></td>
+<td>Enable image debug mode</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>skipper.configuration.accountName</code></td>
+<td>The name of the account to configure for the Kubernetes platform</td>
+<td><code>default</code></td>
+</tr>
+<tr>
+<td><code>skipper.configuration.trustK8sCerts</code></td>
+<td>Trust K8s certificates when querying the Kubernetes API</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>skipper.existingConfigmap</code></td>
+<td>Name of existing ConfigMap with Skipper server configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>skipper.command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>skipper.args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>skipper.lifecycleHooks</code></td>
+<td>for the Skipper container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>skipper.extraEnvVars</code></td>
+<td>Extra environment variables to be set on Skipper server container</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>skipper.extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra environment variables</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>skipper.extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra environment variables</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>skipper.replicaCount</code></td>
+<td>Number of Skipper server replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>skipper.podAffinityPreset</code></td>
+<td>Skipper pod affinity preset. Ignored if <code>skipper.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>skipper.podAntiAffinityPreset</code></td>
+<td>Skipper pod anti-affinity preset. Ignored if <code>skipper.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>skipper.nodeAffinityPreset.type</code></td>
+<td>Skipper node affinity preset type. Ignored if <code>skipper.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>skipper.nodeAffinityPreset.key</code></td>
+<td>Skipper node label key to match Ignored if <code>skipper.affinity</code> is set.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>skipper.nodeAffinityPreset.values</code></td>
+<td>Skipper node label values to match. Ignored if <code>skipper.affinity</code> is set.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>skipper.affinity</code></td>
+<td>Skipper affinity for pod assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>skipper.nodeSelector</code></td>
+<td>Skipper node labels for pod assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>skipper.tolerations</code></td>
+<td>Skipper tolerations for pod assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>skipper.podAnnotations</code></td>
+<td>Annotations for Skipper server pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>skipper.updateStrategy.type</code></td>
+<td>Deployment strategy type for Skipper server pods.</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>skipper.podLabels</code></td>
+<td>Extra labels for Skipper pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>skipper.priorityClassName</code></td>
+<td>Controller priorityClassName</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>skipper.schedulerName</code></td>
+<td>Name of the k8s scheduler (other than default)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>skipper.topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>skipper.podSecurityContext.enabled</code></td>
+<td>Enabled Skipper pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>skipper.podSecurityContext.fsGroup</code></td>
+<td>Group ID for the volumes of the pod</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>skipper.containerSecurityContext.enabled</code></td>
+<td>Enabled Datafkiw Skipper containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>skipper.containerSecurityContext.runAsUser</code></td>
+<td>Set Dataflow Skipper container's Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>skipper.resources.limits</code></td>
+<td>The resources limits for the Skipper server container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>skipper.resources.requests</code></td>
+<td>The requested resources for the Skipper server container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>skipper.startupProbe.enabled</code></td>
+<td>Enable startupProbe</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>skipper.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>120</code></td>
+</tr>
+<tr>
+<td><code>skipper.startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>20</code></td>
+</tr>
+<tr>
+<td><code>skipper.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>skipper.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>skipper.startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>skipper.livenessProbe.enabled</code></td>
+<td>Enable livenessProbe</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>skipper.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>120</code></td>
+</tr>
+<tr>
+<td><code>skipper.livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>20</code></td>
+</tr>
+<tr>
+<td><code>skipper.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>skipper.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>skipper.livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>skipper.readinessProbe.enabled</code></td>
+<td>Enable readinessProbe</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>skipper.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>120</code></td>
+</tr>
+<tr>
+<td><code>skipper.readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>20</code></td>
+</tr>
+<tr>
+<td><code>skipper.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>skipper.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>skipper.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>skipper.customStartupProbe</code></td>
+<td>Override default startup probe</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>skipper.customLivenessProbe</code></td>
+<td>Override default liveness probe</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>skipper.customReadinessProbe</code></td>
+<td>Override default readiness probe</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>skipper.service.type</code></td>
+<td>Kubernetes service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>skipper.service.port</code></td>
+<td>Service HTTP port</td>
+<td><code>80</code></td>
+</tr>
+<tr>
+<td><code>skipper.service.nodePort</code></td>
+<td>Service HTTP node port</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>skipper.service.clusterIP</code></td>
+<td>Skipper server service cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>skipper.service.externalTrafficPolicy</code></td>
+<td>Enable client source IP preservation</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>skipper.service.loadBalancerIP</code></td>
+<td>Load balancer IP if service type is <code>LoadBalancer</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>skipper.service.loadBalancerSourceRanges</code></td>
+<td>Address that are allowed when service is LoadBalancer</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>skipper.service.extraPorts</code></td>
+<td>Extra ports to expose (normally used with the <code>sidecar</code> value)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>skipper.service.annotations</code></td>
+<td>Annotations for Skipper server service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>skipper.service.sessionAffinity</code></td>
+<td>Session Affinity for Kubernetes service, can be "None" or "ClientIP"</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>skipper.service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>skipper.initContainers</code></td>
+<td>Add init containers to the Dataflow Skipper pods</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>skipper.sidecars</code></td>
+<td>Add sidecars to the Skipper pods</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>skipper.pdb.create</code></td>
+<td>Enable/disable a Pod Disruption Budget creation</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>skipper.pdb.minAvailable</code></td>
+<td>Minimum number/percentage of pods that should remain scheduled</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>skipper.pdb.maxUnavailable</code></td>
+<td>Maximum number/percentage of pods that may be made unavailable</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>skipper.autoscaling.enabled</code></td>
+<td>Enable autoscaling for Skipper server</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>skipper.autoscaling.minReplicas</code></td>
+<td>Minimum number of Skipper server replicas</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>skipper.autoscaling.maxReplicas</code></td>
+<td>Maximum number of Skipper server replicas</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>skipper.autoscaling.targetCPU</code></td>
+<td>Target CPU utilization percentage</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>skipper.autoscaling.targetMemory</code></td>
+<td>Target Memory utilization percentage</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>skipper.extraVolumes</code></td>
+<td>Extra Volumes to be set on the Skipper Pod</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>skipper.extraVolumeMounts</code></td>
+<td>Extra VolumeMounts to be set on the Skipper Container</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>skipper.jdwp.enabled</code></td>
+<td>Enable Java Debug Wire Protocol (JDWP)</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>skipper.jdwp.port</code></td>
+<td>JDWP TCP port for remote debugging</td>
+<td><code>5005</code></td>
+</tr>
+<tr>
+<td><code>externalSkipper.host</code></td>
+<td>Host of a external Skipper Server</td>
+<td><code>localhost</code></td>
+</tr>
+<tr>
+<td><code>externalSkipper.port</code></td>
+<td>External Skipper Server port number</td>
+<td><code>7577</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="deployer-parameters">Deployer parameters<a class="headerlink" href="#deployer-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>deployer.resources.limits</code></td>
+<td>Streaming applications resource limits</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>deployer.resources.requests</code></td>
+<td>Streaming applications resource requests</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>deployer.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>120</code></td>
+</tr>
+<tr>
+<td><code>deployer.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>90</code></td>
+</tr>
+<tr>
+<td><code>deployer.nodeSelector</code></td>
+<td>The node selectors to apply to the streaming applications deployments in "key:value" format</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>deployer.tolerations</code></td>
+<td>Streaming applications tolerations</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>deployer.volumeMounts</code></td>
+<td>Streaming applications extra volume mounts</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>deployer.volumes</code></td>
+<td>Streaming applications extra volumes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>deployer.environmentVariables</code></td>
+<td>Streaming applications environment variables</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>deployer.podSecurityContext.enabled</code></td>
+<td>Enabled pods' Security Context of the deployed pods batch or stream pods</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>deployer.podSecurityContext.runAsUser</code></td>
+<td>Set Dataflow Streams container's Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>deployer.imagePullSecrets</code></td>
+<td>Streaming applications imagePullSecrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>deployer.secretRefs</code></td>
+<td>Streaming applications secretRefs</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>deployer.entryPointStyle</code></td>
+<td>An entry point style affects how application properties are passed to the container to be deployed. Allowed values: exec (default), shell, boot</td>
+<td><code>exec</code></td>
+</tr>
+<tr>
+<td><code>deployer.imagePullPolicy</code></td>
+<td>An image pull policy defines when a Docker image should be pulled to the local registry. Allowed values: IfNotPresent (default), Always, Never</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="rbac-parameters">RBAC parameters<a class="headerlink" href="#rbac-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>serviceAccount.create</code></td>
+<td>Enable the creation of a ServiceAccount for Dataflow server and Skipper server pods</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.name</code></td>
+<td>Name of the created serviceAccount. If not set and create is true, a name is generated using the scdf.fullname template</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.automountServiceAccountToken</code></td>
+<td>Automount service account token for the server service account</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.annotations</code></td>
+<td>Annotations for service account. Evaluated as a template. Only used if <code>create</code> is <code>true</code>.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>rbac.create</code></td>
+<td>Whether to create and use RBAC resources or not</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="metrics-parameters">Metrics parameters<a class="headerlink" href="#metrics-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>metrics.enabled</code></td>
+<td>Enable Prometheus metrics</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.image.registry</code></td>
+<td>Prometheus Rsocket Proxy image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>metrics.image.repository</code></td>
+<td>Prometheus Rsocket Proxy image repository</td>
+<td><code>bitnami/prometheus-rsocket-proxy</code></td>
+</tr>
+<tr>
+<td><code>metrics.image.tag</code></td>
+<td>Prometheus Rsocket Proxy image tag (immutable tags are recommended)</td>
+<td><code>1.5.0-debian-11-r87</code></td>
+</tr>
+<tr>
+<td><code>metrics.image.digest</code></td>
+<td>Prometheus Rsocket Proxy image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.image.pullPolicy</code></td>
+<td>Prometheus Rsocket Proxy image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>metrics.image.pullSecrets</code></td>
+<td>Specify docker-registry secret names as an array</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.resources.limits</code></td>
+<td>The resources limits for the Prometheus Rsocket Proxy container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.resources.requests</code></td>
+<td>The requested resources for the Prometheus Rsocket Proxy container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.replicaCount</code></td>
+<td>Number of Prometheus Rsocket Proxy replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>metrics.podAffinityPreset</code></td>
+<td>Prometheus Rsocket Proxy pod affinity preset. Ignored if <code>metrics.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.podAntiAffinityPreset</code></td>
+<td>Prometheus Rsocket Proxy pod anti-affinity preset. Ignored if <code>metrics.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>metrics.nodeAffinityPreset.type</code></td>
+<td>Prometheus Rsocket Proxy node affinity preset type. Ignored if <code>metrics.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.nodeAffinityPreset.key</code></td>
+<td>Prometheus Rsocket Proxy node label key to match Ignored if <code>metrics.affinity</code> is set.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.nodeAffinityPreset.values</code></td>
+<td>Prometheus Rsocket Proxy node label values to match. Ignored if <code>metrics.affinity</code> is set.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.affinity</code></td>
+<td>Prometheus Rsocket Proxy affinity for pod assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.nodeSelector</code></td>
+<td>Prometheus Rsocket Proxy node labels for pod assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.hostAliases</code></td>
+<td>Prometheus Proxy pods host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.tolerations</code></td>
+<td>Prometheus Rsocket Proxy tolerations for pod assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.podAnnotations</code></td>
+<td>Annotations for Prometheus Rsocket Proxy pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.podLabels</code></td>
+<td>Extra labels for Prometheus Proxy pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.podSecurityContext.enabled</code></td>
+<td>Enabled Prometheus Proxy pods' Security Context</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.podSecurityContext.fsGroup</code></td>
+<td>Set Prometheus Proxy pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>metrics.containerSecurityContext.enabled</code></td>
+<td>Enabled Prometheus Proxy containers' Security Context</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.containerSecurityContext.runAsUser</code></td>
+<td>Set Prometheus Proxy containers' Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>metrics.command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.lifecycleHooks</code></td>
+<td>for the Prometheus Proxy container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.extraEnvVars</code></td>
+<td>Array with extra environment variables to add to Prometheus Proxy nodes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra env vars for Prometheus Proxy nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra env vars for Prometheus Proxy nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes for the Prometheus Proxy pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts for the Prometheus Proxy container(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.containerPorts.http</code></td>
+<td>Prometheus Proxy HTTP container port</td>
+<td><code>8080</code></td>
+</tr>
+<tr>
+<td><code>metrics.containerPorts.rsocket</code></td>
+<td>Prometheus Proxy Rsocket container port</td>
+<td><code>7001</code></td>
+</tr>
+<tr>
+<td><code>metrics.sidecars</code></td>
+<td>Add additional sidecar containers to the Prometheus Proxy pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.initContainers</code></td>
+<td>Add additional init containers to the Prometheus Proxy pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.updateStrategy.type</code></td>
+<td>Prometheus Proxy deployment strategy type.</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>metrics.priorityClassName</code></td>
+<td>Prometheus Rsocket Proxy pods' priority.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.schedulerName</code></td>
+<td>Name of the k8s scheduler (other than default)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.type</code></td>
+<td>Prometheus Proxy service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.ports.http</code></td>
+<td>Prometheus Rsocket Proxy HTTP port</td>
+<td><code>8080</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.ports.rsocket</code></td>
+<td>Prometheus Rsocket Proxy Rsocket port</td>
+<td><code>7001</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.nodePorts.http</code></td>
+<td>Node port for HTTP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.nodePorts.rsocket</code></td>
+<td>Node port for Rsocket</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.clusterIP</code></td>
+<td>Prometheys Proxy service Cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.loadBalancerIP</code></td>
+<td>Prometheys Proxy service Load Balancer IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.loadBalancerSourceRanges</code></td>
+<td>Prometheys Proxy service Load Balancer sources</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.externalTrafficPolicy</code></td>
+<td>Prometheys Proxy service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.extraPorts</code></td>
+<td>Extra ports to expose (normally used with the <code>sidecar</code> value)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.annotations</code></td>
+<td>Annotations for the Prometheus Rsocket Proxy service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.sessionAffinity</code></td>
+<td>Session Affinity for Kubernetes service, can be "None" or "ClientIP"</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>metrics.service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.enabled</code></td>
+<td>if <code>true</code>, creates a Prometheus Operator ServiceMonitor (also requires <code>metrics.enabled</code> to be <code>true</code>)</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.namespace</code></td>
+<td>Namespace in which ServiceMonitor is created if different from release</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.jobLabel</code></td>
+<td>The name of the label on the target service to use as the job name in prometheus.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.interval</code></td>
+<td>Interval at which metrics should be scraped.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.scrapeTimeout</code></td>
+<td>Timeout after which the scrape is ended</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.relabelings</code></td>
+<td>RelabelConfigs to apply to samples before scraping</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.metricRelabelings</code></td>
+<td>MetricRelabelConfigs to apply to samples before ingestion</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.selector</code></td>
+<td>ServiceMonitor selector labels</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.labels</code></td>
+<td>Extra labels for the ServiceMonitor</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.honorLabels</code></td>
+<td>honorLabels chooses the metric's labels on collisions with target labels</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.pdb.create</code></td>
+<td>Enable/disable a Pod Disruption Budget creation</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.pdb.minAvailable</code></td>
+<td>Minimum number/percentage of pods that should remain scheduled</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>metrics.pdb.maxUnavailable</code></td>
+<td>Maximum number/percentage of pods that may be made unavailable</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.autoscaling.enabled</code></td>
+<td>Enable autoscaling for Prometheus Rsocket Proxy</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.autoscaling.minReplicas</code></td>
+<td>Minimum number of Prometheus Rsocket Proxy replicas</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.autoscaling.maxReplicas</code></td>
+<td>Maximum number of Prometheus Rsocket Proxy replicas</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.autoscaling.targetCPU</code></td>
+<td>Target CPU utilization percentage</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.autoscaling.targetMemory</code></td>
+<td>Target Memory utilization percentage</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="init-container-parameters">Init Container parameters<a class="headerlink" href="#init-container-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>waitForBackends.enabled</code></td>
+<td>Wait for the database and other services (such as Kafka or RabbitMQ) used when enabling streaming</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>waitForBackends.image.registry</code></td>
+<td>Init container wait-for-backend image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>waitForBackends.image.repository</code></td>
+<td>Init container wait-for-backend image name</td>
+<td><code>bitnami/kubectl</code></td>
+</tr>
+<tr>
+<td><code>waitForBackends.image.tag</code></td>
+<td>Init container wait-for-backend image tag</td>
+<td><code>1.25.9-debian-11-r9</code></td>
+</tr>
+<tr>
+<td><code>waitForBackends.image.digest</code></td>
+<td>Init container wait-for-backend image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>waitForBackends.image.pullPolicy</code></td>
+<td>Init container wait-for-backend image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>waitForBackends.image.pullSecrets</code></td>
+<td>Specify docker-registry secret names as an array</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>waitForBackends.resources.limits</code></td>
+<td>Init container wait-for-backend resource limits</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>waitForBackends.resources.requests</code></td>
+<td>Init container wait-for-backend resource requests</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="database-parameters">Database parameters<a class="headerlink" href="#database-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mariadb.enabled</code></td>
+<td>Enable/disable MariaDB chart installation</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>mariadb.architecture</code></td>
+<td>MariaDB architecture. Allowed values: <code>standalone</code> or <code>replication</code></td>
+<td><code>standalone</code></td>
+</tr>
+<tr>
+<td><code>mariadb.auth.rootPassword</code></td>
+<td>Password for the MariaDB <code>root</code> user</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>mariadb.auth.username</code></td>
+<td>Username of new user to create</td>
+<td><code>dataflow</code></td>
+</tr>
+<tr>
+<td><code>mariadb.auth.password</code></td>
+<td>Password for the new user</td>
+<td><code>change-me</code></td>
+</tr>
+<tr>
+<td><code>mariadb.auth.database</code></td>
+<td>Database name to create</td>
+<td><code>dataflow</code></td>
+</tr>
+<tr>
+<td><code>mariadb.auth.forcePassword</code></td>
+<td>Force users to specify required passwords in the database</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>mariadb.auth.usePasswordFiles</code></td>
+<td>Mount credentials as a file instead of using an environment variable</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>mariadb.initdbScripts</code></td>
+<td>Specify dictionary of scripts to be run at first boot</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>flyway.enabled</code></td>
+<td>Enable/disable flyway running Dataflow and Skipper Database creation scripts on startup</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.host</code></td>
+<td>Host of the external database</td>
+<td><code>localhost</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.port</code></td>
+<td>External database port number</td>
+<td><code>3306</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.driver</code></td>
+<td>The fully qualified name of the JDBC Driver class</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.scheme</code></td>
+<td>The scheme is a vendor-specific or shared protocol string that follows the "jdbc:" of the URL</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.password</code></td>
+<td>Password for the above username</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.existingPasswordSecret</code></td>
+<td>Existing secret with database password</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.existingPasswordKey</code></td>
+<td>Key of the existing secret with database password, defaults to <code>datasource-password</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.dataflow.url</code></td>
+<td>JDBC URL for dataflow server. Overrides external scheme, host, port, database, and jdbc parameters.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.dataflow.database</code></td>
+<td>Name of the existing database to be used by Dataflow server</td>
+<td><code>dataflow</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.dataflow.username</code></td>
+<td>Existing username in the external db to be used by Dataflow server</td>
+<td><code>dataflow</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.skipper.url</code></td>
+<td>JDBC URL for skipper. Overrides external scheme, host, port, database, and jdbc parameters.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.skipper.database</code></td>
+<td>Name of the existing database to be used by Skipper server</td>
+<td><code>skipper</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.skipper.username</code></td>
+<td>Existing username in the external db to be used by Skipper server</td>
+<td><code>skipper</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.hibernateDialect</code></td>
+<td>Hibernate Dialect used by Dataflow/Skipper servers</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="rabbitmq-chart-parameters">RabbitMQ chart parameters<a class="headerlink" href="#rabbitmq-chart-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rabbitmq.enabled</code></td>
+<td>Enable/disable RabbitMQ chart installation</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>rabbitmq.auth.username</code></td>
+<td>RabbitMQ username</td>
+<td><code>user</code></td>
+</tr>
+<tr>
+<td><code>externalRabbitmq.enabled</code></td>
+<td>Enable/disable external RabbitMQ</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>externalRabbitmq.host</code></td>
+<td>Host of the external RabbitMQ</td>
+<td><code>localhost</code></td>
+</tr>
+<tr>
+<td><code>externalRabbitmq.port</code></td>
+<td>External RabbitMQ port number</td>
+<td><code>5672</code></td>
+</tr>
+<tr>
+<td><code>externalRabbitmq.username</code></td>
+<td>External RabbitMQ username</td>
+<td><code>guest</code></td>
+</tr>
+<tr>
+<td><code>externalRabbitmq.password</code></td>
+<td>External RabbitMQ password. It will be saved in a kubernetes secret</td>
+<td><code>guest</code></td>
+</tr>
+<tr>
+<td><code>externalRabbitmq.vhost</code></td>
+<td>External RabbitMQ virtual host. It will be saved in a kubernetes secret</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>externalRabbitmq.existingPasswordSecret</code></td>
+<td>Existing secret with RabbitMQ password. It will be saved in a kubernetes secret</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="kafka-chart-parameters">Kafka chart parameters<a class="headerlink" href="#kafka-chart-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kafka.enabled</code></td>
+<td>Enable/disable Kafka chart installation</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>kafka.replicaCount</code></td>
+<td>Number of Kafka brokers</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>kafka.offsetsTopicReplicationFactor</code></td>
+<td>Kafka Secret Key</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>externalKafka.enabled</code></td>
+<td>Enable/disable external Kafka</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>externalKafka.brokers</code></td>
+<td>External Kafka brokers</td>
+<td><code>localhost:9092</code></td>
+</tr>
+<tr>
+<td><code>externalKafka.zkNodes</code></td>
+<td>External Zookeeper nodes</td>
+<td><code>localhost:2181</code></td>
+</tr>
+</tbody>
+</table>
+<p>Specify each parameter using the <code>--set key=value[,key=value]</code> argument to <code>helm install</code>. For example,</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="go">helm install my-release --set server.replicaCount=2 bitnami/spring-cloud-dataflow</span>
+</span></code></pre></div>
+<p>The above command installs Spring Cloud Data Flow chart with 2 Dataflow server replicas.</p>
+<p>Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">helm install my-release -f values.yaml bitnami/spring-cloud-dataflow</span>
+</span></code></pre></div>
+<blockquote>
+<p><strong>Tip</strong>: You can use the default <a href="https://github.com/bitnami/charts/blob/main/bitnami/spring-cloud-dataflow/values.yaml">values.yaml</a></p>
+</blockquote>
+<h2 id="configuration-and-installation-details">Configuration and installation details<a class="headerlink" href="#configuration-and-installation-details" title="Permanent link">&para;</a></h2>
+<h3 id="rolling-vs-immutable-tags"><a href="https://docs.bitnami.com/containers/how-to/understand-rolling-tags-containers/">Rolling VS Immutable tags</a><a class="headerlink" href="#rolling-vs-immutable-tags" title="Permanent link">&para;</a></h3>
+<p>It is strongly recommended to use immutable tags in a production environment. This ensures your deployment does not change automatically if the same tag is updated with a different image.</p>
+<p>Bitnami will release a new chart updating its containers if a new version of the main container, significant changes, or critical vulnerabilities exist.</p>
+<h3 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h3>
+<p>If you only need to deploy tasks and schedules, streaming and Skipper can be disabled:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="go">server.configuration.batchEnabled=true</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="go">server.configuration.streamingEnabled=false</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="go">skipper.enabled=false</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="go">rabbitmq.enabled=false</span>
+</span></code></pre></div>
+<p>If you only need to deploy streams, tasks and schedules can be disabled:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">server.configuration.batchEnabled=false</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="go">server.configuration.streamingEnabled=true</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="go">skipper.enabled=true</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="go">rabbitmq.enabled=true</span>
+</span></code></pre></div>
+<p>NOTE: Both <code>server.configuration.batchEnabled</code> and <code>server.configuration.streamingEnabled</code> should not be set to <code>false</code> at the same time.</p>
+<h3 id="messaging-solutions">Messaging solutions<a class="headerlink" href="#messaging-solutions" title="Permanent link">&para;</a></h3>
+<p>There are two supported messaging solutions in this chart:</p>
+<ul>
+<li>RabbitMQ (default)</li>
+<li>Kafka</li>
+</ul>
+<p>To change the messaging layer to Kafka, use the following parameters:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="go">rabbitmq.enabled=false</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="go">kafka.enabled=true</span>
+</span></code></pre></div>
+<p>Only one messaging layer can be used at a given time.</p>
+<h3 id="using-an-external-database">Using an external database<a class="headerlink" href="#using-an-external-database" title="Permanent link">&para;</a></h3>
+<p>Sometimes you may want to have Spring Cloud components connect to an external database rather than installing one inside your cluster, e.g. to use a managed database service, or use a single database server for all your applications. To do this, the chart allows you to specify credentials for an external database under the <a href="#database-parameters"><code>externalDatabase</code> parameter</a>. You should also disable the MariaDB installation with the <code>mariadb.enabled</code> option. For example with the following parameters:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="go">mariadb.enabled=false</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="go">externalDatabase.scheme=mariadb</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="go">externalDatabase.host=myexternalhost</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="go">externalDatabase.port=3306</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="go">externalDatabase.password=mypassword</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="go">externalDatabase.dataflow.user=mydataflowuser</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="go">externalDatabase.dataflow.database=mydataflowdatabase</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="go">externalDatabase.skipper.user=myskipperuser</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="go">externalDatabase.skipper.database=myskipperdatabase</span>
+</span></code></pre></div>
+<p>NOTE: When using the individual properties (scheme, host, port, database, an optional jdbcParameters) this chart will format the JDBC URL as <code>jdbc:{scheme}://{host}:{port}/{database}{jdbcParameters}</code>. The URL format follows that of the MariaDB database drive but may not work for other database vendors.</p>
+<p>To use an alternate database vendor (other than MariaDB) you can use the <code>externalDatabase.dataflow.url</code> and <code>externalDatabase.skipper.url</code> properties to provide the JDBC URLs for the dataflow server and skipper respectively. If these properties are defined, they will take precedence over the individual attributes. As an example of configuring an external MS SQL Server database:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="go">mariadb.enabled=false</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="go">externalDatabase.password=mypassword</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="go">externalDatabase.dataflow.url=jdbc:sqlserver://mssql-server:1433</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="go">externalDatabase.dataflow.user=mydataflowuser</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="go">externalDatabase.skipper.url=jdbc:sqlserver://mssql-server:1433</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="go">externalDatabase.skipper.user=myskipperuser</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="go">externalDatabase.hibernateDialect=org.hibernate.dialect.SQLServer2012Dialect</span>
+</span></code></pre></div>
+<p>NOTE: If you disable MariaDB per above you MUST supply values for the <code>externalDatabase</code> connection.</p>
+<h3 id="adding-extra-flags">Adding extra flags<a class="headerlink" href="#adding-extra-flags" title="Permanent link">&para;</a></h3>
+<p>In case you want to add extra environment variables to any Spring Cloud component, you can use <code>XXX.extraEnvs</code> parameter(s), where XXX is placeholder you need to replace with the actual component(s). For instance, to add extra flags to Spring Cloud Data Flow, use:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nt">server</span><span class="p">:</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="nt">extraEnvs</span><span class="p">:</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
+</span></code></pre></div>
+<h3 id="using-custom-dataflow-configuration">Using custom Dataflow configuration<a class="headerlink" href="#using-custom-dataflow-configuration" title="Permanent link">&para;</a></h3>
+<p>This helm chart supports using custom configuration for Dataflow server.</p>
+<p>You can specify the configuration for Dataflow server by setting the <code>server.existingConfigmap</code> parameter to an external ConfigMap with the configuration file.</p>
+<h3 id="using-custom-skipper-configuration">Using custom Skipper configuration<a class="headerlink" href="#using-custom-skipper-configuration" title="Permanent link">&para;</a></h3>
+<p>This helm chart supports using custom configuration for Skipper server.</p>
+<p>You can specify the configuration for Skipper server by setting the <code>skipper.existingConfigmap</code> parameter to an external ConfigMap with the configuration file.</p>
+<h3 id="sidecars-and-init-containers">Sidecars and Init Containers<a class="headerlink" href="#sidecars-and-init-containers" title="Permanent link">&para;</a></h3>
+<p>If you need additional containers to run within the same pod as Dataflow or Skipper components (e.g. an additional metrics or logging exporter), you can do so via the <code>XXX.sidecars</code> parameter(s), where XXX is the placeholder you need to replace with the actual component(s). Simply define your container according to the Kubernetes container spec.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">server</span><span class="p">:</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="nt">sidecars</span><span class="p">:</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-image-name</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-image</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">      </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">portname</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">          </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1234</span>
+</span></code></pre></div>
+<p>Similarly, you can add extra init containers using the <code>XXX.initContainers</code> parameter(s).</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">server</span><span class="p">:</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span><span class="nt">initContainers</span><span class="p">:</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-image-name</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-image</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">      </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">portname</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">          </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1234</span>
+</span></code></pre></div>
+<h3 id="ingress">Ingress<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h3>
+<p>This chart provides support for ingress resources. If you have an ingress controller installed on your cluster, such as nginx-ingress or traefik you can utilize the ingress controller to serve your Spring Cloud Data Flow server.</p>
+<p>To enable ingress integration, please set <code>server.ingress.enabled</code> to <code>true</code></p>
+<h4 id="hosts">Hosts<a class="headerlink" href="#hosts" title="Permanent link">&para;</a></h4>
+<p>Most likely you will only want to have one hostname that maps to this Spring Cloud Data Flow installation. If that's your case, the property <code>server.ingress.hostname</code> will set it. However, it is possible to have more than one host. To facilitate this, the <code>server.ingress.extraHosts</code> object is can be specified as an array. You can also use <code>server.ingress.extraTLS</code> to add the TLS configuration for extra hosts.</p>
+<p>For each host indicated at <code>server.ingress.extraHosts</code>, please indicate a <code>name</code>, <code>path</code>, and any <code>annotations</code> that you may want the ingress controller to know about.</p>
+<p>For annotations, please see <a href="https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/nginx-configuration/annotations.md">this document</a>. Not all annotations are supported by all ingress controllers, but this document does a good job of indicating which annotation is supported by many popular ingress controllers.</p>
+<h4 id="tls">TLS<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h4>
+<p>This chart will facilitate the creation of TLS secrets for use with the ingress controller, however, this is not required. There are four common use cases:</p>
+<ul>
+<li>Helm generates/manages certificate secrets based on the parameters.</li>
+<li>User generates/manages certificates separately.</li>
+<li>Helm creates self-signed certificates and generates/manages certificate secrets.</li>
+<li>An additional tool (like <a href="https://github.com/jetstack/cert-manager/">cert-manager</a>) manages the secrets for the application.
+In the first two cases, it's needed a certificate and a key. We would expect them to look like this:</li>
+<li>certificate files should look like (and there can be more than one certificate if there is a certificate chain)</li>
+</ul>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="go">-----BEGIN CERTIFICATE-----</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="go">MIID6TCCAtGgAwIBAgIJAIaCwivkeB5EMA0GCSqGSIb3DQEBCwUAMFYxCzAJBgNV</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="go">...</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="go">jScrvkiBO65F46KioCL9h5tDvomdU1aqpI/CBzhvZn1c0ZTf87tGQR8NK7v7</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="go">-----END CERTIFICATE-----</span>
+</span></code></pre></div>
+<ul>
+<li>keys should look like:</li>
+</ul>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="go">-----BEGIN RSA PRIVATE KEY-----</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="go">MIIEogIBAAKCAQEAvLYcyu8f3skuRyUgeeNpeDvYBCDcgq+LsWap6zbX5f8oLqp4</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="go">...</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="go">wrj2wDbCDCFmfqnSJ+dKI3vFLlEz44sAV8jX/kd4Y6ZTQhlLbYc=</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="go">-----END RSA PRIVATE KEY-----</span>
+</span></code></pre></div>
+<ul>
+<li>If you are going to use Helm to manage the certificates based on the parameters, please copy these values into the <code>certificate</code> and <code>key</code> values for a given <code>server.ingress.secrets</code> entry.</li>
+<li>In case you are going to manage TLS secrets separately, please know that you must create a TLS secret with name <em>INGRESS_HOSTNAME-tls</em> (where <em>INGRESS_HOSTNAME</em> is a placeholder to be replaced with the hostname you set using the <code>server.ingress.hostname</code> parameter).</li>
+<li>To use self-signed certificates created by Helm, set <code>server.ingress.tls</code> to <code>true</code> and <code>server.ingress.certManager</code> to <code>false</code>.</li>
+<li>If your cluster has a <a href="https://github.com/jetstack/cert-manager">cert-manager</a> add-on to automate the management and issuance of TLS certificates, set <code>server.ingress.certManager</code> boolean to true to enable the corresponding annotations for cert-manager.</li>
+</ul>
+<h3 id="setting-pods-affinity">Setting Pod's affinity<a class="headerlink" href="#setting-pods-affinity" title="Permanent link">&para;</a></h3>
+<p>This chart allows you to set your custom affinity using the <code>XXX.affinity</code> parameter(s). Find more information about Pod's affinity in the <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity">kubernetes documentation</a>.</p>
+<p>As an alternative, you can use the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the <a href="https://github.com/bitnami/charts/tree/main/bitnami/common#affinities">bitnami/common</a> chart. To do so, set the <code>XXX.podAffinityPreset</code>, <code>XXX.podAntiAffinityPreset</code>, or <code>XXX.nodeAffinityPreset</code> parameters.</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p>Find more information about how to deal with common errors related to Bitnami Helm charts in <a href="https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues">this troubleshooting guide</a>.</p>
+<h2 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">&para;</a></h2>
+<p>If you enabled RabbitMQ chart to be used as the messaging solution for Skipper to manage streaming content, then it's necessary to set the <code>rabbitmq.auth.password</code> and <code>rabbitmq.auth.erlangCookie</code> parameters when upgrading for readiness/liveness probes to work properly. Inspect the RabbitMQ secret to obtain the password and the Erlang cookie, then you can upgrade your chart using the command below:</p>
+<h3 id="to-1800">To 18.0.0<a class="headerlink" href="#to-1800" title="Permanent link">&para;</a></h3>
+<p>This major updates the Kafka subchart to its newest major, 22.0.0. This new version of Kafka uses Kraft by default. For more information on this subchart's major, please refer to <a href="https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-2200">Kafka upgrade notes</a>.</p>
+<h3 id="to-1700">To 17.0.0<a class="headerlink" href="#to-1700" title="Permanent link">&para;</a></h3>
+<p>This major release bumps the MariaDB version to 10.11. Follow the <a href="https://mariadb.com/kb/en/upgrading-from-mariadb-10-6-to-mariadb-10-11/">upstream instructions</a> for upgrading from MariaDB 10.6 to 10.11. No major issues are expected during the upgrade.</p>
+<h3 id="to-1600">To 16.0.0<a class="headerlink" href="#to-1600" title="Permanent link">&para;</a></h3>
+<p>This major updates the Kafka subchart to its newest major, 21.0.0. <a href="https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-2100">Here</a> you can find more information about the changes introduced in that version.</p>
+<h3 id="to-1500">To 15.0.0<a class="headerlink" href="#to-1500" title="Permanent link">&para;</a></h3>
+<p>This major updates the Kafka subchart to its newest major, 20.0.0. <a href="https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-2000">Here</a> you can find more information about the changes introduced in that version.</p>
+<h3 id="to-1400">To 14.0.0<a class="headerlink" href="#to-1400" title="Permanent link">&para;</a></h3>
+<p>This major updates the RabbitMQ subchart to its newest major, 11.0.0. <a href="https://github.com/bitnami/charts/tree/main/bitnami/rabbitmq#to-1100">Here</a> you can find more information about the changes introduced in that version.</p>
+<h3 id="to-1300">To 13.0.0<a class="headerlink" href="#to-1300" title="Permanent link">&para;</a></h3>
+<p>This major updates the Kafka subchart to it newest major, 19.0.0. For more information on this subchart's major, please refer to <a href="https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-1900">Kafka upgrade notes</a>.</p>
+<h3 id="to-1200">To 12.0.0<a class="headerlink" href="#to-1200" title="Permanent link">&para;</a></h3>
+<p>This major updates the Kafka subchart to its newest major, 18.0.0. No major issues are expected during the upgrade.</p>
+<h3 id="to-1100">To 11.0.0<a class="headerlink" href="#to-1100" title="Permanent link">&para;</a></h3>
+<p>This chart bumps the RabbitMQ version to 3.10.x. No issues are expected during the upgrade.</p>
+<h3 id="to-1000">To 10.0.0<a class="headerlink" href="#to-1000" title="Permanent link">&para;</a></h3>
+<p>This major updates the Kafka subchart to its newest major, 17.0.0. No major issues are expected during the upgrade.</p>
+<h3 id="to-900">To 9.0.0<a class="headerlink" href="#to-900" title="Permanent link">&para;</a></h3>
+<p>This major updates the RabbitMQ subchart to its newest major, 9.0.0. <a href="https://github.com/bitnami/charts/tree/main/bitnami/rabbitmq#to-900">Here</a> you can find more information about the changes introduced in that version.</p>
+<h3 id="to-800">To 8.0.0<a class="headerlink" href="#to-800" title="Permanent link">&para;</a></h3>
+<p>This major release bumps the MariaDB version to 10.6. Follow the <a href="https://mariadb.com/kb/en/upgrading-from-mariadb-105-to-mariadb-106/">upstream instructions</a> for upgrading from MariaDB 10.5 to 10.6. No major issues are expected during the upgrade.</p>
+<h3 id="to-700">To 7.0.0<a class="headerlink" href="#to-700" title="Permanent link">&para;</a></h3>
+<p>This major updates the Kafka subchart to its newest major, 16.0.0. <a href="https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-1600">Here</a> you can find more information about the changes introduced in that version.</p>
+<h3 id="to-600">To 6.0.0<a class="headerlink" href="#to-600" title="Permanent link">&para;</a></h3>
+<p>This major release updates the Kafka subchart to its newest major <code>15.x.x</code>, which contains several changes in the supported values and bumps Kafka major version to <code>3.x</code> series (check the <a href="https://github.com/bitnami/charts/blob/main/bitnami/kafka/README.md#to-1500">upgrade notes</a> to obtain more information).</p>
+<p>To upgrade to <em>6.0.0</em> from <em>5.x</em> using Kafka as messaging solution, it should be done by maintaining the Kafka <code>2.x</code> series. To do so, follow the instructions below (the following example assumes that the release name is <em>scdf</em> and the release namespace <em>default</em>):</p>
+<ol>
+<li>
+<p>Obtain the credentials on your current release:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="go">export MARIADB_ROOT_PASSWORD=$(kubectl get secret --namespace default scdf-mariadb -o jsonpath=&quot;{.data.mariadb-root-password}&quot; | base64 -d)</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="go">export MARIADB_PASSWORD=$(kubectl get secret --namespace default scdf-mariadb -o jsonpath=&quot;{.data.mariadb-password}&quot; | base64 -d)</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Upgrade your release using the same Kafka version:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">CURRENT_KAFKA_VERSION</span><span class="o">=</span><span class="k">$(</span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>scdf-kafka-0<span class="w"> </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo $BITNAMI_IMAGE_VERSION&#39;</span><span class="k">)</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="go">helm upgrade scdf bitnami/spring-cloud-dataflow \</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="go">  --set rabbitmq.enabled=false \</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="go">  --set kafka.enabled=true \</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="go">  --set kafka.image.tag=$CURRENT_KAFKA_VERSION \</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="go">  --set mariadb.auth.password=$MARIADB_PASSWORD \</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="go">  --set mariadb.auth.rootPassword=$MARIADB_ROOT_PASSWORD</span>
+</span></code></pre></div>
+</li>
+</ol>
+<h3 id="to-500">To 5.0.0<a class="headerlink" href="#to-500" title="Permanent link">&para;</a></h3>
+<p>This major release renames several values in this chart and adds missing features, in order to be inline with the rest of assets in the Bitnami charts repository.</p>
+<p>Affected values:</p>
+<ul>
+<li><code>serviceMonitor.extraLabels</code> renamed as <code>serviceMonitor.labels</code>.</li>
+<li><code>server.strategyType</code> and <code>skikker.strategyType</code> have been replaced by <code>server.updateStrategy</code> and <code>skikker.updateStrategy</code> respectively. While <code>strategyType</code> was interpreted as a String, while <code>updateStrategy</code> is interpreted as an object.</li>
+<li>The service account token is now set to automount <code>false</code> by default. To change this, set the value <code>serviceAccount.automountServiceAccountToken</code> to <code>true</code>.</li>
+</ul>
+<p>Additionally updates the MariaDB subchart to its newest major, 10.0.0, which contains similar changes. <a href="https://github.com/bitnami/charts/tree/main/bitnami/mariadb#to-1000">Here</a> you can find more information about the changes introduced in this version.</p>
+<h3 id="to-400">To 4.0.0<a class="headerlink" href="#to-400" title="Permanent link">&para;</a></h3>
+<p>This major updates the Kafka subchart its newest major, 14.0.0. <a href="https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-1400">Here</a> you can find more information about the changes introduced in this version.</p>
+<h3 id="to-300">To 3.0.0<a class="headerlink" href="#to-300" title="Permanent link">&para;</a></h3>
+<p>This major updates the Kafka subchart to its newest major 13.0.0. For more information on this subchart's major, please refer to <a href="https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-1300">kafka upgrade notes</a>.</p>
+<h3 id="to-200">To 2.0.0<a class="headerlink" href="#to-200" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/helm/charts#status-of-the-project">On November 13, 2020, Helm v2 support was formally finished</a>, this major version is the result of the required changes applied to the Helm Chart to be able to incorporate the different features added in Helm v3 and to be consistent with the Helm project itself regarding the Helm v2 EOL.</p>
+<h4 id="what-changes-were-introduced-in-this-major-version">What changes were introduced in this major version?<a class="headerlink" href="#what-changes-were-introduced-in-this-major-version" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Previous versions of this Helm Chart use <code>apiVersion: v1</code> (installable by both Helm 2 and 3), this Helm Chart was updated to <code>apiVersion: v2</code> (installable by Helm 3 only). <a href="https://helm.sh/docs/topics/charts/#the-apiversion-field">Here</a> you can find more information about the <code>apiVersion</code> field.</li>
+<li>Move dependency information from the <em>requirements.yaml</em> to the <em>Chart.yaml</em></li>
+<li>After running <code>helm dependency update</code>, a <em>Chart.lock</em> file is generated containing the same structure used in the previous <em>requirements.lock</em></li>
+<li>The different fields present in the <em>Chart.yaml</em> file has been ordered alphabetically in a homogeneous way for all the Bitnami Helm Charts</li>
+</ul>
+<h4 id="considerations-when-upgrading-to-this-version">Considerations when upgrading to this version<a class="headerlink" href="#considerations-when-upgrading-to-this-version" title="Permanent link">&para;</a></h4>
+<ul>
+<li>If you want to upgrade to this version from a previous one installed with Helm v3, you shouldn't face any issues</li>
+<li>If you want to upgrade to this version using Helm v2, this scenario is not supported as this version doesn't support Helm v2 anymore</li>
+<li>If you installed the previous version with Helm v2 and wants to upgrade to this version with Helm v3, please refer to the <a href="https://helm.sh/docs/topics/v2_v3_migration/#migration-use-cases">official Helm documentation</a> about migrating from Helm v2 to v3</li>
+</ul>
+<h4 id="useful-links">Useful links<a class="headerlink" href="#useful-links" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="https://docs.bitnami.com/tutorials/resolve-helm2-helm3-post-migration-issues/">https://docs.bitnami.com/tutorials/resolve-helm2-helm3-post-migration-issues/</a></li>
+<li><a href="https://helm.sh/docs/topics/v2_v3_migration/">https://helm.sh/docs/topics/v2_v3_migration/</a></li>
+<li><a href="https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/">https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/</a></li>
+</ul>
+<h3 id="v0xx">v0.x.x<a class="headerlink" href="#v0xx" title="Permanent link">&para;</a></h3>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="go">helm upgrade my-release bitnami/spring-cloud-dataflow --set mariadb.rootUser.password=[MARIADB_ROOT_PASSWORD] --set rabbitmq.auth.password=[RABBITMQ_PASSWORD] --set rabbitmq.auth.erlangCookie=[RABBITMQ_ERLANG_COOKIE]</span>
+</span></code></pre></div>
+<h3 id="v1xx">v1.x.x<a class="headerlink" href="#v1xx" title="Permanent link">&para;</a></h3>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="go">helm upgrade my-release bitnami/spring-cloud-dataflow --set mariadb.auth.rootPassword=[MARIADB_ROOT_PASSWORD] --set rabbitmq.auth.password=[RABBITMQ_PASSWORD] --set rabbitmq.auth.erlangCookie=[RABBITMQ_ERLANG_COOKIE]</span>
+</span></code></pre></div>
+<h3 id="to-100">To 1.0.0<a class="headerlink" href="#to-100" title="Permanent link">&para;</a></h3>
+<p>MariaDB dependency version was bumped to a new major version that introduces several incompatibilities. Therefore, backwards compatibility is not guaranteed unless an external database is used. Check <a href="https://github.com/bitnami/charts/tree/main/bitnami/mariadb#to-800">MariaDB Upgrading Notes</a> for more information.</p>
+<p>To upgrade to <code>1.0.0</code>, you will need to reuse the PVC used to hold the MariaDB data on your previous release. To do so, follow the instructions below (the following example assumes that the release name is <code>dataflow</code>):</p>
+<blockquote>
+<p>NOTE: Please, create a backup of your database before running any of those actions.</p>
+</blockquote>
+<p>Obtain the credentials and the name of the PVC used to hold the MariaDB data on your current release:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="go">export MARIADB_ROOT_PASSWORD=$(kubectl get secret --namespace default dataflow-mariadb -o jsonpath=&quot;{.data.mariadb-root-password}&quot; | base64 -d)</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="go">export MARIADB_PASSWORD=$(kubectl get secret --namespace default dataflow-mariadb -o jsonpath=&quot;{.data.mariadb-password}&quot; | base64 -d)</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="go">export MARIADB_PVC=$(kubectl get pvc -l app=mariadb,component=master,release=dataflow -o jsonpath=&quot;{.items[0].metadata.name}&quot;)</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="go">export RABBITMQ_PASSWORD=$(kubectl get secret --namespace default dataflow-rabbitmq -o jsonpath=&quot;{.data.rabbitmq-password}&quot; | base64 -d)</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="go">export RABBITMQ_ERLANG_COOKIE=$(kubectl get secret --namespace default dataflow-rabbitmq -o jsonpath=&quot;{.data.rabbitmq-erlang-cookie}&quot; | base64 -d)</span>
+</span></code></pre></div>
+<p>Upgrade your release (maintaining the version) disabling MariaDB and scaling Data Flow replicas to 0:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="go">helm upgrade dataflow bitnami/spring-cloud-dataflow --version 0.7.4 \</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="go">  --set server.replicaCount=0 \</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="go">  --set skipper.replicaCount=0 \</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="go">  --set mariadb.enabled=false \</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="go">  --set rabbitmq.auth.password=$RABBITMQ_PASSWORD \</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="go">  --set rabbitmq.auth.erlangCookie=$RABBITMQ_ERLANG_COOKIE</span>
+</span></code></pre></div>
+<p>Finally, upgrade you release to 1.0.0 reusing the existing PVC, and enabling back MariaDB:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="go">helm upgrade dataflow bitnami/spring-cloud-dataflow \</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="go">  --set mariadb.primary.persistence.existingClaim=$MARIADB_PVC \</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="go">  --set mariadb.auth.rootPassword=$MARIADB_ROOT_PASSWORD \</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="go">  --set mariadb.auth.password=$MARIADB_PASSWORD \</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="go">  --set rabbitmq.auth.password=$RABBITMQ_PASSWORD \</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="go">  --set rabbitmq.auth.erlangCookie=$RABBITMQ_ERLANG_COOKIE</span>
+</span></code></pre></div>
+<p>You should see the lines below in MariaDB container logs:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="gp">$ </span>kubectl<span class="w"> </span>logs<span class="w"> </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-l<span class="w"> </span>app.kubernetes.io/instance<span class="o">=</span>dataflow,app.kubernetes.io/name<span class="o">=</span>mariadb,app.kubernetes.io/component<span class="o">=</span>primary<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.items[0].metadata.name}&quot;</span><span class="k">)</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="go">...</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="go">mariadb 12:13:24.98 INFO  ==&gt; Using persisted data</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="go">mariadb 12:13:25.01 INFO  ==&gt; Running mysql_upgrade</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="go">...</span>
+</span></code></pre></div>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<p>Copyright &copy; 2023 VMware, Inc.</p>
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../spark/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Spark" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  上一页
+                </span>
+                Spark
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../suitecrm/" class="md-footer__link md-footer__link--next" aria-label="下一页: Suitecrm" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  下一页
+                </span>
+                Suitecrm
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,7149 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../synthetic-monitoring-agent/">
+      
+      
+        <link rel="next" href="../tempo-vulture/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>tempo-distributed - Helm Charts Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tempo-distributed" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Helm Charts Hub" class="md-header__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Helm Charts Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              tempo-distributed
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Helm Charts Hub
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../chart-list/" class="md-tabs__link">
+      Chart 列表
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../bitnami/" class="md-tabs__link">
+        Bitnami
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Grafana
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ingress-nginx/" class="md-tabs__link">
+        Ingress nginx
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../prometheus-community/" class="md-tabs__link">
+        Prometheus community
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sir5kong/" class="md-tabs__link">
+        Sir5kong
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Helm Charts Hub" class="md-nav__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Helm Charts Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Helm Charts Hub
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chart-list/" class="md-nav__link">
+        Chart 列表
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../bitnami/">Bitnami</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Bitnami" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Bitnami
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/airflow/" class="md-nav__link">
+        Airflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/apache/" class="md-nav__link">
+        Apache
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/apisix/" class="md-nav__link">
+        Apisix
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/appsmith/" class="md-nav__link">
+        Appsmith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/argo-cd/" class="md-nav__link">
+        Argo cd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/argo-workflows/" class="md-nav__link">
+        Argo workflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/aspnet-core/" class="md-nav__link">
+        Aspnet core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/cassandra/" class="md-nav__link">
+        Cassandra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/cert-manager/" class="md-nav__link">
+        Cert manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/clickhouse/" class="md-nav__link">
+        Clickhouse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/common/" class="md-nav__link">
+        Bitnami Common Library Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/concourse/" class="md-nav__link">
+        Concourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/consul/" class="md-nav__link">
+        Consul
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/contour/" class="md-nav__link">
+        Contour
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/discourse/" class="md-nav__link">
+        Discourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/dokuwiki/" class="md-nav__link">
+        Dokuwiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/drupal/" class="md-nav__link">
+        Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/ejbca/" class="md-nav__link">
+        Ejbca
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/elasticsearch/" class="md-nav__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/etcd/" class="md-nav__link">
+        Etcd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/external-dns/" class="md-nav__link">
+        External dns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/flink/" class="md-nav__link">
+        Flink
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/fluent-bit/" class="md-nav__link">
+        Fluent bit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/fluentd/" class="md-nav__link">
+        Fluentd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/flux/" class="md-nav__link">
+        Flux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/ghost/" class="md-nav__link">
+        Ghost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/gitea/" class="md-nav__link">
+        Gitea
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/grafana-loki/" class="md-nav__link">
+        Grafana loki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/grafana-mimir/" class="md-nav__link">
+        Grafana mimir
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/grafana-operator/" class="md-nav__link">
+        Grafana operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/grafana-tempo/" class="md-nav__link">
+        Grafana tempo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/grafana/" class="md-nav__link">
+        Grafana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/haproxy/" class="md-nav__link">
+        Haproxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/harbor/" class="md-nav__link">
+        Harbor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/influxdb/" class="md-nav__link">
+        Influxdb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/jaeger/" class="md-nav__link">
+        Jaeger
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/jasperreports/" class="md-nav__link">
+        Jasperreports
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/jenkins/" class="md-nav__link">
+        Jenkins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/joomla/" class="md-nav__link">
+        Joomla
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/jupyterhub/" class="md-nav__link">
+        Jupyterhub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/kafka/" class="md-nav__link">
+        Kafka
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/keycloak/" class="md-nav__link">
+        Keycloak
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/kiam/" class="md-nav__link">
+        Kiam
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/kibana/" class="md-nav__link">
+        Kibana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/kong/" class="md-nav__link">
+        Kong
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/kube-prometheus/" class="md-nav__link">
+        Kube prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/kube-state-metrics/" class="md-nav__link">
+        Kube state metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/kubeapps/" class="md-nav__link">
+        Kubeapps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/kubernetes-event-exporter/" class="md-nav__link">
+        Kubernetes event exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/logstash/" class="md-nav__link">
+        Logstash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/magento/" class="md-nav__link">
+        Magento
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/mariadb-galera/" class="md-nav__link">
+        Mariadb galera
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/mariadb/" class="md-nav__link">
+        Mariadb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/mastodon/" class="md-nav__link">
+        Mastodon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/matomo/" class="md-nav__link">
+        Matomo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/mediawiki/" class="md-nav__link">
+        Mediawiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/memcached/" class="md-nav__link">
+        Memcached
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/metallb/" class="md-nav__link">
+        Metallb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/metrics-server/" class="md-nav__link">
+        Metrics server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/minio/" class="md-nav__link">
+        Minio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/mongodb-sharded/" class="md-nav__link">
+        Mongodb sharded
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/mongodb/" class="md-nav__link">
+        Mongodb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/moodle/" class="md-nav__link">
+        Moodle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/multus-cni/" class="md-nav__link">
+        Multus cni
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/mxnet/" class="md-nav__link">
+        Mxnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/mysql/" class="md-nav__link">
+        Mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/nats/" class="md-nav__link">
+        Nats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/nginx-ingress-controller/" class="md-nav__link">
+        Nginx ingress controller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/nginx/" class="md-nav__link">
+        Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/node-exporter/" class="md-nav__link">
+        Node exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/oauth2-proxy/" class="md-nav__link">
+        Oauth2 proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/odoo/" class="md-nav__link">
+        Odoo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/opencart/" class="md-nav__link">
+        Opencart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/osclass/" class="md-nav__link">
+        Osclass
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/parse/" class="md-nav__link">
+        Parse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/phpbb/" class="md-nav__link">
+        Phpbb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/phpmyadmin/" class="md-nav__link">
+        Phpmyadmin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/pinniped/" class="md-nav__link">
+        Pinniped
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/postgresql-ha/" class="md-nav__link">
+        Postgresql ha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/postgresql/" class="md-nav__link">
+        Postgresql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/prestashop/" class="md-nav__link">
+        Prestashop
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/rabbitmq-cluster-operator/" class="md-nav__link">
+        Rabbitmq cluster operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/rabbitmq/" class="md-nav__link">
+        Rabbitmq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/redis-cluster/" class="md-nav__link">
+        Redis cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/redmine/" class="md-nav__link">
+        Redmine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/schema-registry/" class="md-nav__link">
+        Schema registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/sealed-secrets/" class="md-nav__link">
+        Sealed secrets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/solr/" class="md-nav__link">
+        Solr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/sonarqube/" class="md-nav__link">
+        Sonarqube
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/spark/" class="md-nav__link">
+        Spark
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/spring-cloud-dataflow/" class="md-nav__link">
+        Spring cloud dataflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/suitecrm/" class="md-nav__link">
+        Suitecrm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/supabase/" class="md-nav__link">
+        Supabase
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/tensorflow-resnet/" class="md-nav__link">
+        Tensorflow resnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/thanos/" class="md-nav__link">
+        Thanos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/tomcat/" class="md-nav__link">
+        Tomcat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/vault/" class="md-nav__link">
+        Vault
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/wavefront-hpa-adapter/" class="md-nav__link">
+        Wavefront hpa adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/wavefront-prometheus-storage-adapter/" class="md-nav__link">
+        Wavefront prometheus storage adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/whereabouts/" class="md-nav__link">
+        Whereabouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/wildfly/" class="md-nav__link">
+        Wildfly
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/wordpress/" class="md-nav__link">
+        Wordpress
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/zookeeper/" class="md-nav__link">
+        Zookeeper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Grafana</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Grafana" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Grafana
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agent-operator/" class="md-nav__link">
+        grafana-agent-operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enterprise-logs-simple/" class="md-nav__link">
+        enterprise-logs-simple
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enterprise-logs/" class="md-nav__link">
+        Grafana Enterprise Logs Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enterprise-metrics/" class="md-nav__link">
+        Grafana Enterprise Metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluent-bit/" class="md-nav__link">
+        Fluent Bit Loki chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-agent/" class="md-nav__link">
+        Grafana Agent chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana/" class="md-nav__link">
+        Grafana Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../loki-canary/" class="md-nav__link">
+        loki-canary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../loki-distributed/" class="md-nav__link">
+        loki-distributed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../loki-stack/" class="md-nav__link">
+        Loki-Stack Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mimir-distributed/" class="md-nav__link">
+        Notice of relocation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../promtail/" class="md-nav__link">
+        promtail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rollout-operator/" class="md-nav__link">
+        Grafana rollout-operator Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../synthetic-monitoring-agent/" class="md-nav__link">
+        synthetic-monitoring-agent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          tempo-distributed
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        tempo-distributed
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    Source Code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chart-repo" class="md-nav__link">
+    Chart Repo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    Installing the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    Uninstalling the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    Upgrading
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-versions-130" class="md-nav__link">
+    From Chart versions &lt; 1.3.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-versions-100" class="md-nav__link">
+    From Chart versions &lt; 1.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-version-0270" class="md-nav__link">
+    From chart version &lt; 0.27.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-version-0260" class="md-nav__link">
+    From chart version &lt; 0.26.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-version-0230" class="md-nav__link">
+    From chart version &lt; 0.23.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-version-0220" class="md-nav__link">
+    From Chart version &gt;= 0.22.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-version-0200" class="md-nav__link">
+    From Chart version &lt; 0.20.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-version-0180" class="md-nav__link">
+    From Chart version &lt; 0.18.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-versions-090" class="md-nav__link">
+    From Chart versions &lt; 0.9.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-versions-080" class="md-nav__link">
+    From Chart versions &lt; 0.8.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-versions-070" class="md-nav__link">
+    From Chart Versions &lt; 0.7.0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#values" class="md-nav__link">
+    Values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    Components
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overriding-configuration-variables-with-structuredconfig" class="md-nav__link">
+    Overriding configuration variables with structuredConfig
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activate-metrics-generator" class="md-nav__link">
+    Activate metrics generator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directory-and-file-locations" class="md-nav__link">
+    Directory and File Locations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-configuration-using-s3-for-storage" class="md-nav__link">
+    Example configuration using S3 for storage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tempo-vulture/" class="md-nav__link">
+        tempo-vulture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tempo/" class="md-nav__link">
+        tempo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../ingress-nginx/">Ingress nginx</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Ingress nginx" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Ingress nginx
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ingress-nginx/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../prometheus-community/">Prometheus community</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Prometheus community" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Prometheus community
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager-snmp-notifier/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager/" class="md-nav__link">
+        Alertmanager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/jiralert/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-prometheus-stack/" class="md-nav__link">
+        kube-prometheus-stack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-state-metrics/" class="md-nav__link">
+        kube-state-metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prom-label-proxy/" class="md-nav__link">
+        prom-label-proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-adapter/" class="md-nav__link">
+        Prometheus Adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-blackbox-exporter/" class="md-nav__link">
+        Prometheus Blackbox Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-cloudwatch-exporter/" class="md-nav__link">
+        Prometheus Cloudwatch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-conntrack-stats-exporter/" class="md-nav__link">
+        Conntrack Stats Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-consul-exporter/" class="md-nav__link">
+        Prometheus Consul Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-couchdb-exporter/" class="md-nav__link">
+        prometheus-couchdb-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-druid-exporter/" class="md-nav__link">
+        Prometheus Druid Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-elasticsearch-exporter/" class="md-nav__link">
+        Elasticsearch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-fastly-exporter/" class="md-nav__link">
+        Prometheus Fastly Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-json-exporter/" class="md-nav__link">
+        prometheus-json-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-kafka-exporter/" class="md-nav__link">
+        prometheus-kafka-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mongodb-exporter/" class="md-nav__link">
+        Prometheus MongoDB Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mysql-exporter/" class="md-nav__link">
+        Prometheus Mysql Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nats-exporter/" class="md-nav__link">
+        Prometheus NATS Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nginx-exporter/" class="md-nav__link">
+        prometheus-nginx-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-node-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-admission-webhook/" class="md-nav__link">
+        Prometheus Operator Admission Webhook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-crds/" class="md-nav__link">
+        Prometheus Operator CRDs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pgbouncer-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingdom-exporter/" class="md-nav__link">
+        Prometheus Pingdom Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingmesh-exporter/" class="md-nav__link">
+        Prometheus Pingmesh Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-postgres-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pushgateway/" class="md-nav__link">
+        Prometheus Pushgateway
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-rabbitmq-exporter/" class="md-nav__link">
+        prometheus-rabbitmq-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-redis-exporter/" class="md-nav__link">
+        prometheus-redis-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-smartctl-exporter/" class="md-nav__link">
+        Prometheus smartctl Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-snmp-exporter/" class="md-nav__link">
+        Prometheus SNMP Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-stackdriver-exporter/" class="md-nav__link">
+        Stackdriver Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-statsd-exporter/" class="md-nav__link">
+        prometheus-statsd-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-to-sd/" class="md-nav__link">
+        prometheus-to-sd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-windows-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../sir5kong/">Sir5kong</a>
+          
+            <label for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Sir5kong" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Sir5kong
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/commonapp/" class="md-nav__link">
+        commonapp helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/kafka/" class="md-nav__link">
+        Kafka helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/nginx/" class="md-nav__link">
+        nginx helm chart
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    Source Code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chart-repo" class="md-nav__link">
+    Chart Repo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    Installing the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    Uninstalling the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    Upgrading
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-versions-130" class="md-nav__link">
+    From Chart versions &lt; 1.3.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-versions-100" class="md-nav__link">
+    From Chart versions &lt; 1.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-version-0270" class="md-nav__link">
+    From chart version &lt; 0.27.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-version-0260" class="md-nav__link">
+    From chart version &lt; 0.26.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-version-0230" class="md-nav__link">
+    From chart version &lt; 0.23.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-version-0220" class="md-nav__link">
+    From Chart version &gt;= 0.22.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-version-0200" class="md-nav__link">
+    From Chart version &lt; 0.20.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-version-0180" class="md-nav__link">
+    From Chart version &lt; 0.18.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-versions-090" class="md-nav__link">
+    From Chart versions &lt; 0.9.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-versions-080" class="md-nav__link">
+    From Chart versions &lt; 0.8.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-chart-versions-070" class="md-nav__link">
+    From Chart Versions &lt; 0.7.0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#values" class="md-nav__link">
+    Values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    Components
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overriding-configuration-variables-with-structuredconfig" class="md-nav__link">
+    Overriding configuration variables with structuredConfig
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activate-metrics-generator" class="md-nav__link">
+    Activate metrics generator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directory-and-file-locations" class="md-nav__link">
+    Directory and File Locations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-configuration-using-s3-for-storage" class="md-nav__link">
+    Example configuration using S3 for storage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<h1 id="tempo-distributed">tempo-distributed<a class="headerlink" href="#tempo-distributed" title="Permanent link">&para;</a></h1>
+<p><img alt="Version: 1.4.7" src="https://img.shields.io/badge/Version-1.4.7-informational?style=flat-square" /> <img alt="Type: application" src="https://img.shields.io/badge/Type-application-informational?style=flat-square" /> <img alt="AppVersion: 2.1.1" src="https://img.shields.io/badge/AppVersion-2.1.1-informational?style=flat-square" /></p>
+<p>Grafana Tempo in MicroService mode</p>
+<h2 id="source-code">Source Code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://github.com/grafana/tempo">https://github.com/grafana/tempo</a></li>
+</ul>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Repository</th>
+<th>Name</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://grafana.github.io/helm-charts">https://grafana.github.io/helm-charts</a></td>
+<td>grafana-agent-operator(grafana-agent-operator)</td>
+<td>0.2.2</td>
+</tr>
+<tr>
+<td><a href="https://helm.min.io/">https://helm.min.io/</a></td>
+<td>minio(minio)</td>
+<td>8.0.9</td>
+</tr>
+</tbody>
+</table>
+<h2 id="chart-repo">Chart Repo<a class="headerlink" href="#chart-repo" title="Permanent link">&para;</a></h2>
+<p>Add the following repo to use the chart:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">helm repo add grafana https://helm-charts.itboon.top/grafana</span>
+</span></code></pre></div>
+<h2 id="installing-the-chart">Installing the Chart<a class="headerlink" href="#installing-the-chart" title="Permanent link">&para;</a></h2>
+<p>To install the chart with the release name <code>my-release</code>:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="go">helm install my-release grafana/tempo-distributed</span>
+</span></code></pre></div>
+<h2 id="uninstalling-the-chart">Uninstalling the Chart<a class="headerlink" href="#uninstalling-the-chart" title="Permanent link">&para;</a></h2>
+<p>To uninstall/delete the my-release deployment:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">helm delete my-release</span>
+</span></code></pre></div>
+<p>The command removes all the Kubernetes components associated with the chart and deletes the release.</p>
+<h2 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">&para;</a></h2>
+<p>A major chart version change indicates that there is an incompatible breaking change needing manual actions.</p>
+<h3 id="from-chart-versions-130">From Chart versions &lt; 1.3.0<a class="headerlink" href="#from-chart-versions-130" title="Permanent link">&para;</a></h3>
+<p>Please be aware that we've updated the minor version to Tempo 2.1, which includes breaking changes.
+We recommend reviewing the <a href="https://github.com/grafana/tempo/releases/tag/v2.1.0/">release notes</a> before upgrading.</p>
+<h3 id="from-chart-versions-100">From Chart versions &lt; 1.0.0<a class="headerlink" href="#from-chart-versions-100" title="Permanent link">&para;</a></h3>
+<p>Please note that we've incremented the major version when upgrading to Tempo 2.0. There were a large number of
+changes in this release (breaking and otherwise). It is encouraged to review the <a href="https://grafana.com/docs/tempo/latest/release-notes/v2-0/">release notes</a>
+and <a href="https://grafana.com/docs/tempo/latest/setup/upgrade/">1.5 -&gt; 2.0 upgrade guide</a> before upgrading.</p>
+<h3 id="from-chart-version-0270">From chart version &lt; 0.27.0<a class="headerlink" href="#from-chart-version-0270" title="Permanent link">&para;</a></h3>
+<p>Version 0.27.0:</p>
+<p>Many changes have been introduced, including some breaking changes.</p>
+<p>The (PR)[<a href="https://github.com/grafana/helm-charts/pull/1759">https://github.com/grafana/helm-charts/pull/1759</a>] includes additional details.</p>
+<ul>
+<li>
+<p><strong>BREAKING CHANGE</strong> centralize selector label handling -- users who wish to keep old values should still be able to use the <code>nameOverride</code> and <code>fullNameOverride</code> top level keys in their values.</p>
+</li>
+<li>
+<p><strong>BREAKING CHANGE</strong> serviceMonitor has been nested under metaMonitoring -- metamonitoring can be used scrape services as well as install the operator with the following values.  Note also that the port names have changed from <code>http</code> to <code>http-metrics</code>.
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">metaMonitoring</span><span class="p">:</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">serviceMonitor</span><span class="p">:</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nt">grafanaAgent</span><span class="p">:</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nt">installOperator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span></code></pre></div></p>
+</li>
+<li>minio can now be enabled as part of this chart using the following values
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">minio</span><span class="p">:</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span></code></pre></div></li>
+<li>allow configuration to be stored in a secret.  See the documentation for <code>useExternalConfig</code> and <code>configStorageType</code> in the values file for more details.</li>
+</ul>
+<h3 id="from-chart-version-0260">From chart version &lt; 0.26.0<a class="headerlink" href="#from-chart-version-0260" title="Permanent link">&para;</a></h3>
+<p>Version 0.26.0</p>
+<ul>
+<li>Moves metricsGenerator.config.storage_remote_write to metricsGenerator.config.storage.remote_write</li>
+<li>Moves metricsGenerator.config.service_graphs_max_items to metricsGenerator.config.processor.service_graphs.max_items</li>
+</ul>
+<h3 id="from-chart-version-0230">From chart version &lt; 0.23.0<a class="headerlink" href="#from-chart-version-0230" title="Permanent link">&para;</a></h3>
+<p>Version 0.23.0:</p>
+<ul>
+<li>
+<p>Adds /var/tempo emptyDir mount for querier, queryfrontend, distributor and compactor. Previously, /var/tempo was directory inside container.</p>
+</li>
+<li>
+<p>Sets queryFrontend.query.enabled to false. tempo-query is only required for grafana version &lt;7.5 for compatibility with jaeger-ui. Please also note that tempo-query is incompatible with securityContext readOnlyRootFilesystem set to true.</p>
+</li>
+<li>
+<p>Sets stricter default securityContext:
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">tempo</span><span class="p">:</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">securityContext</span><span class="p">:</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nt">capabilities</span><span class="p">:</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">      </span><span class="nt">drop</span><span class="p">:</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ALL</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nt">readOnlyRootFilesystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="nt">runAsNonRoot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="nt">runAsGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="nt">allowPrivilegeEscalation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span><span class="nt">podSecurityContext</span><span class="p">:</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="nt">fsGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+</span></code></pre></div>
+If you had ingester persistence enabled, you might need to manually change ownership of files in your PV if your CSI doesn't support fsGroup</p>
+</li>
+</ul>
+<h3 id="from-chart-version-0220">From Chart version &gt;= 0.22.0<a class="headerlink" href="#from-chart-version-0220" title="Permanent link">&para;</a></h3>
+<p>Align Istio GRPC named port syntax. For example,</p>
+<ul>
+<li>otlp-grpc               -&gt; grpc-otlp</li>
+<li>distributor-otlp-grpc   -&gt; grpc-distributor-otlp</li>
+<li>jaeger-grpc             -&gt; grpc-jaeger</li>
+<li>distributor-jaeger-grpc -&gt; grpc-distributor-jaeger</li>
+</ul>
+<p>In case you need to rollback, please search the right hand side pattern and replace with left hand side pattern.</p>
+<h3 id="from-chart-version-0200">From Chart version &lt; 0.20.0<a class="headerlink" href="#from-chart-version-0200" title="Permanent link">&para;</a></h3>
+<p>The image's attributes must be set under the <code>image</code> key for the Memcached service.
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">memcached</span><span class="p">:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">image</span><span class="p">:</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nt">registry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker.io</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">memcached</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.5.17-alpine&quot;</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="nt">pullPolicy</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;IfNotPresent&quot;</span>
+</span></code></pre></div></p>
+<h3 id="from-chart-version-0180">From Chart version &lt; 0.18.0<a class="headerlink" href="#from-chart-version-0180" title="Permanent link">&para;</a></h3>
+<p>Trace ingestion must now be enabled with the <code>enabled</code> key:
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">traces</span><span class="p">:</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">otlp</span><span class="p">:</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nt">grpc</span><span class="p">:</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="nt">http</span><span class="p">:</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="nt">zipkin</span><span class="p">:</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">  </span><span class="nt">jaeger</span><span class="p">:</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="nt">thriftHttp</span><span class="p">:</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">  </span><span class="nt">opencensus</span><span class="p">:</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span></code></pre></div></p>
+<h3 id="from-chart-versions-090">From Chart versions &lt; 0.9.0<a class="headerlink" href="#from-chart-versions-090" title="Permanent link">&para;</a></h3>
+<p>This release the component label was shortened to be more aligned with the Loki-distributed chart and the <a href="https://github.com/grafana/tempo/tree/master/operations/tempo-mixin">mixin</a> dashboards.</p>
+<p>Due to the label changes, an existing installation cannot be upgraded without manual interaction. There are basically two options:</p>
+<p>Option 1
+Uninstall the old release and re-install the new one. There will be no data loss, as the collectors/agents can cache for a short period.</p>
+<p>Option 2
+Add new selector labels to the existing pods. This option will make your pods also temporarely unavailable, option 1 is faster:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>kubectl label pod -n &lt;namespace&gt; -l app.kubernetes.io/component=&lt;release-name&gt;-tempo-distributed-&lt;component&gt;,app.kubernetes.io/instance=&lt;instance-name&gt; app.kubernetes.io/component=&lt;component&gt; --overwrite
+</span></code></pre></div>
+<p>Perform a non-cascading deletion of the Deployments and Statefulsets which will keep the pods running:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>kubectl delete &lt;deployment/statefulset&gt; -n &lt;namespace&gt; -l app.kubernetes.io/component=&lt;release-name&gt;-tempo-distributed-&lt;component&gt;,app.kubernetes.io/instance=&lt;instance-name&gt; --cascade=false
+</span></code></pre></div>
+<p>Perform a regular Helm upgrade on the existing release. The new Deployment/Statefulset will pick up the existing pods and perform a rolling upgrade.</p>
+<h3 id="from-chart-versions-080">From Chart versions &lt; 0.8.0<a class="headerlink" href="#from-chart-versions-080" title="Permanent link">&para;</a></h3>
+<p>By default all tracing protocols are disabled and you need to specify which protocols to enable for ingestion.</p>
+<p>For example to enable Jaeger grpc thrift http and zipkin protocols:
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">traces</span><span class="p">:</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="nt">jaeger</span><span class="p">:</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="nt">grpc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="nt">thriftHttp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">  </span><span class="nt">zipkin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span></code></pre></div></p>
+<p>The distributor service is now called {{tempo.fullname}}-distributor. That could impact your ingestion towards this service.</p>
+<h3 id="from-chart-versions-070">From Chart Versions &lt; 0.7.0<a class="headerlink" href="#from-chart-versions-070" title="Permanent link">&para;</a></h3>
+<p>The memcached default args are removed and should be provided manually. The settings for the <code>memcached.exporter</code> moved to <code>memcachedExporter</code></p>
+<h2 id="values">Values<a class="headerlink" href="#values" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>adminApi.affinity</td>
+<td>string</td>
+<td>Soft node and soft zone anti-affinity</td>
+<td>Affinity for admin-api pods. Passed through <code>tpl</code> and, thus, to be configured as string</td>
+</tr>
+<tr>
+<td>adminApi.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.containerSecurityContext</td>
+<td>object</td>
+<td><code>{"readOnlyRootFilesystem":true}</code></td>
+<td>The SecurityContext for admin_api containers</td>
+</tr>
+<tr>
+<td>adminApi.env</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.extraArgs</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.extraContainers</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.extraEnvFrom</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.extraVolumeMounts</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.extraVolumes</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.initContainers</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.nodeSelector</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.persistence.subPath</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.podAnnotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.podDisruptionBudget</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.podLabels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.readinessProbe.httpGet.path</td>
+<td>string</td>
+<td><code>"/ready"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.readinessProbe.httpGet.port</td>
+<td>string</td>
+<td><code>"http-metrics"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.readinessProbe.initialDelaySeconds</td>
+<td>int</td>
+<td><code>45</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.replicas</td>
+<td>int</td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.resources.requests.cpu</td>
+<td>string</td>
+<td><code>"10m"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.resources.requests.memory</td>
+<td>string</td>
+<td><code>"32Mi"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.securityContext</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.service.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.service.labels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.strategy.rollingUpdate.maxSurge</td>
+<td>int</td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.strategy.rollingUpdate.maxUnavailable</td>
+<td>int</td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.strategy.type</td>
+<td>string</td>
+<td><code>"RollingUpdate"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.terminationGracePeriodSeconds</td>
+<td>int</td>
+<td><code>60</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.tolerations</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>adminApi.topologySpreadConstraints</td>
+<td>string</td>
+<td>Defaults to allow skew no more then 1 node per AZ</td>
+<td>topologySpread for admin-api pods. Passed through <code>tpl</code> and, thus, to be configured as string</td>
+</tr>
+<tr>
+<td>compactor.config.compaction.block_retention</td>
+<td>string</td>
+<td><code>"48h"</code></td>
+<td>Duration to keep blocks</td>
+</tr>
+<tr>
+<td>compactor.config.compaction.compacted_block_retention</td>
+<td>string</td>
+<td><code>"1h"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>compactor.config.compaction.compaction_cycle</td>
+<td>string</td>
+<td><code>"30s"</code></td>
+<td>The time between compaction cycles</td>
+</tr>
+<tr>
+<td>compactor.config.compaction.compaction_window</td>
+<td>string</td>
+<td><code>"1h"</code></td>
+<td>Blocks in this time window will be compacted together</td>
+</tr>
+<tr>
+<td>compactor.config.compaction.max_block_bytes</td>
+<td>int</td>
+<td><code>107374182400</code></td>
+<td>Maximum size of a compacted block in bytes</td>
+</tr>
+<tr>
+<td>compactor.config.compaction.max_compaction_objects</td>
+<td>int</td>
+<td><code>6000000</code></td>
+<td>Maximum number of traces in a compacted block. WARNING: Deprecated. Use max_block_bytes instead.</td>
+</tr>
+<tr>
+<td>compactor.config.compaction.max_time_per_tenant</td>
+<td>string</td>
+<td><code>"5m"</code></td>
+<td>The maximum amount of time to spend compacting a single tenant before moving to the next</td>
+</tr>
+<tr>
+<td>compactor.config.compaction.retention_concurrency</td>
+<td>int</td>
+<td><code>10</code></td>
+<td>Number of tenants to process in parallel during retention</td>
+</tr>
+<tr>
+<td>compactor.config.compaction.v2_in_buffer_bytes</td>
+<td>int</td>
+<td><code>5242880</code></td>
+<td>Amount of data to buffer from input blocks</td>
+</tr>
+<tr>
+<td>compactor.config.compaction.v2_out_buffer_bytes</td>
+<td>int</td>
+<td><code>20971520</code></td>
+<td>Flush data to backend when buffer is this large</td>
+</tr>
+<tr>
+<td>compactor.config.compaction.v2_prefetch_traces_count</td>
+<td>int</td>
+<td><code>1000</code></td>
+<td>Number of traces to buffer in memory during compaction</td>
+</tr>
+<tr>
+<td>compactor.dnsConfigOverides.dnsConfig.options[0].name</td>
+<td>string</td>
+<td><code>"ndots"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>compactor.dnsConfigOverides.dnsConfig.options[0].value</td>
+<td>string</td>
+<td><code>"3"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>compactor.dnsConfigOverides.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>compactor.extraArgs</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Additional CLI args for the compactor</td>
+</tr>
+<tr>
+<td>compactor.extraEnv</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Environment variables to add to the compactor pods</td>
+</tr>
+<tr>
+<td>compactor.extraEnvFrom</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Environment variables from secrets or configmaps to add to the compactor pods</td>
+</tr>
+<tr>
+<td>compactor.extraVolumeMounts</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Extra volumes for compactor pods</td>
+</tr>
+<tr>
+<td>compactor.extraVolumes</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Extra volumes for compactor deployment</td>
+</tr>
+<tr>
+<td>compactor.image.pullSecrets</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Optional list of imagePullSecrets. Overrides <code>tempo.image.pullSecrets</code></td>
+</tr>
+<tr>
+<td>compactor.image.registry</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The Docker registry for the compactor image. Overrides <code>tempo.image.registry</code></td>
+</tr>
+<tr>
+<td>compactor.image.repository</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Docker image repository for the compactor image. Overrides <code>tempo.image.repository</code></td>
+</tr>
+<tr>
+<td>compactor.image.tag</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Docker image tag for the compactor image. Overrides <code>tempo.image.tag</code></td>
+</tr>
+<tr>
+<td>compactor.nodeSelector</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Node selector for compactor pods</td>
+</tr>
+<tr>
+<td>compactor.podAnnotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for compactor pods</td>
+</tr>
+<tr>
+<td>compactor.podLabels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Labels for compactor pods</td>
+</tr>
+<tr>
+<td>compactor.priorityClassName</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The name of the PriorityClass for compactor pods</td>
+</tr>
+<tr>
+<td>compactor.replicas</td>
+<td>int</td>
+<td><code>1</code></td>
+<td>Number of replicas for the compactor</td>
+</tr>
+<tr>
+<td>compactor.resources</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Resource requests and limits for the compactor</td>
+</tr>
+<tr>
+<td>compactor.service.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for compactor service</td>
+</tr>
+<tr>
+<td>compactor.terminationGracePeriodSeconds</td>
+<td>int</td>
+<td><code>30</code></td>
+<td>Grace period to allow the compactor to shutdown before it is killed</td>
+</tr>
+<tr>
+<td>compactor.tolerations</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Tolerations for compactor pods</td>
+</tr>
+<tr>
+<td>config</td>
+<td>string</td>
+<td>See values.yaml</td>
+<td>Config file contents for Tempo distributed. Passed through the <code>tpl</code> function to allow templating</td>
+</tr>
+<tr>
+<td>configStorageType</td>
+<td>string</td>
+<td><code>"ConfigMap"</code></td>
+<td>Defines what kind of object stores the configuration, a ConfigMap or a Secret. In order to move sensitive information (such as credentials) from the ConfigMap/Secret to a more secure location (e.g. vault), it is possible to use <a href="https://grafana.com/docs/mimir/latest/operators-guide/configuring/reference-configuration-parameters/#use-environment-variables-in-the-configuration">environment variables in the configuration</a>. Such environment variables can be then stored in a separate Secret and injected via the global.extraEnvFrom value. For details about environment injection from a Secret please see <a href="https://kubernetes.io/docs/concepts/configuration/secret/#use-case-as-container-environment-variables">Secrets</a>.</td>
+</tr>
+<tr>
+<td>distributor.affinity</td>
+<td>string</td>
+<td>Hard node and soft zone anti-affinity</td>
+<td>Affinity for distributor pods. Passed through <code>tpl</code> and, thus, to be configured as string</td>
+</tr>
+<tr>
+<td>distributor.appProtocol</td>
+<td>object</td>
+<td><code>{"grpc":null}</code></td>
+<td>Adds the appProtocol field to the distributor service. This allows distributor to work with istio protocol selection.</td>
+</tr>
+<tr>
+<td>distributor.appProtocol.grpc</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Set the optional grpc service protocol. Ex: "grpc", "http2" or "https"</td>
+</tr>
+<tr>
+<td>distributor.autoscaling.behavior</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Autoscaling behavior configuration for the distributor</td>
+</tr>
+<tr>
+<td>distributor.autoscaling.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Enable autoscaling for the distributor</td>
+</tr>
+<tr>
+<td>distributor.autoscaling.maxReplicas</td>
+<td>int</td>
+<td><code>3</code></td>
+<td>Maximum autoscaling replicas for the distributor</td>
+</tr>
+<tr>
+<td>distributor.autoscaling.minReplicas</td>
+<td>int</td>
+<td><code>1</code></td>
+<td>Minimum autoscaling replicas for the distributor</td>
+</tr>
+<tr>
+<td>distributor.autoscaling.targetCPUUtilizationPercentage</td>
+<td>int</td>
+<td><code>60</code></td>
+<td>Target CPU utilisation percentage for the distributor</td>
+</tr>
+<tr>
+<td>distributor.autoscaling.targetMemoryUtilizationPercentage</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Target memory utilisation percentage for the distributor</td>
+</tr>
+<tr>
+<td>distributor.config.extend_writes</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Disables write extension with inactive ingesters</td>
+</tr>
+<tr>
+<td>distributor.config.log_received_spans</td>
+<td>object</td>
+<td><code>{"enabled":false,"filter_by_status_error":false,"include_all_attributes":false}</code></td>
+<td>Enable to log every received span to help debug ingestion or calculate span error distributions using the logs</td>
+</tr>
+<tr>
+<td>distributor.config.log_received_traces</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>WARNING: Deprecated. Use log_received_spans instead.</td>
+</tr>
+<tr>
+<td>distributor.extraArgs</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Additional CLI args for the distributor</td>
+</tr>
+<tr>
+<td>distributor.extraEnv</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Environment variables to add to the distributor pods</td>
+</tr>
+<tr>
+<td>distributor.extraEnvFrom</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Environment variables from secrets or configmaps to add to the distributor pods</td>
+</tr>
+<tr>
+<td>distributor.extraVolumeMounts</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Extra volumes for distributor pods</td>
+</tr>
+<tr>
+<td>distributor.extraVolumes</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Extra volumes for distributor deployment</td>
+</tr>
+<tr>
+<td>distributor.image.pullSecrets</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Optional list of imagePullSecrets. Overrides <code>tempo.image.pullSecrets</code></td>
+</tr>
+<tr>
+<td>distributor.image.registry</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The Docker registry for the ingester image. Overrides <code>tempo.image.registry</code></td>
+</tr>
+<tr>
+<td>distributor.image.repository</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Docker image repository for the ingester image. Overrides <code>tempo.image.repository</code></td>
+</tr>
+<tr>
+<td>distributor.image.tag</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Docker image tag for the ingester image. Overrides <code>tempo.image.tag</code></td>
+</tr>
+<tr>
+<td>distributor.nodeSelector</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Node selector for distributor pods</td>
+</tr>
+<tr>
+<td>distributor.podAnnotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for distributor pods</td>
+</tr>
+<tr>
+<td>distributor.podLabels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Labels for distributor pods</td>
+</tr>
+<tr>
+<td>distributor.priorityClassName</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The name of the PriorityClass for distributor pods</td>
+</tr>
+<tr>
+<td>distributor.replicas</td>
+<td>int</td>
+<td><code>1</code></td>
+<td>Number of replicas for the distributor</td>
+</tr>
+<tr>
+<td>distributor.resources</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Resource requests and limits for the distributor</td>
+</tr>
+<tr>
+<td>distributor.service.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for distributor service</td>
+</tr>
+<tr>
+<td>distributor.service.loadBalancerIP</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>If type is LoadBalancer you can assign the IP to the LoadBalancer</td>
+</tr>
+<tr>
+<td>distributor.service.loadBalancerSourceRanges</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>If type is LoadBalancer limit incoming traffic from IPs.</td>
+</tr>
+<tr>
+<td>distributor.service.type</td>
+<td>string</td>
+<td><code>"ClusterIP"</code></td>
+<td>Type of service for the distributor</td>
+</tr>
+<tr>
+<td>distributor.terminationGracePeriodSeconds</td>
+<td>int</td>
+<td><code>30</code></td>
+<td>Grace period to allow the distributor to shutdown before it is killed</td>
+</tr>
+<tr>
+<td>distributor.tolerations</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Tolerations for distributor pods</td>
+</tr>
+<tr>
+<td>distributor.topologySpreadConstraints</td>
+<td>string</td>
+<td>Defaults to allow skew no more then 1 node per AZ</td>
+<td>topologySpread for distributor pods. Passed through <code>tpl</code> and, thus, to be configured as string</td>
+</tr>
+<tr>
+<td>enterprise.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterprise.image.repository</td>
+<td>string</td>
+<td><code>"grafana/enterprise-traces"</code></td>
+<td>Grafana Enterprise Metrics container image repository. Note: for Grafana Tempo use the value 'image.repository'</td>
+</tr>
+<tr>
+<td>enterprise.image.tag</td>
+<td>string</td>
+<td><code>"v2.1.0"</code></td>
+<td>Grafana Enterprise Metrics container image tag. Note: for Grafana Tempo use the value 'image.tag'</td>
+</tr>
+<tr>
+<td>enterpriseGateway.affinity</td>
+<td>string</td>
+<td>Soft node and soft zone anti-affinity</td>
+<td>Affinity for enterprise-gateway pods. Passed through <code>tpl</code> and, thus, to be configured as string</td>
+</tr>
+<tr>
+<td>enterpriseGateway.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.containerSecurityContext</td>
+<td>object</td>
+<td><code>{"readOnlyRootFilesystem":true}</code></td>
+<td>The SecurityContext for gateway containers</td>
+</tr>
+<tr>
+<td>enterpriseGateway.env</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.extraArgs</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.extraContainers</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.extraEnvFrom</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.extraVolumeMounts</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.extraVolumes</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.ingress.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for the gateway ingress</td>
+</tr>
+<tr>
+<td>enterpriseGateway.ingress.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Specifies whether an ingress for the gateway should be created</td>
+</tr>
+<tr>
+<td>enterpriseGateway.ingress.hosts</td>
+<td>list</td>
+<td><code>[{"host":"gateway.gem.example.com","paths":[{"path":"/"}]}]</code></td>
+<td>Hosts configuration for the gateway ingress</td>
+</tr>
+<tr>
+<td>enterpriseGateway.ingress.tls</td>
+<td>list</td>
+<td><code>[{"hosts":["gateway.gem.example.com"],"secretName":"gem-gateway-tls"}]</code></td>
+<td>TLS configuration for the gateway ingress</td>
+</tr>
+<tr>
+<td>enterpriseGateway.initContainers</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.nodeSelector</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.persistence.subPath</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.podAnnotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.podDisruptionBudget</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.podLabels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.readinessProbe.httpGet.path</td>
+<td>string</td>
+<td><code>"/ready"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.readinessProbe.httpGet.port</td>
+<td>string</td>
+<td><code>"http-metrics"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.readinessProbe.initialDelaySeconds</td>
+<td>int</td>
+<td><code>45</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.replicas</td>
+<td>int</td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.resources.requests.cpu</td>
+<td>string</td>
+<td><code>"10m"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.resources.requests.memory</td>
+<td>string</td>
+<td><code>"32Mi"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.securityContext</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.service.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.service.labels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.service.port</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>If the port is left undefined, the service will listen on the same port as the pod</td>
+</tr>
+<tr>
+<td>enterpriseGateway.strategy.rollingUpdate.maxSurge</td>
+<td>int</td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.strategy.rollingUpdate.maxUnavailable</td>
+<td>int</td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.strategy.type</td>
+<td>string</td>
+<td><code>"RollingUpdate"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.terminationGracePeriodSeconds</td>
+<td>int</td>
+<td><code>60</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.tolerations</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>enterpriseGateway.topologySpreadConstraints</td>
+<td>string</td>
+<td>Defaults to allow skew no more then 1 node per AZ</td>
+<td>topologySpread for enterprise-gateway pods. Passed through <code>tpl</code> and, thus, to be configured as string</td>
+</tr>
+<tr>
+<td>enterpriseGateway.useDefaultProxyURLs</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>externalConfigSecretName</td>
+<td>string</td>
+<td><code>"{{ include \"tempo.resourceName\" (dict \"ctx\" . \"component\" \"config\") }}"</code></td>
+<td>Name of the Secret or ConfigMap that contains the configuration (used for naming even if config is internal).</td>
+</tr>
+<tr>
+<td>externalConfigVersion</td>
+<td>string</td>
+<td><code>"0"</code></td>
+<td>When 'useExternalConfig' is true, then changing 'externalConfigVersion' triggers restart of services - otherwise changes to the configuration cause a restart.</td>
+</tr>
+<tr>
+<td>externalRuntimeConfigName</td>
+<td>string</td>
+<td><code>"{{ include \"tempo.resourceName\" (dict \"ctx\" . \"component\" \"runtime\") }}"</code></td>
+<td>Name of the Secret or ConfigMap that contains the runtime configuration (used for naming even if config is internal).</td>
+</tr>
+<tr>
+<td>fullnameOverride</td>
+<td>string</td>
+<td><code>""</code></td>
+<td></td>
+</tr>
+<tr>
+<td>gateway.affinity</td>
+<td>string</td>
+<td>Hard node and soft zone anti-affinity</td>
+<td>Affinity for gateway pods. Passed through <code>tpl</code> and, thus, to be configured as string</td>
+</tr>
+<tr>
+<td>gateway.autoscaling.behavior</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Autoscaling behavior configuration for the gateway</td>
+</tr>
+<tr>
+<td>gateway.autoscaling.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Enable autoscaling for the gateway</td>
+</tr>
+<tr>
+<td>gateway.autoscaling.maxReplicas</td>
+<td>int</td>
+<td><code>3</code></td>
+<td>Maximum autoscaling replicas for the gateway</td>
+</tr>
+<tr>
+<td>gateway.autoscaling.minReplicas</td>
+<td>int</td>
+<td><code>1</code></td>
+<td>Minimum autoscaling replicas for the gateway</td>
+</tr>
+<tr>
+<td>gateway.autoscaling.targetCPUUtilizationPercentage</td>
+<td>int</td>
+<td><code>60</code></td>
+<td>Target CPU utilisation percentage for the gateway</td>
+</tr>
+<tr>
+<td>gateway.autoscaling.targetMemoryUtilizationPercentage</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Target memory utilisation percentage for the gateway</td>
+</tr>
+<tr>
+<td>gateway.basicAuth.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Enables basic authentication for the gateway</td>
+</tr>
+<tr>
+<td>gateway.basicAuth.existingSecret</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Existing basic auth secret to use. Must contain '.htpasswd'</td>
+</tr>
+<tr>
+<td>gateway.basicAuth.htpasswd</td>
+<td>string</td>
+<td><code>"{{ htpasswd (required \"'gateway.basicAuth.username' is required\" .Values.gateway.basicAuth.username) (required \"'gateway.basicAuth.password' is required\" .Values.gateway.basicAuth.password) }}"</code></td>
+<td>Uses the specified username and password to compute a htpasswd using Sprig's <code>htpasswd</code> function. The value is templated using <code>tpl</code>. Override this to use a custom htpasswd, e.g. in case the default causes high CPU load.</td>
+</tr>
+<tr>
+<td>gateway.basicAuth.password</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The basic auth password for the gateway</td>
+</tr>
+<tr>
+<td>gateway.basicAuth.username</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The basic auth username for the gateway</td>
+</tr>
+<tr>
+<td>gateway.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Specifies whether the gateway should be enabled</td>
+</tr>
+<tr>
+<td>gateway.extraArgs</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Additional CLI args for the gateway</td>
+</tr>
+<tr>
+<td>gateway.extraEnv</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Environment variables to add to the gateway pods</td>
+</tr>
+<tr>
+<td>gateway.extraEnvFrom</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Environment variables from secrets or configmaps to add to the gateway pods</td>
+</tr>
+<tr>
+<td>gateway.extraVolumeMounts</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Volume mounts to add to the gateway pods</td>
+</tr>
+<tr>
+<td>gateway.extraVolumes</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Volumes to add to the gateway pods</td>
+</tr>
+<tr>
+<td>gateway.image.pullPolicy</td>
+<td>string</td>
+<td><code>"IfNotPresent"</code></td>
+<td>The gateway image pull policy</td>
+</tr>
+<tr>
+<td>gateway.image.pullSecrets</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Optional list of imagePullSecrets. Overrides <code>global.image.pullSecrets</code></td>
+</tr>
+<tr>
+<td>gateway.image.registry</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The Docker registry for the gateway image. Overrides <code>global.image.registry</code></td>
+</tr>
+<tr>
+<td>gateway.image.repository</td>
+<td>string</td>
+<td><code>"nginxinc/nginx-unprivileged"</code></td>
+<td>The gateway image repository</td>
+</tr>
+<tr>
+<td>gateway.image.tag</td>
+<td>string</td>
+<td><code>"1.19-alpine"</code></td>
+<td>The gateway image tag</td>
+</tr>
+<tr>
+<td>gateway.ingress.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for the gateway ingress</td>
+</tr>
+<tr>
+<td>gateway.ingress.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Specifies whether an ingress for the gateway should be created</td>
+</tr>
+<tr>
+<td>gateway.ingress.hosts</td>
+<td>list</td>
+<td><code>[{"host":"gateway.tempo.example.com","paths":[{"path":"/"}]}]</code></td>
+<td>Hosts configuration for the gateway ingress</td>
+</tr>
+<tr>
+<td>gateway.ingress.tls</td>
+<td>list</td>
+<td><code>[{"hosts":["gateway.tempo.example.com"],"secretName":"tempo-gateway-tls"}]</code></td>
+<td>TLS configuration for the gateway ingress</td>
+</tr>
+<tr>
+<td>gateway.nginxConfig.file</td>
+<td>string</td>
+<td>See values.yaml</td>
+<td>Config file contents for Nginx. Passed through the <code>tpl</code> function to allow templating</td>
+</tr>
+<tr>
+<td>gateway.nginxConfig.httpSnippet</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Allows appending custom configuration to the http block</td>
+</tr>
+<tr>
+<td>gateway.nginxConfig.logFormat</td>
+<td>string</td>
+<td><code>"main '$remote_addr - $remote_user [$time_local]  $status '\n        '\"$request\" $body_bytes_sent \"$http_referer\" '\n        '\"$http_user_agent\" \"$http_x_forwarded_for\"';"</code></td>
+<td>NGINX log format</td>
+</tr>
+<tr>
+<td>gateway.nginxConfig.resolver</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Allows overriding the DNS resolver address nginx will use</td>
+</tr>
+<tr>
+<td>gateway.nginxConfig.serverSnippet</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Allows appending custom configuration to the server block</td>
+</tr>
+<tr>
+<td>gateway.nodeSelector</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Node selector for gateway pods</td>
+</tr>
+<tr>
+<td>gateway.podAnnotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for gateway pods</td>
+</tr>
+<tr>
+<td>gateway.podLabels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Labels for gateway pods</td>
+</tr>
+<tr>
+<td>gateway.priorityClassName</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The name of the PriorityClass for gateway pods</td>
+</tr>
+<tr>
+<td>gateway.readinessProbe.httpGet.path</td>
+<td>string</td>
+<td><code>"/"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>gateway.readinessProbe.httpGet.port</td>
+<td>string</td>
+<td><code>"http-metrics"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>gateway.readinessProbe.initialDelaySeconds</td>
+<td>int</td>
+<td><code>15</code></td>
+<td></td>
+</tr>
+<tr>
+<td>gateway.readinessProbe.timeoutSeconds</td>
+<td>int</td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td>gateway.replicas</td>
+<td>int</td>
+<td><code>1</code></td>
+<td>Number of replicas for the gateway</td>
+</tr>
+<tr>
+<td>gateway.resources</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Resource requests and limits for the gateway</td>
+</tr>
+<tr>
+<td>gateway.service.additionalPorts</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Additional ports to be opneed on gateway service (e.g. for RPC connections)</td>
+</tr>
+<tr>
+<td>gateway.service.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for the gateway service</td>
+</tr>
+<tr>
+<td>gateway.service.clusterIP</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>ClusterIP of the gateway service</td>
+</tr>
+<tr>
+<td>gateway.service.labels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Labels for gateway service</td>
+</tr>
+<tr>
+<td>gateway.service.loadBalancerIP</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Load balancer IPO address if service type is LoadBalancer</td>
+</tr>
+<tr>
+<td>gateway.service.nodePort</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Node port if service type is NodePort</td>
+</tr>
+<tr>
+<td>gateway.service.port</td>
+<td>int</td>
+<td><code>80</code></td>
+<td>Port of the gateway service</td>
+</tr>
+<tr>
+<td>gateway.service.type</td>
+<td>string</td>
+<td><code>"ClusterIP"</code></td>
+<td>Type of the gateway service</td>
+</tr>
+<tr>
+<td>gateway.terminationGracePeriodSeconds</td>
+<td>int</td>
+<td><code>30</code></td>
+<td>Grace period to allow the gateway to shutdown before it is killed</td>
+</tr>
+<tr>
+<td>gateway.tolerations</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Tolerations for gateway pods</td>
+</tr>
+<tr>
+<td>gateway.topologySpreadConstraints</td>
+<td>string</td>
+<td>Defaults to allow skew no more then 1 node per AZ</td>
+<td>topologySpread for gateway pods. Passed through <code>tpl</code> and, thus, to be configured as string</td>
+</tr>
+<tr>
+<td>gateway.verboseLogging</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>Enable logging of 2xx and 3xx HTTP requests</td>
+</tr>
+<tr>
+<td>global.clusterDomain</td>
+<td>string</td>
+<td><code>"cluster.local"</code></td>
+<td>configures cluster domain ("cluster.local" by default)</td>
+</tr>
+<tr>
+<td>global.dnsNamespace</td>
+<td>string</td>
+<td><code>"kube-system"</code></td>
+<td>configures DNS service namespace</td>
+</tr>
+<tr>
+<td>global.dnsService</td>
+<td>string</td>
+<td><code>"kube-dns"</code></td>
+<td>configures DNS service name</td>
+</tr>
+<tr>
+<td>global.image.pullSecrets</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Optional list of imagePullSecrets for all images, excluding enterprise. Names of existing secrets with private container registry credentials. Ref: <a href="https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod">https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod</a> Example: pullSecrets: [ my-dockerconfigjson-secret ]</td>
+</tr>
+<tr>
+<td>global.image.registry</td>
+<td>string</td>
+<td><code>"docker.io"</code></td>
+<td>Overrides the Docker registry globally for all images, excluding enterprise.</td>
+</tr>
+<tr>
+<td>global.priorityClassName</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Overrides the priorityClassName for all pods</td>
+</tr>
+<tr>
+<td>global_overrides.metrics_generator_processors[0]</td>
+<td>string</td>
+<td><code>"service-graphs"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>global_overrides.metrics_generator_processors[1]</td>
+<td>string</td>
+<td><code>"span-metrics"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>global_overrides.per_tenant_override_config</td>
+<td>string</td>
+<td><code>"/runtime-config/overrides.yaml"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>ingester.affinity</td>
+<td>string</td>
+<td>Soft node and soft zone anti-affinity</td>
+<td>Affinity for ingester pods. Passed through <code>tpl</code> and, thus, to be configured as string</td>
+</tr>
+<tr>
+<td>ingester.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for the ingester StatefulSet</td>
+</tr>
+<tr>
+<td>ingester.appProtocol</td>
+<td>object</td>
+<td><code>{"grpc":null}</code></td>
+<td>Adds the appProtocol field to the ingester service. This allows ingester to work with istio protocol selection.</td>
+</tr>
+<tr>
+<td>ingester.appProtocol.grpc</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Set the optional grpc service protocol. Ex: "grpc", "http2" or "https"</td>
+</tr>
+<tr>
+<td>ingester.autoscaling.behavior</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Autoscaling behavior configuration for the ingester</td>
+</tr>
+<tr>
+<td>ingester.autoscaling.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Enable autoscaling for the ingester</td>
+</tr>
+<tr>
+<td>ingester.autoscaling.maxReplicas</td>
+<td>int</td>
+<td><code>3</code></td>
+<td>Maximum autoscaling replicas for the ingester</td>
+</tr>
+<tr>
+<td>ingester.autoscaling.minReplicas</td>
+<td>int</td>
+<td><code>1</code></td>
+<td>Minimum autoscaling replicas for the ingester</td>
+</tr>
+<tr>
+<td>ingester.autoscaling.targetCPUUtilizationPercentage</td>
+<td>int</td>
+<td><code>60</code></td>
+<td>Target CPU utilisation percentage for the ingester</td>
+</tr>
+<tr>
+<td>ingester.autoscaling.targetMemoryUtilizationPercentage</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Target memory utilisation percentage for the ingester</td>
+</tr>
+<tr>
+<td>ingester.config.complete_block_timeout</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Duration to keep blocks in the ingester after they have been flushed</td>
+</tr>
+<tr>
+<td>ingester.config.flush_check_period</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>How often to sweep all tenants and move traces from live -&gt; wal -&gt; completed blocks.</td>
+</tr>
+<tr>
+<td>ingester.config.max_block_bytes</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Maximum size of a block before cutting it</td>
+</tr>
+<tr>
+<td>ingester.config.max_block_duration</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Maximum length of time before cutting a block</td>
+</tr>
+<tr>
+<td>ingester.config.replication_factor</td>
+<td>int</td>
+<td><code>3</code></td>
+<td>Number of copies of spans to store in the ingester ring</td>
+</tr>
+<tr>
+<td>ingester.config.trace_idle_period</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Amount of time a trace must be idle before flushing it to the wal.</td>
+</tr>
+<tr>
+<td>ingester.extraArgs</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Additional CLI args for the ingester</td>
+</tr>
+<tr>
+<td>ingester.extraEnv</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Environment variables to add to the ingester pods</td>
+</tr>
+<tr>
+<td>ingester.extraEnvFrom</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Environment variables from secrets or configmaps to add to the ingester pods</td>
+</tr>
+<tr>
+<td>ingester.extraVolumeMounts</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Extra volumes for ingester pods</td>
+</tr>
+<tr>
+<td>ingester.extraVolumes</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Extra volumes for ingester deployment</td>
+</tr>
+<tr>
+<td>ingester.image.pullSecrets</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Optional list of imagePullSecrets. Overrides <code>tempo.image.pullSecrets</code></td>
+</tr>
+<tr>
+<td>ingester.image.registry</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The Docker registry for the ingester image. Overrides <code>tempo.image.registry</code></td>
+</tr>
+<tr>
+<td>ingester.image.repository</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Docker image repository for the ingester image. Overrides <code>tempo.image.repository</code></td>
+</tr>
+<tr>
+<td>ingester.image.tag</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Docker image tag for the ingester image. Overrides <code>tempo.image.tag</code></td>
+</tr>
+<tr>
+<td>ingester.nodeSelector</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Node selector for ingester pods</td>
+</tr>
+<tr>
+<td>ingester.persistence.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for ingester's persist volume claim</td>
+</tr>
+<tr>
+<td>ingester.persistence.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Enable creating PVCs which is required when using boltdb-shipper</td>
+</tr>
+<tr>
+<td>ingester.persistence.inMemory</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>use emptyDir with ramdisk instead of PVC. <strong>Please note that all data in ingester will be lost on pod restart</strong></td>
+</tr>
+<tr>
+<td>ingester.persistence.size</td>
+<td>string</td>
+<td><code>"10Gi"</code></td>
+<td>Size of persistent or memory disk</td>
+</tr>
+<tr>
+<td>ingester.persistence.storageClass</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Storage class to be used. If defined, storageClassName: <storageClass>. If set to "-", storageClassName: "", which disables dynamic provisioning. If empty or set to null, no storageClassName spec is set, choosing the default provisioner (gp2 on AWS, standard on GKE, AWS, and OpenStack).</td>
+</tr>
+<tr>
+<td>ingester.podAnnotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for ingester pods</td>
+</tr>
+<tr>
+<td>ingester.podLabels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Labels for ingester pods</td>
+</tr>
+<tr>
+<td>ingester.priorityClassName</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The name of the PriorityClass for ingester pods</td>
+</tr>
+<tr>
+<td>ingester.replicas</td>
+<td>int</td>
+<td><code>3</code></td>
+<td>Number of replicas for the ingester</td>
+</tr>
+<tr>
+<td>ingester.resources</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Resource requests and limits for the ingester</td>
+</tr>
+<tr>
+<td>ingester.service.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for ingester service</td>
+</tr>
+<tr>
+<td>ingester.terminationGracePeriodSeconds</td>
+<td>int</td>
+<td><code>300</code></td>
+<td>Grace period to allow the ingester to shutdown before it is killed. Especially for the ingestor, this must be increased. It must be long enough so ingesters can be gracefully shutdown flushing/transferring all data and to successfully leave the member ring on shutdown.</td>
+</tr>
+<tr>
+<td>ingester.tolerations</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Tolerations for ingester pods</td>
+</tr>
+<tr>
+<td>ingester.topologySpreadConstraints</td>
+<td>string</td>
+<td>Defaults to allow skew no more then 1 node per AZ</td>
+<td>topologySpread for ingester pods. Passed through <code>tpl</code> and, thus, to be configured as string</td>
+</tr>
+<tr>
+<td>license.contents</td>
+<td>string</td>
+<td><code>"NOTAVALIDLICENSE"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>license.external</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>license.secretName</td>
+<td>string</td>
+<td><code>"{{ include \"tempo.resourceName\" (dict \"ctx\" . \"component\" \"license\") }}"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>memcached.affinity</td>
+<td>string</td>
+<td>Hard node and soft zone anti-affinity</td>
+<td>Affinity for memcached pods. Passed through <code>tpl</code> and, thus, to be configured as string</td>
+</tr>
+<tr>
+<td>memcached.enabled</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>Specified whether the memcached cachce should be enabled</td>
+</tr>
+<tr>
+<td>memcached.extraArgs</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Additional CLI args for memcached</td>
+</tr>
+<tr>
+<td>memcached.extraEnv</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Environment variables to add to memcached pods</td>
+</tr>
+<tr>
+<td>memcached.extraEnvFrom</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Environment variables from secrets or configmaps to add to memcached pods</td>
+</tr>
+<tr>
+<td>memcached.host</td>
+<td>string</td>
+<td><code>"memcached"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>memcached.image.pullPolicy</td>
+<td>string</td>
+<td><code>"IfNotPresent"</code></td>
+<td>Memcached Docker image pull policy</td>
+</tr>
+<tr>
+<td>memcached.image.pullSecrets</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Optional list of imagePullSecrets. Overrides <code>global.image.pullSecrets</code></td>
+</tr>
+<tr>
+<td>memcached.image.registry</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The Docker registry for the Memcached image. Overrides <code>global.image.registry</code></td>
+</tr>
+<tr>
+<td>memcached.image.repository</td>
+<td>string</td>
+<td><code>"memcached"</code></td>
+<td>Memcached Docker image repository</td>
+</tr>
+<tr>
+<td>memcached.image.tag</td>
+<td>string</td>
+<td><code>"1.5.17-alpine"</code></td>
+<td>Memcached Docker image tag</td>
+</tr>
+<tr>
+<td>memcached.podAnnotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for memcached pods</td>
+</tr>
+<tr>
+<td>memcached.podLabels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Labels for memcached pods</td>
+</tr>
+<tr>
+<td>memcached.replicas</td>
+<td>int</td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td>memcached.resources</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Resource requests and limits for memcached</td>
+</tr>
+<tr>
+<td>memcached.service.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for memcached service</td>
+</tr>
+<tr>
+<td>memcached.topologySpreadConstraints</td>
+<td>string</td>
+<td>Defaults to allow skew no more then 1 node per AZ</td>
+<td>topologySpread for memcached pods. Passed through <code>tpl</code> and, thus, to be configured as string</td>
+</tr>
+<tr>
+<td>memcachedExporter.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Specifies whether the Memcached Exporter should be enabled</td>
+</tr>
+<tr>
+<td>memcachedExporter.image.pullPolicy</td>
+<td>string</td>
+<td><code>"IfNotPresent"</code></td>
+<td>Memcached Exporter Docker image pull policy</td>
+</tr>
+<tr>
+<td>memcachedExporter.image.pullSecrets</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Optional list of imagePullSecrets. Overrides <code>global.image.pullSecrets</code></td>
+</tr>
+<tr>
+<td>memcachedExporter.image.registry</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The Docker registry for the Memcached Exporter image. Overrides <code>global.image.registry</code></td>
+</tr>
+<tr>
+<td>memcachedExporter.image.repository</td>
+<td>string</td>
+<td><code>"prom/memcached-exporter"</code></td>
+<td>Memcached Exporter Docker image repository</td>
+</tr>
+<tr>
+<td>memcachedExporter.image.tag</td>
+<td>string</td>
+<td><code>"v0.8.0"</code></td>
+<td>Memcached Exporter Docker image tag</td>
+</tr>
+<tr>
+<td>memcachedExporter.resources</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations to add to all monitoring.grafana.com custom resources. Does not affect the ServiceMonitors for kubernetes metrics; use serviceMonitor.annotations for that.</td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Controls whether to create PodLogs, MetricsInstance, LogsInstance, and GrafanaAgent CRs to scrape the ServiceMonitors of the chart and ship metrics and logs to the remote endpoints below. Note that you need to configure serviceMonitor in order to have some metrics available.</td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.installOperator</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Controls whether to install the Grafana Agent Operator and its CRDs. Note that helm will not install CRDs if this flag is enabled during an upgrade. In that case install the CRDs manually from <a href="https://github.com/grafana/agent/tree/main/production/operator/crds">https://github.com/grafana/agent/tree/main/production/operator/crds</a></td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.labels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Labels to add to all monitoring.grafana.com custom resources. Does not affect the ServiceMonitors for kubernetes metrics; use serviceMonitor.labels for that.</td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.logs.additionalClientConfigs</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Client configurations for the LogsInstance that will scrape Mimir pods. Follows the format of .remote.</td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.logs.remote</td>
+<td>object</td>
+<td><code>{"auth":{"passwordSecretKey":"","passwordSecretName":"","tenantId":"","username":""},"url":""}</code></td>
+<td>Default destination for logs. The config here is translated to Promtail client configuration to write logs to this Loki-compatible remote. Optional.</td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.logs.remote.auth.passwordSecretKey</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>The value under this key in passwordSecretName will be used as the basic authentication password. Required only if passwordSecretName is set.</td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.logs.remote.auth.passwordSecretName</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>The value under key passwordSecretKey in this secret will be used as the basic authentication password. Required only if passwordSecretKey is set.</td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.logs.remote.auth.tenantId</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Used to set X-Scope-OrgID header on requests. Usually not used in combination with username and password.</td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.logs.remote.auth.username</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Basic authentication username. Optional.</td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.logs.remote.url</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Full URL for Loki push endpoint. Usually ends in /loki/api/v1/push</td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.metrics.additionalRemoteWriteConfigs</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Additional remote-write for the MetricsInstance that will scrape Mimir pods. Follows the format of .remote.</td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.metrics.remote</td>
+<td>object</td>
+<td><code>{"auth":{"passwordSecretKey":"","passwordSecretName":"","username":""},"headers":{},"url":""}</code></td>
+<td>Default destination for metrics. The config here is translated to remote_write configuration to push metrics to this Prometheus-compatible remote. Optional. Note that you need to configure serviceMonitor in order to have some metrics available.</td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.metrics.remote.auth.passwordSecretKey</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>The value under this key in passwordSecretName will be used as the basic authentication password. Required only if passwordSecretName is set.</td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.metrics.remote.auth.passwordSecretName</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>The value under key passwordSecretKey in this secret will be used as the basic authentication password. Required only if passwordSecretKey is set.</td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.metrics.remote.auth.username</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Basic authentication username. Optional.</td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.metrics.remote.headers</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Used to add HTTP headers to remote-write requests.</td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.metrics.remote.url</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Full URL for Prometheus remote-write. Usually ends in /push</td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.metrics.scrapeK8s.enabled</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>When grafanaAgent.enabled and serviceMonitor.enabled, controls whether to create ServiceMonitors CRs for cadvisor, kubelet, and kube-state-metrics. The scraped metrics are reduced to those pertaining to Mimir pods only.</td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.metrics.scrapeK8s.kubeStateMetrics</td>
+<td>object</td>
+<td><code>{"labelSelectors":{"app.kubernetes.io/name":"kube-state-metrics"},"namespace":"kube-system"}</code></td>
+<td>Controls service discovery of kube-state-metrics.</td>
+</tr>
+<tr>
+<td>metaMonitoring.grafanaAgent.namespace</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Sets the namespace of the resources. Leave empty or unset to use the same namespace as the Helm release.</td>
+</tr>
+<tr>
+<td>metaMonitoring.serviceMonitor.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>ServiceMonitor annotations</td>
+</tr>
+<tr>
+<td>metaMonitoring.serviceMonitor.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>If enabled, ServiceMonitor resources for Prometheus Operator are created</td>
+</tr>
+<tr>
+<td>metaMonitoring.serviceMonitor.interval</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>ServiceMonitor scrape interval</td>
+</tr>
+<tr>
+<td>metaMonitoring.serviceMonitor.labels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Additional ServiceMonitor labels</td>
+</tr>
+<tr>
+<td>metaMonitoring.serviceMonitor.metricRelabelings</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>ServiceMonitor metric relabel configs to apply to samples before ingestion <a href="https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#endpoint">https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#endpoint</a></td>
+</tr>
+<tr>
+<td>metaMonitoring.serviceMonitor.namespace</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Alternative namespace for ServiceMonitor resources</td>
+</tr>
+<tr>
+<td>metaMonitoring.serviceMonitor.namespaceSelector</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Namespace selector for ServiceMonitor resources</td>
+</tr>
+<tr>
+<td>metaMonitoring.serviceMonitor.relabelings</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>ServiceMonitor relabel configs to apply to samples before scraping <a href="https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#relabelconfig">https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#relabelconfig</a></td>
+</tr>
+<tr>
+<td>metaMonitoring.serviceMonitor.scheme</td>
+<td>string</td>
+<td><code>"http"</code></td>
+<td>ServiceMonitor will use http by default, but you can pick https as well</td>
+</tr>
+<tr>
+<td>metaMonitoring.serviceMonitor.scrapeTimeout</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>ServiceMonitor scrape timeout in Go duration format (e.g. 15s)</td>
+</tr>
+<tr>
+<td>metaMonitoring.serviceMonitor.tlsConfig</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>ServiceMonitor will use these tlsConfig settings to make the health check requests</td>
+</tr>
+<tr>
+<td>metricsGenerator.affinity</td>
+<td>string</td>
+<td>Hard node and soft zone anti-affinity</td>
+<td>Affinity for metrics-generator pods. Passed through <code>tpl</code> and, thus, to be configured as string</td>
+</tr>
+<tr>
+<td>metricsGenerator.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for the metrics-generator StatefulSet</td>
+</tr>
+<tr>
+<td>metricsGenerator.appProtocol</td>
+<td>object</td>
+<td><code>{"grpc":null}</code></td>
+<td>Adds the appProtocol field to the metricsGenerator service. This allows metricsGenerator to work with istio protocol selection.</td>
+</tr>
+<tr>
+<td>metricsGenerator.appProtocol.grpc</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Set the optional grpc service protocol. Ex: "grpc", "http2" or "https"</td>
+</tr>
+<tr>
+<td>metricsGenerator.config</td>
+<td>object</td>
+<td><code>{"metrics_ingestion_time_range_slack":"30s","processor":{"service_graphs":{"dimensions":[],"histogram_buckets":[0.1,0.2,0.4,0.8,1.6,3.2,6.4,12.8],"max_items":10000,"wait":"10s","workers":10},"span_metrics":{"dimensions":[],"histogram_buckets":[0.002,0.004,0.008,0.016,0.032,0.064,0.128,0.256,0.512,1.02,2.05,4.1]}},"registry":{"collection_interval":"15s","external_labels":{},"stale_duration":"15m"},"storage":{"path":"/var/tempo/wal","remote_write":[],"remote_write_flush_deadline":"1m","wal":null}}</code></td>
+<td>More information on configuration: <a href="https://grafana.com/docs/tempo/latest/configuration/#metrics-generator">https://grafana.com/docs/tempo/latest/configuration/#metrics-generator</a></td>
+</tr>
+<tr>
+<td>metricsGenerator.config.processor.service_graphs.dimensions</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>resource and span attributes and are added to the metrics if present.</td>
+</tr>
+<tr>
+<td>metricsGenerator.config.processor.span_metrics.dimensions</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Dimensions are searched for in the resource and span attributes and are added to the metrics if present.</td>
+</tr>
+<tr>
+<td>metricsGenerator.config.storage.remote_write</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td><a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_write">https://prometheus.io/docs/prometheus/latest/configuration/configuration/#remote_write</a></td>
+</tr>
+<tr>
+<td>metricsGenerator.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Specifies whether a metrics-generator should be deployed</td>
+</tr>
+<tr>
+<td>metricsGenerator.extraArgs</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Additional CLI args for the metrics-generator</td>
+</tr>
+<tr>
+<td>metricsGenerator.extraEnv</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Environment variables to add to the metrics-generator pods</td>
+</tr>
+<tr>
+<td>metricsGenerator.extraEnvFrom</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Environment variables from secrets or configmaps to add to the metrics-generator pods</td>
+</tr>
+<tr>
+<td>metricsGenerator.extraVolumeMounts</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Extra volumes for metrics-generator pods</td>
+</tr>
+<tr>
+<td>metricsGenerator.extraVolumes</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Extra volumes for metrics-generator deployment</td>
+</tr>
+<tr>
+<td>metricsGenerator.image.pullSecrets</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Optional list of imagePullSecrets. Overrides <code>tempo.image.pullSecrets</code></td>
+</tr>
+<tr>
+<td>metricsGenerator.image.registry</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The Docker registry for the metrics-generator image. Overrides <code>tempo.image.registry</code></td>
+</tr>
+<tr>
+<td>metricsGenerator.image.repository</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Docker image repository for the metrics-generator image. Overrides <code>tempo.image.repository</code></td>
+</tr>
+<tr>
+<td>metricsGenerator.image.tag</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Docker image tag for the metrics-generator image. Overrides <code>tempo.image.tag</code></td>
+</tr>
+<tr>
+<td>metricsGenerator.nodeSelector</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Node selector for metrics-generator pods</td>
+</tr>
+<tr>
+<td>metricsGenerator.podAnnotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for metrics-generator pods</td>
+</tr>
+<tr>
+<td>metricsGenerator.podLabels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Labels for metrics-generator pods</td>
+</tr>
+<tr>
+<td>metricsGenerator.ports</td>
+<td>list</td>
+<td><code>[{"name":"grpc","port":9095,"service":true},{"name":"http-memberlist","port":7946,"service":false},{"name":"http-metrics","port":3100,"service":true}]</code></td>
+<td>Default ports</td>
+</tr>
+<tr>
+<td>metricsGenerator.priorityClassName</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The name of the PriorityClass for metrics-generator pods</td>
+</tr>
+<tr>
+<td>metricsGenerator.replicas</td>
+<td>int</td>
+<td><code>1</code></td>
+<td>Number of replicas for the metrics-generator</td>
+</tr>
+<tr>
+<td>metricsGenerator.resources</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Resource requests and limits for the metrics-generator</td>
+</tr>
+<tr>
+<td>metricsGenerator.service.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for Metrics Generator service</td>
+</tr>
+<tr>
+<td>metricsGenerator.terminationGracePeriodSeconds</td>
+<td>int</td>
+<td><code>300</code></td>
+<td>Grace period to allow the metrics-generator to shutdown before it is killed. Especially for the ingestor, this must be increased. It must be long enough so metrics-generators can be gracefully shutdown flushing/transferring all data and to successfully leave the member ring on shutdown.</td>
+</tr>
+<tr>
+<td>metricsGenerator.tolerations</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Tolerations for metrics-generator pods</td>
+</tr>
+<tr>
+<td>metricsGenerator.topologySpreadConstraints</td>
+<td>string</td>
+<td>Defaults to allow skew no more then 1 node per AZ</td>
+<td>topologySpread for metrics-generator pods. Passed through <code>tpl</code> and, thus, to be configured as string</td>
+</tr>
+<tr>
+<td>metricsGenerator.walEmptyDir</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>The EmptyDir location where the /var/tempo will be mounted on. Defaults to local disk, can be set to memory.</td>
+</tr>
+<tr>
+<td>minio.buckets[0].name</td>
+<td>string</td>
+<td><code>"tempo-traces"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>minio.buckets[0].policy</td>
+<td>string</td>
+<td><code>"none"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>minio.buckets[0].purge</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>minio.buckets[1].name</td>
+<td>string</td>
+<td><code>"enterprise-traces"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>minio.buckets[1].policy</td>
+<td>string</td>
+<td><code>"none"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>minio.buckets[1].purge</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>minio.buckets[2].name</td>
+<td>string</td>
+<td><code>"enterprise-traces-admin"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>minio.buckets[2].policy</td>
+<td>string</td>
+<td><code>"none"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>minio.buckets[2].purge</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>minio.configPathmc</td>
+<td>string</td>
+<td><code>"/tmp/minio/mc/"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>minio.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>minio.mode</td>
+<td>string</td>
+<td><code>"standalone"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>minio.persistence.size</td>
+<td>string</td>
+<td><code>"5Gi"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>minio.resources.requests.cpu</td>
+<td>string</td>
+<td><code>"100m"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>minio.resources.requests.memory</td>
+<td>string</td>
+<td><code>"128Mi"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>minio.rootPassword</td>
+<td>string</td>
+<td><code>"supersecret"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>minio.rootUser</td>
+<td>string</td>
+<td><code>"grafana-tempo"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>multitenancyEnabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>overrides</td>
+<td>string</td>
+<td><code>"overrides: {}\n"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>prometheusRule.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>PrometheusRule annotations</td>
+</tr>
+<tr>
+<td>prometheusRule.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>If enabled, a PrometheusRule resource for Prometheus Operator is created</td>
+</tr>
+<tr>
+<td>prometheusRule.groups</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Contents of Prometheus rules file</td>
+</tr>
+<tr>
+<td>prometheusRule.labels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Additional PrometheusRule labels</td>
+</tr>
+<tr>
+<td>prometheusRule.namespace</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Alternative namespace for the PrometheusRule resource</td>
+</tr>
+<tr>
+<td>querier.affinity</td>
+<td>string</td>
+<td>Hard node and soft zone anti-affinity</td>
+<td>Affinity for querier pods. Passed through <code>tpl</code> and, thus, to be configured as string</td>
+</tr>
+<tr>
+<td>querier.appProtocol</td>
+<td>object</td>
+<td><code>{"grpc":null}</code></td>
+<td>Adds the appProtocol field to the querier service. This allows querier to work with istio protocol selection.</td>
+</tr>
+<tr>
+<td>querier.appProtocol.grpc</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Set the optional grpc service protocol. Ex: "grpc", "http2" or "https"</td>
+</tr>
+<tr>
+<td>querier.autoscaling.behavior</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Autoscaling behavior configuration for the querier</td>
+</tr>
+<tr>
+<td>querier.autoscaling.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Enable autoscaling for the querier</td>
+</tr>
+<tr>
+<td>querier.autoscaling.maxReplicas</td>
+<td>int</td>
+<td><code>3</code></td>
+<td>Maximum autoscaling replicas for the querier</td>
+</tr>
+<tr>
+<td>querier.autoscaling.minReplicas</td>
+<td>int</td>
+<td><code>1</code></td>
+<td>Minimum autoscaling replicas for the querier</td>
+</tr>
+<tr>
+<td>querier.autoscaling.targetCPUUtilizationPercentage</td>
+<td>int</td>
+<td><code>60</code></td>
+<td>Target CPU utilisation percentage for the querier</td>
+</tr>
+<tr>
+<td>querier.autoscaling.targetMemoryUtilizationPercentage</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Target memory utilisation percentage for the querier</td>
+</tr>
+<tr>
+<td>querier.config.frontend_worker.grpc_client_config</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>grpc client configuration</td>
+</tr>
+<tr>
+<td>querier.config.max_concurrent_queries</td>
+<td>int</td>
+<td><code>20</code></td>
+<td>This value controls the overall number of simultaneous subqueries that the querier will service at once. It does not distinguish between the types of queries.</td>
+</tr>
+<tr>
+<td>querier.config.search.external_endpoints</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>A list of external endpoints that the querier will use to offload backend search requests</td>
+</tr>
+<tr>
+<td>querier.config.search.external_hedge_requests_at</td>
+<td>string</td>
+<td><code>"8s"</code></td>
+<td>If set to a non-zero value a second request will be issued at the provided duration. Recommended to be set to p99 of external search requests to reduce long tail latency.</td>
+</tr>
+<tr>
+<td>querier.config.search.external_hedge_requests_up_to</td>
+<td>int</td>
+<td><code>2</code></td>
+<td>The maximum number of requests to execute when hedging. Requires hedge_requests_at to be set.</td>
+</tr>
+<tr>
+<td>querier.config.search.prefer_self</td>
+<td>int</td>
+<td><code>10</code></td>
+<td>If search_external_endpoints is set then the querier will primarily act as a proxy for whatever serverless backend you have configured. This setting allows the operator to have the querier prefer itself for a configurable number of subqueries.</td>
+</tr>
+<tr>
+<td>querier.config.search.query_timeout</td>
+<td>string</td>
+<td><code>"30s"</code></td>
+<td>Timeout for search requests</td>
+</tr>
+<tr>
+<td>querier.config.trace_by_id.query_timeout</td>
+<td>string</td>
+<td><code>"10s"</code></td>
+<td>Timeout for trace lookup requests</td>
+</tr>
+<tr>
+<td>querier.extraArgs</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Additional CLI args for the querier</td>
+</tr>
+<tr>
+<td>querier.extraEnv</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Environment variables to add to the querier pods</td>
+</tr>
+<tr>
+<td>querier.extraEnvFrom</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Environment variables from secrets or configmaps to add to the querier pods</td>
+</tr>
+<tr>
+<td>querier.extraVolumeMounts</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Extra volumes for querier pods</td>
+</tr>
+<tr>
+<td>querier.extraVolumes</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Extra volumes for querier deployment</td>
+</tr>
+<tr>
+<td>querier.image.pullSecrets</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Optional list of imagePullSecrets. Overrides <code>tempo.image.pullSecrets</code></td>
+</tr>
+<tr>
+<td>querier.image.registry</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The Docker registry for the querier image. Overrides <code>tempo.image.registry</code></td>
+</tr>
+<tr>
+<td>querier.image.repository</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Docker image repository for the querier image. Overrides <code>tempo.image.repository</code></td>
+</tr>
+<tr>
+<td>querier.image.tag</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Docker image tag for the querier image. Overrides <code>tempo.image.tag</code></td>
+</tr>
+<tr>
+<td>querier.nodeSelector</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Node selector for querier pods</td>
+</tr>
+<tr>
+<td>querier.podAnnotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for querier pods</td>
+</tr>
+<tr>
+<td>querier.podLabels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Labels for querier pods</td>
+</tr>
+<tr>
+<td>querier.priorityClassName</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The name of the PriorityClass for querier pods</td>
+</tr>
+<tr>
+<td>querier.replicas</td>
+<td>int</td>
+<td><code>1</code></td>
+<td>Number of replicas for the querier</td>
+</tr>
+<tr>
+<td>querier.resources</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Resource requests and limits for the querier</td>
+</tr>
+<tr>
+<td>querier.service.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for querier service</td>
+</tr>
+<tr>
+<td>querier.terminationGracePeriodSeconds</td>
+<td>int</td>
+<td><code>30</code></td>
+<td>Grace period to allow the querier to shutdown before it is killed</td>
+</tr>
+<tr>
+<td>querier.tolerations</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Tolerations for querier pods</td>
+</tr>
+<tr>
+<td>querier.topologySpreadConstraints</td>
+<td>string</td>
+<td>Defaults to allow skew no more then 1 node per AZ</td>
+<td>topologySpread for querier pods. Passed through <code>tpl</code> and, thus, to be configured as string</td>
+</tr>
+<tr>
+<td>queryFrontend.affinity</td>
+<td>string</td>
+<td>Hard node and soft zone anti-affinity</td>
+<td>Affinity for query-frontend pods. Passed through <code>tpl</code> and, thus, to be configured as string</td>
+</tr>
+<tr>
+<td>queryFrontend.appProtocol</td>
+<td>object</td>
+<td><code>{"grpc":null}</code></td>
+<td>Adds the appProtocol field to the queriyFrontend service. This allows queriyFrontend to work with istio protocol selection.</td>
+</tr>
+<tr>
+<td>queryFrontend.appProtocol.grpc</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Set the optional grpc service protocol. Ex: "grpc", "http2" or "https"</td>
+</tr>
+<tr>
+<td>queryFrontend.autoscaling.behavior</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Autoscaling behavior configuration for the query-frontend</td>
+</tr>
+<tr>
+<td>queryFrontend.autoscaling.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Enable autoscaling for the query-frontend</td>
+</tr>
+<tr>
+<td>queryFrontend.autoscaling.maxReplicas</td>
+<td>int</td>
+<td><code>3</code></td>
+<td>Maximum autoscaling replicas for the query-frontend</td>
+</tr>
+<tr>
+<td>queryFrontend.autoscaling.minReplicas</td>
+<td>int</td>
+<td><code>1</code></td>
+<td>Minimum autoscaling replicas for the query-frontend</td>
+</tr>
+<tr>
+<td>queryFrontend.autoscaling.targetCPUUtilizationPercentage</td>
+<td>int</td>
+<td><code>60</code></td>
+<td>Target CPU utilisation percentage for the query-frontend</td>
+</tr>
+<tr>
+<td>queryFrontend.autoscaling.targetMemoryUtilizationPercentage</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Target memory utilisation percentage for the query-frontend</td>
+</tr>
+<tr>
+<td>queryFrontend.config.max_retries</td>
+<td>int</td>
+<td><code>2</code></td>
+<td>Number of times to retry a request sent to a querier</td>
+</tr>
+<tr>
+<td>queryFrontend.config.search.concurrent_jobs</td>
+<td>int</td>
+<td><code>1000</code></td>
+<td>The number of concurrent jobs to execute when searching the backend</td>
+</tr>
+<tr>
+<td>queryFrontend.config.search.target_bytes_per_job</td>
+<td>int</td>
+<td><code>104857600</code></td>
+<td>The target number of bytes for each job to handle when performing a backend search</td>
+</tr>
+<tr>
+<td>queryFrontend.config.tolerate_failed_blocks</td>
+<td>int</td>
+<td><code>0</code></td>
+<td>Number of block queries that are tolerated to error before considering the entire query as failed. Numbers greater than 0 make possible for a read to return partial results</td>
+</tr>
+<tr>
+<td>queryFrontend.config.trace_by_id</td>
+<td>object</td>
+<td><code>{"hedge_requests_at":"2s","hedge_requests_up_to":2,"query_shards":50}</code></td>
+<td>Trace by ID lookup configuration</td>
+</tr>
+<tr>
+<td>queryFrontend.config.trace_by_id.hedge_requests_at</td>
+<td>string</td>
+<td><code>"2s"</code></td>
+<td>If set to a non-zero value, a second request will be issued at the provided duration. Recommended to be set to p99 of search requests to reduce long-tail latency.</td>
+</tr>
+<tr>
+<td>queryFrontend.config.trace_by_id.hedge_requests_up_to</td>
+<td>int</td>
+<td><code>2</code></td>
+<td>The maximum number of requests to execute when hedging. Requires hedge_requests_at to be set. Must be greater than 0.</td>
+</tr>
+<tr>
+<td>queryFrontend.config.trace_by_id.query_shards</td>
+<td>int</td>
+<td><code>50</code></td>
+<td>The number of shards to split a trace by id query into.</td>
+</tr>
+<tr>
+<td>queryFrontend.extraArgs</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Additional CLI args for the query-frontend</td>
+</tr>
+<tr>
+<td>queryFrontend.extraEnv</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Environment variables to add to the query-frontend pods</td>
+</tr>
+<tr>
+<td>queryFrontend.extraEnvFrom</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Environment variables from secrets or configmaps to add to the query-frontend pods</td>
+</tr>
+<tr>
+<td>queryFrontend.extraVolumeMounts</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Extra volumes for query-frontend pods</td>
+</tr>
+<tr>
+<td>queryFrontend.extraVolumes</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Extra volumes for query-frontend deployment</td>
+</tr>
+<tr>
+<td>queryFrontend.image.pullSecrets</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Optional list of imagePullSecrets. Overrides <code>tempo.image.pullSecrets</code></td>
+</tr>
+<tr>
+<td>queryFrontend.image.registry</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The Docker registry for the query-frontend image. Overrides <code>tempo.image.registry</code></td>
+</tr>
+<tr>
+<td>queryFrontend.image.repository</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Docker image repository for the query-frontend image. Overrides <code>tempo.image.repository</code></td>
+</tr>
+<tr>
+<td>queryFrontend.image.tag</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Docker image tag for the query-frontend image. Overrides <code>tempo.image.tag</code></td>
+</tr>
+<tr>
+<td>queryFrontend.ingress.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for the Jaeger ingress</td>
+</tr>
+<tr>
+<td>queryFrontend.ingress.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Specifies whether an ingress for the Jaeger should be created</td>
+</tr>
+<tr>
+<td>queryFrontend.ingress.hosts</td>
+<td>list</td>
+<td><code>[{"host":"query.tempo.example.com","paths":[{"path":"/"}]}]</code></td>
+<td>Hosts configuration for the Jaeger ingress</td>
+</tr>
+<tr>
+<td>queryFrontend.ingress.tls</td>
+<td>list</td>
+<td><code>[{"hosts":["query.tempo.example.com"],"secretName":"tempo-query-tls"}]</code></td>
+<td>TLS configuration for the Jaeger ingress</td>
+</tr>
+<tr>
+<td>queryFrontend.nodeSelector</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Node selector for query-frontend pods</td>
+</tr>
+<tr>
+<td>queryFrontend.podAnnotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for query-frontend pods</td>
+</tr>
+<tr>
+<td>queryFrontend.podLabels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Labels for queryFrontend pods</td>
+</tr>
+<tr>
+<td>queryFrontend.priorityClassName</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The name of the PriorityClass for query-frontend pods</td>
+</tr>
+<tr>
+<td>queryFrontend.query.config</td>
+<td>string</td>
+<td><code>"backend: 127.0.0.1:3100\n"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>queryFrontend.query.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Required for grafana version &lt;7.5 for compatibility with jaeger-ui. Doesn't work on ARM arch</td>
+</tr>
+<tr>
+<td>queryFrontend.query.extraArgs</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Additional CLI args for tempo-query pods</td>
+</tr>
+<tr>
+<td>queryFrontend.query.extraEnv</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Environment variables to add to the tempo-query pods</td>
+</tr>
+<tr>
+<td>queryFrontend.query.extraEnvFrom</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Environment variables from secrets or configmaps to add to the tempo-query pods</td>
+</tr>
+<tr>
+<td>queryFrontend.query.extraVolumeMounts</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Extra volumes for tempo-query pods</td>
+</tr>
+<tr>
+<td>queryFrontend.query.extraVolumes</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Extra volumes for tempo-query deployment</td>
+</tr>
+<tr>
+<td>queryFrontend.query.image.pullSecrets</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Optional list of imagePullSecrets. Overrides <code>tempo.image.pullSecrets</code></td>
+</tr>
+<tr>
+<td>queryFrontend.query.image.registry</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The Docker registry for the query-frontend image. Overrides <code>tempo.image.registry</code></td>
+</tr>
+<tr>
+<td>queryFrontend.query.image.repository</td>
+<td>string</td>
+<td><code>"grafana/tempo-query"</code></td>
+<td>Docker image repository for the query-frontend image. Overrides <code>tempo.image.repository</code></td>
+</tr>
+<tr>
+<td>queryFrontend.query.image.tag</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Docker image tag for the query-frontend image. Overrides <code>tempo.image.tag</code></td>
+</tr>
+<tr>
+<td>queryFrontend.query.resources</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Resource requests and limits for the query</td>
+</tr>
+<tr>
+<td>queryFrontend.replicas</td>
+<td>int</td>
+<td><code>1</code></td>
+<td>Number of replicas for the query-frontend</td>
+</tr>
+<tr>
+<td>queryFrontend.resources</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Resource requests and limits for the query-frontend</td>
+</tr>
+<tr>
+<td>queryFrontend.service.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for queryFrontend service</td>
+</tr>
+<tr>
+<td>queryFrontend.service.loadBalancerIP</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>If type is LoadBalancer you can assign the IP to the LoadBalancer</td>
+</tr>
+<tr>
+<td>queryFrontend.service.loadBalancerSourceRanges</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>If type is LoadBalancer limit incoming traffic from IPs.</td>
+</tr>
+<tr>
+<td>queryFrontend.service.port</td>
+<td>int</td>
+<td><code>16686</code></td>
+<td>Port of the query-frontend service</td>
+</tr>
+<tr>
+<td>queryFrontend.service.type</td>
+<td>string</td>
+<td><code>"ClusterIP"</code></td>
+<td>Type of service for the queryFrontend</td>
+</tr>
+<tr>
+<td>queryFrontend.serviceDiscovery.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for queryFrontendDiscovery service</td>
+</tr>
+<tr>
+<td>queryFrontend.terminationGracePeriodSeconds</td>
+<td>int</td>
+<td><code>30</code></td>
+<td>Grace period to allow the query-frontend to shutdown before it is killed</td>
+</tr>
+<tr>
+<td>queryFrontend.tolerations</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Tolerations for query-frontend pods</td>
+</tr>
+<tr>
+<td>queryFrontend.topologySpreadConstraints</td>
+<td>string</td>
+<td>Defaults to allow skew no more then 1 node per AZ</td>
+<td>topologySpread for query-frontend pods. Passed through <code>tpl</code> and, thus, to be configured as string</td>
+</tr>
+<tr>
+<td>rbac.create</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Specifies whether RBAC manifests should be created</td>
+</tr>
+<tr>
+<td>rbac.pspEnabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Specifies whether a PodSecurityPolicy should be created</td>
+</tr>
+<tr>
+<td>reportingEnabled</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>If true, Tempo will report anonymous usage data about the shape of a deployment to Grafana Labs</td>
+</tr>
+<tr>
+<td>server.grpc_server_max_recv_msg_size</td>
+<td>int</td>
+<td><code>4194304</code></td>
+<td>Max gRPC message size that can be received</td>
+</tr>
+<tr>
+<td>server.grpc_server_max_send_msg_size</td>
+<td>int</td>
+<td><code>4194304</code></td>
+<td>Max gRPC message size that can be sent</td>
+</tr>
+<tr>
+<td>server.httpListenPort</td>
+<td>int</td>
+<td><code>3100</code></td>
+<td>HTTP server listen host</td>
+</tr>
+<tr>
+<td>server.http_server_read_timeout</td>
+<td>string</td>
+<td><code>"30s"</code></td>
+<td>Read timeout for HTTP server</td>
+</tr>
+<tr>
+<td>server.http_server_write_timeout</td>
+<td>string</td>
+<td><code>"30s"</code></td>
+<td>Write timeout for HTTP server</td>
+</tr>
+<tr>
+<td>server.logFormat</td>
+<td>string</td>
+<td><code>"logfmt"</code></td>
+<td>Log format. Can be set to logfmt (default) or json.</td>
+</tr>
+<tr>
+<td>server.logLevel</td>
+<td>string</td>
+<td><code>"info"</code></td>
+<td>Log level. Can be set to trace, debug, info (default), warn, error, fatal, panic</td>
+</tr>
+<tr>
+<td>serviceAccount.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for the service account</td>
+</tr>
+<tr>
+<td>serviceAccount.create</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>Specifies whether a ServiceAccount should be created</td>
+</tr>
+<tr>
+<td>serviceAccount.imagePullSecrets</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Image pull secrets for the service account</td>
+</tr>
+<tr>
+<td>serviceAccount.name</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>The name of the ServiceAccount to use. If not set and create is true, a name is generated using the fullname template</td>
+</tr>
+<tr>
+<td>storage.admin.backend</td>
+<td>string</td>
+<td><code>"filesystem"</code></td>
+<td>The supported storage backends are gcs, s3 and azure, as specified in <a href="https://grafana.com/docs/enterprise-traces/latest/config/reference/#admin_client_config">https://grafana.com/docs/enterprise-traces/latest/config/reference/#admin_client_config</a></td>
+</tr>
+<tr>
+<td>storage.trace.backend</td>
+<td>string</td>
+<td><code>"local"</code></td>
+<td>The supported storage backends are gcs, s3 and azure, as specified in <a href="https://grafana.com/docs/tempo/latest/configuration/#storage">https://grafana.com/docs/tempo/latest/configuration/#storage</a></td>
+</tr>
+<tr>
+<td>storage.trace.block.version</td>
+<td>string</td>
+<td><code>"vParquet"</code></td>
+<td>The supported block versions are v2 and vParquet, as specified in <a href="https://grafana.com/docs/tempo/latest/configuration/parquet/">https://grafana.com/docs/tempo/latest/configuration/parquet/</a></td>
+</tr>
+<tr>
+<td>tempo.image.pullPolicy</td>
+<td>string</td>
+<td><code>"IfNotPresent"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>tempo.image.pullSecrets</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Optional list of imagePullSecrets. Overrides <code>global.image.pullSecrets</code></td>
+</tr>
+<tr>
+<td>tempo.image.registry</td>
+<td>string</td>
+<td><code>"docker.io"</code></td>
+<td>The Docker registry</td>
+</tr>
+<tr>
+<td>tempo.image.repository</td>
+<td>string</td>
+<td><code>"grafana/tempo"</code></td>
+<td>Docker image repository</td>
+</tr>
+<tr>
+<td>tempo.image.tag</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Overrides the image tag whose default is the chart's appVersion</td>
+</tr>
+<tr>
+<td>tempo.memberlist</td>
+<td>object</td>
+<td><code>{"appProtocol":null}</code></td>
+<td>Memberlist service configuration.</td>
+</tr>
+<tr>
+<td>tempo.memberlist.appProtocol</td>
+<td>string</td>
+<td><code>nil</code></td>
+<td>Adds the appProtocol field to the memberlist service. This allows memberlist to work with istio protocol selection. Set the optional service protocol. Ex: "tcp", "http" or "https".</td>
+</tr>
+<tr>
+<td>tempo.podAnnotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Common annotations for all pods</td>
+</tr>
+<tr>
+<td>tempo.podLabels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Global labels for all tempo pods</td>
+</tr>
+<tr>
+<td>tempo.podSecurityContext</td>
+<td>object</td>
+<td><code>{"fsGroup":1000}</code></td>
+<td>podSecurityContext holds pod-level security attributes and common container settings</td>
+</tr>
+<tr>
+<td>tempo.readinessProbe.httpGet.path</td>
+<td>string</td>
+<td><code>"/ready"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>tempo.readinessProbe.httpGet.port</td>
+<td>string</td>
+<td><code>"http-metrics"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>tempo.readinessProbe.initialDelaySeconds</td>
+<td>int</td>
+<td><code>30</code></td>
+<td></td>
+</tr>
+<tr>
+<td>tempo.readinessProbe.timeoutSeconds</td>
+<td>int</td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td>tempo.securityContext</td>
+<td>object</td>
+<td><code>{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true,"runAsGroup":1000,"runAsNonRoot":true,"runAsUser":1000}</code></td>
+<td>SecurityContext holds container-level security attributes and common container settings</td>
+</tr>
+<tr>
+<td>tempo.structuredConfig</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Structured tempo configuration</td>
+</tr>
+<tr>
+<td>tokengenJob.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>tokengenJob.containerSecurityContext</td>
+<td>object</td>
+<td><code>{"readOnlyRootFilesystem":true}</code></td>
+<td>The SecurityContext for tokenjobgen containers</td>
+</tr>
+<tr>
+<td>tokengenJob.enable</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>tokengenJob.env</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>tokengenJob.extraArgs</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>tokengenJob.extraEnvFrom</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>tokengenJob.initContainers</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>traces.jaeger.grpc.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Enable Tempo to ingest Jaeger GRPC traces</td>
+</tr>
+<tr>
+<td>traces.jaeger.grpc.receiverConfig</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Jaeger GRPC receiver config</td>
+</tr>
+<tr>
+<td>traces.jaeger.thriftBinary.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Enable Tempo to ingest Jaeger Thrift Binary traces</td>
+</tr>
+<tr>
+<td>traces.jaeger.thriftBinary.receiverConfig</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Jaeger Thrift Binary receiver config</td>
+</tr>
+<tr>
+<td>traces.jaeger.thriftCompact.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Enable Tempo to ingest Jaeger Thrift Compact traces</td>
+</tr>
+<tr>
+<td>traces.jaeger.thriftCompact.receiverConfig</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Jaeger Thrift Compact receiver config</td>
+</tr>
+<tr>
+<td>traces.jaeger.thriftHttp.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Enable Tempo to ingest Jaeger Thrift HTTP traces</td>
+</tr>
+<tr>
+<td>traces.jaeger.thriftHttp.receiverConfig</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Jaeger Thrift HTTP receiver config</td>
+</tr>
+<tr>
+<td>traces.kafka</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Enable Tempo to ingest traces from Kafka. Reference: <a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kafkareceiver">https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kafkareceiver</a></td>
+</tr>
+<tr>
+<td>traces.opencensus.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Enable Tempo to ingest Open Census traces</td>
+</tr>
+<tr>
+<td>traces.opencensus.receiverConfig</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Open Census receiver config</td>
+</tr>
+<tr>
+<td>traces.otlp.grpc.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Enable Tempo to ingest Open Telemetry GRPC traces</td>
+</tr>
+<tr>
+<td>traces.otlp.grpc.receiverConfig</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>GRPC receiver advanced config</td>
+</tr>
+<tr>
+<td>traces.otlp.http.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Enable Tempo to ingest Open Telemetry HTTP traces</td>
+</tr>
+<tr>
+<td>traces.otlp.http.receiverConfig</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>HTTP receiver advanced config</td>
+</tr>
+<tr>
+<td>traces.zipkin.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Enable Tempo to ingest Zipkin traces</td>
+</tr>
+<tr>
+<td>traces.zipkin.receiverConfig</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Zipkin receiver config</td>
+</tr>
+<tr>
+<td>useExternalConfig</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Configuration is loaded from the secret called 'externalConfigSecretName'. If 'useExternalConfig' is true, then the configuration is not generated, just consumed.  Top level keys for <code>tempo.yaml</code> and <code>overrides.yaml</code> are to be provided by the user.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="components">Components<a class="headerlink" href="#components" title="Permanent link">&para;</a></h2>
+<p>The chart supports the components shown in the following table.
+Ingester, distributor, querier, query-frontend, and compactor are always installed.
+The other components are optional and must be explicitly enabled.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ingester</td>
+<td>no</td>
+</tr>
+<tr>
+<td>distributor</td>
+<td>no</td>
+</tr>
+<tr>
+<td>querier</td>
+<td>no</td>
+</tr>
+<tr>
+<td>query-frontend</td>
+<td>no</td>
+</tr>
+<tr>
+<td>compactor</td>
+<td>no</td>
+</tr>
+<tr>
+<td>metrics-generator</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>memcached</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>gateway</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="configuration"><a href="https://grafana.com/docs/tempo/latest/configuration/">Configuration</a><a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>This chart configures Tempo in microservices mode.</p>
+<p><strong>NOTE:</strong>
+In its default configuration, the chart uses <code>local</code> filesystem as storage.
+The reason for this is that the chart can be validated and installed in a CI pipeline.
+However, this setup is not fully functional.
+The recommendation is to use object storage, such as S3, GCS, MinIO, etc., or one of the other options documented at <a href="https://grafana.com/docs/tempo/latest/configuration/#storage">https://grafana.com/docs/tempo/latest/configuration/#storage</a>.</p>
+<p>Alternatively, in order to quickly test Tempo using the filestore, the <a href="https://github.com/grafana/helm-charts/tree/main/charts/tempo">single binary chart</a> can be used.</p>
+<h3 id="overriding-configuration-variables-with-structuredconfig">Overriding configuration variables with structuredConfig<a class="headerlink" href="#overriding-configuration-variables-with-structuredconfig" title="Permanent link">&para;</a></h3>
+<p>tempo.structuredConfig variable can be used to alter individual values in the configuration and it's structured YAML instead of text. It takes precedence over all other variable adjustments inside tempo.yaml config file, ie s3 storage settings.</p>
+<p>Example:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nt">tempo</span><span class="p">:</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="nt">structuredConfig</span><span class="p">:</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="nt">query_frontend</span><span class="p">:</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">      </span><span class="nt">search</span><span class="p">:</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">        </span><span class="nt">max_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12h0m0s</span>
+</span></code></pre></div>
+<h3 id="activate-metrics-generator">Activate metrics generator<a class="headerlink" href="#activate-metrics-generator" title="Permanent link">&para;</a></h3>
+<p>Metrics-generator is disabled by default and can be activated by configuring the following values:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">metricsGenerator</span><span class="p">:</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span><span class="nt">config</span><span class="p">:</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="nt">storage_remote_write</span><span class="p">:</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://cortex/api/v1/push</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">       </span><span class="nt">send_exemplars</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span><span class="c1">#   headers:</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">    </span><span class="c1">#     x-scope-orgid: operations</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="c1"># Global overrides</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="nt">global_overrides</span><span class="p">:</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">  </span><span class="nt">metrics_generator_processors</span><span class="p">:</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-graphs</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">span-metrics</span>
+</span></code></pre></div>
+<hr />
+<h3 id="directory-and-file-locations">Directory and File Locations<a class="headerlink" href="#directory-and-file-locations" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Volumes are mounted to <code>/var/tempo</code>. The various directories Tempo needs should be configured as subdirectories (e. g. <code>/var/tempo/wal</code>, <code>/var/tempo/traces</code>). Tempo will create the directories automatically.</li>
+<li>The config file is mounted to <code>/conf/tempo-query.yaml</code> and passed as CLI arg.</li>
+</ul>
+<h3 id="example-configuration-using-s3-for-storage">Example configuration using S3 for storage<a class="headerlink" href="#example-configuration-using-s3-for-storage" title="Permanent link">&para;</a></h3>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span><span class="no">multitenancy_enabled: false</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span><span class="no">compactor:</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="no">compaction:</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">      </span><span class="no">block_retention: 48h</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">    </span><span class="no">ring:</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">      </span><span class="no">kvstore:</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">        </span><span class="no">store: memberlist</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">  </span><span class="no">distributor:</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="no">receivers:</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">      </span><span class="no">jaeger:</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">        </span><span class="no">protocols:</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">          </span><span class="no">grpc:</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">            </span><span class="no">endpoint: 0.0.0.0:14250</span>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">          </span><span class="no">thrift_binary:</span>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">            </span><span class="no">endpoint: 0.0.0.0:6832</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">          </span><span class="no">thrift_compact:</span>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="w">            </span><span class="no">endpoint: 0.0.0.0:6831</span>
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="w">          </span><span class="no">thrift_http:</span>
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="w">            </span><span class="no">endpoint: 0.0.0.0:14268</span>
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="w">  </span><span class="no">querier:</span>
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="w">    </span><span class="no">frontend_worker:</span>
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="w">      </span><span class="no">frontend_address: {{ include &quot;tempo.resourceName&quot; (dict &quot;ctx&quot; . &quot;component&quot; &quot;query-frontend&quot;) }}:9095</span>
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="w">  </span><span class="no">ingester:</span>
+</span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="w">    </span><span class="no">lifecycler:</span>
+</span><span id="__span-13-26"><a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a><span class="w">      </span><span class="no">ring:</span>
+</span><span id="__span-13-27"><a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a><span class="w">        </span><span class="no">replication_factor: 1</span>
+</span><span id="__span-13-28"><a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a><span class="w">  </span><span class="no">memberlist:</span>
+</span><span id="__span-13-29"><a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a><span class="w">    </span><span class="no">abort_if_cluster_join_fails: false</span>
+</span><span id="__span-13-30"><a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a><span class="w">    </span><span class="no">join_members:</span>
+</span><span id="__span-13-31"><a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a><span class="w">      </span><span class="no">- {{ include &quot;tempo.fullname&quot; . }}-memberlist</span>
+</span><span id="__span-13-32"><a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a><span class="w">  </span><span class="no">overrides:</span>
+</span><span id="__span-13-33"><a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a><span class="w">    </span><span class="no">per_tenant_override_config: /runtime-config/overrides.yaml</span>
+</span><span id="__span-13-34"><a id="__codelineno-13-34" name="__codelineno-13-34" href="#__codelineno-13-34"></a><span class="w">  </span><span class="no">server:</span>
+</span><span id="__span-13-35"><a id="__codelineno-13-35" name="__codelineno-13-35" href="#__codelineno-13-35"></a><span class="w">    </span><span class="no">http_listen_port: 3100</span>
+</span><span id="__span-13-36"><a id="__codelineno-13-36" name="__codelineno-13-36" href="#__codelineno-13-36"></a><span class="w">  </span><span class="no">storage:</span>
+</span><span id="__span-13-37"><a id="__codelineno-13-37" name="__codelineno-13-37" href="#__codelineno-13-37"></a><span class="w">    </span><span class="no">trace:</span>
+</span><span id="__span-13-38"><a id="__codelineno-13-38" name="__codelineno-13-38" href="#__codelineno-13-38"></a><span class="w">      </span><span class="no">backend: s3</span>
+</span><span id="__span-13-39"><a id="__codelineno-13-39" name="__codelineno-13-39" href="#__codelineno-13-39"></a><span class="w">      </span><span class="no">s3:</span>
+</span><span id="__span-13-40"><a id="__codelineno-13-40" name="__codelineno-13-40" href="#__codelineno-13-40"></a><span class="w">        </span><span class="no">access_key: tempo</span>
+</span><span id="__span-13-41"><a id="__codelineno-13-41" name="__codelineno-13-41" href="#__codelineno-13-41"></a><span class="w">        </span><span class="no">bucket: tempo</span>
+</span><span id="__span-13-42"><a id="__codelineno-13-42" name="__codelineno-13-42" href="#__codelineno-13-42"></a><span class="w">        </span><span class="no">endpoint: minio:9000</span>
+</span><span id="__span-13-43"><a id="__codelineno-13-43" name="__codelineno-13-43" href="#__codelineno-13-43"></a><span class="w">        </span><span class="no">insecure: true</span>
+</span><span id="__span-13-44"><a id="__codelineno-13-44" name="__codelineno-13-44" href="#__codelineno-13-44"></a><span class="w">        </span><span class="no">secret_key: supersecret</span>
+</span><span id="__span-13-45"><a id="__codelineno-13-45" name="__codelineno-13-45" href="#__codelineno-13-45"></a><span class="w">      </span><span class="no">pool:</span>
+</span><span id="__span-13-46"><a id="__codelineno-13-46" name="__codelineno-13-46" href="#__codelineno-13-46"></a><span class="w">        </span><span class="no">queue_depth: 2000</span>
+</span><span id="__span-13-47"><a id="__codelineno-13-47" name="__codelineno-13-47" href="#__codelineno-13-47"></a><span class="w">      </span><span class="no">wal:</span>
+</span><span id="__span-13-48"><a id="__codelineno-13-48" name="__codelineno-13-48" href="#__codelineno-13-48"></a><span class="w">        </span><span class="no">path: /var/tempo/wal</span>
+</span><span id="__span-13-49"><a id="__codelineno-13-49" name="__codelineno-13-49" href="#__codelineno-13-49"></a><span class="w">      </span><span class="no">memcached:</span>
+</span><span id="__span-13-50"><a id="__codelineno-13-50" name="__codelineno-13-50" href="#__codelineno-13-50"></a><span class="w">        </span><span class="no">consistent_hash: true</span>
+</span><span id="__span-13-51"><a id="__codelineno-13-51" name="__codelineno-13-51" href="#__codelineno-13-51"></a><span class="w">        </span><span class="no">host: a-tempo-distributed-memcached</span>
+</span><span id="__span-13-52"><a id="__codelineno-13-52" name="__codelineno-13-52" href="#__codelineno-13-52"></a><span class="w">        </span><span class="no">service: memcached-client</span>
+</span><span id="__span-13-53"><a id="__codelineno-13-53" name="__codelineno-13-53" href="#__codelineno-13-53"></a><span class="w">        </span><span class="no">timeout: 500ms</span>
+</span></code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../synthetic-monitoring-agent/" class="md-footer__link md-footer__link--prev" aria-label="上一页: synthetic-monitoring-agent" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  上一页
+                </span>
+                synthetic-monitoring-agent
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../tempo-vulture/" class="md-footer__link md-footer__link--next" aria-label="下一页: tempo-vulture" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  下一页
+                </span>
+                tempo-vulture
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>

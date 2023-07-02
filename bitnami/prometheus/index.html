@@ -1,0 +1,5663 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../prestashop/">
+      
+      
+        <link rel="next" href="../pytorch/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Prometheus - Helm Charts Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#prometheus-packaged-by-bitnami" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Helm Charts Hub" class="md-header__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Helm Charts Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Prometheus
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Helm Charts Hub
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../chart-list/" class="md-tabs__link">
+      Chart 列表
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Bitnami
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../grafana/" class="md-tabs__link">
+        Grafana
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ingress-nginx/" class="md-tabs__link">
+        Ingress nginx
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../prometheus-community/" class="md-tabs__link">
+        Prometheus community
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sir5kong/" class="md-tabs__link">
+        Sir5kong
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Helm Charts Hub" class="md-nav__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Helm Charts Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Helm Charts Hub
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chart-list/" class="md-nav__link">
+        Chart 列表
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Bitnami</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Bitnami" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Bitnami
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../airflow/" class="md-nav__link">
+        Airflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apache/" class="md-nav__link">
+        Apache
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apisix/" class="md-nav__link">
+        Apisix
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appsmith/" class="md-nav__link">
+        Appsmith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-cd/" class="md-nav__link">
+        Argo cd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-workflows/" class="md-nav__link">
+        Argo workflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aspnet-core/" class="md-nav__link">
+        Aspnet core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cassandra/" class="md-nav__link">
+        Cassandra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cert-manager/" class="md-nav__link">
+        Cert manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clickhouse/" class="md-nav__link">
+        Clickhouse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common/" class="md-nav__link">
+        Bitnami Common Library Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concourse/" class="md-nav__link">
+        Concourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../consul/" class="md-nav__link">
+        Consul
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contour/" class="md-nav__link">
+        Contour
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../discourse/" class="md-nav__link">
+        Discourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dokuwiki/" class="md-nav__link">
+        Dokuwiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drupal/" class="md-nav__link">
+        Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejbca/" class="md-nav__link">
+        Ejbca
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../elasticsearch/" class="md-nav__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../etcd/" class="md-nav__link">
+        Etcd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../external-dns/" class="md-nav__link">
+        External dns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flink/" class="md-nav__link">
+        Flink
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluent-bit/" class="md-nav__link">
+        Fluent bit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluentd/" class="md-nav__link">
+        Fluentd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flux/" class="md-nav__link">
+        Flux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ghost/" class="md-nav__link">
+        Ghost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitea/" class="md-nav__link">
+        Gitea
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-loki/" class="md-nav__link">
+        Grafana loki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-mimir/" class="md-nav__link">
+        Grafana mimir
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-operator/" class="md-nav__link">
+        Grafana operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-tempo/" class="md-nav__link">
+        Grafana tempo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana/" class="md-nav__link">
+        Grafana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../haproxy/" class="md-nav__link">
+        Haproxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../harbor/" class="md-nav__link">
+        Harbor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../influxdb/" class="md-nav__link">
+        Influxdb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jaeger/" class="md-nav__link">
+        Jaeger
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jasperreports/" class="md-nav__link">
+        Jasperreports
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jenkins/" class="md-nav__link">
+        Jenkins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../joomla/" class="md-nav__link">
+        Joomla
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jupyterhub/" class="md-nav__link">
+        Jupyterhub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kafka/" class="md-nav__link">
+        Kafka
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keycloak/" class="md-nav__link">
+        Keycloak
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kiam/" class="md-nav__link">
+        Kiam
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kibana/" class="md-nav__link">
+        Kibana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kong/" class="md-nav__link">
+        Kong
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube-prometheus/" class="md-nav__link">
+        Kube prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube-state-metrics/" class="md-nav__link">
+        Kube state metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubeapps/" class="md-nav__link">
+        Kubeapps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-event-exporter/" class="md-nav__link">
+        Kubernetes event exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logstash/" class="md-nav__link">
+        Logstash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../magento/" class="md-nav__link">
+        Magento
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mariadb-galera/" class="md-nav__link">
+        Mariadb galera
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mariadb/" class="md-nav__link">
+        Mariadb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mastodon/" class="md-nav__link">
+        Mastodon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matomo/" class="md-nav__link">
+        Matomo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mediawiki/" class="md-nav__link">
+        Mediawiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memcached/" class="md-nav__link">
+        Memcached
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metallb/" class="md-nav__link">
+        Metallb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics-server/" class="md-nav__link">
+        Metrics server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../minio/" class="md-nav__link">
+        Minio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mongodb-sharded/" class="md-nav__link">
+        Mongodb sharded
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mongodb/" class="md-nav__link">
+        Mongodb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../moodle/" class="md-nav__link">
+        Moodle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multus-cni/" class="md-nav__link">
+        Multus cni
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mxnet/" class="md-nav__link">
+        Mxnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mysql/" class="md-nav__link">
+        Mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nats/" class="md-nav__link">
+        Nats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx-ingress-controller/" class="md-nav__link">
+        Nginx ingress controller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx/" class="md-nav__link">
+        Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../node-exporter/" class="md-nav__link">
+        Node exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oauth2-proxy/" class="md-nav__link">
+        Oauth2 proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../odoo/" class="md-nav__link">
+        Odoo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opencart/" class="md-nav__link">
+        Opencart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../osclass/" class="md-nav__link">
+        Osclass
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parse/" class="md-nav__link">
+        Parse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpbb/" class="md-nav__link">
+        Phpbb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpmyadmin/" class="md-nav__link">
+        Phpmyadmin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinniped/" class="md-nav__link">
+        Pinniped
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgresql-ha/" class="md-nav__link">
+        Postgresql ha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgresql/" class="md-nav__link">
+        Postgresql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prestashop/" class="md-nav__link">
+        Prestashop
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Prometheus
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Prometheus
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    TL;DR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    Installing the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    Uninstalling the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-parameters" class="md-nav__link">
+    Global parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-parameters" class="md-nav__link">
+    Common parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alertmanager-parameters" class="md-nav__link">
+    Alertmanager Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheus-server-parameters" class="md-nav__link">
+    Prometheus server Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init-container-parameters" class="md-nav__link">
+    Init Container Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-installation-details" class="md-nav__link">
+    Configuration and installation details
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and installation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-vs-immutable-tags" class="md-nav__link">
+    Rolling VS Immutable tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-extra-resources" class="md-nav__link">
+    Deploy extra resources
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-pods-affinity" class="md-nav__link">
+    Setting Pod's affinity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrate-prometheus-and-alertmanager-with-thanos" class="md-nav__link">
+    Integrate Prometheus and Alertmanager with Thanos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrate-prometheus-with-grafana-mimir" class="md-nav__link">
+    Integrate Prometheus with Grafana Mimir
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrate-prometheus-with-grafana" class="md-nav__link">
+    Integrate Prometheus with Grafana
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-add-new-targets" class="md-nav__link">
+    How to add new targets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rabbitmq-cluster-operator/" class="md-nav__link">
+        Rabbitmq cluster operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rabbitmq/" class="md-nav__link">
+        Rabbitmq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis-cluster/" class="md-nav__link">
+        Redis cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redmine/" class="md-nav__link">
+        Redmine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema-registry/" class="md-nav__link">
+        Schema registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sealed-secrets/" class="md-nav__link">
+        Sealed secrets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solr/" class="md-nav__link">
+        Solr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sonarqube/" class="md-nav__link">
+        Sonarqube
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spark/" class="md-nav__link">
+        Spark
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-cloud-dataflow/" class="md-nav__link">
+        Spring cloud dataflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../suitecrm/" class="md-nav__link">
+        Suitecrm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supabase/" class="md-nav__link">
+        Supabase
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tensorflow-resnet/" class="md-nav__link">
+        Tensorflow resnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../thanos/" class="md-nav__link">
+        Thanos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tomcat/" class="md-nav__link">
+        Tomcat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault/" class="md-nav__link">
+        Vault
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavefront-hpa-adapter/" class="md-nav__link">
+        Wavefront hpa adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavefront-prometheus-storage-adapter/" class="md-nav__link">
+        Wavefront prometheus storage adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whereabouts/" class="md-nav__link">
+        Whereabouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wildfly/" class="md-nav__link">
+        Wildfly
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wordpress/" class="md-nav__link">
+        Wordpress
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zookeeper/" class="md-nav__link">
+        Zookeeper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../grafana/">Grafana</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Grafana" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Grafana
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/agent-operator/" class="md-nav__link">
+        grafana-agent-operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-logs-simple/" class="md-nav__link">
+        enterprise-logs-simple
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-logs/" class="md-nav__link">
+        Grafana Enterprise Logs Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-metrics/" class="md-nav__link">
+        Grafana Enterprise Metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/fluent-bit/" class="md-nav__link">
+        Fluent Bit Loki chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/grafana-agent/" class="md-nav__link">
+        Grafana Agent chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/grafana/" class="md-nav__link">
+        Grafana Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-canary/" class="md-nav__link">
+        loki-canary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-distributed/" class="md-nav__link">
+        loki-distributed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-stack/" class="md-nav__link">
+        Loki-Stack Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/mimir-distributed/" class="md-nav__link">
+        Notice of relocation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/promtail/" class="md-nav__link">
+        promtail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/rollout-operator/" class="md-nav__link">
+        Grafana rollout-operator Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/synthetic-monitoring-agent/" class="md-nav__link">
+        synthetic-monitoring-agent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo-distributed/" class="md-nav__link">
+        tempo-distributed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo-vulture/" class="md-nav__link">
+        tempo-vulture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo/" class="md-nav__link">
+        tempo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../ingress-nginx/">Ingress nginx</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Ingress nginx" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Ingress nginx
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ingress-nginx/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../prometheus-community/">Prometheus community</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Prometheus community" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Prometheus community
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager-snmp-notifier/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager/" class="md-nav__link">
+        Alertmanager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/jiralert/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-prometheus-stack/" class="md-nav__link">
+        kube-prometheus-stack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-state-metrics/" class="md-nav__link">
+        kube-state-metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prom-label-proxy/" class="md-nav__link">
+        prom-label-proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-adapter/" class="md-nav__link">
+        Prometheus Adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-blackbox-exporter/" class="md-nav__link">
+        Prometheus Blackbox Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-cloudwatch-exporter/" class="md-nav__link">
+        Prometheus Cloudwatch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-conntrack-stats-exporter/" class="md-nav__link">
+        Conntrack Stats Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-consul-exporter/" class="md-nav__link">
+        Prometheus Consul Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-couchdb-exporter/" class="md-nav__link">
+        prometheus-couchdb-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-druid-exporter/" class="md-nav__link">
+        Prometheus Druid Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-elasticsearch-exporter/" class="md-nav__link">
+        Elasticsearch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-fastly-exporter/" class="md-nav__link">
+        Prometheus Fastly Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-json-exporter/" class="md-nav__link">
+        prometheus-json-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-kafka-exporter/" class="md-nav__link">
+        prometheus-kafka-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mongodb-exporter/" class="md-nav__link">
+        Prometheus MongoDB Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mysql-exporter/" class="md-nav__link">
+        Prometheus Mysql Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nats-exporter/" class="md-nav__link">
+        Prometheus NATS Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nginx-exporter/" class="md-nav__link">
+        prometheus-nginx-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-node-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-admission-webhook/" class="md-nav__link">
+        Prometheus Operator Admission Webhook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-crds/" class="md-nav__link">
+        Prometheus Operator CRDs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pgbouncer-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingdom-exporter/" class="md-nav__link">
+        Prometheus Pingdom Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingmesh-exporter/" class="md-nav__link">
+        Prometheus Pingmesh Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-postgres-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pushgateway/" class="md-nav__link">
+        Prometheus Pushgateway
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-rabbitmq-exporter/" class="md-nav__link">
+        prometheus-rabbitmq-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-redis-exporter/" class="md-nav__link">
+        prometheus-redis-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-smartctl-exporter/" class="md-nav__link">
+        Prometheus smartctl Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-snmp-exporter/" class="md-nav__link">
+        Prometheus SNMP Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-stackdriver-exporter/" class="md-nav__link">
+        Stackdriver Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-statsd-exporter/" class="md-nav__link">
+        prometheus-statsd-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-to-sd/" class="md-nav__link">
+        prometheus-to-sd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-windows-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../sir5kong/">Sir5kong</a>
+          
+            <label for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Sir5kong" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Sir5kong
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/commonapp/" class="md-nav__link">
+        commonapp helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/kafka/" class="md-nav__link">
+        Kafka helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/nginx/" class="md-nav__link">
+        nginx helm chart
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    TL;DR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    Installing the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    Uninstalling the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-parameters" class="md-nav__link">
+    Global parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-parameters" class="md-nav__link">
+    Common parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alertmanager-parameters" class="md-nav__link">
+    Alertmanager Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheus-server-parameters" class="md-nav__link">
+    Prometheus server Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init-container-parameters" class="md-nav__link">
+    Init Container Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-installation-details" class="md-nav__link">
+    Configuration and installation details
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and installation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-vs-immutable-tags" class="md-nav__link">
+    Rolling VS Immutable tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-extra-resources" class="md-nav__link">
+    Deploy extra resources
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-pods-affinity" class="md-nav__link">
+    Setting Pod's affinity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrate-prometheus-and-alertmanager-with-thanos" class="md-nav__link">
+    Integrate Prometheus and Alertmanager with Thanos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrate-prometheus-with-grafana-mimir" class="md-nav__link">
+    Integrate Prometheus with Grafana Mimir
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrate-prometheus-with-grafana" class="md-nav__link">
+    Integrate Prometheus with Grafana
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-add-new-targets" class="md-nav__link">
+    How to add new targets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<!--- app-name: Prometheus -->
+
+<h1 id="prometheus-packaged-by-bitnami">Prometheus packaged by Bitnami<a class="headerlink" href="#prometheus-packaged-by-bitnami" title="Permanent link">&para;</a></h1>
+<p>Prometheus is an open source monitoring and alerting system. It enables sysadmins to monitor their infrastructures by collecting metrics from configured targets at given intervals.</p>
+<p><a href="https://prometheus.io/">Overview of Prometheus</a></p>
+<p>Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.</p>
+<h2 id="tldr">TL;DR<a class="headerlink" href="#tldr" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>使用加速地址添加仓库:</p>
+</blockquote>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>bitnami<span class="w"> </span><span class="s2">&quot;https://helm-charts.itboon.top/bitnami&quot;</span><span class="w"> </span>--force-update
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>helm<span class="w"> </span>update<span class="w"> </span>bitnami
+</span></code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="go">helm install my-release bitnami/prometheus</span>
+</span></code></pre></div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>Bitnami charts for Helm are carefully engineered, actively maintained and are the quickest and easiest way to deploy containers on a Kubernetes cluster that are ready to handle production workloads.</p>
+<p>This chart bootstraps a <a href="https://prometheus.io">Prometheus</a> Deployment in a <a href="https://kubernetes.io">Kubernetes</a> cluster using the <a href="https://helm.sh">Helm</a> package manager.</p>
+<p>Bitnami charts can be used with <a href="https://kubeapps.dev/">Kubeapps</a> for deployment and management of Helm Charts in clusters.</p>
+<p><a href="https://docs.bitnami.com/kubernetes/infrastructure/prometheus/get-started/">Learn more about the default configuration of the chart</a>.</p>
+<p>Looking to use Prometheus in production? Try <a href="https://bitnami.com/enterprise">VMware Application Catalog</a>, the enterprise edition of Bitnami Application Catalog.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Kubernetes 1.19+</li>
+<li>Helm 3.2.0+</li>
+<li>PV provisioner support in the underlying infrastructure</li>
+<li>ReadWriteMany volumes for deployment scaling</li>
+</ul>
+<h2 id="installing-the-chart">Installing the Chart<a class="headerlink" href="#installing-the-chart" title="Permanent link">&para;</a></h2>
+<p>To install the chart with the release name <code>my-release</code>:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">helm install my-release bitnami/prometheus</span>
+</span></code></pre></div>
+<p>The command deploys Prometheus on the Kubernetes cluster in the default configuration. The <a href="#parameters">Parameters</a> section lists the parameters that can be configured during installation.</p>
+<blockquote>
+<p><strong>Tip</strong>: List all releases using <code>helm list</code></p>
+</blockquote>
+<h2 id="uninstalling-the-chart">Uninstalling the Chart<a class="headerlink" href="#uninstalling-the-chart" title="Permanent link">&para;</a></h2>
+<p>To uninstall/delete the <code>my-release</code> deployment:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="go">helm delete my-release</span>
+</span></code></pre></div>
+<p>The command removes all the Kubernetes components associated with the chart and deletes the release.</p>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
+<h3 id="global-parameters">Global parameters<a class="headerlink" href="#global-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>global.imageRegistry</code></td>
+<td>Global Docker image registry</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>global.imagePullSecrets</code></td>
+<td>Global Docker registry secret names as an array</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>global.storageClass</code></td>
+<td>Global StorageClass for Persistent Volume(s)</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-parameters">Common parameters<a class="headerlink" href="#common-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kubeVersion</code></td>
+<td>Override Kubernetes version</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>nameOverride</code></td>
+<td>String to partially override common.names.name</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>fullnameOverride</code></td>
+<td>String to fully override common.names.fullname</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>namespaceOverride</code></td>
+<td>String to fully override common.names.namespace</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>commonLabels</code></td>
+<td>Labels to add to all deployed objects</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>commonAnnotations</code></td>
+<td>Annotations to add to all deployed objects</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>clusterDomain</code></td>
+<td>Kubernetes cluster domain name</td>
+<td><code>cluster.local</code></td>
+</tr>
+<tr>
+<td><code>extraDeploy</code></td>
+<td>Array of extra objects to deploy with the release</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.enabled</code></td>
+<td>Enable diagnostic mode (all probes will be disabled and the command will be overridden)</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.command</code></td>
+<td>Command to override all containers in the deployment</td>
+<td><code>["sleep"]</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.args</code></td>
+<td>Args to override all containers in the deployment</td>
+<td><code>["infinity"]</code></td>
+</tr>
+<tr>
+<td><code>ingress.apiVersion</code></td>
+<td>Force Ingress API version (automatically detected if not set)</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="alertmanager-parameters">Alertmanager Parameters<a class="headerlink" href="#alertmanager-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alertmanager.enabled</code></td>
+<td>Alertmanager enabled</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.image.registry</code></td>
+<td>Alertmanager image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.image.repository</code></td>
+<td>Alertmanager image repository</td>
+<td><code>bitnami/alertmanager</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.image.tag</code></td>
+<td>Alertmanager image tag (immutable tags are recommended)</td>
+<td><code>0.25.0-debian-11-r62</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.image.digest</code></td>
+<td>Alertmanager image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.image.pullPolicy</code></td>
+<td>Alertmanager image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.image.pullSecrets</code></td>
+<td>Alertmanager image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.configuration</code></td>
+<td>Alertmanager configuration. This content will be stored in the the alertmanager.yaml file and the content can be a template.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.replicaCount</code></td>
+<td>Number of Alertmanager replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.containerPorts.http</code></td>
+<td>Alertmanager HTTP container port</td>
+<td><code>9093</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.containerPorts.cluster</code></td>
+<td>Alertmanager Cluster HA port</td>
+<td><code>9094</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.livenessProbe.enabled</code></td>
+<td>Enable livenessProbe on Alertmanager containers</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>20</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.readinessProbe.enabled</code></td>
+<td>Enable readinessProbe on Alertmanager containers</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.startupProbe.enabled</code></td>
+<td>Enable startupProbe on Alertmanager containers</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.customLivenessProbe</code></td>
+<td>Custom livenessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.customReadinessProbe</code></td>
+<td>Custom readinessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.customStartupProbe</code></td>
+<td>Custom startupProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.resources.limits</code></td>
+<td>The resources limits for the Alertmanager containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.resources.requests</code></td>
+<td>The requested resources for the Alertmanager containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.podSecurityContext.enabled</code></td>
+<td>Enabled Alertmanager pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.podSecurityContext.fsGroup</code></td>
+<td>Set Alertmanager pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.containerSecurityContext.enabled</code></td>
+<td>Enabled Alertmanager containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.containerSecurityContext.runAsUser</code></td>
+<td>Set Alertmanager containers' Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.containerSecurityContext.runAsNonRoot</code></td>
+<td>Set Alertmanager containers' Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.containerSecurityContext.readOnlyRootFilesystem</code></td>
+<td>Set Alertmanager containers' Security Context runAsNonRoot</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.existingConfigmap</code></td>
+<td>The name of an existing ConfigMap with your custom configuration for Alertmanager</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.existingConfigmapKey</code></td>
+<td>The name of the key with the Alertmanager config file</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.extraArgs</code></td>
+<td>Additional arguments passed to the Prometheus server container</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.hostAliases</code></td>
+<td>Alertmanager pods host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.podLabels</code></td>
+<td>Extra labels for Alertmanager pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.podAnnotations</code></td>
+<td>Annotations for Alertmanager pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.pdb.create</code></td>
+<td>Enable/disable a Pod Disruption Budget creation</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.pdb.minAvailable</code></td>
+<td>Minimum number/percentage of pods that should remain scheduled</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.pdb.maxUnavailable</code></td>
+<td>Maximum number/percentage of pods that may be made unavailable</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.nodeAffinityPreset.key</code></td>
+<td>Node label key to match. Ignored if <code>affinity</code> is set</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>affinity</code> is set</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.affinity</code></td>
+<td>Affinity for Alertmanager pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.nodeSelector</code></td>
+<td>Node labels for Alertmanager pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.tolerations</code></td>
+<td>Tolerations for Alertmanager pods assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.updateStrategy.type</code></td>
+<td>Alertmanager statefulset strategy type</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.podManagementPolicy</code></td>
+<td>Statefulset Pod management policy, it needs to be Parallel to be able to complete the cluster join</td>
+<td><code>OrderedReady</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.priorityClassName</code></td>
+<td>Alertmanager pods' priorityClassName</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment spread across your cluster among failure-domains. Evaluated as a template</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.schedulerName</code></td>
+<td>Name of the k8s scheduler (other than default) for Alertmanager pods</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.terminationGracePeriodSeconds</code></td>
+<td>Seconds Redmine pod needs to terminate gracefully</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.lifecycleHooks</code></td>
+<td>for the Alertmanager container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.extraEnvVars</code></td>
+<td>Array with extra environment variables to add to Alertmanager nodes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra env vars for Alertmanager nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra env vars for Alertmanager nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes for the Alertmanager pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts for the Alertmanager container(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.sidecars</code></td>
+<td>Add additional sidecar containers to the Alertmanager pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.initContainers</code></td>
+<td>Add additional init containers to the Alertmanager pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.ingress.enabled</code></td>
+<td>Enable ingress record generation for Alertmanager</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.ingress.pathType</code></td>
+<td>Ingress path type</td>
+<td><code>ImplementationSpecific</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.ingress.hostname</code></td>
+<td>Default host for the ingress record</td>
+<td><code>alertmanager.prometheus.local</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.ingress.ingressClassName</code></td>
+<td>IngressClass that will be be used to implement the Ingress (Kubernetes 1.18+)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.ingress.path</code></td>
+<td>Default path for the ingress record</td>
+<td><code>/</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.ingress.annotations</code></td>
+<td>Additional annotations for the Ingress resource. To enable certificate autogeneration, place here your cert-manager annotations.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.ingress.tls</code></td>
+<td>Enable TLS configuration for the host defined at <code>ingress.hostname</code> parameter</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.ingress.selfSigned</code></td>
+<td>Create a TLS secret for this ingress record using self-signed certificates generated by Helm</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.ingress.extraHosts</code></td>
+<td>An array with additional hostname(s) to be covered with the ingress record</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.ingress.extraPaths</code></td>
+<td>An array with additional arbitrary paths that may need to be added to the ingress under the main host</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.ingress.extraTls</code></td>
+<td>TLS configuration for additional hostname(s) to be covered with this ingress record</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.ingress.secrets</code></td>
+<td>Custom TLS certificates as secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.ingress.extraRules</code></td>
+<td>Additional rules to be covered with this ingress record</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.serviceAccount.create</code></td>
+<td>Specifies whether a ServiceAccount should be created</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.serviceAccount.name</code></td>
+<td>The name of the ServiceAccount to use.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.serviceAccount.annotations</code></td>
+<td>Additional Service Account annotations (evaluated as a template)</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.serviceAccount.automountServiceAccountToken</code></td>
+<td>Automount service account token for the server service account</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.service.type</code></td>
+<td>Alertmanager service type</td>
+<td><code>LoadBalancer</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.service.ports.http</code></td>
+<td>Alertmanager service HTTP port</td>
+<td><code>80</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.service.ports.cluster</code></td>
+<td>Alertmanager cluster HA port</td>
+<td><code>9094</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.service.nodePorts.http</code></td>
+<td>Node port for HTTP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.service.clusterIP</code></td>
+<td>Alertmanager service Cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.service.loadBalancerIP</code></td>
+<td>Alertmanager service Load Balancer IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.service.loadBalancerSourceRanges</code></td>
+<td>Alertmanager service Load Balancer sources</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.service.externalTrafficPolicy</code></td>
+<td>Alertmanager service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.service.annotations</code></td>
+<td>Additional custom annotations for Alertmanager service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.service.extraPorts</code></td>
+<td>Extra ports to expose in Alertmanager service (normally used with the <code>sidecars</code> value)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.service.sessionAffinity</code></td>
+<td>Control where client requests go, to the same pod or round-robin</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.persistence.enabled</code></td>
+<td>Enable Alertmanager data persistence using VolumeClaimTemplates</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.persistence.mountPath</code></td>
+<td>Path to mount the volume at.</td>
+<td><code>/bitnami/alertmanager/data</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.persistence.subPath</code></td>
+<td>The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.persistence.storageClass</code></td>
+<td>PVC Storage Class for Concourse worker data volume</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.persistence.accessModes</code></td>
+<td>PVC Access Mode for Concourse worker volume</td>
+<td><code>["ReadWriteOnce"]</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.persistence.size</code></td>
+<td>PVC Storage Request for Concourse worker volume</td>
+<td><code>8Gi</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.persistence.annotations</code></td>
+<td>Annotations for the PVC</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>alertmanager.persistence.selector</code></td>
+<td>Selector to match an existing Persistent Volume (this value is evaluated as a template)</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="prometheus-server-parameters">Prometheus server Parameters<a class="headerlink" href="#prometheus-server-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>server.image.registry</code></td>
+<td>Prometheus image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>server.image.repository</code></td>
+<td>Prometheus image repository</td>
+<td><code>bitnami/prometheus</code></td>
+</tr>
+<tr>
+<td><code>server.image.tag</code></td>
+<td>Prometheus image tag (immutable tags are recommended)</td>
+<td><code>2.45.0-debian-11-r0</code></td>
+</tr>
+<tr>
+<td><code>server.image.digest</code></td>
+<td>Prometheus image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.image.pullPolicy</code></td>
+<td>Prometheus image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>server.image.pullSecrets</code></td>
+<td>Prometheus image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.configuration</code></td>
+<td>Promethus configuration. This content will be stored in the the prometheus.yaml file and the content can be a template.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.alertingRules</code></td>
+<td>Prometheus alerting rules. This content will be stored in the the rules.yaml file and the content can be a template.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.extraScrapeConfigs</code></td>
+<td>Promethus configuration, useful to declare new scrape_configs. This content will be merged with the 'server.configuration' value and stored in the the prometheus.yaml file.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.replicaCount</code></td>
+<td>Number of Prometheus replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>server.containerPorts.http</code></td>
+<td>Prometheus HTTP container port</td>
+<td><code>9090</code></td>
+</tr>
+<tr>
+<td><code>server.livenessProbe.enabled</code></td>
+<td>Enable livenessProbe on Prometheus containers</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>server.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>server.livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>20</code></td>
+</tr>
+<tr>
+<td><code>server.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>server.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>server.livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>server.readinessProbe.enabled</code></td>
+<td>Enable readinessProbe on Prometheus containers</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>server.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>server.readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>server.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>server.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>server.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>server.startupProbe.enabled</code></td>
+<td>Enable startupProbe on Prometheus containers</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>server.startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>server.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>server.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>server.startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>server.customLivenessProbe</code></td>
+<td>Custom livenessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.customReadinessProbe</code></td>
+<td>Custom readinessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.customStartupProbe</code></td>
+<td>Custom startupProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.resources.limits</code></td>
+<td>The resources limits for the Prometheus containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.resources.requests</code></td>
+<td>The requested resources for the Prometheus containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.podSecurityContext.enabled</code></td>
+<td>Enabled Prometheus pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>server.podSecurityContext.fsGroup</code></td>
+<td>Set Prometheus pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>server.containerSecurityContext.enabled</code></td>
+<td>Enabled Prometheus containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>server.containerSecurityContext.runAsUser</code></td>
+<td>Set Prometheus containers' Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>server.containerSecurityContext.runAsNonRoot</code></td>
+<td>Set Prometheus containers' Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>server.containerSecurityContext.readOnlyRootFilesystem</code></td>
+<td>Set Prometheus containers' Security Context runAsNonRoot</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.existingConfigmap</code></td>
+<td>The name of an existing ConfigMap with your custom configuration for Prometheus</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.existingConfigmapKey</code></td>
+<td>The name of the key with the Prometheus config file</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.extraArgs</code></td>
+<td>Additional arguments passed to the Prometheus server container</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.hostAliases</code></td>
+<td>Prometheus pods host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.podLabels</code></td>
+<td>Extra labels for Prometheus pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.podAnnotations</code></td>
+<td>Annotations for Prometheus pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>server.pdb.create</code></td>
+<td>Enable/disable a Pod Disruption Budget creation</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.pdb.minAvailable</code></td>
+<td>Minimum number/percentage of pods that should remain scheduled</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>server.pdb.maxUnavailable</code></td>
+<td>Maximum number/percentage of pods that may be made unavailable</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.nodeAffinityPreset.key</code></td>
+<td>Node label key to match. Ignored if <code>affinity</code> is set</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>affinity</code> is set</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.affinity</code></td>
+<td>Affinity for Prometheus pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.nodeSelector</code></td>
+<td>Node labels for Prometheus pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.tolerations</code></td>
+<td>Tolerations for Prometheus pods assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.updateStrategy.type</code></td>
+<td>Prometheus deployment strategy type. If persistence is enabled, strategy type should be set to Recreate to avoid dead locks.</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>server.priorityClassName</code></td>
+<td>Prometheus pods' priorityClassName</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment spread across your cluster among failure-domains. Evaluated as a template</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.schedulerName</code></td>
+<td>Name of the k8s scheduler (other than default) for Prometheus pods</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.terminationGracePeriodSeconds</code></td>
+<td>Seconds Redmine pod needs to terminate gracefully</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.lifecycleHooks</code></td>
+<td>for the Prometheus container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.extraEnvVars</code></td>
+<td>Array with extra environment variables to add to Prometheus nodes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra env vars for Prometheus nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra env vars for Prometheus nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes for the Prometheus pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts for the Prometheus container(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.sidecars</code></td>
+<td>Add additional sidecar containers to the Prometheus pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.initContainers</code></td>
+<td>Add additional init containers to the Prometheus pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.routePrefix</code></td>
+<td>Prefix for the internal routes of web endpoints</td>
+<td><code>/</code></td>
+</tr>
+<tr>
+<td><code>server.remoteWrite</code></td>
+<td>The remote_write spec configuration for Prometheus</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.scrapeInterval</code></td>
+<td>Interval between consecutive scrapes. Example: "1m"</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.scrapeTimeout</code></td>
+<td>Interval between consecutive scrapes. Example: "10s"</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.evaluationInterval</code></td>
+<td>Interval between consecutive evaluations. Example: "1m"</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.enableAdminAPI</code></td>
+<td>Enable Prometheus adminitrative API</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.enableRemoteWriteReceiver</code></td>
+<td>Enable Prometheus to be used as a receiver for the Prometheus remote write protocol.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.enableFeatures</code></td>
+<td>Enable access to Prometheus disabled features.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.logLevel</code></td>
+<td>Log level for Prometheus</td>
+<td><code>info</code></td>
+</tr>
+<tr>
+<td><code>server.logFormat</code></td>
+<td>Log format for Prometheus</td>
+<td><code>logfmt</code></td>
+</tr>
+<tr>
+<td><code>server.retention</code></td>
+<td>Metrics retention days</td>
+<td><code>10d</code></td>
+</tr>
+<tr>
+<td><code>server.retentionSize</code></td>
+<td>Maximum size of metrics</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>server.alertingEndpoints</code></td>
+<td>Alertmanagers to which alerts will be sent</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.externalLabels</code></td>
+<td>External labels to add to any time series or alerts when communicating with external systems</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.create</code></td>
+<td>Create a Thanos sidecar container</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.image.registry</code></td>
+<td>Thanos image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.image.repository</code></td>
+<td>Thanos image name</td>
+<td><code>bitnami/thanos</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.image.tag</code></td>
+<td>Thanos image tag</td>
+<td><code>0.31.0-scratch-r8</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.image.digest</code></td>
+<td>Thanos image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.image.pullPolicy</code></td>
+<td>Thanos image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.image.pullSecrets</code></td>
+<td>Specify docker-registry secret names as an array</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.containerSecurityContext.enabled</code></td>
+<td>Enable container security context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.containerSecurityContext.readOnlyRootFilesystem</code></td>
+<td>mount / (root) as a readonly filesystem</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.containerSecurityContext.allowPrivilegeEscalation</code></td>
+<td>Switch privilegeEscalation possibility on or off</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.containerSecurityContext.runAsNonRoot</code></td>
+<td>Force the container to run as a non root user</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.containerSecurityContext.capabilities.drop</code></td>
+<td>Linux Kernel capabilities which should be dropped</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.prometheusUrl</code></td>
+<td>Override default prometheus url <code>http://localhost:9090</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.extraArgs</code></td>
+<td>Additional arguments passed to the thanos sidecar container</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.objectStorageConfig.secretName</code></td>
+<td>Support mounting a Secret for the objectStorageConfig of the sideCar container.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.objectStorageConfig.secretKey</code></td>
+<td>Secret key with the configuration file.</td>
+<td><code>thanos.yaml</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.extraVolumeMounts</code></td>
+<td>Additional volumeMounts from <code>server.volumes</code> for thanos sidecar container</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.resources.limits</code></td>
+<td>The resources limits for the Thanos sidecar container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.resources.requests</code></td>
+<td>The resources requests for the Thanos sidecar container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.livenessProbe.enabled</code></td>
+<td>Turn on and off liveness probe</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.livenessProbe.initialDelaySeconds</code></td>
+<td>Delay before liveness probe is initiated</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.livenessProbe.periodSeconds</code></td>
+<td>How often to perform the probe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.livenessProbe.timeoutSeconds</code></td>
+<td>When the probe times out</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.livenessProbe.failureThreshold</code></td>
+<td>Minimum consecutive failures for the probe</td>
+<td><code>120</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.livenessProbe.successThreshold</code></td>
+<td>Minimum consecutive successes for the probe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.readinessProbe.enabled</code></td>
+<td>Turn on and off readiness probe</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.readinessProbe.initialDelaySeconds</code></td>
+<td>Delay before readiness probe is initiated</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.readinessProbe.periodSeconds</code></td>
+<td>How often to perform the probe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.readinessProbe.timeoutSeconds</code></td>
+<td>When the probe times out</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.readinessProbe.failureThreshold</code></td>
+<td>Minimum consecutive failures for the probe</td>
+<td><code>120</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.readinessProbe.successThreshold</code></td>
+<td>Minimum consecutive successes for the probe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.customLivenessProbe</code></td>
+<td>Custom livenessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.customReadinessProbe</code></td>
+<td>Custom readinessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.service.type</code></td>
+<td>Kubernetes service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.service.ports.grpc</code></td>
+<td>Thanos service port</td>
+<td><code>10901</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.service.clusterIP</code></td>
+<td>Specific cluster IP when service type is cluster IP. Use <code>None</code> to create headless service by default.</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.service.nodePorts.grpc</code></td>
+<td>Specify the nodePort value for the LoadBalancer and NodePort service types.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.service.loadBalancerIP</code></td>
+<td><code>loadBalancerIP</code> if service type is <code>LoadBalancer</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.service.loadBalancerSourceRanges</code></td>
+<td>Address that are allowed when svc is <code>LoadBalancer</code></td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.service.annotations</code></td>
+<td>Additional annotations for Prometheus service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.service.extraPorts</code></td>
+<td>Additional ports to expose from the Thanos sidecar container</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.service.externalTrafficPolicy</code></td>
+<td>Prometheus service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.service.sessionAffinity</code></td>
+<td>Session Affinity for Kubernetes service, can be "None" or "ClientIP"</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.ingress.enabled</code></td>
+<td>Enable ingress controller resource</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.ingress.pathType</code></td>
+<td>Ingress path type</td>
+<td><code>ImplementationSpecific</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.ingress.hostname</code></td>
+<td>Default host for the ingress record</td>
+<td><code>thanos.prometheus.local</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.ingress.path</code></td>
+<td>Default path for the ingress record</td>
+<td><code>/</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.ingress.annotations</code></td>
+<td>Additional annotations for the Ingress resource. To enable certificate autogeneration, place here your cert-manager annotations.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.ingress.ingressClassName</code></td>
+<td>IngressClass that will be be used to implement the Ingress (Kubernetes 1.18+)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.ingress.tls</code></td>
+<td>Enable TLS configuration for the host defined at <code>ingress.hostname</code> parameter</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.ingress.selfSigned</code></td>
+<td>Create a TLS secret for this ingress record using self-signed certificates generated by Helm</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.ingress.extraHosts</code></td>
+<td>An array with additional hostname(s) to be covered with the ingress record</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.ingress.extraPaths</code></td>
+<td>An array with additional arbitrary paths that may need to be added to the ingress under the main host</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.ingress.extraTls</code></td>
+<td>TLS configuration for additional hostname(s) to be covered with this ingress record</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.ingress.secrets</code></td>
+<td>Custom TLS certificates as secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.thanos.ingress.extraRules</code></td>
+<td>The list of additional rules to be added to this ingress record. Evaluated as a template</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.enabled</code></td>
+<td>Enable ingress record generation for Prometheus</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.pathType</code></td>
+<td>Ingress path type</td>
+<td><code>ImplementationSpecific</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.hostname</code></td>
+<td>Default host for the ingress record</td>
+<td><code>server.prometheus.local</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.ingressClassName</code></td>
+<td>IngressClass that will be be used to implement the Ingress (Kubernetes 1.18+)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.path</code></td>
+<td>Default path for the ingress record</td>
+<td><code>/</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.annotations</code></td>
+<td>Additional annotations for the Ingress resource. To enable certificate autogeneration, place here your cert-manager annotations.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.tls</code></td>
+<td>Enable TLS configuration for the host defined at <code>ingress.hostname</code> parameter</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.selfSigned</code></td>
+<td>Create a TLS secret for this ingress record using self-signed certificates generated by Helm</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.extraHosts</code></td>
+<td>An array with additional hostname(s) to be covered with the ingress record</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.extraPaths</code></td>
+<td>An array with additional arbitrary paths that may need to be added to the ingress under the main host</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.extraTls</code></td>
+<td>TLS configuration for additional hostname(s) to be covered with this ingress record</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.secrets</code></td>
+<td>Custom TLS certificates as secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.ingress.extraRules</code></td>
+<td>Additional rules to be covered with this ingress record</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.serviceAccount.create</code></td>
+<td>Specifies whether a ServiceAccount should be created</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>server.serviceAccount.name</code></td>
+<td>The name of the ServiceAccount to use.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.serviceAccount.annotations</code></td>
+<td>Additional Service Account annotations (evaluated as a template)</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.serviceAccount.automountServiceAccountToken</code></td>
+<td>Automount service account token for the server service account</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>server.service.type</code></td>
+<td>Prometheus service type</td>
+<td><code>LoadBalancer</code></td>
+</tr>
+<tr>
+<td><code>server.service.ports.http</code></td>
+<td>Prometheus service HTTP port</td>
+<td><code>80</code></td>
+</tr>
+<tr>
+<td><code>server.service.nodePorts.http</code></td>
+<td>Node port for HTTP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.service.clusterIP</code></td>
+<td>Prometheus service Cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.service.loadBalancerIP</code></td>
+<td>Prometheus service Load Balancer IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.service.loadBalancerSourceRanges</code></td>
+<td>Prometheus service Load Balancer sources</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.service.externalTrafficPolicy</code></td>
+<td>Prometheus service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>server.service.annotations</code></td>
+<td>Additional custom annotations for Prometheus service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.service.extraPorts</code></td>
+<td>Extra ports to expose in Prometheus service (normally used with the <code>sidecars</code> value)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>server.service.sessionAffinity</code></td>
+<td>Control where client requests go, to the same pod or round-robin. ClientIP by default.</td>
+<td><code>ClientIP</code></td>
+</tr>
+<tr>
+<td><code>server.service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.persistence.enabled</code></td>
+<td>Enable persistence using Persistent Volume Claims. If you have multiple instances (server.repicacount &gt; 1), please considere using an external storage service like Thanos or Grafana Mimir</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>server.persistence.mountPath</code></td>
+<td>Path to mount the volume at.</td>
+<td><code>/bitnami/prometheus/data</code></td>
+</tr>
+<tr>
+<td><code>server.persistence.subPath</code></td>
+<td>The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.persistence.storageClass</code></td>
+<td>Storage class of backing PVC</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.persistence.annotations</code></td>
+<td>Persistent Volume Claim annotations</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.persistence.accessModes</code></td>
+<td>Persistent Volume Access Modes</td>
+<td><code>["ReadWriteOnce"]</code></td>
+</tr>
+<tr>
+<td><code>server.persistence.size</code></td>
+<td>Size of data volume</td>
+<td><code>8Gi</code></td>
+</tr>
+<tr>
+<td><code>server.persistence.existingClaim</code></td>
+<td>The name of an existing PVC to use for persistence</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>server.persistence.selector</code></td>
+<td>Selector to match an existing Persistent Volume for WordPress data PVC</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.persistence.dataSource</code></td>
+<td>Custom PVC data source</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>server.rbac.create</code></td>
+<td>Specifies whether RBAC resources should be created</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>server.rbac.rules</code></td>
+<td>Custom RBAC rules to set</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="init-container-parameters">Init Container Parameters<a class="headerlink" href="#init-container-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>volumePermissions.enabled</code></td>
+<td>Enable init container that changes the owner/group of the PV mount point to <code>runAsUser:fsGroup</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.registry</code></td>
+<td>Bitnami Shell image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.repository</code></td>
+<td>Bitnami Shell image repository</td>
+<td><code>bitnami/bitnami-shell</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.tag</code></td>
+<td>Bitnami Shell image tag (immutable tags are recommended)</td>
+<td><code>11-debian-11-r130</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.pullPolicy</code></td>
+<td>Bitnami Shell image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.pullSecrets</code></td>
+<td>Bitnami Shell image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.resources.limits</code></td>
+<td>The resources limits for the init container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.resources.requests</code></td>
+<td>The requested resources for the init container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.containerSecurityContext.runAsUser</code></td>
+<td>Set init container's Security Context runAsUser</td>
+<td><code>0</code></td>
+</tr>
+</tbody>
+</table>
+<p>Specify each parameter using the <code>--set key=value[,key=value]</code> argument to <code>helm install</code>. For example,</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="go">helm install my-release --set alertmanager.enabled=true \</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="go">  bitnami/prometheus</span>
+</span></code></pre></div>
+<p>The above command install Prometheus chart with Alertmanager.</p>
+<p>Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">helm install my-release -f values.yaml bitnami/prometheus</span>
+</span></code></pre></div>
+<blockquote>
+<p><strong>Tip</strong>: You can use the default <a href="values.yaml">values.yaml</a></p>
+</blockquote>
+<h2 id="configuration-and-installation-details">Configuration and installation details<a class="headerlink" href="#configuration-and-installation-details" title="Permanent link">&para;</a></h2>
+<h3 id="rolling-vs-immutable-tags"><a href="https://docs.bitnami.com/containers/how-to/understand-rolling-tags-containers/">Rolling VS Immutable tags</a><a class="headerlink" href="#rolling-vs-immutable-tags" title="Permanent link">&para;</a></h3>
+<p>It is strongly recommended to use immutable tags in a production environment. This ensures your deployment does not change automatically if the same tag is updated with a different image.</p>
+<p>Bitnami will release a new chart updating its containers if a new version of the main container, significant changes, or critical vulnerabilities exist.</p>
+<h3 id="deploy-extra-resources">Deploy extra resources<a class="headerlink" href="#deploy-extra-resources" title="Permanent link">&para;</a></h3>
+<p>There are cases where you may want to deploy extra objects, such a ConfigMap containing your app's configuration or some extra deployment with a micro service used by your app. For covering this case, the chart allows adding the full specification of other objects using the <code>extraDeploy</code> parameter.</p>
+<h3 id="setting-pods-affinity">Setting Pod's affinity<a class="headerlink" href="#setting-pods-affinity" title="Permanent link">&para;</a></h3>
+<p>This chart allows you to set your custom affinity using the <code>XXX.affinity</code> parameter(s). Find more information about Pod's affinity in the <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity">kubernetes documentation</a>.</p>
+<p>As an alternative, you can use of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the <a href="https://github.com/bitnami/charts/tree/main/bitnami/common#affinities">bitnami/common</a> chart. To do so, set the <code>XXX.podAffinityPreset</code>, <code>XXX.podAntiAffinityPreset</code>, or <code>XXX.nodeAffinityPreset</code> parameters.</p>
+<h3 id="integrate-prometheus-and-alertmanager-with-thanos">Integrate Prometheus and Alertmanager with Thanos<a class="headerlink" href="#integrate-prometheus-and-alertmanager-with-thanos" title="Permanent link">&para;</a></h3>
+<p>You can integrate Prometheus &amp; Alertmanager with Thanos using this chart and the <a href="https://github.com/bitnami/charts/tree/main/bitnami/thanos">Bitnami Thanos chart</a> following the steps below:</p>
+<blockquote>
+<p>Note: in this example we will use MinIO&reg; (subchart) as the Objstore. Every component will be deployed in the "monitoring" namespace.</p>
+</blockquote>
+<ul>
+<li>Create a <strong>values.yaml</strong> like the one below for Thanos:</li>
+</ul>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">objstoreConfig</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="no">type: s3</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="no">config:</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="no">bucket: thanos</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="no">endpoint: {{ include &quot;thanos.minio.fullname&quot; . }}.{{ .Release.Namespace }}.svc.cluster.local:9000</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="no">access_key: minio</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="no">secret_key: minio123</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="no">insecure: true</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="nt">query</span><span class="p">:</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">  </span><span class="nt">dnsDiscovery</span><span class="p">:</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="nt">sidecarsService</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus-thanos</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">    </span><span class="nt">sidecarsNamespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="nt">bucketweb</span><span class="p">:</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="nt">compactor</span><span class="p">:</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="nt">storegateway</span><span class="p">:</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="nt">ruler</span><span class="p">:</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">  </span><span class="nt">alertmanagers</span><span class="p">:</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://prometheus-alertmanager.monitoring.svc.cluster.local:9093</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">    </span><span class="no">groups:</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">      </span><span class="no">- name: &quot;metamonitoring&quot;</span>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">        </span><span class="no">rules:</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="w">          </span><span class="no">- alert: &quot;PrometheusDown&quot;</span>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="w">            </span><span class="no">expr: absent(up{prometheus=&quot;monitoring/prometheus&quot;})</span>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="nt">metrics</span><span class="p">:</span>
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="w">  </span><span class="nt">serviceMonitor</span><span class="p">:</span>
+</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a><span class="nt">minio</span><span class="p">:</span>
+</span><span id="__span-6-34"><a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-6-35"><a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a><span class="w">  </span><span class="nt">auth</span><span class="p">:</span>
+</span><span id="__span-6-36"><a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a><span class="w">    </span><span class="nt">rootPassword</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">minio123</span>
+</span><span id="__span-6-37"><a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a><span class="w">    </span><span class="nt">rootUser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">minio</span>
+</span><span id="__span-6-38"><a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a><span class="w">  </span><span class="nt">monitoringBuckets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">thanos</span>
+</span><span id="__span-6-39"><a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a><span class="w">  </span><span class="nt">accessKey</span><span class="p">:</span>
+</span><span id="__span-6-40"><a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a><span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">minio</span>
+</span><span id="__span-6-41"><a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a><span class="w">  </span><span class="nt">secretKey</span><span class="p">:</span>
+</span><span id="__span-6-42"><a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a><span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">minio123</span>
+</span></code></pre></div>
+<ul>
+<li>Install Prometheus and Thanos charts:</li>
+</ul>
+<p>For Helm 3:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">kubectl create namespace monitoring</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="go">helm install prometheus \</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="go">    --set prometheus.thanos.create=true \</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="go">    --namespace monitoring \</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="go">    bitnami/prometheus</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="go">helm install thanos \</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="go">    --values values.yaml \</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="go">    --namespace monitoring \</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="go">    bitnami/prometheus</span>
+</span></code></pre></div>
+<p>That's all! Now you have Thanos fully integrated with Prometheus and Alertmanager.</p>
+<h3 id="integrate-prometheus-with-grafana-mimir">Integrate Prometheus with Grafana Mimir<a class="headerlink" href="#integrate-prometheus-with-grafana-mimir" title="Permanent link">&para;</a></h3>
+<p>You can integrate Prometheus with Grafana Mimir using this chart and the <a href="https://github.com/bitnami/charts/tree/main/bitnami/grafana-mimir">Bitnami Grafana Mimir chart</a> adding a <code>remoteWrite</code> entry:</p>
+<ul>
+<li>Create a <strong>values.yaml</strong> like the one below for Prometheus:</li>
+</ul>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">server</span><span class="p">:</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">remoteWrite</span><span class="p">:</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://grafana-mimir-gateway.svc.cluster.local/api/v1/push</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">      </span><span class="nt">headers</span><span class="p">:</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">        </span><span class="nt">X-Scope-OrgID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo</span>
+</span></code></pre></div>
+<ul>
+<li>Install Prometheus and Grafana Mimir charts:</li>
+</ul>
+<p>For Helm 3:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="go">kubectl create namespace monitoring</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="go">helm install prometheus \</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="go">    --values values.yaml \</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="go">    --namespace monitoring \</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="go">    bitnami/prometheus</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="go">helm install grafana-mimir \</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="go">    bitnami/prometheus</span>
+</span></code></pre></div>
+<p>That's all! Now you have Prometheus integrated with Grafana Mimir.</p>
+<h3 id="integrate-prometheus-with-grafana">Integrate Prometheus with Grafana<a class="headerlink" href="#integrate-prometheus-with-grafana" title="Permanent link">&para;</a></h3>
+<p>You can integrate Prometheus with Grafana Dashboard using this chart and the <a href="https://github.com/bitnami/charts/tree/main/bitnami/grafana">Bitnami Grafana chart</a> just adding the prometheus datasources:</p>
+<ul>
+<li>Create a <strong>values.yaml</strong> like the one below for Grafana:</li>
+</ul>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">datasources</span><span class="p">:</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="nt">secretDefinition</span><span class="p">:</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="nt">datasources</span><span class="p">:</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prometheus</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">        </span><span class="nt">access</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">proxy</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">        </span><span class="nt">orgId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://prometheus.monitoring.svc.cluster.local</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">        </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">        </span><span class="nt">editable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">        </span><span class="nt">isDefault</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alertmanager</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">        </span><span class="nt">uid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alertmanager</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alertmanager</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="w">        </span><span class="nt">access</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">proxy</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="w">        </span><span class="nt">orgId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://prometheus-alertmanager.monitoring.svc.cluster.local:9093</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">        </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">        </span><span class="nt">editable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span></code></pre></div>
+<ul>
+<li>Install Prometheus and Grafana charts:</li>
+</ul>
+<p>For Helm 3:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="go">kubectl create namespace monitoring</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="go">helm install prometheus \</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="go">    --namespace monitoring \</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="go">    bitnami/prometheus</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="go">helm install grafana-mimir \</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="go">    --values values.yaml \</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="go">    --namespace monitoring \</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="go">    bitnami/prometheus</span>
+</span></code></pre></div>
+<h3 id="how-to-add-new-targets">How to add new targets<a class="headerlink" href="#how-to-add-new-targets" title="Permanent link">&para;</a></h3>
+<p>By default this helm chart will monitor its own targets: prometheus and alertmanager. Additional ones can be added setting a list with the <a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config">scrape_configs</a> in the value <code>server.extraScrapeConfigs</code>. Here there is a simple example for wordpress (deployed in the default namespace):</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">server</span><span class="p">:</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="nt">extraScrapeConfigs</span><span class="p">:</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wordpress</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">      </span><span class="nt">kubernetes_sd_configs</span><span class="p">:</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">endpoints</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">          </span><span class="nt">namespaces</span><span class="p">:</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">            </span><span class="nt">names</span><span class="p">:</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">      </span><span class="nt">metrics_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/metrics</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">      </span><span class="nt">relabel_configs</span><span class="p">:</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source_labels</span><span class="p">:</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">job</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">          </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__tmp_wordpress_job_name</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keep</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">          </span><span class="nt">source_labels</span><span class="p">:</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_service_label_app_kubernetes_io_instance</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_service_labelpresent_app_kubernetes_io_instance</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="w">          </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(wordpress);true</span>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keep</span>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="w">          </span><span class="nt">source_labels</span><span class="p">:</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_service_label_app_kubernetes_io_name</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_service_labelpresent_app_kubernetes_io_name</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="w">          </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(wordpress);true</span>
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keep</span>
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="w">          </span><span class="nt">source_labels</span><span class="p">:</span>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_endpoint_port_name</span>
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="w">          </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metrics</span>
+</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source_labels</span><span class="p">:</span>
+</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_endpoint_address_target_kind</span>
+</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_endpoint_address_target_name</span>
+</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a><span class="w">          </span><span class="nt">separator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">;</span>
+</span><span id="__span-12-32"><a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a><span class="w">          </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Node;(.*)</span>
+</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a><span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${1}</span>
+</span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a><span class="w">          </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node</span>
+</span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source_labels</span><span class="p">:</span>
+</span><span id="__span-12-36"><a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_endpoint_address_target_kind</span>
+</span><span id="__span-12-37"><a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_endpoint_address_target_name</span>
+</span><span id="__span-12-38"><a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a><span class="w">          </span><span class="nt">separator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">;</span>
+</span><span id="__span-12-39"><a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a><span class="w">          </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod;(.*)</span>
+</span><span id="__span-12-40"><a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a><span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${1}</span>
+</span><span id="__span-12-41"><a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a><span class="w">          </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pod</span>
+</span><span id="__span-12-42"><a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source_labels</span><span class="p">:</span>
+</span><span id="__span-12-43"><a id="__codelineno-12-43" name="__codelineno-12-43" href="#__codelineno-12-43"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_namespace</span>
+</span><span id="__span-12-44"><a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a><span class="w">          </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace</span>
+</span><span id="__span-12-45"><a id="__codelineno-12-45" name="__codelineno-12-45" href="#__codelineno-12-45"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source_labels</span><span class="p">:</span>
+</span><span id="__span-12-46"><a id="__codelineno-12-46" name="__codelineno-12-46" href="#__codelineno-12-46"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_service_name</span>
+</span><span id="__span-12-47"><a id="__codelineno-12-47" name="__codelineno-12-47" href="#__codelineno-12-47"></a><span class="w">          </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+</span><span id="__span-12-48"><a id="__codelineno-12-48" name="__codelineno-12-48" href="#__codelineno-12-48"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source_labels</span><span class="p">:</span>
+</span><span id="__span-12-49"><a id="__codelineno-12-49" name="__codelineno-12-49" href="#__codelineno-12-49"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_name</span>
+</span><span id="__span-12-50"><a id="__codelineno-12-50" name="__codelineno-12-50" href="#__codelineno-12-50"></a><span class="w">          </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pod</span>
+</span><span id="__span-12-51"><a id="__codelineno-12-51" name="__codelineno-12-51" href="#__codelineno-12-51"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source_labels</span><span class="p">:</span>
+</span><span id="__span-12-52"><a id="__codelineno-12-52" name="__codelineno-12-52" href="#__codelineno-12-52"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_container_name</span>
+</span><span id="__span-12-53"><a id="__codelineno-12-53" name="__codelineno-12-53" href="#__codelineno-12-53"></a><span class="w">          </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">container</span>
+</span><span id="__span-12-54"><a id="__codelineno-12-54" name="__codelineno-12-54" href="#__codelineno-12-54"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">drop</span>
+</span><span id="__span-12-55"><a id="__codelineno-12-55" name="__codelineno-12-55" href="#__codelineno-12-55"></a><span class="w">          </span><span class="nt">source_labels</span><span class="p">:</span>
+</span><span id="__span-12-56"><a id="__codelineno-12-56" name="__codelineno-12-56" href="#__codelineno-12-56"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_phase</span>
+</span><span id="__span-12-57"><a id="__codelineno-12-57" name="__codelineno-12-57" href="#__codelineno-12-57"></a><span class="w">          </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(Failed|Succeeded)</span>
+</span><span id="__span-12-58"><a id="__codelineno-12-58" name="__codelineno-12-58" href="#__codelineno-12-58"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source_labels</span><span class="p">:</span>
+</span><span id="__span-12-59"><a id="__codelineno-12-59" name="__codelineno-12-59" href="#__codelineno-12-59"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_service_name</span>
+</span><span id="__span-12-60"><a id="__codelineno-12-60" name="__codelineno-12-60" href="#__codelineno-12-60"></a><span class="w">          </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">job</span>
+</span><span id="__span-12-61"><a id="__codelineno-12-61" name="__codelineno-12-61" href="#__codelineno-12-61"></a><span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${1}</span>
+</span><span id="__span-12-62"><a id="__codelineno-12-62" name="__codelineno-12-62" href="#__codelineno-12-62"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">endpoint</span>
+</span><span id="__span-12-63"><a id="__codelineno-12-63" name="__codelineno-12-63" href="#__codelineno-12-63"></a><span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metrics</span>
+</span><span id="__span-12-64"><a id="__codelineno-12-64" name="__codelineno-12-64" href="#__codelineno-12-64"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source_labels</span><span class="p">:</span>
+</span><span id="__span-12-65"><a id="__codelineno-12-65" name="__codelineno-12-65" href="#__codelineno-12-65"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__address__</span>
+</span><span id="__span-12-66"><a id="__codelineno-12-66" name="__codelineno-12-66" href="#__codelineno-12-66"></a><span class="w">          </span><span class="nt">target_label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__tmp_hash</span>
+</span><span id="__span-12-67"><a id="__codelineno-12-67" name="__codelineno-12-67" href="#__codelineno-12-67"></a><span class="w">          </span><span class="nt">modulus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</span><span id="__span-12-68"><a id="__codelineno-12-68" name="__codelineno-12-68" href="#__codelineno-12-68"></a><span class="w">          </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hashmod</span>
+</span><span id="__span-12-69"><a id="__codelineno-12-69" name="__codelineno-12-69" href="#__codelineno-12-69"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source_labels</span><span class="p">:</span>
+</span><span id="__span-12-70"><a id="__codelineno-12-70" name="__codelineno-12-70" href="#__codelineno-12-70"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__tmp_hash</span>
+</span><span id="__span-12-71"><a id="__codelineno-12-71" name="__codelineno-12-71" href="#__codelineno-12-71"></a><span class="w">          </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+</span><span id="__span-12-72"><a id="__codelineno-12-72" name="__codelineno-12-72" href="#__codelineno-12-72"></a><span class="w">          </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keep</span>
+</span></code></pre></div>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p>Find more information about how to deal with common errors related to Bitnami's Helm charts in <a href="https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues">this troubleshooting guide</a>.</p>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<p>Copyright &copy; 2023 VMware, Inc.</p>
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../prestashop/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Prestashop" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  上一页
+                </span>
+                Prestashop
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../pytorch/" class="md-footer__link md-footer__link--next" aria-label="下一页: Pytorch" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  下一页
+                </span>
+                Pytorch
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,7400 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../suitecrm/">
+      
+      
+        <link rel="next" href="../tensorflow-resnet/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Supabase - Helm Charts Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#supabase-packaged-by-bitnami" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Helm Charts Hub" class="md-header__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Helm Charts Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Supabase
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Helm Charts Hub
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../chart-list/" class="md-tabs__link">
+      Chart 列表
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Bitnami
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../grafana/" class="md-tabs__link">
+        Grafana
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ingress-nginx/" class="md-tabs__link">
+        Ingress nginx
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../prometheus-community/" class="md-tabs__link">
+        Prometheus community
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sir5kong/" class="md-tabs__link">
+        Sir5kong
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Helm Charts Hub" class="md-nav__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Helm Charts Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Helm Charts Hub
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chart-list/" class="md-nav__link">
+        Chart 列表
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Bitnami</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Bitnami" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Bitnami
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../airflow/" class="md-nav__link">
+        Airflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apache/" class="md-nav__link">
+        Apache
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apisix/" class="md-nav__link">
+        Apisix
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appsmith/" class="md-nav__link">
+        Appsmith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-cd/" class="md-nav__link">
+        Argo cd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-workflows/" class="md-nav__link">
+        Argo workflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aspnet-core/" class="md-nav__link">
+        Aspnet core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cassandra/" class="md-nav__link">
+        Cassandra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cert-manager/" class="md-nav__link">
+        Cert manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clickhouse/" class="md-nav__link">
+        Clickhouse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common/" class="md-nav__link">
+        Bitnami Common Library Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concourse/" class="md-nav__link">
+        Concourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../consul/" class="md-nav__link">
+        Consul
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contour/" class="md-nav__link">
+        Contour
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../discourse/" class="md-nav__link">
+        Discourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dokuwiki/" class="md-nav__link">
+        Dokuwiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drupal/" class="md-nav__link">
+        Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejbca/" class="md-nav__link">
+        Ejbca
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../elasticsearch/" class="md-nav__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../etcd/" class="md-nav__link">
+        Etcd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../external-dns/" class="md-nav__link">
+        External dns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flink/" class="md-nav__link">
+        Flink
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluent-bit/" class="md-nav__link">
+        Fluent bit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluentd/" class="md-nav__link">
+        Fluentd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flux/" class="md-nav__link">
+        Flux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ghost/" class="md-nav__link">
+        Ghost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitea/" class="md-nav__link">
+        Gitea
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-loki/" class="md-nav__link">
+        Grafana loki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-mimir/" class="md-nav__link">
+        Grafana mimir
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-operator/" class="md-nav__link">
+        Grafana operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-tempo/" class="md-nav__link">
+        Grafana tempo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana/" class="md-nav__link">
+        Grafana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../haproxy/" class="md-nav__link">
+        Haproxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../harbor/" class="md-nav__link">
+        Harbor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../influxdb/" class="md-nav__link">
+        Influxdb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jaeger/" class="md-nav__link">
+        Jaeger
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jasperreports/" class="md-nav__link">
+        Jasperreports
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jenkins/" class="md-nav__link">
+        Jenkins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../joomla/" class="md-nav__link">
+        Joomla
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jupyterhub/" class="md-nav__link">
+        Jupyterhub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kafka/" class="md-nav__link">
+        Kafka
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keycloak/" class="md-nav__link">
+        Keycloak
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kiam/" class="md-nav__link">
+        Kiam
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kibana/" class="md-nav__link">
+        Kibana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kong/" class="md-nav__link">
+        Kong
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube-prometheus/" class="md-nav__link">
+        Kube prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube-state-metrics/" class="md-nav__link">
+        Kube state metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubeapps/" class="md-nav__link">
+        Kubeapps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-event-exporter/" class="md-nav__link">
+        Kubernetes event exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logstash/" class="md-nav__link">
+        Logstash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../magento/" class="md-nav__link">
+        Magento
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mariadb-galera/" class="md-nav__link">
+        Mariadb galera
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mariadb/" class="md-nav__link">
+        Mariadb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mastodon/" class="md-nav__link">
+        Mastodon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matomo/" class="md-nav__link">
+        Matomo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mediawiki/" class="md-nav__link">
+        Mediawiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memcached/" class="md-nav__link">
+        Memcached
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metallb/" class="md-nav__link">
+        Metallb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics-server/" class="md-nav__link">
+        Metrics server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../minio/" class="md-nav__link">
+        Minio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mongodb-sharded/" class="md-nav__link">
+        Mongodb sharded
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mongodb/" class="md-nav__link">
+        Mongodb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../moodle/" class="md-nav__link">
+        Moodle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multus-cni/" class="md-nav__link">
+        Multus cni
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mxnet/" class="md-nav__link">
+        Mxnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mysql/" class="md-nav__link">
+        Mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nats/" class="md-nav__link">
+        Nats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx-ingress-controller/" class="md-nav__link">
+        Nginx ingress controller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx/" class="md-nav__link">
+        Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../node-exporter/" class="md-nav__link">
+        Node exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oauth2-proxy/" class="md-nav__link">
+        Oauth2 proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../odoo/" class="md-nav__link">
+        Odoo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opencart/" class="md-nav__link">
+        Opencart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../osclass/" class="md-nav__link">
+        Osclass
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parse/" class="md-nav__link">
+        Parse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpbb/" class="md-nav__link">
+        Phpbb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpmyadmin/" class="md-nav__link">
+        Phpmyadmin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinniped/" class="md-nav__link">
+        Pinniped
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgresql-ha/" class="md-nav__link">
+        Postgresql ha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgresql/" class="md-nav__link">
+        Postgresql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prestashop/" class="md-nav__link">
+        Prestashop
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rabbitmq-cluster-operator/" class="md-nav__link">
+        Rabbitmq cluster operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rabbitmq/" class="md-nav__link">
+        Rabbitmq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis-cluster/" class="md-nav__link">
+        Redis cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redmine/" class="md-nav__link">
+        Redmine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema-registry/" class="md-nav__link">
+        Schema registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sealed-secrets/" class="md-nav__link">
+        Sealed secrets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solr/" class="md-nav__link">
+        Solr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sonarqube/" class="md-nav__link">
+        Sonarqube
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spark/" class="md-nav__link">
+        Spark
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-cloud-dataflow/" class="md-nav__link">
+        Spring cloud dataflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../suitecrm/" class="md-nav__link">
+        Suitecrm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Supabase
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Supabase
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    TL;DR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    Installing the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    Uninstalling the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-parameters" class="md-nav__link">
+    Global parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-parameters" class="md-nav__link">
+    Common parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-common-parameters" class="md-nav__link">
+    Supabase Common parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-auth-parameters" class="md-nav__link">
+    Supabase Auth Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-auth-traffic-exposure-parameters" class="md-nav__link">
+    Supabase Auth Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-meta-parameters" class="md-nav__link">
+    Supabase Meta Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-meta-traffic-exposure-parameters" class="md-nav__link">
+    Supabase Meta Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-realtime-parameters" class="md-nav__link">
+    Supabase Realtime Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-realtime-traffic-exposure-parameters" class="md-nav__link">
+    Supabase Realtime Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-rest-parameters" class="md-nav__link">
+    Supabase Rest Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-rest-traffic-exposure-parameters" class="md-nav__link">
+    Supabase Rest Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-storage-parameters" class="md-nav__link">
+    Supabase Storage Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-storage-traffic-exposure-parameters" class="md-nav__link">
+    Supabase Storage Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-persistence-parameters" class="md-nav__link">
+    Storage Persistence Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-studio-parameters" class="md-nav__link">
+    Supabase Studio Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-studio-traffic-exposure-parameters" class="md-nav__link">
+    Supabase Studio Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init-container-parameters" class="md-nav__link">
+    Init Container Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-parameters" class="md-nav__link">
+    Other Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kong-sub-chart-parameters" class="md-nav__link">
+    Kong sub-chart parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-sub-chart-parameters" class="md-nav__link">
+    PostgreSQL sub-chart parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-installation-details" class="md-nav__link">
+    Configuration and installation details
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and installation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-vs-immutable-tags" class="md-nav__link">
+    Rolling VS Immutable tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-database-support" class="md-nav__link">
+    External database support
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingress" class="md-nav__link">
+    Ingress
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tls-secrets" class="md-nav__link">
+    TLS secrets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistence" class="md-nav__link">
+    Persistence
+  </a>
+  
+    <nav class="md-nav" aria-label="Persistence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-environment-variables" class="md-nav__link">
+    Additional environment variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sidecars" class="md-nav__link">
+    Sidecars
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod-affinity" class="md-nav__link">
+    Pod affinity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tensorflow-resnet/" class="md-nav__link">
+        Tensorflow resnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../thanos/" class="md-nav__link">
+        Thanos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tomcat/" class="md-nav__link">
+        Tomcat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault/" class="md-nav__link">
+        Vault
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavefront-hpa-adapter/" class="md-nav__link">
+        Wavefront hpa adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavefront-prometheus-storage-adapter/" class="md-nav__link">
+        Wavefront prometheus storage adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whereabouts/" class="md-nav__link">
+        Whereabouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wildfly/" class="md-nav__link">
+        Wildfly
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wordpress/" class="md-nav__link">
+        Wordpress
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zookeeper/" class="md-nav__link">
+        Zookeeper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../grafana/">Grafana</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Grafana" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Grafana
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/agent-operator/" class="md-nav__link">
+        grafana-agent-operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-logs-simple/" class="md-nav__link">
+        enterprise-logs-simple
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-logs/" class="md-nav__link">
+        Grafana Enterprise Logs Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-metrics/" class="md-nav__link">
+        Grafana Enterprise Metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/fluent-bit/" class="md-nav__link">
+        Fluent Bit Loki chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/grafana-agent/" class="md-nav__link">
+        Grafana Agent chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/grafana/" class="md-nav__link">
+        Grafana Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-canary/" class="md-nav__link">
+        loki-canary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-distributed/" class="md-nav__link">
+        loki-distributed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-stack/" class="md-nav__link">
+        Loki-Stack Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/mimir-distributed/" class="md-nav__link">
+        Notice of relocation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/promtail/" class="md-nav__link">
+        promtail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/rollout-operator/" class="md-nav__link">
+        Grafana rollout-operator Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/synthetic-monitoring-agent/" class="md-nav__link">
+        synthetic-monitoring-agent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo-distributed/" class="md-nav__link">
+        tempo-distributed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo-vulture/" class="md-nav__link">
+        tempo-vulture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo/" class="md-nav__link">
+        tempo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../ingress-nginx/">Ingress nginx</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Ingress nginx" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Ingress nginx
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ingress-nginx/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../prometheus-community/">Prometheus community</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Prometheus community" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Prometheus community
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager-snmp-notifier/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager/" class="md-nav__link">
+        Alertmanager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/jiralert/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-prometheus-stack/" class="md-nav__link">
+        kube-prometheus-stack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-state-metrics/" class="md-nav__link">
+        kube-state-metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prom-label-proxy/" class="md-nav__link">
+        prom-label-proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-adapter/" class="md-nav__link">
+        Prometheus Adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-blackbox-exporter/" class="md-nav__link">
+        Prometheus Blackbox Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-cloudwatch-exporter/" class="md-nav__link">
+        Prometheus Cloudwatch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-conntrack-stats-exporter/" class="md-nav__link">
+        Conntrack Stats Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-consul-exporter/" class="md-nav__link">
+        Prometheus Consul Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-couchdb-exporter/" class="md-nav__link">
+        prometheus-couchdb-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-druid-exporter/" class="md-nav__link">
+        Prometheus Druid Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-elasticsearch-exporter/" class="md-nav__link">
+        Elasticsearch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-fastly-exporter/" class="md-nav__link">
+        Prometheus Fastly Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-json-exporter/" class="md-nav__link">
+        prometheus-json-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-kafka-exporter/" class="md-nav__link">
+        prometheus-kafka-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mongodb-exporter/" class="md-nav__link">
+        Prometheus MongoDB Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mysql-exporter/" class="md-nav__link">
+        Prometheus Mysql Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nats-exporter/" class="md-nav__link">
+        Prometheus NATS Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nginx-exporter/" class="md-nav__link">
+        prometheus-nginx-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-node-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-admission-webhook/" class="md-nav__link">
+        Prometheus Operator Admission Webhook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-crds/" class="md-nav__link">
+        Prometheus Operator CRDs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pgbouncer-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingdom-exporter/" class="md-nav__link">
+        Prometheus Pingdom Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingmesh-exporter/" class="md-nav__link">
+        Prometheus Pingmesh Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-postgres-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pushgateway/" class="md-nav__link">
+        Prometheus Pushgateway
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-rabbitmq-exporter/" class="md-nav__link">
+        prometheus-rabbitmq-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-redis-exporter/" class="md-nav__link">
+        prometheus-redis-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-smartctl-exporter/" class="md-nav__link">
+        Prometheus smartctl Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-snmp-exporter/" class="md-nav__link">
+        Prometheus SNMP Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-stackdriver-exporter/" class="md-nav__link">
+        Stackdriver Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-statsd-exporter/" class="md-nav__link">
+        prometheus-statsd-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-to-sd/" class="md-nav__link">
+        prometheus-to-sd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-windows-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../sir5kong/">Sir5kong</a>
+          
+            <label for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Sir5kong" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Sir5kong
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/commonapp/" class="md-nav__link">
+        commonapp helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/kafka/" class="md-nav__link">
+        Kafka helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/nginx/" class="md-nav__link">
+        nginx helm chart
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    TL;DR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    Installing the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    Uninstalling the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-parameters" class="md-nav__link">
+    Global parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-parameters" class="md-nav__link">
+    Common parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-common-parameters" class="md-nav__link">
+    Supabase Common parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-auth-parameters" class="md-nav__link">
+    Supabase Auth Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-auth-traffic-exposure-parameters" class="md-nav__link">
+    Supabase Auth Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-meta-parameters" class="md-nav__link">
+    Supabase Meta Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-meta-traffic-exposure-parameters" class="md-nav__link">
+    Supabase Meta Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-realtime-parameters" class="md-nav__link">
+    Supabase Realtime Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-realtime-traffic-exposure-parameters" class="md-nav__link">
+    Supabase Realtime Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-rest-parameters" class="md-nav__link">
+    Supabase Rest Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-rest-traffic-exposure-parameters" class="md-nav__link">
+    Supabase Rest Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-storage-parameters" class="md-nav__link">
+    Supabase Storage Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-storage-traffic-exposure-parameters" class="md-nav__link">
+    Supabase Storage Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-persistence-parameters" class="md-nav__link">
+    Storage Persistence Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-studio-parameters" class="md-nav__link">
+    Supabase Studio Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supabase-studio-traffic-exposure-parameters" class="md-nav__link">
+    Supabase Studio Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init-container-parameters" class="md-nav__link">
+    Init Container Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-parameters" class="md-nav__link">
+    Other Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kong-sub-chart-parameters" class="md-nav__link">
+    Kong sub-chart parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-sub-chart-parameters" class="md-nav__link">
+    PostgreSQL sub-chart parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-installation-details" class="md-nav__link">
+    Configuration and installation details
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and installation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-vs-immutable-tags" class="md-nav__link">
+    Rolling VS Immutable tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-database-support" class="md-nav__link">
+    External database support
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingress" class="md-nav__link">
+    Ingress
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tls-secrets" class="md-nav__link">
+    TLS secrets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistence" class="md-nav__link">
+    Persistence
+  </a>
+  
+    <nav class="md-nav" aria-label="Persistence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-environment-variables" class="md-nav__link">
+    Additional environment variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sidecars" class="md-nav__link">
+    Sidecars
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod-affinity" class="md-nav__link">
+    Pod affinity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<!--- app-name: Supabase -->
+
+<h1 id="supabase-packaged-by-bitnami">Supabase packaged by Bitnami<a class="headerlink" href="#supabase-packaged-by-bitnami" title="Permanent link">&para;</a></h1>
+<p>Supabase is an open source Firebase alternative. Provides all the necessary backend features to build your application in a scalable way. Uses PostgreSQL as datastore.</p>
+<p><a href="https://supabase.com/">Overview of Supabase</a></p>
+<p>Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.</p>
+<h2 id="tldr">TL;DR<a class="headerlink" href="#tldr" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>使用加速地址添加仓库:</p>
+</blockquote>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>bitnami<span class="w"> </span><span class="s2">&quot;https://helm-charts.itboon.top/bitnami&quot;</span><span class="w"> </span>--force-update
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>helm<span class="w"> </span>update<span class="w"> </span>bitnami
+</span></code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="go">helm install my-release bitnami/supabase</span>
+</span></code></pre></div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>Bitnami charts for Helm are carefully engineered, actively maintained and are the quickest and easiest way to deploy containers on a Kubernetes cluster that are ready to handle production workloads.</p>
+<p>This chart bootstraps a <a href="https://www.supabase.com/">Supabase</a> deployment in a <a href="https://kubernetes.io">Kubernetes</a> cluster using the <a href="https://helm.sh">Helm</a> package manager.
+Bitnami charts can be used with <a href="https://kubeapps.com/">Kubeapps</a> for deployment and management of Helm Charts in clusters.</p>
+<p><a href="https://docs.bitnami.com/kubernetes/infrastructure/supabase/get-started/">Learn more about the default configuration of the chart</a>.</p>
+<p>Looking to use Supabase in production? Try <a href="https://bitnami.com/enterprise">VMware Application Catalog</a>, the enterprise edition of Bitnami Application Catalog.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Kubernetes 1.19+</li>
+<li>Helm 3.2.0+</li>
+<li>PV provisioner support in the underlying infrastructure</li>
+<li>ReadWriteMany volumes for deployment scaling</li>
+</ul>
+<h2 id="installing-the-chart">Installing the Chart<a class="headerlink" href="#installing-the-chart" title="Permanent link">&para;</a></h2>
+<p>To install the chart with the release name <code>my-release</code>:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">helm install my-release bitnami/supabase</span>
+</span></code></pre></div>
+<p>The command deploys Supabase on the Kubernetes cluster in the default configuration. The <a href="#parameters">Parameters</a> section lists the parameters that can be configured during installation.</p>
+<blockquote>
+<p><strong>Tip</strong>: List all releases using <code>helm list</code></p>
+</blockquote>
+<h2 id="uninstalling-the-chart">Uninstalling the Chart<a class="headerlink" href="#uninstalling-the-chart" title="Permanent link">&para;</a></h2>
+<p>To uninstall/delete the <code>my-release</code> deployment:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="go">helm delete my-release</span>
+</span></code></pre></div>
+<p>The command removes all the Kubernetes components associated with the chart and deletes the release.</p>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
+<h3 id="global-parameters">Global parameters<a class="headerlink" href="#global-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>global.imageRegistry</code></td>
+<td>Global Docker image registry</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>global.imagePullSecrets</code></td>
+<td>Global Docker registry secret names as an array</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>global.storageClass</code></td>
+<td>Global StorageClass for Persistent Volume(s)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>global.jwt.existingSecret</code></td>
+<td>The name of the existing secret containing the JWT secret</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>global.jwt.existingSecretKey</code></td>
+<td>The key in the existing secret containing the JWT secret</td>
+<td><code>secret</code></td>
+</tr>
+<tr>
+<td><code>global.jwt.existingSecretAnonKey</code></td>
+<td>The key in the existing secret containing the JWT anon key</td>
+<td><code>anon-key</code></td>
+</tr>
+<tr>
+<td><code>global.jwt.existingSecretServiceKey</code></td>
+<td>The key in the existing secret containing the JWT service key</td>
+<td><code>service-key</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-parameters">Common parameters<a class="headerlink" href="#common-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kubeVersion</code></td>
+<td>Override Kubernetes version</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>nameOverride</code></td>
+<td>String to partially override common.names.name</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>fullnameOverride</code></td>
+<td>String to fully override common.names.fullname</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>namespaceOverride</code></td>
+<td>String to fully override common.names.namespace</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>commonLabels</code></td>
+<td>Labels to add to all deployed objects</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>commonAnnotations</code></td>
+<td>Annotations to add to all deployed objects</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>clusterDomain</code></td>
+<td>Kubernetes cluster domain name</td>
+<td><code>cluster.local</code></td>
+</tr>
+<tr>
+<td><code>extraDeploy</code></td>
+<td>Array of extra objects to deploy with the release</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.enabled</code></td>
+<td>Enable diagnostic mode (all probes will be disabled and the command will be overridden)</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.command</code></td>
+<td>Command to override all containers in the deployment</td>
+<td><code>["sleep"]</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.args</code></td>
+<td>Args to override all containers in the deployment</td>
+<td><code>["infinity"]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="supabase-common-parameters">Supabase Common parameters<a class="headerlink" href="#supabase-common-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>jwt.secret</code></td>
+<td>The secret string used to sign JWT tokens</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>jwt.anonKey</code></td>
+<td>JWT string for annonymous users</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>jwt.serviceKey</code></td>
+<td>JWT string for service users</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.forceRun</code></td>
+<td>Force the run of the JWT generation job</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.image.registry</code></td>
+<td>JWT CLI image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.image.repository</code></td>
+<td>JWT CLI image repository</td>
+<td><code>bitnami/jwt-cli</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.image.tag</code></td>
+<td>JWT CLI image tag (immutable tags are recommended)</td>
+<td><code>5.0.3-debian-11-r39</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.image.digest</code></td>
+<td>JWT CLI image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.image.pullPolicy</code></td>
+<td>JWT CLI image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.image.pullSecrets</code></td>
+<td>JWT CLI image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.kubectlImage.registry</code></td>
+<td>Kubectl image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.kubectlImage.repository</code></td>
+<td>Kubectl image repository</td>
+<td><code>bitnami/kubectl</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.kubectlImage.tag</code></td>
+<td>Kubectl image tag (immutable tags are recommended)</td>
+<td><code>1.26.5-debian-11-r8</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.kubectlImage.digest</code></td>
+<td>Kubectl image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.kubectlImage.pullPolicy</code></td>
+<td>Kubectl image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.kubectlImage.pullSecrets</code></td>
+<td>Kubectl image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.backoffLimit</code></td>
+<td>set backoff limit of the job</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes for the jwt init job</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.containerSecurityContext.enabled</code></td>
+<td>Enabled jwt init job containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.containerSecurityContext.runAsUser</code></td>
+<td>Set jwt init job containers' Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.containerSecurityContext.runAsNonRoot</code></td>
+<td>Set jwt init job containers' Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.containerSecurityContext.readOnlyRootFilesystem</code></td>
+<td>Set jwt init job containers' Security Context runAsNonRoot</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.containerSecurityContext.allowPrivilegeEscalation</code></td>
+<td>Set container's privilege escalation</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.containerSecurityContext.capabilities.drop</code></td>
+<td>Set container's Security Context runAsNonRoot</td>
+<td><code>["ALL"]</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.podSecurityContext.enabled</code></td>
+<td>Enabled jwt init job pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.podSecurityContext.fsGroup</code></td>
+<td>Set jwt init job pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.podSecurityContext.seccompProfile.type</code></td>
+<td>Set container's Security Context seccomp profile</td>
+<td><code>RuntimeDefault</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.extraEnvVars</code></td>
+<td>Array containing extra env vars to configure the jwt init job</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.extraEnvVarsCM</code></td>
+<td>ConfigMap containing extra env vars to configure the jwt init job</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.extraEnvVarsSecret</code></td>
+<td>Secret containing extra env vars to configure the jwt init job (in case of sensitive data)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.extraVolumeMounts</code></td>
+<td>Array of extra volume mounts to be added to the jwt Container (evaluated as template). Normally used with <code>extraVolumes</code>.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.resources.limits</code></td>
+<td>The resources limits for the container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.resources.requests</code></td>
+<td>The requested resources for the container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.hostAliases</code></td>
+<td>Add deployment host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.annotations</code></td>
+<td>Add annotations to the job</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.podLabels</code></td>
+<td>Additional pod labels</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>jwt.autoGenerate.podAnnotations</code></td>
+<td>Additional pod annotations</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>publicURL</code></td>
+<td>Supabase API public URL</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>dbSSL</code></td>
+<td>Supabase API database connection mode for SSL. Applied to all components. Allowed values: verify-ca, verify-full, disable, allow, prefer, require</td>
+<td><code>disable</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="supabase-auth-parameters">Supabase Auth Parameters<a class="headerlink" href="#supabase-auth-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>auth.enabled</code></td>
+<td>Enable Supabase auth</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>auth.replicaCount</code></td>
+<td>Number of Supabase auth replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>auth.defaultConfig</code></td>
+<td>Supabase auth default configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.extraConfig</code></td>
+<td>Supabase auth extra configuration</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>auth.existingConfigmap</code></td>
+<td>The name of an existing ConfigMap with the default configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.extraConfigExistingConfigmap</code></td>
+<td>The name of an existing ConfigMap with extra configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.image.registry</code></td>
+<td>Gotrue image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>auth.image.repository</code></td>
+<td>Gotrue image repository</td>
+<td><code>bitnami/gotrue</code></td>
+</tr>
+<tr>
+<td><code>auth.image.tag</code></td>
+<td>Gotrue image tag (immutable tags are recommended)</td>
+<td><code>1.0.1-debian-11-r41</code></td>
+</tr>
+<tr>
+<td><code>auth.image.digest</code></td>
+<td>Gotrue image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.image.pullPolicy</code></td>
+<td>Gotrue image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>auth.image.pullSecrets</code></td>
+<td>Gotrue image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>auth.containerPorts.http</code></td>
+<td>Supabase auth HTTP container port</td>
+<td><code>9999</code></td>
+</tr>
+<tr>
+<td><code>auth.livenessProbe.enabled</code></td>
+<td>Enable livenessProbe on Supabase auth containers</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>auth.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>auth.livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>auth.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>auth.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>auth.livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>auth.readinessProbe.enabled</code></td>
+<td>Enable readinessProbe on Supabase auth containers</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>auth.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>auth.readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>auth.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>auth.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>auth.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>auth.startupProbe.enabled</code></td>
+<td>Enable startupProbe on Supabase auth containers</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>auth.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>auth.startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>auth.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>auth.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>auth.startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>auth.customLivenessProbe</code></td>
+<td>Custom livenessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>auth.customReadinessProbe</code></td>
+<td>Custom readinessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>auth.customStartupProbe</code></td>
+<td>Custom startupProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>auth.resources.limits</code></td>
+<td>The resources limits for the Supabase auth containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>auth.resources.requests</code></td>
+<td>The requested resources for the Supabase auth containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>auth.podSecurityContext.enabled</code></td>
+<td>Enabled Supabase auth pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>auth.podSecurityContext.fsGroup</code></td>
+<td>Set Supabase auth pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>auth.containerSecurityContext.enabled</code></td>
+<td>Enabled Supabase auth containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>auth.containerSecurityContext.runAsUser</code></td>
+<td>Set Supabase auth containers' Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>auth.containerSecurityContext.runAsNonRoot</code></td>
+<td>Set Supabase auth containers' Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>auth.containerSecurityContext.readOnlyRootFilesystem</code></td>
+<td>Set Supabase auth containers' Security Context runAsNonRoot</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>auth.command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>auth.args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>auth.hostAliases</code></td>
+<td>Supabase auth pods host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>auth.podLabels</code></td>
+<td>Extra labels for Supabase auth pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>auth.podAnnotations</code></td>
+<td>Annotations for Supabase auth pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>auth.podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>auth.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>auth.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>auth.nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>auth.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.nodeAffinityPreset.key</code></td>
+<td>Node label key to match. Ignored if <code>auth.affinity</code> is set</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>auth.affinity</code> is set</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>auth.affinity</code></td>
+<td>Affinity for Supabase auth pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>auth.nodeSelector</code></td>
+<td>Node labels for Supabase auth pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>auth.tolerations</code></td>
+<td>Tolerations for Supabase auth pods assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>auth.updateStrategy.type</code></td>
+<td>Supabase auth statefulset strategy type</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>auth.priorityClassName</code></td>
+<td>Supabase auth pods' priorityClassName</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment spread across your cluster among failure-domains. Evaluated as a template</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>auth.schedulerName</code></td>
+<td>Name of the k8s scheduler (other than default) for Supabase auth pods</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.terminationGracePeriodSeconds</code></td>
+<td>Seconds Redmine pod needs to terminate gracefully</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.lifecycleHooks</code></td>
+<td>for the Supabase auth container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>auth.extraEnvVars</code></td>
+<td>Array with extra environment variables to add to Supabase auth nodes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>auth.extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra env vars for Supabase auth nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra env vars for Supabase auth nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes for the Supabase auth pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>auth.extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts for the Supabase auth container(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>auth.sidecars</code></td>
+<td>Add additional sidecar containers to the Supabase auth pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>auth.initContainers</code></td>
+<td>Add additional init containers to the Supabase auth pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="supabase-auth-traffic-exposure-parameters">Supabase Auth Traffic Exposure Parameters<a class="headerlink" href="#supabase-auth-traffic-exposure-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>auth.service.type</code></td>
+<td>Supabase auth service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>auth.service.ports.http</code></td>
+<td>Supabase auth service HTTP port</td>
+<td><code>80</code></td>
+</tr>
+<tr>
+<td><code>auth.service.nodePorts.http</code></td>
+<td>Node port for HTTP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.service.clusterIP</code></td>
+<td>Supabase auth service Cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.service.loadBalancerIP</code></td>
+<td>Supabase auth service Load Balancer IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.service.loadBalancerSourceRanges</code></td>
+<td>Supabase auth service Load Balancer sources</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>auth.service.externalTrafficPolicy</code></td>
+<td>Supabase auth service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>auth.service.annotations</code></td>
+<td>Additional custom annotations for Supabase auth service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>auth.service.extraPorts</code></td>
+<td>Extra ports to expose in Supabase auth service (normally used with the <code>sidecars</code> value)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>auth.service.sessionAffinity</code></td>
+<td>Control where auth requests go, to the same pod or round-robin</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>auth.service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="supabase-meta-parameters">Supabase Meta Parameters<a class="headerlink" href="#supabase-meta-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>meta.enabled</code></td>
+<td>Enable Supabase Postgres Meta</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>meta.replicaCount</code></td>
+<td>Number of Supabase Postgres Meta replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>meta.defaultConfig</code></td>
+<td>Default Supabase Postgres Meta configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>meta.extraConfig</code></td>
+<td>Extra Supabase Postgres Meta configuration</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>meta.existingConfigmap</code></td>
+<td>The name of an existing ConfigMap with the default configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>meta.extraConfigExistingConfigmap</code></td>
+<td>The name of an existing ConfigMap with extra configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>meta.image.registry</code></td>
+<td>Supabase Postgres Meta image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>meta.image.repository</code></td>
+<td>Supabase Postgres Meta image repository</td>
+<td><code>bitnami/supabase-postgres-meta</code></td>
+</tr>
+<tr>
+<td><code>meta.image.tag</code></td>
+<td>Supabase Postgres Meta image tag (immutable tags are recommended)</td>
+<td><code>0.66.2-debian-11-r1</code></td>
+</tr>
+<tr>
+<td><code>meta.image.digest</code></td>
+<td>Supabase Postgres Meta image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>meta.image.pullPolicy</code></td>
+<td>Supabase Postgres Meta image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>meta.image.pullSecrets</code></td>
+<td>Supabase Postgres Meta image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>meta.containerPorts.http</code></td>
+<td>Supabase Postgres Meta HTTP container port</td>
+<td><code>8080</code></td>
+</tr>
+<tr>
+<td><code>meta.livenessProbe.enabled</code></td>
+<td>Enable livenessProbe on Supabase Postgres Meta containers</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>meta.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>meta.livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>meta.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>meta.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>meta.livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>meta.readinessProbe.enabled</code></td>
+<td>Enable readinessProbe on Supabase Postgres Meta containers</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>meta.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>meta.readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>meta.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>meta.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>meta.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>meta.startupProbe.enabled</code></td>
+<td>Enable startupProbe on Supabase Postgres Meta containers</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>meta.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>meta.startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>meta.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>meta.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>meta.startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>meta.customLivenessProbe</code></td>
+<td>Custom livenessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>meta.customReadinessProbe</code></td>
+<td>Custom readinessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>meta.customStartupProbe</code></td>
+<td>Custom startupProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>meta.resources.limits</code></td>
+<td>The resources limits for the Supabase Postgres Meta containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>meta.resources.requests</code></td>
+<td>The requested resources for the Supabase Postgres Meta containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>meta.podSecurityContext.enabled</code></td>
+<td>Enabled Supabase Postgres Meta pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>meta.podSecurityContext.fsGroup</code></td>
+<td>Set Supabase Postgres Meta pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>meta.containerSecurityContext.enabled</code></td>
+<td>Enabled Supabase Postgres Meta containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>meta.containerSecurityContext.runAsUser</code></td>
+<td>Set Supabase Postgres Meta containers' Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>meta.containerSecurityContext.runAsNonRoot</code></td>
+<td>Set Supabase Postgres Meta containers' Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>meta.containerSecurityContext.readOnlyRootFilesystem</code></td>
+<td>Set Supabase Postgres Meta containers' Security Context runAsNonRoot</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>meta.command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>meta.args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>meta.hostAliases</code></td>
+<td>Supabase Postgres Meta pods host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>meta.podLabels</code></td>
+<td>Extra labels for Supabase Postgres Meta pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>meta.podAnnotations</code></td>
+<td>Annotations for Supabase Postgres Meta pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>meta.podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>meta.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>meta.podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>meta.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>meta.nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>meta.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>meta.nodeAffinityPreset.key</code></td>
+<td>Node label key to match. Ignored if <code>meta.affinity</code> is set</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>meta.nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>meta.affinity</code> is set</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>meta.affinity</code></td>
+<td>Affinity for Supabase Postgres Meta pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>meta.nodeSelector</code></td>
+<td>Node labels for Supabase Postgres Meta pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>meta.tolerations</code></td>
+<td>Tolerations for Supabase Postgres Meta pods assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>meta.updateStrategy.type</code></td>
+<td>Supabase Postgres Meta statefulset strategy type</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>meta.priorityClassName</code></td>
+<td>Supabase Postgres Meta pods' priorityClassName</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>meta.topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment spread across your cluster among failure-domains. Evaluated as a template</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>meta.schedulerName</code></td>
+<td>Name of the k8s scheduler (other than default) for Supabase Postgres Meta pods</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>meta.terminationGracePeriodSeconds</code></td>
+<td>Seconds Redmine pod needs to terminate gracefully</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>meta.lifecycleHooks</code></td>
+<td>for the Supabase Postgres Meta container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>meta.extraEnvVars</code></td>
+<td>Array with extra environment variables to add to Supabase Postgres Meta nodes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>meta.extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra env vars for Supabase Postgres Meta nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>meta.extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra env vars for Supabase Postgres Meta nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>meta.extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes for the Supabase Postgres Meta pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>meta.extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts for the Supabase Postgres Meta container(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>meta.sidecars</code></td>
+<td>Add additional sidecar containers to the Supabase Postgres Meta pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>meta.initContainers</code></td>
+<td>Add additional init containers to the Supabase Postgres Meta pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="supabase-meta-traffic-exposure-parameters">Supabase Meta Traffic Exposure Parameters<a class="headerlink" href="#supabase-meta-traffic-exposure-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>meta.service.type</code></td>
+<td>Supabase Postgres Meta service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>meta.service.ports.http</code></td>
+<td>Supabase Postgres Meta service HTTP port</td>
+<td><code>80</code></td>
+</tr>
+<tr>
+<td><code>meta.service.nodePorts.http</code></td>
+<td>Node port for HTTP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>meta.service.clusterIP</code></td>
+<td>Supabase Postgres Meta service Cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>meta.service.loadBalancerIP</code></td>
+<td>Supabase Postgres Meta service Load Balancer IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>meta.service.loadBalancerSourceRanges</code></td>
+<td>Supabase Postgres Meta service Load Balancer sources</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>meta.service.externalTrafficPolicy</code></td>
+<td>Supabase Postgres Meta service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>meta.service.annotations</code></td>
+<td>Additional custom annotations for Supabase Postgres Meta service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>meta.service.extraPorts</code></td>
+<td>Extra ports to expose in Supabase Postgres Meta service (normally used with the <code>sidecars</code> value)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>meta.service.sessionAffinity</code></td>
+<td>Control where meta requests go, to the same pod or round-robin</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>meta.service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="supabase-realtime-parameters">Supabase Realtime Parameters<a class="headerlink" href="#supabase-realtime-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>realtime.enabled</code></td>
+<td>Enable Supabase realtime</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>realtime.replicaCount</code></td>
+<td>Number of Supabase realtime replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>realtime.keyBase</code></td>
+<td>key base for Supabase realtime</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>realtime.existingSecret</code></td>
+<td>Name of an existing secret containing the key base for Supabase realtime</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>realtime.existingSecretKey</code></td>
+<td>Key in the existing secret containing the key base for Supabase realtime</td>
+<td><code>key-base</code></td>
+</tr>
+<tr>
+<td><code>realtime.defaultConfig</code></td>
+<td>Default configuration for Supabase realtime</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>realtime.extraConfig</code></td>
+<td>Extra configuration for Supabase realtime</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>realtime.existingConfigmap</code></td>
+<td>The name of an existing ConfigMap with the default configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>realtime.extraConfigExistingConfigmap</code></td>
+<td>The name of an existing ConfigMap with extra configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>realtime.image.registry</code></td>
+<td>Realtime image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>realtime.image.repository</code></td>
+<td>Realtime image repository</td>
+<td><code>bitnami/supabase-realtime</code></td>
+</tr>
+<tr>
+<td><code>realtime.image.tag</code></td>
+<td>Realtime image tag (immutable tags are recommended)</td>
+<td><code>2.14.0-debian-11-r1</code></td>
+</tr>
+<tr>
+<td><code>realtime.image.digest</code></td>
+<td>Realtime image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>realtime.image.pullPolicy</code></td>
+<td>Realtime image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>realtime.image.pullSecrets</code></td>
+<td>Realtime image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>realtime.containerPorts.http</code></td>
+<td>Supabase realtime HTTP container port</td>
+<td><code>9999</code></td>
+</tr>
+<tr>
+<td><code>realtime.livenessProbe.enabled</code></td>
+<td>Enable livenessProbe on Supabase realtime containers</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>realtime.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>realtime.livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>realtime.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>realtime.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>realtime.livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>realtime.readinessProbe.enabled</code></td>
+<td>Enable readinessProbe on Supabase realtime containers</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>realtime.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>realtime.readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>realtime.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>realtime.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>realtime.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>realtime.startupProbe.enabled</code></td>
+<td>Enable startupProbe on Supabase realtime containers</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>realtime.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>realtime.startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>realtime.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>realtime.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>realtime.startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>realtime.customLivenessProbe</code></td>
+<td>Custom livenessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>realtime.customReadinessProbe</code></td>
+<td>Custom readinessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>realtime.customStartupProbe</code></td>
+<td>Custom startupProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>realtime.resources.limits</code></td>
+<td>The resources limits for the Supabase realtime containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>realtime.resources.requests</code></td>
+<td>The requested resources for the Supabase realtime containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>realtime.podSecurityContext.enabled</code></td>
+<td>Enabled Supabase realtime pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>realtime.podSecurityContext.fsGroup</code></td>
+<td>Set Supabase realtime pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>realtime.containerSecurityContext.enabled</code></td>
+<td>Enabled Supabase realtime containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>realtime.containerSecurityContext.runAsUser</code></td>
+<td>Set Supabase realtime containers' Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>realtime.containerSecurityContext.runAsNonRoot</code></td>
+<td>Set Supabase realtime containers' Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>realtime.containerSecurityContext.readOnlyRootFilesystem</code></td>
+<td>Set Supabase realtime containers' Security Context runAsNonRoot</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>realtime.command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>realtime.args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>realtime.hostAliases</code></td>
+<td>Supabase realtime pods host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>realtime.podLabels</code></td>
+<td>Extra labels for Supabase realtime pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>realtime.podAnnotations</code></td>
+<td>Annotations for Supabase realtime pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>realtime.podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>realtime.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>realtime.podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>realtime.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>realtime.nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>realtime.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>realtime.nodeAffinityPreset.key</code></td>
+<td>Node label key to match. Ignored if <code>realtime.affinity</code> is set</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>realtime.nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>realtime.affinity</code> is set</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>realtime.affinity</code></td>
+<td>Affinity for Supabase realtime pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>realtime.nodeSelector</code></td>
+<td>Node labels for Supabase realtime pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>realtime.tolerations</code></td>
+<td>Tolerations for Supabase realtime pods assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>realtime.updateStrategy.type</code></td>
+<td>Supabase realtime statefulset strategy type</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>realtime.priorityClassName</code></td>
+<td>Supabase realtime pods' priorityClassName</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>realtime.topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment spread across your cluster among failure-domains. Evaluated as a template</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>realtime.schedulerName</code></td>
+<td>Name of the k8s scheduler (other than default) for Supabase realtime pods</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>realtime.terminationGracePeriodSeconds</code></td>
+<td>Seconds Redmine pod needs to terminate gracefully</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>realtime.lifecycleHooks</code></td>
+<td>for the Supabase realtime container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>realtime.extraEnvVars</code></td>
+<td>Array with extra environment variables to add to Supabase realtime nodes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>realtime.extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra env vars for Supabase realtime nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>realtime.extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra env vars for Supabase realtime nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>realtime.extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes for the Supabase realtime pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>realtime.extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts for the Supabase realtime container(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>realtime.sidecars</code></td>
+<td>Add additional sidecar containers to the Supabase realtime pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>realtime.initContainers</code></td>
+<td>Add additional init containers to the Supabase realtime pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="supabase-realtime-traffic-exposure-parameters">Supabase Realtime Traffic Exposure Parameters<a class="headerlink" href="#supabase-realtime-traffic-exposure-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>realtime.service.type</code></td>
+<td>Supabase realtime service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>realtime.service.ports.http</code></td>
+<td>Supabase realtime service HTTP port</td>
+<td><code>80</code></td>
+</tr>
+<tr>
+<td><code>realtime.service.nodePorts.http</code></td>
+<td>Node port for HTTP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>realtime.service.clusterIP</code></td>
+<td>Supabase realtime service Cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>realtime.service.loadBalancerIP</code></td>
+<td>Supabase realtime service Load Balancer IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>realtime.service.loadBalancerSourceRanges</code></td>
+<td>Supabase realtime service Load Balancer sources</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>realtime.service.externalTrafficPolicy</code></td>
+<td>Supabase realtime service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>realtime.service.annotations</code></td>
+<td>Additional custom annotations for Supabase realtime service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>realtime.service.extraPorts</code></td>
+<td>Extra ports to expose in Supabase realtime service (normally used with the <code>sidecars</code> value)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>realtime.service.sessionAffinity</code></td>
+<td>Control where realtime requests go, to the same pod or round-robin</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>realtime.service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="supabase-rest-parameters">Supabase Rest Parameters<a class="headerlink" href="#supabase-rest-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rest.enabled</code></td>
+<td>Enable Supabase rest</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>rest.replicaCount</code></td>
+<td>Number of Supabase rest replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>rest.defaultConfig</code></td>
+<td>Default configuration for the Supabase rest service</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rest.extraConfig</code></td>
+<td>Extra configuration for the Supabase rest service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>rest.existingConfigmap</code></td>
+<td>The name of an existing ConfigMap with the default configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rest.extraConfigExistingConfigmap</code></td>
+<td>The name of an existing ConfigMap with extra configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rest.image.registry</code></td>
+<td>PostgREST image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>rest.image.repository</code></td>
+<td>PostgREST image repository</td>
+<td><code>bitnami/postgrest</code></td>
+</tr>
+<tr>
+<td><code>rest.image.tag</code></td>
+<td>PostgREST image tag (immutable tags are recommended)</td>
+<td><code>11.1.0-debian-11-r1</code></td>
+</tr>
+<tr>
+<td><code>rest.image.digest</code></td>
+<td>PostgREST image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rest.image.pullPolicy</code></td>
+<td>PostgREST image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>rest.image.pullSecrets</code></td>
+<td>PostgREST image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>rest.containerPorts.http</code></td>
+<td>Supabase rest HTTP container port</td>
+<td><code>3000</code></td>
+</tr>
+<tr>
+<td><code>rest.livenessProbe.enabled</code></td>
+<td>Enable livenessProbe on Supabase rest containers</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>rest.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>rest.livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>rest.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>rest.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>rest.livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>rest.readinessProbe.enabled</code></td>
+<td>Enable readinessProbe on Supabase rest containers</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>rest.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>rest.readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>rest.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>rest.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>rest.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>rest.startupProbe.enabled</code></td>
+<td>Enable startupProbe on Supabase rest containers</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>rest.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>rest.startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>rest.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>rest.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>rest.startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>rest.customLivenessProbe</code></td>
+<td>Custom livenessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>rest.customReadinessProbe</code></td>
+<td>Custom readinessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>rest.customStartupProbe</code></td>
+<td>Custom startupProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>rest.resources.limits</code></td>
+<td>The resources limits for the Supabase rest containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>rest.resources.requests</code></td>
+<td>The requested resources for the Supabase rest containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>rest.podSecurityContext.enabled</code></td>
+<td>Enabled Supabase rest pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>rest.podSecurityContext.fsGroup</code></td>
+<td>Set Supabase rest pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>rest.containerSecurityContext.enabled</code></td>
+<td>Enabled Supabase rest containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>rest.containerSecurityContext.runAsUser</code></td>
+<td>Set Supabase rest containers' Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>rest.containerSecurityContext.runAsNonRoot</code></td>
+<td>Set Supabase rest containers' Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>rest.containerSecurityContext.readOnlyRootFilesystem</code></td>
+<td>Set Supabase rest containers' Security Context runAsNonRoot</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>rest.command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>rest.args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>rest.hostAliases</code></td>
+<td>Supabase rest pods host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>rest.podLabels</code></td>
+<td>Extra labels for Supabase rest pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>rest.podAnnotations</code></td>
+<td>Annotations for Supabase rest pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>rest.podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>rest.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rest.podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>rest.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>rest.nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>rest.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rest.nodeAffinityPreset.key</code></td>
+<td>Node label key to match. Ignored if <code>rest.affinity</code> is set</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rest.nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>rest.affinity</code> is set</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>rest.affinity</code></td>
+<td>Affinity for Supabase rest pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>rest.nodeSelector</code></td>
+<td>Node labels for Supabase rest pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>rest.tolerations</code></td>
+<td>Tolerations for Supabase rest pods assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>rest.updateStrategy.type</code></td>
+<td>Supabase rest statefulset strategy type</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>rest.priorityClassName</code></td>
+<td>Supabase rest pods' priorityClassName</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rest.topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment spread across your cluster among failure-domains. Evaluated as a template</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>rest.schedulerName</code></td>
+<td>Name of the k8s scheduler (other than default) for Supabase rest pods</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rest.terminationGracePeriodSeconds</code></td>
+<td>Seconds Redmine pod needs to terminate gracefully</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rest.lifecycleHooks</code></td>
+<td>for the Supabase rest container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>rest.extraEnvVars</code></td>
+<td>Array with extra environment variables to add to Supabase rest nodes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>rest.extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra env vars for Supabase rest nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rest.extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra env vars for Supabase rest nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rest.extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes for the Supabase rest pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>rest.extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts for the Supabase rest container(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>rest.sidecars</code></td>
+<td>Add additional sidecar containers to the Supabase rest pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>rest.initContainers</code></td>
+<td>Add additional init containers to the Supabase rest pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="supabase-rest-traffic-exposure-parameters">Supabase Rest Traffic Exposure Parameters<a class="headerlink" href="#supabase-rest-traffic-exposure-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rest.service.type</code></td>
+<td>Supabase rest service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>rest.service.ports.http</code></td>
+<td>Supabase rest service HTTP port</td>
+<td><code>80</code></td>
+</tr>
+<tr>
+<td><code>rest.service.nodePorts.http</code></td>
+<td>Node port for HTTP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rest.service.clusterIP</code></td>
+<td>Supabase rest service Cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rest.service.loadBalancerIP</code></td>
+<td>Supabase rest service Load Balancer IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rest.service.loadBalancerSourceRanges</code></td>
+<td>Supabase rest service Load Balancer sources</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>rest.service.externalTrafficPolicy</code></td>
+<td>Supabase rest service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>rest.service.annotations</code></td>
+<td>Additional custom annotations for Supabase rest service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>rest.service.extraPorts</code></td>
+<td>Extra ports to expose in Supabase rest service (normally used with the <code>sidecars</code> value)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>rest.service.sessionAffinity</code></td>
+<td>Control where rest requests go, to the same pod or round-robin</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>rest.service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="supabase-storage-parameters">Supabase Storage Parameters<a class="headerlink" href="#supabase-storage-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>storage.enabled</code></td>
+<td>Enable Supabase storage</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>storage.replicaCount</code></td>
+<td>Number of Supabase storage replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>storage.defaultConfig</code></td>
+<td>Default configuration for Supabase storage</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>storage.extraConfig</code></td>
+<td>Extra configuration for Supabase storage</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>storage.existingConfigmap</code></td>
+<td>The name of an existing ConfigMap with the default configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>storage.extraConfigExistingConfigmap</code></td>
+<td>The name of an existing ConfigMap with extra configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>storage.image.registry</code></td>
+<td>Storage image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>storage.image.repository</code></td>
+<td>Storage image repository</td>
+<td><code>bitnami/supabase-storage</code></td>
+</tr>
+<tr>
+<td><code>storage.image.tag</code></td>
+<td>Storage image tag (immutable tags are recommended)</td>
+<td><code>0.40.1-debian-11-r5</code></td>
+</tr>
+<tr>
+<td><code>storage.image.digest</code></td>
+<td>Storage image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>storage.image.pullPolicy</code></td>
+<td>Storage image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>storage.image.pullSecrets</code></td>
+<td>Storage image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>storage.containerPorts.http</code></td>
+<td>Supabase storage HTTP container port</td>
+<td><code>5000</code></td>
+</tr>
+<tr>
+<td><code>storage.livenessProbe.enabled</code></td>
+<td>Enable livenessProbe on Supabase storage containers</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>storage.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>storage.livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>storage.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>storage.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>storage.livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>storage.readinessProbe.enabled</code></td>
+<td>Enable readinessProbe on Supabase storage containers</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>storage.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>storage.readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>storage.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>storage.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>storage.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>storage.startupProbe.enabled</code></td>
+<td>Enable startupProbe on Supabase storage containers</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>storage.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>storage.startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>storage.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>storage.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>storage.startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>storage.customLivenessProbe</code></td>
+<td>Custom livenessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>storage.customReadinessProbe</code></td>
+<td>Custom readinessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>storage.customStartupProbe</code></td>
+<td>Custom startupProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>storage.resources.limits</code></td>
+<td>The resources limits for the Supabase storage containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>storage.resources.requests</code></td>
+<td>The requested resources for the Supabase storage containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>storage.podSecurityContext.enabled</code></td>
+<td>Enabled Supabase storage pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>storage.podSecurityContext.fsGroup</code></td>
+<td>Set Supabase storage pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>storage.containerSecurityContext.enabled</code></td>
+<td>Enabled Supabase storage containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>storage.containerSecurityContext.runAsUser</code></td>
+<td>Set Supabase storage containers' Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>storage.containerSecurityContext.runAsNonRoot</code></td>
+<td>Set Supabase storage containers' Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>storage.containerSecurityContext.readOnlyRootFilesystem</code></td>
+<td>Set Supabase storage containers' Security Context runAsNonRoot</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>storage.command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>storage.args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>storage.hostAliases</code></td>
+<td>Supabase storage pods host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>storage.podLabels</code></td>
+<td>Extra labels for Supabase storage pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>storage.podAnnotations</code></td>
+<td>Annotations for Supabase storage pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>storage.podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>storage.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>storage.podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>storage.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>storage.nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>storage.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>storage.nodeAffinityPreset.key</code></td>
+<td>Node label key to match. Ignored if <code>storage.affinity</code> is set</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>storage.nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>storage.affinity</code> is set</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>storage.affinity</code></td>
+<td>Affinity for Supabase storage pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>storage.nodeSelector</code></td>
+<td>Node labels for Supabase storage pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>storage.tolerations</code></td>
+<td>Tolerations for Supabase storage pods assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>storage.updateStrategy.type</code></td>
+<td>Supabase storage statefulset strategy type</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>storage.priorityClassName</code></td>
+<td>Supabase storage pods' priorityClassName</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>storage.topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment spread across your cluster among failure-domains. Evaluated as a template</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>storage.schedulerName</code></td>
+<td>Name of the k8s scheduler (other than default) for Supabase storage pods</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>storage.terminationGracePeriodSeconds</code></td>
+<td>Seconds Redmine pod needs to terminate gracefully</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>storage.lifecycleHooks</code></td>
+<td>for the Supabase storage container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>storage.extraEnvVars</code></td>
+<td>Array with extra environment variables to add to Supabase storage nodes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>storage.extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra env vars for Supabase storage nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>storage.extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra env vars for Supabase storage nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>storage.extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes for the Supabase storage pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>storage.extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts for the Supabase storage container(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>storage.sidecars</code></td>
+<td>Add additional sidecar containers to the Supabase storage pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>storage.initContainers</code></td>
+<td>Add additional init containers to the Supabase storage pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="supabase-storage-traffic-exposure-parameters">Supabase Storage Traffic Exposure Parameters<a class="headerlink" href="#supabase-storage-traffic-exposure-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>storage.service.type</code></td>
+<td>Supabase storage service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>storage.service.ports.http</code></td>
+<td>Supabase storage service HTTP port</td>
+<td><code>80</code></td>
+</tr>
+<tr>
+<td><code>storage.service.nodePorts.http</code></td>
+<td>Node port for HTTP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>storage.service.clusterIP</code></td>
+<td>Supabase storage service Cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>storage.service.loadBalancerIP</code></td>
+<td>Supabase storage service Load Balancer IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>storage.service.loadBalancerSourceRanges</code></td>
+<td>Supabase storage service Load Balancer sources</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>storage.service.externalTrafficPolicy</code></td>
+<td>Supabase storage service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>storage.service.annotations</code></td>
+<td>Additional custom annotations for Supabase storage service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>storage.service.extraPorts</code></td>
+<td>Extra ports to expose in Supabase storage service (normally used with the <code>sidecars</code> value)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>storage.service.sessionAffinity</code></td>
+<td>Control where storage requests go, to the same pod or round-robin</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>storage.service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="storage-persistence-parameters">Storage Persistence Parameters<a class="headerlink" href="#storage-persistence-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>storage.persistence.enabled</code></td>
+<td>Enable persistence using Persistent Volume Claims</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>storage.persistence.mountPath</code></td>
+<td>Path to mount the volume at.</td>
+<td><code>/bitnami/supabase-storage</code></td>
+</tr>
+<tr>
+<td><code>storage.persistence.subPath</code></td>
+<td>The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>storage.persistence.storageClass</code></td>
+<td>Storage class of backing PVC</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>storage.persistence.annotations</code></td>
+<td>Persistent Volume Claim annotations</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>storage.persistence.accessModes</code></td>
+<td>Persistent Volume Access Modes</td>
+<td><code>["ReadWriteOnce"]</code></td>
+</tr>
+<tr>
+<td><code>storage.persistence.size</code></td>
+<td>Size of data volume</td>
+<td><code>8Gi</code></td>
+</tr>
+<tr>
+<td><code>storage.persistence.existingClaim</code></td>
+<td>The name of an existing PVC to use for persistence</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>storage.persistence.selector</code></td>
+<td>Selector to match an existing Persistent Volume for WordPress data PVC</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>storage.persistence.dataSource</code></td>
+<td>Custom PVC data source</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="supabase-studio-parameters">Supabase Studio Parameters<a class="headerlink" href="#supabase-studio-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>studio.enabled</code></td>
+<td>Enable Supabase studio</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>studio.publicURL</code></td>
+<td>Supabase studio public URL</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>studio.replicaCount</code></td>
+<td>Number of Supabase studio replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>studio.defaultConfig</code></td>
+<td>Supabase studio default configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>studio.extraConfig</code></td>
+<td>Supabase studio extra configuration</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>studio.existingConfigmap</code></td>
+<td>The name of an existing ConfigMap with the default configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>studio.extraConfigExistingConfigmap</code></td>
+<td>The name of an existing ConfigMap with extra configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>studio.image.registry</code></td>
+<td>Studio image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>studio.image.repository</code></td>
+<td>Studio image repository</td>
+<td><code>bitnami/supabase-studio</code></td>
+</tr>
+<tr>
+<td><code>studio.image.tag</code></td>
+<td>Studio image tag (immutable tags are recommended)</td>
+<td><code>0.23.5-debian-11-r0</code></td>
+</tr>
+<tr>
+<td><code>studio.image.digest</code></td>
+<td>Studio image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag image tag (immutable tags are recommended)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>studio.image.pullPolicy</code></td>
+<td>Studio image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>studio.image.pullSecrets</code></td>
+<td>Studio image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>studio.containerPorts.http</code></td>
+<td>Supabase studio HTTP container port</td>
+<td><code>3000</code></td>
+</tr>
+<tr>
+<td><code>studio.livenessProbe.enabled</code></td>
+<td>Enable livenessProbe on Supabase studio containers</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>studio.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>studio.livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>studio.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>studio.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>studio.livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>studio.readinessProbe.enabled</code></td>
+<td>Enable readinessProbe on Supabase studio containers</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>studio.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>studio.readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>studio.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>studio.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>studio.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>studio.startupProbe.enabled</code></td>
+<td>Enable startupProbe on Supabase studio containers</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>studio.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>studio.startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>studio.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>studio.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>studio.startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>studio.customLivenessProbe</code></td>
+<td>Custom livenessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>studio.customReadinessProbe</code></td>
+<td>Custom readinessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>studio.customStartupProbe</code></td>
+<td>Custom startupProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>studio.resources.limits</code></td>
+<td>The resources limits for the Supabase studio containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>studio.resources.requests</code></td>
+<td>The requested resources for the Supabase studio containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>studio.podSecurityContext.enabled</code></td>
+<td>Enabled Supabase studio pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>studio.podSecurityContext.fsGroup</code></td>
+<td>Set Supabase studio pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>studio.containerSecurityContext.enabled</code></td>
+<td>Enabled Supabase studio containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>studio.containerSecurityContext.runAsUser</code></td>
+<td>Set Supabase studio containers' Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>studio.containerSecurityContext.runAsNonRoot</code></td>
+<td>Set Supabase studio containers' Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>studio.containerSecurityContext.readOnlyRootFilesystem</code></td>
+<td>Set Supabase studio containers' Security Context runAsNonRoot</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>studio.command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>studio.args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>studio.hostAliases</code></td>
+<td>Supabase studio pods host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>studio.podLabels</code></td>
+<td>Extra labels for Supabase studio pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>studio.podAnnotations</code></td>
+<td>Annotations for Supabase studio pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>studio.podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>studio.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>studio.podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>studio.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>studio.nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>studio.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>studio.nodeAffinityPreset.key</code></td>
+<td>Node label key to match. Ignored if <code>studio.affinity</code> is set</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>studio.nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>studio.affinity</code> is set</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>studio.affinity</code></td>
+<td>Affinity for Supabase studio pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>studio.nodeSelector</code></td>
+<td>Node labels for Supabase studio pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>studio.tolerations</code></td>
+<td>Tolerations for Supabase studio pods assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>studio.updateStrategy.type</code></td>
+<td>Supabase studio statefulset strategy type</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>studio.priorityClassName</code></td>
+<td>Supabase studio pods' priorityClassName</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>studio.topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment spread across your cluster among failure-domains. Evaluated as a template</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>studio.schedulerName</code></td>
+<td>Name of the k8s scheduler (other than default) for Supabase studio pods</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>studio.terminationGracePeriodSeconds</code></td>
+<td>Seconds Redmine pod needs to terminate gracefully</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>studio.lifecycleHooks</code></td>
+<td>for the Supabase studio container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>studio.extraEnvVars</code></td>
+<td>Array with extra environment variables to add to Supabase studio nodes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>studio.extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra env vars for Supabase studio nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>studio.extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra env vars for Supabase studio nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>studio.extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes for the Supabase studio pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>studio.extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts for the Supabase studio container(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>studio.sidecars</code></td>
+<td>Add additional sidecar containers to the Supabase studio pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>studio.initContainers</code></td>
+<td>Add additional init containers to the Supabase studio pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="supabase-studio-traffic-exposure-parameters">Supabase Studio Traffic Exposure Parameters<a class="headerlink" href="#supabase-studio-traffic-exposure-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>studio.service.type</code></td>
+<td>Supabase studio service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>studio.service.ports.http</code></td>
+<td>Supabase studio service HTTP port</td>
+<td><code>80</code></td>
+</tr>
+<tr>
+<td><code>studio.service.nodePorts.http</code></td>
+<td>Node port for HTTP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>studio.service.clusterIP</code></td>
+<td>Supabase studio service Cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>studio.service.loadBalancerIP</code></td>
+<td>Supabase studio service Load Balancer IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>studio.service.loadBalancerSourceRanges</code></td>
+<td>Supabase studio service Load Balancer sources</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>studio.service.externalTrafficPolicy</code></td>
+<td>Supabase studio service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>studio.service.annotations</code></td>
+<td>Additional custom annotations for Supabase studio service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>studio.service.extraPorts</code></td>
+<td>Extra ports to expose in Supabase studio service (normally used with the <code>sidecars</code> value)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>studio.service.sessionAffinity</code></td>
+<td>Control where studio requests go, to the same pod or round-robin</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>studio.service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>studio.ingress.enabled</code></td>
+<td>Enable ingress record generation for Supabase</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>studio.ingress.pathType</code></td>
+<td>Ingress path type</td>
+<td><code>ImplementationSpecific</code></td>
+</tr>
+<tr>
+<td><code>studio.ingress.hostname</code></td>
+<td>Default host for the ingress record</td>
+<td><code>supabase-studio.local</code></td>
+</tr>
+<tr>
+<td><code>studio.ingress.ingressClassName</code></td>
+<td>IngressClass that will be be used to implement the Ingress (Kubernetes 1.18+)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>studio.ingress.path</code></td>
+<td>Default path for the ingress record</td>
+<td><code>/</code></td>
+</tr>
+<tr>
+<td><code>studio.ingress.annotations</code></td>
+<td>Additional annotations for the Ingress resource. To enable certificate autogeneration, place here your cert-manager annotations.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>studio.ingress.tls</code></td>
+<td>Enable TLS configuration for the host defined at <code>studio.ingress.hostname</code> parameter</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>studio.ingress.selfSigned</code></td>
+<td>Create a TLS secret for this ingress record using self-signed certificates generated by Helm</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>studio.ingress.extraHosts</code></td>
+<td>An array with additional hostname(s) to be covered with the ingress record</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>studio.ingress.extraPaths</code></td>
+<td>An array with additional arbitrary paths that may need to be added to the ingress under the main host</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>studio.ingress.extraTls</code></td>
+<td>TLS configuration for additional hostname(s) to be covered with this ingress record</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>studio.ingress.secrets</code></td>
+<td>Custom TLS certificates as secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>studio.ingress.extraRules</code></td>
+<td>Additional rules to be covered with this ingress record</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="init-container-parameters">Init Container Parameters<a class="headerlink" href="#init-container-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>volumePermissions.enabled</code></td>
+<td>Enable init container that changes the owner/group of the PV mount point to <code>runAsUser:fsGroup</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.registry</code></td>
+<td>Bitnami Shell image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.repository</code></td>
+<td>Bitnami Shell image repository</td>
+<td><code>bitnami/bitnami-shell</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.tag</code></td>
+<td>Bitnami Shell image tag (immutable tags are recommended)</td>
+<td><code>11-debian-11-r125</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.pullPolicy</code></td>
+<td>Bitnami Shell image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.pullSecrets</code></td>
+<td>Bitnami Shell image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.resources.limits</code></td>
+<td>The resources limits for the init container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.resources.requests</code></td>
+<td>The requested resources for the init container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.containerSecurityContext.runAsUser</code></td>
+<td>Set init container's Security Context runAsUser</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>psqlImage.registry</code></td>
+<td>PostgreSQL client image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>psqlImage.repository</code></td>
+<td>PostgreSQL client image repository</td>
+<td><code>bitnami/supabase-postgres</code></td>
+</tr>
+<tr>
+<td><code>psqlImage.digest</code></td>
+<td>PostgreSQL client image digest (overrides image tag)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>psqlImage.tag</code></td>
+<td>PostgreSQL client image tag (immutable tags are recommended)</td>
+<td><code>15.1.0-debian-11-r51</code></td>
+</tr>
+<tr>
+<td><code>psqlImage.pullPolicy</code></td>
+<td>PostgreSQL client image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>psqlImage.pullSecrets</code></td>
+<td>PostgreSQL client image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>psqlImage.debug</code></td>
+<td>Enable PostgreSQL client image debug mode</td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="other-parameters">Other Parameters<a class="headerlink" href="#other-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rbac.create</code></td>
+<td>Specifies whether RBAC resources should be created</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.create</code></td>
+<td>Specifies whether a ServiceAccount should be created</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.name</code></td>
+<td>The name of the ServiceAccount to use.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.annotations</code></td>
+<td>Additional Service Account annotations (evaluated as a template)</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.automountServiceAccountToken</code></td>
+<td>Automount service account token for the server service account</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="kong-sub-chart-parameters">Kong sub-chart parameters<a class="headerlink" href="#kong-sub-chart-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kong.enabled</code></td>
+<td>Enable Kong</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>kong.database</code></td>
+<td>Database to use</td>
+<td><code>off</code></td>
+</tr>
+<tr>
+<td><code>kong.initContainers</code></td>
+<td>Add additional init containers to the Kong pods</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>kong.ingressController.enabled</code></td>
+<td>Enable Kong Ingress Controller</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>kong.kong.extraVolumeMounts</code></td>
+<td>Additional volumeMounts to the Kong container</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>kong.kong.extraEnvVars</code></td>
+<td>Additional environment variables to set</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>kong.extraVolumes</code></td>
+<td>Additional volumes to the Kong pods</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>kong.ingress.enabled</code></td>
+<td>Enable Ingress rule</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>kong.ingress.hostname</code></td>
+<td>Kong Ingress hostname</td>
+<td><code>supabase.local</code></td>
+</tr>
+<tr>
+<td><code>kong.ingress.tls</code></td>
+<td>Enable TLS for Kong Ingress</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>kong.service.loadBalancerIP</code></td>
+<td>Kubernetes service LoadBalancer IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>kong.service.type</code></td>
+<td>Kubernetes service type</td>
+<td><code>LoadBalancer</code></td>
+</tr>
+<tr>
+<td><code>kong.service.ports.proxyHttp</code></td>
+<td>Kong service port</td>
+<td><code>80</code></td>
+</tr>
+<tr>
+<td><code>kong.postgresql.enabled</code></td>
+<td>Switch to enable or disable the PostgreSQL helm chart inside the Kong subchart</td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="postgresql-sub-chart-parameters">PostgreSQL sub-chart parameters<a class="headerlink" href="#postgresql-sub-chart-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>postgresql.enabled</code></td>
+<td>Switch to enable or disable the PostgreSQL helm chart</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>postgresql.auth.existingSecret</code></td>
+<td>Name of existing secret to use for PostgreSQL credentials</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>postgresql.architecture</code></td>
+<td>PostgreSQL architecture (<code>standalone</code> or <code>replication</code>)</td>
+<td><code>standalone</code></td>
+</tr>
+<tr>
+<td><code>postgresql.service.ports.postgresql</code></td>
+<td>PostgreSQL service port</td>
+<td><code>5432</code></td>
+</tr>
+<tr>
+<td><code>postgresql.image.registry</code></td>
+<td>PostgreSQL image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>postgresql.image.repository</code></td>
+<td>PostgreSQL image repository</td>
+<td><code>bitnami/supabase-postgres</code></td>
+</tr>
+<tr>
+<td><code>postgresql.image.tag</code></td>
+<td>PostgreSQL image tag (immutable tags are recommended)</td>
+<td><code>15.1.0-debian-11-r51</code></td>
+</tr>
+<tr>
+<td><code>postgresql.image.digest</code></td>
+<td>PostgreSQL image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>postgresql.image.pullPolicy</code></td>
+<td>PostgreSQL image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>postgresql.image.pullSecrets</code></td>
+<td>Specify image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>postgresql.image.debug</code></td>
+<td>Specify if debug values should be set</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>postgresql.postgresqlSharedPreloadLibraries</code></td>
+<td>Set the shared_preload_libraries parameter in postgresql.conf</td>
+<td><code>pg_stat_statements, pg_stat_monitor, pgaudit, plpgsql, plpgsql_check, pg_cron, pg_net, pgsodium, timescaledb, auto_explain</code></td>
+</tr>
+<tr>
+<td><code>postgresql.auth.postgresPassword</code></td>
+<td>PostgreSQL admin password</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>postgresql.auth.existingSecret</code></td>
+<td>Name of existing secret to use for PostgreSQL credentials</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>postgresql.architecture</code></td>
+<td>PostgreSQL architecture (<code>standalone</code> or <code>replication</code>)</td>
+<td><code>standalone</code></td>
+</tr>
+<tr>
+<td><code>postgresql.service.ports.postgresql</code></td>
+<td>PostgreSQL service port</td>
+<td><code>5432</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.host</code></td>
+<td>Database host</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.port</code></td>
+<td>Database port number</td>
+<td><code>5432</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.user</code></td>
+<td>Non-root username for PostgreSQL</td>
+<td><code>supabase_admin</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.password</code></td>
+<td>Password for the non-root username for PostgreSQL</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.database</code></td>
+<td>PostgreSQL database name</td>
+<td><code>postgres</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.existingSecret</code></td>
+<td>Name of an existing secret resource containing the database credentials</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>externalDatabase.existingSecretPasswordKey</code></td>
+<td>Name of an existing secret key containing the database credentials</td>
+<td><code>db-password</code></td>
+</tr>
+</tbody>
+</table>
+<p>The above parameters map to the env variables defined in <a href="https://github.com/bitnami/containers/tree/main/bitnami/supabase-studio">bitnami/supabase-studio</a>. For more information please refer to the <a href="https://github.com/bitnami/containers/tree/main/bitnami/supabase-studio">bitnami/supabase-studio</a> image documentation.</p>
+<p>Specify each parameter using the <code>--set key=value[,key=value]</code> argument to <code>helm install</code>. For example,</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="gp">$ </span>helm<span class="w"> </span>install<span class="w"> </span>my-release<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span>--set<span class="w"> </span>postgresql.auth.postgresPassword<span class="o">=</span>secretpassword<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span>bitnami/supabase
+</span></code></pre></div>
+<p>The above command sets the PostgreSQL <code>postgres</code> user password to <code>secretpassword</code>.</p>
+<blockquote>
+<p>NOTE: Once this chart is deployed, it is not possible to change the application's access credentials, such as usernames or passwords, using Helm. To change these application credentials after deployment, delete any persistent volumes (PVs) used by the chart and re-deploy it, or use the application's built-in administrative tools if available.</p>
+</blockquote>
+<p>Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">helm install my-release -f values.yaml bitnami/supabase</span>
+</span></code></pre></div>
+<blockquote>
+<p><strong>Tip</strong>: You can use the default <a href="values.yaml">values.yaml</a></p>
+</blockquote>
+<h2 id="configuration-and-installation-details">Configuration and installation details<a class="headerlink" href="#configuration-and-installation-details" title="Permanent link">&para;</a></h2>
+<h3 id="rolling-vs-immutable-tags"><a href="https://docs.bitnami.com/containers/how-to/understand-rolling-tags-containers/">Rolling VS Immutable tags</a><a class="headerlink" href="#rolling-vs-immutable-tags" title="Permanent link">&para;</a></h3>
+<p>It is strongly recommended to use immutable tags in a production environment. This ensures your deployment does not change automatically if the same tag is updated with a different image.</p>
+<p>Bitnami will release a new chart updating its containers if a new version of the main container, significant changes, or critical vulnerabilities exist.</p>
+<h3 id="external-database-support">External database support<a class="headerlink" href="#external-database-support" title="Permanent link">&para;</a></h3>
+<p>You may want to have supabase connect to an external database rather than installing one inside your cluster. Typical reasons for this are to use a managed database service, or to share a common database server for all your applications. To achieve this, the chart allows you to specify credentials for an external database with the <a href="#parameters"><code>externalDatabase</code> parameter</a>. You should also disable the PostgreSQL installation with the <code>postgresql.enabled</code> option. Here is an example:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="go">postgresql.enabled=false</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="go">externalDatabase.host=myexternalhost</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="go">externalDatabase.user=myuser</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="go">externalDatabase.password=mypassword</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="go">externalDatabase.database=mydatabase</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="go">externalDatabase.port=5432</span>
+</span></code></pre></div>
+<h3 id="ingress">Ingress<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h3>
+<p>This chart provides support for Ingress resources. If you have an ingress controller installed on your cluster, such as <a href="https://github.com/bitnami/charts/tree/main/bitnami/nginx-ingress-controller">nginx-ingress-controller</a> or <a href="https://github.com/bitnami/charts/tree/main/bitnami/contour">contour</a> you can utilize the ingress controller to serve your application.</p>
+<p>To enable Ingress integration, set <code>studio.ingress.enabled</code> to <code>true</code>. The <code>studio.ingress.hostname</code> property can be used to set the host name. The <code>studio.ingress.tls</code> parameter can be used to add the TLS configuration for this host. It is also possible to have more than one host, with a separate TLS configuration for each host. <a href="https://docs.bitnami.com/kubernetes/infrastructure/supabase/configuration/configure-ingress/">Learn more about configuring and using Ingress</a>.</p>
+<h3 id="tls-secrets">TLS secrets<a class="headerlink" href="#tls-secrets" title="Permanent link">&para;</a></h3>
+<p>The chart also facilitates the creation of TLS secrets for use with the Ingress controller, with different options for certificate management. <a href="https://docs.bitnami.com/kubernetes/infrastructure/supabase/administration/enable-tls-ingress/">Learn more about TLS secrets</a>.</p>
+<h2 id="persistence">Persistence<a class="headerlink" href="#persistence" title="Permanent link">&para;</a></h2>
+<p>The chart mounts a <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">Persistent Volume</a> volume at <code>/bitnami/supabase-storage</code>. The volume is created using dynamic volume provisioning, by default. An existing PersistentVolumeClaim can also be defined.</p>
+<p>If you encounter errors when working with persistent volumes, refer to our <a href="https://docs.bitnami.com/kubernetes/faq/troubleshooting/troubleshooting-persistence-volumes/">troubleshooting guide for persistent volumes</a>.</p>
+<h3 id="additional-environment-variables">Additional environment variables<a class="headerlink" href="#additional-environment-variables" title="Permanent link">&para;</a></h3>
+<p>In case you want to add extra environment variables (useful for advanced operations like custom init scripts), you can use the <code>extraEnvVars</code> property inside the different component sections.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">rest</span><span class="p">:</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">extraEnvVars</span><span class="p">:</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LOG_LEVEL</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">error</span>
+</span></code></pre></div>
+<p>Alternatively, you can use a ConfigMap or a Secret with the environment variables. To do so, use the <code>extraEnvVarsCM</code> or the <code>extraEnvVarsSecret</code> values inside the specific component sections.</p>
+<h3 id="sidecars">Sidecars<a class="headerlink" href="#sidecars" title="Permanent link">&para;</a></h3>
+<p>If additional containers are needed in the same pod as supabase (such as additional metrics or logging exporters), they can be defined using the <code>sidecars</code> parameter inside the component specific sections. If these sidecars export extra ports, extra port definitions can be added using the <code>service.extraPorts</code> parameter. <a href="https://docs.bitnami.com/kubernetes/infrastructure/supabase/administration/configure-use-sidecars/">Learn more about configuring and using sidecar containers</a>.</p>
+<h3 id="pod-affinity">Pod affinity<a class="headerlink" href="#pod-affinity" title="Permanent link">&para;</a></h3>
+<p>This chart allows you to set your custom affinity using the <code>affinity</code> parameter. Find more information about Pod affinity in the <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity">kubernetes documentation</a>.</p>
+<p>As an alternative, use one of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the <a href="https://github.com/bitnami/charts/tree/main/bitnami/common#affinities">bitnami/common</a> chart. To do so, set the <code>podAffinityPreset</code>, <code>podAntiAffinityPreset</code>, or <code>nodeAffinityPreset</code> parameters inside the specific component sections.</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p>Find more information about how to deal with common errors related to Bitnami's Helm charts in <a href="https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues">this troubleshooting guide</a>.</p>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<p>Copyright &copy; 2023 VMware, Inc.</p>
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../suitecrm/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Suitecrm" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  上一页
+                </span>
+                Suitecrm
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../tensorflow-resnet/" class="md-footer__link md-footer__link--next" aria-label="下一页: Tensorflow resnet" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  下一页
+                </span>
+                Tensorflow resnet
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>

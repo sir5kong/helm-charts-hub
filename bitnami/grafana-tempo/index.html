@@ -1,0 +1,7478 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../grafana-operator/">
+      
+      
+        <link rel="next" href="../grafana/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Grafana tempo - Helm Charts Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#grafana-tempo-packaged-by-bitnami" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Helm Charts Hub" class="md-header__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Helm Charts Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Grafana tempo
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Helm Charts Hub
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../chart-list/" class="md-tabs__link">
+      Chart 列表
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Bitnami
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../grafana/" class="md-tabs__link">
+        Grafana
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ingress-nginx/" class="md-tabs__link">
+        Ingress nginx
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../prometheus-community/" class="md-tabs__link">
+        Prometheus community
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sir5kong/" class="md-tabs__link">
+        Sir5kong
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Helm Charts Hub" class="md-nav__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Helm Charts Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Helm Charts Hub
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chart-list/" class="md-nav__link">
+        Chart 列表
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Bitnami</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Bitnami" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Bitnami
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../airflow/" class="md-nav__link">
+        Airflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apache/" class="md-nav__link">
+        Apache
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apisix/" class="md-nav__link">
+        Apisix
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appsmith/" class="md-nav__link">
+        Appsmith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-cd/" class="md-nav__link">
+        Argo cd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-workflows/" class="md-nav__link">
+        Argo workflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aspnet-core/" class="md-nav__link">
+        Aspnet core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cassandra/" class="md-nav__link">
+        Cassandra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cert-manager/" class="md-nav__link">
+        Cert manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clickhouse/" class="md-nav__link">
+        Clickhouse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common/" class="md-nav__link">
+        Bitnami Common Library Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concourse/" class="md-nav__link">
+        Concourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../consul/" class="md-nav__link">
+        Consul
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contour/" class="md-nav__link">
+        Contour
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../discourse/" class="md-nav__link">
+        Discourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dokuwiki/" class="md-nav__link">
+        Dokuwiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drupal/" class="md-nav__link">
+        Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejbca/" class="md-nav__link">
+        Ejbca
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../elasticsearch/" class="md-nav__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../etcd/" class="md-nav__link">
+        Etcd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../external-dns/" class="md-nav__link">
+        External dns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flink/" class="md-nav__link">
+        Flink
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluent-bit/" class="md-nav__link">
+        Fluent bit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluentd/" class="md-nav__link">
+        Fluentd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flux/" class="md-nav__link">
+        Flux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ghost/" class="md-nav__link">
+        Ghost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitea/" class="md-nav__link">
+        Gitea
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-loki/" class="md-nav__link">
+        Grafana loki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-mimir/" class="md-nav__link">
+        Grafana mimir
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-operator/" class="md-nav__link">
+        Grafana operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Grafana tempo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Grafana tempo
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    TL;DR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    Installing the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    Uninstalling the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-parameters" class="md-nav__link">
+    Global parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-parameters" class="md-nav__link">
+    Common parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-grafana-tempo-parameters" class="md-nav__link">
+    Common Grafana Tempo Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compactor-deployment-parameters" class="md-nav__link">
+    Compactor Deployment Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compactor-traffic-exposure-parameters" class="md-nav__link">
+    Compactor Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributor-deployment-parameters" class="md-nav__link">
+    Distributor Deployment Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributor-traffic-exposure-parameters" class="md-nav__link">
+    Distributor Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-generator-deployment-parameters" class="md-nav__link">
+    Metrics Generator Deployment Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-generator-traffic-exposure-parameters" class="md-nav__link">
+    Metrics Generator Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingester-deployment-parameters" class="md-nav__link">
+    Ingester Deployment Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingester-persistence-parameters" class="md-nav__link">
+    Ingester Persistence Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingester-traffic-exposure-parameters" class="md-nav__link">
+    Ingester Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querier-deployment-parameters" class="md-nav__link">
+    Querier Deployment Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querier-traffic-exposure-parameters" class="md-nav__link">
+    Querier Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-frontend-deployment-parameters" class="md-nav__link">
+    Query Frontend Deployment Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-frontend-traffic-exposure-parameters" class="md-nav__link">
+    Query Frontend Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vulture-deployment-parameters" class="md-nav__link">
+    Vulture Deployment Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vulture-traffic-exposure-parameters" class="md-nav__link">
+    Vulture Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init-container-parameters" class="md-nav__link">
+    Init Container Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-parameters" class="md-nav__link">
+    Other Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-parameters" class="md-nav__link">
+    Metrics Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-memcached-parameters" class="md-nav__link">
+    External Memcached Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memcached-sub-chart-parameters" class="md-nav__link">
+    Memcached Sub-chart Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-installation-details" class="md-nav__link">
+    Configuration and installation details
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and installation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-vs-immutable-tags" class="md-nav__link">
+    Rolling VS Immutable tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tempo-configuration" class="md-nav__link">
+    Tempo configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistence" class="md-nav__link">
+    Persistence
+  </a>
+  
+    <nav class="md-nav" aria-label="Persistence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-environment-variables" class="md-nav__link">
+    Additional environment variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sidecars" class="md-nav__link">
+    Sidecars
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod-affinity" class="md-nav__link">
+    Pod affinity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-cache-support" class="md-nav__link">
+    External cache support
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    Upgrading
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-200" class="md-nav__link">
+    To 2.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-100" class="md-nav__link">
+    To 1.0.0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana/" class="md-nav__link">
+        Grafana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../haproxy/" class="md-nav__link">
+        Haproxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../harbor/" class="md-nav__link">
+        Harbor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../influxdb/" class="md-nav__link">
+        Influxdb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jaeger/" class="md-nav__link">
+        Jaeger
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jasperreports/" class="md-nav__link">
+        Jasperreports
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jenkins/" class="md-nav__link">
+        Jenkins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../joomla/" class="md-nav__link">
+        Joomla
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jupyterhub/" class="md-nav__link">
+        Jupyterhub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kafka/" class="md-nav__link">
+        Kafka
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keycloak/" class="md-nav__link">
+        Keycloak
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kiam/" class="md-nav__link">
+        Kiam
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kibana/" class="md-nav__link">
+        Kibana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kong/" class="md-nav__link">
+        Kong
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube-prometheus/" class="md-nav__link">
+        Kube prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube-state-metrics/" class="md-nav__link">
+        Kube state metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubeapps/" class="md-nav__link">
+        Kubeapps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-event-exporter/" class="md-nav__link">
+        Kubernetes event exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logstash/" class="md-nav__link">
+        Logstash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../magento/" class="md-nav__link">
+        Magento
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mariadb-galera/" class="md-nav__link">
+        Mariadb galera
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mariadb/" class="md-nav__link">
+        Mariadb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mastodon/" class="md-nav__link">
+        Mastodon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matomo/" class="md-nav__link">
+        Matomo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mediawiki/" class="md-nav__link">
+        Mediawiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memcached/" class="md-nav__link">
+        Memcached
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metallb/" class="md-nav__link">
+        Metallb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics-server/" class="md-nav__link">
+        Metrics server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../minio/" class="md-nav__link">
+        Minio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mongodb-sharded/" class="md-nav__link">
+        Mongodb sharded
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mongodb/" class="md-nav__link">
+        Mongodb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../moodle/" class="md-nav__link">
+        Moodle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multus-cni/" class="md-nav__link">
+        Multus cni
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mxnet/" class="md-nav__link">
+        Mxnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mysql/" class="md-nav__link">
+        Mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nats/" class="md-nav__link">
+        Nats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx-ingress-controller/" class="md-nav__link">
+        Nginx ingress controller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx/" class="md-nav__link">
+        Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../node-exporter/" class="md-nav__link">
+        Node exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oauth2-proxy/" class="md-nav__link">
+        Oauth2 proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../odoo/" class="md-nav__link">
+        Odoo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opencart/" class="md-nav__link">
+        Opencart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../osclass/" class="md-nav__link">
+        Osclass
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parse/" class="md-nav__link">
+        Parse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpbb/" class="md-nav__link">
+        Phpbb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpmyadmin/" class="md-nav__link">
+        Phpmyadmin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinniped/" class="md-nav__link">
+        Pinniped
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgresql-ha/" class="md-nav__link">
+        Postgresql ha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgresql/" class="md-nav__link">
+        Postgresql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prestashop/" class="md-nav__link">
+        Prestashop
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rabbitmq-cluster-operator/" class="md-nav__link">
+        Rabbitmq cluster operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rabbitmq/" class="md-nav__link">
+        Rabbitmq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis-cluster/" class="md-nav__link">
+        Redis cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redmine/" class="md-nav__link">
+        Redmine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema-registry/" class="md-nav__link">
+        Schema registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sealed-secrets/" class="md-nav__link">
+        Sealed secrets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solr/" class="md-nav__link">
+        Solr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sonarqube/" class="md-nav__link">
+        Sonarqube
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spark/" class="md-nav__link">
+        Spark
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-cloud-dataflow/" class="md-nav__link">
+        Spring cloud dataflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../suitecrm/" class="md-nav__link">
+        Suitecrm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supabase/" class="md-nav__link">
+        Supabase
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tensorflow-resnet/" class="md-nav__link">
+        Tensorflow resnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../thanos/" class="md-nav__link">
+        Thanos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tomcat/" class="md-nav__link">
+        Tomcat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault/" class="md-nav__link">
+        Vault
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavefront-hpa-adapter/" class="md-nav__link">
+        Wavefront hpa adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavefront-prometheus-storage-adapter/" class="md-nav__link">
+        Wavefront prometheus storage adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whereabouts/" class="md-nav__link">
+        Whereabouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wildfly/" class="md-nav__link">
+        Wildfly
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wordpress/" class="md-nav__link">
+        Wordpress
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zookeeper/" class="md-nav__link">
+        Zookeeper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../grafana/">Grafana</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Grafana" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Grafana
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/agent-operator/" class="md-nav__link">
+        grafana-agent-operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-logs-simple/" class="md-nav__link">
+        enterprise-logs-simple
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-logs/" class="md-nav__link">
+        Grafana Enterprise Logs Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-metrics/" class="md-nav__link">
+        Grafana Enterprise Metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/fluent-bit/" class="md-nav__link">
+        Fluent Bit Loki chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/grafana-agent/" class="md-nav__link">
+        Grafana Agent chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/grafana/" class="md-nav__link">
+        Grafana Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-canary/" class="md-nav__link">
+        loki-canary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-distributed/" class="md-nav__link">
+        loki-distributed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-stack/" class="md-nav__link">
+        Loki-Stack Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/mimir-distributed/" class="md-nav__link">
+        Notice of relocation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/promtail/" class="md-nav__link">
+        promtail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/rollout-operator/" class="md-nav__link">
+        Grafana rollout-operator Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/synthetic-monitoring-agent/" class="md-nav__link">
+        synthetic-monitoring-agent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo-distributed/" class="md-nav__link">
+        tempo-distributed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo-vulture/" class="md-nav__link">
+        tempo-vulture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo/" class="md-nav__link">
+        tempo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../ingress-nginx/">Ingress nginx</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Ingress nginx" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Ingress nginx
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ingress-nginx/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../prometheus-community/">Prometheus community</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Prometheus community" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Prometheus community
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager-snmp-notifier/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager/" class="md-nav__link">
+        Alertmanager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/jiralert/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-prometheus-stack/" class="md-nav__link">
+        kube-prometheus-stack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-state-metrics/" class="md-nav__link">
+        kube-state-metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prom-label-proxy/" class="md-nav__link">
+        prom-label-proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-adapter/" class="md-nav__link">
+        Prometheus Adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-blackbox-exporter/" class="md-nav__link">
+        Prometheus Blackbox Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-cloudwatch-exporter/" class="md-nav__link">
+        Prometheus Cloudwatch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-conntrack-stats-exporter/" class="md-nav__link">
+        Conntrack Stats Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-consul-exporter/" class="md-nav__link">
+        Prometheus Consul Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-couchdb-exporter/" class="md-nav__link">
+        prometheus-couchdb-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-druid-exporter/" class="md-nav__link">
+        Prometheus Druid Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-elasticsearch-exporter/" class="md-nav__link">
+        Elasticsearch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-fastly-exporter/" class="md-nav__link">
+        Prometheus Fastly Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-json-exporter/" class="md-nav__link">
+        prometheus-json-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-kafka-exporter/" class="md-nav__link">
+        prometheus-kafka-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mongodb-exporter/" class="md-nav__link">
+        Prometheus MongoDB Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mysql-exporter/" class="md-nav__link">
+        Prometheus Mysql Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nats-exporter/" class="md-nav__link">
+        Prometheus NATS Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nginx-exporter/" class="md-nav__link">
+        prometheus-nginx-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-node-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-admission-webhook/" class="md-nav__link">
+        Prometheus Operator Admission Webhook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-crds/" class="md-nav__link">
+        Prometheus Operator CRDs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pgbouncer-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingdom-exporter/" class="md-nav__link">
+        Prometheus Pingdom Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingmesh-exporter/" class="md-nav__link">
+        Prometheus Pingmesh Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-postgres-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pushgateway/" class="md-nav__link">
+        Prometheus Pushgateway
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-rabbitmq-exporter/" class="md-nav__link">
+        prometheus-rabbitmq-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-redis-exporter/" class="md-nav__link">
+        prometheus-redis-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-smartctl-exporter/" class="md-nav__link">
+        Prometheus smartctl Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-snmp-exporter/" class="md-nav__link">
+        Prometheus SNMP Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-stackdriver-exporter/" class="md-nav__link">
+        Stackdriver Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-statsd-exporter/" class="md-nav__link">
+        prometheus-statsd-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-to-sd/" class="md-nav__link">
+        prometheus-to-sd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-windows-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../sir5kong/">Sir5kong</a>
+          
+            <label for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Sir5kong" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Sir5kong
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/commonapp/" class="md-nav__link">
+        commonapp helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/kafka/" class="md-nav__link">
+        Kafka helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/nginx/" class="md-nav__link">
+        nginx helm chart
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    TL;DR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    Installing the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    Uninstalling the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-parameters" class="md-nav__link">
+    Global parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-parameters" class="md-nav__link">
+    Common parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-grafana-tempo-parameters" class="md-nav__link">
+    Common Grafana Tempo Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compactor-deployment-parameters" class="md-nav__link">
+    Compactor Deployment Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compactor-traffic-exposure-parameters" class="md-nav__link">
+    Compactor Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributor-deployment-parameters" class="md-nav__link">
+    Distributor Deployment Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributor-traffic-exposure-parameters" class="md-nav__link">
+    Distributor Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-generator-deployment-parameters" class="md-nav__link">
+    Metrics Generator Deployment Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-generator-traffic-exposure-parameters" class="md-nav__link">
+    Metrics Generator Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingester-deployment-parameters" class="md-nav__link">
+    Ingester Deployment Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingester-persistence-parameters" class="md-nav__link">
+    Ingester Persistence Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingester-traffic-exposure-parameters" class="md-nav__link">
+    Ingester Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querier-deployment-parameters" class="md-nav__link">
+    Querier Deployment Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querier-traffic-exposure-parameters" class="md-nav__link">
+    Querier Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-frontend-deployment-parameters" class="md-nav__link">
+    Query Frontend Deployment Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-frontend-traffic-exposure-parameters" class="md-nav__link">
+    Query Frontend Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vulture-deployment-parameters" class="md-nav__link">
+    Vulture Deployment Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vulture-traffic-exposure-parameters" class="md-nav__link">
+    Vulture Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init-container-parameters" class="md-nav__link">
+    Init Container Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-parameters" class="md-nav__link">
+    Other Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-parameters" class="md-nav__link">
+    Metrics Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-memcached-parameters" class="md-nav__link">
+    External Memcached Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memcached-sub-chart-parameters" class="md-nav__link">
+    Memcached Sub-chart Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-installation-details" class="md-nav__link">
+    Configuration and installation details
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and installation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-vs-immutable-tags" class="md-nav__link">
+    Rolling VS Immutable tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tempo-configuration" class="md-nav__link">
+    Tempo configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistence" class="md-nav__link">
+    Persistence
+  </a>
+  
+    <nav class="md-nav" aria-label="Persistence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-environment-variables" class="md-nav__link">
+    Additional environment variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sidecars" class="md-nav__link">
+    Sidecars
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod-affinity" class="md-nav__link">
+    Pod affinity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-cache-support" class="md-nav__link">
+    External cache support
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    Upgrading
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-200" class="md-nav__link">
+    To 2.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-100" class="md-nav__link">
+    To 1.0.0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<!--- app-name: Grafana Tempo -->
+
+<h1 id="grafana-tempo-packaged-by-bitnami">Grafana Tempo packaged by Bitnami<a class="headerlink" href="#grafana-tempo-packaged-by-bitnami" title="Permanent link">&para;</a></h1>
+<p>Grafana Tempo is a distributed tracing system that has out-of-the-box integration with Grafana. It is highly scalable and works with many popular tracing protocols.</p>
+<p><a href="https://github.com/grafana/tempo">Overview of Grafana Tempo</a></p>
+<p>Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.</p>
+<h2 id="tldr">TL;DR<a class="headerlink" href="#tldr" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>使用加速地址添加仓库:</p>
+</blockquote>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>bitnami<span class="w"> </span><span class="s2">&quot;https://helm-charts.itboon.top/bitnami&quot;</span><span class="w"> </span>--force-update
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>helm<span class="w"> </span>update<span class="w"> </span>bitnami
+</span></code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="go">helm install my-release bitnami/grafana-tempo</span>
+</span></code></pre></div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>Bitnami charts for Helm are carefully engineered, actively maintained and are the quickest and easiest way to deploy containers on a Kubernetes cluster that are ready to handle production workloads.</p>
+<p>This chart bootstraps a <a href="https://github.com/grafana/tempo">Grafana Tempo</a> Deployment in a <a href="https://kubernetes.io">Kubernetes</a> cluster using the <a href="https://helm.sh">Helm</a> package manager.</p>
+<p>Bitnami charts can be used with <a href="https://kubeapps.dev/">Kubeapps</a> for deployment and management of Helm Charts in clusters.</p>
+<p><a href="https://docs.bitnami.com/kubernetes/infrastructure/grafana-tempo/get-started/">Learn more about the default configuration of the chart</a>.</p>
+<p>Looking to use Grafana Tempo in production? Try <a href="https://bitnami.com/enterprise">VMware Application Catalog</a>, the enterprise edition of Bitnami Application Catalog.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Kubernetes 1.19+</li>
+<li>Helm 3.2.0+</li>
+<li>PV provisioner support in the underlying infrastructure</li>
+</ul>
+<h2 id="installing-the-chart">Installing the Chart<a class="headerlink" href="#installing-the-chart" title="Permanent link">&para;</a></h2>
+<p>To install the chart with the release name <code>my-release</code>:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">helm install my-release bitnami/grafana-tempo</span>
+</span></code></pre></div>
+<p>The command deploys grafana-tempo on the Kubernetes cluster in the default configuration. The <a href="#parameters">Parameters</a> section lists the parameters that can be configured during installation.</p>
+<blockquote>
+<p><strong>Tip</strong>: List all releases using <code>helm list</code></p>
+</blockquote>
+<h2 id="uninstalling-the-chart">Uninstalling the Chart<a class="headerlink" href="#uninstalling-the-chart" title="Permanent link">&para;</a></h2>
+<p>To uninstall/delete the <code>my-release</code> deployment:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="go">helm delete my-release</span>
+</span></code></pre></div>
+<p>The command removes all the Kubernetes components associated with the chart and deletes the release.</p>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
+<h3 id="global-parameters">Global parameters<a class="headerlink" href="#global-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>global.imageRegistry</code></td>
+<td>Global Docker image registry</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>global.imagePullSecrets</code></td>
+<td>Global Docker registry secret names as an array</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>global.storageClass</code></td>
+<td>Global StorageClass for Persistent Volume(s)</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-parameters">Common parameters<a class="headerlink" href="#common-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kubeVersion</code></td>
+<td>Override Kubernetes version</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>nameOverride</code></td>
+<td>String to partially override common.names.fullname</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>fullnameOverride</code></td>
+<td>String to fully override common.names.fullname</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>commonLabels</code></td>
+<td>Labels to add to all deployed objects</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>commonAnnotations</code></td>
+<td>Annotations to add to all deployed objects</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>clusterDomain</code></td>
+<td>Kubernetes cluster domain name</td>
+<td><code>cluster.local</code></td>
+</tr>
+<tr>
+<td><code>extraDeploy</code></td>
+<td>Array of extra objects to deploy with the release</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.enabled</code></td>
+<td>Enable diagnostic mode (all probes will be disabled and the command will be overridden)</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.command</code></td>
+<td>Command to override all containers in the deployments/statefulsets</td>
+<td><code>["sleep"]</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.args</code></td>
+<td>Args to override all containers in the deployments/statefulsets</td>
+<td><code>["infinity"]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-grafana-tempo-parameters">Common Grafana Tempo Parameters<a class="headerlink" href="#common-grafana-tempo-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tempo.image.registry</code></td>
+<td>Grafana Tempo image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>tempo.image.repository</code></td>
+<td>Grafana Tempo image repository</td>
+<td><code>bitnami/grafana-tempo</code></td>
+</tr>
+<tr>
+<td><code>tempo.image.tag</code></td>
+<td>Grafana Tempo image tag (immutable tags are recommended)</td>
+<td><code>2.1.1-debian-11-r18</code></td>
+</tr>
+<tr>
+<td><code>tempo.image.digest</code></td>
+<td>Grafana Tempo image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>tempo.image.pullPolicy</code></td>
+<td>Grafana Tempo image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>tempo.image.pullSecrets</code></td>
+<td>Grafana Tempo image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>tempo.memBallastSizeMbs</code></td>
+<td>Tempo components memory ballast size in MB</td>
+<td><code>1024</code></td>
+</tr>
+<tr>
+<td><code>tempo.dataDir</code></td>
+<td>Tempo components data directory</td>
+<td><code>/bitnami/grafana-tempo/data</code></td>
+</tr>
+<tr>
+<td><code>tempo.traces.jaeger.grpc</code></td>
+<td>Enable Tempo to ingest Jaeger GRPC traces</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>tempo.traces.jaeger.thriftBinary</code></td>
+<td>Enable Tempo to ingest Jaeger Thrift Binary traces</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>tempo.traces.jaeger.thriftCompact</code></td>
+<td>Enable Tempo to ingest Jaeger Thrift Compact traces</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>tempo.traces.jaeger.thriftHttp</code></td>
+<td>Enable Tempo to ingest Jaeger Thrift HTTP traces</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>tempo.traces.otlp.http</code></td>
+<td>Enable Tempo to ingest Open Telemetry HTTP traces</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>tempo.traces.otlp.grpc</code></td>
+<td>Enable Tempo to ingest Open Telemetry GRPC traces</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>tempo.traces.opencensus</code></td>
+<td>Enable Tempo to ingest Open Census traces</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>tempo.traces.zipkin</code></td>
+<td>Enable Tempo to ingest Zipkin traces</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>tempo.configuration</code></td>
+<td>Tempo components configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>tempo.existingConfigmap</code></td>
+<td>Name of a ConfigMap with the Tempo configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>tempo.overridesConfiguration</code></td>
+<td>Tempo components overrides configuration settings</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>tempo.existingOverridesConfigmap</code></td>
+<td>Name of a ConfigMap with the tempo overrides configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>tempo.containerPorts.web</code></td>
+<td>Tempo components web container port</td>
+<td><code>3200</code></td>
+</tr>
+<tr>
+<td><code>tempo.containerPorts.grpc</code></td>
+<td>Tempo components GRPC container port</td>
+<td><code>9095</code></td>
+</tr>
+<tr>
+<td><code>tempo.containerPorts.gossipRing</code></td>
+<td>Tempo components Gossip Ring container port</td>
+<td><code>7946</code></td>
+</tr>
+<tr>
+<td><code>tempo.gossipRing.service.ports.http</code></td>
+<td>Gossip Ring HTTP headless service port</td>
+<td><code>7946</code></td>
+</tr>
+<tr>
+<td><code>tempo.gossipRing.service.annotations</code></td>
+<td>Additional custom annotations for Gossip Ring headless service</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="compactor-deployment-parameters">Compactor Deployment Parameters<a class="headerlink" href="#compactor-deployment-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>compactor.enabled</code></td>
+<td>Enable Compactor deployment</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>compactor.extraEnvVars</code></td>
+<td>Array with extra environment variables to add to compactor nodes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>compactor.extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra env vars for compactor nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>compactor.extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra env vars for compactor nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>compactor.command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>compactor.args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>compactor.replicaCount</code></td>
+<td>Number of Compactor replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>compactor.livenessProbe.enabled</code></td>
+<td>Enable livenessProbe on Compactor nodes</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>compactor.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>80</code></td>
+</tr>
+<tr>
+<td><code>compactor.livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>compactor.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>compactor.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>compactor.livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>compactor.readinessProbe.enabled</code></td>
+<td>Enable readinessProbe on Compactor nodes</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>compactor.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>80</code></td>
+</tr>
+<tr>
+<td><code>compactor.readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>compactor.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>compactor.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>compactor.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>compactor.startupProbe.enabled</code></td>
+<td>Enable startupProbe on Compactor containers</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>compactor.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>compactor.startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>compactor.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>compactor.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>compactor.startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>compactor.customLivenessProbe</code></td>
+<td>Custom livenessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>compactor.customReadinessProbe</code></td>
+<td>Custom readinessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>compactor.customStartupProbe</code></td>
+<td>Custom startupProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>compactor.resources.limits</code></td>
+<td>The resources limits for the compactor containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>compactor.resources.requests</code></td>
+<td>The requested resources for the compactor containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>compactor.podSecurityContext.enabled</code></td>
+<td>Enabled Compactor pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>compactor.podSecurityContext.fsGroup</code></td>
+<td>Set Compactor pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>compactor.containerSecurityContext.enabled</code></td>
+<td>Enabled Compactor containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>compactor.containerSecurityContext.runAsUser</code></td>
+<td>Set Compactor containers' Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>compactor.containerSecurityContext.runAsNonRoot</code></td>
+<td>Set Compactor containers' Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>compactor.lifecycleHooks</code></td>
+<td>for the compactor container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>compactor.hostAliases</code></td>
+<td>compactor pods host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>compactor.podLabels</code></td>
+<td>Extra labels for compactor pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>compactor.podAnnotations</code></td>
+<td>Annotations for compactor pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>compactor.podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>compactor.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>compactor.podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>compactor.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>compactor.nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>compactor.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>compactor.nodeAffinityPreset.key</code></td>
+<td>Node label key to match. Ignored if <code>compactor.affinity</code> is set</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>compactor.nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>compactor.affinity</code> is set</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>compactor.affinity</code></td>
+<td>Affinity for Compactor pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>compactor.nodeSelector</code></td>
+<td>Node labels for Compactor pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>compactor.tolerations</code></td>
+<td>Tolerations for Compactor pods assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>compactor.topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment spread across your cluster among failure-domains</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>compactor.priorityClassName</code></td>
+<td>Compactor pods' priorityClassName</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>compactor.schedulerName</code></td>
+<td>Kubernetes pod scheduler registry</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>compactor.updateStrategy.type</code></td>
+<td>Compactor statefulset strategy type</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>compactor.updateStrategy.rollingUpdate</code></td>
+<td>Compactor statefulset rolling update configuration parameters</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>compactor.extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes for the Compactor pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>compactor.extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts for the Compactor container(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>compactor.sidecars</code></td>
+<td>Add additional sidecar containers to the Compactor pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>compactor.initContainers</code></td>
+<td>Add additional init containers to the Compactor pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="compactor-traffic-exposure-parameters">Compactor Traffic Exposure Parameters<a class="headerlink" href="#compactor-traffic-exposure-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>compactor.service.type</code></td>
+<td>Compactor service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>compactor.service.ports.http</code></td>
+<td>Compactor HTTP service port</td>
+<td><code>3200</code></td>
+</tr>
+<tr>
+<td><code>compactor.service.nodePorts.http</code></td>
+<td>Node port for HTTP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>compactor.service.sessionAffinity</code></td>
+<td>Control where client requests go, to the same pod or round-robin</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>compactor.service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>compactor.service.clusterIP</code></td>
+<td>Compactor service Cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>compactor.service.loadBalancerIP</code></td>
+<td>Compactor service Load Balancer IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>compactor.service.loadBalancerSourceRanges</code></td>
+<td>Compactor service Load Balancer sources</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>compactor.service.externalTrafficPolicy</code></td>
+<td>Compactor service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>compactor.service.annotations</code></td>
+<td>Additional custom annotations for Compactor service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>compactor.service.extraPorts</code></td>
+<td>Extra ports to expose in the Compactor service</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="distributor-deployment-parameters">Distributor Deployment Parameters<a class="headerlink" href="#distributor-deployment-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>distributor.extraEnvVars</code></td>
+<td>Array with extra environment variables to add to distributor nodes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>distributor.extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra env vars for distributor nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>distributor.extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra env vars for distributor nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>distributor.command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>distributor.args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>distributor.replicaCount</code></td>
+<td>Number of Distributor replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>distributor.livenessProbe.enabled</code></td>
+<td>Enable livenessProbe on Distributor nodes</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>distributor.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>distributor.livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>distributor.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>distributor.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>distributor.livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>distributor.readinessProbe.enabled</code></td>
+<td>Enable readinessProbe on Distributor nodes</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>distributor.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>distributor.readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>distributor.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>distributor.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>distributor.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>distributor.startupProbe.enabled</code></td>
+<td>Enable startupProbe on Distributor containers</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>distributor.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>distributor.startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>distributor.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>distributor.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>distributor.startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>distributor.customLivenessProbe</code></td>
+<td>Custom livenessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>distributor.customReadinessProbe</code></td>
+<td>Custom readinessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>distributor.customStartupProbe</code></td>
+<td>Custom startupProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>distributor.resources.limits</code></td>
+<td>The resources limits for the distributor containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>distributor.resources.requests</code></td>
+<td>The requested resources for the distributor containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>distributor.podSecurityContext.enabled</code></td>
+<td>Enabled Distributor pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>distributor.podSecurityContext.fsGroup</code></td>
+<td>Set Distributor pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>distributor.containerSecurityContext.enabled</code></td>
+<td>Enabled Distributor containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>distributor.containerSecurityContext.runAsUser</code></td>
+<td>Set Distributor containers' Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>distributor.containerSecurityContext.runAsNonRoot</code></td>
+<td>Set Distributor containers' Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>distributor.lifecycleHooks</code></td>
+<td>for the distributor container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>distributor.hostAliases</code></td>
+<td>distributor pods host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>distributor.podLabels</code></td>
+<td>Extra labels for distributor pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>distributor.podAnnotations</code></td>
+<td>Annotations for distributor pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>distributor.podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>distributor.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>distributor.podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>distributor.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>distributor.nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>distributor.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>distributor.nodeAffinityPreset.key</code></td>
+<td>Node label key to match. Ignored if <code>distributor.affinity</code> is set</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>distributor.nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>distributor.affinity</code> is set</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>distributor.affinity</code></td>
+<td>Affinity for Distributor pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>distributor.nodeSelector</code></td>
+<td>Node labels for Distributor pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>distributor.tolerations</code></td>
+<td>Tolerations for Distributor pods assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>distributor.topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment spread across your cluster among failure-domains</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>distributor.priorityClassName</code></td>
+<td>Distributor pods' priorityClassName</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>distributor.schedulerName</code></td>
+<td>Kubernetes pod scheduler registry</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>distributor.updateStrategy.type</code></td>
+<td>Distributor statefulset strategy type</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>distributor.updateStrategy.rollingUpdate</code></td>
+<td>Distributor statefulset rolling update configuration parameters</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>distributor.extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes for the Distributor pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>distributor.extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts for the Distributor container(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>distributor.sidecars</code></td>
+<td>Add additional sidecar containers to the Distributor pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>distributor.initContainers</code></td>
+<td>Add additional init containers to the Distributor pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="distributor-traffic-exposure-parameters">Distributor Traffic Exposure Parameters<a class="headerlink" href="#distributor-traffic-exposure-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>distributor.service.type</code></td>
+<td>Distributor service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>distributor.service.ports.http</code></td>
+<td>Distributor HTTP service port</td>
+<td><code>3200</code></td>
+</tr>
+<tr>
+<td><code>distributor.service.ports.grpc</code></td>
+<td>Distributor GRPC service port</td>
+<td><code>9095</code></td>
+</tr>
+<tr>
+<td><code>distributor.service.nodePorts.http</code></td>
+<td>Node port for HTTP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>distributor.service.nodePorts.grpc</code></td>
+<td>Node port for GRPC</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>distributor.service.sessionAffinity</code></td>
+<td>Control where client requests go, to the same pod or round-robin</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>distributor.service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>distributor.service.clusterIP</code></td>
+<td>Distributor service Cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>distributor.service.loadBalancerIP</code></td>
+<td>Distributor service Load Balancer IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>distributor.service.loadBalancerSourceRanges</code></td>
+<td>Distributor service Load Balancer sources</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>distributor.service.externalTrafficPolicy</code></td>
+<td>Distributor service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>distributor.service.annotations</code></td>
+<td>Additional custom annotations for Distributor service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>distributor.service.extraPorts</code></td>
+<td>Extra ports to expose in the Distributor service</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="metrics-generator-deployment-parameters">Metrics Generator Deployment Parameters<a class="headerlink" href="#metrics-generator-deployment-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>metricsGenerator.remoteWrite</code></td>
+<td>remoteWrite configuration for metricsGenerator</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.extraEnvVars</code></td>
+<td>Array with extra environment variables to add to metricsGenerator nodes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra env vars for metricsGenerator nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra env vars for metricsGenerator nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.replicaCount</code></td>
+<td>Number of metricsGenerator replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.livenessProbe.enabled</code></td>
+<td>Enable livenessProbe on metricsGenerator nodes</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.readinessProbe.enabled</code></td>
+<td>Enable readinessProbe on metricsGenerator nodes</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.startupProbe.enabled</code></td>
+<td>Enable startupProbe on metricsGenerator containers</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.customLivenessProbe</code></td>
+<td>Custom livenessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.customReadinessProbe</code></td>
+<td>Custom readinessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.customStartupProbe</code></td>
+<td>Custom startupProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.resources.limits</code></td>
+<td>The resources limits for the metricsGenerator containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.resources.requests</code></td>
+<td>The requested resources for the metricsGenerator containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.podSecurityContext.enabled</code></td>
+<td>Enabled metricsGenerator pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.podSecurityContext.fsGroup</code></td>
+<td>Set metricsGenerator pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.containerSecurityContext.enabled</code></td>
+<td>Enabled metricsGenerator containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.containerSecurityContext.runAsUser</code></td>
+<td>Set metricsGenerator containers' Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.containerSecurityContext.runAsNonRoot</code></td>
+<td>Set metricsGenerator containers' Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.lifecycleHooks</code></td>
+<td>for the metricsGenerator container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.hostAliases</code></td>
+<td>metricsGenerator pods host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.podLabels</code></td>
+<td>Extra labels for metricsGenerator pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.podAnnotations</code></td>
+<td>Annotations for metricsGenerator pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>metricsGenerator.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>metricsGenerator.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>metricsGenerator.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.nodeAffinityPreset.key</code></td>
+<td>Node label key to match. Ignored if <code>metricsGenerator.affinity</code> is set</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>metricsGenerator.affinity</code> is set</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.affinity</code></td>
+<td>Affinity for metricsGenerator pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.nodeSelector</code></td>
+<td>Node labels for metricsGenerator pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.tolerations</code></td>
+<td>Tolerations for metricsGenerator pods assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment spread across your cluster among failure-domains</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.priorityClassName</code></td>
+<td>metricsGenerator pods' priorityClassName</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.schedulerName</code></td>
+<td>Kubernetes pod scheduler registry</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.updateStrategy.type</code></td>
+<td>metricsGenerator statefulset strategy type</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.updateStrategy.rollingUpdate</code></td>
+<td>metricsGenerator statefulset rolling update configuration parameters</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes for the metricsGenerator pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts for the metricsGenerator container(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.sidecars</code></td>
+<td>Add additional sidecar containers to the metricsGenerator pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.initContainers</code></td>
+<td>Add additional init containers to the metricsGenerator pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="metrics-generator-traffic-exposure-parameters">Metrics Generator Traffic Exposure Parameters<a class="headerlink" href="#metrics-generator-traffic-exposure-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>metricsGenerator.service.type</code></td>
+<td>metricsGenerator service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.service.ports.http</code></td>
+<td>metricsGenerator HTTP service port</td>
+<td><code>3200</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.service.ports.grpc</code></td>
+<td>metricsGenerator GRPC service port</td>
+<td><code>9095</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.service.nodePorts.http</code></td>
+<td>Node port for HTTP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.service.nodePorts.grpc</code></td>
+<td>Node port for GRPC</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.service.sessionAffinity</code></td>
+<td>Control where client requests go, to the same pod or round-robin</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.service.clusterIP</code></td>
+<td>metricsGenerator service Cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.service.loadBalancerIP</code></td>
+<td>metricsGenerator service Load Balancer IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.service.loadBalancerSourceRanges</code></td>
+<td>metricsGenerator service Load Balancer sources</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.service.externalTrafficPolicy</code></td>
+<td>metricsGenerator service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.service.annotations</code></td>
+<td>Additional custom annotations for metricsGenerator service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metricsGenerator.service.extraPorts</code></td>
+<td>Extra ports to expose in the metricsGenerator service</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="ingester-deployment-parameters">Ingester Deployment Parameters<a class="headerlink" href="#ingester-deployment-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ingester.extraEnvVars</code></td>
+<td>Array with extra environment variables to add to ingester nodes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingester.extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra env vars for ingester nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ingester.extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra env vars for ingester nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ingester.command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingester.args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingester.replicaCount</code></td>
+<td>Number of Ingester replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>ingester.livenessProbe.enabled</code></td>
+<td>Enable livenessProbe on Ingester nodes</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>ingester.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>ingester.livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>ingester.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>ingester.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>ingester.livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>ingester.readinessProbe.enabled</code></td>
+<td>Enable readinessProbe on Ingester nodes</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>ingester.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>ingester.readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>ingester.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>ingester.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>ingester.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>ingester.startupProbe.enabled</code></td>
+<td>Enable startupProbe on Ingester containers</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ingester.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>ingester.startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>ingester.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>ingester.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>ingester.startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>ingester.customLivenessProbe</code></td>
+<td>Custom livenessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>ingester.customReadinessProbe</code></td>
+<td>Custom readinessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>ingester.customStartupProbe</code></td>
+<td>Custom startupProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>ingester.lifecycleHooks</code></td>
+<td>for the ingester container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>ingester.resources.limits</code></td>
+<td>The resources limits for the Ingester containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>ingester.resources.requests</code></td>
+<td>The requested resources for the Ingester containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>ingester.podSecurityContext.enabled</code></td>
+<td>Enabled Ingester pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>ingester.podSecurityContext.fsGroup</code></td>
+<td>Set Ingester pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>ingester.containerSecurityContext.enabled</code></td>
+<td>Enabled Ingester containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>ingester.containerSecurityContext.runAsUser</code></td>
+<td>Set Ingester containers' Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>ingester.containerSecurityContext.runAsNonRoot</code></td>
+<td>Set Ingester containers' Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>ingester.hostAliases</code></td>
+<td>ingester pods host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingester.podLabels</code></td>
+<td>Extra labels for ingester pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>ingester.podAnnotations</code></td>
+<td>Annotations for ingester pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>ingester.podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>ingester.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ingester.podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>ingester.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>ingester.nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>ingester.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ingester.nodeAffinityPreset.key</code></td>
+<td>Node label key to match. Ignored if <code>ingester.affinity</code> is set</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ingester.nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>ingester.affinity</code> is set</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingester.affinity</code></td>
+<td>Affinity for ingester pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>ingester.nodeSelector</code></td>
+<td>Node labels for Ingester pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>ingester.tolerations</code></td>
+<td>Tolerations for Ingester pods assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingester.topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment spread across your cluster among failure-domains</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingester.priorityClassName</code></td>
+<td>Ingester pods' priorityClassName</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ingester.schedulerName</code></td>
+<td>Kubernetes pod scheduler registry</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ingester.updateStrategy.type</code></td>
+<td>Ingester statefulset strategy type</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>ingester.updateStrategy.rollingUpdate</code></td>
+<td>Ingester statefulset rolling update configuration parameters</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>ingester.extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes for the Ingester pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingester.extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts for the ingester container(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingester.sidecars</code></td>
+<td>Add additional sidecar containers to the Ingester pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingester.initContainers</code></td>
+<td>Add additional init containers to the Ingester pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="ingester-persistence-parameters">Ingester Persistence Parameters<a class="headerlink" href="#ingester-persistence-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ingester.persistence.enabled</code></td>
+<td>Enable persistence in Ingester instances</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>ingester.persistence.existingClaim</code></td>
+<td>Name of an existing PVC to use</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ingester.persistence.storageClass</code></td>
+<td>PVC Storage Class for Memcached data volume</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ingester.persistence.subPath</code></td>
+<td>The subdirectory of the volume to mount to</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ingester.persistence.accessModes</code></td>
+<td>PVC Access modes</td>
+<td><code>["ReadWriteOnce"]</code></td>
+</tr>
+<tr>
+<td><code>ingester.persistence.size</code></td>
+<td>PVC Storage Request for Memcached data volume</td>
+<td><code>8Gi</code></td>
+</tr>
+<tr>
+<td><code>ingester.persistence.annotations</code></td>
+<td>Additional PVC annotations</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>ingester.persistence.selector</code></td>
+<td>Selector to match an existing Persistent Volume for Ingester's data PVC</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="ingester-traffic-exposure-parameters">Ingester Traffic Exposure Parameters<a class="headerlink" href="#ingester-traffic-exposure-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ingester.service.type</code></td>
+<td>Ingester service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>ingester.service.ports.http</code></td>
+<td>Ingester HTTP service port</td>
+<td><code>3200</code></td>
+</tr>
+<tr>
+<td><code>ingester.service.ports.grpc</code></td>
+<td>Ingester GRPC service port</td>
+<td><code>9095</code></td>
+</tr>
+<tr>
+<td><code>ingester.service.nodePorts.http</code></td>
+<td>Node port for HTTP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ingester.service.nodePorts.grpc</code></td>
+<td>Node port for GRPC</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ingester.service.sessionAffinity</code></td>
+<td>Control where client requests go, to the same pod or round-robin</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>ingester.service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>ingester.service.clusterIP</code></td>
+<td>Ingester service Cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ingester.service.loadBalancerIP</code></td>
+<td>Ingester service Load Balancer IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ingester.service.loadBalancerSourceRanges</code></td>
+<td>Ingester service Load Balancer sources</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingester.service.externalTrafficPolicy</code></td>
+<td>Ingester service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>ingester.service.annotations</code></td>
+<td>Additional custom annotations for Ingester service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>ingester.service.extraPorts</code></td>
+<td>Extra ports to expose in the Ingester service</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="querier-deployment-parameters">Querier Deployment Parameters<a class="headerlink" href="#querier-deployment-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>querier.replicaCount</code></td>
+<td>Number of Querier replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>querier.extraEnvVars</code></td>
+<td>Array with extra environment variables to add to Querier nodes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>querier.extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra env vars for Querier nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>querier.extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra env vars for Querier nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>querier.command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>querier.args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>querier.livenessProbe.enabled</code></td>
+<td>Enable livenessProbe on Querier nodes</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>querier.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>querier.livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>querier.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>querier.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>querier.livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>querier.readinessProbe.enabled</code></td>
+<td>Enable readinessProbe on Querier nodes</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>querier.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>querier.readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>querier.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>querier.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>querier.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>querier.startupProbe.enabled</code></td>
+<td>Enable startupProbe on Querier containers</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>querier.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>querier.startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>querier.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>querier.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>querier.startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>querier.customLivenessProbe</code></td>
+<td>Custom livenessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>querier.customReadinessProbe</code></td>
+<td>Custom readinessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>querier.customStartupProbe</code></td>
+<td>Custom startupProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>querier.resources.limits</code></td>
+<td>The resources limits for the Querier containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>querier.resources.requests</code></td>
+<td>The requested resources for the Querier containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>querier.podSecurityContext.enabled</code></td>
+<td>Enabled Querier pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>querier.podSecurityContext.fsGroup</code></td>
+<td>Set Querier pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>querier.containerSecurityContext.enabled</code></td>
+<td>Enabled Querier containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>querier.containerSecurityContext.runAsUser</code></td>
+<td>Set Querier containers' Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>querier.containerSecurityContext.runAsNonRoot</code></td>
+<td>Set Querier containers' Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>querier.lifecycleHooks</code></td>
+<td>for the Querier container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>querier.hostAliases</code></td>
+<td>querier pods host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>querier.podLabels</code></td>
+<td>Extra labels for querier pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>querier.podAnnotations</code></td>
+<td>Annotations for querier pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>querier.podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>querier.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>querier.podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>querier.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>querier.nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>querier.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>querier.nodeAffinityPreset.key</code></td>
+<td>Node label key to match. Ignored if <code>querier.affinity</code> is set</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>querier.nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>querier.affinity</code> is set</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>querier.affinity</code></td>
+<td>Affinity for Querier pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>querier.nodeSelector</code></td>
+<td>Node labels for Querier pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>querier.tolerations</code></td>
+<td>Tolerations for Querier pods assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>querier.topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment spread across your cluster among failure-domains</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>querier.priorityClassName</code></td>
+<td>Querier pods' priorityClassName</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>querier.schedulerName</code></td>
+<td>Kubernetes pod scheduler registry</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>querier.updateStrategy.type</code></td>
+<td>Querier statefulset strategy type</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>querier.updateStrategy.rollingUpdate</code></td>
+<td>Querier statefulset rolling update configuration parameters</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>querier.extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes for the Querier pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>querier.extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts for the querier container(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>querier.sidecars</code></td>
+<td>Add additional sidecar containers to the Querier pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>querier.initContainers</code></td>
+<td>Add additional init containers to the Querier pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="querier-traffic-exposure-parameters">Querier Traffic Exposure Parameters<a class="headerlink" href="#querier-traffic-exposure-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>querier.service.type</code></td>
+<td>Querier service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>querier.service.ports.http</code></td>
+<td>Querier HTTP service port</td>
+<td><code>3200</code></td>
+</tr>
+<tr>
+<td><code>querier.service.ports.grpc</code></td>
+<td>Querier GRPC service port</td>
+<td><code>9095</code></td>
+</tr>
+<tr>
+<td><code>querier.service.nodePorts.http</code></td>
+<td>Node port for HTTP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>querier.service.nodePorts.grpc</code></td>
+<td>Node port for GRPC</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>querier.service.sessionAffinity</code></td>
+<td>Control where client requests go, to the same pod or round-robin</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>querier.service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>querier.service.clusterIP</code></td>
+<td>Querier service Cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>querier.service.loadBalancerIP</code></td>
+<td>Querier service Load Balancer IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>querier.service.loadBalancerSourceRanges</code></td>
+<td>Querier service Load Balancer sources</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>querier.service.externalTrafficPolicy</code></td>
+<td>Querier service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>querier.service.annotations</code></td>
+<td>Additional custom annotations for Querier service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>querier.service.extraPorts</code></td>
+<td>Extra ports to expose in the Querier service</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="query-frontend-deployment-parameters">Query Frontend Deployment Parameters<a class="headerlink" href="#query-frontend-deployment-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>queryFrontend.extraEnvVars</code></td>
+<td>Array with extra environment variables to add to queryFrontend nodes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra env vars for queryFrontend nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra env vars for queryFrontend nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.replicaCount</code></td>
+<td>Number of queryFrontend replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.livenessProbe.enabled</code></td>
+<td>Enable livenessProbe on queryFrontend nodes</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.readinessProbe.enabled</code></td>
+<td>Enable readinessProbe on queryFrontend nodes</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.startupProbe.enabled</code></td>
+<td>Enable startupProbe on queryFrontend containers</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.customLivenessProbe</code></td>
+<td>Custom livenessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.customReadinessProbe</code></td>
+<td>Custom readinessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.customStartupProbe</code></td>
+<td>Custom startupProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.resources.limits</code></td>
+<td>The resources limits for the queryFrontend containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.resources.requests</code></td>
+<td>The requested resources for the queryFrontend containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.podSecurityContext.enabled</code></td>
+<td>Enabled queryFrontend pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.podSecurityContext.fsGroup</code></td>
+<td>Set queryFrontend pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.containerSecurityContext.enabled</code></td>
+<td>Enabled queryFrontend containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.containerSecurityContext.runAsUser</code></td>
+<td>Set queryFrontend containers' Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.containerSecurityContext.runAsNonRoot</code></td>
+<td>Set queryFrontend containers' Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.lifecycleHooks</code></td>
+<td>for the queryFrontend container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.hostAliases</code></td>
+<td>queryFrontend pods host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.podLabels</code></td>
+<td>Extra labels for queryFrontend pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.podAnnotations</code></td>
+<td>Annotations for queryFrontend pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>queryFrontend.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>queryFrontend.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>queryFrontend.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.nodeAffinityPreset.key</code></td>
+<td>Node label key to match. Ignored if <code>queryFrontend.affinity</code> is set</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>queryFrontend.affinity</code> is set</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.affinity</code></td>
+<td>Affinity for queryFrontend pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.nodeSelector</code></td>
+<td>Node labels for queryFrontend pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.tolerations</code></td>
+<td>Tolerations for queryFrontend pods assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment spread across your cluster among failure-domains</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.priorityClassName</code></td>
+<td>queryFrontend pods' priorityClassName</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.schedulerName</code></td>
+<td>Kubernetes pod scheduler registry</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.updateStrategy.type</code></td>
+<td>queryFrontend statefulset strategy type</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.updateStrategy.rollingUpdate</code></td>
+<td>queryFrontend statefulset rolling update configuration parameters</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes for the queryFrontend pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts for the queryFrontend container(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.sidecars</code></td>
+<td>Add additional sidecar containers to the queryFrontend pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.initContainers</code></td>
+<td>Add additional init containers to the queryFrontend pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.image.registry</code></td>
+<td>Grafana Tempo Query image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.image.repository</code></td>
+<td>Grafana Tempo Query image repository</td>
+<td><code>bitnami/grafana-tempo-query</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.image.tag</code></td>
+<td>Grafana Tempo Query image tag (immutable tags are recommended)</td>
+<td><code>2.1.1-debian-11-r18</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.image.digest</code></td>
+<td>Grafana Tempo Query image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.image.pullPolicy</code></td>
+<td>Grafana Tempo Query image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.image.pullSecrets</code></td>
+<td>Grafana Tempo Query image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.configuration</code></td>
+<td>Query sidecar configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.containerPorts.jaegerMetrics</code></td>
+<td>queryFrontend query sidecar Jaeger metrics container port</td>
+<td><code>16687</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.containerPorts.jaegerUI</code></td>
+<td>queryFrontend query sidecar Jaeger UI container port</td>
+<td><code>16686</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.existingConfigmap</code></td>
+<td>Name of a configmap with the query configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.extraEnvVars</code></td>
+<td>Array with extra environment variables to add to queryFrontend nodes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra env vars for queryFrontend nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra env vars for queryFrontend nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.livenessProbe.enabled</code></td>
+<td>Enable livenessProbe on Query sidecar nodes</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.readinessProbe.enabled</code></td>
+<td>Enable readinessProbe on Query sidecar nodes</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.startupProbe.enabled</code></td>
+<td>Enable startupProbe on Query sidecar containers</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.customLivenessProbe</code></td>
+<td>Custom livenessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.customReadinessProbe</code></td>
+<td>Custom readinessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.customStartupProbe</code></td>
+<td>Custom startupProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.lifecycleHooks</code></td>
+<td>for the query sidecar container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.containerSecurityContext.enabled</code></td>
+<td>Enabled queryFrontend query sidecar containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.containerSecurityContext.runAsUser</code></td>
+<td>Set queryFrontend query sidecar containers' Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.containerSecurityContext.runAsNonRoot</code></td>
+<td>Set queryFrontend query sidecar containers' Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.resources.limits</code></td>
+<td>The resources limits for the query sidecar containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.resources.requests</code></td>
+<td>The requested resources for the query sidecar containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.query.extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts for the queryFrontend container(s)</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="query-frontend-traffic-exposure-parameters">Query Frontend Traffic Exposure Parameters<a class="headerlink" href="#query-frontend-traffic-exposure-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>queryFrontend.service.type</code></td>
+<td>queryFrontend service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.service.ports.http</code></td>
+<td>queryFrontend HTTP service port</td>
+<td><code>3200</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.service.ports.grpc</code></td>
+<td>queryFrontend GRPC service port</td>
+<td><code>9095</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.service.nodePorts.http</code></td>
+<td>Node port for HTTP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.service.nodePorts.grpc</code></td>
+<td>Node port for GRPC</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.service.sessionAffinity</code></td>
+<td>Control where client requests go, to the same pod or round-robin</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.service.clusterIP</code></td>
+<td>queryFrontend service Cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.service.loadBalancerIP</code></td>
+<td>queryFrontend service Load Balancer IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.service.loadBalancerSourceRanges</code></td>
+<td>queryFrontend service Load Balancer sources</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.service.externalTrafficPolicy</code></td>
+<td>queryFrontend service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.service.annotations</code></td>
+<td>Additional custom annotations for queryFrontend service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.service.extraPorts</code></td>
+<td>Extra ports to expose in the queryFrontend service</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>queryFrontend.service.headless.annotations</code></td>
+<td>Annotations for the headless service.</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="vulture-deployment-parameters">Vulture Deployment Parameters<a class="headerlink" href="#vulture-deployment-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vulture.enabled</code></td>
+<td>Enable vulture deployment</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>vulture.image.registry</code></td>
+<td>Grafana Vulture image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>vulture.image.repository</code></td>
+<td>Grafana Vulture image repository</td>
+<td><code>bitnami/grafana-tempo-vulture</code></td>
+</tr>
+<tr>
+<td><code>vulture.image.tag</code></td>
+<td>Grafana Vulture image tag (immutable tags are recommended)</td>
+<td><code>2.1.1-debian-11-r15</code></td>
+</tr>
+<tr>
+<td><code>vulture.image.digest</code></td>
+<td>Grafana Vulture image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>vulture.image.pullPolicy</code></td>
+<td>Grafana Vulture image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>vulture.image.pullSecrets</code></td>
+<td>Grafana Vulture image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>vulture.extraEnvVars</code></td>
+<td>Array with extra environment variables to add to vulture nodes</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>vulture.extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra env vars for vulture nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>vulture.extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra env vars for vulture nodes</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>vulture.command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>vulture.args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>vulture.replicaCount</code></td>
+<td>Number of Vulture replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>vulture.livenessProbe.enabled</code></td>
+<td>Enable livenessProbe on Vulture nodes</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>vulture.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>vulture.livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>vulture.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>vulture.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>vulture.livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>vulture.readinessProbe.enabled</code></td>
+<td>Enable readinessProbe on Vulture nodes</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>vulture.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>vulture.readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>vulture.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>vulture.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>vulture.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>vulture.startupProbe.enabled</code></td>
+<td>Enable startupProbe on Vulture containers</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>vulture.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>vulture.startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>vulture.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>vulture.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>vulture.startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>vulture.customLivenessProbe</code></td>
+<td>Custom livenessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>vulture.customReadinessProbe</code></td>
+<td>Custom readinessProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>vulture.customStartupProbe</code></td>
+<td>Custom startupProbe that overrides the default one</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>vulture.resources.limits</code></td>
+<td>The resources limits for the Vulture containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>vulture.resources.requests</code></td>
+<td>The requested resources for the Vulture containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>vulture.podSecurityContext.enabled</code></td>
+<td>Enabled Vulture pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>vulture.podSecurityContext.fsGroup</code></td>
+<td>Set Vulture pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>vulture.containerSecurityContext.enabled</code></td>
+<td>Enabled Vulture containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>vulture.containerSecurityContext.runAsUser</code></td>
+<td>Set Vulture containers' Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>vulture.containerSecurityContext.runAsNonRoot</code></td>
+<td>Set Vulture containers' Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>vulture.lifecycleHooks</code></td>
+<td>for the vulture container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>vulture.hostAliases</code></td>
+<td>vulture pods host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>vulture.podLabels</code></td>
+<td>Extra labels for vulture pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>vulture.podAnnotations</code></td>
+<td>Annotations for vulture pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>vulture.podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>vulture.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>vulture.podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>vulture.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>vulture.nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>vulture.affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>vulture.nodeAffinityPreset.key</code></td>
+<td>Node label key to match. Ignored if <code>vulture.affinity</code> is set</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>vulture.nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>vulture.affinity</code> is set</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>vulture.containerPorts.http</code></td>
+<td>Vulture components HTTP container port</td>
+<td><code>8080</code></td>
+</tr>
+<tr>
+<td><code>vulture.affinity</code></td>
+<td>Affinity for Vulture pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>vulture.nodeSelector</code></td>
+<td>Node labels for Vulture pods assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>vulture.tolerations</code></td>
+<td>Tolerations for Vulture pods assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>vulture.topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment spread across your cluster among failure-domains</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>vulture.priorityClassName</code></td>
+<td>Vulture pods' priorityClassName</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>vulture.schedulerName</code></td>
+<td>Kubernetes pod scheduler registry</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>vulture.updateStrategy.type</code></td>
+<td>Vulture statefulset strategy type</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>vulture.updateStrategy.rollingUpdate</code></td>
+<td>Vulture statefulset rolling update configuration parameters</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>vulture.extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes for the Vulture pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>vulture.extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts for the Vulture container(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>vulture.sidecars</code></td>
+<td>Add additional sidecar containers to the Vulture pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>vulture.initContainers</code></td>
+<td>Add additional init containers to the Vulture pod(s)</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="vulture-traffic-exposure-parameters">Vulture Traffic Exposure Parameters<a class="headerlink" href="#vulture-traffic-exposure-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vulture.service.type</code></td>
+<td>Vulture service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>vulture.service.ports.http</code></td>
+<td>Vulture HTTP service port</td>
+<td><code>3200</code></td>
+</tr>
+<tr>
+<td><code>vulture.service.nodePorts.http</code></td>
+<td>Node port for HTTP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>vulture.service.sessionAffinity</code></td>
+<td>Control where client requests go, to the same pod or round-robin</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>vulture.service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>vulture.service.clusterIP</code></td>
+<td>Vulture service Cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>vulture.service.loadBalancerIP</code></td>
+<td>Vulture service Load Balancer IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>vulture.service.loadBalancerSourceRanges</code></td>
+<td>Vulture service Load Balancer sources</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>vulture.service.externalTrafficPolicy</code></td>
+<td>Vulture service external traffic policy</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>vulture.service.annotations</code></td>
+<td>Additional custom annotations for Vulture service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>vulture.service.extraPorts</code></td>
+<td>Extra ports to expose in the Vulture service</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="init-container-parameters">Init Container Parameters<a class="headerlink" href="#init-container-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>volumePermissions.enabled</code></td>
+<td>Enable init container that changes the owner/group of the PV mount point to <code>runAsUser:fsGroup</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.registry</code></td>
+<td>Bitnami Shell image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.repository</code></td>
+<td>Bitnami Shell image repository</td>
+<td><code>bitnami/bitnami-shell</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.tag</code></td>
+<td>Bitnami Shell image tag (immutable tags are recommended)</td>
+<td><code>11-debian-11-r127</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.digest</code></td>
+<td>Bitnami Shell image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.pullPolicy</code></td>
+<td>Bitnami Shell image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.pullSecrets</code></td>
+<td>Bitnami Shell image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.resources.limits</code></td>
+<td>The resources limits for the init container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.resources.requests</code></td>
+<td>The requested resources for the init container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.containerSecurityContext.runAsUser</code></td>
+<td>Set init container's Security Context runAsUser</td>
+<td><code>0</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="other-parameters">Other Parameters<a class="headerlink" href="#other-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>serviceAccount.create</code></td>
+<td>Enable creation of ServiceAccount for Tempo pods</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.name</code></td>
+<td>The name of the ServiceAccount to use</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.automountServiceAccountToken</code></td>
+<td>Allows auto mount of ServiceAccountToken on the serviceAccount created</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.annotations</code></td>
+<td>Additional custom annotations for the ServiceAccount</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="metrics-parameters">Metrics Parameters<a class="headerlink" href="#metrics-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>metrics.enabled</code></td>
+<td>Enable metrics</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.enabled</code></td>
+<td>Create ServiceMonitor Resource for scraping metrics using Prometheus Operator</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.namespace</code></td>
+<td>Namespace for the ServiceMonitor Resource (defaults to the Release Namespace)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.interval</code></td>
+<td>Interval at which metrics should be scraped.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.scrapeTimeout</code></td>
+<td>Timeout after which the scrape is ended</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.labels</code></td>
+<td>Additional labels that can be used so ServiceMonitor will be discovered by Prometheus</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.selector</code></td>
+<td>Prometheus instance selector labels</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.relabelings</code></td>
+<td>RelabelConfigs to apply to samples before scraping</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.metricRelabelings</code></td>
+<td>MetricRelabelConfigs to apply to samples before ingestion</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.honorLabels</code></td>
+<td>Specify honorLabels parameter to add the scrape endpoint</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.jobLabel</code></td>
+<td>The name of the label on the target service to use as the job name in prometheus.</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="external-memcached-parameters">External Memcached Parameters<a class="headerlink" href="#external-memcached-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>externalMemcached.host</code></td>
+<td>Host of a running external memcached instance</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>externalMemcached.port</code></td>
+<td>Port of a running external memcached instance</td>
+<td><code>11211</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="memcached-sub-chart-parameters">Memcached Sub-chart Parameters<a class="headerlink" href="#memcached-sub-chart-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>memcached.enabled</code></td>
+<td>Deploy memcached sub-chart</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>memcached.auth.enabled</code></td>
+<td>Enable Memcached authentication</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>memcached.auth.username</code></td>
+<td>Memcached admin user</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>memcached.auth.password</code></td>
+<td>Memcached admin password</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>memcached.service.ports.memcached</code></td>
+<td>Memcached service port</td>
+<td><code>11211</code></td>
+</tr>
+</tbody>
+</table>
+<p>Specify each parameter using the <code>--set key=value[,key=value]</code> argument to <code>helm install</code>. For example,</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="go">helm install my-release \</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="go">  --set tempo.traces.jaeger.grpc=true \</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="go">  bitnami/grafana-tempo</span>
+</span></code></pre></div>
+<p>The above command enables the Jaeger GRPC traces.</p>
+<p>Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">helm install my-release -f values.yaml bitnami/grafana-tempo</span>
+</span></code></pre></div>
+<blockquote>
+<p><strong>Tip</strong>: You can use the default <a href="values.yaml">values.yaml</a></p>
+</blockquote>
+<h2 id="configuration-and-installation-details">Configuration and installation details<a class="headerlink" href="#configuration-and-installation-details" title="Permanent link">&para;</a></h2>
+<h3 id="rolling-vs-immutable-tags"><a href="https://docs.bitnami.com/containers/how-to/understand-rolling-tags-containers/">Rolling VS Immutable tags</a><a class="headerlink" href="#rolling-vs-immutable-tags" title="Permanent link">&para;</a></h3>
+<p>It is strongly recommended to use immutable tags in a production environment. This ensures your deployment does not change automatically if the same tag is updated with a different image.</p>
+<p>Bitnami will release a new chart updating its containers if a new version of the main container, significant changes, or critical vulnerabilities exist.</p>
+<h3 id="tempo-configuration">Tempo configuration<a class="headerlink" href="#tempo-configuration" title="Permanent link">&para;</a></h3>
+<p>The tempo configuration file <code>tempo.yaml</code> is shared across the different components: <code>distributor</code>, <code>compactor</code>, <code>ingester</code>, <code>querier</code> and <code>queryFrontend</code>. This is set in the <code>tempo.configuration</code> value. Check the official <a href="https://grafana.com/docs/tempo/latest/configuration/">Tempo Grafana documentation</a> for the list of possible configurations.</p>
+<h2 id="persistence">Persistence<a class="headerlink" href="#persistence" title="Permanent link">&para;</a></h2>
+<p>The <a href="https://github.com/bitnami/containers/tree/main/bitnami/grafana-tempo">Bitnami grafana-tempo</a> image stores the grafana-tempo <code>ingester</code> data at the <code>/bitnami</code> path of the container. Persistent Volume Claims are used to keep the data across deployments.</p>
+<h3 id="additional-environment-variables">Additional environment variables<a class="headerlink" href="#additional-environment-variables" title="Permanent link">&para;</a></h3>
+<p>In case you want to add extra environment variables (useful for advanced operations like custom init scripts), you can use the <code>extraEnvVars</code> property inside each of the subsections: <code>distributor</code>, <code>compactor</code>, <code>ingester</code>, <code>querier</code>, <code>queryFrontend</code> and <code>vulture</code>.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">compactor</span><span class="p">:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">extraEnvVars</span><span class="p">:</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LOG_LEVEL</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">error</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nt">distributor</span><span class="p">:</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="nt">extraEnvVars</span><span class="p">:</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LOG_LEVEL</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">error</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nt">ingester</span><span class="p">:</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">  </span><span class="nt">extraEnvVars</span><span class="p">:</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LOG_LEVEL</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">error</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="nt">querier</span><span class="p">:</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">  </span><span class="nt">extraEnvVars</span><span class="p">:</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LOG_LEVEL</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">error</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="nt">queryFrontend</span><span class="p">:</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">  </span><span class="nt">extraEnvVars</span><span class="p">:</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LOG_LEVEL</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">error</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="nt">vulture</span><span class="p">:</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="w">  </span><span class="nt">extraEnvVars</span><span class="p">:</span>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LOG_LEVEL</span>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">error</span>
+</span></code></pre></div>
+<p>Alternatively, you can use a ConfigMap or a Secret with the environment variables. To do so, use the <code>extraEnvVarsCM</code> or the <code>extraEnvVarsSecret</code> values.</p>
+<h3 id="sidecars">Sidecars<a class="headerlink" href="#sidecars" title="Permanent link">&para;</a></h3>
+<p>If additional containers are needed in the same pod as grafana-tempo (such as additional metrics or logging exporters), they can be defined using the <code>sidecars</code> parameter inside each of the subsections: <code>distributor</code>, <code>compactor</code>, <code>ingester</code>, <code>querier</code>, <code>queryFrontend</code> and <code>vulture</code> . If these sidecars export extra ports, extra port definitions can be added using the <code>service.extraPorts</code> parameter. <a href="https://docs.bitnami.com/kubernetes/infrastructure/grafana-tempo/configuration/configure-sidecar-init-containers/">Learn more about configuring and using sidecar containers</a>.</p>
+<h3 id="pod-affinity">Pod affinity<a class="headerlink" href="#pod-affinity" title="Permanent link">&para;</a></h3>
+<p>This chart allows you to set your custom affinity using the <code>affinity</code> parameter. Find more information about Pod affinity in the <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity">kubernetes documentation</a>.</p>
+<p>As an alternative, use one of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the <a href="https://github.com/bitnami/charts/tree/main/bitnami/common#affinities">bitnami/common</a> chart. To do so, set the <code>podAffinityPreset</code>, <code>podAntiAffinityPreset</code>, or <code>nodeAffinityPreset</code> parameters inside each of the subsections: <code>distributor</code>, <code>compactor</code>, <code>ingester</code>, <code>querier</code>, <code>queryFrontend</code> and <code>vulture</code>.</p>
+<h3 id="external-cache-support">External cache support<a class="headerlink" href="#external-cache-support" title="Permanent link">&para;</a></h3>
+<p>You may want to have Grafana Tempo connect to an external Memcached rather than installing one inside your cluster. Typical reasons for this are to use a managed cache service, or to share a common cache server for all your applications. To achieve this, the chart allows you to specify credentials for an external database with the <a href="#parameters"><code>externalMemcached</code> parameter</a>. You should also disable the Memcached installation with the <code>memcached.enabled</code> option. Here is an example:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">memcached.enabled=false</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="go">externalMemcached.host=myexternalhost</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="go">externalMemcached.port=11211</span>
+</span></code></pre></div>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p>Find more information about how to deal with common errors related to Bitnami's Helm charts in <a href="https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues">this troubleshooting guide</a>.</p>
+<h2 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">&para;</a></h2>
+<h3 id="to-200">To 2.0.0<a class="headerlink" href="#to-200" title="Permanent link">&para;</a></h3>
+<p>This major release removes <code>search_enabled</code> and <code>metrics_generator_enabled</code> configuration parameters, assuming they are always enabled.</p>
+<h3 id="to-100">To 1.0.0<a class="headerlink" href="#to-100" title="Permanent link">&para;</a></h3>
+<p>This major release renames several values in this chart and adds missing features, in order to be inline with the rest of assets in the Bitnami charts repository.</p>
+<ul>
+<li><code>tempo.containerPort</code>, <code>tempo.grpcContainerPort</code> and <code>tempo.gossipRing.containerPort</code> have been regrouped under the <code>tempo.containerPorts</code> map.</li>
+<li><code>queryFrontend.query.jaegerMetricsContainerPort</code> and <code>queryFrontend.query.jaegerUIContainerPort</code> have been regrouped under the <code>queryFrontend.query.containerPorts</code> map.</li>
+<li><code>vulture.containerPort</code> has been regrouped under the <code>vulture.containerPorts</code> map.</li>
+<li><code>XXX.service.port</code> and <code>XXX.service.grpcPort</code> have been regrouped under the <code>XXX.service.ports</code> map.</li>
+</ul>
+<p>Additionally updates the Memcached subchart to its newest major <code>6.x.x</code>, which contains similar changes.</p>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<p>Copyright &copy; 2023 VMware, Inc.</p>
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../grafana-operator/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Grafana operator" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  上一页
+                </span>
+                Grafana operator
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../grafana/" class="md-footer__link md-footer__link--next" aria-label="下一页: Grafana" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  下一页
+                </span>
+                Grafana
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>

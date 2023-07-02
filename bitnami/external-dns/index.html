@@ -1,0 +1,5411 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../etcd/">
+      
+      
+        <link rel="next" href="../flink/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>External dns - Helm Charts Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#externaldns-packaged-by-bitnami" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Helm Charts Hub" class="md-header__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Helm Charts Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              External dns
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Helm Charts Hub
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../chart-list/" class="md-tabs__link">
+      Chart 列表
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Bitnami
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../grafana/" class="md-tabs__link">
+        Grafana
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ingress-nginx/" class="md-tabs__link">
+        Ingress nginx
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../prometheus-community/" class="md-tabs__link">
+        Prometheus community
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sir5kong/" class="md-tabs__link">
+        Sir5kong
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Helm Charts Hub" class="md-nav__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Helm Charts Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Helm Charts Hub
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chart-list/" class="md-nav__link">
+        Chart 列表
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Bitnami</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Bitnami" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Bitnami
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../airflow/" class="md-nav__link">
+        Airflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apache/" class="md-nav__link">
+        Apache
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apisix/" class="md-nav__link">
+        Apisix
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appsmith/" class="md-nav__link">
+        Appsmith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-cd/" class="md-nav__link">
+        Argo cd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-workflows/" class="md-nav__link">
+        Argo workflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aspnet-core/" class="md-nav__link">
+        Aspnet core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cassandra/" class="md-nav__link">
+        Cassandra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cert-manager/" class="md-nav__link">
+        Cert manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clickhouse/" class="md-nav__link">
+        Clickhouse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common/" class="md-nav__link">
+        Bitnami Common Library Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concourse/" class="md-nav__link">
+        Concourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../consul/" class="md-nav__link">
+        Consul
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contour/" class="md-nav__link">
+        Contour
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../discourse/" class="md-nav__link">
+        Discourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dokuwiki/" class="md-nav__link">
+        Dokuwiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drupal/" class="md-nav__link">
+        Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejbca/" class="md-nav__link">
+        Ejbca
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../elasticsearch/" class="md-nav__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../etcd/" class="md-nav__link">
+        Etcd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          External dns
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        External dns
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    TL;DR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    Installing the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    Uninstalling the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-parameters" class="md-nav__link">
+    Global parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-parameters" class="md-nav__link">
+    Common parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-dns-parameters" class="md-nav__link">
+    external-dns parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-installation-details" class="md-nav__link">
+    Configuration and installation details
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and installation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-vs-immutable-tags" class="md-nav__link">
+    Rolling VS Immutable tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-pods-affinity" class="md-nav__link">
+    Setting Pod's affinity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-irsa" class="md-nav__link">
+    Using IRSA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tutorials" class="md-nav__link">
+    Tutorials
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    Upgrading
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-600" class="md-nav__link">
+    To 6.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-500" class="md-nav__link">
+    To 5.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-430" class="md-nav__link">
+    To 4.3.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-400" class="md-nav__link">
+    To 4.0.0
+  </a>
+  
+    <nav class="md-nav" aria-label="To 4.0.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-changes-were-introduced-in-this-major-version" class="md-nav__link">
+    What changes were introduced in this major version?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#considerations-when-upgrading-to-this-version" class="md-nav__link">
+    Considerations when upgrading to this version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#useful-links" class="md-nav__link">
+    Useful links
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-300" class="md-nav__link">
+    To 3.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-200" class="md-nav__link">
+    To 2.0.0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flink/" class="md-nav__link">
+        Flink
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluent-bit/" class="md-nav__link">
+        Fluent bit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluentd/" class="md-nav__link">
+        Fluentd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flux/" class="md-nav__link">
+        Flux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ghost/" class="md-nav__link">
+        Ghost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitea/" class="md-nav__link">
+        Gitea
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-loki/" class="md-nav__link">
+        Grafana loki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-mimir/" class="md-nav__link">
+        Grafana mimir
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-operator/" class="md-nav__link">
+        Grafana operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-tempo/" class="md-nav__link">
+        Grafana tempo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana/" class="md-nav__link">
+        Grafana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../haproxy/" class="md-nav__link">
+        Haproxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../harbor/" class="md-nav__link">
+        Harbor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../influxdb/" class="md-nav__link">
+        Influxdb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jaeger/" class="md-nav__link">
+        Jaeger
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jasperreports/" class="md-nav__link">
+        Jasperreports
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jenkins/" class="md-nav__link">
+        Jenkins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../joomla/" class="md-nav__link">
+        Joomla
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jupyterhub/" class="md-nav__link">
+        Jupyterhub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kafka/" class="md-nav__link">
+        Kafka
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keycloak/" class="md-nav__link">
+        Keycloak
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kiam/" class="md-nav__link">
+        Kiam
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kibana/" class="md-nav__link">
+        Kibana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kong/" class="md-nav__link">
+        Kong
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube-prometheus/" class="md-nav__link">
+        Kube prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube-state-metrics/" class="md-nav__link">
+        Kube state metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubeapps/" class="md-nav__link">
+        Kubeapps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-event-exporter/" class="md-nav__link">
+        Kubernetes event exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logstash/" class="md-nav__link">
+        Logstash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../magento/" class="md-nav__link">
+        Magento
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mariadb-galera/" class="md-nav__link">
+        Mariadb galera
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mariadb/" class="md-nav__link">
+        Mariadb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mastodon/" class="md-nav__link">
+        Mastodon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matomo/" class="md-nav__link">
+        Matomo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mediawiki/" class="md-nav__link">
+        Mediawiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memcached/" class="md-nav__link">
+        Memcached
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metallb/" class="md-nav__link">
+        Metallb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics-server/" class="md-nav__link">
+        Metrics server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../minio/" class="md-nav__link">
+        Minio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mongodb-sharded/" class="md-nav__link">
+        Mongodb sharded
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mongodb/" class="md-nav__link">
+        Mongodb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../moodle/" class="md-nav__link">
+        Moodle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multus-cni/" class="md-nav__link">
+        Multus cni
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mxnet/" class="md-nav__link">
+        Mxnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mysql/" class="md-nav__link">
+        Mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nats/" class="md-nav__link">
+        Nats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx-ingress-controller/" class="md-nav__link">
+        Nginx ingress controller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx/" class="md-nav__link">
+        Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../node-exporter/" class="md-nav__link">
+        Node exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oauth2-proxy/" class="md-nav__link">
+        Oauth2 proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../odoo/" class="md-nav__link">
+        Odoo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opencart/" class="md-nav__link">
+        Opencart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../osclass/" class="md-nav__link">
+        Osclass
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parse/" class="md-nav__link">
+        Parse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpbb/" class="md-nav__link">
+        Phpbb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpmyadmin/" class="md-nav__link">
+        Phpmyadmin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinniped/" class="md-nav__link">
+        Pinniped
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgresql-ha/" class="md-nav__link">
+        Postgresql ha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgresql/" class="md-nav__link">
+        Postgresql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prestashop/" class="md-nav__link">
+        Prestashop
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rabbitmq-cluster-operator/" class="md-nav__link">
+        Rabbitmq cluster operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rabbitmq/" class="md-nav__link">
+        Rabbitmq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis-cluster/" class="md-nav__link">
+        Redis cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redmine/" class="md-nav__link">
+        Redmine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema-registry/" class="md-nav__link">
+        Schema registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sealed-secrets/" class="md-nav__link">
+        Sealed secrets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solr/" class="md-nav__link">
+        Solr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sonarqube/" class="md-nav__link">
+        Sonarqube
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spark/" class="md-nav__link">
+        Spark
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-cloud-dataflow/" class="md-nav__link">
+        Spring cloud dataflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../suitecrm/" class="md-nav__link">
+        Suitecrm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supabase/" class="md-nav__link">
+        Supabase
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tensorflow-resnet/" class="md-nav__link">
+        Tensorflow resnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../thanos/" class="md-nav__link">
+        Thanos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tomcat/" class="md-nav__link">
+        Tomcat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault/" class="md-nav__link">
+        Vault
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavefront-hpa-adapter/" class="md-nav__link">
+        Wavefront hpa adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavefront-prometheus-storage-adapter/" class="md-nav__link">
+        Wavefront prometheus storage adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whereabouts/" class="md-nav__link">
+        Whereabouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wildfly/" class="md-nav__link">
+        Wildfly
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wordpress/" class="md-nav__link">
+        Wordpress
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zookeeper/" class="md-nav__link">
+        Zookeeper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../grafana/">Grafana</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Grafana" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Grafana
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/agent-operator/" class="md-nav__link">
+        grafana-agent-operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-logs-simple/" class="md-nav__link">
+        enterprise-logs-simple
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-logs/" class="md-nav__link">
+        Grafana Enterprise Logs Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-metrics/" class="md-nav__link">
+        Grafana Enterprise Metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/fluent-bit/" class="md-nav__link">
+        Fluent Bit Loki chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/grafana-agent/" class="md-nav__link">
+        Grafana Agent chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/grafana/" class="md-nav__link">
+        Grafana Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-canary/" class="md-nav__link">
+        loki-canary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-distributed/" class="md-nav__link">
+        loki-distributed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-stack/" class="md-nav__link">
+        Loki-Stack Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/mimir-distributed/" class="md-nav__link">
+        Notice of relocation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/promtail/" class="md-nav__link">
+        promtail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/rollout-operator/" class="md-nav__link">
+        Grafana rollout-operator Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/synthetic-monitoring-agent/" class="md-nav__link">
+        synthetic-monitoring-agent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo-distributed/" class="md-nav__link">
+        tempo-distributed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo-vulture/" class="md-nav__link">
+        tempo-vulture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo/" class="md-nav__link">
+        tempo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../ingress-nginx/">Ingress nginx</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Ingress nginx" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Ingress nginx
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ingress-nginx/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../prometheus-community/">Prometheus community</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Prometheus community" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Prometheus community
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager-snmp-notifier/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager/" class="md-nav__link">
+        Alertmanager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/jiralert/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-prometheus-stack/" class="md-nav__link">
+        kube-prometheus-stack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-state-metrics/" class="md-nav__link">
+        kube-state-metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prom-label-proxy/" class="md-nav__link">
+        prom-label-proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-adapter/" class="md-nav__link">
+        Prometheus Adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-blackbox-exporter/" class="md-nav__link">
+        Prometheus Blackbox Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-cloudwatch-exporter/" class="md-nav__link">
+        Prometheus Cloudwatch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-conntrack-stats-exporter/" class="md-nav__link">
+        Conntrack Stats Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-consul-exporter/" class="md-nav__link">
+        Prometheus Consul Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-couchdb-exporter/" class="md-nav__link">
+        prometheus-couchdb-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-druid-exporter/" class="md-nav__link">
+        Prometheus Druid Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-elasticsearch-exporter/" class="md-nav__link">
+        Elasticsearch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-fastly-exporter/" class="md-nav__link">
+        Prometheus Fastly Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-json-exporter/" class="md-nav__link">
+        prometheus-json-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-kafka-exporter/" class="md-nav__link">
+        prometheus-kafka-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mongodb-exporter/" class="md-nav__link">
+        Prometheus MongoDB Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mysql-exporter/" class="md-nav__link">
+        Prometheus Mysql Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nats-exporter/" class="md-nav__link">
+        Prometheus NATS Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nginx-exporter/" class="md-nav__link">
+        prometheus-nginx-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-node-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-admission-webhook/" class="md-nav__link">
+        Prometheus Operator Admission Webhook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-crds/" class="md-nav__link">
+        Prometheus Operator CRDs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pgbouncer-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingdom-exporter/" class="md-nav__link">
+        Prometheus Pingdom Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingmesh-exporter/" class="md-nav__link">
+        Prometheus Pingmesh Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-postgres-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pushgateway/" class="md-nav__link">
+        Prometheus Pushgateway
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-rabbitmq-exporter/" class="md-nav__link">
+        prometheus-rabbitmq-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-redis-exporter/" class="md-nav__link">
+        prometheus-redis-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-smartctl-exporter/" class="md-nav__link">
+        Prometheus smartctl Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-snmp-exporter/" class="md-nav__link">
+        Prometheus SNMP Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-stackdriver-exporter/" class="md-nav__link">
+        Stackdriver Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-statsd-exporter/" class="md-nav__link">
+        prometheus-statsd-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-to-sd/" class="md-nav__link">
+        prometheus-to-sd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-windows-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../sir5kong/">Sir5kong</a>
+          
+            <label for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Sir5kong" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Sir5kong
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/commonapp/" class="md-nav__link">
+        commonapp helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/kafka/" class="md-nav__link">
+        Kafka helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/nginx/" class="md-nav__link">
+        nginx helm chart
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    TL;DR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    Installing the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    Uninstalling the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-parameters" class="md-nav__link">
+    Global parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-parameters" class="md-nav__link">
+    Common parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-dns-parameters" class="md-nav__link">
+    external-dns parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-installation-details" class="md-nav__link">
+    Configuration and installation details
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and installation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-vs-immutable-tags" class="md-nav__link">
+    Rolling VS Immutable tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-pods-affinity" class="md-nav__link">
+    Setting Pod's affinity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-irsa" class="md-nav__link">
+    Using IRSA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tutorials" class="md-nav__link">
+    Tutorials
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    Upgrading
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-600" class="md-nav__link">
+    To 6.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-500" class="md-nav__link">
+    To 5.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-430" class="md-nav__link">
+    To 4.3.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-400" class="md-nav__link">
+    To 4.0.0
+  </a>
+  
+    <nav class="md-nav" aria-label="To 4.0.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-changes-were-introduced-in-this-major-version" class="md-nav__link">
+    What changes were introduced in this major version?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#considerations-when-upgrading-to-this-version" class="md-nav__link">
+    Considerations when upgrading to this version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#useful-links" class="md-nav__link">
+    Useful links
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-300" class="md-nav__link">
+    To 3.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-200" class="md-nav__link">
+    To 2.0.0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<!--- app-name: ExternalDNS -->
+
+<h1 id="externaldns-packaged-by-bitnami">ExternalDNS packaged by Bitnami<a class="headerlink" href="#externaldns-packaged-by-bitnami" title="Permanent link">&para;</a></h1>
+<p>ExternalDNS is a Kubernetes addon that configures public DNS servers with information about exposed Kubernetes services to make them discoverable.</p>
+<p><a href="https://github.com/kubernetes-incubator/external-dns">Overview of ExternalDNS</a></p>
+<p>Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.</p>
+<h2 id="tldr">TL;DR<a class="headerlink" href="#tldr" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>使用加速地址添加仓库:</p>
+</blockquote>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>bitnami<span class="w"> </span><span class="s2">&quot;https://helm-charts.itboon.top/bitnami&quot;</span><span class="w"> </span>--force-update
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>helm<span class="w"> </span>update<span class="w"> </span>bitnami
+</span></code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="go">helm install my-release bitnami/external-dns</span>
+</span></code></pre></div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>This chart bootstraps a <a href="https://github.com/bitnami/containers/tree/main/bitnami/external-dns">ExternalDNS</a> deployment on a <a href="https://kubernetes.io">Kubernetes</a> cluster using the <a href="https://helm.sh">Helm</a> package manager.</p>
+<p>Bitnami charts can be used with <a href="https://kubeapps.dev/">Kubeapps</a> for deployment and management of Helm Charts in clusters.</p>
+<p>Looking to use ExternalDNS in production? Try <a href="https://bitnami.com/enterprise">VMware Application Catalog</a>, the enterprise edition of Bitnami Application Catalog.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Kubernetes 1.19+</li>
+<li>Helm 3.2.0+</li>
+</ul>
+<h2 id="installing-the-chart">Installing the Chart<a class="headerlink" href="#installing-the-chart" title="Permanent link">&para;</a></h2>
+<p>To install the chart with the release name <code>my-release</code>:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">helm install my-release bitnami/external-dns</span>
+</span></code></pre></div>
+<p>The command deploys ExternalDNS on the Kubernetes cluster in the default configuration. The <a href="#parameters">Parameters</a> section lists the parameters that can be configured during installation.</p>
+<blockquote>
+<p><strong>Tip</strong>: List all releases using <code>helm list</code></p>
+</blockquote>
+<h2 id="uninstalling-the-chart">Uninstalling the Chart<a class="headerlink" href="#uninstalling-the-chart" title="Permanent link">&para;</a></h2>
+<p>To uninstall/delete the <code>my-release</code> deployment:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="go">helm delete my-release</span>
+</span></code></pre></div>
+<p>The command removes all the Kubernetes components associated with the chart and deletes the release.</p>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
+<h3 id="global-parameters">Global parameters<a class="headerlink" href="#global-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>global.imageRegistry</code></td>
+<td>Global Docker image registry</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>global.imagePullSecrets</code></td>
+<td>Global Docker registry secret names as an array</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-parameters">Common parameters<a class="headerlink" href="#common-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nameOverride</code></td>
+<td>String to partially override external-dns.fullname template (will maintain the release name)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>fullnameOverride</code></td>
+<td>String to fully override external-dns.fullname template</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>clusterDomain</code></td>
+<td>Kubernetes Cluster Domain</td>
+<td><code>cluster.local</code></td>
+</tr>
+<tr>
+<td><code>commonLabels</code></td>
+<td>Labels to add to all deployed objects</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>commonAnnotations</code></td>
+<td>Annotations to add to all deployed objects</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>extraDeploy</code></td>
+<td>Array of extra objects to deploy with the release (evaluated as a template).</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>kubeVersion</code></td>
+<td>Force target Kubernetes version (using Helm capabilities if not set)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>watchReleaseNamespace</code></td>
+<td>Watch only namepsace used for the release</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>useDaemonset</code></td>
+<td>Use ExternalDNS in Daemonset mode</td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="external-dns-parameters">external-dns parameters<a class="headerlink" href="#external-dns-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>image.registry</code></td>
+<td>ExternalDNS image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>image.repository</code></td>
+<td>ExternalDNS image repository</td>
+<td><code>bitnami/external-dns</code></td>
+</tr>
+<tr>
+<td><code>image.tag</code></td>
+<td>ExternalDNS Image tag (immutable tags are recommended)</td>
+<td><code>0.13.4-debian-11-r19</code></td>
+</tr>
+<tr>
+<td><code>image.digest</code></td>
+<td>ExternalDNS image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>image.pullPolicy</code></td>
+<td>ExternalDNS image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>image.pullSecrets</code></td>
+<td>ExternalDNS image pull secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>hostAliases</code></td>
+<td>Deployment pod host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>updateStrategy</code></td>
+<td>update strategy type</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>command</code></td>
+<td>Override kiam default command</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>args</code></td>
+<td>Override kiam default args</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>sources</code></td>
+<td>K8s resources type to be observed for new DNS entries by ExternalDNS</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>provider</code></td>
+<td>DNS provider where the DNS records will be created.</td>
+<td><code>aws</code></td>
+</tr>
+<tr>
+<td><code>initContainers</code></td>
+<td>Attach additional init containers to the pod (evaluated as a template)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>sidecars</code></td>
+<td>Attach additional containers to the pod (evaluated as a template)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>namespace</code></td>
+<td>Limit sources of endpoints to a specific namespace (default: all namespaces)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>fqdnTemplates</code></td>
+<td>Templated strings that are used to generate DNS names from sources that don't define a hostname themselves</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>containerPorts.http</code></td>
+<td>HTTP Container port</td>
+<td><code>7979</code></td>
+</tr>
+<tr>
+<td><code>combineFQDNAnnotation</code></td>
+<td>Combine FQDN template and annotations instead of overwriting</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ignoreHostnameAnnotation</code></td>
+<td>Ignore hostname annotation when generating DNS names, valid only when fqdn-template is set</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>publishInternalServices</code></td>
+<td>Allow external-dns to publish DNS records for ClusterIP services</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>publishHostIP</code></td>
+<td>Allow external-dns to publish host-ip for headless services</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>serviceTypeFilter</code></td>
+<td>The service types to take care about (default: all, options: ClusterIP, NodePort, LoadBalancer, ExternalName)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>akamai.host</code></td>
+<td>Hostname to use for EdgeGrid auth</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>akamai.accessToken</code></td>
+<td>Access Token to use for EdgeGrid auth</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>akamai.clientToken</code></td>
+<td>Client Token to use for EdgeGrid auth</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>akamai.clientSecret</code></td>
+<td>When using the Akamai provider, <code>AKAMAI_CLIENT_SECRET</code> to set (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>akamai.secretName</code></td>
+<td>Use an existing secret with key "akamai_api_seret" defined.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alibabacloud.accessKeyId</code></td>
+<td>When using the Alibaba Cloud provider, set <code>accessKeyId</code> in the Alibaba Cloud configuration file (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alibabacloud.accessKeySecret</code></td>
+<td>When using the Alibaba Cloud provider, set <code>accessKeySecret</code> in the Alibaba Cloud configuration file (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alibabacloud.regionId</code></td>
+<td>When using the Alibaba Cloud provider, set <code>regionId</code> in the Alibaba Cloud configuration file (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alibabacloud.vpcId</code></td>
+<td>Alibaba Cloud VPC Id</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alibabacloud.secretName</code></td>
+<td>Use an existing secret with key "alibaba-cloud.json" defined.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>alibabacloud.zoneType</code></td>
+<td>Zone Filter. Available values are: public, private, or no value for both</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>aws.credentials.secretKey</code></td>
+<td>When using the AWS provider, set <code>aws_secret_access_key</code> in the AWS credentials (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>aws.credentials.accessKey</code></td>
+<td>When using the AWS provider, set <code>aws_access_key_id</code> in the AWS credentials (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>aws.credentials.mountPath</code></td>
+<td>When using the AWS provider, determine <code>mountPath</code> for <code>credentials</code> secret</td>
+<td><code>/.aws</code></td>
+</tr>
+<tr>
+<td><code>aws.credentials.secretName</code></td>
+<td>Use an existing secret with key "credentials" defined.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>aws.credentials.accessKeyIDSecretRef.name</code></td>
+<td>Define the name of the secret that stores aws_access_key_id.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>aws.credentials.accessKeyIDSecretRef.key</code></td>
+<td>Define the key of the secret that stores aws_access_key_id.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>aws.credentials.secretAccessKeySecretRef.name</code></td>
+<td>Define the name of the secret that stores aws_secret_access_key</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>aws.credentials.secretAccessKeySecretRef.key</code></td>
+<td>Define the key of the secret that stores aws_secret_access_key</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>aws.region</code></td>
+<td>When using the AWS provider, <code>AWS_DEFAULT_REGION</code> to set in the environment (optional)</td>
+<td><code>us-east-1</code></td>
+</tr>
+<tr>
+<td><code>aws.zoneType</code></td>
+<td>When using the AWS provider, filter for zones of this type (optional, options: public, private)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>aws.assumeRoleArn</code></td>
+<td>When using the AWS provider, assume role by specifying --aws-assume-role to the external-dns daemon</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>aws.roleArn</code></td>
+<td>Specify role ARN to the external-dns daemon</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>aws.apiRetries</code></td>
+<td>Maximum number of retries for AWS API calls before giving up</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>aws.batchChangeSize</code></td>
+<td>When using the AWS provider, set the maximum number of changes that will be applied in each batch</td>
+<td><code>1000</code></td>
+</tr>
+<tr>
+<td><code>aws.zonesCacheDuration</code></td>
+<td>If the list of Route53 zones managed by ExternalDNS doesn't change frequently, cache it by setting a TTL</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>aws.zoneTags</code></td>
+<td>When using the AWS provider, filter for zones with these tags</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>aws.preferCNAME</code></td>
+<td>When using the AWS provider, replaces Alias records with CNAME (options: true, false)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>aws.evaluateTargetHealth</code></td>
+<td>When using the AWS provider, sets the evaluate target health flag (options: true, false)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>azure.secretName</code></td>
+<td>When using the Azure provider, set the secret containing the <code>azure.json</code> file</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>azure.cloud</code></td>
+<td>When using the Azure provider, set the Azure Cloud</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>azure.resourceGroup</code></td>
+<td>When using the Azure provider, set the Azure Resource Group</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>azure.tenantId</code></td>
+<td>When using the Azure provider, set the Azure Tenant ID</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>azure.subscriptionId</code></td>
+<td>When using the Azure provider, set the Azure Subscription ID</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>azure.aadClientId</code></td>
+<td>When using the Azure provider, set the Azure AAD Client ID</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>azure.aadClientSecret</code></td>
+<td>When using the Azure provider, set the Azure AAD Client Secret</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>azure.useManagedIdentityExtension</code></td>
+<td>When using the Azure provider, set if you use Azure MSI</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>azure.userAssignedIdentityID</code></td>
+<td>When using the Azure provider with Azure MSI, set Client ID of Azure user-assigned managed identity (optional, otherwise system-assigned managed identity is used)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>cloudflare.apiToken</code></td>
+<td>When using the Cloudflare provider, <code>CF_API_TOKEN</code> to set (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>cloudflare.apiKey</code></td>
+<td>When using the Cloudflare provider, <code>CF_API_KEY</code> to set (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>cloudflare.secretName</code></td>
+<td>When using the Cloudflare provider, it's the name of the secret containing cloudflare_api_token or cloudflare_api_key.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>cloudflare.email</code></td>
+<td>When using the Cloudflare provider, <code>CF_API_EMAIL</code> to set (optional). Needed when using CF_API_KEY</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>cloudflare.proxied</code></td>
+<td>When using the Cloudflare provider, enable the proxy feature (DDOS protection, CDN...) (optional)</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>coredns.etcdEndpoints</code></td>
+<td>When using the CoreDNS provider, set etcd backend endpoints (comma-separated list)</td>
+<td><code>http://etcd-extdns:2379</code></td>
+</tr>
+<tr>
+<td><code>coredns.etcdTLS.enabled</code></td>
+<td>When using the CoreDNS provider, enable secure communication with etcd</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>coredns.etcdTLS.autoGenerated</code></td>
+<td>Generate automatically self-signed TLS certificates</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>coredns.etcdTLS.secretName</code></td>
+<td>When using the CoreDNS provider, specify a name of existing Secret with etcd certs and keys</td>
+<td><code>etcd-client-certs</code></td>
+</tr>
+<tr>
+<td><code>coredns.etcdTLS.mountPath</code></td>
+<td>When using the CoreDNS provider, set destination dir to mount data from <code>coredns.etcdTLS.secretName</code> to</td>
+<td><code>/etc/coredns/tls/etcd</code></td>
+</tr>
+<tr>
+<td><code>coredns.etcdTLS.caFilename</code></td>
+<td>When using the CoreDNS provider, specify CA PEM file name from the <code>coredns.etcdTLS.secretName</code></td>
+<td><code>ca.crt</code></td>
+</tr>
+<tr>
+<td><code>coredns.etcdTLS.certFilename</code></td>
+<td>When using the CoreDNS provider, specify cert PEM file name from the <code>coredns.etcdTLS.secretName</code></td>
+<td><code>cert.pem</code></td>
+</tr>
+<tr>
+<td><code>coredns.etcdTLS.keyFilename</code></td>
+<td>When using the CoreDNS provider, specify private key PEM file name from the <code>coredns.etcdTLS.secretName</code></td>
+<td><code>key.pem</code></td>
+</tr>
+<tr>
+<td><code>designate.username</code></td>
+<td>When using the Designate provider, specify the OpenStack authentication username. (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>designate.password</code></td>
+<td>When using the Designate provider, specify the OpenStack authentication password. (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>designate.applicationCredentialId</code></td>
+<td>When using the Designate provider, specify the OpenStack authentication application credential ID. This conflicts with <code>designate.username</code>. (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>designate.applicationCredentialSecret</code></td>
+<td>When using the Designate provider, specify the OpenStack authentication application credential ID. This conflicts with <code>designate.password</code>. (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>designate.authUrl</code></td>
+<td>When using the Designate provider, specify the OpenStack authentication Url. (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>designate.regionName</code></td>
+<td>When using the Designate provider, specify the OpenStack region name. (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>designate.userDomainName</code></td>
+<td>When using the Designate provider, specify the OpenStack user domain name. (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>designate.projectName</code></td>
+<td>When using the Designate provider, specify the OpenStack project name. (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>designate.authType</code></td>
+<td>When using the Designate provider, specify the OpenStack auth type. (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>designate.customCAHostPath</code></td>
+<td>When using the Designate provider, use a CA file already on the host to validate Openstack APIs.  This conflicts with <code>designate.customCA.enabled</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>designate.customCA.enabled</code></td>
+<td>When using the Designate provider, enable a custom CA (optional)</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>designate.customCA.content</code></td>
+<td>When using the Designate provider, set the content of the custom CA</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>designate.customCA.mountPath</code></td>
+<td>When using the Designate provider, set the mountPath in which to mount the custom CA configuration</td>
+<td><code>/config/designate</code></td>
+</tr>
+<tr>
+<td><code>designate.customCA.filename</code></td>
+<td>When using the Designate provider, set the custom CA configuration filename</td>
+<td><code>designate-ca.pem</code></td>
+</tr>
+<tr>
+<td><code>exoscale.apiKey</code></td>
+<td>When using the Exoscale provider, <code>EXTERNAL_DNS_EXOSCALE_APIKEY</code> to set (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>exoscale.apiToken</code></td>
+<td>When using the Exoscale provider, <code>EXTERNAL_DNS_EXOSCALE_APISECRET</code> to set (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>exoscale.secretName</code></td>
+<td>Use an existing secret with keys "exoscale_api_key" and "exoscale_api_token" defined.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>digitalocean.apiToken</code></td>
+<td>When using the DigitalOcean provider, <code>DO_TOKEN</code> to set (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>digitalocean.secretName</code></td>
+<td>Use an existing secret with key "digitalocean_api_token" defined.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>google.project</code></td>
+<td>When using the Google provider, specify the Google project (required when provider=google)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>google.batchChangeSize</code></td>
+<td>When using the google provider, set the maximum number of changes that will be applied in each batch</td>
+<td><code>1000</code></td>
+</tr>
+<tr>
+<td><code>google.serviceAccountSecret</code></td>
+<td>When using the Google provider, specify the existing secret which contains credentials.json (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>google.serviceAccountSecretKey</code></td>
+<td>When using the Google provider with an existing secret, specify the key name (optional)</td>
+<td><code>credentials.json</code></td>
+</tr>
+<tr>
+<td><code>google.serviceAccountKey</code></td>
+<td>When using the Google provider, specify the service account key JSON file. In this case a new secret will be created holding this service account (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>google.zoneVisibility</code></td>
+<td>When using the Google provider, fiter for zones of a specific visibility (private or public)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>hetzner.token</code></td>
+<td>When using the Hetzner provider, specify your token here. (required when <code>hetzner.secretName</code> is not provided. In this case a new secret will be created holding the token.)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>hetzner.secretName</code></td>
+<td>When using the Hetzner provider, specify the existing secret which contains your token. Disables the usage of <code>hetzner.token</code> (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>hetzner.secretKey</code></td>
+<td>When using the Hetzner provider with an existing secret, specify the key name (optional)</td>
+<td><code>hetzner_token</code></td>
+</tr>
+<tr>
+<td><code>infoblox.wapiUsername</code></td>
+<td>When using the Infoblox provider, specify the Infoblox WAPI username</td>
+<td><code>admin</code></td>
+</tr>
+<tr>
+<td><code>infoblox.wapiPassword</code></td>
+<td>When using the Infoblox provider, specify the Infoblox WAPI password (required when provider=infoblox)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>infoblox.gridHost</code></td>
+<td>When using the Infoblox provider, specify the Infoblox Grid host (required when provider=infoblox)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>infoblox.view</code></td>
+<td>Infoblox view</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>infoblox.secretName</code></td>
+<td>Existing secret name, when in place wapiUsername and wapiPassword are not required</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>infoblox.domainFilter</code></td>
+<td>When using the Infoblox provider, specify the domain (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>infoblox.nameRegex</code></td>
+<td>When using the Infoblox provider, specify the name regex filter (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>infoblox.noSslVerify</code></td>
+<td>When using the Infoblox provider, disable SSL verification (optional)</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>infoblox.wapiPort</code></td>
+<td>When using the Infoblox provider, specify the Infoblox WAPI port (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>infoblox.wapiVersion</code></td>
+<td>When using the Infoblox provider, specify the Infoblox WAPI version (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>infoblox.wapiConnectionPoolSize</code></td>
+<td>When using the Infoblox provider, specify the Infoblox WAPI request connection pool size (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>infoblox.wapiHttpTimeout</code></td>
+<td>When using the Infoblox provider, specify the Infoblox WAPI request timeout in seconds (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>infoblox.maxResults</code></td>
+<td>When using the Infoblox provider, specify the Infoblox Max Results (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>linode.apiToken</code></td>
+<td>When using the Linode provider, <code>LINODE_TOKEN</code> to set (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>linode.secretName</code></td>
+<td>Use an existing secret with key "linode_api_token" defined.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ns1.minTTL</code></td>
+<td>When using the ns1 provider, specify minimal TTL, as an integer, for records</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>ns1.apiKey</code></td>
+<td>When using the ns1 provider, specify the API key to use</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ns1.secretName</code></td>
+<td>Use an existing secret with key "ns1-api-key" defined.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>oci.region</code></td>
+<td>When using the OCI provider, specify the region, where your zone is located in.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>oci.tenancyOCID</code></td>
+<td>When using the OCI provider, specify your Tenancy OCID</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>oci.userOCID</code></td>
+<td>When using the OCI provider, specify your User OCID</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>oci.compartmentOCID</code></td>
+<td>When using the OCI provider, specify your Compartment OCID where your DNS Zone is located in.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>oci.privateKey</code></td>
+<td>When using the OCI provider, paste in your RSA private key file for the Oracle API</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>oci.privateKeyFingerprint</code></td>
+<td>When using the OCI provider, put in the fingerprint of your privateKey</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>oci.privateKeyPassphrase</code></td>
+<td>When using the OCI provider and your privateKey has a passphrase, put it in here. (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>oci.secretName</code></td>
+<td>When using the OCI provider, it's the name of the secret containing <code>oci.yaml</code> file.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ovh.consumerKey</code></td>
+<td>When using the OVH provider, specify the existing consumer key. (required when provider=ovh and <code>ovh.secretName</code> is not provided.)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ovh.applicationKey</code></td>
+<td>When using the OVH provider with an existing application, specify the application key. (required when provider=ovh and <code>ovh.secretName</code> is not provided.)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ovh.applicationSecret</code></td>
+<td>When using the OVH provider with an existing application, specify the application secret. (required when provider=ovh and <code>ovh.secretName</code> is not provided.)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ovh.secretName</code></td>
+<td>When using the OVH provider, it's the name of the secret containing <code>ovh_consumer_key</code>, <code>ovh_application_key</code> and <code>ovh_application_secret</code>. Disables usage of other <code>ovh</code>.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>scaleway.scwAccessKey</code></td>
+<td>When using the Scaleway provider, specify an existing access key. (required when provider=scaleway)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>scaleway.scwSecretKey</code></td>
+<td>When using the Scaleway provider, specify an existing secret key. (required when provider=scaleway)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rfc2136.host</code></td>
+<td>When using the rfc2136 provider, specify the RFC2136 host (required when provider=rfc2136)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rfc2136.port</code></td>
+<td>When using the rfc2136 provider, specify the RFC2136 port (optional)</td>
+<td><code>53</code></td>
+</tr>
+<tr>
+<td><code>rfc2136.zone</code></td>
+<td>When using the rfc2136 provider, specify the zone (required when provider=rfc2136)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rfc2136.tsigSecret</code></td>
+<td>When using the rfc2136 provider, specify the tsig secret to enable security. (do not specify if <code>rfc2136.secretName</code> is provided.) (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rfc2136.secretName</code></td>
+<td>When using the rfc2136 provider, specify the existing secret which contains your tsig secret. Disables the usage of <code>rfc2136.tsigSecret</code> (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rfc2136.tsigSecretAlg</code></td>
+<td>When using the rfc2136 provider, specify the tsig secret to enable security (optional)</td>
+<td><code>hmac-sha256</code></td>
+</tr>
+<tr>
+<td><code>rfc2136.tsigKeyname</code></td>
+<td>When using the rfc2136 provider, specify the tsig keyname to enable security (optional)</td>
+<td><code>externaldns-key</code></td>
+</tr>
+<tr>
+<td><code>rfc2136.tsigAxfr</code></td>
+<td>When using the rfc2136 provider, enable AFXR to enable security (optional)</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>rfc2136.minTTL</code></td>
+<td>When using the rfc2136 provider, specify minimal TTL (in duration format) for records[ns, us, ms, s, m, h], see more <a href="https://golang.org/pkg/time/#ParseDuration">https://golang.org/pkg/time/#ParseDuration</a></td>
+<td><code>0s</code></td>
+</tr>
+<tr>
+<td><code>rfc2136.rfc3645Enabled</code></td>
+<td>When using the rfc2136 provider, extend using RFC3645 to support secure updates over Kerberos with GSS-TSIG</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>rfc2136.kerberosConfig</code></td>
+<td>When using the rfc2136 provider with rfc3645Enabled, the contents of a configuration file for krb5 (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rfc2136.kerberosUsername</code></td>
+<td>When using the rfc2136 provider with rfc3645Enabled, specify the username to authenticate with (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rfc2136.kerberosPassword</code></td>
+<td>When using the rfc2136 provider with rfc3645Enabled, specify the password to authenticate with (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rfc2136.kerberosRealm</code></td>
+<td>When using the rfc2136 provider with rfc3645Enabled, specify the realm to authenticate to (required when provider=rfc2136 and rfc2136.rfc3645Enabled=true)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>pdns.apiUrl</code></td>
+<td>When using the PowerDNS provider, specify the API URL of the server.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>pdns.apiPort</code></td>
+<td>When using the PowerDNS provider, specify the API port of the server.</td>
+<td><code>8081</code></td>
+</tr>
+<tr>
+<td><code>pdns.apiKey</code></td>
+<td>When using the PowerDNS provider, specify the API key of the server.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>pdns.secretName</code></td>
+<td>When using the PowerDNS provider, specify as secret name containing the API Key</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>transip.account</code></td>
+<td>When using the TransIP provider, specify the account name.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>transip.apiKey</code></td>
+<td>When using the TransIP provider, specify the API key to use.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>vinyldns.host</code></td>
+<td>When using the VinylDNS provider, specify the VinylDNS API host.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>vinyldns.accessKey</code></td>
+<td>When using the VinylDNS provider, specify the Access Key to use.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>vinyldns.secretKey</code></td>
+<td>When using the VinylDNS provider, specify the Secret key to use.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>domainFilters</code></td>
+<td>Limit possible target zones by domain suffixes (optional)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>excludeDomains</code></td>
+<td>Exclude subdomains (optional)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>regexDomainFilter</code></td>
+<td>Limit possible target zones by regex domain suffixes (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>regexDomainExclusion</code></td>
+<td>Exclude subdomains by using regex pattern (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>zoneNameFilters</code></td>
+<td>Filter target zones by zone domain (optional)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>zoneIdFilters</code></td>
+<td>Limit possible target zones by zone id (optional)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>annotationFilter</code></td>
+<td>Filter sources managed by external-dns via annotation using label selector (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>labelFilter</code></td>
+<td>Select sources managed by external-dns using label selector (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>dryRun</code></td>
+<td>When enabled, prints DNS record changes rather than actually performing them (optional)</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>triggerLoopOnEvent</code></td>
+<td>When enabled, triggers run loop on create/update/delete events in addition to regular interval (optional)</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>interval</code></td>
+<td>Interval update period to use</td>
+<td><code>1m</code></td>
+</tr>
+<tr>
+<td><code>logLevel</code></td>
+<td>Verbosity of the logs (options: panic, debug, info, warning, error, fatal, trace)</td>
+<td><code>info</code></td>
+</tr>
+<tr>
+<td><code>logFormat</code></td>
+<td>Which format to output logs in (options: text, json)</td>
+<td><code>text</code></td>
+</tr>
+<tr>
+<td><code>policy</code></td>
+<td>Modify how DNS records are synchronized between sources and providers (options: sync, upsert-only )</td>
+<td><code>upsert-only</code></td>
+</tr>
+<tr>
+<td><code>registry</code></td>
+<td>Registry method to use (options: txt, aws-sd, noop)</td>
+<td><code>txt</code></td>
+</tr>
+<tr>
+<td><code>txtPrefix</code></td>
+<td>When using the TXT registry, a prefix for ownership records that avoids collision with CNAME entries (optional)<CNAME record> (Mutual exclusive with txt-suffix)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>txtSuffix</code></td>
+<td>When using the TXT registry, a suffix for ownership records that avoids collision with CNAME entries (optional)<CNAME record>.suffix (Mutual exclusive with txt-prefix)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>txtOwnerId</code></td>
+<td>A name that identifies this instance of ExternalDNS. Currently used by registry types: txt &amp; aws-sd (optional)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>forceTxtOwnerId</code></td>
+<td>(backward compatibility) When using the non-TXT registry, it will pass the value defined by <code>txtOwnerId</code> down to the application (optional)</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>extraArgs</code></td>
+<td>Extra arguments to be passed to external-dns</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>extraEnvVars</code></td>
+<td>An array to add extra env vars</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>extraEnvVarsCM</code></td>
+<td>ConfigMap containing extra env vars</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>extraEnvVarsSecret</code></td>
+<td>Secret containing extra env vars (in case of sensitive data)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>lifecycleHooks</code></td>
+<td>Override default etcd container hooks</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>schedulerName</code></td>
+<td>Alternative scheduler</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>replicaCount</code></td>
+<td>Desired number of ExternalDNS replicas</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>nodeAffinityPreset.key</code></td>
+<td>Node label key to match Ignored if <code>affinity</code> is set.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>affinity</code> is set.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>affinity</code></td>
+<td>Affinity for pod assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>nodeSelector</code></td>
+<td>Node labels for pod assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>tolerations</code></td>
+<td>Tolerations for pod assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>podAnnotations</code></td>
+<td>Additional annotations to apply to the pod.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>podLabels</code></td>
+<td>Additional labels to be added to pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>priorityClassName</code></td>
+<td>priorityClassName</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>secretAnnotations</code></td>
+<td>Additional annotations to apply to the secret</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>crd.create</code></td>
+<td>Install and use the integrated DNSEndpoint CRD</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>crd.apiversion</code></td>
+<td>Sets the API version for the CRD to watch</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>crd.kind</code></td>
+<td>Sets the kind for the CRD to watch</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.enabled</code></td>
+<td>Whether to create Service resource or not</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>service.type</code></td>
+<td>Kubernetes Service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>service.ports.http</code></td>
+<td>ExternalDNS client port</td>
+<td><code>7979</code></td>
+</tr>
+<tr>
+<td><code>service.nodePorts.http</code></td>
+<td>Port to bind to for NodePort service type (client port)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.clusterIP</code></td>
+<td>IP address to assign to service</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.externalIPs</code></td>
+<td>Service external IP addresses</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>service.loadBalancerIP</code></td>
+<td>IP address to assign to load balancer (if supported)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.loadBalancerSourceRanges</code></td>
+<td>List of IP CIDRs allowed access to load balancer (if supported)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>service.externalTrafficPolicy</code></td>
+<td>Enable client source IP preservation</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>service.extraPorts</code></td>
+<td>Extra ports to expose in the service (normally used with the <code>sidecar</code> value)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>service.annotations</code></td>
+<td>Annotations to add to service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>service.labels</code></td>
+<td>Provide any additional labels which may be required.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>service.sessionAffinity</code></td>
+<td>Session Affinity for Kubernetes service, can be "None" or "ClientIP"</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.create</code></td>
+<td>Determine whether a Service Account should be created or it should reuse a exiting one.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.name</code></td>
+<td>ServiceAccount to use. A name is generated using the external-dns.fullname template if it is not set</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.annotations</code></td>
+<td>Additional Service Account annotations</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.automountServiceAccountToken</code></td>
+<td>Automount API credentials for a service account.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.labels</code></td>
+<td>Additional labels to be included on the service account</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>rbac.create</code></td>
+<td>Whether to create &amp; use RBAC resources or not</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>rbac.clusterRole</code></td>
+<td>Whether to create Cluster Role. When set to false creates a Role in <code>namespace</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>rbac.apiVersion</code></td>
+<td>Version of the RBAC API</td>
+<td><code>v1</code></td>
+</tr>
+<tr>
+<td><code>rbac.pspEnabled</code></td>
+<td>Whether to create a PodSecurityPolicy. WARNING: PodSecurityPolicy is deprecated in Kubernetes v1.21 or later, unavailable in v1.25 or later</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>containerSecurityContext</code></td>
+<td>Security context for the container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>podSecurityContext.enabled</code></td>
+<td>Enable pod security context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>podSecurityContext.fsGroup</code></td>
+<td>Group ID for the container</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>podSecurityContext.runAsUser</code></td>
+<td>User ID for the container</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>resources.limits</code></td>
+<td>The resources limits for the container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>resources.requests</code></td>
+<td>The requested resources for the container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.enabled</code></td>
+<td>Enable livenessProbe</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.enabled</code></td>
+<td>Enable readinessProbe</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.enabled</code></td>
+<td>Enable startupProbe</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>customLivenessProbe</code></td>
+<td>Override default liveness probe</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>customReadinessProbe</code></td>
+<td>Override default readiness probe</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>customStartupProbe</code></td>
+<td>Override default startup probe</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>extraVolumes</code></td>
+<td>A list of volumes to be added to the pod</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>extraVolumeMounts</code></td>
+<td>A list of volume mounts to be added to the pod</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>podDisruptionBudget</code></td>
+<td>Configure PodDisruptionBudget</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.enabled</code></td>
+<td>Enable prometheus to access external-dns metrics endpoint</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.podAnnotations</code></td>
+<td>Annotations for enabling prometheus to access the metrics endpoint</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.enabled</code></td>
+<td>Create ServiceMonitor object</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.namespace</code></td>
+<td>Namespace in which Prometheus is running</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.interval</code></td>
+<td>Interval at which metrics should be scraped</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.scrapeTimeout</code></td>
+<td>Timeout after which the scrape is ended</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.selector</code></td>
+<td>Additional labels for ServiceMonitor object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.metricRelabelings</code></td>
+<td>Specify Metric Relabelings to add to the scrape endpoint</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.relabelings</code></td>
+<td>Prometheus relabeling rules</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.honorLabels</code></td>
+<td>Specify honorLabels parameter to add the scrape endpoint</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.labels</code></td>
+<td>Used to pass Labels that are required by the installed Prometheus Operator</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.jobLabel</code></td>
+<td>The name of the label on the target service to use as the job name in prometheus.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.googlePodMonitor.enabled</code></td>
+<td>Create Google Managed Prometheus PodMonitoring object</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.googlePodMonitor.namespace</code></td>
+<td>Namespace in which PodMonitoring created</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.googlePodMonitor.interval</code></td>
+<td>Interval at which metrics should be scraped by Google Managed Prometheus</td>
+<td><code>60s</code></td>
+</tr>
+<tr>
+<td><code>metrics.googlePodMonitor.endpoint</code></td>
+<td>The endpoint for Google Managed Prometheus scraping the metrics</td>
+<td><code>/metrics</code></td>
+</tr>
+</tbody>
+</table>
+<p>Specify each parameter using the <code>--set key=value[,key=value]</code> argument to <code>helm install</code>. For example,</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="go">helm install my-release \</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="go">  --set provider=aws bitnami/external-dns</span>
+</span></code></pre></div>
+<p>Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">helm install my-release -f values.yaml bitnami/external-dns</span>
+</span></code></pre></div>
+<blockquote>
+<p><strong>Tip</strong>: You can use the default <a href="values.yaml">values.yaml</a></p>
+</blockquote>
+<h2 id="configuration-and-installation-details">Configuration and installation details<a class="headerlink" href="#configuration-and-installation-details" title="Permanent link">&para;</a></h2>
+<h3 id="rolling-vs-immutable-tags"><a href="https://docs.bitnami.com/containers/how-to/understand-rolling-tags-containers/">Rolling VS Immutable tags</a><a class="headerlink" href="#rolling-vs-immutable-tags" title="Permanent link">&para;</a></h3>
+<p>It is strongly recommended to use immutable tags in a production environment. This ensures your deployment does not change automatically if the same tag is updated with a different image.</p>
+<p>Bitnami will release a new chart updating its containers if a new version of the main container, significant changes, or critical vulnerabilities exist.</p>
+<h3 id="setting-pods-affinity">Setting Pod's affinity<a class="headerlink" href="#setting-pods-affinity" title="Permanent link">&para;</a></h3>
+<p>This chart allows you to set your custom affinity using the <code>affinity</code> parameter. Find more information about Pod's affinity in the <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity">kubernetes documentation</a>.</p>
+<p>As an alternative, you can use of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the <a href="https://github.com/bitnami/charts/tree/main/bitnami/common#affinities">bitnami/common</a> chart. To do so, set the <code>podAffinityPreset</code>, <code>podAntiAffinityPreset</code>, or <code>nodeAffinityPreset</code> parameters.</p>
+<h3 id="using-irsa">Using IRSA<a class="headerlink" href="#using-irsa" title="Permanent link">&para;</a></h3>
+<p>If you are deploying to AWS EKS and you want to leverage <a href="https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html">IRSA</a>. You will need to override <code>fsGroup</code> and <code>runAsUser</code> with <code>65534</code>(nfsnobody) and <code>0</code> respectively. Otherwise service account token will not be properly mounted.
+You can use the following arguments:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="go">--set podSecurityContext.fsGroup=65534 --set podSecurityContext.runAsUser=0</span>
+</span></code></pre></div>
+<h2 id="tutorials">Tutorials<a class="headerlink" href="#tutorials" title="Permanent link">&para;</a></h2>
+<p>Find information about the requirements for each DNS provider on the link below:</p>
+<ul>
+<li><a href="https://github.com/kubernetes-sigs/external-dns/tree/master/docs/tutorials">ExternalDNS Tutorials</a></li>
+</ul>
+<p>For instance, to install ExternalDNS on AWS, you need to:</p>
+<ul>
+<li>Provide the K8s worker node which runs the cluster autoscaler with a minimum IAM policy (check <a href="https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md#iam-permissions">IAM permissions docs</a> for more information).</li>
+<li>Setup a hosted zone on Route53 and annotate the Hosted Zone ID and its associated "nameservers" as described on <a href="https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md#set-up-a-hosted-zone">these docs</a>.</li>
+<li>Install ExternalDNS chart using the command below:</li>
+</ul>
+<blockquote>
+<p>Note: replace the placeholder HOSTED_ZONE_IDENTIFIER and HOSTED_ZONE_NAME, with your hosted zoned identifier and name, respectively.</p>
+</blockquote>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">helm install my-release \</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="go">  --set provider=aws \</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="go">  --set aws.zoneType=public \</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="go">  --set txtOwnerId=HOSTED_ZONE_IDENTIFIER \</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="go">  --set domainFilters[0]=HOSTED_ZONE_NAME \</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="go">  bitnami/external-dns</span>
+</span></code></pre></div>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p>Find more information about how to deal with common errors related to Bitnami's Helm charts in <a href="https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues">this troubleshooting guide</a>.</p>
+<h2 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">&para;</a></h2>
+<h3 id="to-600">To 6.0.0<a class="headerlink" href="#to-600" title="Permanent link">&para;</a></h3>
+<p>Some of the chart values were changed to adapt to the latest Bitnami standards. More specifically:</p>
+<ul>
+<li><code>containerPort</code> was changed to <code>containerPorts.http</code></li>
+<li><code>service.port</code> was changed to <code>service.ports.http</code></li>
+</ul>
+<p>No issues should be expected when upgrading.</p>
+<h3 id="to-500">To 5.0.0<a class="headerlink" href="#to-500" title="Permanent link">&para;</a></h3>
+<p>The CRD was updated according to the latest changes in the upstream project. As a consequence, the CRD API version was moved from <code>apiextensions.k8s.io/v1beta1</code> to <code>apiextensions.k8s.io/v1</code>. If you deployed the Helm Chart using <code>crd.create=true</code> you need to manually delete the old CRD before upgrading the release.</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="go">kubectl delete crd dnsendpoints.externaldns.k8s.io</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="go">helm upgrade my-release -f my-values.yaml</span>
+</span></code></pre></div>
+<h3 id="to-430">To 4.3.0<a class="headerlink" href="#to-430" title="Permanent link">&para;</a></h3>
+<p>This version also introduces <code>bitnami/common</code>, a <a href="https://helm.sh/docs/topics/library_charts/#helm">library chart</a> as a dependency. More documentation about this new utility could be found <a href="https://github.com/bitnami/charts/tree/main/bitnami/common#bitnami-common-library-chart">here</a>. Please, make sure that you have updated thechart dependencies before executing any upgrade.</p>
+<h3 id="to-400">To 4.0.0<a class="headerlink" href="#to-400" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/helm/charts#status-of-the-project">On November 13, 2020, Helm v2 support was formally finished</a>, this major version is the result of the required changes applied to the Helm Chart to be able to incorporate the different features added in Helm v3 and to be consistent with the Helm project itself regarding the Helm v2 EOL.</p>
+<h4 id="what-changes-were-introduced-in-this-major-version">What changes were introduced in this major version?<a class="headerlink" href="#what-changes-were-introduced-in-this-major-version" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Previous versions of this Helm Chart use <code>apiVersion: v1</code> (installable by both Helm 2 and 3), this Helm Chart was updated to <code>apiVersion: v2</code> (installable by Helm 3 only). <a href="https://helm.sh/docs/topics/charts/#the-apiversion-field">Here</a> you can find more information about the <code>apiVersion</code> field.</li>
+<li>The different fields present in the <em>Chart.yaml</em> file has been ordered alphabetically in a homogeneous way for all the Bitnami Helm Charts</li>
+</ul>
+<h4 id="considerations-when-upgrading-to-this-version">Considerations when upgrading to this version<a class="headerlink" href="#considerations-when-upgrading-to-this-version" title="Permanent link">&para;</a></h4>
+<ul>
+<li>If you want to upgrade to this version from a previous one installed with Helm v3, you shouldn't face any issues</li>
+<li>If you want to upgrade to this version using Helm v2, this scenario is not supported as this version doesn't support Helm v2 anymore</li>
+<li>If you installed the previous version with Helm v2 and wants to upgrade to this version with Helm v3, please refer to the <a href="https://helm.sh/docs/topics/v2_v3_migration/#migration-use-cases">official Helm documentation</a> about migrating from Helm v2 to v3</li>
+</ul>
+<h4 id="useful-links">Useful links<a class="headerlink" href="#useful-links" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="https://docs.bitnami.com/tutorials/resolve-helm2-helm3-post-migration-issues/">https://docs.bitnami.com/tutorials/resolve-helm2-helm3-post-migration-issues/</a></li>
+<li><a href="https://helm.sh/docs/topics/v2_v3_migration/">https://helm.sh/docs/topics/v2_v3_migration/</a></li>
+<li><a href="https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/">https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/</a></li>
+</ul>
+<h3 id="to-300">To 3.0.0<a class="headerlink" href="#to-300" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The parameters below are renamed:</li>
+<li><code>rbac.serviceAccountCreate</code> -&gt; <code>serviceAccount.create</code></li>
+<li><code>rbac.serviceAccountName</code> -&gt; <code>serviceAccount.name</code></li>
+<li><code>rbac.serviceAccountAnnotations</code> -&gt; <code>serviceAccount.annotations</code></li>
+<li>It is now possible to create serviceAccount, clusterRole and clusterRoleBinding manually and give the serviceAccount to the chart.</li>
+</ul>
+<h3 id="to-200">To 2.0.0<a class="headerlink" href="#to-200" title="Permanent link">&para;</a></h3>
+<p>Backwards compatibility is not guaranteed unless you modify the labels used on the chart's deployments.
+Use the workaround below to upgrade from versions previous to 1.0.0. The following example assumes that the release name is <code>my-release</code>:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="go">kubectl delete deployment my-release-external-dns</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="go">helm upgrade my-release bitnami/external-dns</span>
+</span></code></pre></div>
+<p>Other mayor changes included in this major version are:</p>
+<ul>
+<li>Default image changes from <code>registry.opensource.zalan.do/teapot/external-dns</code> to <code>bitnami/external-dns</code>.</li>
+<li>The parameters below are renamed:</li>
+<li><code>aws.secretKey</code> -&gt; <code>aws.credentials.secretKey</code></li>
+<li><code>aws.accessKey</code> -&gt; <code>aws.credentials.accessKey</code></li>
+<li><code>aws.credentialsPath</code> -&gt; <code>aws.credentials.mountPath</code></li>
+<li><code>designate.customCA.directory</code> -&gt; <code>designate.customCA.mountPath</code></li>
+<li>Support to Prometheus metrics is added.</li>
+</ul>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<p>Copyright &copy; 2023 VMware, Inc.</p>
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../etcd/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Etcd" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  上一页
+                </span>
+                Etcd
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../flink/" class="md-footer__link md-footer__link--next" aria-label="下一页: Flink" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  下一页
+                </span>
+                Flink
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>

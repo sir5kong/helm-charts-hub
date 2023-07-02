@@ -1,0 +1,5523 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../commonapp/">
+      
+      
+        <link rel="next" href="../kafka/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>ingress-nginx - Helm Charts Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ingress-nginx" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Helm Charts Hub" class="md-header__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Helm Charts Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ingress-nginx
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Helm Charts Hub
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../chart-list/" class="md-tabs__link">
+      Chart 列表
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../bitnami/" class="md-tabs__link">
+        Bitnami
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../grafana/" class="md-tabs__link">
+        Grafana
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ingress-nginx/" class="md-tabs__link">
+        Ingress nginx
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../prometheus-community/" class="md-tabs__link">
+        Prometheus community
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Sir5kong
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Helm Charts Hub" class="md-nav__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Helm Charts Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Helm Charts Hub
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chart-list/" class="md-nav__link">
+        Chart 列表
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../bitnami/">Bitnami</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Bitnami" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Bitnami
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/airflow/" class="md-nav__link">
+        Airflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/apache/" class="md-nav__link">
+        Apache
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/apisix/" class="md-nav__link">
+        Apisix
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/appsmith/" class="md-nav__link">
+        Appsmith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/argo-cd/" class="md-nav__link">
+        Argo cd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/argo-workflows/" class="md-nav__link">
+        Argo workflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/aspnet-core/" class="md-nav__link">
+        Aspnet core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/cassandra/" class="md-nav__link">
+        Cassandra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/cert-manager/" class="md-nav__link">
+        Cert manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/clickhouse/" class="md-nav__link">
+        Clickhouse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/common/" class="md-nav__link">
+        Bitnami Common Library Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/concourse/" class="md-nav__link">
+        Concourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/consul/" class="md-nav__link">
+        Consul
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/contour/" class="md-nav__link">
+        Contour
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/discourse/" class="md-nav__link">
+        Discourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/dokuwiki/" class="md-nav__link">
+        Dokuwiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/drupal/" class="md-nav__link">
+        Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/ejbca/" class="md-nav__link">
+        Ejbca
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/elasticsearch/" class="md-nav__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/etcd/" class="md-nav__link">
+        Etcd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/external-dns/" class="md-nav__link">
+        External dns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/flink/" class="md-nav__link">
+        Flink
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/fluent-bit/" class="md-nav__link">
+        Fluent bit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/fluentd/" class="md-nav__link">
+        Fluentd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/flux/" class="md-nav__link">
+        Flux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/ghost/" class="md-nav__link">
+        Ghost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/gitea/" class="md-nav__link">
+        Gitea
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/grafana-loki/" class="md-nav__link">
+        Grafana loki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/grafana-mimir/" class="md-nav__link">
+        Grafana mimir
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/grafana-operator/" class="md-nav__link">
+        Grafana operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/grafana-tempo/" class="md-nav__link">
+        Grafana tempo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/grafana/" class="md-nav__link">
+        Grafana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/haproxy/" class="md-nav__link">
+        Haproxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/harbor/" class="md-nav__link">
+        Harbor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/influxdb/" class="md-nav__link">
+        Influxdb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/jaeger/" class="md-nav__link">
+        Jaeger
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/jasperreports/" class="md-nav__link">
+        Jasperreports
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/jenkins/" class="md-nav__link">
+        Jenkins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/joomla/" class="md-nav__link">
+        Joomla
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/jupyterhub/" class="md-nav__link">
+        Jupyterhub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/kafka/" class="md-nav__link">
+        Kafka
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/keycloak/" class="md-nav__link">
+        Keycloak
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/kiam/" class="md-nav__link">
+        Kiam
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/kibana/" class="md-nav__link">
+        Kibana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/kong/" class="md-nav__link">
+        Kong
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/kube-prometheus/" class="md-nav__link">
+        Kube prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/kube-state-metrics/" class="md-nav__link">
+        Kube state metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/kubeapps/" class="md-nav__link">
+        Kubeapps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/kubernetes-event-exporter/" class="md-nav__link">
+        Kubernetes event exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/logstash/" class="md-nav__link">
+        Logstash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/magento/" class="md-nav__link">
+        Magento
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/mariadb-galera/" class="md-nav__link">
+        Mariadb galera
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/mariadb/" class="md-nav__link">
+        Mariadb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/mastodon/" class="md-nav__link">
+        Mastodon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/matomo/" class="md-nav__link">
+        Matomo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/mediawiki/" class="md-nav__link">
+        Mediawiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/memcached/" class="md-nav__link">
+        Memcached
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/metallb/" class="md-nav__link">
+        Metallb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/metrics-server/" class="md-nav__link">
+        Metrics server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/minio/" class="md-nav__link">
+        Minio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/mongodb-sharded/" class="md-nav__link">
+        Mongodb sharded
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/mongodb/" class="md-nav__link">
+        Mongodb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/moodle/" class="md-nav__link">
+        Moodle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/multus-cni/" class="md-nav__link">
+        Multus cni
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/mxnet/" class="md-nav__link">
+        Mxnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/mysql/" class="md-nav__link">
+        Mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/nats/" class="md-nav__link">
+        Nats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/nginx-ingress-controller/" class="md-nav__link">
+        Nginx ingress controller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/nginx/" class="md-nav__link">
+        Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/node-exporter/" class="md-nav__link">
+        Node exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/oauth2-proxy/" class="md-nav__link">
+        Oauth2 proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/odoo/" class="md-nav__link">
+        Odoo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/opencart/" class="md-nav__link">
+        Opencart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/osclass/" class="md-nav__link">
+        Osclass
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/parse/" class="md-nav__link">
+        Parse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/phpbb/" class="md-nav__link">
+        Phpbb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/phpmyadmin/" class="md-nav__link">
+        Phpmyadmin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/pinniped/" class="md-nav__link">
+        Pinniped
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/postgresql-ha/" class="md-nav__link">
+        Postgresql ha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/postgresql/" class="md-nav__link">
+        Postgresql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/prestashop/" class="md-nav__link">
+        Prestashop
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/rabbitmq-cluster-operator/" class="md-nav__link">
+        Rabbitmq cluster operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/rabbitmq/" class="md-nav__link">
+        Rabbitmq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/redis-cluster/" class="md-nav__link">
+        Redis cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/redmine/" class="md-nav__link">
+        Redmine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/schema-registry/" class="md-nav__link">
+        Schema registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/sealed-secrets/" class="md-nav__link">
+        Sealed secrets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/solr/" class="md-nav__link">
+        Solr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/sonarqube/" class="md-nav__link">
+        Sonarqube
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/spark/" class="md-nav__link">
+        Spark
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/spring-cloud-dataflow/" class="md-nav__link">
+        Spring cloud dataflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/suitecrm/" class="md-nav__link">
+        Suitecrm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/supabase/" class="md-nav__link">
+        Supabase
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/tensorflow-resnet/" class="md-nav__link">
+        Tensorflow resnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/thanos/" class="md-nav__link">
+        Thanos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/tomcat/" class="md-nav__link">
+        Tomcat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/vault/" class="md-nav__link">
+        Vault
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/wavefront-hpa-adapter/" class="md-nav__link">
+        Wavefront hpa adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/wavefront-prometheus-storage-adapter/" class="md-nav__link">
+        Wavefront prometheus storage adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/whereabouts/" class="md-nav__link">
+        Whereabouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/wildfly/" class="md-nav__link">
+        Wildfly
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/wordpress/" class="md-nav__link">
+        Wordpress
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bitnami/zookeeper/" class="md-nav__link">
+        Zookeeper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../grafana/">Grafana</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Grafana" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Grafana
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/agent-operator/" class="md-nav__link">
+        grafana-agent-operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-logs-simple/" class="md-nav__link">
+        enterprise-logs-simple
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-logs/" class="md-nav__link">
+        Grafana Enterprise Logs Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-metrics/" class="md-nav__link">
+        Grafana Enterprise Metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/fluent-bit/" class="md-nav__link">
+        Fluent Bit Loki chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/grafana-agent/" class="md-nav__link">
+        Grafana Agent chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/grafana/" class="md-nav__link">
+        Grafana Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-canary/" class="md-nav__link">
+        loki-canary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-distributed/" class="md-nav__link">
+        loki-distributed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-stack/" class="md-nav__link">
+        Loki-Stack Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/mimir-distributed/" class="md-nav__link">
+        Notice of relocation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/promtail/" class="md-nav__link">
+        promtail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/rollout-operator/" class="md-nav__link">
+        Grafana rollout-operator Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/synthetic-monitoring-agent/" class="md-nav__link">
+        synthetic-monitoring-agent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo-distributed/" class="md-nav__link">
+        tempo-distributed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo-vulture/" class="md-nav__link">
+        tempo-vulture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo/" class="md-nav__link">
+        tempo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../ingress-nginx/">Ingress nginx</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Ingress nginx" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Ingress nginx
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ingress-nginx/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../prometheus-community/">Prometheus community</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Prometheus community" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Prometheus community
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager-snmp-notifier/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager/" class="md-nav__link">
+        Alertmanager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/jiralert/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-prometheus-stack/" class="md-nav__link">
+        kube-prometheus-stack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-state-metrics/" class="md-nav__link">
+        kube-state-metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prom-label-proxy/" class="md-nav__link">
+        prom-label-proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-adapter/" class="md-nav__link">
+        Prometheus Adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-blackbox-exporter/" class="md-nav__link">
+        Prometheus Blackbox Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-cloudwatch-exporter/" class="md-nav__link">
+        Prometheus Cloudwatch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-conntrack-stats-exporter/" class="md-nav__link">
+        Conntrack Stats Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-consul-exporter/" class="md-nav__link">
+        Prometheus Consul Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-couchdb-exporter/" class="md-nav__link">
+        prometheus-couchdb-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-druid-exporter/" class="md-nav__link">
+        Prometheus Druid Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-elasticsearch-exporter/" class="md-nav__link">
+        Elasticsearch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-fastly-exporter/" class="md-nav__link">
+        Prometheus Fastly Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-json-exporter/" class="md-nav__link">
+        prometheus-json-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-kafka-exporter/" class="md-nav__link">
+        prometheus-kafka-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mongodb-exporter/" class="md-nav__link">
+        Prometheus MongoDB Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mysql-exporter/" class="md-nav__link">
+        Prometheus Mysql Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nats-exporter/" class="md-nav__link">
+        Prometheus NATS Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nginx-exporter/" class="md-nav__link">
+        prometheus-nginx-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-node-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-admission-webhook/" class="md-nav__link">
+        Prometheus Operator Admission Webhook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-crds/" class="md-nav__link">
+        Prometheus Operator CRDs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pgbouncer-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingdom-exporter/" class="md-nav__link">
+        Prometheus Pingdom Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingmesh-exporter/" class="md-nav__link">
+        Prometheus Pingmesh Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-postgres-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pushgateway/" class="md-nav__link">
+        Prometheus Pushgateway
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-rabbitmq-exporter/" class="md-nav__link">
+        prometheus-rabbitmq-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-redis-exporter/" class="md-nav__link">
+        prometheus-redis-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-smartctl-exporter/" class="md-nav__link">
+        Prometheus smartctl Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-snmp-exporter/" class="md-nav__link">
+        Prometheus SNMP Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-stackdriver-exporter/" class="md-nav__link">
+        Stackdriver Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-statsd-exporter/" class="md-nav__link">
+        prometheus-statsd-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-to-sd/" class="md-nav__link">
+        prometheus-to-sd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-windows-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Sir5kong</a>
+          
+            <label for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Sir5kong" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Sir5kong
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commonapp/" class="md-nav__link">
+        commonapp helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          ingress-nginx
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        ingress-nginx
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    源码链接
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-repo-info" class="md-nav__link">
+    Get Repo Info
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-chart" class="md-nav__link">
+    Install Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstall-chart" class="md-nav__link">
+    Uninstall Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading-chart" class="md-nav__link">
+    Upgrading Chart
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading Chart">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#migrating-from-stablenginx-ingress" class="md-nav__link">
+    Migrating from stable/nginx-ingress
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#poddisruptionbudget" class="md-nav__link">
+    PodDisruptionBudget
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheus-metrics" class="md-nav__link">
+    Prometheus Metrics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingress-nginx-nginx_status-pagestats-server" class="md-nav__link">
+    ingress-nginx nginx_status page/stats server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#externaldns-service-configuration" class="md-nav__link">
+    ExternalDNS Service Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-l7-elb-with-ssl-termination" class="md-nav__link">
+    AWS L7 ELB with SSL Termination
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-internal-load-balancer" class="md-nav__link">
+    Additional Internal Load Balancer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingress-admission-webhooks" class="md-nav__link">
+    Ingress Admission Webhooks
+  </a>
+  
+    <nav class="md-nav" aria-label="Ingress Admission Webhooks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-the-chart-configures-the-hooks" class="md-nav__link">
+    How the Chart Configures the Hooks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternatives" class="md-nav__link">
+    Alternatives
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm-error-when-upgrading-specclusterip-invalid-value" class="md-nav__link">
+    Helm Error When Upgrading: spec.clusterIP: Invalid value: ""
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#values" class="md-nav__link">
+    Values
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kafka/" class="md-nav__link">
+        Kafka helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx/" class="md-nav__link">
+        nginx helm chart
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    源码链接
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-repo-info" class="md-nav__link">
+    Get Repo Info
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-chart" class="md-nav__link">
+    Install Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstall-chart" class="md-nav__link">
+    Uninstall Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading-chart" class="md-nav__link">
+    Upgrading Chart
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading Chart">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#migrating-from-stablenginx-ingress" class="md-nav__link">
+    Migrating from stable/nginx-ingress
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#poddisruptionbudget" class="md-nav__link">
+    PodDisruptionBudget
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheus-metrics" class="md-nav__link">
+    Prometheus Metrics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingress-nginx-nginx_status-pagestats-server" class="md-nav__link">
+    ingress-nginx nginx_status page/stats server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#externaldns-service-configuration" class="md-nav__link">
+    ExternalDNS Service Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-l7-elb-with-ssl-termination" class="md-nav__link">
+    AWS L7 ELB with SSL Termination
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-internal-load-balancer" class="md-nav__link">
+    Additional Internal Load Balancer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingress-admission-webhooks" class="md-nav__link">
+    Ingress Admission Webhooks
+  </a>
+  
+    <nav class="md-nav" aria-label="Ingress Admission Webhooks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-the-chart-configures-the-hooks" class="md-nav__link">
+    How the Chart Configures the Hooks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternatives" class="md-nav__link">
+    Alternatives
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm-error-when-upgrading-specclusterip-invalid-value" class="md-nav__link">
+    Helm Error When Upgrading: spec.clusterIP: Invalid value: ""
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#values" class="md-nav__link">
+    Values
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<h1 id="ingress-nginx">ingress-nginx<a class="headerlink" href="#ingress-nginx" title="Permanent link">&para;</a></h1>
+<p><a href="https://github.com/kubernetes/ingress-nginx">ingress-nginx</a> Ingress controller for Kubernetes using NGINX as a reverse proxy and load balancer</p>
+<p><img alt="Version: 4.7.1" src="https://img.shields.io/badge/Version-4.7.1-informational?style=flat-square" /> <img alt="AppVersion: 1.8.1" src="https://img.shields.io/badge/AppVersion-1.8.1-informational?style=flat-square" /></p>
+<p>To use, add <code>ingressClassName: nginx</code> spec field or the <code>kubernetes.io/ingress.class: nginx</code> annotation to your Ingress resources.</p>
+<p>This chart bootstraps an ingress-nginx deployment on a <a href="http://kubernetes.io">Kubernetes</a> cluster using the <a href="https://helm.sh">Helm</a> package manager.</p>
+<h2 id="_1">源码链接<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/kubernetes/ingress-nginx">https://github.com/kubernetes/ingress-nginx</a></p>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
+<p>Kubernetes: <code>&gt;=1.20.0-0</code></p>
+<h2 id="get-repo-info">Get Repo Info<a class="headerlink" href="#get-repo-info" title="Permanent link">&para;</a></h2>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="go">helm repo add ingress-nginx https://helm-charts.itboon.top/sir5kong</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="go">helm repo update</span>
+</span></code></pre></div>
+<h2 id="install-chart">Install Chart<a class="headerlink" href="#install-chart" title="Permanent link">&para;</a></h2>
+<p><strong>Important:</strong> only helm3 is supported</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="go">helm install [RELEASE_NAME] ingress-nginx/ingress-nginx</span>
+</span></code></pre></div>
+<p>The command deploys ingress-nginx on the Kubernetes cluster in the default configuration.</p>
+<p><em>See <a href="#configuration">configuration</a> below.</em></p>
+<p><em>See <a href="https://helm.sh/docs/helm/helm_install/">helm install</a> for command documentation.</em></p>
+<h2 id="uninstall-chart">Uninstall Chart<a class="headerlink" href="#uninstall-chart" title="Permanent link">&para;</a></h2>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">helm uninstall [RELEASE_NAME]</span>
+</span></code></pre></div>
+<p>This removes all the Kubernetes components associated with the chart and deletes the release.</p>
+<p><em>See <a href="https://helm.sh/docs/helm/helm_uninstall/">helm uninstall</a> for command documentation.</em></p>
+<h2 id="upgrading-chart">Upgrading Chart<a class="headerlink" href="#upgrading-chart" title="Permanent link">&para;</a></h2>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="go">helm upgrade [RELEASE_NAME] [CHART] --install</span>
+</span></code></pre></div>
+<p><em>See <a href="https://helm.sh/docs/helm/helm_upgrade/">helm upgrade</a> for command documentation.</em></p>
+<h3 id="migrating-from-stablenginx-ingress">Migrating from stable/nginx-ingress<a class="headerlink" href="#migrating-from-stablenginx-ingress" title="Permanent link">&para;</a></h3>
+<p>There are two main ways to migrate a release from <code>stable/nginx-ingress</code> to <code>ingress-nginx/ingress-nginx</code> chart:</p>
+<ol>
+<li>For Nginx Ingress controllers used for non-critical services, the easiest method is to <a href="#uninstall-chart">uninstall</a> the old release and <a href="#install-chart">install</a> the new one</li>
+<li>For critical services in production that require zero-downtime, you will want to:<ol>
+<li><a href="#install-chart">Install</a> a second Ingress controller</li>
+<li>Redirect your DNS traffic from the old controller to the new controller</li>
+<li>Log traffic from both controllers during this changeover</li>
+<li><a href="#uninstall-chart">Uninstall</a> the old controller once traffic has fully drained from it</li>
+</ol>
+</li>
+</ol>
+<p>Note that there are some different and upgraded configurations between the two charts, described by Rimas Mocevicius from JFrog in the "Upgrading to ingress-nginx Helm chart" section of <a href="https://rimusz.net/migrating-to-ingress-nginx">Migrating from Helm chart nginx-ingress to ingress-nginx</a>. As the <code>ingress-nginx/ingress-nginx</code> chart continues to update, you will want to check current differences by running <a href="#configuration">helm configuration</a> commands on both charts.</p>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>See <a href="https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing">Customizing the Chart Before Installing</a>. To see all configurable options with detailed comments, visit the chart's <a href="./values.yaml">values.yaml</a>, or run these configuration commands:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="go">helm show values ingress-nginx/ingress-nginx</span>
+</span></code></pre></div>
+<h3 id="poddisruptionbudget">PodDisruptionBudget<a class="headerlink" href="#poddisruptionbudget" title="Permanent link">&para;</a></h3>
+<p>Note that the PodDisruptionBudget resource will only be defined if the replicaCount is greater than one,
+else it would make it impossible to evacuate a node. See <a href="https://github.com/helm/charts/issues/7127">gh issue #7127</a> for more info.</p>
+<h3 id="prometheus-metrics">Prometheus Metrics<a class="headerlink" href="#prometheus-metrics" title="Permanent link">&para;</a></h3>
+<p>The Ingress-Nginx Controller can export Prometheus metrics, by setting <code>controller.metrics.enabled</code> to <code>true</code>.</p>
+<p>You can add Prometheus annotations to the metrics service using <code>controller.metrics.service.annotations</code>.
+Alternatively, if you use the Prometheus Operator, you can enable ServiceMonitor creation using <code>controller.metrics.serviceMonitor.enabled</code>. And set <code>controller.metrics.serviceMonitor.additionalLabels.release="prometheus"</code>. "release=prometheus" should match the label configured in the prometheus servicemonitor ( see <code>kubectl get servicemonitor prometheus-kube-prom-prometheus -oyaml -n prometheus</code>)</p>
+<h3 id="ingress-nginx-nginx_status-pagestats-server">ingress-nginx nginx_status page/stats server<a class="headerlink" href="#ingress-nginx-nginx_status-pagestats-server" title="Permanent link">&para;</a></h3>
+<p>Previous versions of this chart had a <code>controller.stats.*</code> configuration block, which is now obsolete due to the following changes in Ingress-Nginx Controller:</p>
+<ul>
+<li>In <a href="https://github.com/kubernetes/ingress-nginx/blob/main/Changelog.md#0161">0.16.1</a>, the vts (virtual host traffic status) dashboard was removed</li>
+<li>In <a href="https://github.com/kubernetes/ingress-nginx/blob/main/Changelog.md#0230">0.23.0</a>, the status page at port 18080 is now a unix socket webserver only available at localhost.
+  You can use <code>curl --unix-socket /tmp/nginx-status-server.sock http://localhost/nginx_status</code> inside the controller container to access it locally, or use the snippet from <a href="https://github.com/kubernetes/ingress-nginx/blob/main/Changelog.md#0230">nginx-ingress changelog</a> to re-enable the http server</li>
+</ul>
+<h3 id="externaldns-service-configuration">ExternalDNS Service Configuration<a class="headerlink" href="#externaldns-service-configuration" title="Permanent link">&para;</a></h3>
+<p>Add an <a href="https://github.com/kubernetes-sigs/external-dns">ExternalDNS</a> annotation to the LoadBalancer service:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">controller</span><span class="p">:</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">service</span><span class="p">:</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">      </span><span class="nt">external-dns.alpha.kubernetes.io/hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-example.com.</span>
+</span></code></pre></div>
+<h3 id="aws-l7-elb-with-ssl-termination">AWS L7 ELB with SSL Termination<a class="headerlink" href="#aws-l7-elb-with-ssl-termination" title="Permanent link">&para;</a></h3>
+<p>Annotate the controller as shown in the <a href="https://github.com/kubernetes/ingress-nginx/blob/ab3a789caae65eec4ad6e3b46b19750b481b6bce/deploy/aws/l7/service-l7.yaml">nginx-ingress l7 patch</a>:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">controller</span><span class="p">:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">service</span><span class="p">:</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nt">targetPorts</span><span class="p">:</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">      </span><span class="nt">http</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">      </span><span class="nt">https</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">      </span><span class="nt">service.beta.kubernetes.io/aws-load-balancer-ssl-cert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:acm:XX-XXXX-X:XXXXXXXXX:certificate/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXX</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">      </span><span class="nt">service.beta.kubernetes.io/aws-load-balancer-backend-protocol</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http&quot;</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">      </span><span class="nt">service.beta.kubernetes.io/aws-load-balancer-ssl-ports</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https&quot;</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">      </span><span class="nt">service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3600&#39;</span>
+</span></code></pre></div>
+<h3 id="additional-internal-load-balancer">Additional Internal Load Balancer<a class="headerlink" href="#additional-internal-load-balancer" title="Permanent link">&para;</a></h3>
+<p>This setup is useful when you need both external and internal load balancers but don't want to have multiple ingress controllers and multiple ingress objects per application.</p>
+<p>By default, the ingress object will point to the external load balancer address, but if correctly configured, you can make use of the internal one if the URL you are looking up resolves to the internal load balancer's URL.</p>
+<p>You'll need to set both the following values:</p>
+<p><code>controller.service.internal.enabled</code>
+<code>controller.service.internal.annotations</code></p>
+<p>If one of them is missing the internal load balancer will not be deployed. Example you may have <code>controller.service.internal.enabled=true</code> but no annotations set, in this case no action will be taken.</p>
+<p><code>controller.service.internal.annotations</code> varies with the cloud service you're using.</p>
+<p>Example for AWS:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">controller</span><span class="p">:</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">service</span><span class="p">:</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nt">internal</span><span class="p">:</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">        </span><span class="c1"># Create internal NLB</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="nt">service.beta.kubernetes.io/aws-load-balancer-scheme</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;internal&quot;</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="c1"># Create internal ELB(Deprecated)</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">        </span><span class="c1"># service.beta.kubernetes.io/aws-load-balancer-internal: &quot;true&quot;</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="c1"># Any other annotation can be declared here.</span>
+</span></code></pre></div>
+<p>Example for GCE:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">controller</span><span class="p">:</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">service</span><span class="p">:</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nt">internal</span><span class="p">:</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">        </span><span class="c1"># Create internal LB. More information: https://cloud.google.com/kubernetes-engine/docs/how-to/internal-load-balancing</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">        </span><span class="c1"># For GKE versions 1.17 and later</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">        </span><span class="nt">networking.gke.io/load-balancer-type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Internal&quot;</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">        </span><span class="c1"># For earlier versions</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">        </span><span class="c1"># cloud.google.com/load-balancer-type: &quot;Internal&quot;</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">        </span><span class="c1"># Any other annotation can be declared here.</span>
+</span></code></pre></div>
+<p>Example for Azure:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">controller</span><span class="p">:</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">service</span><span class="p">:</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">        </span><span class="c1"># Create internal LB</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">        </span><span class="nt">service.beta.kubernetes.io/azure-load-balancer-internal</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="c1"># Any other annotation can be declared here.</span>
+</span></code></pre></div>
+<p>Example for Oracle Cloud Infrastructure:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">controller</span><span class="p">:</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="nt">service</span><span class="p">:</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">        </span><span class="c1"># Create internal LB</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">        </span><span class="nt">service.beta.kubernetes.io/oci-load-balancer-internal</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">        </span><span class="c1"># Any other annotation can be declared here.</span>
+</span></code></pre></div>
+<p>The load balancer annotations of more cloud service providers can be found: <a href="https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer">Internal load balancer</a>.</p>
+<p>An use case for this scenario is having a split-view DNS setup where the public zone CNAME records point to the external balancer URL while the private zone CNAME records point to the internal balancer URL. This way, you only need one ingress kubernetes object.</p>
+<p>Optionally you can set <code>controller.service.loadBalancerIP</code> if you need a static IP for the resulting <code>LoadBalancer</code>.</p>
+<h3 id="ingress-admission-webhooks">Ingress Admission Webhooks<a class="headerlink" href="#ingress-admission-webhooks" title="Permanent link">&para;</a></h3>
+<p>With nginx-ingress-controller version 0.25+, the Ingress-Nginx Controller pod exposes an endpoint that will integrate with the <code>validatingwebhookconfiguration</code> Kubernetes feature to prevent bad ingress from being added to the cluster.
+<strong>This feature is enabled by default since 0.31.0.</strong></p>
+<p>With nginx-ingress-controller in 0.25.* work only with kubernetes 1.14+, 0.26 fix <a href="https://github.com/kubernetes/ingress-nginx/pull/4521">this issue</a></p>
+<h4 id="how-the-chart-configures-the-hooks">How the Chart Configures the Hooks<a class="headerlink" href="#how-the-chart-configures-the-hooks" title="Permanent link">&para;</a></h4>
+<p>A validating and configuration requires the endpoint to which the request is sent to use TLS. It is possible to set up custom certificates to do this, but in most cases, a self-signed certificate is enough. The setup of this component requires some more complex orchestration when using helm. The steps are created to be idempotent and to allow turning the feature on and off without running into helm quirks.</p>
+<ol>
+<li>A pre-install hook provisions a certificate into the same namespace using a format compatible with provisioning using end user certificates. If the certificate already exists, the hook exits.</li>
+<li>The Ingress-Nginx Controller pod is configured to use a TLS proxy container, which will load that certificate.</li>
+<li>Validating and Mutating webhook configurations are created in the cluster.</li>
+<li>A post-install hook reads the CA from the secret created by step 1 and patches the Validating and Mutating webhook configurations. This process will allow a custom CA provisioned by some other process to also be patched into the webhook configurations. The chosen failure policy is also patched into the webhook configurations</li>
+</ol>
+<h4 id="alternatives">Alternatives<a class="headerlink" href="#alternatives" title="Permanent link">&para;</a></h4>
+<p>It should be possible to use <a href="https://github.com/cert-manager/cert-manager">cert-manager/cert-manager</a> if a more complete solution is required.</p>
+<p>You can enable automatic self-signed TLS certificate provisioning via cert-manager by setting the <code>controller.admissionWebhooks.certManager.enabled</code> value to true.</p>
+<p>Please ensure that cert-manager is correctly installed and configured.</p>
+<h3 id="helm-error-when-upgrading-specclusterip-invalid-value">Helm Error When Upgrading: spec.clusterIP: Invalid value: ""<a class="headerlink" href="#helm-error-when-upgrading-specclusterip-invalid-value" title="Permanent link">&para;</a></h3>
+<p>If you are upgrading this chart from a version between 0.31.0 and 1.2.2 then you may get an error like this:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="go">Error: UPGRADE FAILED: Service &quot;?????-controller&quot; is invalid: spec.clusterIP: Invalid value: &quot;&quot;: field is immutable</span>
+</span></code></pre></div>
+<p>Detail of how and why are in <a href="https://github.com/helm/charts/pull/13646">this issue</a> but to resolve this you can set <code>xxxx.service.omitClusterIP</code> to <code>true</code> where <code>xxxx</code> is the service referenced in the error.</p>
+<p>As of version <code>1.26.0</code> of this chart, by simply not providing any clusterIP value, <code>invalid: spec.clusterIP: Invalid value: "": field is immutable</code> will no longer occur since <code>clusterIP: ""</code> will not be rendered.</p>
+<h2 id="values">Values<a class="headerlink" href="#values" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>commonLabels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.addHeaders</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Will add custom headers before sending response traffic to the client according to: <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#add-headers">https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#add-headers</a></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.certManager.admissionCert.duration</td>
+<td>string</td>
+<td><code>""</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.certManager.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.certManager.rootCert.duration</td>
+<td>string</td>
+<td><code>""</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.certificate</td>
+<td>string</td>
+<td><code>"/usr/local/certificates/cert"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.createSecretJob.resources</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.createSecretJob.securityContext.allowPrivilegeEscalation</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.enabled</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.existingPsp</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Use an existing PSP instead of creating one</td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.extraEnvs</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Additional environment variables to set</td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.failurePolicy</td>
+<td>string</td>
+<td><code>"Fail"</code></td>
+<td>Admission Webhook failure policy to use</td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.key</td>
+<td>string</td>
+<td><code>"/usr/local/certificates/key"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.labels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Labels to be added to admission webhooks</td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.namespaceSelector</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.networkPolicyEnabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.objectSelector</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.patch.enabled</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.patch.image.digest</td>
+<td>string</td>
+<td><code>"sha256:543c40fd093964bc9ab509d3e791f9989963021f1e9e4c9c7b6700b02bfb227b"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.patch.image.image</td>
+<td>string</td>
+<td><code>"ingress-nginx/kube-webhook-certgen"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.patch.image.pullPolicy</td>
+<td>string</td>
+<td><code>"IfNotPresent"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.patch.image.registry</td>
+<td>string</td>
+<td><code>"registry.k8s.io"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.patch.image.tag</td>
+<td>string</td>
+<td><code>"v20230407"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.patch.labels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Labels to be added to patch job resources</td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.patch.nodeSelector."kubernetes.io/os"</td>
+<td>string</td>
+<td><code>"linux"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.patch.podAnnotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.patch.priorityClassName</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Provide a priority class name to the webhook patching job #</td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.patch.securityContext.fsGroup</td>
+<td>int</td>
+<td><code>2000</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.patch.securityContext.runAsNonRoot</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.patch.securityContext.runAsUser</td>
+<td>int</td>
+<td><code>2000</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.patch.tolerations</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.patchWebhookJob.resources</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.patchWebhookJob.securityContext.allowPrivilegeEscalation</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.port</td>
+<td>int</td>
+<td><code>8443</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.service.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.service.externalIPs</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.service.loadBalancerSourceRanges</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.service.servicePort</td>
+<td>int</td>
+<td><code>443</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.admissionWebhooks.service.type</td>
+<td>string</td>
+<td><code>"ClusterIP"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.affinity</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Affinity and anti-affinity rules for server scheduling to nodes # Ref: <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity">https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity</a> #</td>
+</tr>
+<tr>
+<td>controller.allowSnippetAnnotations</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>This configuration defines if Ingress Controller should allow users to set their own *-snippet annotations, otherwise this is forbidden / dropped when users add those annotations. Global snippets in ConfigMap are still respected</td>
+</tr>
+<tr>
+<td>controller.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations to be added to the controller Deployment or DaemonSet #</td>
+</tr>
+<tr>
+<td>controller.autoscaling.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.autoscaling.behavior</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.autoscaling.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.autoscaling.maxReplicas</td>
+<td>int</td>
+<td><code>11</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.autoscaling.minReplicas</td>
+<td>int</td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.autoscaling.targetCPUUtilizationPercentage</td>
+<td>int</td>
+<td><code>50</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.autoscaling.targetMemoryUtilizationPercentage</td>
+<td>int</td>
+<td><code>50</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.autoscalingTemplate</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.config</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Will add custom configuration options to Nginx <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/">https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/</a></td>
+</tr>
+<tr>
+<td>controller.configAnnotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations to be added to the controller config configuration configmap.</td>
+</tr>
+<tr>
+<td>controller.configMapNamespace</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Allows customization of the configmap / nginx-configmap namespace; defaults to $(POD_NAMESPACE)</td>
+</tr>
+<tr>
+<td>controller.containerName</td>
+<td>string</td>
+<td><code>"controller"</code></td>
+<td>Configures the controller container name</td>
+</tr>
+<tr>
+<td>controller.containerPort</td>
+<td>object</td>
+<td><code>{"http":80,"https":443}</code></td>
+<td>Configures the ports that the nginx-controller listens on</td>
+</tr>
+<tr>
+<td>controller.customTemplate.configMapKey</td>
+<td>string</td>
+<td><code>""</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.customTemplate.configMapName</td>
+<td>string</td>
+<td><code>""</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.dnsConfig</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Optionally customize the pod dnsConfig.</td>
+</tr>
+<tr>
+<td>controller.dnsPolicy</td>
+<td>string</td>
+<td><code>"ClusterFirst"</code></td>
+<td>Optionally change this to ClusterFirstWithHostNet in case you have 'hostNetwork: true'. By default, while using host network, name resolution uses the host's DNS. If you wish nginx-controller to keep resolving names inside the k8s network, use ClusterFirstWithHostNet.</td>
+</tr>
+<tr>
+<td>controller.electionID</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Election ID to use for status update, by default it uses the controller name combined with a suffix of 'leader'</td>
+</tr>
+<tr>
+<td>controller.enableMimalloc</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>Enable mimalloc as a drop-in replacement for malloc. # ref: <a href="https://github.com/microsoft/mimalloc">https://github.com/microsoft/mimalloc</a> #</td>
+</tr>
+<tr>
+<td>controller.enableTopologyAwareRouting</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>This configuration enables Topology Aware Routing feature, used together with service annotation service.kubernetes.io/topology-aware-hints="auto" Defaults to false</td>
+</tr>
+<tr>
+<td>controller.existingPsp</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Use an existing PSP instead of creating one</td>
+</tr>
+<tr>
+<td>controller.extraArgs</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Additional command line arguments to pass to Ingress-Nginx Controller E.g. to specify the default SSL certificate you can use</td>
+</tr>
+<tr>
+<td>controller.extraContainers</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Additional containers to be added to the controller pod. See <a href="https://github.com/lemonldap-ng-controller/lemonldap-ng-controller">https://github.com/lemonldap-ng-controller/lemonldap-ng-controller</a> as example.</td>
+</tr>
+<tr>
+<td>controller.extraEnvs</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Additional environment variables to set</td>
+</tr>
+<tr>
+<td>controller.extraInitContainers</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Containers, which are run before the app containers are started.</td>
+</tr>
+<tr>
+<td>controller.extraModules</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Modules, which are mounted into the core nginx image. See values.yaml for a sample to add opentelemetry module</td>
+</tr>
+<tr>
+<td>controller.extraVolumeMounts</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Additional volumeMounts to the controller main container.</td>
+</tr>
+<tr>
+<td>controller.extraVolumes</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Additional volumes to the controller pod.</td>
+</tr>
+<tr>
+<td>controller.healthCheckHost</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Address to bind the health check endpoint. It is better to set this option to the internal node address if the Ingress-Nginx Controller is running in the <code>hostNetwork: true</code> mode.</td>
+</tr>
+<tr>
+<td>controller.healthCheckPath</td>
+<td>string</td>
+<td><code>"/healthz"</code></td>
+<td>Path of the health check endpoint. All requests received on the port defined by the healthz-port parameter are forwarded internally to this path.</td>
+</tr>
+<tr>
+<td>controller.hostNetwork</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Required for use with CNI based kubernetes installations (such as ones set up by kubeadm), since CNI and hostport don't mix yet. Can be deprecated once <a href="https://github.com/kubernetes/kubernetes/issues/23920">https://github.com/kubernetes/kubernetes/issues/23920</a> is merged</td>
+</tr>
+<tr>
+<td>controller.hostPort.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Enable 'hostPort' or not</td>
+</tr>
+<tr>
+<td>controller.hostPort.ports.http</td>
+<td>int</td>
+<td><code>80</code></td>
+<td>'hostPort' http port</td>
+</tr>
+<tr>
+<td>controller.hostPort.ports.https</td>
+<td>int</td>
+<td><code>443</code></td>
+<td>'hostPort' https port</td>
+</tr>
+<tr>
+<td>controller.hostname</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Optionally customize the pod hostname.</td>
+</tr>
+<tr>
+<td>controller.image.allowPrivilegeEscalation</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.image.chroot</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.image.digest</td>
+<td>string</td>
+<td><code>"sha256:e5c4824e7375fcf2a393e1c03c293b69759af37a9ca6abdb91b13d78a93da8bd"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.image.digestChroot</td>
+<td>string</td>
+<td><code>"sha256:e0d4121e3c5e39de9122e55e331a32d5ebf8d4d257227cb93ab54a1b912a7627"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.image.image</td>
+<td>string</td>
+<td><code>"ingress-nginx/controller"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.image.pullPolicy</td>
+<td>string</td>
+<td><code>"IfNotPresent"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.image.registry</td>
+<td>string</td>
+<td><code>"registry.k8s.io"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.image.runAsUser</td>
+<td>int</td>
+<td><code>101</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.image.tag</td>
+<td>string</td>
+<td><code>"v1.8.1"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.ingressClass</td>
+<td>string</td>
+<td><code>"nginx"</code></td>
+<td>For backwards compatibility with ingress.class annotation, use ingressClass. Algorithm is as follows, first ingressClassName is considered, if not present, controller looks for ingress.class annotation</td>
+</tr>
+<tr>
+<td>controller.ingressClassByName</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Process IngressClass per name (additionally as per spec.controller).</td>
+</tr>
+<tr>
+<td>controller.ingressClassResource.controllerValue</td>
+<td>string</td>
+<td><code>"k8s.io/ingress-nginx"</code></td>
+<td>Controller-value of the controller that is processing this ingressClass</td>
+</tr>
+<tr>
+<td>controller.ingressClassResource.default</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Is this the default ingressClass for the cluster</td>
+</tr>
+<tr>
+<td>controller.ingressClassResource.enabled</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>Is this ingressClass enabled or not</td>
+</tr>
+<tr>
+<td>controller.ingressClassResource.name</td>
+<td>string</td>
+<td><code>"nginx"</code></td>
+<td>Name of the ingressClass</td>
+</tr>
+<tr>
+<td>controller.ingressClassResource.parameters</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Parameters is a link to a custom resource containing additional configuration for the controller. This is optional if the controller does not require extra parameters.</td>
+</tr>
+<tr>
+<td>controller.keda.apiVersion</td>
+<td>string</td>
+<td><code>"keda.sh/v1alpha1"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.keda.behavior</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.keda.cooldownPeriod</td>
+<td>int</td>
+<td><code>300</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.keda.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.keda.maxReplicas</td>
+<td>int</td>
+<td><code>11</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.keda.minReplicas</td>
+<td>int</td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.keda.pollingInterval</td>
+<td>int</td>
+<td><code>30</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.keda.restoreToOriginalReplicaCount</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.keda.scaledObject.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.keda.triggers</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.kind</td>
+<td>string</td>
+<td><code>"Deployment"</code></td>
+<td>Use a <code>DaemonSet</code> or <code>Deployment</code></td>
+</tr>
+<tr>
+<td>controller.labels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Labels to be added to the controller Deployment or DaemonSet and other resources that do not have option to specify labels #</td>
+</tr>
+<tr>
+<td>controller.lifecycle</td>
+<td>object</td>
+<td><code>{"preStop":{"exec":{"command":["/wait-shutdown"]}}}</code></td>
+<td>Improve connection draining when ingress controller pod is deleted using a lifecycle hook: With this new hook, we increased the default terminationGracePeriodSeconds from 30 seconds to 300, allowing the draining of connections up to five minutes. If the active connections end before that, the pod will terminate gracefully at that time. To effectively take advantage of this feature, the Configmap feature worker-shutdown-timeout new value is 240s instead of 10s. #</td>
+</tr>
+<tr>
+<td>controller.livenessProbe.failureThreshold</td>
+<td>int</td>
+<td><code>5</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.livenessProbe.httpGet.path</td>
+<td>string</td>
+<td><code>"/healthz"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.livenessProbe.httpGet.port</td>
+<td>int</td>
+<td><code>10254</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.livenessProbe.httpGet.scheme</td>
+<td>string</td>
+<td><code>"HTTP"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.livenessProbe.initialDelaySeconds</td>
+<td>int</td>
+<td><code>10</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.livenessProbe.periodSeconds</td>
+<td>int</td>
+<td><code>10</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.livenessProbe.successThreshold</td>
+<td>int</td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.livenessProbe.timeoutSeconds</td>
+<td>int</td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.maxmindLicenseKey</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Maxmind license key to download GeoLite2 Databases. # <a href="https://blog.maxmind.com/2019/12/18/significant-changes-to-accessing-and-using-geolite2-databases">https://blog.maxmind.com/2019/12/18/significant-changes-to-accessing-and-using-geolite2-databases</a></td>
+</tr>
+<tr>
+<td>controller.metrics.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.metrics.port</td>
+<td>int</td>
+<td><code>10254</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.metrics.portName</td>
+<td>string</td>
+<td><code>"metrics"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.metrics.prometheusRule.additionalLabels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.metrics.prometheusRule.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.metrics.prometheusRule.rules</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.metrics.service.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.metrics.service.externalIPs</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>List of IP addresses at which the stats-exporter service is available # Ref: <a href="https://kubernetes.io/docs/concepts/services-networking/service/#external-ips">https://kubernetes.io/docs/concepts/services-networking/service/#external-ips</a> #</td>
+</tr>
+<tr>
+<td>controller.metrics.service.labels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Labels to be added to the metrics service resource</td>
+</tr>
+<tr>
+<td>controller.metrics.service.loadBalancerSourceRanges</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.metrics.service.servicePort</td>
+<td>int</td>
+<td><code>10254</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.metrics.service.type</td>
+<td>string</td>
+<td><code>"ClusterIP"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.metrics.serviceMonitor.additionalLabels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.metrics.serviceMonitor.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.metrics.serviceMonitor.metricRelabelings</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.metrics.serviceMonitor.namespace</td>
+<td>string</td>
+<td><code>""</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.metrics.serviceMonitor.namespaceSelector</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.metrics.serviceMonitor.relabelings</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.metrics.serviceMonitor.scrapeInterval</td>
+<td>string</td>
+<td><code>"30s"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.metrics.serviceMonitor.targetLabels</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.minAvailable</td>
+<td>int</td>
+<td><code>1</code></td>
+<td>Minimum available pods set in PodDisruptionBudget. Define either 'minAvailable' or 'maxUnavailable', never both.</td>
+</tr>
+<tr>
+<td>controller.minReadySeconds</td>
+<td>int</td>
+<td><code>0</code></td>
+<td><code>minReadySeconds</code> to avoid killing pods before we are ready #</td>
+</tr>
+<tr>
+<td>controller.name</td>
+<td>string</td>
+<td><code>"controller"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.nodeSelector</td>
+<td>object</td>
+<td><code>{"kubernetes.io/os":"linux"}</code></td>
+<td>Node labels for controller pod assignment # Ref: <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/">https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/</a> #</td>
+</tr>
+<tr>
+<td>controller.opentelemetry.containerSecurityContext.allowPrivilegeEscalation</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.opentelemetry.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.opentelemetry.image</td>
+<td>string</td>
+<td><code>"registry.k8s.io/ingress-nginx/opentelemetry:v20230527@sha256:fd7ec835f31b7b37187238eb4fdad4438806e69f413a203796263131f4f02ed0"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.podAnnotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations to be added to controller pods #</td>
+</tr>
+<tr>
+<td>controller.podLabels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Labels to add to the pod container metadata</td>
+</tr>
+<tr>
+<td>controller.podSecurityContext</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Security Context policies for controller pods</td>
+</tr>
+<tr>
+<td>controller.priorityClassName</td>
+<td>string</td>
+<td><code>""</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.proxySetHeaders</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Will add custom headers before sending traffic to backends according to <a href="https://github.com/kubernetes/ingress-nginx/tree/main/docs/examples/customization/custom-headers">https://github.com/kubernetes/ingress-nginx/tree/main/docs/examples/customization/custom-headers</a></td>
+</tr>
+<tr>
+<td>controller.publishService</td>
+<td>object</td>
+<td><code>{"enabled":true,"pathOverride":""}</code></td>
+<td>Allows customization of the source of the IP address or FQDN to report in the ingress status field. By default, it reads the information provided by the service. If disable, the status field reports the IP address of the node or nodes where an ingress controller pod is running.</td>
+</tr>
+<tr>
+<td>controller.publishService.enabled</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>Enable 'publishService' or not</td>
+</tr>
+<tr>
+<td>controller.publishService.pathOverride</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Allows overriding of the publish service to bind to Must be <namespace>/<service_name></td>
+</tr>
+<tr>
+<td>controller.readinessProbe.failureThreshold</td>
+<td>int</td>
+<td><code>3</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.readinessProbe.httpGet.path</td>
+<td>string</td>
+<td><code>"/healthz"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.readinessProbe.httpGet.port</td>
+<td>int</td>
+<td><code>10254</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.readinessProbe.httpGet.scheme</td>
+<td>string</td>
+<td><code>"HTTP"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.readinessProbe.initialDelaySeconds</td>
+<td>int</td>
+<td><code>10</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.readinessProbe.periodSeconds</td>
+<td>int</td>
+<td><code>10</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.readinessProbe.successThreshold</td>
+<td>int</td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.readinessProbe.timeoutSeconds</td>
+<td>int</td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.replicaCount</td>
+<td>int</td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.reportNodeInternalIp</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Bare-metal considerations via the host network <a href="https://kubernetes.github.io/ingress-nginx/deploy/baremetal/#via-the-host-network">https://kubernetes.github.io/ingress-nginx/deploy/baremetal/#via-the-host-network</a> Ingress status was blank because there is no Service exposing the Ingress-Nginx Controller in a configuration using the host network, the default --publish-service flag used in standard cloud setups does not apply</td>
+</tr>
+<tr>
+<td>controller.resources.requests.cpu</td>
+<td>string</td>
+<td><code>"100m"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.resources.requests.memory</td>
+<td>string</td>
+<td><code>"90Mi"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.scope.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Enable 'scope' or not</td>
+</tr>
+<tr>
+<td>controller.scope.namespace</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Namespace to limit the controller to; defaults to $(POD_NAMESPACE)</td>
+</tr>
+<tr>
+<td>controller.scope.namespaceSelector</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>When scope.enabled == false, instead of watching all namespaces, we watching namespaces whose labels only match with namespaceSelector. Format like foo=bar. Defaults to empty, means watching all namespaces.</td>
+</tr>
+<tr>
+<td>controller.service.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.service.appProtocol</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>If enabled is adding an appProtocol option for Kubernetes service. An appProtocol field replacing annotations that were using for setting a backend protocol. Here is an example for AWS: service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http It allows choosing the protocol for each backend specified in the Kubernetes service. See the following GitHub issue for more details about the purpose: <a href="https://github.com/kubernetes/kubernetes/issues/40244">https://github.com/kubernetes/kubernetes/issues/40244</a> Will be ignored for Kubernetes versions older than 1.20 #</td>
+</tr>
+<tr>
+<td>controller.service.enableHttp</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.service.enableHttps</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.service.enabled</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.service.external.enabled</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.service.externalIPs</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>List of IP addresses at which the controller services are available # Ref: <a href="https://kubernetes.io/docs/concepts/services-networking/service/#external-ips">https://kubernetes.io/docs/concepts/services-networking/service/#external-ips</a> #</td>
+</tr>
+<tr>
+<td>controller.service.internal.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations are mandatory for the load balancer to come up. Varies with the cloud service.</td>
+</tr>
+<tr>
+<td>controller.service.internal.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Enables an additional internal load balancer (besides the external one).</td>
+</tr>
+<tr>
+<td>controller.service.internal.loadBalancerIP</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Used by cloud providers to connect the resulting internal LoadBalancer to a pre-existing static IP. Make sure to add to the service the needed annotation to specify the subnet which the static IP belongs to. For instance, <code>networking.gke.io/internal-load-balancer-subnet</code> for GCP and <code>service.beta.kubernetes.io/aws-load-balancer-subnets</code> for AWS.</td>
+</tr>
+<tr>
+<td>controller.service.internal.loadBalancerSourceRanges</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Restrict access For LoadBalancer service. Defaults to 0.0.0.0/0.</td>
+</tr>
+<tr>
+<td>controller.service.internal.ports</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Custom port mapping for internal service</td>
+</tr>
+<tr>
+<td>controller.service.internal.targetPorts</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Custom target port mapping for internal service</td>
+</tr>
+<tr>
+<td>controller.service.ipFamilies</td>
+<td>list</td>
+<td><code>["IPv4"]</code></td>
+<td>List of IP families (e.g. IPv4, IPv6) assigned to the service. This field is usually assigned automatically based on cluster configuration and the ipFamilyPolicy field. # Ref: <a href="https://kubernetes.io/docs/concepts/services-networking/dual-stack/">https://kubernetes.io/docs/concepts/services-networking/dual-stack/</a></td>
+</tr>
+<tr>
+<td>controller.service.ipFamilyPolicy</td>
+<td>string</td>
+<td><code>"SingleStack"</code></td>
+<td>Represents the dual-stack-ness requested or required by this Service. Possible values are SingleStack, PreferDualStack or RequireDualStack. The ipFamilies and clusterIPs fields depend on the value of this field. # Ref: <a href="https://kubernetes.io/docs/concepts/services-networking/dual-stack/">https://kubernetes.io/docs/concepts/services-networking/dual-stack/</a></td>
+</tr>
+<tr>
+<td>controller.service.labels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.service.loadBalancerClass</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Used by cloud providers to select a load balancer implementation other than the cloud provider default. <a href="https://kubernetes.io/docs/concepts/services-networking/service/#load-balancer-class">https://kubernetes.io/docs/concepts/services-networking/service/#load-balancer-class</a></td>
+</tr>
+<tr>
+<td>controller.service.loadBalancerIP</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Used by cloud providers to connect the resulting <code>LoadBalancer</code> to a pre-existing static IP according to <a href="https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer">https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer</a></td>
+</tr>
+<tr>
+<td>controller.service.loadBalancerSourceRanges</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.service.nodePorts.http</td>
+<td>string</td>
+<td><code>""</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.service.nodePorts.https</td>
+<td>string</td>
+<td><code>""</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.service.nodePorts.tcp</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.service.nodePorts.udp</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.service.ports.http</td>
+<td>int</td>
+<td><code>80</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.service.ports.https</td>
+<td>int</td>
+<td><code>443</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.service.targetPorts.http</td>
+<td>string</td>
+<td><code>"http"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.service.targetPorts.https</td>
+<td>string</td>
+<td><code>"https"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.service.type</td>
+<td>string</td>
+<td><code>"LoadBalancer"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.shareProcessNamespace</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>controller.sysctls</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>See <a href="https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/">https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/</a> for notes on enabling and using sysctls</td>
+</tr>
+<tr>
+<td>controller.tcp.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations to be added to the tcp config configmap</td>
+</tr>
+<tr>
+<td>controller.tcp.configMapNamespace</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Allows customization of the tcp-services-configmap; defaults to $(POD_NAMESPACE)</td>
+</tr>
+<tr>
+<td>controller.terminationGracePeriodSeconds</td>
+<td>int</td>
+<td><code>300</code></td>
+<td><code>terminationGracePeriodSeconds</code> to avoid killing pods before we are ready # wait up to five minutes for the drain of connections #</td>
+</tr>
+<tr>
+<td>controller.tolerations</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Node tolerations for server scheduling to nodes with taints # Ref: <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/">https://kubernetes.io/docs/concepts/configuration/assign-pod-node/</a> #</td>
+</tr>
+<tr>
+<td>controller.topologySpreadConstraints</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Topology spread constraints rely on node labels to identify the topology domain(s) that each Node is in. # Ref: <a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/">https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/</a> #</td>
+</tr>
+<tr>
+<td>controller.udp.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations to be added to the udp config configmap</td>
+</tr>
+<tr>
+<td>controller.udp.configMapNamespace</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Allows customization of the udp-services-configmap; defaults to $(POD_NAMESPACE)</td>
+</tr>
+<tr>
+<td>controller.updateStrategy</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>The update strategy to apply to the Deployment or DaemonSet #</td>
+</tr>
+<tr>
+<td>controller.watchIngressWithoutClass</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>Process Ingress objects without ingressClass annotation/ingressClassName field Overrides value for --watch-ingress-without-class flag of the controller binary Defaults to false</td>
+</tr>
+<tr>
+<td>defaultBackend.affinity</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.autoscaling.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.autoscaling.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.autoscaling.maxReplicas</td>
+<td>int</td>
+<td><code>2</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.autoscaling.minReplicas</td>
+<td>int</td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.autoscaling.targetCPUUtilizationPercentage</td>
+<td>int</td>
+<td><code>50</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.autoscaling.targetMemoryUtilizationPercentage</td>
+<td>int</td>
+<td><code>50</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.containerSecurityContext</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Security Context policies for controller main container. See <a href="https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/">https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/</a> for notes on enabling and using sysctls #</td>
+</tr>
+<tr>
+<td>defaultBackend.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.existingPsp</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Use an existing PSP instead of creating one</td>
+</tr>
+<tr>
+<td>defaultBackend.extraArgs</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.extraEnvs</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Additional environment variables to set for defaultBackend pods</td>
+</tr>
+<tr>
+<td>defaultBackend.extraVolumeMounts</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.extraVolumes</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.image.allowPrivilegeEscalation</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.image.image</td>
+<td>string</td>
+<td><code>"defaultbackend-amd64"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.image.pullPolicy</td>
+<td>string</td>
+<td><code>"IfNotPresent"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.image.readOnlyRootFilesystem</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.image.registry</td>
+<td>string</td>
+<td><code>"registry.k8s.io"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.image.runAsNonRoot</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.image.runAsUser</td>
+<td>int</td>
+<td><code>65534</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.image.tag</td>
+<td>string</td>
+<td><code>"1.5"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.labels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Labels to be added to the default backend resources</td>
+</tr>
+<tr>
+<td>defaultBackend.livenessProbe.failureThreshold</td>
+<td>int</td>
+<td><code>3</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.livenessProbe.initialDelaySeconds</td>
+<td>int</td>
+<td><code>30</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.livenessProbe.periodSeconds</td>
+<td>int</td>
+<td><code>10</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.livenessProbe.successThreshold</td>
+<td>int</td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.livenessProbe.timeoutSeconds</td>
+<td>int</td>
+<td><code>5</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.minAvailable</td>
+<td>int</td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.minReadySeconds</td>
+<td>int</td>
+<td><code>0</code></td>
+<td><code>minReadySeconds</code> to avoid killing pods before we are ready #</td>
+</tr>
+<tr>
+<td>defaultBackend.name</td>
+<td>string</td>
+<td><code>"defaultbackend"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.nodeSelector</td>
+<td>object</td>
+<td><code>{"kubernetes.io/os":"linux"}</code></td>
+<td>Node labels for default backend pod assignment # Ref: <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/">https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/</a> #</td>
+</tr>
+<tr>
+<td>defaultBackend.podAnnotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations to be added to default backend pods #</td>
+</tr>
+<tr>
+<td>defaultBackend.podLabels</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Labels to add to the pod container metadata</td>
+</tr>
+<tr>
+<td>defaultBackend.podSecurityContext</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Security Context policies for controller pods See <a href="https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/">https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/</a> for notes on enabling and using sysctls #</td>
+</tr>
+<tr>
+<td>defaultBackend.port</td>
+<td>int</td>
+<td><code>8080</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.priorityClassName</td>
+<td>string</td>
+<td><code>""</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.readinessProbe.failureThreshold</td>
+<td>int</td>
+<td><code>6</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.readinessProbe.initialDelaySeconds</td>
+<td>int</td>
+<td><code>0</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.readinessProbe.periodSeconds</td>
+<td>int</td>
+<td><code>5</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.readinessProbe.successThreshold</td>
+<td>int</td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.readinessProbe.timeoutSeconds</td>
+<td>int</td>
+<td><code>5</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.replicaCount</td>
+<td>int</td>
+<td><code>1</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.resources</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.service.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.service.externalIPs</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>List of IP addresses at which the default backend service is available # Ref: <a href="https://kubernetes.io/docs/concepts/services-networking/service/#external-ips">https://kubernetes.io/docs/concepts/services-networking/service/#external-ips</a> #</td>
+</tr>
+<tr>
+<td>defaultBackend.service.loadBalancerSourceRanges</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.service.servicePort</td>
+<td>int</td>
+<td><code>80</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.service.type</td>
+<td>string</td>
+<td><code>"ClusterIP"</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.serviceAccount.automountServiceAccountToken</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.serviceAccount.create</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.serviceAccount.name</td>
+<td>string</td>
+<td><code>""</code></td>
+<td></td>
+</tr>
+<tr>
+<td>defaultBackend.tolerations</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Node tolerations for server scheduling to nodes with taints # Ref: <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/">https://kubernetes.io/docs/concepts/configuration/assign-pod-node/</a> #</td>
+</tr>
+<tr>
+<td>defaultBackend.updateStrategy</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>The update strategy to apply to the Deployment or DaemonSet #</td>
+</tr>
+<tr>
+<td>dhParam</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>A base64-encoded Diffie-Hellman parameter. This can be generated with: <code>openssl dhparam 4096 2&gt; /dev/null | base64</code> # Ref: <a href="https://github.com/kubernetes/ingress-nginx/tree/main/docs/examples/customization/ssl-dh-param">https://github.com/kubernetes/ingress-nginx/tree/main/docs/examples/customization/ssl-dh-param</a></td>
+</tr>
+<tr>
+<td>imagePullSecrets</td>
+<td>list</td>
+<td><code>[]</code></td>
+<td>Optional array of imagePullSecrets containing private registry credentials # Ref: <a href="https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/">https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/</a></td>
+</tr>
+<tr>
+<td>podSecurityPolicy.enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>portNamePrefix</td>
+<td>string</td>
+<td><code>""</code></td>
+<td>Prefix for TCP and UDP ports names in ingress controller service # Some cloud providers, like Yandex Cloud may have a requirements for a port name regex to support cloud load balancer integration</td>
+</tr>
+<tr>
+<td>rbac.create</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>rbac.scope</td>
+<td>bool</td>
+<td><code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td>revisionHistoryLimit</td>
+<td>int</td>
+<td><code>10</code></td>
+<td>Rollback limit #</td>
+</tr>
+<tr>
+<td>serviceAccount.annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>Annotations for the controller service account</td>
+</tr>
+<tr>
+<td>serviceAccount.automountServiceAccountToken</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>serviceAccount.create</td>
+<td>bool</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>serviceAccount.name</td>
+<td>string</td>
+<td><code>""</code></td>
+<td></td>
+</tr>
+<tr>
+<td>tcp</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>TCP service key-value pairs # Ref: <a href="https://github.com/kubernetes/ingress-nginx/blob/main/docs/user-guide/exposing-tcp-udp-services.md">https://github.com/kubernetes/ingress-nginx/blob/main/docs/user-guide/exposing-tcp-udp-services.md</a> #</td>
+</tr>
+<tr>
+<td>udp</td>
+<td>object</td>
+<td><code>{}</code></td>
+<td>UDP service key-value pairs # Ref: <a href="https://github.com/kubernetes/ingress-nginx/blob/main/docs/user-guide/exposing-tcp-udp-services.md">https://github.com/kubernetes/ingress-nginx/blob/main/docs/user-guide/exposing-tcp-udp-services.md</a> #</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../commonapp/" class="md-footer__link md-footer__link--prev" aria-label="上一页: commonapp helm chart" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  上一页
+                </span>
+                commonapp helm chart
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../kafka/" class="md-footer__link md-footer__link--next" aria-label="下一页: Kafka helm chart" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  下一页
+                </span>
+                Kafka helm chart
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>

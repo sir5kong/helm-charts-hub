@@ -1,0 +1,5855 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../rabbitmq-cluster-operator/">
+      
+      
+        <link rel="next" href="../redis-cluster/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>Rabbitmq - Helm Charts Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rabbitmq-packaged-by-bitnami" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Helm Charts Hub" class="md-header__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Helm Charts Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Rabbitmq
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Helm Charts Hub
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../chart-list/" class="md-tabs__link">
+      Chart 列表
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Bitnami
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../grafana/" class="md-tabs__link">
+        Grafana
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ingress-nginx/" class="md-tabs__link">
+        Ingress nginx
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../prometheus-community/" class="md-tabs__link">
+        Prometheus community
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sir5kong/" class="md-tabs__link">
+        Sir5kong
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Helm Charts Hub" class="md-nav__button md-logo" aria-label="Helm Charts Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Helm Charts Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sir5kong/helm-charts-hub" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sir5kong/helm-charts-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Helm Charts Hub
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chart-list/" class="md-nav__link">
+        Chart 列表
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Bitnami</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Bitnami" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Bitnami
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../airflow/" class="md-nav__link">
+        Airflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apache/" class="md-nav__link">
+        Apache
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apisix/" class="md-nav__link">
+        Apisix
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appsmith/" class="md-nav__link">
+        Appsmith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-cd/" class="md-nav__link">
+        Argo cd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-workflows/" class="md-nav__link">
+        Argo workflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aspnet-core/" class="md-nav__link">
+        Aspnet core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cassandra/" class="md-nav__link">
+        Cassandra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cert-manager/" class="md-nav__link">
+        Cert manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clickhouse/" class="md-nav__link">
+        Clickhouse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../common/" class="md-nav__link">
+        Bitnami Common Library Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concourse/" class="md-nav__link">
+        Concourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../consul/" class="md-nav__link">
+        Consul
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contour/" class="md-nav__link">
+        Contour
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../discourse/" class="md-nav__link">
+        Discourse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dokuwiki/" class="md-nav__link">
+        Dokuwiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drupal/" class="md-nav__link">
+        Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejbca/" class="md-nav__link">
+        Ejbca
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../elasticsearch/" class="md-nav__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../etcd/" class="md-nav__link">
+        Etcd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../external-dns/" class="md-nav__link">
+        External dns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flink/" class="md-nav__link">
+        Flink
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluent-bit/" class="md-nav__link">
+        Fluent bit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fluentd/" class="md-nav__link">
+        Fluentd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flux/" class="md-nav__link">
+        Flux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ghost/" class="md-nav__link">
+        Ghost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitea/" class="md-nav__link">
+        Gitea
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-loki/" class="md-nav__link">
+        Grafana loki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-mimir/" class="md-nav__link">
+        Grafana mimir
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-operator/" class="md-nav__link">
+        Grafana operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-tempo/" class="md-nav__link">
+        Grafana tempo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana/" class="md-nav__link">
+        Grafana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../haproxy/" class="md-nav__link">
+        Haproxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../harbor/" class="md-nav__link">
+        Harbor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../influxdb/" class="md-nav__link">
+        Influxdb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jaeger/" class="md-nav__link">
+        Jaeger
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jasperreports/" class="md-nav__link">
+        Jasperreports
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jenkins/" class="md-nav__link">
+        Jenkins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../joomla/" class="md-nav__link">
+        Joomla
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jupyterhub/" class="md-nav__link">
+        Jupyterhub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kafka/" class="md-nav__link">
+        Kafka
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keycloak/" class="md-nav__link">
+        Keycloak
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kiam/" class="md-nav__link">
+        Kiam
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kibana/" class="md-nav__link">
+        Kibana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kong/" class="md-nav__link">
+        Kong
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube-prometheus/" class="md-nav__link">
+        Kube prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube-state-metrics/" class="md-nav__link">
+        Kube state metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubeapps/" class="md-nav__link">
+        Kubeapps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-event-exporter/" class="md-nav__link">
+        Kubernetes event exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logstash/" class="md-nav__link">
+        Logstash
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../magento/" class="md-nav__link">
+        Magento
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mariadb-galera/" class="md-nav__link">
+        Mariadb galera
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mariadb/" class="md-nav__link">
+        Mariadb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mastodon/" class="md-nav__link">
+        Mastodon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matomo/" class="md-nav__link">
+        Matomo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mediawiki/" class="md-nav__link">
+        Mediawiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memcached/" class="md-nav__link">
+        Memcached
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metallb/" class="md-nav__link">
+        Metallb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics-server/" class="md-nav__link">
+        Metrics server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../minio/" class="md-nav__link">
+        Minio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mongodb-sharded/" class="md-nav__link">
+        Mongodb sharded
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mongodb/" class="md-nav__link">
+        Mongodb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../moodle/" class="md-nav__link">
+        Moodle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multus-cni/" class="md-nav__link">
+        Multus cni
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mxnet/" class="md-nav__link">
+        Mxnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mysql/" class="md-nav__link">
+        Mysql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nats/" class="md-nav__link">
+        Nats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx-ingress-controller/" class="md-nav__link">
+        Nginx ingress controller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx/" class="md-nav__link">
+        Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../node-exporter/" class="md-nav__link">
+        Node exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oauth2-proxy/" class="md-nav__link">
+        Oauth2 proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../odoo/" class="md-nav__link">
+        Odoo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opencart/" class="md-nav__link">
+        Opencart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../osclass/" class="md-nav__link">
+        Osclass
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parse/" class="md-nav__link">
+        Parse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpbb/" class="md-nav__link">
+        Phpbb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpmyadmin/" class="md-nav__link">
+        Phpmyadmin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinniped/" class="md-nav__link">
+        Pinniped
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgresql-ha/" class="md-nav__link">
+        Postgresql ha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgresql/" class="md-nav__link">
+        Postgresql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prestashop/" class="md-nav__link">
+        Prestashop
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rabbitmq-cluster-operator/" class="md-nav__link">
+        Rabbitmq cluster operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Rabbitmq
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Rabbitmq
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    TL;DR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    Installing the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    Uninstalling the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-parameters" class="md-nav__link">
+    Global parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rabbitmq-image-parameters" class="md-nav__link">
+    RabbitMQ Image parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-parameters" class="md-nav__link">
+    Common parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statefulset-parameters" class="md-nav__link">
+    Statefulset parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rbac-parameters" class="md-nav__link">
+    RBAC parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistence-parameters" class="md-nav__link">
+    Persistence parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exposure-parameters" class="md-nav__link">
+    Exposure parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-parameters" class="md-nav__link">
+    Metrics Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init-container-parameters" class="md-nav__link">
+    Init Container Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-installation-details" class="md-nav__link">
+    Configuration and installation details
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and installation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-vs-immutable-tags" class="md-nav__link">
+    Rolling vs Immutable tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-pod-affinity" class="md-nav__link">
+    Set pod affinity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scale-horizontally" class="md-nav__link">
+    Scale horizontally
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-tls-support" class="md-nav__link">
+    Enable TLS support
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#load-custom-definitions" class="md-nav__link">
+    Load custom definitions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-ldap-support" class="md-nav__link">
+    Configure LDAP support
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-memory-high-watermark" class="md-nav__link">
+    Configure memory high watermark
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-extra-environment-variables" class="md-nav__link">
+    Add extra environment variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-plugins" class="md-nav__link">
+    Use plugins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-logging" class="md-nav__link">
+    Advanced logging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recover-the-cluster-from-complete-shutdown" class="md-nav__link">
+    Recover the cluster from complete shutdown
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#known-issues" class="md-nav__link">
+    Known issues
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistence" class="md-nav__link">
+    Persistence
+  </a>
+  
+    <nav class="md-nav" aria-label="Persistence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-existing-persistentvolumeclaims" class="md-nav__link">
+    Use existing PersistentVolumeClaims
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjust-permissions-of-the-persistence-volume-mountpoint" class="md-nav__link">
+    Adjust permissions of the persistence volume mountpoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-the-default-uservhost" class="md-nav__link">
+    Configure the default user/vhost
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    Upgrading
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-1100" class="md-nav__link">
+    To 11.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-1000" class="md-nav__link">
+    To 10.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-900" class="md-nav__link">
+    To 9.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-8210" class="md-nav__link">
+    To 8.21.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-800" class="md-nav__link">
+    To 8.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-700" class="md-nav__link">
+    To 7.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-600" class="md-nav__link">
+    To 6.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-500" class="md-nav__link">
+    To 5.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-300" class="md-nav__link">
+    To 3.0.0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitnami-kubernetes-documentation" class="md-nav__link">
+    Bitnami Kubernetes Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis-cluster/" class="md-nav__link">
+        Redis cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redmine/" class="md-nav__link">
+        Redmine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema-registry/" class="md-nav__link">
+        Schema registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sealed-secrets/" class="md-nav__link">
+        Sealed secrets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solr/" class="md-nav__link">
+        Solr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sonarqube/" class="md-nav__link">
+        Sonarqube
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spark/" class="md-nav__link">
+        Spark
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-cloud-dataflow/" class="md-nav__link">
+        Spring cloud dataflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../suitecrm/" class="md-nav__link">
+        Suitecrm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supabase/" class="md-nav__link">
+        Supabase
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tensorflow-resnet/" class="md-nav__link">
+        Tensorflow resnet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../thanos/" class="md-nav__link">
+        Thanos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tomcat/" class="md-nav__link">
+        Tomcat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault/" class="md-nav__link">
+        Vault
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavefront-hpa-adapter/" class="md-nav__link">
+        Wavefront hpa adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wavefront-prometheus-storage-adapter/" class="md-nav__link">
+        Wavefront prometheus storage adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whereabouts/" class="md-nav__link">
+        Whereabouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wildfly/" class="md-nav__link">
+        Wildfly
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wordpress/" class="md-nav__link">
+        Wordpress
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zookeeper/" class="md-nav__link">
+        Zookeeper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../grafana/">Grafana</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Grafana" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Grafana
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/agent-operator/" class="md-nav__link">
+        grafana-agent-operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-logs-simple/" class="md-nav__link">
+        enterprise-logs-simple
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-logs/" class="md-nav__link">
+        Grafana Enterprise Logs Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/enterprise-metrics/" class="md-nav__link">
+        Grafana Enterprise Metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/fluent-bit/" class="md-nav__link">
+        Fluent Bit Loki chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/grafana-agent/" class="md-nav__link">
+        Grafana Agent chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/grafana/" class="md-nav__link">
+        Grafana Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-canary/" class="md-nav__link">
+        loki-canary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-distributed/" class="md-nav__link">
+        loki-distributed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/loki-stack/" class="md-nav__link">
+        Loki-Stack Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/mimir-distributed/" class="md-nav__link">
+        Notice of relocation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/promtail/" class="md-nav__link">
+        promtail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/rollout-operator/" class="md-nav__link">
+        Grafana rollout-operator Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/synthetic-monitoring-agent/" class="md-nav__link">
+        synthetic-monitoring-agent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo-distributed/" class="md-nav__link">
+        tempo-distributed
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo-vulture/" class="md-nav__link">
+        tempo-vulture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grafana/tempo/" class="md-nav__link">
+        tempo
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../ingress-nginx/">Ingress nginx</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Ingress nginx" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Ingress nginx
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ingress-nginx/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../prometheus-community/">Prometheus community</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Prometheus community" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Prometheus community
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager-snmp-notifier/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/alertmanager/" class="md-nav__link">
+        Alertmanager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/jiralert/" class="md-nav__link">
+        Prometheus SNMP Notifier
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-prometheus-stack/" class="md-nav__link">
+        kube-prometheus-stack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/kube-state-metrics/" class="md-nav__link">
+        kube-state-metrics Helm Chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prom-label-proxy/" class="md-nav__link">
+        prom-label-proxy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-adapter/" class="md-nav__link">
+        Prometheus Adapter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-blackbox-exporter/" class="md-nav__link">
+        Prometheus Blackbox Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-cloudwatch-exporter/" class="md-nav__link">
+        Prometheus Cloudwatch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-conntrack-stats-exporter/" class="md-nav__link">
+        Conntrack Stats Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-consul-exporter/" class="md-nav__link">
+        Prometheus Consul Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-couchdb-exporter/" class="md-nav__link">
+        prometheus-couchdb-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-druid-exporter/" class="md-nav__link">
+        Prometheus Druid Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-elasticsearch-exporter/" class="md-nav__link">
+        Elasticsearch Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-fastly-exporter/" class="md-nav__link">
+        Prometheus Fastly Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-json-exporter/" class="md-nav__link">
+        prometheus-json-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-kafka-exporter/" class="md-nav__link">
+        prometheus-kafka-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mongodb-exporter/" class="md-nav__link">
+        Prometheus MongoDB Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-mysql-exporter/" class="md-nav__link">
+        Prometheus Mysql Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nats-exporter/" class="md-nav__link">
+        Prometheus NATS Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-nginx-exporter/" class="md-nav__link">
+        prometheus-nginx-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-node-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-admission-webhook/" class="md-nav__link">
+        Prometheus Operator Admission Webhook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-operator-crds/" class="md-nav__link">
+        Prometheus Operator CRDs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pgbouncer-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingdom-exporter/" class="md-nav__link">
+        Prometheus Pingdom Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pingmesh-exporter/" class="md-nav__link">
+        Prometheus Pingmesh Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-postgres-exporter/" class="md-nav__link">
+        Prometheus Postgres Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-pushgateway/" class="md-nav__link">
+        Prometheus Pushgateway
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-rabbitmq-exporter/" class="md-nav__link">
+        prometheus-rabbitmq-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-redis-exporter/" class="md-nav__link">
+        prometheus-redis-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-smartctl-exporter/" class="md-nav__link">
+        Prometheus smartctl Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-snmp-exporter/" class="md-nav__link">
+        Prometheus SNMP Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-stackdriver-exporter/" class="md-nav__link">
+        Stackdriver Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-statsd-exporter/" class="md-nav__link">
+        prometheus-statsd-exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-to-sd/" class="md-nav__link">
+        prometheus-to-sd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus-windows-exporter/" class="md-nav__link">
+        Prometheus `Node Exporter`
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus-community/prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../sir5kong/">Sir5kong</a>
+          
+            <label for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Sir5kong" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Sir5kong
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/commonapp/" class="md-nav__link">
+        commonapp helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/kafka/" class="md-nav__link">
+        Kafka helm chart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sir5kong/nginx/" class="md-nav__link">
+        nginx helm chart
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    TL;DR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    Installing the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    Uninstalling the Chart
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-parameters" class="md-nav__link">
+    Global parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rabbitmq-image-parameters" class="md-nav__link">
+    RabbitMQ Image parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-parameters" class="md-nav__link">
+    Common parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statefulset-parameters" class="md-nav__link">
+    Statefulset parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rbac-parameters" class="md-nav__link">
+    RBAC parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistence-parameters" class="md-nav__link">
+    Persistence parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exposure-parameters" class="md-nav__link">
+    Exposure parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-parameters" class="md-nav__link">
+    Metrics Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init-container-parameters" class="md-nav__link">
+    Init Container Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-and-installation-details" class="md-nav__link">
+    Configuration and installation details
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration and installation details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rolling-vs-immutable-tags" class="md-nav__link">
+    Rolling vs Immutable tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-pod-affinity" class="md-nav__link">
+    Set pod affinity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scale-horizontally" class="md-nav__link">
+    Scale horizontally
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-tls-support" class="md-nav__link">
+    Enable TLS support
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#load-custom-definitions" class="md-nav__link">
+    Load custom definitions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-ldap-support" class="md-nav__link">
+    Configure LDAP support
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-memory-high-watermark" class="md-nav__link">
+    Configure memory high watermark
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-extra-environment-variables" class="md-nav__link">
+    Add extra environment variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-plugins" class="md-nav__link">
+    Use plugins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-logging" class="md-nav__link">
+    Advanced logging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recover-the-cluster-from-complete-shutdown" class="md-nav__link">
+    Recover the cluster from complete shutdown
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#known-issues" class="md-nav__link">
+    Known issues
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistence" class="md-nav__link">
+    Persistence
+  </a>
+  
+    <nav class="md-nav" aria-label="Persistence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-existing-persistentvolumeclaims" class="md-nav__link">
+    Use existing PersistentVolumeClaims
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjust-permissions-of-the-persistence-volume-mountpoint" class="md-nav__link">
+    Adjust permissions of the persistence volume mountpoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-the-default-uservhost" class="md-nav__link">
+    Configure the default user/vhost
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    Upgrading
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-1100" class="md-nav__link">
+    To 11.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-1000" class="md-nav__link">
+    To 10.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-900" class="md-nav__link">
+    To 9.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-8210" class="md-nav__link">
+    To 8.21.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-800" class="md-nav__link">
+    To 8.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-700" class="md-nav__link">
+    To 7.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-600" class="md-nav__link">
+    To 6.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-500" class="md-nav__link">
+    To 5.0.0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-300" class="md-nav__link">
+    To 3.0.0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitnami-kubernetes-documentation" class="md-nav__link">
+    Bitnami Kubernetes Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<!--- app-name: RabbitMQ -->
+
+<h1 id="rabbitmq-packaged-by-bitnami">RabbitMQ packaged by Bitnami<a class="headerlink" href="#rabbitmq-packaged-by-bitnami" title="Permanent link">&para;</a></h1>
+<p>RabbitMQ is an open source general-purpose message broker that is designed for consistent, highly-available messaging scenarios (both synchronous and asynchronous).</p>
+<p><a href="https://www.rabbitmq.com">Overview of RabbitMQ</a></p>
+<p>Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.</p>
+<h2 id="tldr">TL;DR<a class="headerlink" href="#tldr" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>使用加速地址添加仓库:</p>
+</blockquote>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>bitnami<span class="w"> </span><span class="s2">&quot;https://helm-charts.itboon.top/bitnami&quot;</span><span class="w"> </span>--force-update
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>helm<span class="w"> </span>update<span class="w"> </span>bitnami
+</span></code></pre></div>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="go">helm install my-release bitnami/rabbitmq</span>
+</span></code></pre></div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>This chart bootstraps a <a href="https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq">RabbitMQ</a> deployment on a <a href="https://kubernetes.io">Kubernetes</a> cluster using the <a href="https://helm.sh">Helm</a> package manager.</p>
+<p>Bitnami charts can be used with <a href="https://kubeapps.dev/">Kubeapps</a> for deployment and management of Helm Charts in clusters.</p>
+<p>Looking to use RabbitMQ in production? Try <a href="https://bitnami.com/enterprise">VMware Application Catalog</a>, the enterprise edition of Bitnami Application Catalog.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Kubernetes 1.19+</li>
+<li>Helm 3.2.0+</li>
+<li>PV provisioner support in the underlying infrastructure</li>
+</ul>
+<h2 id="installing-the-chart">Installing the Chart<a class="headerlink" href="#installing-the-chart" title="Permanent link">&para;</a></h2>
+<p>To install the chart with the release name <code>my-release</code>:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">helm install my-release bitnami/rabbitmq</span>
+</span></code></pre></div>
+<p>The command deploys RabbitMQ on the Kubernetes cluster in the default configuration. The <a href="#parameters">Parameters</a> section lists the parameters that can be configured during installation.</p>
+<blockquote>
+<p><strong>Tip</strong>: List all releases using <code>helm list</code></p>
+</blockquote>
+<h2 id="uninstalling-the-chart">Uninstalling the Chart<a class="headerlink" href="#uninstalling-the-chart" title="Permanent link">&para;</a></h2>
+<p>To uninstall/delete the <code>my-release</code> deployment:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="go">helm delete my-release</span>
+</span></code></pre></div>
+<p>The command removes all the Kubernetes components associated with the chart and deletes the release.</p>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
+<h3 id="global-parameters">Global parameters<a class="headerlink" href="#global-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>global.imageRegistry</code></td>
+<td>Global Docker image registry</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>global.imagePullSecrets</code></td>
+<td>Global Docker registry secret names as an array</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>global.storageClass</code></td>
+<td>Global StorageClass for Persistent Volume(s)</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="rabbitmq-image-parameters">RabbitMQ Image parameters<a class="headerlink" href="#rabbitmq-image-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>image.registry</code></td>
+<td>RabbitMQ image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>image.repository</code></td>
+<td>RabbitMQ image repository</td>
+<td><code>bitnami/rabbitmq</code></td>
+</tr>
+<tr>
+<td><code>image.tag</code></td>
+<td>RabbitMQ image tag (immutable tags are recommended)</td>
+<td><code>3.12.1-debian-11-r0</code></td>
+</tr>
+<tr>
+<td><code>image.digest</code></td>
+<td>RabbitMQ image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>image.pullPolicy</code></td>
+<td>RabbitMQ image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>image.pullSecrets</code></td>
+<td>Specify docker-registry secret names as an array</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>image.debug</code></td>
+<td>Set to true if you would like to see extra information on logs</td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="common-parameters">Common parameters<a class="headerlink" href="#common-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nameOverride</code></td>
+<td>String to partially override rabbitmq.fullname template (will maintain the release name)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>fullnameOverride</code></td>
+<td>String to fully override rabbitmq.fullname template</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>namespaceOverride</code></td>
+<td>String to fully override common.names.namespace</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>kubeVersion</code></td>
+<td>Force target Kubernetes version (using Helm capabilities if not set)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>clusterDomain</code></td>
+<td>Kubernetes Cluster Domain</td>
+<td><code>cluster.local</code></td>
+</tr>
+<tr>
+<td><code>extraDeploy</code></td>
+<td>Array of extra objects to deploy with the release</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>commonAnnotations</code></td>
+<td>Annotations to add to all deployed objects</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>servicenameOverride</code></td>
+<td>String to partially override headless service name</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>commonLabels</code></td>
+<td>Labels to add to all deployed objects</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>serviceBindings.enabled</code></td>
+<td>Create secret for service binding (Experimental)</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.enabled</code></td>
+<td>Enable diagnostic mode (all probes will be disabled and the command will be overridden)</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.command</code></td>
+<td>Command to override all containers in the deployment</td>
+<td><code>["sleep"]</code></td>
+</tr>
+<tr>
+<td><code>diagnosticMode.args</code></td>
+<td>Args to override all containers in the deployment</td>
+<td><code>["infinity"]</code></td>
+</tr>
+<tr>
+<td><code>hostAliases</code></td>
+<td>Deployment pod host aliases</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>dnsPolicy</code></td>
+<td>DNS Policy for pod</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>dnsConfig</code></td>
+<td>DNS Configuration pod</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>auth.username</code></td>
+<td>RabbitMQ application username</td>
+<td><code>user</code></td>
+</tr>
+<tr>
+<td><code>auth.password</code></td>
+<td>RabbitMQ application password</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.securePassword</code></td>
+<td>Whether to set the RabbitMQ password securely. This is incompatible with loading external RabbitMQ definitions and 'true' when not setting the auth.password parameter.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>auth.existingPasswordSecret</code></td>
+<td>Existing secret with RabbitMQ credentials (must contain a value for <code>rabbitmq-password</code> key)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.enableLoopbackUser</code></td>
+<td>If enabled, the user <code>auth.username</code> can only connect from localhost</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>auth.erlangCookie</code></td>
+<td>Erlang cookie to determine whether different nodes are allowed to communicate with each other</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.existingErlangSecret</code></td>
+<td>Existing secret with RabbitMQ Erlang cookie (must contain a value for <code>rabbitmq-erlang-cookie</code> key)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.tls.enabled</code></td>
+<td>Enable TLS support on RabbitMQ</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>auth.tls.autoGenerated</code></td>
+<td>Generate automatically self-signed TLS certificates</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>auth.tls.failIfNoPeerCert</code></td>
+<td>When set to true, TLS connection will be rejected if client fails to provide a certificate</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>auth.tls.sslOptionsVerify</code></td>
+<td>Should <a href="https://www.rabbitmq.com/ssl.html#peer-verification">peer verification</a> be enabled?</td>
+<td><code>verify_peer</code></td>
+</tr>
+<tr>
+<td><code>auth.tls.sslOptionsPassword.enabled</code></td>
+<td>Enable usage of password for private Key</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>auth.tls.sslOptionsPassword.existingSecret</code></td>
+<td>Name of existing Secret containing the sslOptionsPassword</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.tls.sslOptionsPassword.key</code></td>
+<td>Enable Key referring to sslOptionsPassword in Secret specified in auth.tls.sslOptionsPassword.existingSecret</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.tls.sslOptionsPassword.password</code></td>
+<td>Use this string as Password. If set, auth.tls.sslOptionsPassword.existingSecret and auth.tls.sslOptionsPassword.key are ignored</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.tls.caCertificate</code></td>
+<td>Certificate Authority (CA) bundle content</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.tls.serverCertificate</code></td>
+<td>Server certificate content</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.tls.serverKey</code></td>
+<td>Server private key content</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.tls.existingSecret</code></td>
+<td>Existing secret with certificate content to RabbitMQ credentials</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth.tls.existingSecretFullChain</code></td>
+<td>Whether or not the existing secret contains the full chain in the certificate (<code>tls.crt</code>). Will be used in place of <code>ca.cert</code> if <code>true</code>.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>auth.tls.overrideCaCertificate</code></td>
+<td>Existing secret with certificate content be mounted instead of the <code>ca.crt</code> coming from caCertificate or existingSecret/existingSecretFullChain.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>logs</code></td>
+<td>Path of the RabbitMQ server's Erlang log file. Value for the <code>RABBITMQ_LOGS</code> environment variable</td>
+<td><code>-</code></td>
+</tr>
+<tr>
+<td><code>ulimitNofiles</code></td>
+<td>RabbitMQ Max File Descriptors</td>
+<td><code>65536</code></td>
+</tr>
+<tr>
+<td><code>maxAvailableSchedulers</code></td>
+<td>RabbitMQ maximum available scheduler threads</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>onlineSchedulers</code></td>
+<td>RabbitMQ online scheduler threads</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>memoryHighWatermark.enabled</code></td>
+<td>Enable configuring Memory high watermark on RabbitMQ</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>memoryHighWatermark.type</code></td>
+<td>Memory high watermark type. Either <code>absolute</code> or <code>relative</code></td>
+<td><code>relative</code></td>
+</tr>
+<tr>
+<td><code>memoryHighWatermark.value</code></td>
+<td>Memory high watermark value</td>
+<td><code>0.4</code></td>
+</tr>
+<tr>
+<td><code>plugins</code></td>
+<td>List of default plugins to enable (should only be altered to remove defaults; for additional plugins use <code>extraPlugins</code>)</td>
+<td><code>rabbitmq_management rabbitmq_peer_discovery_k8s</code></td>
+</tr>
+<tr>
+<td><code>communityPlugins</code></td>
+<td>List of Community plugins (URLs) to be downloaded during container initialization</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>extraPlugins</code></td>
+<td>Extra plugins to enable (single string containing a space-separated list)</td>
+<td><code>rabbitmq_auth_backend_ldap</code></td>
+</tr>
+<tr>
+<td><code>clustering.enabled</code></td>
+<td>Enable RabbitMQ clustering</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>clustering.addressType</code></td>
+<td>Switch clustering mode. Either <code>ip</code> or <code>hostname</code></td>
+<td><code>hostname</code></td>
+</tr>
+<tr>
+<td><code>clustering.rebalance</code></td>
+<td>Rebalance master for queues in cluster when new replica is created</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>clustering.forceBoot</code></td>
+<td>Force boot of an unexpectedly shut down cluster (in an unexpected order).</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>clustering.partitionHandling</code></td>
+<td>Switch Partition Handling Strategy. Either <code>autoheal</code> or <code>pause-minority</code> or <code>pause-if-all-down</code> or <code>ignore</code></td>
+<td><code>autoheal</code></td>
+</tr>
+<tr>
+<td><code>loadDefinition.enabled</code></td>
+<td>Enable loading a RabbitMQ definitions file to configure RabbitMQ</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>loadDefinition.file</code></td>
+<td>Name of the definitions file</td>
+<td><code>/app/load_definition.json</code></td>
+</tr>
+<tr>
+<td><code>loadDefinition.existingSecret</code></td>
+<td>Existing secret with the load definitions file</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>command</code></td>
+<td>Override default container command (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>args</code></td>
+<td>Override default container args (useful when using custom images)</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>lifecycleHooks</code></td>
+<td>Overwrite livecycle for the RabbitMQ container(s) to automate configuration before or after startup</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>terminationGracePeriodSeconds</code></td>
+<td>Default duration in seconds k8s waits for container to exit before sending kill signal.</td>
+<td><code>120</code></td>
+</tr>
+<tr>
+<td><code>extraEnvVars</code></td>
+<td>Extra environment variables to add to RabbitMQ pods</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>extraEnvVarsCM</code></td>
+<td>Name of existing ConfigMap containing extra environment variables</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>extraEnvVarsSecret</code></td>
+<td>Name of existing Secret containing extra environment variables (in case of sensitive data)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>containerPorts.amqp</code></td>
+<td></td>
+<td><code>5672</code></td>
+</tr>
+<tr>
+<td><code>containerPorts.amqpTls</code></td>
+<td></td>
+<td><code>5671</code></td>
+</tr>
+<tr>
+<td><code>containerPorts.dist</code></td>
+<td></td>
+<td><code>25672</code></td>
+</tr>
+<tr>
+<td><code>containerPorts.manager</code></td>
+<td></td>
+<td><code>15672</code></td>
+</tr>
+<tr>
+<td><code>containerPorts.epmd</code></td>
+<td></td>
+<td><code>4369</code></td>
+</tr>
+<tr>
+<td><code>containerPorts.metrics</code></td>
+<td></td>
+<td><code>9419</code></td>
+</tr>
+<tr>
+<td><code>initScripts</code></td>
+<td>Dictionary of init scripts. Evaluated as a template.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>initScriptsCM</code></td>
+<td>ConfigMap with the init scripts. Evaluated as a template.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>initScriptsSecret</code></td>
+<td>Secret containing <code>/docker-entrypoint-initdb.d</code> scripts to be executed at initialization time that contain sensitive data. Evaluated as a template.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>extraContainerPorts</code></td>
+<td>Extra ports to be included in container spec, primarily informational</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td>RabbitMQ Configuration file content: required cluster configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>tcpListenOptions.backlog</code></td>
+<td>Maximum size of the unaccepted TCP connections queue</td>
+<td><code>128</code></td>
+</tr>
+<tr>
+<td><code>tcpListenOptions.nodelay</code></td>
+<td>When set to true, deactivates Nagle's algorithm. Default is true. Highly recommended for most users.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>tcpListenOptions.linger.lingerOn</code></td>
+<td>Enable Server socket lingering</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>tcpListenOptions.linger.timeout</code></td>
+<td>Server Socket lingering timeout</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>tcpListenOptions.keepalive</code></td>
+<td>When set to true, enables TCP keepalives</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>configurationExistingSecret</code></td>
+<td>Existing secret with the configuration to use as rabbitmq.conf.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>extraConfiguration</code></td>
+<td>Configuration file content: extra configuration to be appended to RabbitMQ configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>extraConfigurationExistingSecret</code></td>
+<td>Existing secret with the extra configuration to append to <code>configuration</code>.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>advancedConfiguration</code></td>
+<td>Configuration file content: advanced configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>advancedConfigurationExistingSecret</code></td>
+<td>Existing secret with the advanced configuration file (must contain a key <code>advanced.config</code>).</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>featureFlags</code></td>
+<td>that controls what features are considered to be enabled or available on all cluster nodes.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.enabled</code></td>
+<td>Enable LDAP support</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ldap.uri</code></td>
+<td>LDAP connection string.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.servers</code></td>
+<td>List of LDAP servers hostnames. This is valid only if ldap.uri is not set</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ldap.port</code></td>
+<td>LDAP servers port. This is valid only if ldap.uri is not set</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.userDnPattern</code></td>
+<td>Pattern used to translate the provided username into a value to be used for the LDAP bind.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.binddn</code></td>
+<td>DN of the account used to search in the LDAP server.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.bindpw</code></td>
+<td>Password for binddn account.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.basedn</code></td>
+<td>Base DN path where binddn account will search for the users.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.uidField</code></td>
+<td>Field used to match with the user name (uid, samAccountName, cn, etc). It matches with 'dn_lookup_attribute' in RabbitMQ configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.uidField</code></td>
+<td>Field used to match with the user name (uid, samAccountName, cn, etc). It matches with 'dn_lookup_attribute' in RabbitMQ configuration</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.authorisationEnabled</code></td>
+<td>Enable LDAP authorisation. Please set 'advancedConfiguration' with tag, topic, resources and vhost mappings</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ldap.tls.enabled</code></td>
+<td>Enabled TLS configuration.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ldap.tls.startTls</code></td>
+<td>Use STARTTLS instead of LDAPS.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ldap.tls.skipVerify</code></td>
+<td>Skip any SSL verification (hostanames or certificates)</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ldap.tls.verify</code></td>
+<td>Verify connection. Valid values are 'verify_peer' or 'verify_none'</td>
+<td><code>verify_peer</code></td>
+</tr>
+<tr>
+<td><code>ldap.tls.certificatesMountPath</code></td>
+<td>Where LDAP certifcates are mounted.</td>
+<td><code>/opt/bitnami/rabbitmq/ldap/certs</code></td>
+</tr>
+<tr>
+<td><code>ldap.tls.certificatesSecret</code></td>
+<td>Secret with LDAP certificates.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.tls.CAFilename</code></td>
+<td>CA certificate filename. Should match with the CA entry key in the ldap.tls.certificatesSecret.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.tls.certFilename</code></td>
+<td>Client certificate filename to authenticate against the LDAP server. Should match with certificate the entry key in the ldap.tls.certificatesSecret.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ldap.tls.certKeyFilename</code></td>
+<td>Client Key filename to authenticate against the LDAP server. Should match with certificate the entry key in the ldap.tls.certificatesSecret.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>extraVolumeMounts</code></td>
+<td>Optionally specify extra list of additional volumeMounts</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>extraVolumes</code></td>
+<td>Optionally specify extra list of additional volumes .</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>extraSecrets</code></td>
+<td>Optionally specify extra secrets to be created by the chart.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>extraSecretsPrependReleaseName</code></td>
+<td>Set this flag to true if extraSecrets should be created with <release-name> prepended.</td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="statefulset-parameters">Statefulset parameters<a class="headerlink" href="#statefulset-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>replicaCount</code></td>
+<td>Number of RabbitMQ replicas to deploy</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>schedulerName</code></td>
+<td>Use an alternate scheduler, e.g. "stork".</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>podManagementPolicy</code></td>
+<td>Pod management policy</td>
+<td><code>OrderedReady</code></td>
+</tr>
+<tr>
+<td><code>podLabels</code></td>
+<td>RabbitMQ Pod labels. Evaluated as a template</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>podAnnotations</code></td>
+<td>RabbitMQ Pod annotations. Evaluated as a template</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>updateStrategy.type</code></td>
+<td>Update strategy type for RabbitMQ statefulset</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>statefulsetLabels</code></td>
+<td>RabbitMQ statefulset labels. Evaluated as a template</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>statefulsetAnnotations</code></td>
+<td>RabbitMQ statefulset annotations. Evaluated as a template</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>priorityClassName</code></td>
+<td>Name of the priority class to be used by RabbitMQ pods, priority class needs to be created beforehand</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>podAffinityPreset</code></td>
+<td>Pod affinity preset. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>podAntiAffinityPreset</code></td>
+<td>Pod anti-affinity preset. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>soft</code></td>
+</tr>
+<tr>
+<td><code>nodeAffinityPreset.type</code></td>
+<td>Node affinity preset type. Ignored if <code>affinity</code> is set. Allowed values: <code>soft</code> or <code>hard</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>nodeAffinityPreset.key</code></td>
+<td>Node label key to match Ignored if <code>affinity</code> is set.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>nodeAffinityPreset.values</code></td>
+<td>Node label values to match. Ignored if <code>affinity</code> is set.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>affinity</code></td>
+<td>Affinity for pod assignment. Evaluated as a template</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>nodeSelector</code></td>
+<td>Node labels for pod assignment. Evaluated as a template</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>tolerations</code></td>
+<td>Tolerations for pod assignment. Evaluated as a template</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>topologySpreadConstraints</code></td>
+<td>Topology Spread Constraints for pod assignment spread across your cluster among failure-domains. Evaluated as a template</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>podSecurityContext.enabled</code></td>
+<td>Enable RabbitMQ pods' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>podSecurityContext.fsGroup</code></td>
+<td>Set RabbitMQ pod's Security Context fsGroup</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>containerSecurityContext.enabled</code></td>
+<td>Enabled RabbitMQ containers' Security Context</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>containerSecurityContext.runAsUser</code></td>
+<td>Set RabbitMQ containers' Security Context runAsUser</td>
+<td><code>1001</code></td>
+</tr>
+<tr>
+<td><code>containerSecurityContext.runAsNonRoot</code></td>
+<td>Set RabbitMQ container's Security Context runAsNonRoot</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>resources.limits</code></td>
+<td>The resources limits for RabbitMQ containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>resources.requests</code></td>
+<td>The requested resources for RabbitMQ containers</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.enabled</code></td>
+<td>Enable livenessProbe</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for livenessProbe</td>
+<td><code>120</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.periodSeconds</code></td>
+<td>Period seconds for livenessProbe</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for livenessProbe</td>
+<td><code>20</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for livenessProbe</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>livenessProbe.successThreshold</code></td>
+<td>Success threshold for livenessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.enabled</code></td>
+<td>Enable readinessProbe</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for readinessProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.periodSeconds</code></td>
+<td>Period seconds for readinessProbe</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readinessProbe</td>
+<td><code>20</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readinessProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>readinessProbe.successThreshold</code></td>
+<td>Success threshold for readinessProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.enabled</code></td>
+<td>Enable startupProbe</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay seconds for startupProbe</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.periodSeconds</code></td>
+<td>Period seconds for startupProbe</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startupProbe</td>
+<td><code>20</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startupProbe</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>startupProbe.successThreshold</code></td>
+<td>Success threshold for startupProbe</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>customLivenessProbe</code></td>
+<td>Override default liveness probe</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>customReadinessProbe</code></td>
+<td>Override default readiness probe</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>customStartupProbe</code></td>
+<td>Define a custom startup probe</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>initContainers</code></td>
+<td>Add init containers to the RabbitMQ pod</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>sidecars</code></td>
+<td>Add sidecar containers to the RabbitMQ pod</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>pdb.create</code></td>
+<td>Enable/disable a Pod Disruption Budget creation</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>pdb.minAvailable</code></td>
+<td>Minimum number/percentage of pods that should remain scheduled</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>pdb.maxUnavailable</code></td>
+<td>Maximum number/percentage of pods that may be made unavailable</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="rbac-parameters">RBAC parameters<a class="headerlink" href="#rbac-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>serviceAccount.create</code></td>
+<td>Enable creation of ServiceAccount for RabbitMQ pods</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.name</code></td>
+<td>Name of the created serviceAccount</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.automountServiceAccountToken</code></td>
+<td>Auto-mount the service account token in the pod</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.annotations</code></td>
+<td>Annotations for service account. Evaluated as a template. Only used if <code>create</code> is <code>true</code>.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>rbac.create</code></td>
+<td>Whether RBAC rules should be created</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="persistence-parameters">Persistence parameters<a class="headerlink" href="#persistence-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>persistence.enabled</code></td>
+<td>Enable RabbitMQ data persistence using PVC</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>persistence.storageClass</code></td>
+<td>PVC Storage Class for RabbitMQ data volume</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>persistence.selector</code></td>
+<td>Selector to match an existing Persistent Volume</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>persistence.accessModes</code></td>
+<td>PVC Access Modes for RabbitMQ data volume</td>
+<td><code>["ReadWriteOnce"]</code></td>
+</tr>
+<tr>
+<td><code>persistence.existingClaim</code></td>
+<td>Provide an existing PersistentVolumeClaims</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>persistence.mountPath</code></td>
+<td>The path the volume will be mounted at</td>
+<td><code>/bitnami/rabbitmq/mnesia</code></td>
+</tr>
+<tr>
+<td><code>persistence.subPath</code></td>
+<td>The subdirectory of the volume to mount to</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>persistence.size</code></td>
+<td>PVC Storage Request for RabbitMQ data volume</td>
+<td><code>8Gi</code></td>
+</tr>
+<tr>
+<td><code>persistence.annotations</code></td>
+<td>Persistence annotations. Evaluated as a template</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>persistence.labels</code></td>
+<td>Persistence labels. Evaluated as a template</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="exposure-parameters">Exposure parameters<a class="headerlink" href="#exposure-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>service.type</code></td>
+<td>Kubernetes Service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>service.portEnabled</code></td>
+<td>Amqp port. Cannot be disabled when <code>auth.tls.enabled</code> is <code>false</code>. Listener can be disabled with <code>listeners.tcp = none</code>.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>service.distPortEnabled</code></td>
+<td>Erlang distribution server port</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>service.managerPortEnabled</code></td>
+<td>RabbitMQ Manager port</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>service.epmdPortEnabled</code></td>
+<td>RabbitMQ EPMD Discovery service port</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>service.ports.amqp</code></td>
+<td>Amqp service port</td>
+<td><code>5672</code></td>
+</tr>
+<tr>
+<td><code>service.ports.amqpTls</code></td>
+<td>Amqp TLS service port</td>
+<td><code>5671</code></td>
+</tr>
+<tr>
+<td><code>service.ports.dist</code></td>
+<td>Erlang distribution service port</td>
+<td><code>25672</code></td>
+</tr>
+<tr>
+<td><code>service.ports.manager</code></td>
+<td>RabbitMQ Manager service port</td>
+<td><code>15672</code></td>
+</tr>
+<tr>
+<td><code>service.ports.metrics</code></td>
+<td>RabbitMQ Prometheues metrics service port</td>
+<td><code>9419</code></td>
+</tr>
+<tr>
+<td><code>service.ports.epmd</code></td>
+<td>EPMD Discovery service port</td>
+<td><code>4369</code></td>
+</tr>
+<tr>
+<td><code>service.portNames.amqp</code></td>
+<td>Amqp service port name</td>
+<td><code>amqp</code></td>
+</tr>
+<tr>
+<td><code>service.portNames.amqpTls</code></td>
+<td>Amqp TLS service port name</td>
+<td><code>amqp-tls</code></td>
+</tr>
+<tr>
+<td><code>service.portNames.dist</code></td>
+<td>Erlang distribution service port name</td>
+<td><code>dist</code></td>
+</tr>
+<tr>
+<td><code>service.portNames.manager</code></td>
+<td>RabbitMQ Manager service port name</td>
+<td><code>http-stats</code></td>
+</tr>
+<tr>
+<td><code>service.portNames.metrics</code></td>
+<td>RabbitMQ Prometheues metrics service port name</td>
+<td><code>metrics</code></td>
+</tr>
+<tr>
+<td><code>service.portNames.epmd</code></td>
+<td>EPMD Discovery service port name</td>
+<td><code>epmd</code></td>
+</tr>
+<tr>
+<td><code>service.nodePorts.amqp</code></td>
+<td>Node port for Ampq</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.nodePorts.amqpTls</code></td>
+<td>Node port for Ampq TLS</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.nodePorts.dist</code></td>
+<td>Node port for Erlang distribution</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.nodePorts.manager</code></td>
+<td>Node port for RabbitMQ Manager</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.nodePorts.epmd</code></td>
+<td>Node port for EPMD Discovery</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.nodePorts.metrics</code></td>
+<td>Node port for RabbitMQ Prometheues metrics</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.extraPorts</code></td>
+<td>Extra ports to expose in the service</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>service.loadBalancerSourceRanges</code></td>
+<td>Address(es) that are allowed when service is <code>LoadBalancer</code></td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>service.externalIPs</code></td>
+<td>Set the ExternalIPs</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>service.externalTrafficPolicy</code></td>
+<td>Enable client source IP preservation</td>
+<td><code>Cluster</code></td>
+</tr>
+<tr>
+<td><code>service.loadBalancerIP</code></td>
+<td>Set the LoadBalancerIP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.clusterIP</code></td>
+<td>Kubernetes service Cluster IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.labels</code></td>
+<td>Service labels. Evaluated as a template</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>service.annotations</code></td>
+<td>Service annotations. Evaluated as a template</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>service.annotationsHeadless</code></td>
+<td>Headless Service annotations. Evaluated as a template</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>service.headless.annotations</code></td>
+<td>Annotations for the headless service.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>service.sessionAffinity</code></td>
+<td>Session Affinity for Kubernetes service, can be "None" or "ClientIP"</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>service.sessionAffinityConfig</code></td>
+<td>Additional settings for the sessionAffinity</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>ingress.enabled</code></td>
+<td>Enable ingress resource for Management console</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ingress.path</code></td>
+<td>Path for the default host. You may need to set this to '/*' in order to use this with ALB ingress controllers.</td>
+<td><code>/</code></td>
+</tr>
+<tr>
+<td><code>ingress.pathType</code></td>
+<td>Ingress path type</td>
+<td><code>ImplementationSpecific</code></td>
+</tr>
+<tr>
+<td><code>ingress.hostname</code></td>
+<td>Default host for the ingress resource</td>
+<td><code>rabbitmq.local</code></td>
+</tr>
+<tr>
+<td><code>ingress.annotations</code></td>
+<td>Additional annotations for the Ingress resource. To enable certificate autogeneration, place here your cert-manager annotations.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>ingress.tls</code></td>
+<td>Enable TLS configuration for the hostname defined at <code>ingress.hostname</code> parameter</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ingress.selfSigned</code></td>
+<td>Set this to true in order to create a TLS secret for this ingress record</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ingress.extraHosts</code></td>
+<td>The list of additional hostnames to be covered with this ingress record.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingress.extraPaths</code></td>
+<td>An array with additional arbitrary paths that may need to be added to the ingress under the main host</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingress.extraRules</code></td>
+<td>The list of additional rules to be added to this ingress record. Evaluated as a template</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingress.extraTls</code></td>
+<td>The tls configuration for additional hostnames to be covered with this ingress record.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingress.secrets</code></td>
+<td>Custom TLS certificates as secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingress.ingressClassName</code></td>
+<td>IngressClass that will be be used to implement the Ingress (Kubernetes 1.18+)</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>ingress.existingSecret</code></td>
+<td>It is you own the certificate as secret.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>networkPolicy.enabled</code></td>
+<td>Enable creation of NetworkPolicy resources</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>networkPolicy.allowExternal</code></td>
+<td>Don't require client label for connections</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>networkPolicy.additionalRules</code></td>
+<td>Additional NetworkPolicy Ingress "from" rules to set. Note that all rules are OR-ed.</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="metrics-parameters">Metrics Parameters<a class="headerlink" href="#metrics-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>metrics.enabled</code></td>
+<td>Enable exposing RabbitMQ metrics to be gathered by Prometheus</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.plugins</code></td>
+<td>Plugins to enable Prometheus metrics in RabbitMQ</td>
+<td><code>rabbitmq_prometheus</code></td>
+</tr>
+<tr>
+<td><code>metrics.podAnnotations</code></td>
+<td>Annotations for enabling prometheus to access the metrics endpoint</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.enabled</code></td>
+<td>Create ServiceMonitor Resource for scraping metrics using PrometheusOperator</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.namespace</code></td>
+<td>Specify the namespace in which the serviceMonitor resource will be created</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.interval</code></td>
+<td>Specify the interval at which metrics should be scraped</td>
+<td><code>30s</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.scrapeTimeout</code></td>
+<td>Specify the timeout after which the scrape is ended</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.jobLabel</code></td>
+<td>The name of the label on the target service to use as the job name in prometheus.</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.relabelings</code></td>
+<td>RelabelConfigs to apply to samples before scraping.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.metricRelabelings</code></td>
+<td>MetricsRelabelConfigs to apply to samples before ingestion.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.honorLabels</code></td>
+<td>honorLabels chooses the metric's labels on collisions with target labels</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.targetLabels</code></td>
+<td>Used to keep given service's labels in target</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.podTargetLabels</code></td>
+<td>Used to keep given pod's labels in target</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.path</code></td>
+<td>Define the path used by ServiceMonitor to scrap metrics</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.params</code></td>
+<td>Define the HTTP URL parameters used by ServiceMonitor</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.selector</code></td>
+<td>ServiceMonitor selector labels</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.labels</code></td>
+<td>Extra labels for the ServiceMonitor</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.serviceMonitor.annotations</code></td>
+<td>Extra annotations for the ServiceMonitor</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.prometheusRule.enabled</code></td>
+<td>Set this to true to create prometheusRules for Prometheus operator</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>metrics.prometheusRule.additionalLabels</code></td>
+<td>Additional labels that can be used so prometheusRules will be discovered by Prometheus</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>metrics.prometheusRule.namespace</code></td>
+<td>namespace where prometheusRules resource should be created</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>metrics.prometheusRule.rules</code></td>
+<td>List of rules, used as template by Helm.</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="init-container-parameters">Init Container Parameters<a class="headerlink" href="#init-container-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>volumePermissions.enabled</code></td>
+<td>Enable init container that changes the owner and group of the persistent volume(s) mountpoint to <code>runAsUser:fsGroup</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.registry</code></td>
+<td>Init container volume-permissions image registry</td>
+<td><code>docker.io</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.repository</code></td>
+<td>Init container volume-permissions image repository</td>
+<td><code>bitnami/bitnami-shell</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.tag</code></td>
+<td>Init container volume-permissions image tag</td>
+<td><code>11-debian-11-r130</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.digest</code></td>
+<td>Init container volume-permissions image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.pullPolicy</code></td>
+<td>Init container volume-permissions image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.image.pullSecrets</code></td>
+<td>Specify docker-registry secret names as an array</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.resources.limits</code></td>
+<td>Init container volume-permissions resource limits</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.resources.requests</code></td>
+<td>Init container volume-permissions resource requests</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>volumePermissions.containerSecurityContext.runAsUser</code></td>
+<td>User ID for the init container</td>
+<td><code>0</code></td>
+</tr>
+</tbody>
+</table>
+<p>The above parameters map to the env variables defined in <a href="https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq">bitnami/rabbitmq</a>. For more information please refer to the <a href="https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq">bitnami/rabbitmq</a> image documentation.</p>
+<p>Specify each parameter using the <code>--set key=value[,key=value]</code> argument to <code>helm install</code>. For example,</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="go">helm install my-release \</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="go">  --set auth.username=admin,auth.password=secretpassword,auth.erlangCookie=secretcookie \</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="go">    bitnami/rabbitmq</span>
+</span></code></pre></div>
+<p>The above command sets the RabbitMQ admin username and password to <code>admin</code> and <code>secretpassword</code> respectively. Additionally the secure erlang cookie is set to <code>secretcookie</code>.</p>
+<blockquote>
+<p>NOTE: Once this chart is deployed, it is not possible to change the application's access credentials, such as usernames or passwords, using Helm. To change these application credentials after deployment, delete any persistent volumes (PVs) used by the chart and re-deploy it, or use the application's built-in administrative tools if available.</p>
+</blockquote>
+<p>Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="go">helm install my-release -f values.yaml bitnami/rabbitmq</span>
+</span></code></pre></div>
+<blockquote>
+<p><strong>Tip</strong>: You can use the default <a href="values.yaml">values.yaml</a></p>
+</blockquote>
+<h2 id="configuration-and-installation-details">Configuration and installation details<a class="headerlink" href="#configuration-and-installation-details" title="Permanent link">&para;</a></h2>
+<h3 id="rolling-vs-immutable-tags"><a href="https://docs.bitnami.com/containers/how-to/understand-rolling-tags-containers/">Rolling vs Immutable tags</a><a class="headerlink" href="#rolling-vs-immutable-tags" title="Permanent link">&para;</a></h3>
+<p>It is strongly recommended to use immutable tags in a production environment. This ensures your deployment does not change automatically if the same tag is updated with a different image.</p>
+<p>Bitnami will release a new chart updating its containers if a new version of the main container, significant changes, or critical vulnerabilities exist.</p>
+<h3 id="set-pod-affinity">Set pod affinity<a class="headerlink" href="#set-pod-affinity" title="Permanent link">&para;</a></h3>
+<p>This chart allows you to set your custom affinity using the <code>affinity</code> parameter. Find more information about Pod's affinity in the <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity">kubernetes documentation</a>.</p>
+<p>As an alternative, you can use of the preset configurations for pod affinity, pod anti-affinity, and node affinity available at the <a href="https://github.com/bitnami/charts/tree/main/bitnami/common#affinities">bitnami/common</a> chart. To do so, set the <code>podAffinityPreset</code>, <code>podAntiAffinityPreset</code>, or <code>nodeAffinityPreset</code> parameters.</p>
+<h3 id="scale-horizontally">Scale horizontally<a class="headerlink" href="#scale-horizontally" title="Permanent link">&para;</a></h3>
+<p>To horizontally scale this chart once it has been deployed, two options are available:</p>
+<ul>
+<li>Use the <code>kubectl scale</code> command.</li>
+<li>Upgrade the chart modifying the <code>replicaCount</code> parameter.</li>
+</ul>
+<blockquote>
+<p>NOTE: It is mandatory to specify the password and Erlang cookie that was set the first time the chart was installed when upgrading the chart.</p>
+</blockquote>
+<p>When scaling down the solution, unnecessary RabbitMQ nodes are automatically stopped, but they are not removed from the cluster. You need to manually remove them by running the <code>rabbitmqctl forget_cluster_node</code> command.</p>
+<p>Refer to the chart documentation for <a href="https://docs.bitnami.com/kubernetes/infrastructure/rabbitmq/administration/scale-deployment/">more information on scaling the Rabbit cluster horizontally</a>.</p>
+<h3 id="enable-tls-support">Enable TLS support<a class="headerlink" href="#enable-tls-support" title="Permanent link">&para;</a></h3>
+<p>To enable TLS support, first generate the certificates as described in the <a href="https://www.rabbitmq.com/ssl.html#automated-certificate-generation">RabbitMQ documentation for SSL certificate generation</a>.</p>
+<p>Once the certificates are generated, you have two alternatives:</p>
+<ul>
+<li>Create a secret with the certificates and associate the secret when deploying the chart</li>
+<li>Include the certificates in the <em>values.yaml</em> file when deploying the chart</li>
+</ul>
+<p>Set the <em>auth.tls.failIfNoPeerCert</em> parameter to <em>false</em> to allow a TLS connection if the client fails to provide a certificate.</p>
+<p>Set the <em>auth.tls.sslOptionsVerify</em> to <em>verify_peer</em> to force a node to perform peer verification. When set to <em>verify_none</em>, peer verification will be disabled and certificate exchange won't be performed.</p>
+<p>Refer to the chart documentation for <a href="https://docs.bitnami.com/kubernetes/infrastructure/rabbitmq/administration/enable-tls-ingress/">more information and examples of enabling TLS and using Let's Encrypt certificates</a>.</p>
+<h3 id="load-custom-definitions">Load custom definitions<a class="headerlink" href="#load-custom-definitions" title="Permanent link">&para;</a></h3>
+<p>It is possible to <a href="https://www.rabbitmq.com/management.html#load-definitions">load a RabbitMQ definitions file to configure RabbitMQ</a>.</p>
+<p>Because definitions may contain RabbitMQ credentials, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod">store the JSON as a Kubernetes secret</a>. Within the secret's data, choose a key name that corresponds with the desired load definitions filename (i.e. <code>load_definition.json</code>) and use the JSON object as the value.</p>
+<p>Next, specify the <code>load_definitions</code> property as an <code>extraConfiguration</code> pointing to the load definition file path within the container (i.e. <code>/app/load_definition.json</code>) and set <code>loadDefinition.enable</code> to <code>true</code>. Any load definitions specified will be available within in the container at <code>/app</code>.</p>
+<blockquote>
+<p>NOTE: Loading a definition will take precedence over any configuration done through <a href="#parameters">Helm values</a>.</p>
+</blockquote>
+<p>If needed, you can use <code>extraSecrets</code> to let the chart create the secret for you. This way, you don't need to manually create it before deploying a release. These secrets can also be templated to use supplied chart values.</p>
+<p>Refer to the chart documentation for <a href="https://docs.bitnami.com/kubernetes/infrastructure/rabbitmq/configuration/load-files/">more information and configuration examples of loading custom definitions</a>.</p>
+<h3 id="configure-ldap-support">Configure LDAP support<a class="headerlink" href="#configure-ldap-support" title="Permanent link">&para;</a></h3>
+<p>LDAP support can be enabled in the chart by specifying the <code>ldap.*</code> parameters while creating a release. Refer to the chart documentation for <a href="https://docs.bitnami.com/kubernetes/infrastructure/rabbitmq/configuration/configure-ldap/">more information and a configuration example</a>.</p>
+<h3 id="configure-memory-high-watermark">Configure memory high watermark<a class="headerlink" href="#configure-memory-high-watermark" title="Permanent link">&para;</a></h3>
+<p>It is possible to configure a memory high watermark on RabbitMQ to define <a href="https://www.rabbitmq.com/memory.html#threshold">memory thresholds</a> using the <code>memoryHighWatermark.*</code> parameters. To do so, you have two alternatives:</p>
+<ul>
+<li>Set an absolute limit of RAM to be used on each RabbitMQ node, as shown in the configuration example below:</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>memoryHighWatermark.enabled=&quot;true&quot;
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>memoryHighWatermark.type=&quot;absolute&quot;
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>memoryHighWatermark.value=&quot;512MB&quot;
+</span></code></pre></div>
+<ul>
+<li>Set a relative limit of RAM to be used on each RabbitMQ node. To enable this feature,  define the memory limits at pod level too. An example configuration is shown below:</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>memoryHighWatermark.enabled=&quot;true&quot;
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>memoryHighWatermark.type=&quot;relative&quot;
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>memoryHighWatermark.value=&quot;0.4&quot;
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>resources.limits.memory=&quot;2Gi&quot;
+</span></code></pre></div>
+<h3 id="add-extra-environment-variables">Add extra environment variables<a class="headerlink" href="#add-extra-environment-variables" title="Permanent link">&para;</a></h3>
+<p>In case you want to add extra environment variables (useful for advanced operations like custom init scripts), you can use the <code>extraEnvVars</code> property.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">extraEnvVars</span><span class="p">:</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LOG_LEVEL</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">error</span>
+</span></code></pre></div>
+<p>Alternatively, you can use a ConfigMap or a Secret with the environment variables. To do so, use the <code>.extraEnvVarsCM</code> or the <code>extraEnvVarsSecret</code> properties.</p>
+<h3 id="use-plugins">Use plugins<a class="headerlink" href="#use-plugins" title="Permanent link">&para;</a></h3>
+<p>The Bitnami Docker RabbitMQ image ships a set of plugins by default. By default, this chart enables <code>rabbitmq_management</code> and <code>rabbitmq_peer_discovery_k8s</code> since they are required for RabbitMQ to work on K8s.</p>
+<p>To enable extra plugins, set the <code>extraPlugins</code> parameter with the list of plugins you want to enable. In addition to this, the <code>communityPlugins</code> parameter can be used to specify a list of URLs (separated by spaces) for custom plugins for RabbitMQ.</p>
+<p>Refer to the chart documentation for <a href="https://docs.bitnami.com/kubernetes/infrastructure/rabbitmq/configuration/use-plugins/">more information on using RabbitMQ plugins</a>.</p>
+<h3 id="advanced-logging">Advanced logging<a class="headerlink" href="#advanced-logging" title="Permanent link">&para;</a></h3>
+<p>In case you want to configure RabbitMQ logging set <code>logs</code> value to false and set the log config in extraConfiguration following the <a href="https://www.rabbitmq.com/logging.html#log-file-location">official documentation</a>.</p>
+<p>An example:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">logs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># custom logging</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nt">extraConfiguration</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="no">log.default.level = warning</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="no">log.file = false</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="no">log.console = true</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span><span class="no">log.console.level = warning</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="no">log.console.formatter = json</span>
+</span></code></pre></div>
+<h3 id="recover-the-cluster-from-complete-shutdown">Recover the cluster from complete shutdown<a class="headerlink" href="#recover-the-cluster-from-complete-shutdown" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>IMPORTANT: Some of these procedures can lead to data loss. Always make a backup beforehand.</p>
+</blockquote>
+<p>The RabbitMQ cluster is able to support multiple node failures but, in a situation in which all the nodes are brought down at the same time, the cluster might not be able to self-recover.</p>
+<p>This happens if the pod management policy of the statefulset is not <code>Parallel</code> and the last pod to be running wasn't the first pod of the statefulset. If that happens, update the pod management policy to recover a healthy state:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="gp">$ </span>kubectl<span class="w"> </span>delete<span class="w"> </span>statefulset<span class="w"> </span>STATEFULSET_NAME<span class="w"> </span>--cascade<span class="o">=</span><span class="nb">false</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="go">helm upgrade RELEASE_NAME bitnami/rabbitmq \</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="go">    --set podManagementPolicy=Parallel \</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="go">    --set replicaCount=NUMBER_OF_REPLICAS \</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="go">    --set auth.password=PASSWORD \</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="go">    --set auth.erlangCookie=ERLANG_COOKIE</span>
+</span></code></pre></div>
+<p>For a faster resyncronization of the nodes, you can temporarily disable the readiness probe by setting <code>readinessProbe.enabled=false</code>. Bear in mind that the pods will be exposed before they are actually ready to process requests.</p>
+<p>If the steps above don't bring the cluster to a healthy state, it could be possible that none of the RabbitMQ nodes think they were the last node to be up during the shutdown. In those cases, you can force the boot of the nodes by specifying the <code>clustering.forceBoot=true</code> parameter (which will execute <a href="https://www.rabbitmq.com/rabbitmqctl.8.html#force_boot"><code>rabbitmqctl force_boot</code></a> in each pod):</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="go">helm upgrade RELEASE_NAME bitnami/rabbitmq \</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="go">    --set podManagementPolicy=Parallel \</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="go">    --set clustering.forceBoot=true \</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="go">    --set replicaCount=NUMBER_OF_REPLICAS \</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="go">    --set auth.password=PASSWORD \</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="go">    --set auth.erlangCookie=ERLANG_COOKIE</span>
+</span></code></pre></div>
+<p>More information: <a href="https://www.rabbitmq.com/clustering.html#restarting">Clustering Guide: Restarting</a>.</p>
+<h3 id="known-issues">Known issues<a class="headerlink" href="#known-issues" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Changing the password through RabbitMQ's UI can make the pod fail due to the default liveness probes. If you do so, remember to make the chart aware of the new password. Updating the default secret with the password you set through RabbitMQ's UI will automatically recreate the pods. If you are using your own secret, you may have to manually recreate the pods.</li>
+</ul>
+<h2 id="persistence">Persistence<a class="headerlink" href="#persistence" title="Permanent link">&para;</a></h2>
+<p>The <a href="https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq">Bitnami RabbitMQ</a> image stores the RabbitMQ data and configurations at the <code>/opt/bitnami/rabbitmq/var/lib/rabbitmq/</code> path of the container.</p>
+<p>The chart mounts a <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">Persistent Volume</a> at this location. By default, the volume is created using dynamic volume provisioning. An existing PersistentVolumeClaim can also be defined.</p>
+<h3 id="use-existing-persistentvolumeclaims">Use existing PersistentVolumeClaims<a class="headerlink" href="#use-existing-persistentvolumeclaims" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Create the PersistentVolume</li>
+<li>Create the PersistentVolumeClaim</li>
+<li>Install the chart</li>
+</ol>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="go">helm install my-release --set persistence.existingClaim=PVC_NAME bitnami/rabbitmq</span>
+</span></code></pre></div>
+<h3 id="adjust-permissions-of-the-persistence-volume-mountpoint">Adjust permissions of the persistence volume mountpoint<a class="headerlink" href="#adjust-permissions-of-the-persistence-volume-mountpoint" title="Permanent link">&para;</a></h3>
+<p>As the image runs as non-root by default, it is necessary to adjust the ownership of the persistent volume so that the container can write data into it.</p>
+<p>By default, the chart is configured to use Kubernetes Security Context to automatically change the ownership of the volume. However, this feature does not work in all Kubernetes distributions.
+As an alternative, this chart supports using an <code>initContainer</code> to change the ownership of the volume before mounting it in the final destination.</p>
+<p>You can enable this <code>initContainer</code> by setting <code>volumePermissions.enabled</code> to <code>true</code>.</p>
+<h3 id="configure-the-default-uservhost">Configure the default user/vhost<a class="headerlink" href="#configure-the-default-uservhost" title="Permanent link">&para;</a></h3>
+<p>If you want to create default user/vhost and set the default permission. you can use <code>extraConfiguration</code>:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">auth</span><span class="p">:</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default-user</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nt">extraConfiguration</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">  </span><span class="no">default_vhost = default-vhost</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">  </span><span class="no">default_permissions.configure = .*</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">  </span><span class="no">default_permissions.read = .*</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">  </span><span class="no">default_permissions.write = .*</span>
+</span></code></pre></div>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p>Find more information about how to deal with common errors related to Bitnami's Helm charts in <a href="https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues">this troubleshooting guide</a>.</p>
+<h2 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">&para;</a></h2>
+<p>It's necessary to set the <code>auth.password</code> and <code>auth.erlangCookie</code> parameters when upgrading for readiness/liveness probes to work properly. When you install this chart for the first time, some notes will be displayed providing the credentials you must use under the 'Credentials' section. Please note down the password and the cookie, and run the command below to upgrade your chart:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="go">helm upgrade my-release bitnami/rabbitmq --set auth.password=[PASSWORD] --set auth.erlangCookie=[RABBITMQ_ERLANG_COOKIE]</span>
+</span></code></pre></div>
+<p>| Note: you need to substitute the placeholders [PASSWORD] and [RABBITMQ_ERLANG_COOKIE] with the values obtained in the installation notes.</p>
+<h3 id="to-1100">To 11.0.0<a class="headerlink" href="#to-1100" title="Permanent link">&para;</a></h3>
+<p>This major version changes the default RabbitMQ image from 3.10.x to 3.11.x. Follow the <a href="https://www.rabbitmq.com/upgrade.html">official instructions</a> to upgrade from 3.10 to 3.11.</p>
+<h3 id="to-1000">To 10.0.0<a class="headerlink" href="#to-1000" title="Permanent link">&para;</a></h3>
+<p>This major version changes the default RabbitMQ image from 3.9.x to 3.10.x. Follow the <a href="https://www.rabbitmq.com/upgrade.html">official instructions</a> to upgrade from 3.9 to 3.10.</p>
+<h3 id="to-900">To 9.0.0<a class="headerlink" href="#to-900" title="Permanent link">&para;</a></h3>
+<p>This major release renames several values in this chart and adds missing features, in order to be aligned with the rest of the assets in the Bitnami charts repository.</p>
+<p>.dist
+  .manager
+  .metrics
+  .epmd</p>
+<ul>
+<li><code>service.port</code> has been renamed as <code>service.ports.amqp</code>.</li>
+<li><code>service.portName</code> has been renamed as <code>service.portNames.amqp</code>.</li>
+<li><code>service.nodePort</code>has been renamed as <code>service.nodePorts.amqp</code>.</li>
+<li><code>service.tlsPort</code> has been renamed as <code>service.ports.amqpTls</code>.</li>
+<li><code>service.tlsPortName</code> has been renamed as <code>service.portNames.amqpTls</code>.</li>
+<li><code>service.tlsNodePort</code> has been renamed as <code>service.nodePorts.amqpTls</code>.</li>
+<li><code>service.epmdPortName</code> has been renamed as <code>service.portNames.epmd</code>.</li>
+<li><code>service.epmdNodePort</code> has been renamed as <code>service.nodePorts.epmd</code>.</li>
+<li><code>service.distPort</code> has been renamed as <code>service.ports.dist</code>.</li>
+<li><code>service.distPortName</code> has been renamed as <code>service.portNames.dist</code>.</li>
+<li><code>service.distNodePort</code> has been renamed as <code>service.nodePorts.dist</code>.</li>
+<li><code>service.managerPort</code> has been renamed as <code>service.ports.manager</code>.</li>
+<li><code>service.managerPortName</code> has been renamed as <code>service.portNames.manager</code>.</li>
+<li><code>service.managerNodePort</code> has been renamed as <code>service.nodePorts.manager</code>.</li>
+<li><code>service.metricsPort</code> has been renamed as <code>service.ports.metrics</code>.</li>
+<li><code>service.metricsPortName</code> has been renamed as <code>service.portNames.metrics</code>.</li>
+<li><code>service.metricsNodePort</code> has been renamed as <code>service.nodePorts.metrics</code>.</li>
+<li><code>persistence.volumes</code> has been removed, as it duplicates the parameter <code>extraVolumes</code>.</li>
+<li><code>ingress.certManager</code> has been removed.</li>
+<li><code>metrics.serviceMonitor.relabellings</code> has been replaced with <code>metrics.serviceMonitor.relabelings</code>, and it sets the field <code>relabelings</code> instead of <code>metricRelabelings</code>.</li>
+<li><code>metrics.serviceMonitor.additionalLabels</code> has been renamed as <code>metrics.serviceMonitor.labels</code></li>
+<li><code>updateStrategyType</code> has been removed, use the field <code>updateStrategy</code> instead, which is interpreted as a template.</li>
+<li>The content of <code>podSecurityContext</code> and <code>containerSecurityContext</code> have been modified.</li>
+<li>The behavior of VolumePermissions has been modified to not change ownership of '.snapshot' and 'lost+found'</li>
+<li>Introduced the values <code>ContainerPorts.*</code>, separating the service and container ports configuration.</li>
+</ul>
+<h3 id="to-8210">To 8.21.0<a class="headerlink" href="#to-8210" title="Permanent link">&para;</a></h3>
+<p>This new version of the chart bumps the RabbitMQ version to <code>3.9.1</code>. It is considered a minor release, and no breaking changes are expected. Additionally, RabbitMQ <code>3.9.X</code> nodes can run alongside <code>3.8.X</code> nodes.</p>
+<p>See the <a href="https://www.rabbitmq.com/upgrade.html">Upgrading guide</a> and the <a href="https://www.rabbitmq.com/changelog.html">RabbitMQ change log</a> for further documentation.</p>
+<h3 id="to-800">To 8.0.0<a class="headerlink" href="#to-800" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/helm/charts#status-of-the-project">On November 13, 2020, Helm v2 support was formally finished</a>, this major version is the result of the required changes applied to the Helm Chart to be able to incorporate the different features added in Helm v3 and to be consistent with the Helm project itself regarding the Helm v2 EOL.</p>
+<p><a href="https://docs.bitnami.com/kubernetes/infrastructure/rabbitmq/administration/upgrade-helm3/">Learn more about this change and related upgrade considerations</a>.</p>
+<h3 id="to-700">To 7.0.0<a class="headerlink" href="#to-700" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Several parameters were renamed or disappeared in favor of new ones on this major version:</li>
+<li><code>replicas</code> is renamed to <code>replicaCount</code>.</li>
+<li><code>securityContext.*</code> is deprecated in favor of <code>podSecurityContext</code> and <code>containerSecurityContext</code>.</li>
+<li>Authentication parameters were reorganized under the <code>auth.*</code> parameter:<ul>
+<li><code>rabbitmq.username</code>, <code>rabbitmq.password</code>, and <code>rabbitmq.erlangCookie</code> are now <code>auth.username</code>, <code>auth.password</code>, and <code>auth.erlangCookie</code> respectively.</li>
+<li><code>rabbitmq.tls.*</code> parameters are now under <code>auth.tls.*</code>.</li>
+</ul>
+</li>
+<li>Parameters prefixed with <code>rabbitmq.</code> were renamed removing the prefix. E.g. <code>rabbitmq.configuration</code> -&gt; renamed to <code>configuration</code>.</li>
+<li><code>rabbitmq.rabbitmqClusterNodeName</code> is deprecated.</li>
+<li><code>rabbitmq.setUlimitNofiles</code> is deprecated.</li>
+<li><code>forceBoot.enabled</code> is renamed to <code>clustering.forceBoot</code>.</li>
+<li><code>loadDefinition.secretName</code> is renamed to <code>loadDefinition.existingSecret</code>.</li>
+<li><code>metics.port</code> is remamed to <code>service.metricsPort</code>.</li>
+<li><code>service.extraContainerPorts</code> is renamed to <code>extraContainerPorts</code>.</li>
+<li><code>service.nodeTlsPort</code> is renamed to <code>service.tlsNodePort</code>.</li>
+<li><code>podDisruptionBudget</code> is deprecated in favor of <code>pdb.create</code>, <code>pdb.minAvailable</code>, and <code>pdb.maxUnavailable</code>.</li>
+<li><code>rbacEnabled</code> -&gt; deprecated in favor of <code>rbac.create</code>.</li>
+<li>New parameters: <code>serviceAccount.create</code>, and <code>serviceAccount.name</code>.</li>
+<li>New parameters: <code>memoryHighWatermark.enabled</code>, <code>memoryHighWatermark.type</code>, and <code>memoryHighWatermark.value</code>.</li>
+<li>Chart labels and Ingress configuration were adapted to follow the Helm charts best practices.</li>
+<li>Initialization logic now relies on the container.</li>
+<li>This version introduces <code>bitnami/common</code>, a <a href="https://helm.sh/docs/topics/library_charts/#helm">library chart</a> as a dependency. More documentation about this new utility could be found <a href="https://github.com/bitnami/charts/tree/main/bitnami/common#bitnami-common-library-chart">here</a>. Please, make sure that you have updated the chart dependencies before executing any upgrade.</li>
+<li>The layout of the persistent volumes has changed (if using persistence). Action is required if preserving data through the upgrade is desired:</li>
+<li>The data has moved from <code>mnesia/</code> within the persistent volume to the root of the persistent volume</li>
+<li>The <code>config/</code> and <code>schema/</code> directories within the persistent volume are no longer used</li>
+<li>An init container can be used to move and clean up the peristent volumes. An example can be found <a href="https://github.com/bitnami/charts/issues/10913#issuecomment-1169619513">here</a>.</li>
+<li>Alternately the value <code>persistence.subPath</code> can be overridden to be <code>mnesia</code> so that the directory layout is consistent with what it was previously.<ul>
+<li>Note however that this will leave the unused <code>config/</code> and <code>schema/</code> directories within the peristent volume forever.</li>
+</ul>
+</li>
+</ul>
+<p>Consequences:</p>
+<ul>
+<li>Backwards compatibility is not guaranteed.</li>
+<li>Compatibility with non Bitnami images is not guaranteed anymore.</li>
+</ul>
+<h3 id="to-600">To 6.0.0<a class="headerlink" href="#to-600" title="Permanent link">&para;</a></h3>
+<p>This new version updates the RabbitMQ image to a <a href="https://github.com/bitnami/containers/tree/main/bitnami/rabbitmq#3715-r18-3715-ol-7-r19">new version based on bash instead of node.js</a>. However, since this Chart overwrites the container's command, the changes to the container shouldn't affect the Chart. To upgrade, it may be needed to enable the <code>fastBoot</code> option, as it is already the case from upgrading from 5.X to 5.Y.</p>
+<h3 id="to-500">To 5.0.0<a class="headerlink" href="#to-500" title="Permanent link">&para;</a></h3>
+<p>This major release changes the clustering method from <code>ip</code> to <code>hostname</code>.
+This change is needed to fix the persistence. The data dir will now depend on the hostname which is stable instead of the pod IP that might change.</p>
+<blockquote>
+<p>IMPORTANT: Note that if you upgrade from a previous version you will lose your data.</p>
+</blockquote>
+<h3 id="to-300">To 3.0.0<a class="headerlink" href="#to-300" title="Permanent link">&para;</a></h3>
+<p>Backwards compatibility is not guaranteed unless you modify the labels used on the chart's deployments.
+Use the workaround below to upgrade from versions previous to 3.0.0. The following example assumes that the release name is rabbitmq:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="go">kubectl delete statefulset rabbitmq --cascade=false</span>
+</span></code></pre></div>
+<h2 id="bitnami-kubernetes-documentation">Bitnami Kubernetes Documentation<a class="headerlink" href="#bitnami-kubernetes-documentation" title="Permanent link">&para;</a></h2>
+<p>Bitnami Kubernetes documentation is available at <a href="https://docs.bitnami.com/">https://docs.bitnami.com/</a>. You can find there the following resources:</p>
+<ul>
+<li><a href="https://docs.bitnami.com/kubernetes/infrastructure/rabbitmq/">Documentation for RabbitMQ Helm chart</a></li>
+<li><a href="https://docs.bitnami.com/kubernetes/">Get Started with Kubernetes guides</a></li>
+<li><a href="https://docs.bitnami.com/kubernetes/apps/">Bitnami Helm charts documentation</a></li>
+<li><a href="https://docs.bitnami.com/kubernetes/faq/">Kubernetes FAQs</a></li>
+<li><a href="https://docs.bitnami.com/tutorials/">Kubernetes Developer guides</a></li>
+</ul>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<p>Copyright &copy; 2023 VMware, Inc.</p>
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../rabbitmq-cluster-operator/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Rabbitmq cluster operator" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  上一页
+                </span>
+                Rabbitmq cluster operator
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../redis-cluster/" class="md-footer__link md-footer__link--next" aria-label="下一页: Redis cluster" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  下一页
+                </span>
+                Redis cluster
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+    
+  </body>
+</html>
