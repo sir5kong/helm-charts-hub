@@ -9,7 +9,7 @@
 
 ``` shell
 ## 添加 helm 仓库
-helm repo add kafka-repo https://helm-charts.itboon.top/kafka
+helm repo add kafka-repo https://helm-charts.itboon.top/sir5kong
 helm repo update kafka-repo
 ```
 

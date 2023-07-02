@@ -19,8 +19,8 @@ Kubernetes: `>=1.20.0-0`
 ## Get Repo Info
 
 ```console
-helm repo add sir5kong https://helm-charts.itboon.top/sir5kong
-helm repo update sir5kong
+helm repo add ingress-nginx https://helm-charts.itboon.top/sir5kong
+helm repo update
 ```
 
 ## Install Chart
@@ -28,7 +28,7 @@ helm repo update sir5kong
 **Important:** only helm3 is supported
 
 ```console
-helm install [RELEASE_NAME] sir5kong/ingress-nginx
+helm install [RELEASE_NAME] ingress-nginx/ingress-nginx
 ```
 
 The command deploys ingress-nginx on the Kubernetes cluster in the default configuration.
@@ -57,7 +57,7 @@ _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documen
 
 ### Migrating from stable/nginx-ingress
 
-There are two main ways to migrate a release from `stable/nginx-ingress` to `sir5kong/ingress-nginx` chart:
+There are two main ways to migrate a release from `stable/nginx-ingress` to `ingress-nginx/ingress-nginx` chart:
 
 1. For Nginx Ingress controllers used for non-critical services, the easiest method is to [uninstall](#uninstall-chart) the old release and [install](#install-chart) the new one
 1. For critical services in production that require zero-downtime, you will want to:
@@ -66,14 +66,14 @@ There are two main ways to migrate a release from `stable/nginx-ingress` to `sir
     1. Log traffic from both controllers during this changeover
     1. [Uninstall](#uninstall-chart) the old controller once traffic has fully drained from it
 
-Note that there are some different and upgraded configurations between the two charts, described by Rimas Mocevicius from JFrog in the "Upgrading to ingress-nginx Helm chart" section of [Migrating from Helm chart nginx-ingress to ingress-nginx](https://rimusz.net/migrating-to-ingress-nginx). As the `sir5kong/ingress-nginx` chart continues to update, you will want to check current differences by running [helm configuration](#configuration) commands on both charts.
+Note that there are some different and upgraded configurations between the two charts, described by Rimas Mocevicius from JFrog in the "Upgrading to ingress-nginx Helm chart" section of [Migrating from Helm chart nginx-ingress to ingress-nginx](https://rimusz.net/migrating-to-ingress-nginx). As the `ingress-nginx/ingress-nginx` chart continues to update, you will want to check current differences by running [helm configuration](#configuration) commands on both charts.
 
 ## Configuration
 
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values.yaml](./values.yaml), or run these configuration commands:
 
 ```console
-helm show values sir5kong/ingress-nginx
+helm show values ingress-nginx/ingress-nginx
 ```
 
 ### PodDisruptionBudget
