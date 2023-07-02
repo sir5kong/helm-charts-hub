@@ -1,6 +1,4 @@
-# commonapp helm chart
-
-`commonapp` 适合部署常见单容器应用，比如 nginx、python、spring-boot 等。
+# nginx helm chart
 
 ## Prerequisites
 
@@ -17,23 +15,19 @@ helm repo update sir5kong
 
 ## 部署案例
 
-### 部署 nginx
-
 ``` shell
 helm upgrade --install nginx-demo \
   --namespace helm-demo \
   --create-namespace \
-  --set nameOverride="nginx" \
   --set image.repository="nginx" \
   --set image.tag="latest" \
-  sir5kong/commonapp
+  sir5kong/nginx
 ```
-
 
 ## Values
 
 ``` shell
-helm show values sir5kong/commonapp
+helm show values sir5kong/nginx
 ```
 
 | Key | 类型 | 默认值 | 描述 |
@@ -58,7 +52,7 @@ helm show values sir5kong/commonapp
 ### Values 案例
 
 ``` yaml
-nameOverride: nginx
+nameOverride: "demoApp"
 
 image:
   repository: nginx
