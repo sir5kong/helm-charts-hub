@@ -144,7 +144,8 @@ main() {
     fi
     local skipReadmeSync=$(yq e .repos[${i}].skipReadmeSync $yml)
     if [[ "$skipReadmeSync" == "true" ]]; then
-      echo "skipReadmeSync: $skipReadmeSync"
+      echo "$CHART_NAMESPACE skipReadmeSync: $skipReadmeSync"
+      return
     fi
     get_readme_github "$charts_dir"
   done
