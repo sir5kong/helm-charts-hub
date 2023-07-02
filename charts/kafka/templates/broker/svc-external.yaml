@@ -1,0 +1,50 @@
+{{- if .Values.broker.external.enabled }}
+{{- $externalValues := .Values.broker.external }}
+{{- $svclValues := .Values.broker.external.service }}
+{{- $componet := include "kafka.broker.componet" . }}
+{{- $fullNodePorts := list }}
+{{- range include "kafka.fullNodePorts" . | split "," }}
+  {{- $fullNodePorts = printf "%s" . | append $fullNodePorts }}
+{{- end }}
+{{- $replicaCount := .Values.broker.replicaCount | int }}
+{{- range $i := until $replicaCount }}
+  {{- $nodePort := (index $fullNodePorts $i) }}
+  {{- $targetPod := printf "%s-%d" (include "kafka.broker.fullname" $) $i }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ printf "%s-%d-external" (include "kafka.broker.fullname" $) $i | trunc 63 | trimSuffix "-" }}
+  labels:
+    {{- include "kafka.labels" $ | nindent 4 }}
+    component: {{ $componet | quote }}
+    pod: {{ $targetPod }}
+  {{- with $svclValues.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  type: {{ $svclValues.type | default "NodePort" }}
+  {{- if eq $svclValues.type "LoadBalancer" }}
+  {{- if $svclValues.loadBalancerSourceRanges }}
+  loadBalancerSourceRanges:
+    {{- toYaml $svclValues.loadBalancerSourceRanges | nindent 4 }}
+  {{- end }}
+  {{- if $svclValues.allocateLoadBalancerNodePorts }}
+  allocateLoadBalancerNodePorts: true
+  {{- end }}
+  {{- end }}
+  ports:
+    - name: external
+      port: {{ $svclValues.port }}
+      targetPort: external
+      protocol: TCP
+      {{- if eq $svclValues.type "NodePort" }}
+      nodePort: {{ $nodePort }}
+      {{- end }}
+  selector:
+    {{- include "kafka.selectorLabels" $ | nindent 4 }}
+    component: {{ $componet | quote }}
+    statefulset.kubernetes.io/pod-name: {{ $targetPod }}
+---
+{{- end }}
+{{- end }}

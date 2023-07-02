@@ -1,0 +1,229 @@
+# Default values for kafka.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+nameOverride: ""
+fullnameOverride: ""
+
+image:
+  repository: sir5kong/kafka
+  pullPolicy: IfNotPresent
+  tag: "v3.4.0"
+
+imagePullSecrets: []
+
+rbac:
+  create: false
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+securityContext: {}
+
+containerPort:
+  controller: 9090
+  broker: 9092
+  brokerExternal: 9095
+  # external: 9095
+
+broker:
+  combinedMode:
+    enabled: false
+  replicaCount: 1
+  terminationGracePeriodSeconds: 60
+  heapOpts: "-Xms512m -Xmx512m"
+  commonEnvs: []
+  extraEnvs: []
+
+  ## broker.persistence
+  persistence:
+    enabled: true
+    size: 30Gi
+    # storageClass: "gp2"
+
+  ## broker.resources
+  resources:
+    limits:
+      cpu: 4
+      memory: 8Gi
+    requests:
+      cpu: 100m
+      memory: 1Gi
+  
+  ## broker.readinessProbe
+  readinessProbe:
+    initialDelaySeconds: 25
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+
+  ## broker.livenessProbe
+  livenessProbe:
+    initialDelaySeconds: 300
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 5
+
+  ## broker.nodeSelector
+  nodeSelector: {}
+  tolerations: []
+
+  ## broker.antiAffinity
+  antiAffinity: soft
+  antiAffinityTopologyKey: kubernetes.io/hostname
+  podAffinity: {}
+  nodeAffinity: {}
+
+  ## broker.updateStrategy
+  updateStrategy:
+    type: RollingUpdate
+
+  ## broker.service
+  service:
+    ## broker.service.type - "ClusterIP" "NodePort" or "LoadBalancer"
+    type: ClusterIP
+    port: 9092
+    # nodePort: 31092
+    annotations: {}
+
+  ## broker.external
+  external:
+    enabled: false
+    # type: "NodePort"
+    service:
+      ## broker.external.service.type - "NodePort" or "LoadBalancer"
+      type: "NodePort"
+      annotations: {}
+      port: 9095
+    nodePorts:
+      - 31050
+    domainSuffix: "kafka.example.com"
+
+controller:
+  enabled: true
+  replicaCount: 1
+  terminationGracePeriodSeconds: 60
+  heapOpts: "-Xms512m -Xmx512m"
+  commonEnvs: []
+  extraEnvs: []
+  persistence:
+    enabled: true
+    size: 20Gi
+    # storageClass: "gp2"
+  ## controller.resources
+  resources:
+    limits:
+      cpu: 4
+      memory: 8Gi
+    requests:
+      cpu: 100m
+      memory: 1Gi
+
+  ## controller.readinessProbe
+  readinessProbe:
+    tcpSocket:
+      port: controller
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+
+  ## controller.livenessProbe
+  livenessProbe:
+    tcpSocket:
+      port: controller
+    initialDelaySeconds: 300
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 5
+
+  ## controller.nodeSelector
+  nodeSelector: {}
+  tolerations: []
+
+  ## controller.antiAffinity
+  antiAffinity: soft
+  antiAffinityTopologyKey: kubernetes.io/hostname
+  nodeAffinity: {}
+
+  ## controller.updateStrategy
+  updateStrategy:
+    type: RollingUpdate
+
+  ## controller.service
+  service:
+    type: ClusterIP
+    port: 9090
+
+exporter:
+  enabled: false
+  replicaCount: 1
+  image:
+    repository: danielqsj/kafka-exporter
+    pullPolicy: IfNotPresent
+    tag: "latest"
+  podAnnotations: {}
+  podLabels: {}
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+  ## exporter.resources
+  resources:
+    limits:
+      cpu: 1
+      memory: 1Gi
+    requests:
+      cpu: 50m
+      memory: 128Mi
+
+ui:
+  enabled: false
+  replicaCount: 1
+  image:
+    repository: provectuslabs/kafka-ui
+    pullPolicy: IfNotPresent
+    tag: v0.6.2
+  resources:
+    limits:
+      cpu: 1
+      memory: 2Gi
+    requests:
+      cpu: 50m
+      memory: 256Mi
+  
+  ## ui.readinessProbe
+  readinessProbe:
+    httpGet:
+      path: /
+      port: http
+  livenessProbe:
+    httpGet:
+      path: /
+      port: http
+    initialDelaySeconds: 60
+    failureThreshold: 5
+
+  ## ui.ingress
+  ingress:
+    enabled: false
+    className: ""
+    annotations: {}
+      # nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8,192.168.0.0/16
+    hosts:
+      - host: kafka-ui.example.com
+    tls: []
+    #  - secretName: kafka-example-tls
+    #    hosts:
+    #      - kafka-ui.example.com
+
+  ## ui.nodeSelector
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}

@@ -1,0 +1,80 @@
+{{- if .Values.ui.enabled }}
+{{- $thisValues := .Values.ui }}
+{{- $componet := "kafka-ui" }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "kafka.ui.fullname" . }}
+  labels:
+    {{- include "kafka.labels" . | nindent 4 }}
+    component: {{ $componet | quote }}
+spec:
+  {{- if $thisValues.replicaCount }}
+  replicas: {{ $thisValues.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "kafka.selectorLabels" . | nindent 6 }}
+      component: {{ $componet | quote }}
+  template:
+    metadata:
+      {{- with $thisValues.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "kafka.selectorLabels" . | nindent 8 }}
+        component: {{ $componet | quote }}
+        {{- with $thisValues.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "kafka.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml $thisValues.podSecurityContext | nindent 8 }}
+      containers:
+        - name: kafka-ui
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ $thisValues.image.repository }}:{{ $thisValues.image.tag }}"
+          imagePullPolicy: {{ $thisValues.image.pullPolicy }}
+          env:
+            - name: DYNAMIC_CONFIG_ENABLED
+              value: "true"
+            - name: KAFKA_CLUSTERS_0_NAME
+              value: {{ include "kafka.fullname" . }}
+            - name: KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS
+              value: {{ include "kafka.bootstrapServers" . }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          {{- with $thisValues.livenessProbe }}
+          livenessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with $thisValues.readinessProbe }}
+          readinessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with $thisValues.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      {{- with $thisValues.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $thisValues.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $thisValues.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end }}

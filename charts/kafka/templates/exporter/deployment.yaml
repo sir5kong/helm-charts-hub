@@ -1,0 +1,74 @@
+{{- if .Values.exporter.enabled }}
+{{- $thisValues := .Values.exporter }}
+{{- $brokerServicePort := .Values.broker.service.port | default .Values.containerPort.broker | int }}
+{{- $componet := "kafka-exporter" }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "kafka.exporter.fullname" . }}
+  labels:
+    {{- include "kafka.labels" . | nindent 4 }}
+    component: {{ $componet | quote }}
+spec:
+  {{- if $thisValues.replicaCount }}
+  replicas: {{ $thisValues.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "kafka.selectorLabels" . | nindent 6 }}
+      component: {{ $componet | quote }}
+  template:
+    metadata:
+      annotations:
+      {{- if $thisValues.podAnnotations }}
+        {{- with $thisValues.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+      {{- else }}
+        prometheus.io/path: /metrics
+        prometheus.io/port: "9308"
+        prometheus.io/scrape: "true"
+      {{- end }}
+      labels:
+        {{- include "kafka.selectorLabels" . | nindent 8 }}
+        component: {{ $componet | quote }}
+        {{- with $thisValues.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "kafka.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml $thisValues.podSecurityContext | nindent 8 }}
+      containers:
+        - name: exporter
+          args:
+            - {{ printf "--kafka.server=%s:%d" (include "kafka.broker.fullname" .) $brokerServicePort }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ $thisValues.image.repository }}:{{ $thisValues.image.tag }}"
+          imagePullPolicy: {{ $thisValues.image.pullPolicy }}
+          ports:
+            - containerPort: 9308
+              name: http-metrics
+              protocol: TCP
+          {{- with $thisValues.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      {{- with $thisValues.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $thisValues.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $thisValues.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end }}

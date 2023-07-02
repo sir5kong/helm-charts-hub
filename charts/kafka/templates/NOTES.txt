@@ -1,0 +1,19 @@
+>>> bootstrap-servers:
+  {{- include "kafka.bootstrapServers" . | nindent 4 }}
+
+{{- if .Values.broker.external.enabled }}
+
+>>> External bootstrap-servers:
+  {{- include "kafka.external.bootstrapServers" . | nindent 4 }}
+  {{- if and .Values.broker.external.enabled (eq .Values.broker.external.service.type "NodePort") }}
+    Use "kubectl get node -o wide" to find node ip address.
+  {{- end }}
+{{- end }}
+
+{{- if and (.Values.ui.enabled) (.Values.ui.ingress.enabled) }}
+
+>>> Visit kafka-ui:
+  {{- range $host := .Values.ui.ingress.hosts }}
+    http{{ if $.Values.ui.ingress.tls }}s{{ end }}://{{ $host.host }}/
+  {{- end }}
+{{- end }}

@@ -1,0 +1,153 @@
+{{- $thisValues := .Values.broker }}
+{{- $thisFullName := include "kafka.broker.fullname" . }}
+{{- $componet := include "kafka.broker.componet" . }}
+{{- $brokerFullName := $thisFullName }}
+{{- $brokerPort := .Values.containerPort.broker }}
+{{- $antiAffinityTopologyKey := default "kubernetes.io/hostname" $thisValues.antiAffinityTopologyKey }}
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ $thisFullName }}
+  labels:
+    {{- include "kafka.labels" . | nindent 4 }}
+    component: {{ $componet | quote }}
+spec:
+  {{- if $thisValues.replicaCount }}
+  replicas: {{ $thisValues.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "kafka.selectorLabels" . | nindent 6 }}
+      component: {{ $componet | quote }}
+  serviceName: {{ include "kafka.broker.headless.serviceName" . }}
+  updateStrategy:
+    type: {{ ( $thisValues.updateStrategy | default dict ).type | default "RollingUpdate" }}
+  template:
+    metadata:
+      {{- with $thisValues.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "kafka.selectorLabels" . | nindent 8 }}
+        component: {{ $componet | quote }}
+        {{- with $thisValues.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "kafka.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml $thisValues.podSecurityContext | nindent 8 }}
+      affinity:
+      {{- if eq ($thisValues.antiAffinity | lower) "hard" }}
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                {{- include "kafka.selectorLabels" . | nindent 18 }}
+                component: {{ $componet | quote }}
+            topologyKey: {{ $antiAffinityTopologyKey | quote }}
+      {{- else }}
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 5
+            podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  {{- include "kafka.selectorLabels" . | nindent 18 }}
+                  component: {{ $componet | quote }}
+              topologyKey: {{ $antiAffinityTopologyKey | quote }}
+      {{- end }}
+      {{- with $thisValues.podAffinity }}
+        podAffinity:
+        {{ toYaml . | indent 10 }}
+      {{- end }}
+      {{- with $thisValues.nodeAffinity }}
+        nodeAffinity:
+        {{ toYaml . | indent 10 }}
+      {{- end }}
+      containers:
+      - name: kafka
+        image: {{ include "kafka.kafkaImage" . | quote }}
+      {{- if .Values.image.pullPolicy }}
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+      {{- end }}
+        env:
+          {{- include "kafka.broker.containerEnv" . | nindent 8 }}
+        #- name: KAFKA_CFG_ADVERTISED_LISTENERS
+        #  value: "foo"
+        ports:
+          {{- include "kafka.broker.containerPorts" . | nindent 8 }}
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - bin/kafka-broker-api-versions.sh --bootstrap-server=127.0.0.1:{{ $brokerPort }}
+        {{- with $thisValues.livenessProbe }}
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        readinessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - bin/kafka-broker-api-versions.sh --bootstrap-server=127.0.0.1:{{ $brokerPort }}
+        {{- with $thisValues.readinessProbe }}
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        {{- with $thisValues.resources }}
+        resources:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        volumeMounts:
+        - mountPath: /opt/kafka/data
+          name: data
+          subPath: data
+        - mountPath: /opt/kafka/logs
+          name: data
+          subPath: logs
+        - mountPath: /entrypoint.sh
+          name: entrypoint-sh
+          subPath: entrypoint.sh
+        lifecycle:
+          preStop:
+            exec:
+              command: ["sh", "-c", "sleep 10; bin/kafka-server-stop.sh"]
+      initContainers:
+        {{- include "kafka.initContainer.checkClusterId" . | nindent 8 }}
+      terminationGracePeriodSeconds: {{ $thisValues.terminationGracePeriodSeconds }}
+      volumes:
+      - name: entrypoint-sh
+        configMap:
+          items:
+          - key: entrypoint.sh
+            path: entrypoint.sh
+          name: {{ include "kafka.broker.fullname" . }}
+          defaultMode: 0744
+  {{- if not $thisValues.persistence.enabled }}
+      - name: data
+        emptyDir: {}
+  {{- else }}
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+        {{- with $thisValues.persistence.annotations }}
+        annotations:
+          {{- . | toYaml | nindent 10 }}
+        {{- end }}
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        {{- with $thisValues.persistence.storageClass }}
+        storageClassName: {{ if (eq "-" .) }}""{{ else }}{{ . }}{{ end }}
+        {{- end }}
+        resources:
+          requests:
+            storage: {{ $thisValues.persistence.size | quote }}
+  {{- end }}

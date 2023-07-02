@@ -1,0 +1,30 @@
+{{- $svcValues := .Values.broker.service }}
+{{- $thisFullName := include "kafka.broker.headless.serviceName" . }}
+{{- $componet := include "kafka.broker.componet" . }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $thisFullName }}
+  labels:
+    {{- include "kafka.labels" . | nindent 4 }}
+    component: {{ $componet | quote }}
+spec:
+  type: ClusterIP
+  clusterIP: None
+  {{- if .Values.broker.combinedMode.enabled }}
+  publishNotReadyAddresses: true
+  {{- end }}
+  ports:
+    - port: {{ .Values.broker.service.port }}
+      targetPort: broker
+      protocol: TCP
+      name: broker
+    {{- if .Values.broker.combinedMode.enabled }}
+    - port: {{ .Values.controller.service.port }}
+      targetPort: controller
+      protocol: TCP
+      name: controller
+    {{- end }}
+  selector:
+    {{- include "kafka.selectorLabels" . | nindent 4 }}
+    component: {{ $componet | quote }}

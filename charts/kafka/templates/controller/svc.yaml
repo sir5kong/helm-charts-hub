@@ -1,0 +1,23 @@
+{{- if not .Values.broker.combinedMode.enabled }}
+{{- $thisFullName := include "kafka.controller.headless.serviceName" . }}
+{{- $componet := "controller" }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $thisFullName | quote }}
+  labels:
+    {{- include "kafka.labels" . | nindent 4 }}
+    component: {{ $componet | quote }}
+spec:
+  type: ClusterIP
+  clusterIP: None
+  publishNotReadyAddresses: true
+  ports:
+    - port: {{ .Values.controller.service.port }}
+      targetPort: controller
+      protocol: TCP
+      name: controller
+  selector:
+    {{- include "kafka.selectorLabels" . | nindent 4 }}
+    component: {{ $componet | quote }}
+{{- end }}

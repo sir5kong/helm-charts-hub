@@ -1,0 +1,42 @@
+{{- $svcValues := .Values.broker.service }}
+{{- $thisFullName := include "kafka.broker.fullname" . }}
+{{- $componet := include "kafka.broker.componet" . }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $thisFullName }}
+  labels:
+    {{- include "kafka.labels" . | nindent 4 }}
+    component: {{ $componet | quote }}
+  {{- with $svcValues.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  type: {{ $svcValues.type | quote }}
+  {{- if and $svcValues.clusterIP (eq $svcValues.type "ClusterIP") }}
+  clusterIP: {{ .Values.service.clusterIP }}
+  {{- end }}
+  {{- if $svcValues.sessionAffinity }}
+  sessionAffinity: {{ $svcValues.sessionAffinity | quote }}
+  {{- end }}
+  {{- if $svcValues.sessionAffinityConfig }}
+  sessionAffinityConfig: {{- include "common.tplvalues.render" (dict "value" $svcValues.sessionAffinityConfig "context" $) | nindent 4 }}
+  {{- end }}
+  ports:
+    - name: broker
+      port: {{ $svcValues.port | default .Values.containerPort.broker }}
+      targetPort: broker
+      protocol: TCP
+      {{- if eq $svcValues.type "NodePort" }}
+      nodePort: {{ $svcValues.nodePort }}
+      {{- end }}
+    {{- if .Values.broker.combinedMode.enabled }}
+    - name: controller
+      port: {{ .Values.controller.service.port | default .Values.containerPort.controller }}
+      targetPort: controller
+      protocol: TCP
+    {{- end }}
+  selector:
+    {{- include "kafka.selectorLabels" . | nindent 4 }}
+    component: {{ $componet | quote }}
