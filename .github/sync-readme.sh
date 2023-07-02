@@ -142,6 +142,10 @@ main() {
     if [[ -z "$charts_dir" ]] || [[ "$charts_dir" == "null" ]]; then
       local charts_dir="charts"
     fi
+    local skipReadmeSync=$(yq e .repos[${i}].skipReadmeSync $yml)
+    if [[ "$skipReadmeSync" == "true" ]]; then
+      echo "skipReadmeSync: $skipReadmeSync"
+    fi
     get_readme_github "$charts_dir"
   done
   ## get_readme_bitnami

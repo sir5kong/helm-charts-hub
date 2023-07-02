@@ -2,6 +2,7 @@ repos:
 - url: 'https://raw.githubusercontent.com/sir5kong/helm-charts-hub/gh-pages/index.yaml'
   repo: sir5kong/helm-charts-hub
   namespace: sir5kong
+  skipReadmeSync: true
 - url: 'https://grafana.github.io/helm-charts/index.yaml'
   repo: grafana/helm-charts
   namespace: grafana
