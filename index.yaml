@@ -1,0 +1,160 @@
+apiVersion: v1
+entries:
+  commonapp:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-07-02T09:58:49.455981872Z"
+    description: A Helm chart for Kubernetes
+    digest: 80598be7c4a4faa0db194cb0a3eae226afad6254a04e194ca22d8906cb19ea12
+    maintainers:
+    - name: sir5kong
+      url: https://github.com/sir5kong/helm-charts-hub
+    name: commonapp
+    type: application
+    urls:
+    - https://github.com/sir5kong/helm-charts-hub/releases/download/commonapp-1.0.2/commonapp-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-07-02T07:22:09.381634161Z"
+    description: A Helm chart for Kubernetes
+    digest: 20472d4aea8024fadebdaabdf187df772520909220103e36a6440004b6f0933f
+    maintainers:
+    - name: sir5kong
+      url: https://github.com/sir5kong/helm-charts-hub
+    name: commonapp
+    type: application
+    urls:
+    - https://github.com/sir5kong/helm-charts-hub/releases/download/commonapp-1.0.1/commonapp-1.0.1.tgz
+    version: 1.0.1
+  elasticsearch:
+  - apiVersion: v1
+    appVersion: 7.17.3
+    created: "2023-07-23T15:48:22.549676226Z"
+    description: Official Elastic helm chart for Elasticsearch
+    digest: 3ebf80fcbc4a153e95f8b81e0fd844e29c99c63eb41e6e4368a710362f28feba
+    home: https://github.com/elastic/helm-charts
+    icon: https://helm.elastic.co/icons/elasticsearch.png
+    maintainers:
+    - email: helm-charts@elastic.co
+      name: Elastic
+    name: elasticsearch
+    sources:
+    - https://github.com/elastic/elasticsearch
+    urls:
+    - https://github.com/sir5kong/helm-charts-hub/releases/download/elasticsearch-7.17.3/elasticsearch-7.17.3.tgz
+    version: 7.17.3
+  ingress-nginx:
+  - annotations:
+      artifacthub.io/changes: |
+        - "Added a doc line to the missing helm value service.internal.loadBalancerIP (#9406)"
+        - "feat(helm): Add loadBalancerClass (#9562)"
+        - "added helmshowvalues example (#10019)"
+        - "Update Ingress-Nginx version controller-v1.8.1"
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 1.8.1
+    created: "2023-07-02T07:23:25.518139941Z"
+    description: Ingress controller for Kubernetes using NGINX as a reverse proxy
+      and load balancer
+    digest: e11fc88ca4e98a0b036444b15730777613d5b3166a080c559393fc4a2672c02b
+    home: https://github.com/kubernetes/ingress-nginx
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
+    keywords:
+    - ingress
+    - nginx
+    kubeVersion: '>=1.20.0-0'
+    maintainers:
+    - name: rikatz
+    - name: strongjz
+    - name: tao12345666333
+    name: ingress-nginx
+    sources:
+    - https://github.com/kubernetes/ingress-nginx
+    urls:
+    - https://github.com/sir5kong/helm-charts-hub/releases/download/ingress-nginx-4.7.1/ingress-nginx-4.7.1.tgz
+    version: 4.7.1
+  - annotations:
+      artifacthub.io/changes: |
+        - "Added a doc line to the missing helm value service.internal.loadBalancerIP (#9406)"
+        - "feat(helm): Add loadBalancerClass (#9562)"
+        - "added helmshowvalues example (#10019)"
+        - "Update Ingress-Nginx version controller-v1.8.1"
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 1.8.1
+    created: "2023-07-02T07:22:09.549437779Z"
+    description: Ingress controller for Kubernetes using NGINX as a reverse proxy
+      and load balancer
+    digest: bc0697613f5615ff5fda0b8cca6b0bfe2f0939d623db22d132e3aaf5c912bec9
+    home: https://github.com/kubernetes/ingress-nginx
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
+    keywords:
+    - ingress
+    - nginx
+    kubeVersion: '>=1.20.0-0'
+    maintainers:
+    - name: rikatz
+    - name: strongjz
+    - name: tao12345666333
+    name: ingress-nginx
+    sources:
+    - https://github.com/kubernetes/ingress-nginx
+    urls:
+    - https://github.com/sir5kong/helm-charts-hub/releases/download/ingress-nginx-4.7.0/ingress-nginx-4.7.0.tgz
+    version: 4.7.0
+  kafka:
+  - apiVersion: v2
+    appVersion: v3.4.0
+    created: "2023-07-02T10:00:45.345900512Z"
+    description: Helm chart for Apache Kafka.
+    digest: 2c393e1868cd0172b42ce6b78aa353ed4fc8db631aba166eb0dadef5487c4b43
+    keywords:
+    - kafka
+    - streaming
+    - kraft
+    maintainers:
+    - name: sir5kong
+      url: https://github.com/sir5kong/kafka-docker
+    name: kafka
+    type: application
+    urls:
+    - https://github.com/sir5kong/helm-charts-hub/releases/download/kafka-13.0.9/kafka-13.0.9.tgz
+    version: 13.0.9
+  kibana:
+  - apiVersion: v1
+    appVersion: 7.17.3
+    created: "2023-07-23T15:48:22.664334724Z"
+    description: Official Elastic helm chart for Kibana
+    digest: 96036208243a0cb1e54eca18c5d728dd2631443c6f48459a44acc87115625247
+    home: https://github.com/elastic/helm-charts
+    icon: https://helm.elastic.co/icons/kibana.png
+    maintainers:
+    - email: helm-charts@elastic.co
+      name: Elastic
+    name: kibana
+    sources:
+    - https://github.com/elastic/kibana
+    urls:
+    - https://github.com/sir5kong/helm-charts-hub/releases/download/kibana-7.17.3/kibana-7.17.3.tgz
+    version: 7.17.3
+  nginx:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-07-02T09:58:49.618884434Z"
+    description: A Helm chart for Kubernetes
+    digest: 84e7aa8faa1d5c51d29f23f7cd71aaf31737999e8649a64da0fa611abe9ddc86
+    keywords:
+    - nginx
+    - httpd
+    - web
+    - reverse proxy
+    maintainers:
+    - name: sir5kong
+      url: https://github.com/sir5kong/helm-charts-hub
+    name: nginx
+    type: application
+    urls:
+    - https://github.com/sir5kong/helm-charts-hub/releases/download/nginx-1.0.1/nginx-1.0.1.tgz
+    version: 1.0.1
+generated: "2023-07-23T15:48:22.664344824Z"
