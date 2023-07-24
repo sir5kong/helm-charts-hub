@@ -302,7 +302,11 @@ spec:
                 fieldPath: metadata.name
           {{- if has "master" .Values.roles }}
           - name: cluster.initial_master_nodes
+            {{- if .Values.singleNodeEnabled }}
+            value: "null"
+            {{- else }}
             value: "{{ template "elasticsearch.endpoints" . }}"
+            {{- end }}
           {{- end }}
           - name: node.roles
             value: "{{ template "elasticsearch.roles" . }}"
@@ -322,6 +326,10 @@ spec:
           {{- if .Values.esJavaOpts  }}
           - name: ES_JAVA_OPTS
             value: "{{ .Values.esJavaOpts }}"
+          {{- end }}
+          {{- if .Values.singleNodeEnabled }}
+          - name: discovery.type
+            value: single-node
           {{- end }}
 {{- if .Values.extraEnvs }}
 {{ toYaml .Values.extraEnvs | indent 10 }}

@@ -23,6 +23,7 @@ roles:
 
 replicas: 3
 minimumMasterNodes: 2
+singleNodeEnabled: true
 
 esMajorVersion: ""
 
@@ -81,15 +82,15 @@ podAnnotations:
 # additionals labels
 labels: {}
 
-esJavaOpts: "" # example: "-Xmx1g -Xms1g"
+esJavaOpts: "-Xmx1g -Xms1g" # example: "-Xmx1g -Xms1g"
 
 resources:
   requests:
-    cpu: "1000m"
+    cpu: 100m
     memory: "2Gi"
   limits:
-    cpu: "1000m"
-    memory: "2Gi"
+    cpu: 4
+    memory: "6Gi"
 
 initResources:
   {}
@@ -269,7 +270,7 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-nameOverride: ""
+nameOverride: "elasticsearch"
 fullnameOverride: ""
 healthNameOverride: ""
 
