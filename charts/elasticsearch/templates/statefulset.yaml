@@ -241,11 +241,11 @@ spec:
               - |
                 set -e
 
-                # Exit if ELASTIC_PASSWORD in unset
-                if [ -z "${ELASTIC_PASSWORD}" ]; then
-                  echo "ELASTIC_PASSWORD variable is missing, exiting"
-                  exit 1
-                fi
+                ## Exit if ELASTIC_PASSWORD in unset
+                #if [ -z "${ELASTIC_PASSWORD}" ]; then
+                #  echo "ELASTIC_PASSWORD variable is missing, exiting"
+                #  exit 1
+                #fi
 
                 # If the node is starting up wait for the cluster to be ready (request params: "{{ .Values.clusterHealthCheckParams }}" )
                 # Once it has started only check that the node itself is responding
@@ -264,7 +264,9 @@ spec:
                     set -- "$@" $args
                   fi
 
-                  set -- "$@" -u "elastic:${ELASTIC_PASSWORD}"
+                  if [ -n "${ELASTIC_PASSWORD}" ]; then
+                    set -- "$@" -u "elastic:${ELASTIC_PASSWORD}"
+                  fi
 
                   curl --output /dev/null -k "$@" "{{ .Values.protocol }}://127.0.0.1:{{ .Values.httpPort }}${path}"
                 }
@@ -310,7 +312,11 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.name
-          {{- if has "master" .Values.roles }}
+          {{- if .Values.singleNodeEnabled }}
+          - name: discovery.type
+            value: single-node
+          {{- end }}
+          {{- if and (not .Values.singleNodeEnabled) (has "master" .Values.roles) }}
           - name: cluster.initial_master_nodes
             value: "{{ template "elasticsearch.endpoints" . }}"
           {{- end }}
@@ -318,12 +324,14 @@ spec:
           - name: node.roles
             value: "{{ template "elasticsearch.roles" . }}"
           {{- end }}
+          {{- if not .Values.singleNodeEnabled }}
           {{- if lt (int (include "elasticsearch.esMajorVersion" .)) 7 }}
           - name: discovery.zen.ping.unicast.hosts
             value: "{{ template "elasticsearch.masterService" . }}-headless"
           {{- else }}
           - name: discovery.seed_hosts
             value: "{{ template "elasticsearch.masterService" . }}-headless"
+          {{- end }}
           {{- end }}
           - name: cluster.name
             value: "{{ .Values.clusterName }}"
