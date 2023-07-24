@@ -29,6 +29,22 @@ entries:
     version: 1.0.1
   elasticsearch:
   - apiVersion: v1
+    appVersion: 8.5.1
+    created: "2023-07-24T16:41:58.652320209Z"
+    description: Official Elastic helm chart for Elasticsearch
+    digest: 1baaa27f5c485c82921fda7ce841f62880e9b2ebb4ffeb86a7587b6a2a61c607
+    home: https://github.com/elastic/helm-charts
+    icon: https://helm.elastic.co/icons/elasticsearch.png
+    maintainers:
+    - email: helm-charts@elastic.co
+      name: Elastic
+    name: elasticsearch
+    sources:
+    - https://github.com/elastic/elasticsearch
+    urls:
+    - https://github.com/sir5kong/helm-charts-hub/releases/download/elasticsearch-8.5.1/elasticsearch-8.5.1.tgz
+    version: 8.5.1
+  - apiVersion: v1
     appVersion: 7.17.3
     created: "2023-07-23T15:48:22.549676226Z"
     description: Official Elastic helm chart for Elasticsearch
@@ -44,6 +60,22 @@ entries:
     urls:
     - https://github.com/sir5kong/helm-charts-hub/releases/download/elasticsearch-7.17.3/elasticsearch-7.17.3.tgz
     version: 7.17.3
+  - apiVersion: v1
+    appVersion: 7.17.3
+    created: "2023-07-24T16:41:58.525611982Z"
+    description: Official Elastic helm chart for Elasticsearch
+    digest: edf0669ac3413a90d4d18be6b825a9cefaaf4cde2294bab06a9af1f74e859ab7
+    home: https://github.com/elastic/helm-charts
+    icon: https://helm.elastic.co/icons/elasticsearch.png
+    maintainers:
+    - email: helm-charts@elastic.co
+      name: Elastic
+    name: elasticsearch
+    sources:
+    - https://github.com/elastic/elasticsearch
+    urls:
+    - https://github.com/sir5kong/helm-charts-hub/releases/download/elasticsearch-1.0.0/elasticsearch-1.0.0.tgz
+    version: 1.0.0
   ingress-nginx:
   - annotations:
       artifacthub.io/changes: |
@@ -157,4 +189,4 @@ entries:
     urls:
     - https://github.com/sir5kong/helm-charts-hub/releases/download/nginx-1.0.1/nginx-1.0.1.tgz
     version: 1.0.1
-generated: "2023-07-23T15:48:22.664344824Z"
+generated: "2023-07-24T16:41:58.652350409Z"
