@@ -18,7 +18,9 @@ spec:
   selector:
     matchLabels:
       app: "{{ template "elasticsearch.uname" . }}"
+  {{- if not .Values.singleNodeEnabled }}
   replicas: {{ .Values.replicas }}
+  {{- end }}
   podManagementPolicy: {{ .Values.podManagementPolicy }}
   updateStrategy:
     type: {{ .Values.updateStrategy }}
@@ -348,9 +350,13 @@ spec:
           - name: ES_JAVA_OPTS
             value: "{{ .Values.esJavaOpts }}"
           {{- end }}
-          {{- if .Values.createCert }}
           - name: xpack.security.enabled
+          {{- if or .Values.createCert .Values.secret.enabled }}
             value: "true"
+          {{- else }}
+            value: "false"
+          {{- end }}
+          {{- if .Values.createCert }}
           - name: xpack.security.transport.ssl.enabled
             value: "true"
           - name: xpack.security.http.ssl.enabled
