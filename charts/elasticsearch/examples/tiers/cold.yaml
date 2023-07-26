@@ -1,0 +1,27 @@
+clusterName: elasticsearch
+nodeGroup: "data-cold"
+
+masterService: "elasticsearch-master"
+
+roles:
+  - data_cold
+
+replicas: 2
+
+esJavaOpts: "-Xmx1g -Xms1g"
+
+resources:
+  requests:
+    cpu: 200m
+    memory: 2G
+  limits:
+    cpu: 2
+    memory: 6G
+
+volumeClaimTemplate:
+  accessModes: [ "ReadWriteOnce" ]
+  # storageClassName: gp2
+  resources:
+    requests:
+      storage: 20Gi
+

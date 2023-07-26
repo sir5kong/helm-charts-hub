@@ -1,0 +1,35 @@
+clusterName: elasticsearch
+nodeGroup: "data-hot"
+
+masterService: "elasticsearch-master"
+
+roles:
+  - data
+  - data_content
+  - data_hot
+  - data_warm
+  #- data_cold
+  - ingest
+  - ml
+  - remote_cluster_client
+  - transform
+
+replicas: 3
+
+esJavaOpts: "-Xmx4g -Xms4g"
+
+resources:
+  requests:
+    cpu: 2
+    memory: 6G
+  limits:
+    cpu: 6
+    memory: 12G
+
+volumeClaimTemplate:
+  accessModes: [ "ReadWriteOnce" ]
+  # storageClassName: gp2
+  resources:
+    requests:
+      storage: 50Gi
+

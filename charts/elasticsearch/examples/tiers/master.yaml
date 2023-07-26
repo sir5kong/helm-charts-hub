@@ -1,0 +1,25 @@
+clusterName: elasticsearch
+nodeGroup: "master"
+
+roles:
+  - master
+  - remote_cluster_client
+
+replicas: 3
+
+esJavaOpts: "-Xmx1g -Xms1g"
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 2G
+  limits:
+    cpu: 4
+    memory: 6G
+
+volumeClaimTemplate:
+  accessModes: [ "ReadWriteOnce" ]
+  # storageClassName: gp2
+  resources:
+    requests:
+      storage: 20Gi

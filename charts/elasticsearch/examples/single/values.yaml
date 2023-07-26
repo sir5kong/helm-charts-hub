@@ -1,0 +1,18 @@
+singleNodeEnabled: true
+
+esJavaOpts: "-Xmx512m -Xms512m"
+
+resources:
+  requests:
+    cpu: "50m"
+    memory: "1G"
+  limits:
+    cpu: "2"
+    memory: "6G"
+
+volumeClaimTemplate:
+  accessModes: [ "ReadWriteOnce" ]
+  # storageClassName: gp2
+  resources:
+    requests:
+      storage: 20Gi
