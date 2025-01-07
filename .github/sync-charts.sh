@@ -31,6 +31,8 @@ get_chart_index_github() {
   if head -n50 /tmp/index.yaml | grep -E '^apiVersion:' ; then
     echo '[sed] s%https://github.com/\('$github_repo'/releases\)%'$CHART_BASE_URL'/github/\1%'
     sed -i 's%https://github.com/\('$github_repo'/releases\)%'$CHART_BASE_URL'/github/\1%' /tmp/index.yaml
+    cp /tmp/index.yaml /tmp/index-cp.yaml
+    yq '.entries.[].[] |= omit(["annotations", "dependencies", "keywords", "description", "maintainers"])' /tmp/index-cp.yaml > /tmp/index.yaml
     $ALIOSS cp -f /tmp/index.yaml \
       "oss://${OSS_BUCKET}/${namespace}/index.yaml" \
       --meta "content-type:text/plain; charset=utf-8"
